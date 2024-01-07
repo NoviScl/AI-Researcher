@@ -2,16 +2,21 @@ from openai import OpenAI
 from utils import call_api
 import argparse
 import json
+from lit_review_tools import parse_and_execute
 
 def initial_search(topic_description, openai_client, model):
     prompt = "You are a researcher doing literature review on the topic of " + topic_description.strip() + ".\n"
-    prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this topic. Formulate your query as: KeywordQuery(keyword). Just give me one query, with the most important keyword.\n"
+    prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this topic. Formulate your query as: KeywordQuery(\"keyword\"). Just give me one query, with the most important keyword.\n"
     prompt += "Your query:"
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=100)
     
     return prompt, response, cost
     
+def collect_papers(topic_description, openai_client, model):
+    final_paper_lst = [] 
+    total_cost = 0
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -37,5 +42,6 @@ if __name__ == "__main__":
     print (prompt)
     print (response)
     print (cost)    
+    print (parse_and_execute(response))
 
 

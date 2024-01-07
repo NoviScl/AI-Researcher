@@ -1,4 +1,5 @@
 import requests
+import re
 
 # Define the paper search endpoint URL
 search_url = 'https://api.semanticscholar.org/graph/v1/paper/search/'
@@ -9,7 +10,8 @@ rec_url = "https://api.semanticscholar.org/recommendations/v1/papers/forpaper/"
 def KeywordQuery(keyword):
     query_params = {
         'query': keyword,
-        'limit': 50
+        'limit': 50,
+        'fields': 'title,year,citationCount,abstract,tldr'
     }
     response = requests.get(search_url, params=query_params)
     
@@ -73,6 +75,54 @@ def GetReferences(paper_id):
     else:
         return None
 
+def paper_filter(response):
+    paper_lst = response["data"]
+    filtered_lst = []
+    for paper in paper_lst:
+        abstract = paper["abstract"] if paper["abstract"] else paper["title"]
+        if paper["year"] < 2022:
+            continue 
+        if paper["citationCount"] <= 10:
+            continue 
+        if "survey" in abstract.lower() or "review" in abstract.lower() or "position paper" in abstract.lower():
+            continue
+        filtered_lst.append(paper)
+    return filtered_lst
+
+## parse gpt4 output and execute corresponding functions
+def parse_and_execute(output):
+    if output.startswith("KeywordQuery"):
+        match = re.match(r'KeywordQuery\("([^"]+)"\)', output)
+        keyword = match.group(1) if match else None
+        if keyword:
+            response = KeywordQuery(keyword)
+            if response is not None:
+                return paper_filter(response)
+    elif output.startswith("PaperQuery"):
+        match = re.match(r'PaperQuery\("([^"]+)"\)', output)
+        paper_id = match.group(1) if match else None
+        if paper_id:
+            response = PaperQuery(paper_id)
+            if response is not None:
+                return paper_filter(response)
+    elif output.startswith("GetAbstract"):
+        match = re.match(r'GetAbstract\("([^"]+)"\)', output)
+        paper_id = match.group(1) if match else None
+        if paper_id:
+            return GetAbstract(paper_id)
+    elif output.startswith("GetCitationCount"):
+        match = re.match(r'GetCitationCount\("([^"]+)"\)', output)
+        paper_id = match.group(1) if match else None
+        if paper_id:
+            return GetCitationCount(paper_id)
+    elif output.startswith("GetCitations"):
+        match = re.match(r'GetCitations\("([^"]+)"\)', output)
+        paper_id = match.group(1) if match else None
+        if paper_id:
+            return GetCitations(paper_id)
+    
+    return None 
+
 if __name__ == "__main__":
     ## some unit tests
     # print (KeywordQuery("GPT-3"))
@@ -81,4 +131,5 @@ if __name__ == "__main__":
     # print (GetAbstract("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetCitationCount("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetCitations("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
-    print (GetReferences("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
+    # print (GetReferences("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
+    print (parse_and_execute("KeywordQuery(\"Prompting Strategies for Large Language Models\")"))
