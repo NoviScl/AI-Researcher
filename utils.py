@@ -1,3 +1,5 @@
+import os
+
 def calc_price(model, usage):
     if model == "gpt-4-1106-preview":
         return (0.01 * usage.prompt_tokens + 0.03 * usage.completion_tokens) / 1000.0
@@ -19,3 +21,9 @@ def call_api(openai_client, model, prompt_messages, temperature=1.0, max_tokens=
     response = completion.choices[0].message.content.strip()
     
     return response, cost
+
+def cache_output(output, file_name):
+    ## store GPT4 output into a txt file
+    with open(os.path.join("cache_results", file_name), "w") as f:
+        f.write(output)
+    return 

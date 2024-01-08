@@ -3,6 +3,7 @@ from utils import call_api
 import argparse
 import json
 from lit_review_tools import parse_and_execute, format_papers_for_printing
+from utils import cache_output
 
 def initial_search(topic_description, openai_client, model):
     prompt = "You are a researcher doing literature review on the topic of " + topic_description.strip() + ".\n"
@@ -17,7 +18,7 @@ def paper_scoring(paper_lst, topic_description, openai_client, model):
     ## use gpt4 to score each paper 
     prompt = "You are a helpful literature review assistant whose job is to read the below set of papers and score each paper. The criteria for scoring are:\n"
     prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ".\n"
-    prompt += "(2) The paper is an empirical paper that proposes new methods and conducts experiments.\n"
+    prompt += "(2) The paper is an empirical paper that proposes new methods and conducts experiments (position papers, review papers, and resource papers should get lower scores for this purpose).\n"
     prompt += "(3) The paper is interesting and meaningful, with potential to inspire new follow-up projects.\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10. Write the response in JSON format with \"paperID (first 4 digits): score\" for each paper.\n"
@@ -30,6 +31,7 @@ def collect_papers(topic_description, openai_client, model, max_papers=10):
     paper_bank = {}
     total_cost = 0
 
+    ## get initial set of seed papers by KeywordSearch 
     _, response, cost = initial_search(topic_description, openai_client, model)
     total_cost += cost
     paper_lst = parse_and_execute(response)
@@ -42,11 +44,11 @@ def collect_papers(topic_description, openai_client, model, max_papers=10):
     for k,v in response.items():
         paper_bank[k]["score"] = v
     
-    ## rank papers by score
+    ## rank all papers by score
     data_list = [{'id': id, **info} for id, info in paper_bank.items()]
-    sorted_data = sorted(data_list, key=lambda x: x['score'])
+    sorted_data = sorted(data_list, key=lambda x: x['score'], reverse=True)
 
-    return sorted_data
+    return sorted_data, total_cost
 
 
 if __name__ == "__main__":
@@ -68,14 +70,10 @@ if __name__ == "__main__":
     )
 
     topic_description = "better prompting strategies for large language models to enhance reasoning abilities"
-    # prompt, response, cost = initial_search(topic_description, openai_client, MODEL)
     
-    # print (prompt)
-    # print (response)
-    # print (cost)    
-    # print (parse_and_execute(response))
+    paper_bank, total_cost = collect_papers(topic_description, openai_client, MODEL, max_papers=10)
+    output =  format_papers_for_printing(paper_bank)
+    print (output)
+    print ("Total cost: ", total_cost)
 
-    paper_bank = collect_papers(topic_description, openai_client, MODEL, max_papers=10)
-    print (paper_bank)
-
-
+    cache_output(output, "paper_bank.txt")

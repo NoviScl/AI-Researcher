@@ -136,9 +136,12 @@ def format_papers_for_printing(paper_lst):
         output_str += "title: " + paper["title"].strip() + "\n"
         if paper["tldr"] and paper["tldr"]["text"]:
             output_str += "tldr: " + paper["tldr"]["text"].strip() + "\n"
+        if "score" in paper:
+            output_str += "score: " + str(paper["score"]) + "\n"
         output_str += "\n"
 
     return output_str
+
 
 if __name__ == "__main__":
     ## some unit tests
