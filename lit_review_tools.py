@@ -10,7 +10,7 @@ def KeywordQuery(keyword):
     ## retrieve papers based on keywords
     query_params = {
         'query': keyword,
-        'limit': 10,
+        'limit': 20,
         'fields': 'title,year,citationCount,abstract,tldr'
     }
     response = requests.get(search_url, params=query_params)
@@ -24,7 +24,8 @@ def PaperQuery(paper_id):
     ## retrieve similar papers based on paper id
     query_params = {
         'paperId': paper_id,
-        'limit': 50
+        'limit': 20,
+        'fields': 'title,year,citationCount,abstract'
     }
     response = requests.get(url = rec_url + paper_id, params = query_params)
     
@@ -33,9 +34,9 @@ def PaperQuery(paper_id):
     else:
         return None
 
-def PaperDetails(paper_id):
+def PaperDetails(paper_id, fields='title,year,abstract,authors,citationCount,venue,citations,references,tldr'):
     ## get paper details based on paper id
-    paper_data_query_params = {'fields': 'title,year,abstract,authors,citationCount,venue,citations,references'}
+    paper_data_query_params = {'fields': fields}
     response = requests.get(url = graph_url + paper_id, params = paper_data_query_params)
 
     if response.status_code == 200:
@@ -73,15 +74,19 @@ def GetCitations(paper_id):
 def GetReferences(paper_id):
     ## get the reference list of a paper based on paper id
     paper_details = PaperDetails(paper_id)
+    references = paper_details["references"][ : 100]
+
+    ## get details of each reference 
+    detailed_references = [PaperDetails(ref["paperId"], fields='title,year,abstract,citationCount') for ref in references if ref["paperId"]]
+    detailed_references = paper_filter(detailed_references)[ : 20]
     
     if paper_details is not None:
-        return paper_details["references"]
+        return detailed_references
     else:
         return None
 
-def paper_filter(response):
+def paper_filter(paper_lst):
     ## filter out papers based on heuristics
-    paper_lst = response["data"]
     filtered_lst = []
     for paper in paper_lst:
         abstract = paper["abstract"] if paper["abstract"] else paper["title"]
@@ -101,15 +106,17 @@ def parse_and_execute(output):
         keyword = match.group(1) if match else None
         if keyword:
             response = KeywordQuery(keyword)
-            if response is not None:
-                return paper_filter(response)
+            if response is not None and response["data"]:
+                paper_lst = response["data"]
+                return paper_filter(paper_lst)
     elif output.startswith("PaperQuery"):
         match = re.match(r'PaperQuery\("([^"]+)"\)', output)
         paper_id = match.group(1) if match else None
         if paper_id:
             response = PaperQuery(paper_id)
-            if response is not None:
-                return paper_filter(response)
+            if response is not None and response["recommendedPapers"]:
+                paper_lst = response["recommendedPapers"]
+                return paper_filter(paper_lst)
     elif output.startswith("GetAbstract"):
         match = re.match(r'GetAbstract\("([^"]+)"\)', output)
         paper_id = match.group(1) if match else None
@@ -125,6 +132,11 @@ def parse_and_execute(output):
         paper_id = match.group(1) if match else None
         if paper_id:
             return GetCitations(paper_id)
+    elif output.startswith("GetReferences"):
+        match = re.match(r'GetReferences\("([^"]+)"\)', output)
+        paper_id = match.group(1) if match else None
+        if paper_id:
+            return GetReferences(paper_id)
     
     return None 
 
@@ -134,10 +146,10 @@ def format_papers_for_printing(paper_lst):
     for paper in paper_lst:
         output_str += "paperId: " + paper["paperId"].strip() + "\n"
         output_str += "title: " + paper["title"].strip() + "\n"
-        if paper["tldr"] and paper["tldr"]["text"]:
+        if "tldr" in paper and paper["tldr"] and paper["tldr"]["text"]:
             output_str += "tldr: " + paper["tldr"]["text"].strip() + "\n"
         if "score" in paper:
-            output_str += "score: " + str(paper["score"]) + "\n"
+            output_str += "relevance score: " + str(paper["score"]) + "\n"
         output_str += "\n"
 
     return output_str
@@ -146,10 +158,13 @@ def format_papers_for_printing(paper_lst):
 if __name__ == "__main__":
     ## some unit tests
     # print (KeywordQuery("GPT-3"))
-    # print (PaperDetails("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
+    # print (PaperDetails("1b6e810ce0afd0dd093f789d2b2742d047e316d5")['tldr'])
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetAbstract("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetCitationCount("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetCitations("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetReferences("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
-    print (format_papers_for_printing(parse_and_execute("KeywordQuery(\"Prompting Strategies for Large Language Models\")")))
+    # print (format_papers_for_printing(parse_and_execute("KeywordQuery(\"Prompting Strategies for Large Language Models\")")))
+    # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
+    # print (parse_and_execute("GetReferences(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
+    print (parse_and_execute("GetReferences(\"8d28d2ef602e8b518b7daecc39a0f2f8d2caaa09\")"))
