@@ -55,6 +55,9 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
     all_queries.append(query)
     paper_lst = parse_and_execute(query)
     paper_bank = {paper["paperId"][:4]: paper for paper in paper_lst}
+    ## initialize all scores to 0
+    for k,v in paper_bank.items():
+        v["score"] = 0
     _, response, cost = paper_scoring(paper_lst, topic_description, openai_client, model)
     total_cost += cost
     response = json.loads(response.strip())
@@ -84,6 +87,9 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
         if paper_lst:
             ## filter out papers already in paper bank 
             paper_lst = [paper for paper in paper_lst if paper["paperId"][:4] not in paper_bank]
+            ## initialize all scores to 0
+            for paper in paper_lst:
+                paper["score"] = 0
             paper_bank.update({paper["paperId"][:4]: paper for paper in paper_lst})
             _, response, cost = paper_scoring(paper_lst, topic_description, openai_client, model)
             total_cost += cost
@@ -133,4 +139,4 @@ if __name__ == "__main__":
     print (output)
     print ("Total cost: ", total_cost)
 
-    cache_output(output, "paper_bank_math_reasoning.txt")
+    cache_output(output, "paper_bank_math_reasoning_three_functions.txt")
