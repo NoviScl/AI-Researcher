@@ -146,10 +146,10 @@ def format_papers_for_printing(paper_lst):
     for paper in paper_lst:
         output_str += "paperId: " + paper["paperId"].strip() + "\n"
         output_str += "title: " + paper["title"].strip() + "\n"
-        if "tldr" in paper and paper["tldr"] and paper["tldr"]["text"]:
-            output_str += "tldr: " + paper["tldr"]["text"].strip() + "\n"
-        elif "abstract" in paper and paper["abstract"]:
+        if "abstract" in paper and paper["abstract"]:
             output_str += "abstract: " + paper["abstract"].strip() + "\n"
+        elif "tldr" in paper and paper["tldr"] and paper["tldr"]["text"]:
+            output_str += "tldr: " + paper["tldr"]["text"].strip() + "\n"
         if "score" in paper:
             output_str += "relevance score: " + str(paper["score"]) + "\n"
         output_str += "\n"
