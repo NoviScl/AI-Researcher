@@ -90,10 +90,10 @@ def paper_filter(paper_lst):
     filtered_lst = []
     for paper in paper_lst:
         abstract = paper["abstract"] if paper["abstract"] else paper["title"]
-        if paper["year"] and int(paper["year"]) < 2022:
+        if ("year" in paper.keys()) and (paper["year"] is not None) and (int(paper["year"]) < 2022):
             continue 
-        if paper["citationCount"] and int(paper["citationCount"]) <= 10:
-            continue 
+        # if ("citationCount" in paper.keys()) and (paper["citationCount"] is not None) and int(paper["citationCount"]) <= 10:
+        #     continue 
         if "survey" in abstract.lower() or "review" in abstract.lower() or "position paper" in abstract.lower():
             continue
         filtered_lst.append(paper)
@@ -169,4 +169,5 @@ if __name__ == "__main__":
     # print (format_papers_for_printing(parse_and_execute("KeywordQuery(\"Prompting Strategies for Large Language Models\")")))
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (parse_and_execute("GetReferences(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
-    print (parse_and_execute("GetReferences(\"8d28d2ef602e8b518b7daecc39a0f2f8d2caaa09\")"))
+    # print (parse_and_execute("PaperQuery(\"b626560f19f815808a289ef5c24a17c57320da70\")"))
+    print (parse_and_execute("PaperQuery(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))

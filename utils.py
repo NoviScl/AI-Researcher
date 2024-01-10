@@ -1,4 +1,5 @@
 import os
+import json
 
 def calc_price(model, usage):
     if model == "gpt-4-1106-preview":
@@ -23,7 +24,12 @@ def call_api(openai_client, model, prompt_messages, temperature=1.0, max_tokens=
     return response, cost
 
 def cache_output(output, file_name):
-    ## store GPT4 output into a txt file
-    with open(os.path.join("cache_results", file_name), "w") as f:
-        f.write(output)
+    if file_name.endswith(".txt"):
+        ## store GPT4 output into a txt file
+        with open(os.path.join("cache_results", file_name), "w") as f:
+            f.write(output)
+    elif file_name.endswith(".json"):
+        ## store GPT4 output into a json file
+        with open(os.path.join("cache_results", file_name), "w") as f:
+            json.dump(output, f, indent=4)
     return 

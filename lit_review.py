@@ -35,7 +35,7 @@ def paper_scoring(paper_lst, topic_description, openai_client, model):
     ## use gpt4 to score each paper 
     prompt = "You are a helpful literature review assistant whose job is to read the below set of papers and score each paper. The criteria for scoring are:\n"
     prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ".\n"
-    prompt += "(2) The paper is an empirical paper that proposes new methods and conducts experiments (position papers, review papers, and resource papers should get lower scores for this purpose).\n"
+    prompt += "(2) The paper is an empirical paper that proposes new methods and conducts experiments (position/opinion papers, review/survey papers, and resource/benchmark/evaluation papers should get low scores for this purpose).\n"
     prompt += "(3) The paper is interesting and meaningful, with potential to inspire new follow-up projects.\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10. Write the response in JSON format with \"paperID (first 4 digits): score\" for each paper.\n"
@@ -134,9 +134,10 @@ if __name__ == "__main__":
 
     topic_description = "better prompting strategies for large language models to improve mathematical problem solving abilities"
     
-    paper_bank, total_cost = collect_papers(topic_description, openai_client, MODEL, max_papers=50)
+    paper_bank, total_cost = collect_papers(topic_description, openai_client, MODEL, max_papers=60)
     output = format_papers_for_printing(paper_bank[ : 10])
     print (output)
     print ("Total cost: ", total_cost)
 
-    cache_output(output, "paper_bank_math_reasoning_three_functions.txt")
+    # cache_output(output, "paper_bank_math_reasoning_three_functions.txt")
+    cache_output(paper_bank, "paper_bank_math_reasoning_max60.json")
