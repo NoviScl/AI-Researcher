@@ -2,7 +2,7 @@ from openai import OpenAI
 from utils import call_api
 import argparse
 import json
-from lit_review_tools import parse_and_execute, format_papers_for_printing
+from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank
 from utils import cache_output
 
 def initial_search(topic_description, openai_client, model):
@@ -69,6 +69,7 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
         print ("initial query: ", query)
         print ("current total cost: ", total_cost)
         print ("current size of paper bank: ", len(paper_bank))
+        print_top_papers_from_paper_bank(paper_bank, top_k=10)
         print ("\n")
     
     iter = 0
@@ -103,6 +104,7 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
         if print_all:
             print ("current total cost: ", total_cost)
             print ("current size of paper bank: ", len(paper_bank))
+            print_top_papers_from_paper_bank(paper_bank, top_k=10)
             print ("\n")
         
         iter += 1

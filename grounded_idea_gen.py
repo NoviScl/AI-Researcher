@@ -50,4 +50,4 @@ if __name__ == "__main__":
     print (response)
     print ("Total cost: ", cost)
 
-    cache_output(response, "ideas.txt")
+    cache_output(response, "ideas_2.txt")

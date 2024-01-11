@@ -140,15 +140,15 @@ def parse_and_execute(output):
     
     return None 
 
-def format_papers_for_printing(paper_lst):
+def format_papers_for_printing(paper_lst, include_abstract=True):
     ## convert a list of papers to a string for printing or as part of a prompt 
     output_str = ""
     for paper in paper_lst:
         output_str += "paperId: " + paper["paperId"].strip() + "\n"
         output_str += "title: " + paper["title"].strip() + "\n"
-        if "abstract" in paper and paper["abstract"]:
+        if include_abstract and "abstract" in paper and paper["abstract"]:
             output_str += "abstract: " + paper["abstract"].strip() + "\n"
-        elif "tldr" in paper and paper["tldr"] and paper["tldr"]["text"]:
+        elif include_abstract and "tldr" in paper and paper["tldr"] and paper["tldr"]["text"]:
             output_str += "tldr: " + paper["tldr"]["text"].strip() + "\n"
         if "score" in paper:
             output_str += "relevance score: " + str(paper["score"]) + "\n"
@@ -156,6 +156,10 @@ def format_papers_for_printing(paper_lst):
 
     return output_str
 
+def print_top_papers_from_paper_bank(paper_bank, top_k=10):
+    data_list = [{'id': id, **info} for id, info in paper_bank.items()]
+    top_papers = sorted(data_list, key=lambda x: x['score'], reverse=True)[ : top_k]
+    print (format_papers_for_printing(top_papers, include_abstract=False))
 
 if __name__ == "__main__":
     ## some unit tests
