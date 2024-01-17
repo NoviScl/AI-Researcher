@@ -134,7 +134,7 @@ if __name__ == "__main__":
         api_key=OAI_KEY
     )
 
-    topic_description = "better prompting strategies for large language models to improve mathematical problem solving abilities"
+    topic_description = "automatic evaluation methods and metrics for text-to-image diffusion models"
     
     paper_bank, total_cost = collect_papers(topic_description, openai_client, MODEL, max_papers=60)
     output = format_papers_for_printing(paper_bank[ : 10])
@@ -142,4 +142,4 @@ if __name__ == "__main__":
     print ("Total cost: ", total_cost)
 
     # cache_output(output, "paper_bank_math_reasoning_three_functions.txt")
-    cache_output(paper_bank, "paper_bank_math_reasoning_max60.json")
+    cache_output(paper_bank, "paper_bank_diffusion_eval_max60.json")
