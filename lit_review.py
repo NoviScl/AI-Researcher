@@ -35,8 +35,8 @@ def paper_scoring(paper_lst, topic_description, openai_client, model):
     ## use gpt4 to score each paper 
     prompt = "You are a helpful literature review assistant whose job is to read the below set of papers and score each paper. The criteria for scoring are:\n"
     prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ".\n"
-    prompt += "(2) The paper is an empirical paper that proposes new methods and conducts experiments (position/opinion papers, review/survey papers, and resource/benchmark/evaluation papers should get low scores for this purpose).\n"
-    prompt += "(3) The paper is interesting and meaningful, with potential to inspire new follow-up projects.\n"
+    prompt += "(2) The paper is an empirical paper that proposes new methods and conducts experiments (position/opinion papers and review/survey papers should get low scores for this purpose).\n"
+    prompt += "(3) The paper is interesting and meaningful, with potential to inspire new projects.\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10. Write the response in JSON format with \"paperID (first 4 digits): score\" for each paper.\n"
     
@@ -56,11 +56,11 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
     paper_lst = parse_and_execute(query)
     paper_bank = {paper["paperId"][:4]: paper for paper in paper_lst}
     ## initialize all scores to 0
-    for k,v in paper_bank.items():
-        v["score"] = 0
     _, response, cost = paper_scoring(paper_lst, topic_description, openai_client, model)
     total_cost += cost
     response = json.loads(response.strip())
+    for k,v in paper_bank.items():
+        v["score"] = 0
     for k,v in response.items():
         paper_bank[k]["score"] = v
     
@@ -97,7 +97,7 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
             response = json.loads(response.strip())
             for k,v in response.items():
                 paper_bank[k]["score"] = v
-        else:
+        elif print_all:
             print ("No new papers found in this round.")
         
         ## print stats 
@@ -113,13 +113,12 @@ def collect_papers(topic_description, openai_client, model, grounding_k = 10, ma
     data_list = [{'id': id, **info} for id, info in paper_bank.items()]
     sorted_data = sorted(data_list, key=lambda x: x['score'], reverse=True)
 
-    return sorted_data, total_cost
+    return sorted_data, total_cost, all_queries
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
-    # parser.add_argument('--topic_description', type=str, default=None, help='one-sentence summary of the research topic')
     args = parser.parse_args()
 
     with open("keys.json", "r") as f:
@@ -136,10 +135,10 @@ if __name__ == "__main__":
 
     topic_description = "automatic evaluation methods and metrics for text-to-image diffusion models"
     
-    paper_bank, total_cost = collect_papers(topic_description, openai_client, MODEL, max_papers=60)
+    paper_bank, total_cost, all_queries = collect_papers(topic_description, openai_client, MODEL, max_papers=60)
     output = format_papers_for_printing(paper_bank[ : 10])
     print (output)
     print ("Total cost: ", total_cost)
 
     # cache_output(output, "paper_bank_math_reasoning_three_functions.txt")
-    cache_output(paper_bank, "paper_bank_diffusion_eval_max60.json")
+    # cache_output(paper_bank, "paper_bank_diffusion_eval_max60.json")

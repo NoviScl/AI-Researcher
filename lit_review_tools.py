@@ -1,10 +1,15 @@
 import requests
 import re
+import json
 
 # Define the paper search endpoint URL
 search_url = 'https://api.semanticscholar.org/graph/v1/paper/search/'
 graph_url = 'https://api.semanticscholar.org/graph/v1/paper/'
 rec_url = "https://api.semanticscholar.org/recommendations/v1/papers/forpaper/"
+
+with open("keys.json", "r") as f:
+    keys = json.load(f)
+S2_KEY = keys["s2_key"]
 
 def KeywordQuery(keyword):
     ## retrieve papers based on keywords
@@ -13,7 +18,8 @@ def KeywordQuery(keyword):
         'limit': 20,
         'fields': 'title,year,citationCount,abstract,tldr'
     }
-    response = requests.get(search_url, params=query_params)
+    headers = {'x-api-key': S2_KEY}
+    response = requests.get(search_url, params=query_params, headers = headers)
     
     if response.status_code == 200:
         return response.json()
@@ -27,7 +33,8 @@ def PaperQuery(paper_id):
         'limit': 20,
         'fields': 'title,year,citationCount,abstract'
     }
-    response = requests.get(url = rec_url + paper_id, params = query_params)
+    headers = {'x-api-key': S2_KEY}
+    response = requests.get(url = rec_url + paper_id, params = query_params, headers = headers)
     
     if response.status_code == 200:
         return response.json()
@@ -37,7 +44,8 @@ def PaperQuery(paper_id):
 def PaperDetails(paper_id, fields='title,year,abstract,authors,citationCount,venue,citations,references,tldr'):
     ## get paper details based on paper id
     paper_data_query_params = {'fields': fields}
-    response = requests.get(url = graph_url + paper_id, params = paper_data_query_params)
+    headers = {'x-api-key': S2_KEY}
+    response = requests.get(url = graph_url + paper_id, params = paper_data_query_params, headers = headers)
 
     if response.status_code == 200:
         return response.json()
@@ -163,7 +171,7 @@ def print_top_papers_from_paper_bank(paper_bank, top_k=10):
 
 if __name__ == "__main__":
     ## some unit tests
-    # print (KeywordQuery("GPT-3"))
+    print (KeywordQuery("GPT-3"))
     # print (PaperDetails("1b6e810ce0afd0dd093f789d2b2742d047e316d5")['tldr'])
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetAbstract("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
@@ -174,4 +182,4 @@ if __name__ == "__main__":
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (parse_and_execute("GetReferences(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
     # print (parse_and_execute("PaperQuery(\"b626560f19f815808a289ef5c24a17c57320da70\")"))
-    print (parse_and_execute("PaperQuery(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
+    # print (parse_and_execute("PaperQuery(\"1b2355c3c674b26a977768a91a164384ad51bbb1\")"))
