@@ -84,7 +84,7 @@ def GetReferences(paper_id):
     paper_details = PaperDetails(paper_id)
     references = paper_details["references"][ : 100]
 
-    ## get details of each reference 
+    ## get details of each reference, keep first 20 to save costs
     detailed_references = [PaperDetails(ref["paperId"], fields='title,year,abstract,citationCount') for ref in references if ref["paperId"]]
     detailed_references = paper_filter(detailed_references)[ : 20]
     
@@ -94,7 +94,7 @@ def GetReferences(paper_id):
         return None
 
 def paper_filter(paper_lst):
-    ## filter out papers based on heuristics
+    ## filter out papers based on some basic heuristics
     filtered_lst = []
     for paper in paper_lst:
         abstract = paper["abstract"] if paper["abstract"] else paper["title"]
