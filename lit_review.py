@@ -158,7 +158,7 @@ if __name__ == "__main__":
     if args.cache_name:
         if not os.path.exists("cache_results/lit_review"):
             os.makedirs("cache_results/lit_review")
-        output_dict = {"all_queries": all_queries, "paper_bank": paper_bank}
+        output_dict = {"topic_description": args.topic_description, "all_queries": all_queries, "paper_bank": paper_bank}
         cache_output(output_dict, os.path.join("cache_results/lit_review", args.cache_name+".json"))
 
 

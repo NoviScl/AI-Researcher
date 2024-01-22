@@ -1,4 +1,4 @@
 python3 lit_review.py \
- --topic_description "better prompting strategies for large language models to improve mathematical problem solving abilities" \
- --cache_name "math_prompting" \
+ --topic_description "methods that can quantify confidence or calibrate uncertainty of black-box language model predictions" \
+ --cache_name "uncertainty" \
  --print_all
