@@ -12,3 +12,12 @@ bash lit_review.sh
 ```
 
 Note that despite setting a seed for GPT-4, the results are not deterministic, since semantic scholar may return different results given the same query.
+
+## Grounded Idea Generation 
+
+The grounded idea generation agent takes a topic description and a list of relevant papers as input, and returns a list of generated ideas as the output. If you have done the lit review step already, just provide the cache file name to run this module.
+
+Example usage: 
+```
+bash grounded_idea_gen.sh
+```
