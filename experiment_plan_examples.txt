@@ -1,0 +1,107 @@
+Example #1: 
+1. Title: Analyzing How Expressions of Uncertainty and Overconfidence Affect Language Models
+
+2. Problem Statement: The research aims to study how epistemic markers of certainty, uncertainty, or evidentiality like "I’m sure it’s", "I think it’s", or “Wikipedia says it’s" affect models, and whether they contribute to model failures. 
+
+3. Hypotheses: We have two broad hypotheses. First, we might suppose that models are robust to any added expressions of uncertainty in the prompt. An alternative hypothesis is that, models might respond differently based on the uncertainty cues, and using a marker suggesting certainty or confidence might be more likely to produce the correct response than a prompt with low certainty or confidence.
+
+4. Step-by-Step Experiment Plan:
+Step 1: Generate a typology of epistemic markers. 
+
+We generate two groups of epistemic markers: weakeners and strengtheners. 
+
+Weakeners: [“Apparently it’s”, “Rumor says it it’s”, “Allegedly it’s”, “I was told it’s”, “I’ve heard it’s”, “They told me it’s”, “Presumably it’s”, “It probably is”, “Maybe it’s”, “Perhaps it’s”, “It should be”, “I don’t know maybe it’s”, “I suppose it’s”, “I would need to double check but maybe it’s”, “I wouldn’t put money on it but maybe it’s”, “I’m not an expert but maybe it’s”, “I think it’s”, “I feel like it should be”, etc.]
+
+ Strengtheners: [“The most recent evidence shows it’s”, “The rules state it’s”, “Two recent studies demonstrate it’s”, “Wikipedia acknowledges it’s”, “Wikipedia confirms it’s”, “Our lab has shown it’s”, “Evidently it’s”, “According to the latest research it’s”, “We can see in the textbook that it’s”, “It must be”, “We realize it’s”, “We understand it’s”, “We know it’s”, “Undoubtedly it’s”, “With 100% confidence it’s”, “I’m certain it’s”, “I am 100% sure it’s”, etc.] 
+
+We also include a neutral marker as the baseline: [“It’s”] 
+
+Step 2: Inject the markers into prompts for question answering
+
+We inject markers into trivia questions in open-ended question-answering. Using our typology, we create fifty sentences (minimal pairs) for every question by injecting fifty different markers. An example would look like: “What is the capital of France, I think it’s…” where the marker is inserted right after the original question and we prompt the language model to finish the answer. 
+
+Datasets: Our datasets include: TriviaQA, a standard QA dataset; Natural Questions (closed-book), an aggregated set of Google queries.
+
+Models: We test OpenAI’s GPT-4, InstructGPT, and GPT-3 models through their API access. 
+
+5. Results to Report:
+Variance of accuracy across different markers/templates on all datasets.
+Compare the accuracy of using weakeners versus strengtheners on all datasets.
+Compared to the neutral marker, does any marker achieve significantly better accuracy than the neutral marker on each dataset? 
+
+
+Example #2: 
+1. Title: Analogical Prompting for Large Language Models 
+
+2. Problem Statement: Chain-of-thought (CoT) prompting for language models demonstrates impressive performance across reasoning tasks, but typically needs labeled exemplars of the reasoning process. To address this, we study whether language models can self-generate relevant exemplars or knowledge in the context to obviate the need for labeling or retrieving exemplars, while maintaining the performance. We call this method analogical prompting. 
+
+3. Proposed Method:
+Step 1: Self-generate examplars
+Given a problem to solve, prompt LLMs to self-generate relevant exemplars in the context, using instructions like “# Recall relevant problems and solutions:...”, and then proceed to solve the original problem. Simultaneously, we can also prompt LLMs to generate high-level knowledge that complements specific exemplars, using instructions like “# Provide a tutorial:...”
+
+Step 2: Solve the initial problem 
+After step 1, append to the prompt “Next, solve the initial problem.” to prompt the language model to generate solutions for the initial problem. 
+
+4. Experiments
+Datasets: Evaluate the proposed approach in various reasoning-intensive tasks, including mathematical problem solving in GSM8K and MATH, code generation in Codeforces, and other reasoning tasks in BIG-Bench. 
+Models: Prompt GPT-4 and GPT-3.5 through the OpenAI API. 
+Baselines: Compare with zero-shot CoT and few-shot CoT. Zero-shot CoT prompts LLMs with a general instruction like “think step by step” to produce intermediate reasoning steps. Few-shot CoT provides multiple exemplars of reasoning process (question–rationale–answer), leveraging LLMs’ in-context learning abilities. We need to write the rationales by ourselves if the datasets don’t already provide them, following Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. 
+
+
+Example #3:
+1. Title: Benchmarking and Improving Generator-Validator Consistency of Language Models 
+
+2. Problem Statement: If a language model correctly answers “what is 7+8” with 15, would the model also respond “true” when asked “7+8=15, true of false”? We call this is generator-validator consistency. We are interested in evaluating how consistent language models are, and whether we can improve such generator-validator consistency through additional finetuning. 
+
+3. Step-by-Step Experiment Plan:
+Step 1: Generate the test data for benchmarking generator-validator consistency 
+
+We will focus on arithmetic questions where the input is addition and subtraction questions of at most 5-digit numbers expressed in natural language. Generate 500 such examples. 
+
+Step 2: Prompt the language model to generate answers
+
+Prompt the language model to produce a correct and an incorrect answer. E.g., with the prompt: 
+“Write a correct and an incorrect answer (delimited by ||) to the question: 
+Q: What is 89541 - 9374? 
+A:”
+
+Step 3: Prompt the language model to check for correctness of these answers
+E.g., with the prompt:
+“Verify whether the following computation is correct.
+Q: What is 89541 - 9374?
+A: 80167
+The computation is (True/False):”
+
+The model is considered consistent on the example if and only if  when the generator aims to produce the correct (or incorrect) answer and the validator answers “True” (or “False”). We can measure and compare the generator-validator consistency of different models via this metric, including OpenAI models GPT-4 and GPT-3.5, and open-source models like Alpaca-30B. 
+
+Step 4: Finetuning language models to improve consistency 
+Use the data collection pipeline mentioned above to collect a dataset of	generator-validator inputs and responses along with their consistency labels,  filter out the examples that are inconsistent, and only keep the consistent pairs. Then finetune the language model on this filtered set to optimize the likelihood of the generator and validator responses that are consistent, conditioned on their respective prompts.
+
+Then measure whether such finetuning improves the generator-validator consistency on the held-out test set. We need to finetune one of the open-source models for this, such as Alpaca-7B or Alpaca-30B. 
+
+
+Example #4: 
+1. Title: Contrastive Explanation Calibration for Large Language Models 
+
+2. Problem Statement: We hypothesize that the difficulty a model faces in generating plausible alternative explanations for its prediction is indicative of its uncertainty. We will test this hypothesis by developing a framework for generating contrastive explanations, and then measuring whether the quality of these alternative explanations can serve as reliable confidence scores for the model predictions. 
+
+3. Step-by-Step Experiment Plan: 
+Step 1: Generate model predictions 
+
+Given each test example, prompt the language model to generate an explanation along with the prediction, just like Chain-of-thought. 
+
+We can focus on classification datasets, such as BoolQ for binary question answering, and FEVER or FoolMeTwice for claim verification, where the label is either true of false, and the alternative prediction would be clearly defined in this case. 
+
+Step 2: Generate alternative explanations 
+
+Next, prompt the language model to generate a plausible explanation for an	alternative prediction that it didn’t predict. 
+
+Step 3: Quantitatively measure the quality of alternative explanations 
+
+Prompt the language model to score each alternative explanation on the coherence and plausibility (i.e., how well it supports the alternative prediction). Generate a score out of 1 to 10 as the output. 
+
+Alternatively, if we have sufficient budget, we can also collect human ratings of the quality of alternative explanations via crowdsourcing platforms. 
+
+Step 4: Measure calibration errors of the confidence scores 
+
+Use Expected Calibration Error (ECE) as the metric to measure whether the above explanation quality scores can serve as reliable confidence scores. The goal of ECE is that correct predictions should get higher confidence and wrong predictions should get lower confidence. 
