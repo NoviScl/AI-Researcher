@@ -1,1 +1,1 @@
-python3 novelty_check.py --cache_name "uncertainty" --idea_name "Confidence-Aware Prompt Engineering"
+python3 novelty_check.py --cache_name "bias" --idea_name "Bias in Story Rewriting"

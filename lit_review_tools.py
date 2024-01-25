@@ -114,8 +114,13 @@ def parse_and_execute(output):
         keyword = match.group(1) if match else None
         if keyword:
             response = KeywordQuery(keyword)
-            if response is not None and response["data"]:
-                paper_lst = response["data"]
+            if 'total' in response and response['total'] == 0:
+                return None
+            if response is not None:
+                if "data" in response:
+                    paper_lst = response["data"]
+                else:
+                    paper_lst = response[:]
                 return paper_filter(paper_lst)
     elif output.startswith("PaperQuery"):
         match = re.match(r'PaperQuery\("([^"]+)"\)', output)
@@ -171,7 +176,7 @@ def print_top_papers_from_paper_bank(paper_bank, top_k=10):
 
 if __name__ == "__main__":
     ## some unit tests
-    print (KeywordQuery("GPT-3"))
+    # print (KeywordQuery("GPT-3"))
     # print (PaperDetails("1b6e810ce0afd0dd093f789d2b2742d047e316d5")['tldr'])
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetAbstract("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
@@ -182,4 +187,4 @@ if __name__ == "__main__":
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (parse_and_execute("GetReferences(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
     # print (parse_and_execute("PaperQuery(\"b626560f19f815808a289ef5c24a17c57320da70\")"))
-    # print (parse_and_execute("PaperQuery(\"1b2355c3c674b26a977768a91a164384ad51bbb1\")"))
+    print (parse_and_execute("KeywordQuery(\"Uncertainty in Multilingual LLMs NLP\")"))

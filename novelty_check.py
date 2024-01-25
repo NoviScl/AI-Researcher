@@ -58,13 +58,16 @@ def novelty_check(idea_name, idea, topic_description, openai_client, model, seed
     ## get KeywordSearch queries
     _, queries, cost = paper_query(idea, topic_description, openai_client, model, seed)
     total_cost += cost
-    print ("queries: \n", queries)
+    # print ("queries: \n", queries)
     all_queries = queries.strip().split("\n")
     ## also add the idea name as an additional query
     all_queries.append("KeywordQuery(\"{}\")".format(idea_name + " NLP"))
 
     for query in all_queries:
-        paper_lst = parse_and_execute(query)
+        print ("current query: ", query.strip())
+        paper_lst = parse_and_execute(query.strip())
+        if paper_lst is None:
+            continue
         paper_bank.update({paper["paperId"]: paper for paper in paper_lst})
 
         ## score each paper
@@ -88,10 +91,9 @@ def novelty_check(idea_name, idea, topic_description, openai_client, model, seed
 
     ## novelty score
     prompt, novelty, cost = novelty_score(sorted_papers, idea, openai_client, model, seed)
-    print (prompt, novelty)
+    # print (prompt, novelty)
 
     return novelty, sorted_papers, total_cost, all_queries
-
 
 
 if __name__ == "__main__":
@@ -114,21 +116,23 @@ if __name__ == "__main__":
     )
 
     ## load the idea
-    with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
+    cache_file = os.path.join("cache_results/experiment_plans", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json")
+    with open(cache_file, "r") as f:
         ideas = json.load(f)
     topic_description = ideas["topic_description"]
-    idea = ideas["ideas"][args.idea_name]
+    idea = ideas["experiment_plan"]
 
     novelty, paper_bank, total_cost, all_queries = novelty_check(args.idea_name, idea, topic_description, openai_client, args.engine, args.seed)
     output = format_papers_for_printing(paper_bank[ : 10])
     print ("Top 10 papers: ")
     print (output)
+    print ("novelty: ", novelty)
     print ("Total cost: ", total_cost)
 
     if args.cache_name:
         if not os.path.exists("cache_results/novelty_check"):
             os.makedirs("cache_results/novelty_check")
-        output_dict = {"topic_description": topic_description, "idea": idea, "all_queries": all_queries, "paper_bank": paper_bank}
+        output_dict = {"topic_description": topic_description, "idea": idea, "all_queries": all_queries, "paper_bank": paper_bank, "novelty": novelty.strip()}
         cache_output(output_dict, os.path.join("cache_results/novelty_check", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json"))
 
     
