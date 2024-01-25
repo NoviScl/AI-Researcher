@@ -15,11 +15,11 @@ def idea_generation(paper_bank, grounding_k, ideas_n, topic_description, openai_
 
     prompt = "You are an expert researcher in Natural Language Processing. Now I want you to help me brainstorm some new research project ideas on the topic of: " + topic_description + ".\n\n"
     prompt += "Here are some relevant papers that I have found for you:\n" + format_papers_for_printing(grounding_papers) + "\n"
-    prompt += "You should generate {} ideas that are within the same scope, but should be novel and different from the papers above. You can use the papers above as inspiration, but you should not copy them. You should also make sure that your ideas are not too broad or complicated. Include all the necessary methodology details and experiment setups.\n".format(str(ideas_n))
-    prompt += "Please write down your ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name as the key and the actual idea description as the value."
+    prompt += "You should generate {} ideas that are within the same scope, but should be novel and different from the papers above. Try to be creative and diverse in the idea generation. You can use the papers above as inspiration, but you should not copy them. You should also make sure that your ideas are not too broad or complicated. Include all the necessary methodology details and experiment setups.\n".format(str(ideas_n))
+    prompt += "Please write down your ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (leave a space between each word, don't concatenate everything) as the key and the actual idea description as the value."
 
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0.7, max_tokens=4000, seed=seed, json_output=True)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0.9, max_tokens=4000, seed=seed, json_output=True)
     return prompt, response, cost
 
 if __name__ == "__main__":

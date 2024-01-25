@@ -11,13 +11,15 @@ random.seed(2024)
 def plan_generation(grounding_papers, idea, demo_examples, topic_description, openai_client, model, seed):
     ## forumate an idea from a paragraph into a full experiment plan based on our template
 
-    prompt = "You are an expert researcher in Natural Language Processing and your job is to turn a vague project idea into a detailed experiment plan. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
+    prompt = "You are an expert researcher in Natural Language Processing and your job is to expand a vague project idea into a detailed experiment plan. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
     prompt += "The idea is:\n" + idea + "\n\n"
-    prompt += "Here are some relevant papers that are relevant to the idea:\n" + format_papers_for_printing(grounding_papers) + "\n\n"
+    # prompt += "Here are some relevant papers that are relevant to the idea:\n" + format_papers_for_printing(grounding_papers) + "\n\n"
     prompt += "Now you should come up with the full proposal covering:\n"
     prompt += "1. Title: A concise statement of the main research question\n"
-    prompt += "2. Problem Statement: Clearly define the problem your research intends to address.\n"
+    prompt += "2. Problem Statement: Clearly define the problem your research intends to address. Explain clearly why this problem is interesting and meaningful.\n"
     prompt += "3. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves proposing a new method, make sure to expand it in detail.\n"
+    prompt += "The experiment plan should just focus on the experiments, and should not include any introduction or background information (e.g., you should skip the literature review, paper writing, and ethical discussion steps). Just give instructions on the experiments.\n"
+    prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within two weeks. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive. The focus can be either to improve model performance on same tasks or to perform interesting analysis and reveal insights.\n"
     prompt += "Below is a few examples for your reference:\n"
     prompt += demo_examples + "\n\n"
     prompt += "Now please write down your experiment plan (each section should be described as a few concise sentences; index the sections and separate them with new lines). Make sure to be as detailed as possible especially for the data and methods, so that a student can directly follow the plan to implement the experiment. For example, if the method involves prompting, describe the prompts in detail. Give prompt or algorithm description for all methods involved."
@@ -71,6 +73,6 @@ if __name__ == "__main__":
         os.makedirs("cache_results/experiment_plans/")
     cache_dict = {"topic_description": topic_description, "raw_idea": idea, "experiment_plan": response.strip()}
     cache_file = os.path.join("cache_results/experiment_plans", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json")
-    cache_output(ideas, cache_file)
+    cache_output(cache_dict, cache_file)
 
     
