@@ -5,10 +5,12 @@ import json
 import os
 from lit_review_tools import format_papers_for_printing
 from utils import cache_output
+import retry
 import random 
 random.seed(2024)
 
-def plan_generation(grounding_papers, idea, demo_examples, topic_description, openai_client, model, seed):
+@retry.retry(tries=3, delay=2)
+def plan_generation(idea, demo_examples, topic_description, openai_client, model, seed):
     ## forumate an idea from a paragraph into a full experiment plan based on our template
 
     prompt = "You are an expert researcher in Natural Language Processing and your job is to expand a vague project idea into a detailed experiment plan. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
@@ -55,24 +57,44 @@ if __name__ == "__main__":
     paper_bank = lit_review["paper_bank"]
     grounding_papers = paper_bank[ : args.grounding_k]
 
-    ## load the idea 
-    with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
-        ideas = json.load(f)["ideas"]
-    idea = ideas[args.idea_name]
-
     ## load the demo examples
     with open("experiment_plan_examples.txt", "r") as f:
         demo_examples = f.read().strip()
-    
-    prompt, response, cost = plan_generation(grounding_papers, idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
-    print (response)
-    print ("Total cost: ", cost)
 
-    ## save the cache
-    if not os.path.exists("cache_results/experiment_plans"):
-        os.makedirs("cache_results/experiment_plans/")
-    cache_dict = {"topic_description": topic_description, "raw_idea": idea, "experiment_plan": response.strip()}
-    cache_file = os.path.join("cache_results/experiment_plans", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json")
-    cache_output(cache_dict, cache_file)
+    if args.idea_name == "all":
+        ## load all ideas 
+        with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
+            ideas = json.load(f)["ideas"]
+        
+        for idea_name, idea in ideas.items():
+            prompt, response, cost = plan_generation(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+            print (idea_name)
+            print (response)
+            print ("Total cost: ", cost)
+            print ("\n")
+        
+            ## save the cache
+            if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
+                os.makedirs("cache_results/experiment_plans/"+args.cache_name)
+            cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
+            cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, args.cache_name+"_"+"_".join(idea_name.lower().split())+".json")
+            cache_output(cache_dict, cache_file)
+
+    else:
+        ## load the idea 
+        with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
+            ideas = json.load(f)["ideas"]
+        idea = ideas[args.idea_name]
+
+        prompt, response, cost = plan_generation(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+        print (response)
+        print ("Total cost: ", cost)
+
+        ## save the cache
+        if not os.path.exists("cache_results/experiment_plans"):
+            os.makedirs("cache_results/experiment_plans/")
+        cache_dict = {"topic_description": topic_description, "idea_name": args.idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
+        cache_file = os.path.join("cache_results/experiment_plans", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json")
+        cache_output(cache_dict, cache_file)
 
     
