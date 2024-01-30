@@ -98,8 +98,8 @@ def paper_filter(paper_lst):
     filtered_lst = []
     for paper in paper_lst:
         abstract = paper["abstract"] if paper["abstract"] else paper["title"]
-        if ("year" in paper.keys()) and (paper["year"] is not None) and (int(paper["year"]) < 2022):
-            continue 
+        # if ("year" in paper.keys()) and (paper["year"] is not None) and (int(paper["year"]) < 2022):
+        #     continue 
         # if ("citationCount" in paper.keys()) and (paper["citationCount"] is not None) and int(paper["citationCount"]) <= 10:
         #     continue 
         if "survey" in abstract.lower() or "review" in abstract.lower() or "position paper" in abstract.lower():
@@ -187,4 +187,4 @@ if __name__ == "__main__":
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (parse_and_execute("GetReferences(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
     # print (parse_and_execute("PaperQuery(\"b626560f19f815808a289ef5c24a17c57320da70\")"))
-    print (parse_and_execute("KeywordQuery(\"Uncertainty in Multilingual LLMs NLP\")"))
+    print (parse_and_execute("KeywordQuery(\"language model bias in storytelling\")"))

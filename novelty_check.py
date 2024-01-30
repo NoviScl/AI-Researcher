@@ -49,7 +49,7 @@ def novelty_score(paper_lst, idea, openai_client, model, seed):
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
     return prompt, response, cost
 
-# @retry.retry(tries=3, delay=2)
+@retry.retry(tries=3, delay=2)
 def novelty_check(idea_name, idea, topic_description, openai_client, model, seed):
     paper_bank = {}
     total_cost = 0
@@ -79,6 +79,9 @@ def novelty_check(idea_name, idea, topic_description, openai_client, model, seed
         for k,v in response.items():
             if k in paper_bank:
                 paper_bank[k]["score"] = v
+            
+        print_top_papers_from_paper_bank(paper_bank, top_k=10)
+        print ("-----------------------------------\n")
     
     ## the missing papers will have a score of 0 
     for k,v in paper_bank.items():
