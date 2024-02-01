@@ -36,7 +36,7 @@ def paper_scoring(paper_lst, idea, topic_description, openai_client, model, seed
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, seed=seed, json_output=True)
     return prompt, response, cost
 
-def novelty_scores(paper_lst, idea, openai_client, model, seed):
+def novelty_score(paper_lst, idea, openai_client, model, seed):
     ## use gpt4 to give novelty judgment
     prompt = "You are a professor whose job is to decide whether your student's proposed research idea is novel or not.\n"
     prompt += "The proposed idea is: " + idea.strip() + ".\n"
@@ -49,19 +49,19 @@ def novelty_scores(paper_lst, idea, openai_client, model, seed):
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
     return prompt, response, cost
 
-def novelty_score(experiment_plan, paper_idea, openai_client, model, seed):
-    ## use gpt4 to give novelty judgment wrt one individual paper 
-    prompt = "You are a professor specialized in Natural Language Processing. I will give you an idea and a detailed project proposal. Your job is to tell me whether the project proposal have sufficiently covered what the idea is proposing.\n"
-    prompt += "You should do this in two steps: (1) First, identify the research problems that the idea and the proposal are studying. (2)"
-    prompt += "The proposed idea is: " + idea.strip() + ".\n"
-    prompt += "You have found a list of related works:\n" + format_papers_for_printing(paper_lst) + "\n"
-    prompt += "Now decide if the proposed idea is novel and has not been done by the related works before. You should be critical and only consider the idea novel if none of related works proposed the same idea or did similar experiments.\n"
-    prompt += "You should give a binary judgment (yes or no) and a short explanation for your judgment. Your explanation should mention the paper(s) that scooped the idea if you think the idea is not novel. If you think the idea is novel, you should mention why it is sufficiently different from prior works. "
-    prompt += "Give the short explanation, then change to a new line and give the binary judgment by ending the response with either \"Yes\" or \"No\".\n"
+# def novelty_score(experiment_plan, paper_idea, openai_client, model, seed):
+#     ## use gpt4 to give novelty judgment wrt one individual paper 
+#     prompt = "You are a professor specialized in Natural Language Processing. I will give you an idea and a detailed project proposal. Your job is to tell me whether the project proposal have sufficiently covered what the idea is proposing.\n"
+#     prompt += "You should do this in two steps: (1) First, identify the research problems that the idea and the proposal are studying. (2)"
+#     prompt += "The proposed idea is: " + idea.strip() + ".\n"
+#     prompt += "You have found a list of related works:\n" + format_papers_for_printing(paper_lst) + "\n"
+#     prompt += "Now decide if the proposed idea is novel and has not been done by the related works before. You should be critical and only consider the idea novel if none of related works proposed the same idea or did similar experiments.\n"
+#     prompt += "You should give a binary judgment (yes or no) and a short explanation for your judgment. Your explanation should mention the paper(s) that scooped the idea if you think the idea is not novel. If you think the idea is novel, you should mention why it is sufficiently different from prior works. "
+#     prompt += "Give the short explanation, then change to a new line and give the binary judgment by ending the response with either \"Yes\" or \"No\".\n"
     
-    prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
-    return prompt, response, cost
+#     prompt_messages = [{"role": "user", "content": prompt}]
+#     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
+#     return prompt, response, cost
 
 
 @retry.retry(tries=3, delay=2)
@@ -94,7 +94,13 @@ def novelty_check(idea_name, idea, topic_description, openai_client, model, seed
         for k,v in response.items():
             if k in paper_bank:
                 paper_bank[k]["score"] = v
+        
+        ## the missing papers will have a score of 0 
+        for k,v in paper_bank.items():
+            if "score" not in v:
+                v["score"] = 0
             
+        # print (paper_bank)
         print_top_papers_from_paper_bank(paper_bank, top_k=10)
         print ("-----------------------------------\n")
     
@@ -134,7 +140,7 @@ if __name__ == "__main__":
     )
 
     ## load the idea
-    cache_file = os.path.join("cache_results/experiment_plans", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json")
+    cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(args.idea_name.lower().split())+".json")
     with open(cache_file, "r") as f:
         ideas = json.load(f)
     topic_description = ideas["topic_description"]
