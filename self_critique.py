@@ -8,19 +8,14 @@ from utils import cache_output
 import random 
 random.seed(2024)
 
-def critique(idea_proposal, topic_description, openai_client, model):
-    prompt = "You are a reviewer with expertise in Natural Language Processing. You need to criticize project proposals on the topic of: " + topic_description + ".\n\n"
+def critique(self_critique_prompt, idea_proposal, topic_description, openai_client, model):
+    prompt = "You are a professor with expertise in Natural Language Processing. You need to provide some constructive feedback to the given project proposal on the topic of: " + topic_description + ".\n\n"
 
     prompt += "The project proposal is:\n" + idea_proposal + "\n\n"
-    prompt += "Please come up with a list questions and critical comments targeting the weaknesses of proposal.\n"
-    prompt += "You should focus solely on missing details in the proposal, mainly:\n"
-    prompt += "1. did the proposal list the datasets to be used?\n"
-    prompt += "2. did the proposal describe every single step of the proposed method or experiment?\n"
-    prompt += "3. did the proposal describe the evaluation metrics?\n"
-    prompt += "You do not have to worry about subjective matters like broader impact of ethical concerns. Your questions and critic:"
+    prompt += self_critique_prompt
 
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2400, json_output=False)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, json_output=False)
     return prompt, response, cost
 
 def more_lit_review(grounding_papers, idea_proposal, critic, topic_description, openai_client, model):
@@ -63,26 +58,32 @@ def paper_scoring(paper_lst, topic_description, critic, openai_client, model):
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, json_output=True)
     return prompt, response, cost
 
-def improve_idea(grounding_papers, new_grounding_papers, idea_proposal, critique, topic_description, openai_client, model):
-    grounding_papers_str = format_papers_for_printing(grounding_papers)
-    new_grounding_papers_str = format_papers_for_printing(new_grounding_papers)
-
-    prompt = "You are a researcher with expertise in Natural Language Processing. You have a project proposal on the topic of: " + topic_description + ".\n"
+def improve_idea(criticisms, idea_proposal, topic_description, openai_client, model):
+  
+    prompt = "You are a researcher with expertise in Natural Language Processing. You have written a project proposal on the topic of: " + topic_description + ".\n"
     prompt += "The original proposal is:\n" + idea_proposal + "\n\n"
-    # prompt += "It is grounded on a list of relevant papers here:\n" + grounding_papers_str + "\n"
-    prompt += "The proposal has received some feedback from reviewers:\n" + critique + "\n"
-    # prompt += "You have done a round of literature review to find additional papers that can help address these feedback:\n" + new_grounding_papers_str + "\n"
-    prompt += "Now you should improve the proposal based on the feedback and new papers."
-    prompt += "Please write down your improved proposal in the same format as the original proposal, make sure to expand the method section with all necessary details to address all relevant comments. Do not only refer to the reference papers, instead give the exact algorithm or method details."
+    prompt += "The proposal has received some feedback and criticisms from reviewers:\n" + criticisms + "\n"
+    prompt += "Now you should edit the original proposal based on the feedback. Directly make changes in the original proposal, don't append a separate response section.\n"
+    prompt += "Some revision strategies to consider: \n"
+    prompt += "1. If the feedback is about missing prompt details, just add in the actual prompt to be used.\n"
+    prompt += "2. If the feedback is about missing metric details, mention the metrics to use or describe how to implement the new scoring method.\n"
+    prompt += "3. If the feedback is about missing dataset details, either mention existing datasets to use, or in rare cases, describe how to automatically construct the new dataset.\n"
+    prompt += "4. If the feedback is about missing baseline details, mention the baseline methods to compare with.\n"
+    prompt += "5. If the feedback is about involving human experiments, just remove the part that involves asking humans and provide automatic alternatives.\n"
+    prompt += "You only need to make changes when the feedback is actually applicable (i.e., when the original proposal indeed missed some details).\n"
+    prompt += "Please write down your improved proposal in the same format as the original proposal, make sure to expand the experiment plan section with all necessary details to address the relevant comments."
 
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3200, json_output=False)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, json_output=False)
     return prompt, response, cost
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
-    parser.add_argument('--idea_file', type=str, default="ai_idea_0.txt", help='a txt file containing the idea proposal')
+    parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
+    parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
+    parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
     with open("keys.json", "r") as f:
@@ -91,70 +92,39 @@ if __name__ == "__main__":
     OAI_KEY = keys["api_key"]
     ORG_ID = keys["organization_id"]
     S2_KEY = keys["s2_key"]
-    MODEL = args.engine
     openai_client = OpenAI(
         organization=ORG_ID,
         api_key=OAI_KEY
     )
     
-    with open(os.path.join("cache_results/old", args.idea_file), "r") as f:
-        idea_proposal = f.read()
+    with open("self_critique_prompt.txt", "r") as f:
+        self_critique_prompt = f.read()
 
-    topic_description = "better prompting strategies for large language models to improve mathematical problem solving abilities"
-    # prompt, response, cost = critique(idea_proposal, topic_description, openai_client, MODEL)
+    if args.idea_name == "all":
+        filenames = os.listdir("cache_results/experiment_plans/"+args.cache_name)
+    else:
+        filenames = ["_".join(args.idea_name.lower().split())+".json"]
     
-    # topic_description = "better prompting strategies for large language models to improve multi-step problem solving abilities"
-    # prompt, response, cost = critique(idea_proposal, topic_description, openai_client, MODEL)
+    for filename in filenames:
+        print ("working on: ", filename)
+        ## load the idea
+        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        with open(cache_file, "r") as f:
+            ideas = json.load(f)
+        idea_name = ideas["idea_name"]
+        idea = ideas["raw_idea"]
+        topic_description = ideas["topic_description"]
+        experiment_plan = ideas["experiment_plan"]
 
-    # print (response)
-    # print ("Total cost: ", cost)
+        prompt, criticisms, cost = critique(self_critique_prompt, experiment_plan, topic_description, openai_client, args.engine)
+        print ("criticisms: \n", criticisms)
 
-    # cache_output(response, "critique_" + args.idea_file)
+        prompt, new_plan, cost = improve_idea(criticisms, experiment_plan, topic_description, openai_client, args.engine)
+        print ("\nnew plan: \n", new_plan)
 
-    with open(os.path.join("cache_results/old", "paper_bank_math_reasoning_max60.json"), "r") as f:
-        paper_bank = json.load(f)
-    grounding_papers = paper_bank[ : 10]
-
-    with open(os.path.join("cache_results/old", "critique_ai_idea_0.txt"), "r") as f:
-        critic = f.read()
-
-    # prompt, response, cost, more_papers = more_lit_review(grounding_papers, idea_proposal, critic, topic_description, openai_client, MODEL)
-    # print (response)
-
-    # ## dedup
-    # new_papers = []
-    # old_papers = format_papers_for_printing(paper_bank)
-    # for paper in more_papers:
-    #     if paper["paperId"] not in old_papers:
-    #         paper["id"] = paper["paperId"][:4]
-    #         new_papers.append(paper)
-    
-    # print ("# new papers: ", len(new_papers))
-    
-    # new_papers_bank = {paper["paperId"][:4]: paper for paper in new_papers}
-    # # print ("new papers: ", format_papers_for_printing(new_papers))
-    # _, response, cost = paper_scoring(new_papers, topic_description, critic, openai_client, MODEL)
-    # response = json.loads(response.strip())
-    # # print ("scoring response: ", response)
-    
-    # ## initialize all scores to 0
-    # for k,v in new_papers_bank.items():
-    #     new_papers_bank[k]["score"] = 0
-    # for k,v in response.items():
-    #     new_papers_bank[k]["score"] = v
-    
-    # ## rank new papers by score
-    # data_list = [{'id': id, **info} for id, info in new_papers_bank.items()]
-    # sorted_data = sorted(data_list, key=lambda x: x['score'], reverse=True)
-    # cache_output(sorted_data, "paper_bank_math_reasoning_new_grounding_papers_method.json")   
-
-    # new_grounding_papers = sorted_data[ : 10]
-    # print ("new grounding papers: ", format_papers_for_printing(new_grounding_papers))
-
-    with open(os.path.join("cache_results", "paper_bank_math_reasoning_new_grounding_papers_method.json"), "r") as f:
-        new_grounding_papers = json.load(f)
-    new_grounding_papers = new_grounding_papers[ : 10]
-
-    prompt, response, cost = improve_idea(grounding_papers, new_grounding_papers, idea_proposal, critic, topic_description, openai_client, MODEL)
-    print (response)
-    
+        ## cache the improved idea
+        if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
+            os.makedirs("cache_results/experiment_plans/"+args.cache_name)
+        cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": experiment_plan, "criticisms": criticisms, "improved_plan": new_plan.strip()}
+        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        cache_output(cache_dict, cache_file)

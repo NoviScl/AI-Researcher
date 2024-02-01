@@ -20,7 +20,9 @@ def plan_generation(idea, demo_examples, topic_description, openai_client, model
     prompt += "1. Title: A concise statement of the main research question\n"
     prompt += "2. Problem Statement: Clearly define the problem your research intends to address. Explain clearly why this problem is interesting and meaningful.\n"
     prompt += "3. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves proposing a new method, make sure to expand it in detail.\n"
-    prompt += "The experiment plan should just focus on the experiments, and should not include any introduction or background information (e.g., you should skip the literature review, paper writing, and ethical discussion steps). Just give instructions on the experiments.\n"
+    prompt += "You should specify the intended type of contribution in the problem statement, which should be either: 1) analysis; or 2) method. Analysis papers should state clearly the type of model behavior that we are studying, and why such behaviour would be interesting to study. You can also list hypotheses on what possible patterns we might expect and what are the corresponding implications. Ideally, for analysis papers, we want the results to be interesting no matter which hypothesis turns out to be true.\n"
+    prompt += "Method papers should state clearly the new method being proposed, the motivation behind the new method, and the concrete success criteria (i.e., if the proposed method manages to achieve this, then the method is shown to be useful). For method papers, you should also include a fallback option: what should the students do if the method didn't manage to satisfy the success criteria. For example, you can suggest additional analysis to help debug why the proposed method didn't work, which could inform alternative new methods, or just turn the project into an analysis paper instead by offering some interesting insights.\n"
+    prompt += "The experiment plan should just focus on the experiments, and should not include any introduction or background information (e.g., you should skip the literature review, paper writing plan, and ethical discussion). Just give instructions on the experiments.\n"
     prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within two weeks. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive. The focus can be either to improve model performance on same tasks or to perform interesting analysis and reveal insights.\n"
     prompt += "Below is a few examples for your reference:\n"
     prompt += demo_examples + "\n\n"
@@ -77,7 +79,7 @@ if __name__ == "__main__":
             if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
                 os.makedirs("cache_results/experiment_plans/"+args.cache_name)
             cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
-            cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, args.cache_name+"_"+"_".join(idea_name.lower().split())+".json")
+            cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(idea_name.lower().split())+".json")
             cache_output(cache_dict, cache_file)
 
     else:
@@ -91,10 +93,10 @@ if __name__ == "__main__":
         print ("Total cost: ", cost)
 
         ## save the cache
-        if not os.path.exists("cache_results/experiment_plans"):
-            os.makedirs("cache_results/experiment_plans/")
+        if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
+            os.makedirs("cache_results/experiment_plans/"+args.cache_name)
         cache_dict = {"topic_description": topic_description, "idea_name": args.idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
-        cache_file = os.path.join("cache_results/experiment_plans", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json")
+        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(args.idea_name.lower().split())+".json")
         cache_output(cache_dict, cache_file)
 
     
