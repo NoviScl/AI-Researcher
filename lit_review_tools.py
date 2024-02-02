@@ -174,6 +174,24 @@ def print_top_papers_from_paper_bank(paper_bank, top_k=10):
     top_papers = sorted(data_list, key=lambda x: x['score'], reverse=True)[ : top_k]
     print (format_papers_for_printing(top_papers, include_abstract=False))
 
+def dedup_paper_bank(sorted_paper_bank):
+    idx_to_remove = []
+
+    for i in reversed(range(len(sorted_paper_bank))):
+        for j in range(i):
+            if sorted_paper_bank[i]["paperId"].strip() == sorted_paper_bank[j]["paperId"].strip():
+                idx_to_remove.append(i)
+                break
+            if ''.join(sorted_paper_bank[i]["title"].lower().split()) == ''.join(sorted_paper_bank[j]["title"].lower().split()):
+                idx_to_remove.append(i)
+                break
+            if sorted_paper_bank[i]["abstract"] == sorted_paper_bank[j]["abstract"]:
+                idx_to_remove.append(i)
+                break
+    
+    deduped_paper_bank = [paper for i, paper in enumerate(sorted_paper_bank) if i not in idx_to_remove]
+    return deduped_paper_bank
+
 if __name__ == "__main__":
     ## some unit tests
     # print (KeywordQuery("GPT-3"))
@@ -187,4 +205,10 @@ if __name__ == "__main__":
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (parse_and_execute("GetReferences(\"1b6e810ce0afd0dd093f789d2b2742d047e316d5\")"))
     # print (parse_and_execute("PaperQuery(\"b626560f19f815808a289ef5c24a17c57320da70\")"))
-    print (parse_and_execute("KeywordQuery(\"language model bias in storytelling\")"))
+    # print (parse_and_execute("KeywordQuery(\"language model bias in storytelling\")"))
+
+    with open("/Users/clsi/Desktop/ResearcherAgent/cache_results/lit_review/dora.json", "r") as f:
+        paper_bank = json.load(f)["paper_bank"]
+    
+    paper_bank = dedup_paper_bank(paper_bank)
+    print (format_papers_for_printing(paper_bank[ : 10]))

@@ -3,7 +3,7 @@ from utils import call_api
 import argparse
 import json
 import os
-from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank
+from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank, dedup_paper_bank
 from utils import cache_output
 import random 
 import retry
@@ -112,6 +112,7 @@ def novelty_check(idea_name, idea, topic_description, openai_client, model, seed
     ## rank all papers by score
     data_list = [{'id': id, **info} for id, info in paper_bank.items()]
     sorted_papers = sorted(data_list, key=lambda x: x['score'], reverse=True)
+    sorted_data = dedup_paper_bank(sorted_data)
 
     ## novelty score
     prompt, novelty, cost = novelty_score(sorted_papers, idea, openai_client, model, seed)

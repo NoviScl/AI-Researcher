@@ -2,7 +2,7 @@ from openai import OpenAI
 from utils import call_api
 import argparse
 import json
-from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank
+from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank, dedup_paper_bank
 from utils import cache_output
 import os
 import retry
@@ -123,6 +123,7 @@ def collect_papers(topic_description, openai_client, model, seed, grounding_k = 
     ## rank all papers by score
     data_list = [{'id': id, **info} for id, info in paper_bank.items()]
     sorted_data = sorted(data_list, key=lambda x: x['score'], reverse=True)
+    sorted_data = dedup_paper_bank(sorted_data)
 
     return sorted_data, total_cost, all_queries
 
