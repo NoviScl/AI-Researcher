@@ -39,12 +39,14 @@ def self_improve(experiment_plan, paper_bank, openai_client, model, seed):
     ## use gpt4 to improve the original experiment plan with the new set of retrieved papers 
     prompt = "You are a professor specialized in Natural Language Processing. You have a research project proposal but you have received some criticisms that it is not clearly contextualized in related works.\n"
     prompt += "The project proposal is:\n" + experiment_plan.strip() + ".\n"
-    prompt += "The set of most related papers is:\n" + format_papers_for_printing(paper_bank[:5]) + "\n"
-    prompt += "Now you have to do two things. First, edit the problem statement section to explain how the proposed idea is related to prior works or whether any prior works serve as motivations. Second, edit the experiment plan section to better highlight the novelty, i.e., how does the proposed idea differ from some prior works. You are allowed to make minor edits to the proposed method if it is necessary to improve the novelty.\n"
-    prompt += "Directly give me the final improved project proposal in the same format as the original one.\n"
+    prompt += "The set of potentially related papers is:\n" + format_papers_for_printing(paper_bank[:5]) + "\n"
+    prompt += "Now edit the problem statement section. First explain clearly what is the proposed method or the proposed research problem to analyze. Then clearly explain how the proposed project connects to prior works, for example, is any prior work a motivation for this project? Explain the similaries and differences and explain why this proposed project is important (e.g., are there any limitations, gaps, or open problems from prior works). Specify the type of contribution that the project is trying to make (e.g., proposing a new method to address limitations of prior work, exploring a new question or phenomenon that prior works did not analyze, applying prior methods on a new problem, etc.).\n"
+    prompt += "You should preserve the original experiment plan as much as possible. But if you added additional ideas in the problem statement, then you should incoporate them in the experiment plan accordingly. You should delete any details from the original experiment plan, and are only allowed to add additional details to match the updated problem statement when necessary.\n"
+    prompt += "You do not have to mention all the provided papers in the problem statement, just the most important one or two. Return the results in json format, where the keys should be: Title, Problem Statement, Step-by-Step Experiment Plan (the entire experiment plan should be the value, store as a string, not dictionary), and Fallback Plan (only needed for method papers, just copy if the given proposal already has one). Strip all other unnecessary sections.\n"
+    prompt += "Directly give me the final improved project proposal.\n"
     
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, seed=seed, json_output=False)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, seed=seed, json_output=True)
     return prompt, response, cost
 
 
@@ -150,6 +152,12 @@ if __name__ == "__main__":
     print (prompt + "\n")
     print (response + "\n")
     print (cost)
+
+    ## cache the improved experiment plan
+    final_plan_json = json.loads(response.strip())
+    ideas["final_plan_json"] = final_plan_json
+    ideas["novelty_check_papers"] = paper_bank
+    cache_output(ideas, cache_file)
 
     
 

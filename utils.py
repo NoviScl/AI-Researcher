@@ -34,3 +34,17 @@ def cache_output(output, file_name):
         with open(file_name, "w") as f:
             json.dump(output, f, indent=4)
     return 
+
+def print_idea_json(filename):
+    with open(filename, "r") as f:
+        idea_json = json.load(f)
+    idea = idea_json["final_plan_json"]
+    name = idea_json["idea_name"]
+    print (name)
+    for k,v in idea.items():
+        if len(v) > 5:
+            print ('- ' + k)
+            print (v.strip() + '\n')
+
+if __name__ == "__main__":
+    print_idea_json("/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/uncertainty/confidence_in_code-switching_context.json")
