@@ -11,7 +11,7 @@
 cache_names=("bias" "code_prompting" "factuality" "in_context_learning" "multi_step_prompting" "multimodal_bias" "multimodal_probing" "uncertainty")
 
 # Number of ideas to generate
-ideas_n=20
+ideas_n=25
 
 # Seed value
 seed=2024

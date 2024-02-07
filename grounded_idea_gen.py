@@ -9,9 +9,10 @@ import random
 from lit_review import collect_papers
 
 def idea_generation(paper_bank, grounding_k, ideas_n, topic_description, openai_client, model, seed):
-    ## retrieve top papers 
-    grounding_papers = paper_bank[ : grounding_k]
-    random.shuffle(grounding_papers)
+    ## retrieve top papers (with some randomization)
+    top_papers = paper_bank[ : int(grounding_k * 1.5)]
+    random.shuffle(top_papers)
+    grounding_papers = top_papers[ : grounding_k]
 
     prompt = "You are an expert researcher in Natural Language Processing. Now I want you to help me brainstorm some new research project ideas on the topic of: " + topic_description + ".\n\n"
     prompt += "Here are some relevant papers that I have found for you:\n" + format_papers_for_printing(grounding_papers) + "\n"
