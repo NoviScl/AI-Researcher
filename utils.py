@@ -46,5 +46,11 @@ def print_idea_json(filename):
             print ('- ' + k)
             print (v.strip() + '\n')
 
+def format_plan_json(experiment_plan_json):
+    output_str = ""
+    for k,v in experiment_plan_json.items():
+        output_str += k + ": " + v.strip() + "\n\n"
+    return output_str
+
 if __name__ == "__main__":
     print_idea_json("/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/uncertainty/confidence_in_code-switching_context.json")

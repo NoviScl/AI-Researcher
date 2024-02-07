@@ -4,7 +4,7 @@ import argparse
 import json
 import os
 from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank, dedup_paper_bank
-from utils import cache_output
+from utils import cache_output, format_plan_json
 import random 
 import retry
 random.seed(2024)
@@ -36,32 +36,19 @@ def paper_scoring(paper_lst, idea, topic_description, openai_client, model, seed
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, seed=seed, json_output=True)
     return prompt, response, cost
 
-def novelty_score(paper_lst, idea, openai_client, model, seed):
-    ## use gpt4 to give novelty judgment
-    prompt = "You are a professor whose job is to decide whether your student's proposed research idea is novel or not.\n"
-    prompt += "The proposed idea is: " + idea.strip() + ".\n"
-    prompt += "You have found a list of related works:\n" + format_papers_for_printing(paper_lst) + "\n"
-    prompt += "Now decide if the proposed idea is novel and has not been done by the related works before. You should be critical and only consider the idea novel if none of related works proposed the same idea or did similar experiments.\n"
-    prompt += "You should give a binary judgment (yes or no) and a short explanation for your judgment. Your explanation should mention the paper(s) that scooped the idea if you think the idea is not novel. If you think the idea is novel, you should mention why it is sufficiently different from prior works. "
-    prompt += "Give the short explanation, then change to a new line and give the binary judgment by ending the response with either \"Yes\" or \"No\".\n"
+def novelty_score(experiment_plan, related_paper, openai_client, model, seed):
+    ## use gpt4 to give novelty judgment wrt one individual paper 
+    prompt = "You are a professor specialized in Natural Language Processing. You have a project proposal and want to find related works to cite in the paper. Your job is to decide whether the given paper is directly relevant to the project and should be cited as similar work.\n"
+    prompt += "The project proposal is:\n" + format_plan_json(experiment_plan).strip() + ".\n"
+    prompt += "The paper is:\n" + format_papers_for_printing([related_paper], include_score=False) + "\n"
+    # prompt += "The project proposal and the paper abstract is considered a good match if they are studying the same research problem with similar approaches. Note that the paper abstract must cover all topics mentioned in the project proposal. For example, if the proposal is about retrieval augmentation for improving code generation, then the paper needs to mention both retrieval augmentation and improving code generation in order to consider a good match. Being only partially relevant does not count. For example, if the project is about retrieval augmented code generation while the paper is about self-improving code generation, then it doesn't count. Note that the details do not matter (such as which datasets are used), you should only focus on the high-level idea.\n"
+    prompt += "For analysis type of project proposal, the project proposal and paper abstract are considered a match as long as the research problem is the same. For example, if they are both studying how dialect variations affect language model confidence. The exact experiments do not matter. But note that the paper should mention all key concepts of the project proposal rather than just partial match. For example, for a proposal analyzing dialect variations' impact on language model confidence, the paper should be related to both dialect variations as well as model confidence. Only mentioning one does not count as a match.\n"
+    prompt += "For new method type of project proposal, the project proposal and paper abstract are considered a match if both the research problem and the approach are the same. For example, if they are both trying to improve code generation accuracy and both proposing to use retrieval augmentation. Note that the method details do not matter, you should only focus on the high-level concepts and judge whether they are directly relevant.\n"
+    prompt += "You should first specify whether the project proposal is about analysis or about new methods, and what is the proposed research problem and approach. If answering yes, your explanation should be the one-sentence summary of both the abstract and the proposal and their similarity (e.g., they are both about probing biases of language models via fictional characters). If answering no, give the short summaries of the abstract and proposal separately, then highlight their differences. Then end your response with a binary judgment, saying either \"Yes\" or \"No\". Change to a new line after your explanation and just say Yes or No with no punctuation in the end.\n"
     
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
     return prompt, response, cost
-
-# def novelty_score(experiment_plan, paper_idea, openai_client, model, seed):
-#     ## use gpt4 to give novelty judgment wrt one individual paper 
-#     prompt = "You are a professor specialized in Natural Language Processing. I will give you an idea and a detailed project proposal. Your job is to tell me whether the project proposal have sufficiently covered what the idea is proposing.\n"
-#     prompt += "You should do this in two steps: (1) First, identify the research problems that the idea and the proposal are studying. (2)"
-#     prompt += "The proposed idea is: " + idea.strip() + ".\n"
-#     prompt += "You have found a list of related works:\n" + format_papers_for_printing(paper_lst) + "\n"
-#     prompt += "Now decide if the proposed idea is novel and has not been done by the related works before. You should be critical and only consider the idea novel if none of related works proposed the same idea or did similar experiments.\n"
-#     prompt += "You should give a binary judgment (yes or no) and a short explanation for your judgment. Your explanation should mention the paper(s) that scooped the idea if you think the idea is not novel. If you think the idea is novel, you should mention why it is sufficiently different from prior works. "
-#     prompt += "Give the short explanation, then change to a new line and give the binary judgment by ending the response with either \"Yes\" or \"No\".\n"
-    
-#     prompt_messages = [{"role": "user", "content": prompt}]
-#     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
-#     return prompt, response, cost
 
 
 @retry.retry(tries=3, delay=2)
@@ -145,20 +132,26 @@ if __name__ == "__main__":
     with open(cache_file, "r") as f:
         ideas = json.load(f)
     topic_description = ideas["topic_description"]
-    idea = ideas["experiment_plan"]
+    plan_json = ideas["final_plan_json"]
+    related_papers = ideas["novelty_check_papers"]
 
-    novelty, paper_bank, total_cost, all_queries = novelty_check(args.idea_name, idea, topic_description, openai_client, args.engine, args.seed)
-    output = format_papers_for_printing(paper_bank[ : 10])
-    print ("Top 10 papers: ")
-    print (output)
-    print ("novelty: ", novelty)
-    print ("Total cost: ", total_cost)
+    print ("checking novelty for idea: ", args.idea_name)
 
-    if args.cache_name:
-        if not os.path.exists("cache_results/novelty_check"):
-            os.makedirs("cache_results/novelty_check")
-        output_dict = {"topic_description": topic_description, "idea": idea, "all_queries": all_queries, "paper_bank": paper_bank, "novelty": novelty.strip()}
-        cache_output(output_dict, os.path.join("cache_results/novelty_check", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json"))
+    novel = True 
+    for i in range(5):
+        prompt, response, cost = novelty_score(plan_json, related_papers[i], openai_client, args.engine, args.seed)
+        ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
+        final_judgment = response.strip().split()[-1].lower()
+        if final_judgment == "yes":
+            novel = False
+        ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
+        
+        # print (format_papers_for_printing([related_papers[i]]))
+        # print (response)
+        # print (cost)
+    
+    ideas["novelty"] = "yes" if novel else "no"
+    cache_output(ideas, cache_file)
 
     
     

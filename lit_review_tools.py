@@ -153,7 +153,7 @@ def parse_and_execute(output):
     
     return None 
 
-def format_papers_for_printing(paper_lst, include_abstract=True):
+def format_papers_for_printing(paper_lst, include_abstract=True, include_score=True):
     ## convert a list of papers to a string for printing or as part of a prompt 
     output_str = ""
     for paper in paper_lst:
@@ -163,7 +163,7 @@ def format_papers_for_printing(paper_lst, include_abstract=True):
             output_str += "abstract: " + paper["abstract"].strip() + "\n"
         elif include_abstract and "tldr" in paper and paper["tldr"] and paper["tldr"]["text"]:
             output_str += "tldr: " + paper["tldr"]["text"].strip() + "\n"
-        if "score" in paper:
+        if "score" in paper and include_score:
             output_str += "relevance score: " + str(paper["score"]) + "\n"
         output_str += "\n"
 
