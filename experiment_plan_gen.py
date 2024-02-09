@@ -6,6 +6,7 @@ import os
 from lit_review_tools import format_papers_for_printing
 from utils import cache_output
 import retry
+from tqdm import tqdm
 import random 
 random.seed(2024)
 
@@ -68,7 +69,7 @@ if __name__ == "__main__":
         with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
             ideas = json.load(f)["ideas"]
         
-        for idea_name, idea in ideas.items():
+        for idea_name, idea in tqdm(ideas.items()):
             prompt, response, cost = plan_generation(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
             print (idea_name)
             print (response)

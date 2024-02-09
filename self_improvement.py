@@ -5,6 +5,7 @@ import json
 import os
 from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank, dedup_paper_bank
 from utils import cache_output
+from tqdm import tqdm
 import random 
 import retry
 random.seed(2024)
@@ -87,8 +88,8 @@ def get_related_works(idea_name, idea, topic_description, openai_client, model, 
                 v["score"] = 0
             
         # print (paper_bank)
-        print_top_papers_from_paper_bank(paper_bank, top_k=10)
-        print ("-----------------------------------\n")
+        # print_top_papers_from_paper_bank(paper_bank, top_k=10)
+        # print ("-----------------------------------\n")
     
     ## the missing papers will have a score of 0 
     for k,v in paper_bank.items():
@@ -123,41 +124,51 @@ if __name__ == "__main__":
         api_key=OAI_KEY
     )
 
-    ## load the idea
-    cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(args.idea_name.lower().split())+".json")
-    with open(cache_file, "r") as f:
-        ideas = json.load(f)
-    topic_description = ideas["topic_description"]
-    idea = ideas["experiment_plan"]
-
-    if args.load_papers_from_cache:
-        with open("cache_results/novelty_check/"+args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json", "r") as f:
-            output_dict = json.load(f)
-        paper_bank = output_dict["paper_bank"]
+    if args.idea_name == "all":
+        filenames = os.listdir("cache_results/experiment_plans/"+args.cache_name)
     else:
-        paper_bank, total_cost, all_queries = get_related_works(args.idea_name, idea, topic_description, openai_client, args.engine, args.seed)
-        output = format_papers_for_printing(paper_bank[ : 10])
-        print ("Top 10 papers: ")
-        print (output)
-        print ("Total cost: ", total_cost)
+        filenames = ["_".join(args.idea_name.lower().split())+".json"]
 
-        ## cache the paper bank
-        if not os.path.exists("cache_results/novelty_check"):
-            os.makedirs("cache_results/novelty_check")
-        output_dict = {"topic_description": topic_description, "idea": idea, "all_queries": all_queries, "paper_bank": paper_bank}
-        cache_output(output_dict, os.path.join("cache_results/novelty_check", args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json"))
+    for filename in tqdm(filenames):
+        print ("working on: ", filename)
+        ## load the idea
+        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        with open(cache_file, "r") as f:
+            ideas = json.load(f)
 
-    ## use gpt4 to improve the original experiment plan with the new set of retrieved papers
-    prompt, response, cost = self_improve(idea, paper_bank, openai_client, args.engine, args.seed)
-    print (prompt + "\n")
-    print (response + "\n")
-    print (cost)
+        topic_description = ideas["topic_description"]
+        idea = ideas["improved_plan"]
+        idea_name = ideas["idea_name"]
 
-    ## cache the improved experiment plan
-    final_plan_json = json.loads(response.strip())
-    ideas["final_plan_json"] = final_plan_json
-    ideas["novelty_check_papers"] = paper_bank
-    cache_output(ideas, cache_file)
+        if args.load_papers_from_cache:
+            with open("cache_results/novelty_check/"+args.cache_name+"_"+"_".join(args.idea_name.lower().split())+".json", "r") as f:
+                output_dict = json.load(f)
+            paper_bank = output_dict["paper_bank"]
+        else:
+            print ("Retrieving related works...")
+            paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, openai_client, args.engine, args.seed)
+            output = format_papers_for_printing(paper_bank[ : 10])
+            print ("Top 10 papers: ")
+            print (output)
+            print ("Total cost: ", total_cost)
+
+            ## save the paper bank
+            if not os.path.exists("cache_results/novelty_check"):
+                os.makedirs("cache_results/novelty_check")
+            ideas["novelty_check_queries"] = all_queries
+            ideas["novelty_check_papers"] = paper_bank
+
+        ## use gpt4 to improve the original experiment plan with the new set of retrieved papers
+        print ("Improving the original experiment plan with the new set of retrieved papers...")
+        prompt, response, cost = self_improve(idea, paper_bank, openai_client, args.engine, args.seed)
+        # print (prompt + "\n")
+        # print (response + "\n")
+        # print (cost)
+
+        ## cache the improved experiment plan
+        final_plan_json = json.loads(response.strip())
+        ideas["final_plan_json"] = final_plan_json
+        cache_output(ideas, cache_file)
 
     
 

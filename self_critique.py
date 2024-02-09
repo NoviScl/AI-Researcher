@@ -5,6 +5,7 @@ import json
 import os
 from lit_review_tools import format_papers_for_printing, parse_and_execute
 from utils import cache_output
+from tqdm import tqdm
 import random 
 random.seed(2024)
 
@@ -105,7 +106,7 @@ if __name__ == "__main__":
     else:
         filenames = ["_".join(args.idea_name.lower().split())+".json"]
     
-    for filename in filenames:
+    for filename in tqdm(filenames):
         print ("working on: ", filename)
         ## load the idea
         cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)

@@ -6,6 +6,7 @@ import os
 from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank, dedup_paper_bank
 from utils import cache_output, format_plan_json
 import random 
+from tqdm import tqdm
 import retry
 random.seed(2024)
 
@@ -113,6 +114,7 @@ if __name__ == "__main__":
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
     parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
+    parser.add_argument('--check_n', type=int, default=10, help="number of top papers to check for novelty")
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
@@ -127,31 +129,36 @@ if __name__ == "__main__":
         api_key=OAI_KEY
     )
 
-    ## load the idea
-    cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(args.idea_name.lower().split())+".json")
-    with open(cache_file, "r") as f:
-        ideas = json.load(f)
-    topic_description = ideas["topic_description"]
-    plan_json = ideas["final_plan_json"]
-    related_papers = ideas["novelty_check_papers"]
+    if args.idea_name == "all":
+        filenames = os.listdir("cache_results/experiment_plans/"+args.cache_name)
+    else:
+        filenames = ["_".join(args.idea_name.lower().split())+".json"]
 
-    print ("checking novelty for idea: ", args.idea_name)
+    for filename in tqdm(filenames):
+        print ("working on: ", filename)
+        ## load the idea
+        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        with open(cache_file, "r") as f:
+            ideas = json.load(f)
 
-    novel = True 
-    for i in range(5):
-        prompt, response, cost = novelty_score(plan_json, related_papers[i], openai_client, args.engine, args.seed)
-        ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
-        final_judgment = response.strip().split()[-1].lower()
-        if final_judgment == "yes":
-            novel = False
-        ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
+        topic_description = ideas["topic_description"]
+        plan_json = ideas["final_plan_json"]
+        related_papers = ideas["novelty_check_papers"]
+
+        novel = True 
+        for i in range(args.check_n):
+            prompt, response, cost = novelty_score(plan_json, related_papers[i], openai_client, args.engine, args.seed)
+            ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
+            final_judgment = response.strip().split()[-1].lower()
+            if final_judgment == "yes":
+                novel = False
+            ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
+            
+            # print (format_papers_for_printing([related_papers[i]]))
+            # print (response)
+            # print (cost)
         
-        # print (format_papers_for_printing([related_papers[i]]))
-        # print (response)
-        # print (cost)
-    
-    ideas["novelty"] = "yes" if novel else "no"
-    cache_output(ideas, cache_file)
+        ideas["novelty"] = "yes" if novel else "no"
+        cache_output(ideas, cache_file)
 
-    
     
