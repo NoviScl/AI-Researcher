@@ -5,5 +5,5 @@
 #     python3 self_improvement.py --cache_name "$cache_name" --idea_name "all"
 # done
 
-python3 add_test_cases.py --cache_name "factuality" --idea_name "External Reference Check Prompt"
+python3 add_test_cases.py --cache_name "code_prompting" --idea_name "Bilingual Code Prompting"
 

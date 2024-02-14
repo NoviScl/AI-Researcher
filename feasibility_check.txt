@@ -1,0 +1,88 @@
+1. The project involves human study. 
+2. The project involves training new models instead of just relying on prompting. 
+3. The suggested test cases do not match the project's goals. 
+4. The experiment plan does not match the project's goals. 
+5. The proposal is confusing different terms and concepts or is misusing some terms or definitions.
+6. The proposal has logical flaws or inconsistencies.
+
+As an example, for the project: Multilingual Contextual Prompts for Enhanced Code Generation in Large Language Models,
+the problem statement is: In this research, we aim to address the challenge of code generation in large language models (LLMs) by introducing a novel prompting strategy that incorporates multilingual contexts. Our proposed method is inspired by the cognitive process of developers who often switch between natural languages and programming languages during software development. This bilingual or multilingual context-switching is hypothesized to enhance the LLM's understanding and generation of code. The proposed strategy is distinct from prior works such as 'Multi-lingual Evaluation of Code Generation Models' (paperId: 2577d053f8aab912d29b424e1f09133d83740fd2) and 'xCodeEval: A Large Scale Multilingual Multitask Benchmark for Code Understanding, Generation, Translation and Retrieval' (paperId: 1012d2a3281dbb40c22e25652b57fc532180f59d), which have primarily focused on evaluating code generation models in a multilingual setting without specifically leveraging the interplay between natural and programming languages in the prompts themselves. Our project aims to fill this gap by exploring how multilingual contextual prompts can improve code generation accuracy, syntactic diversity, and runtime performance. The contribution of this project lies in proposing a new method to enhance code generation by LLMs, which could potentially address limitations in current monolingual prompting approaches and provide insights into the multilingual capabilities of LLMs.
+the step-by-step experiment plan is:
+Step 1: Design Multilingual Contextual Prompts
+Develop a set of prompts that blend natural language instructions with code snippets or programming language constructs. These prompts will be crafted based on common coding scenarios and will include comments or variable names in a secondary language. The ratio of natural language to code constructs will be approximately 70:30, reflecting typical developer comments and documentation.
+
+Step 2: Select and Augment Datasets
+Evaluate datasets such as HumanEval and CodeXGLUE for multilingual content. Augment these datasets with multilingual comments or identifiers using a script that inserts language-specific comments and variable names, ensuring that each problem has an equal representation of the target languages. The augmentation will be guided by a set of criteria, including relevance to the coding task, commonality of terms in the developer community, and linguistic diversity.
+
+Step 3: Choose Models for Experimentation
+Utilize OpenAI's Codex or GPT-4 models for their code generation capabilities. Access these models through their APIs to conduct experiments without the need for training or fine-tuning.
+
+Step 4: Define Baseline Prompts
+Construct baseline prompts that are monolingual, using only the primary language (e.g., English) for instructions and code constructs. These prompts will be derived from existing examples in the datasets and will be matched in complexity and style to the multilingual prompts to ensure equivalent difficulty.
+
+Step 5: Conduct Experiments
+Run experiments using both the multilingual contextual prompts and the baseline monolingual prompts. Each problem from the dataset will be tested with both prompt types, ensuring a fair comparison.
+
+Step 6: Evaluate Code Generation
+Measure the generated code's accuracy using automated evaluation metrics such as pass@k, where k will be determined based on preliminary tests to find an optimal balance between computational resources and thoroughness. Multiple values of k will be tested to ensure robustness. Additionally, evaluate code efficiency and runtime performance to provide a comprehensive assessment of code quality.
+
+Step 7: Analyze Syntactic Diversity
+Assess the syntactic diversity of the generated code using metrics such as BLEU and a diversity index that measures variability in syntax and structure. Automated methods will be used to evaluate syntactic diversity, ensuring consistency and scalability.
+
+Step 8: Compare and Contrast Results
+Analyze the results to compare the performance of multilingual contextual prompts against the baseline monolingual prompts. Look for improvements in accuracy, syntactic diversity, and runtime performance.
+
+Fallback Plan: If the proposed method does not show improvement over the baseline, analyze the generated code to identify patterns or shortcomings. Investigate whether the multilingual aspects of the prompts are being ignored or misunderstood by the model. Adjust the prompts to emphasize different aspects of the multilingual context and retest. If improvements are still not observed, document the findings as insights into how LLMs handle multilingual contexts in code generation tasks.
+
+The generated test cases are:
+Test Cases: Test Case 1:
+Coding problem: Implement a function to check if a string is a palindrome.
+
+Baseline prompt: "Write a Python function that takes a string as input and returns True if it is a palindrome and False otherwise."
+
+Multilingual contextual prompt: "Escribe una función en Python que reciba una cadena de texto como entrada y devuelva True si es un palíndromo y False si no lo es. # Check for palindrome"
+
+Then, compare the accuracy and syntactic diversity of the code generated by the two prompts. Evaluate if the multilingual prompt leads to more accurate or syntactically diverse solutions.
+
+Test Case 2:
+Coding problem: Create a program to merge two sorted lists into one sorted list.
+
+Baseline prompt: "Write a function in Java that merges two sorted lists into a single sorted list."
+
+Multilingual contextual prompt: "Schreibe eine Funktion in Java, die zwei sortierte Listen nimmt und sie in einer einzigen sortierten Liste zusammenführt. // Merge two lists"
+
+Run the experiments using both prompts and measure the runtime performance of the generated code. Assess if the multilingual prompt enhances the efficiency of the code.
+
+Test Case 3:
+Coding problem: Calculate the factorial of a number using recursion.
+
+Baseline prompt: "Write a recursive function in C++ to calculate the factorial of a given number."
+
+Multilingual contextual prompt: "编写一个C++递归函数来计算给定数字的阶乘。// Factorial calculation"
+
+Evaluate the generated code's accuracy with both prompts and analyze if the multilingual context leads to a better understanding of the task by the LLM.
+
+Test Case 4:
+Coding problem: Design a SQL query to find the top 3 highest salaries in a 'employees' table.
+
+Baseline prompt: "Create a SQL query that selects the top 3 highest salaries from the 'employees' table."
+
+Multilingual contextual prompt: "Créez une requête SQL qui sélectionne les trois salaires les plus élevés de la table 'employees'. -- Top salaries"
+
+Compare the syntactic diversity of the SQL queries generated from both prompts and determine if the multilingual prompt contributes to a broader range of syntactic structures.
+
+Test Case 5:
+Coding problem: Write a script to convert temperatures from Celsius to Fahrenheit.
+
+Baseline prompt: "Write a Python script that converts a temperature from Celsius to Fahrenheit."
+
+Multilingual contextual prompt: "Escriba un script en Python que convierta una temperatura de Celsius a Fahrenheit. # Temperature conversion"
+
+After running the experiments, analyze the code for both accuracy and runtime performance to see if the multilingual prompts provide any enhancement over the baseline.
+
+Feasibility check:
+This project violates the criteria:
+The motivation mentioned "switch between natural languages and programming languages during software development" and the first step in the experiment plan mentioned "Develop a set of prompts that blend natural language instructions with code snippets or programming language constructs."
+However, the generated test cases only use prompts with different natural languages without mixing any programming language. So, the test cases do not match the project's goals.
+Moreover, the experiment plan is mixing the use of natural language and programming language, causing inconsistencies in the proposal.
+Therefore, the project is not feasible.
