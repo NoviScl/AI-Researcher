@@ -70,10 +70,8 @@ if __name__ == "__main__":
         print (response + "\n")
         print (cost)
 
-        # ## cache the improved experiment plan
-        # final_plan_json = json.loads(response.strip())
-        # ideas["final_plan_json"] = final_plan_json
-        # cache_output(ideas, cache_file)
+        ideas["final_plan_json"]["Test Cases"] = response.strip()
+        cache_output(ideas, cache_file)
 
     
 
