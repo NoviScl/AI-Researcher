@@ -30,6 +30,7 @@ if __name__ == "__main__":
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
     parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
     parser.add_argument('--load_papers_from_cache', type=bool, default=False, help='whether to load the retrieved papers from cache')
+    parser.add_argument('--novelty_only', type=bool, default=False, help='whether to only process papers that passed the novelty check')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
@@ -64,6 +65,10 @@ if __name__ == "__main__":
         idea = format_plan_json(idea)
         idea_name = ideas["idea_name"]
 
+        if args.novelty_only and ideas["novelty"] == "no":
+            print ("skipping this idea because it's not novel")
+            continue 
+        
         ## generate test cases
         prompt, response, cost = generate_test_cases(idea, test_case_demos, openai_client, args.engine, args.seed)
         print (prompt + "\n")

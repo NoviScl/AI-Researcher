@@ -27,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
     parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
-    parser.add_argument('--check_n', type=int, default=10, help="number of top papers to check for novelty")
+    parser.add_argument('--novelty_only', type=bool, default=False, help='whether to only process papers that passed the novelty check')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
@@ -50,6 +50,7 @@ if __name__ == "__main__":
     else:
         filenames = ["_".join(args.idea_name.lower().split())+".json"]
 
+    infeasible_counter = []
     for filename in tqdm(filenames):
         print ("working on: ", filename)
         ## load the idea
@@ -62,11 +63,24 @@ if __name__ == "__main__":
         idea = format_plan_json(idea)
         related_papers = ideas["novelty_check_papers"]
 
+        if args.novelty_only and ideas["novelty"] == "no":
+            print ("skipping this idea because it's not novel")
+            continue 
+
         prompt, response, cost = feasibility_check(idea, criteria, openai_client, args.engine, args.seed)
         print (prompt + "\n")
         print (response + "\n")
-        print (cost)
-    
-        # cache_output(ideas, cache_file)
+        print (cost)    
+        
+        ideas["feasibility_rationale"] = response.strip()
+        judgment = response.strip().split()[-1].lower()
+        if judgment.startswith("yes"):
+            ideas["feasibility_judgment"] = "yes"
+        else:
+            ideas["feasibility_judgment"] = "no"
+            infeasible_counter.append(ideas["idea_name"])
+        cache_output(ideas, cache_file)
+    print ("#infeasible ideas: ", len(infeasible_counter))
+    print (infeasible_counter)
 
     
