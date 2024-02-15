@@ -53,4 +53,4 @@ def format_plan_json(experiment_plan_json):
     return output_str
 
 if __name__ == "__main__":
-    print_idea_json("/nlp/scr/clsi/AI-Researcher/cache_results/experiment_plans/uncertainty/cross-lingual_confidence_measure.json")
+    print_idea_json("/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/code_prompting/gamification_of_code_prompts.json")
