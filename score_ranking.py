@@ -8,7 +8,7 @@ def rank_dict_by_score(input_dict):
     return dict(ranked_dict)
 
 if __name__ == "__main__":
-    cache_name = "code_prompting"
+    cache_name = "factuality"
     filenames = os.listdir("cache_results/experiment_plans/" + cache_name)
     
     ## maintain a dict to track all files that pass the novelty check 

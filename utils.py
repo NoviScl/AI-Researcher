@@ -53,4 +53,10 @@ def format_plan_json(experiment_plan_json):
     return output_str
 
 if __name__ == "__main__":
-    print_idea_json("/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/code_prompting/gamification_of_code_prompts.json")
+    filename = "/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/factuality/external_reference_check_prompt.json"
+    print_idea_json(filename)
+    with open(filename, "r") as f:
+        ideas = json.load(f)
+    print ("Excitement Ranking: ")
+    print (ideas["excitement_rationale"])
+    print (ideas["excitement_score"])

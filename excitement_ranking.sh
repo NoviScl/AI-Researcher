@@ -1,1 +1,1 @@
-python3 excitement_ranking.py --cache_name "code_prompting" --idea_name "all"
+python3 excitement_ranking.py --cache_name "factuality" --idea_name "all"

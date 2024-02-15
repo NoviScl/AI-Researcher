@@ -1,4 +1,4 @@
-cache_names=("code_prompting")
+cache_names=("factuality" "uncertainty")
 # Iterate over each cache name
 for cache_name in "${cache_names[@]}"; do
     echo "Running add_test_cases.py with cache_name: $cache_name and idea_name: all"
