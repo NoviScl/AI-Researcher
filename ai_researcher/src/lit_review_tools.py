@@ -7,7 +7,7 @@ search_url = 'https://api.semanticscholar.org/graph/v1/paper/search/'
 graph_url = 'https://api.semanticscholar.org/graph/v1/paper/'
 rec_url = "https://api.semanticscholar.org/recommendations/v1/papers/forpaper/"
 
-with open("../../keys.json", "r") as f:
+with open("../keys.json", "r") as f:
     keys = json.load(f)
 S2_KEY = keys["s2_key"]
 
