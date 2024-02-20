@@ -139,7 +139,7 @@ if __name__ == "__main__":
     parser.add_argument('--print_all', action='store_true', help='whether to print out the intermediate process')
     args = parser.parse_args()
 
-    with open("keys.json", "r") as f:
+    with open("../keys.json", "r") as f:
         keys = json.load(f)
 
     OAI_KEY = keys["api_key"]
