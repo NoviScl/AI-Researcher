@@ -25,7 +25,7 @@ def idea_generation_method(paper_bank, grounding_k, examples, ideas_n, topic_des
     prompt += "Please write down your ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (which should be one paragraph long, roughly similar to an abstract)."
 
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0.9, max_tokens=4000, seed=seed, json_output=True)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0.9, max_tokens=4096, seed=seed, json_output=True)
     return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)

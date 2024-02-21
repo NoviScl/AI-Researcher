@@ -11,26 +11,26 @@ import random
 random.seed(2024)
 
 @retry.retry(tries=3, delay=2)
-def plan_generation(idea, demo_examples, topic_description, openai_client, model, seed):
+def plan_generation_method(idea, demo_examples, topic_description, openai_client, model, seed):
     ## forumate an idea from a paragraph into a full experiment plan based on our template
 
-    prompt = "You are an expert researcher in Natural Language Processing and your job is to expand a vague project idea into a detailed experiment plan. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
+    prompt = "You are an expert researcher in Natural Language Processing and your job is to expand a brief and vague project idea into a detailed experiment plan so that your student can follow the steps and execute the full project. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
     prompt += "The idea is:\n" + idea + "\n\n"
     # prompt += "Here are some relevant papers that are relevant to the idea:\n" + format_papers_for_printing(grounding_papers) + "\n\n"
-    prompt += "Now you should come up with the full proposal covering:\n"
-    prompt += "1. Title: A concise statement of the main research question\n"
-    prompt += "2. Problem Statement: Clearly define the problem your research intends to address. Explain clearly why this problem is interesting and meaningful.\n"
-    prompt += "3. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves proposing a new method, make sure to expand it in detail.\n"
-    prompt += "You should specify the intended type of contribution in the problem statement, which should be either: 1) analysis; or 2) method. Analysis papers should state clearly the type of model behavior that we are studying, and why such behaviour would be interesting to study. You can also list hypotheses on what possible patterns we might expect and what are the corresponding implications. Ideally, for analysis papers, we want the results to be interesting no matter which hypothesis turns out to be true.\n"
-    prompt += "Method papers should state clearly the new method being proposed, the motivation behind the new method, and the concrete success criteria (i.e., if the proposed method manages to achieve this, then the method is shown to be useful). For method papers, you should also include a fallback option: what should the students do if the method didn't manage to satisfy the success criteria. For example, you can suggest additional analysis to help debug why the proposed method didn't work, which could inform alternative new methods, or just turn the project into an analysis paper instead by offering some interesting insights.\n"
-    prompt += "The experiment plan should just focus on the experiments, and should not include any introduction or background information (e.g., you should skip the literature review, paper writing plan, and ethical discussion). Just give instructions on the experiments.\n"
-    prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within two weeks. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive. The focus can be either to improve model performance on same tasks or to perform interesting analysis and reveal insights.\n"
-    prompt += "Below is a few examples for your reference:\n"
+    prompt += "Now you should come up with the full experiment plan covering:\n"
+    prompt += "1. Title: A concise statement of the main research question to be used as the paper title.\n"
+    prompt += "2. Problem Statement: Clearly define the problem your research intends to address. Explain clearly why this problem is interesting and important.\n"
+    prompt += "3. Motivation: Explain why existing methods are not good enough to solve the problem, and explain the inspiration behind the new proposed method. You should also motivate why the proposed method would work better than existing baselines on the problem.\n"
+    prompt += "4. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves prompting, give some example prompts for each step.\n"
+    prompt += "5. Fallback Plan: Propose some alternative plans for what should the students do if the proposed method didn't manage to satisfy the success criteria. For example, you can suggest additional analysis to help debug why the proposed method didn't work, which could inform alternative new methods, or just turn the project into an analysis paper instead by offering some interesting ablation and insights.\n"
+    prompt += "The experiment plan should not include any background introduction (e.g., you can skip the literature review, paper writing tips, and ethical discussion). Just give instructions on the experiments.\n"
+    prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within a month. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive.\n"
+    prompt += "Below is a few examples of how the full experiment plans should look like:\n"
     prompt += demo_examples + "\n\n"
-    prompt += "Now please write down your experiment plan (each section should be described as a few concise sentences; index the sections and separate them with new lines). Make sure to be as detailed as possible especially for the data and methods, so that a student can directly follow the plan to implement the experiment. For example, if the method involves prompting, describe the prompts in detail. Give prompt or algorithm description for all methods involved."
+    prompt += "Now please write down your experiment plan in JSON format. Make sure to be as detailed as possible especially for the data and methods, so that a student can directly follow the plan to implement the experiments."
     
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=False)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=True)
     return prompt, response, cost
 
 if __name__ == "__main__":
