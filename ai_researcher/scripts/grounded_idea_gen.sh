@@ -8,16 +8,19 @@
 #!/bin/bash
 
 # Define an array of cache names
-cache_names=("bias" "code_prompting" "factuality" "in_context_learning" "multi_step_prompting" "multimodal_bias" "multimodal_probing" "uncertainty")
+# cache_names=("bias_analysis" "adversarial_attack_method" "factuality_prompting_method" "uncertainty_method")
+cache_names=("factuality_prompting_method" "adversarial_attack_method" "uncertainty_method")
 
 # Number of ideas to generate
-ideas_n=25
+ideas_n=20
 
 # Seed value
-seed=2024
+seeds=(12 2024)
 
-# Iterate over each cache name and run the Python script
-for cache_name in "${cache_names[@]}"; do
-    echo "Running grounded_idea_gen.py with cache_name: $cache_name"
-    python3 grounded_idea_gen.py --cache_name "$cache_name" --ideas_n $ideas_n --seed $seed
-done
+for seed in "${seeds[@]}"; do
+    # Iterate over each cache name and run the Python script
+    for cache_name in "${cache_names[@]}"; do
+        echo "Running grounded_idea_gen.py with cache_name: $cache_name"
+        python3 src/grounded_idea_gen.py --cache_name "$cache_name" --ideas_n $ideas_n --seed $seed
+    done
+done 
