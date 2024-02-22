@@ -4,7 +4,7 @@ import argparse
 import json
 import os
 from lit_review_tools import format_papers_for_printing
-from utils import cache_output
+from utils import cache_output, format_plan_json
 import retry
 from tqdm import tqdm
 import random 
@@ -15,7 +15,7 @@ def plan_generation_method(idea, demo_examples, topic_description, openai_client
     ## forumate an idea from a paragraph into a full experiment plan based on our template
 
     prompt = "You are an expert researcher in Natural Language Processing and your job is to expand a brief and vague project idea into a detailed experiment plan so that your student can follow the steps and execute the full project. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
-    prompt += "The idea is:\n" + idea + "\n\n"
+    prompt += "The idea is:\n" + format_plan_json(idea) + "\n"
     # prompt += "Here are some relevant papers that are relevant to the idea:\n" + format_papers_for_printing(grounding_papers) + "\n\n"
     prompt += "Now you should come up with the full experiment plan covering:\n"
     prompt += "1. Title: A concise statement of the main research question to be used as the paper title.\n"
@@ -28,7 +28,7 @@ def plan_generation_method(idea, demo_examples, topic_description, openai_client
     prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within a month. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive.\n"
     prompt += "Below is a few examples of how the full experiment plans should look like:\n"
     prompt += demo_examples + "\n\n"
-    prompt += "Now please write down your experiment plan in JSON format (with a short project name as key and the full experiment plan as the value). Make sure to be as detailed as possible especially so that a student can directly follow the plan to implement the experiments."
+    prompt += "Now please write down your experiment plan in JSON format (keys should be the section names, just like the above examples). Make sure to be as detailed as possible especially so that a student can directly follow the plan to implement the experiments."
     
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=True)
@@ -61,12 +61,14 @@ if __name__ == "__main__":
     if args.idea_name == "all":
         ## load all ideas 
         with open(os.path.join("../cache_results/ideas", args.cache_name+".json"), "r") as f:
-            ideas = json.load(f)["ideas"]
-        topic_description = ideas["topic_description"]
+            ideas_file = json.load(f)
+        ideas = ideas_file["ideas"]
+        topic_description = ideas_file["topic_description"]
         print ("topic: ", topic_description)
 
         for idea_name, idea in tqdm(ideas.items()):
             prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+            response = json.loads(response.strip())
             print (idea_name)
             print (response)
             print ("Total cost: ", cost)
@@ -75,7 +77,7 @@ if __name__ == "__main__":
             ## save the cache
             if not os.path.exists("../cache_results/experiment_plans/"+args.cache_name):
                 os.makedirs("../cache_results/experiment_plans/"+args.cache_name)
-            cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
+            cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": response}
             cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, "_".join(idea_name.lower().split())+".json")
             cache_output(cache_dict, cache_file)
 

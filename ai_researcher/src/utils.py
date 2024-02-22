@@ -49,7 +49,13 @@ def print_idea_json(filename):
 def format_plan_json(experiment_plan_json):
     output_str = ""
     for k,v in experiment_plan_json.items():
-        output_str += k + ": " + v.strip() + "\n\n"
+        if isinstance(v, str):
+            output_str += k + ": " + v.strip() + "\n\n"
+        else:
+            output_str += k + ": " + "\n"
+            for sub_k, sub_v in v.items():
+                output_str += "  - " + sub_k + ": " + sub_v.strip() + "\n"
+            output_str += "\n"
     return output_str
 
 if __name__ == "__main__":
