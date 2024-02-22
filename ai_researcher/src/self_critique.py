@@ -98,18 +98,18 @@ if __name__ == "__main__":
         api_key=OAI_KEY
     )
     
-    with open("self_critique_prompt.txt", "r") as f:
+    with open("prompts/self_critique_prompt.txt", "r") as f:
         self_critique_prompt = f.read()
 
     if args.idea_name == "all":
-        filenames = os.listdir("cache_results/experiment_plans/"+args.cache_name)
+        filenames = os.listdir("../cache_results/experiment_plans/"+args.cache_name)
     else:
         filenames = ["_".join(args.idea_name.lower().split())+".json"]
     
     for filename in tqdm(filenames):
         print ("working on: ", filename)
         ## load the idea
-        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, filename)
         with open(cache_file, "r") as f:
             ideas = json.load(f)
         idea_name = ideas["idea_name"]
@@ -124,8 +124,8 @@ if __name__ == "__main__":
         print ("\nnew plan: \n", new_plan)
 
         ## cache the improved idea
-        if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
-            os.makedirs("cache_results/experiment_plans/"+args.cache_name)
+        if not os.path.exists("../cache_results/experiment_plans/"+args.cache_name):
+            os.makedirs("../cache_results/experiment_plans/"+args.cache_name)
         cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": experiment_plan, "criticisms": criticisms, "improved_plan": new_plan.strip()}
-        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, filename)
         cache_output(cache_dict, cache_file)
