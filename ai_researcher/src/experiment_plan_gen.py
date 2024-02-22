@@ -69,6 +69,8 @@ if __name__ == "__main__":
         for idea_name, idea in tqdm(ideas.items()):
             prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
             response = json.loads(response.strip())
+            for k,v in response.items():
+                response = v
             print (idea_name)
             print (response)
             print ("Total cost: ", cost)

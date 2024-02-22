@@ -6,7 +6,7 @@
 #!/bin/bash
 
 # Define an array of cache names
-cache_names=("bias_method")
+cache_names=("bias_method" "factuality_prompting_method" "uncertainty_method" "defense_method")
 
 # Seed value
 seed=2024
