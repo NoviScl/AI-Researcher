@@ -21,13 +21,14 @@ def plan_generation_method(idea, demo_examples, topic_description, openai_client
     prompt += "1. Title: A concise statement of the main research question to be used as the paper title.\n"
     prompt += "2. Problem Statement: Clearly define the problem your research intends to address. Explain clearly why this problem is interesting and important.\n"
     prompt += "3. Motivation: Explain why existing methods are not good enough to solve the problem, and explain the inspiration behind the new proposed method. You should also motivate why the proposed method would work better than existing baselines on the problem.\n"
-    prompt += "4. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves prompting, give some example prompts for each step.\n"
-    prompt += "5. Fallback Plan: Propose some alternative plans for what should the students do if the proposed method didn't manage to satisfy the success criteria. For example, you can suggest additional analysis to help debug why the proposed method didn't work, which could inform alternative new methods, or just turn the project into an analysis paper instead by offering some interesting ablation and insights.\n"
+    prompt += "4. Proposed Method: Explain how the proposed method works, describe all the essential steps.\n"
+    prompt += "5. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves prompting, give some example prompts for each step.\n"
+    prompt += "6. Fallback Plan: Propose some alternative plans for what should the students do if the proposed method didn't manage to satisfy the success criteria. For example, you can suggest additional analysis to help debug why the proposed method didn't work, which could inform alternative new methods, or just turn the project into an analysis paper instead by offering some interesting ablation and insights.\n"
     prompt += "The experiment plan should not include any background introduction (e.g., you can skip the literature review, paper writing tips, and ethical discussion). Just give instructions on the experiments.\n"
     prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within a month. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive.\n"
     prompt += "Below is a few examples of how the full experiment plans should look like:\n"
     prompt += demo_examples + "\n\n"
-    prompt += "Now please write down your experiment plan in JSON format. Make sure to be as detailed as possible especially for the data and methods, so that a student can directly follow the plan to implement the experiments."
+    prompt += "Now please write down your experiment plan in JSON format (with a short project name as key and the full experiment plan as the value). Make sure to be as detailed as possible especially so that a student can directly follow the plan to implement the experiments."
     
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=True)
@@ -42,7 +43,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
-    with open("keys.json", "r") as f:
+    with open("../keys.json", "r") as f:
         keys = json.load(f)
 
     OAI_KEY = keys["api_key"]
@@ -53,34 +54,29 @@ if __name__ == "__main__":
         api_key=OAI_KEY
     )
 
-    ## load the grounding papers
-    with open(os.path.join("cache_results/lit_review", args.cache_name+".json"), "r") as f:
-        lit_review = json.load(f)
-    topic_description = lit_review["topic_description"]
-    paper_bank = lit_review["paper_bank"]
-    grounding_papers = paper_bank[ : args.grounding_k]
-
     ## load the demo examples
-    with open("experiment_plan_examples.txt", "r") as f:
+    with open("prompts/experiment_plan_examples_method.txt", "r") as f:
         demo_examples = f.read().strip()
 
     if args.idea_name == "all":
         ## load all ideas 
-        with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
+        with open(os.path.join("../cache_results/ideas", args.cache_name+".json"), "r") as f:
             ideas = json.load(f)["ideas"]
-        
+        topic_description = ideas["topic_description"]
+        print ("topic: ", topic_description)
+
         for idea_name, idea in tqdm(ideas.items()):
-            prompt, response, cost = plan_generation(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+            prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
             print (idea_name)
             print (response)
             print ("Total cost: ", cost)
             print ("\n")
         
             ## save the cache
-            if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
-                os.makedirs("cache_results/experiment_plans/"+args.cache_name)
+            if not os.path.exists("../cache_results/experiment_plans/"+args.cache_name):
+                os.makedirs("../cache_results/experiment_plans/"+args.cache_name)
             cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
-            cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(idea_name.lower().split())+".json")
+            cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, "_".join(idea_name.lower().split())+".json")
             cache_output(cache_dict, cache_file)
 
     else:
@@ -88,8 +84,9 @@ if __name__ == "__main__":
         with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
             ideas = json.load(f)["ideas"]
         idea = ideas[args.idea_name]
+        topic_description = ideas["topic_description"]
 
-        prompt, response, cost = plan_generation(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+        prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
         print (response)
         print ("Total cost: ", cost)
 
