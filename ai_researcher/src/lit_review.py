@@ -85,7 +85,10 @@ def collect_papers(topic_description, openai_client, model, seed, track = "metho
     for k,v in paper_bank.items():
         v["score"] = 0
     for k,v in response.items():
-        paper_bank[k]["score"] = v
+        try:
+            paper_bank[k]["score"] = v
+        except:
+            continue 
     
     ## print stats 
     if print_all:
@@ -128,7 +131,10 @@ def collect_papers(topic_description, openai_client, model, seed, track = "metho
             total_cost += cost
             response = json.loads(response.strip())
             for k,v in response.items():
-                paper_bank[k]["score"] = v
+                try:
+                    paper_bank[k]["score"] = v
+                except:
+                    continue
 
         elif print_all:
             print ("No new papers found in this round.")

@@ -9,7 +9,7 @@
 
 # Define an array of cache names
 # cache_names=("bias_analysis" "adversarial_attack_method" "factuality_prompting_method" "uncertainty_method")
-cache_names=("uncertainty_method")
+cache_names=("uncertainty_prompting_method" "uncertainty_finetuning_method" "uncertainty_calibration_method")
 
 # Number of ideas to generate
 ideas_n=10
