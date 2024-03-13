@@ -9,10 +9,10 @@
 
 # Define an array of cache names
 # cache_names=("bias_analysis" "adversarial_attack_method" "factuality_prompting_method" "uncertainty_method")
-cache_names=("factuality_prompting_method" "uncertainty_method")
+cache_names=("uncertainty_method")
 
 # Number of ideas to generate
-ideas_n=15
+ideas_n=10
 
 # Seed value
 seeds=(2023)

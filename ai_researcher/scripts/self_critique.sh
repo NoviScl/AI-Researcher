@@ -5,7 +5,7 @@
 # python3 self_critique.py --cache_name "uncertainty" --idea_name "all"
 
 
-cache_names=("bias_method" "factuality_prompting_method" "uncertainty_method")
+cache_names=("bias_method")
 # Iterate over each cache name
 for cache_name in "${cache_names[@]}"; do
     echo "Running self_critique.py with cache_name: $cache_name and idea_name: all"

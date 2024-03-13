@@ -4,7 +4,7 @@ import argparse
 import json
 import os
 from lit_review_tools import format_papers_for_printing, parse_and_execute
-from utils import cache_output
+from utils import cache_output, format_plan_json
 from tqdm import tqdm
 import random 
 random.seed(2024)
@@ -12,7 +12,7 @@ random.seed(2024)
 def critique(self_critique_prompt, idea_proposal, topic_description, openai_client, model):
     prompt = "You are a professor with expertise in Natural Language Processing. You need to provide some constructive feedback to the given project proposal on the topic of: " + topic_description + ".\n\n"
 
-    prompt += "The project proposal is:\n" + idea_proposal + "\n\n"
+    prompt += "The project proposal is:\n" + format_plan_json(idea_proposal) + "\n\n"
     prompt += self_critique_prompt
 
     prompt_messages = [{"role": "user", "content": prompt}]
@@ -62,7 +62,7 @@ def paper_scoring(paper_lst, topic_description, critic, openai_client, model):
 def improve_idea(criticisms, idea_proposal, topic_description, openai_client, model):
   
     prompt = "You are a researcher with expertise in Natural Language Processing. You have written a project proposal on the topic of: " + topic_description + ".\n"
-    prompt += "The original proposal is:\n" + idea_proposal + "\n\n"
+    prompt += "The original proposal is:\n" + format_plan_json(idea_proposal) + "\n\n"
     prompt += "The proposal has received some feedback and criticisms from reviewers:\n" + criticisms + "\n"
     prompt += "Now you should edit the original proposal based on the feedback. Directly make changes in the original proposal, don't append a separate response section.\n"
     prompt += "Some revision strategies to consider: \n"
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
-    with open("keys.json", "r") as f:
+    with open("../keys.json", "r") as f:
         keys = json.load(f)
 
     OAI_KEY = keys["api_key"]

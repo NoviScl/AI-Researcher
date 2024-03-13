@@ -17,12 +17,12 @@ def idea_generation_method(paper_bank, grounding_k, examples, ideas_n, topic_des
 
     prompt = "You are an expert researcher in Large Language Models. Now I want you to help me brainstorm some new research project ideas on the topic of: " + topic_description + ".\n\n"
     prompt += "Here are some relevant papers on this topic just for your background knowledge:\n" + format_papers_for_printing(grounding_papers, include_score=False, include_id=False) + "\n"
-    prompt += "You should generate {} ideas on this topic. Try to be creative and diverse in the idea generation, and do not repeat any similar ideas. The above papers are only for inspiration and you should not cite them and just make some incremental modifications. Instead, you should make sure your ideas are novel and distinct from the prior literature. You should aim for projects that can potentially win best paper awards at top conferences like ACL and NeurIPS.\n".format(str(ideas_n))
-    prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be adapted from the topic description and something that large language models cannot solve well yet; (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any; (3) Motivation: Explain the inspiration of the proposed method and why it would work well; (4) Proposed Method: Propose your new method and describe it in detail; note that the proposed method should be more advanced and effective than the baselines; it can be a creative new prompting technique or a framework instantiated by various prompting steps; (5) Experiment Plan: Specify the experiment steps and evaluation metrics.\n"
+    prompt += "You should generate {} different ideas on this topic. Try to be creative and diverse in the idea generation, and do not repeat any similar ideas. The above papers are only for inspiration and you should not cite them and just make some incremental modifications. Instead, you should make sure your ideas are novel and distinct from the prior literature. You should aim for projects that can potentially win best paper awards at top conferences like ACL and NeurIPS.\n".format(str(ideas_n))
+    prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be closely related to the topic description and something that large language models cannot solve well yet. (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any. (3) Motivation: Explain the inspiration of the proposed method and why it would work well. (4) Proposed Method: Propose your new method and describe it in detail. The proposed method should be maximally different from all existing work and baselines, and be more advanced and effective than the baselines. It can involve prompting, finetuning, or any sort of inference time interventions, as long as it does not involve expensive pretraining and human experiments (minimal manual evaluation is fine). You should be as creative as possible in proposing new methods. (5) Experiment Plan: Specify the experiment steps and evaluation metrics.\n"
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted:\n" + examples + "\n"
     prompt += "But you should make sure to come up with your own novel ideas for the specified problem: " + topic_description + ".\n"
-    prompt += "To make the projects as feasible as possible (preferably something that can be executed by a student within a month), please avoid projects involving large-scale model training or human studies; insead, please prefer ideas that mostly only involve prompting.\n"
-    prompt += "Please write down your ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (which should be one paragraph long, roughly similar to an abstract)."
+    # prompt += "To make the projects as feasible as possible (preferably something that can be executed by a PhD student within a month), please avoid projects involving large-scale model training or human studies.\n"
+    prompt += "Please write down your ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format)."
 
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0.9, max_tokens=4096, seed=seed, json_output=True)
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     topic_description = lit_review["topic_description"]
     paper_bank = lit_review["paper_bank"]
 
-    with open("prompts/method_idea_examples.txt", "r") as f:
+    with open("prompts/idea_examples_method.txt", "r") as f:
         method_idea_examples = f.read().strip()
 
     print ("topic: ", topic_description)
@@ -82,7 +82,7 @@ if __name__ == "__main__":
         prompt, response, cost = idea_generation_method(paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, openai_client, args.engine, args.seed)
     elif "analysis" in args.cache_name:
         prompt, response, cost = idea_generation_analysis(paper_bank, args.grounding_k, args.ideas_n, topic_description, openai_client, args.engine, args.seed)
-    print ("prompt: ", prompt)
+    # print ("prompt: ", prompt)
     print ("ideas: ", response)
     print ("idea generation cost: ", cost)
 
