@@ -9,13 +9,13 @@
 
 # Define an array of cache names
 # cache_names=("bias_analysis" "adversarial_attack_method" "factuality_prompting_method" "uncertainty_method")
-cache_names=("uncertainty_prompting_method" "uncertainty_finetuning_method" "uncertainty_calibration_method")
+cache_names=("attack_prompting_method" "attack_finetuning_method" "attack_intervention_method" "defense_prompting_method" "defense_finetuning_method" "defense_intervention_method")
 
 # Number of ideas to generate
-ideas_n=10
+ideas_n=15
 
 # Seed value
-seeds=(2023)
+seeds=(2022 2023)
 
 for seed in "${seeds[@]}"; do
     # Iterate over each cache name and run the Python script

@@ -22,7 +22,7 @@ def idea_generation_method(paper_bank, grounding_k, examples, ideas_n, topic_des
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted (but don't borrow the ideas themselves):\n" + examples + "\n"
     prompt += "But you should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ".\n"
     # prompt += "To make the projects as feasible as possible (preferably something that can be executed by a PhD student within a month), please avoid projects involving large-scale model training or human studies.\n"
-    prompt += "Please write down your ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format)."
+    prompt += "Please write down your {} ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format). Do not repeat idea names or contents.".format(str(ideas_n))
 
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0.9, max_tokens=4096, seed=seed, json_output=True)
@@ -49,7 +49,7 @@ def idea_generation_analysis(paper_bank, grounding_k, ideas_n, topic_description
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
+    parser.add_argument('--engine', type=str, default='gpt-4-0125-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers to use for grounding')
     parser.add_argument('--ideas_n', type=int, default=5, help="how many ideas to generate")
@@ -82,7 +82,7 @@ if __name__ == "__main__":
         prompt, response, cost = idea_generation_method(paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, openai_client, args.engine, args.seed)
     elif "analysis" in args.cache_name:
         prompt, response, cost = idea_generation_analysis(paper_bank, args.grounding_k, args.ideas_n, topic_description, openai_client, args.engine, args.seed)
-    # print ("prompt: ", prompt)
+    print ("prompt: ", prompt)
     print ("ideas: ", response)
     print ("idea generation cost: ", cost)
 
