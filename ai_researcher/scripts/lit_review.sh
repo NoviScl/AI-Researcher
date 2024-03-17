@@ -1,103 +1,79 @@
+## factuality 
+# python3 src/lit_review.py \
+#  --engine "gpt-4-1106-preview" \
+#  --topic_description "novel methods that can improve factuality and reduce hallucination of large language models" \
+#  --cache_name "factuality" \
+#  --track "method" \
+#  --method "prompting" \
+#  --max_paper_bank_size 70 \
+#  --print_all
+
+
+## uncertainty 
 python3 src/lit_review.py \
- --topic_description "novel prompting methods that can improve factuality and reduce hallucination of large language models" \
- --cache_name "factuality_prompting" \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can better quantify uncertainty or confidence of large language model" \
+ --cache_name "uncertainty" \
  --track "method" \
- --method "prompting" \
- --max_paper_bank_size 10 \
+ --max_paper_bank_size 70 \
  --print_all
 
-# python3 src/lit_review.py \
-#  --topic_description "novel finetuning methods that can improve factuality and reduce hallucination of large language models" \
-#  --cache_name "factuality_finetuning" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
 
-# python3 src/lit_review.py \
-#  --topic_description "novel inference-time intervention or decoding methods that can improve factuality and reduce hallucination of large language models" \
-#  --cache_name "factuality_intervention" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
+## attack 
+python3 src/lit_review.py \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can jailbreak or adversarially attack large language models" \
+ --cache_name "attack" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
 
 
-
-# python3 src/lit_review.py \
-#  --topic_description "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language model" \
-#  --cache_name "uncertainty_prompting" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
-
-# python3 src/lit_review.py \
-#  --topic_description "novel finetuning methods that can better quantify uncertainty or calibrate the confidence of large language model" \
-#  --cache_name "uncertainty_finetuning" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
-
-# python3 src/lit_review.py \
-#  --topic_description "novel calibration methods that can better quantify uncertainty or confidence of large language model" \
-#  --cache_name "uncertainty_calibration" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
+## defense 
+python3 src/lit_review.py \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can defend against adversarial attacks or prompt injection on large language models and improve robustness" \
+ --cache_name "defense" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
 
 
+## reasoning 
+python3 src/lit_review.py \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can improve reasoning of large language models" \
+ --cache_name "reasoning" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
 
 
-# python3 src/lit_review.py \
-#  --topic_description "novel prompting methods to jailbreak or adversarially attack large language models" \
-#  --cache_name "attack_prompting" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
+## bias
+python3 src/lit_review.py \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can mitigate social biases of large language models" \
+ --cache_name "bias" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
 
 
-
-# python3 src/lit_review.py \
-#  --topic_description "novel intervention methods that can better quantify uncertainty or calibrate the confidence of large language model" \
-#  --cache_name "uncertainty_intervention" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
-
-
-# python3 src/lit_review.py \
-#  --topic_description "novel finetuning methods to jailbreak or adversarially attack large language models" \
-#  --cache_name "attack_finetuning" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
+## mulimodal
+python3 src/lit_review.py \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can improve multimodal understanding and problem solving of vision-language models" \
+ --cache_name "multimodal" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
 
 
-# python3 src/lit_review.py \
-#  --topic_description "novel intervention methods to jailbreak or adversarially attack large language models" \
-#  --cache_name "attack_intervention" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
-
-
-# python3 src/lit_review.py \
-#  --topic_description "novel prompting methods to defend against adversarial attacks or prompt injection on large language models and improve robustness" \
-#  --cache_name "defense_prompting" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
-
-
-# python3 src/lit_review.py \
-#  --topic_description "novel finetuning methods to defend against adversarial attacks or prompt injection on large language models and improve robustness" \
-#  --cache_name "defense_finetuning" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
-
-
-# python3 src/lit_review.py \
-#  --topic_description "novel intervention methods to defend against adversarial attacks or prompt injection on large language models and improve robustness" \
-#  --cache_name "defense_intervention" \
-#  --track "method" \
-#  --max_paper_bank_size 70 \
-#  --print_all
+## multilingual
+python3 src/lit_review.py \
+ --engine "gpt-4-1106-preview" \
+ --topic_description "novel methods that can improve multilingual, code-switched, or low-resource language performance of large language models" \
+ --cache_name "multilingual" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
