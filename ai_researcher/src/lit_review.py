@@ -32,12 +32,13 @@ def next_query(topic_description, openai_client, model, seed, grounding_papers, 
 
     return prompt, response, cost
 
-def paper_scoring_method(paper_lst, topic_description, openai_client, model, seed):
+def paper_scoring_method(paper_lst, topic_description, method, openai_client, model, seed):
     ## use gpt4 to score each paper, focusing on method papers
     prompt = "You are a helpful literature review assistant whose job is to read the below set of papers and score each paper. The criteria for scoring are:\n"
     prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ". Note that it should be specific to solve the problem of focus, rather than just general prompting methods.\n"
     prompt += "(2) The paper is an empirical paper that proposes a novel method and conducts computational experiments to show improvement over baselines (position/opinion papers, review/survey papers, and analysis papers should get low scores for this purpose).\n"
     prompt += "(3) The paper is interesting and meaningful, with potential to inspire new projects.\n"
+    prompt += "(4) The main technique is based on {}.\n".format(method)
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10. Write the response in JSON format with \"paperID: score\" as the key and value for each paper.\n"
     
@@ -59,7 +60,7 @@ def paper_scoring_analysis(paper_lst, topic_description, openai_client, model, s
     return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
-def collect_papers(topic_description, openai_client, model, seed, track = "method", grounding_k = 10, max_papers=60, print_all=True):
+def collect_papers(topic_description, openai_client, model, seed, track = "method", method = "prompting", grounding_k = 10, max_papers=60, print_all=True):
     paper_bank = {}
     total_cost = 0
     all_queries = []
@@ -75,7 +76,7 @@ def collect_papers(topic_description, openai_client, model, seed, track = "metho
 
     ## score each paper
     if track == "method":
-        _, response, cost = paper_scoring_method(paper_lst, topic_description, openai_client, model, seed)
+        _, response, cost = paper_scoring_method(paper_lst, topic_description, method, openai_client, model, seed)
     elif track == "analysis":
         _, response, cost = paper_scoring_analysis(paper_lst, topic_description, openai_client, model, seed)
     total_cost += cost
@@ -125,7 +126,7 @@ def collect_papers(topic_description, openai_client, model, seed, track = "metho
             
             ## gpt4 score new papers
             if track == "method":
-                _, response, cost = paper_scoring_method(paper_lst, topic_description, openai_client, model, seed)
+                _, response, cost = paper_scoring_method(paper_lst, topic_description, method, openai_client, model, seed)
             elif track == "analysis":
                 _, response, cost = paper_scoring_analysis(paper_lst, topic_description, openai_client, model, seed)
             total_cost += cost
@@ -162,6 +163,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=2024, help='seed for GPT-4 generation')
     parser.add_argument('--topic_description', type=str, default='automatic evaluation methods and metrics for text-to-image diffusion models', help='one-sentence topic description')
     parser.add_argument('--track', type=str, default='method', help='either method or analysis')
+    parser.add_argument('--method', type=str, default='prompting', help='either prompting or finetuning')
     parser.add_argument('--max_paper_bank_size', type=int, default=60, help='max number of papers to score and store in the paper bank')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers for grounding when generating next queries')
     parser.add_argument('--cache_name', type=str, help='give a name for the output cache file; leave it None if no need caching')
