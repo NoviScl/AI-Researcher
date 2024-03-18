@@ -21,6 +21,6 @@ for seed in "${seeds[@]}"; do
     # Iterate over each cache name and run the Python script
     for cache_name in "${cache_names[@]}"; do
         echo "Running grounded_idea_gen.py with cache_name: $cache_name"
-        python3 src/grounded_idea_gen.py --engine "gpt-4-1106-preview" --cache_name "$cache_name" --grounding_k 10 --method "prompting" --ideas_n $ideas_n --seed $seed
+        python3 src/grounded_idea_gen.py --engine "gpt-4-1106-preview" --cache_name "$cache_name" --grounding_k 10 --method "finetuning" --ideas_n $ideas_n --seed $seed
     done
 done 

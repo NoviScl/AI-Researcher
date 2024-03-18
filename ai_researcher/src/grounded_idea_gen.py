@@ -21,8 +21,10 @@ def idea_generation_method(method, paper_bank, grounding_k, examples, ideas_n, t
     prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be closely related to the topic description and something that large language models cannot solve well yet. (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any. (3) Motivation: Explain the inspiration of the proposed method and why it would work well. (4) Proposed Method: Propose your new method and describe it in detail. The proposed method should be maximally different from all existing work and baselines, and be more advanced and effective than the baselines. You should be as creative as possible in proposing new methods, we love unhinged ideas that sound crazy. This should be the most detailed section of the proposal. (5) Experiment Plan: Specify the experiment steps and evaluation metrics.\n"
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted (but don't borrow the ideas themselves):\n" + examples + "\n"
     prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ".\n"
-    prompt += "Focus on novel and more complex prompting ideas for now, and we will generate finetuning ideas later.\n"
-    # prompt += "The idea should be either about a novel prompting method or a novel finetuning method. You should specify the type of method in the output, following the same format as above. You should balance the number of prompting and finetuning ideas.\n"
+    if method == "prompting":
+        prompt += "Focus on novel and more complex prompting ideas for now, and we will generate finetuning ideas later.\n"
+    elif prompt == "finetuning":
+        prompt += "Focus on novel and more complex finetuning ideas for now, and we will generate prompting ideas later.\n"
     prompt += "Please write down your {} ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format). Do not repeat idea names or contents.".format(str(ideas_n))
 
     prompt_messages = [{"role": "user", "content": prompt}]
