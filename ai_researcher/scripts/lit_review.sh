@@ -12,7 +12,7 @@
 ## uncertainty 
 python3 src/lit_review.py \
  --engine "gpt-4-1106-preview" \
- --topic_description "novel methods that can better quantify uncertainty or confidence of large language model" \
+ --topic_description "novel methods that can better quantify uncertainty or confidence of large language models" \
  --cache_name "uncertainty" \
  --track "method" \
  --max_paper_bank_size 70 \
