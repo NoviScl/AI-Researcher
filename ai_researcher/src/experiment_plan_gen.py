@@ -11,7 +11,7 @@ import random
 random.seed(2024)
 
 @retry.retry(tries=3, delay=2)
-def plan_generation_method(idea, demo_examples, topic_description, openai_client, model, seed):
+def plan_generation_method(method, idea, demo_examples, topic_description, openai_client, model, seed):
     ## forumate an idea from a paragraph into a full experiment plan based on our template
 
     prompt = "You are an expert researcher in Natural Language Processing and your job is to expand a brief and vague project idea into a detailed experiment plan so that your student can follow the steps and execute the full project. I will provide you with an idea on the topic of: " + topic_description + ".\n\n"
@@ -25,7 +25,8 @@ def plan_generation_method(idea, demo_examples, topic_description, openai_client
     prompt += "5. Step-by-Step Experiment Plan: Break down every single step of the experiments, make sure every step is executable. Cover all essential details such as the datasets, models, and metrics to be used. If the project involves prompting, give some example prompts for each step.\n"
     prompt += "6. Fallback Plan: Propose some alternative plans for what should the students do if the proposed method didn't manage to satisfy the success criteria. For example, you can suggest additional analysis to help debug why the proposed method didn't work, which could inform alternative new methods, or just turn the project into an analysis paper instead by offering some interesting ablation and insights.\n"
     prompt += "The experiment plan should not include any background introduction (e.g., you can skip the literature review, paper writing tips, and ethical discussion). Just give instructions on the experiments.\n"
-    prompt += "When designing experiments, note that the goal is to have a short-term project that can be finished within a month. So, try to avoid training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid any human evaluation or human data collection, which is time-consuming and expensive.\n"
+    if method == "prompting":
+        prompt += "When designing experiments, try to avoid pre-training models from scrach and instead prefer prompting-based methods. On rare cases, finetuning small open-source language models is also acceptable. Try to avoid large-scale human evaluation or human data collection, which is time-consuming and expensive.\n"
     prompt += "Below is a few examples of how the full experiment plans should look like:\n"
     prompt += demo_examples + "\n\n"
     prompt += "Now please write down your experiment plan in JSON format (keys should be the section names, just like the above examples). Make sure to be as detailed as possible especially so that a student can directly follow the plan to implement the experiments."
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
     parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
+    parser.add_argument('--method', type=str, default='prompting', help='either prompting or finetuning')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers to use for grounding')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
@@ -55,8 +57,12 @@ if __name__ == "__main__":
     )
 
     ## load the demo examples
-    with open("prompts/experiment_plan_examples_method.txt", "r") as f:
-        demo_examples = f.read().strip()
+    if args.method == "prompting":
+        with open("prompts/experiment_plan_examples_prompting.txt", "r") as f:
+            demo_examples = f.read().strip()
+    elif args.method == "finetuning":
+        with open("prompts/experiment_plan_examples_finetuning.txt", "r") as f:
+            demo_examples = f.read().strip()
 
     if args.idea_name == "all":
         ## load all ideas 
@@ -67,7 +73,7 @@ if __name__ == "__main__":
         print ("topic: ", topic_description)
 
         for idea_name, idea in tqdm(ideas.items()):
-            prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+            prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
             response = json.loads(response.strip())
             for k,v in response.items():
                 response = v
