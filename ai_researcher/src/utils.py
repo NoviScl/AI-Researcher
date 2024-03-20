@@ -54,7 +54,12 @@ def format_plan_json(experiment_plan_json):
         else:
             output_str += k + ": " + "\n"
             for sub_k, sub_v in v.items():
-                output_str += "  - " + sub_k + ": " + sub_v.strip() + "\n"
+                if isinstance(sub_v, str):
+                    output_str += "  - " + sub_k + ": " + sub_v.strip() + "\n"
+                else:
+                    output_str += "  - " + sub_k + ": " + "\n"
+                    for sub_sub_k, sub_sub_v in sub_v.items():
+                        output_str += "    - " + sub_sub_k + ": " + sub_sub_v.strip() + "\n"
             output_str += "\n"
     return output_str
 

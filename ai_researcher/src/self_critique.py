@@ -54,28 +54,22 @@ def paper_scoring(paper_lst, topic_description, critic, openai_client, model):
     prompt += "(2) The paper is directly relevant to help address one of the critics here:\n" + critic.strip() + "\n\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10. Write the response in JSON format with \"paperID (first 4 digits): score\" for each paper.\n"
-    
+    # print (prompt)
+
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, json_output=True)
     return prompt, response, cost
 
-def improve_idea(criticisms, idea_proposal, topic_description, openai_client, model):
+def improve_idea(self_improvement_prompt, criticisms, idea_proposal, topic_description, openai_client, model):
   
     prompt = "You are a researcher with expertise in Natural Language Processing. You have written a project proposal on the topic of: " + topic_description + ".\n"
     prompt += "The original proposal is:\n" + format_plan_json(idea_proposal) + "\n\n"
     prompt += "The proposal has received some feedback and criticisms from reviewers:\n" + criticisms + "\n"
-    prompt += "Now you should edit the original proposal based on the feedback. Directly make changes in the original proposal, don't append a separate response section.\n"
-    prompt += "Some revision strategies to consider: \n"
-    prompt += "1. If the feedback is about missing prompt details, just add in the actual prompt to be used.\n"
-    prompt += "2. If the feedback is about missing metric details, mention the metrics to use or describe how to implement the new scoring method.\n"
-    prompt += "3. If the feedback is about missing dataset details, either mention existing datasets to use, or in rare cases, describe how to automatically construct the new dataset.\n"
-    prompt += "4. If the feedback is about missing baseline details, mention the baseline methods to compare with.\n"
-    prompt += "5. If the feedback is about involving human experiments, just remove the part that involves asking humans and provide automatic alternatives.\n"
-    prompt += "You only need to make changes when the feedback is actually applicable (i.e., when the original proposal indeed missed some details).\n"
-    prompt += "Please write down your improved proposal in the same format as the original proposal, make sure to expand the experiment plan section with all necessary details to address the relevant comments."
+    prompt += self_improvement_prompt
+    # print (prompt)
 
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, json_output=False)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4000, json_output=True)
     return prompt, response, cost
 
 
@@ -100,6 +94,8 @@ if __name__ == "__main__":
     
     with open("prompts/self_critique_prompt.txt", "r") as f:
         self_critique_prompt = f.read()
+    with open("prompts/self_improvement_prompt.txt", "r") as f:
+        self_improvement_prompt = f.read()
 
     if args.idea_name == "all":
         filenames = os.listdir("../cache_results/experiment_plans/"+args.cache_name)
@@ -115,17 +111,19 @@ if __name__ == "__main__":
         idea_name = ideas["idea_name"]
         idea = ideas["raw_idea"]
         topic_description = ideas["topic_description"]
-        experiment_plan = ideas["experiment_plan"]
+        experiment_plan = ideas["improved_experiment_plan"]
 
         prompt, criticisms, cost = critique(self_critique_prompt, experiment_plan, topic_description, openai_client, args.engine)
         print ("criticisms: \n", criticisms)
 
-        prompt, new_plan, cost = improve_idea(criticisms, experiment_plan, topic_description, openai_client, args.engine)
+        prompt, new_plan, cost = improve_idea(self_improvement_prompt, criticisms, experiment_plan, topic_description, openai_client, args.engine)
         print ("\nnew plan: \n", new_plan)
 
         ## cache the improved idea
         if not os.path.exists("../cache_results/experiment_plans/"+args.cache_name):
             os.makedirs("../cache_results/experiment_plans/"+args.cache_name)
-        cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": experiment_plan, "criticisms": criticisms, "improved_plan": new_plan.strip()}
+        ideas["criticisms"] = criticisms
+        final_plan_json = json.loads(new_plan.strip())
+        ideas["final_revised_plan"] = final_plan_json
         cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, filename)
-        cache_output(cache_dict, cache_file)
+        cache_output(ideas, cache_file)

@@ -43,10 +43,12 @@ def novelty_score(experiment_plan, related_paper, openai_client, model, seed):
     prompt += "The project proposal is:\n" + format_plan_json(experiment_plan).strip() + ".\n"
     prompt += "The paper is:\n" + format_papers_for_printing([related_paper], include_score=False) + "\n"
     # prompt += "The project proposal and the paper abstract is considered a good match if they are studying the same research problem with similar approaches. Note that the paper abstract must cover all topics mentioned in the project proposal. For example, if the proposal is about retrieval augmentation for improving code generation, then the paper needs to mention both retrieval augmentation and improving code generation in order to consider a good match. Being only partially relevant does not count. For example, if the project is about retrieval augmented code generation while the paper is about self-improving code generation, then it doesn't count. Note that the details do not matter (such as which datasets are used), you should only focus on the high-level idea.\n"
-    prompt += "For analysis type of project proposal, the project proposal and paper abstract are considered a match as long as the research problem is the same. For example, if they are both studying how dialect variations affect language model confidence. The exact experiments do not matter. But note that the paper should mention all key concepts of the project proposal rather than just partial match. For example, for a proposal analyzing dialect variations' impact on language model confidence, the paper should be related to both dialect variations as well as model confidence. Only mentioning one does not count as a match.\n"
-    prompt += "For new method type of project proposal, the project proposal and paper abstract are considered a match if both the research problem and the approach are the same. For example, if they are both trying to improve code generation accuracy and both proposing to use retrieval augmentation. Note that the method details do not matter, you should only focus on the high-level concepts and judge whether they are directly relevant.\n"
-    prompt += "You should first specify whether the project proposal is about analysis or about new methods, and what is the proposed research problem and approach. If answering yes, your explanation should be the one-sentence summary of both the abstract and the proposal and their similarity (e.g., they are both about probing biases of language models via fictional characters). If answering no, give the short summaries of the abstract and proposal separately, then highlight their differences. Then end your response with a binary judgment, saying either \"Yes\" or \"No\". Change to a new line after your explanation and just say Yes or No with no punctuation in the end.\n"
-    
+    # prompt += "For analysis type of project proposal, the project proposal and paper abstract are considered a match as long as the research problem is the same. For example, if they are both studying how dialect variations affect language model confidence. The exact experiments do not matter. But note that the paper should mention all key concepts of the project proposal rather than just partial match. For example, for a proposal analyzing dialect variations' impact on language model confidence, the paper should be related to both dialect variations as well as model confidence. Only mentioning one does not count as a match.\n"
+    # prompt += "For new method type of project proposal, the project proposal and paper abstract are considered a match if both the research problem and the approach are the same. For example, if they are both trying to improve code generation accuracy and both proposing to use retrieval augmentation. Note that the method details do not matter, you should only focus on the high-level concepts and judge whether they are directly relevant.\n"
+    prompt += "The project proposal and paper abstract are considered a match if both the research problem and the approach are the same. For example, if they are both trying to improve code generation accuracy and both propose to use retrieval augmentation. Note that the method details do not matter, you should only focus on the high-level concepts and judge whether they are directly relevant.\n"
+    prompt += "You should first specify what is the proposed research problem and approach. If answering yes, your explanation should be the one-sentence summary of both the abstract and the proposal and their similarity (e.g., they are both about probing biases of language models via fictional characters). If answering no, give the short summaries of the abstract and proposal separately, then highlight their differences. Then end your response with a binary judgment, saying either \"Yes\" or \"No\". Change to a new line after your explanation and just say Yes or No with no punctuation in the end.\n"
+    # print (prompt)
+
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=1000, seed=seed, json_output=False)
     return prompt, response, cost
@@ -118,7 +120,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
-    with open("keys.json", "r") as f:
+    with open("../keys.json", "r") as f:
         keys = json.load(f)
 
     OAI_KEY = keys["api_key"]
@@ -130,26 +132,30 @@ if __name__ == "__main__":
     )
 
     if args.idea_name == "all":
-        filenames = os.listdir("cache_results/experiment_plans/"+args.cache_name)
+        filenames = os.listdir("../cache_results/experiment_plans/"+args.cache_name)
     else:
         filenames = ["_".join(args.idea_name.lower().split())+".json"]
 
     for filename in tqdm(filenames):
         print ("working on: ", filename)
         ## load the idea
-        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, filename)
+        cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, filename)
         with open(cache_file, "r") as f:
             ideas = json.load(f)
 
         topic_description = ideas["topic_description"]
-        plan_json = ideas["final_plan_json"]
-        related_papers = ideas["novelty_check_papers"]
+        plan_json = ideas["final_revised_plan"]
+        related_papers = ideas["novelty_improvement_papers"]
+        ideas["novelty_check_papers"] = related_papers[ : args.check_n]
 
         novel = True 
-        for i in range(args.check_n):
+        for i in tqdm(range(args.check_n)):
             prompt, response, cost = novelty_score(plan_json, related_papers[i], openai_client, args.engine, args.seed)
             ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
             final_judgment = response.strip().split()[-1].lower()
+            # print ("novelty judgment: ", final_judgment)
+            # print ("\n\n")
+            
             if final_judgment == "yes":
                 novel = False
             ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment

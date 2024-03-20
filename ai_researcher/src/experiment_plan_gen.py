@@ -3,7 +3,6 @@ from utils import call_api
 import argparse
 import json
 import os
-from lit_review_tools import format_papers_for_printing
 from utils import cache_output, format_plan_json
 import retry
 from tqdm import tqdm
@@ -91,7 +90,7 @@ if __name__ == "__main__":
 
     else:
         ## load the idea 
-        with open(os.path.join("cache_results/ideas", args.cache_name+".json"), "r") as f:
+        with open(os.path.join("../cache_results/ideas", args.cache_name+".json"), "r") as f:
             ideas = json.load(f)["ideas"]
         idea = ideas[args.idea_name]
         topic_description = ideas["topic_description"]
