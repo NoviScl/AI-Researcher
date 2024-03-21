@@ -146,7 +146,7 @@ if __name__ == "__main__":
         topic_description = ideas["topic_description"]
         plan_json = ideas["final_revised_plan"]
         related_papers = ideas["novelty_improvement_papers"]
-        ideas["novelty_check_papers"] = related_papers[ : args.check_n]
+        ideas["novelty_check_papers"] = related_papers[ : args.check_n].copy()
 
         novel = True 
         for i in tqdm(range(args.check_n)):

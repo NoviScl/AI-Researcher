@@ -48,7 +48,7 @@ def self_improve(experiment_plan, paper_bank, openai_client, model, seed):
     prompt += "Directly give me the final improved project proposal.\n"
     
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=True)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0.1, max_tokens=4096, seed=seed, json_output=True)
     return prompt, response, cost
 
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     )
 
     if args.idea_name == "all":
-        filenames = os.listdir("cache_results/experiment_plans/"+args.cache_name)
+        filenames = os.listdir("../cache_results/experiment_plans/"+args.cache_name)
     else:
         filenames = ["_".join(args.idea_name.lower().split())+".json"]
 
@@ -145,6 +145,10 @@ if __name__ == "__main__":
         topic_description = ideas["topic_description"]
         idea = ideas["experiment_plan"]
         idea_name = ideas["idea_name"]
+
+        if "novelty_improvement_papers" in ideas and "improved_experiment_plan" in ideas:
+            print ("The novelty improvement has already been done for this idea.")
+            continue
 
         # print ("Retrieving related works for idea: ", idea_name)
 
