@@ -2,6 +2,8 @@ import os
 import json
 
 def calc_price(model, usage):
+    if "claude" in model:
+        return (0.015 * usage.input_tokens + 0.075 * usage.output_tokens) / 1000.0
     if model == "gpt-4-1106-preview" or model == "gpt-4-0125-preview":
         return (0.01 * usage.prompt_tokens + 0.03 * usage.completion_tokens) / 1000.0
     if model == "gpt-4":
@@ -22,6 +24,18 @@ def call_api(openai_client, model, prompt_messages, temperature=1.0, max_tokens=
     cost = calc_price(model, completion.usage)
     response = completion.choices[0].message.content.strip()
     
+    return response, cost
+
+def call_api_claude(client, model, prompt_messages, temperature=1.0, max_tokens=100):
+    message = client.messages.create(
+        model=model,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        messages=prompt_messages
+    )
+    cost = calc_price(model, message.usage)
+    response = message.content[0].text
+
     return response, cost
 
 def cache_output(output, file_name):
