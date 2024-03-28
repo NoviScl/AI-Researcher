@@ -1,4 +1,5 @@
 from openai import OpenAI
+import anthropic
 from utils import call_api
 import argparse
 import json
@@ -21,6 +22,8 @@ def idea_generation_method(method, paper_bank, grounding_k, examples, ideas_n, t
     prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be closely related to the topic description and something that large language models cannot solve well yet. (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any. (3) Motivation: Explain the inspiration of the proposed method and why it would work well. (4) Proposed Method: Propose your new method and describe it in detail. The proposed method should be maximally different from all existing work and baselines, and be more advanced and effective than the baselines. You should be as creative as possible in proposing new methods, we love unhinged ideas that sound crazy. This should be the most detailed section of the proposal. (5) Experiment Plan: Specify the experiment steps, baselines, and evaluation metrics.\n"
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted (but don't borrow the ideas themselves):\n" + examples + "\n"
     prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ".\n"
+    if "claude" in model:
+        prompt += "You should make each idea standalone and not dependent on the other ideas.\n"
     if method == "prompting":
         prompt += "Focus on novel and more complex prompting ideas for now, and we will generate finetuning ideas later. The proposed method section should specify how to construct the prompts for all steps involved.\n"
     elif method == "finetuning":
@@ -64,12 +67,19 @@ if __name__ == "__main__":
         keys = json.load(f)
     random.seed(args.seed)
 
+    ANTH_KEY = keys["anthropic_key"]
     OAI_KEY = keys["api_key"]
     ORG_ID = keys["organization_id"]
-    openai_client = OpenAI(
-        organization=ORG_ID,
-        api_key=OAI_KEY
-    )
+    
+    if "claude" in args.engine:
+        client = anthropic.Anthropic(
+            api_key=ANTH_KEY,
+        )
+    else:
+        client = OpenAI(
+            organization=ORG_ID,
+            api_key=OAI_KEY
+        )
 
     with open(os.path.join("../cache_results/lit_review", args.cache_name + ".json"), "r") as f:
         lit_review = json.load(f)
@@ -91,17 +101,17 @@ if __name__ == "__main__":
     print ("\n")
     print ("generating {} ideas...".format(str(args.ideas_n)))
     if "method" in args.cache_name:
-        prompt, response, cost = idea_generation_method(args.method, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, openai_client, args.engine, args.seed)
+        prompt, response, cost = idea_generation_method(args.method, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
     elif "analysis" in args.cache_name:
-        prompt, response, cost = idea_generation_analysis(paper_bank, args.grounding_k, args.ideas_n, topic_description, openai_client, args.engine, args.seed)
-    # print ("prompt: ", prompt)
-    # print ("ideas: ", response)
+        prompt, response, cost = idea_generation_analysis(paper_bank, args.grounding_k, args.ideas_n, topic_description, client, args.engine, args.seed)
+    print ("prompt: ", prompt)
+    print ("ideas: ", response)
     print ("idea generation cost: ", cost)
 
     ## cache the generated ideas
     response = json.loads(response.strip())
     ideas = {"topic_description": topic_description, "ideas": response}
-    ideas_file = os.path.join("../cache_results/ideas", args.cache_name + '_' + args.method + ".json")
+    ideas_file = os.path.join("../cache_results/ideas_claude", args.cache_name + '_' + args.method + ".json")
     
     ## if the idea_cache already exists, directly add to the current list
     if os.path.exists(ideas_file):
@@ -111,7 +121,7 @@ if __name__ == "__main__":
         ideas = ideas_cache
 
     ## save the cache
-    if not os.path.exists("../cache_results/ideas"):
-        os.makedirs("../cache_results/ideas")
+    if not os.path.exists("../cache_results/ideas_claude"):
+        os.makedirs("../cache_results/ideas_claude")
     cache_output(ideas, ideas_file)
 
