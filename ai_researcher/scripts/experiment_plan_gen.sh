@@ -6,7 +6,7 @@
 #!/bin/bash
 
 # Define an array of cache names
-cache_names=("attack_method_prompting")
+cache_names=("bias_method_prompting" "factuality_method_prompting" "reasoning_method_prompting")
 
 # Seed value
 seed=2024
@@ -14,5 +14,5 @@ seed=2024
 # Iterate over each cache name and run the Python script
 for cache_name in "${cache_names[@]}"; do
     echo "Running experiment_plan_gen.py with cache_name: $cache_name"
-    python3 src/experiment_plan_gen.py --cache_name "$cache_name" --idea_name "all" --seed $seed --method "prompting"
+    python3 src/experiment_plan_gen.py --engine "claude-3-opus-20240229" --cache_name "$cache_name" --idea_name "all" --seed $seed --method "prompting"
 done

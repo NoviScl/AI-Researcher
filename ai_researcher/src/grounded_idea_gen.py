@@ -111,7 +111,7 @@ if __name__ == "__main__":
     ## cache the generated ideas
     response = json.loads(response.strip())
     ideas = {"topic_description": topic_description, "ideas": response}
-    ideas_file = os.path.join("../cache_results/ideas_claude", args.cache_name + '_' + args.method + ".json")
+    ideas_file = os.path.join("../cache_results/ideas", args.cache_name + '_' + args.method + ".json")
     
     ## if the idea_cache already exists, directly add to the current list
     if os.path.exists(ideas_file):
@@ -121,7 +121,7 @@ if __name__ == "__main__":
         ideas = ideas_cache
 
     ## save the cache
-    if not os.path.exists("../cache_results/ideas_claude"):
-        os.makedirs("../cache_results/ideas_claude")
+    if not os.path.exists("../cache_results/ideas"):
+        os.makedirs("../cache_results/ideas")
     cache_output(ideas, ideas_file)
 

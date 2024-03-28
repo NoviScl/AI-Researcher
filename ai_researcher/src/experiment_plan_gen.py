@@ -1,4 +1,5 @@
 from openai import OpenAI
+import anthropic
 from utils import call_api
 import argparse
 import json
@@ -47,13 +48,20 @@ if __name__ == "__main__":
     with open("../keys.json", "r") as f:
         keys = json.load(f)
 
+    ANTH_KEY = keys["anthropic_key"]
     OAI_KEY = keys["api_key"]
     ORG_ID = keys["organization_id"]
     S2_KEY = keys["s2_key"]
-    openai_client = OpenAI(
-        organization=ORG_ID,
-        api_key=OAI_KEY
-    )
+    
+    if "claude" in args.engine:
+        client = anthropic.Anthropic(
+            api_key=ANTH_KEY,
+        )
+    else:
+        client = OpenAI(
+            organization=ORG_ID,
+            api_key=OAI_KEY
+        )
 
     ## load the demo examples
     if args.method == "prompting":
@@ -72,10 +80,12 @@ if __name__ == "__main__":
         print ("topic: ", topic_description)
 
         for idea_name, idea in tqdm(ideas.items()):
-            prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+            prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
             response = json.loads(response.strip())
-            for k,v in response.items():
-                response = v
+            
+            # for k,v in response.items():
+            #     response = v
+            
             print (idea_name)
             print (response)
             print ("Total cost: ", cost)
@@ -95,7 +105,7 @@ if __name__ == "__main__":
         idea = ideas[args.idea_name]
         topic_description = ideas["topic_description"]
 
-        prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, openai_client, args.engine, args.seed)
+        prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, client, args.engine, args.seed)
         print (response)
         print ("Total cost: ", cost)
 
