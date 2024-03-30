@@ -1,4 +1,5 @@
 from openai import OpenAI
+import anthropic
 from utils import call_api
 import argparse
 import json
@@ -171,24 +172,36 @@ if __name__ == "__main__":
     with open("../keys.json", "r") as f:
         keys = json.load(f)
 
+    ANTH_KEY = keys["anthropic_key"]
     OAI_KEY = keys["api_key"]
     ORG_ID = keys["organization_id"]
     S2_KEY = keys["s2_key"]
-    openai_client = OpenAI(
-        organization=ORG_ID,
-        api_key=OAI_KEY
-    )
+    
+    if "claude" in args.engine:
+        client = anthropic.Anthropic(
+            api_key=ANTH_KEY,
+        )
+    else:
+        client = OpenAI(
+            organization=ORG_ID,
+            api_key=OAI_KEY
+        )
 
-    paper_bank, total_cost, all_queries = collect_papers(args.topic_description, openai_client, args.engine, args.seed, args.track, args.grounding_k, max_papers=args.max_paper_bank_size, print_all=args.print_all)
+    paper_bank, total_cost, all_queries = collect_papers(args.topic_description, client, args.engine, args.seed, args.track, args.grounding_k, max_papers=args.max_paper_bank_size, print_all=args.print_all)
     output = format_papers_for_printing(paper_bank[ : 10])
     print ("Top 10 papers: ")
     print (output)
     print ("Total cost: ", total_cost)
 
+    if "claude" in args.engine:
+        cache_dir = "../cache_results_claude/lit_review"
+    else:
+        cache_dir = "../cache_results_gpt4/lit_review"
+
     if args.cache_name:
-        if not os.path.exists("../cache_results/lit_review"):
-            os.makedirs("../cache_results/lit_review")
+        if not os.path.exists(cache_dir):
+            os.makedirs(cache_dir)
         output_dict = {"topic_description": args.topic_description, "all_queries": all_queries, "paper_bank": paper_bank}
-        cache_output(output_dict, os.path.join("../cache_results/lit_review", args.cache_name + "_" + args.track + ".json"))
+        cache_output(output_dict, os.path.join(cache_dir, args.cache_name + "_" + args.track + ".json"))
 
 
