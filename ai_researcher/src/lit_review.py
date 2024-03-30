@@ -36,7 +36,7 @@ def next_query(topic_description, openai_client, model, seed, grounding_papers, 
 def paper_scoring_method(paper_lst, topic_description, openai_client, model, seed):
     ## use gpt4 to score each paper, focusing on method papers
     prompt = "You are a helpful literature review assistant whose job is to read the below set of papers and score each paper. The criteria for scoring are:\n"
-    prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ". Note that it should be specific to solve the problem of focus, rather than just general prompting methods.\n"
+    prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ". Note that it should be specific to solve the problem of focus, rather than just general prompting or finetuning methods.\n"
     prompt += "(2) The paper is an empirical paper that proposes a novel method and conducts computational experiments to show improvement over baselines (position/opinion papers, review/survey papers, and analysis papers should get low scores for this purpose).\n"
     prompt += "(3) The paper is interesting and meaningful, with potential to inspire new projects.\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"

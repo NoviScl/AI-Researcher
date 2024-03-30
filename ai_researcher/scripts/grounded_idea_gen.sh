@@ -26,7 +26,7 @@ cache_names=("multimodal_method")
 ideas_n=5
 
 # Seed value
-seeds=(12 42 2023)
+seeds=(12)
 methods=("prompting")
 
 # Iterate over each seed

@@ -21,7 +21,7 @@ def idea_generation_method(method, paper_bank, grounding_k, examples, ideas_n, t
     prompt += "You should generate {} different ideas on this topic. Try to be creative and diverse in the idea generation, and do not repeat any similar ideas. The above papers are only for inspiration and you should not cite them and just make some incremental modifications. Instead, you should make sure your ideas are novel and distinct from the prior literature. You should aim for projects that can potentially win best paper awards at top conferences like ACL and NeurIPS.\n".format(str(ideas_n))
     prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be closely related to the topic description and something that large language models cannot solve well yet. (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any. (3) Motivation: Explain the inspiration of the proposed method and why it would work well. (4) Proposed Method: Propose your new method and describe it in detail. The proposed method should be maximally different from all existing work and baselines, and be more advanced and effective than the baselines. You should be as creative as possible in proposing new methods, we love unhinged ideas that sound crazy. This should be the most detailed section of the proposal. (5) Experiment Plan: Specify the experiment steps, baselines, and evaluation metrics.\n"
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted (but don't borrow the ideas themselves):\n" + examples + "\n"
-    prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ".\n"
+    prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ". You should try to tackle important problems that are well recognized in the field and considered challenging for current models. For example, think of novel solutions for problems with suitable benchmark datasets and baselines. In rare cases, you can propose to tackle a new research problem, but you will have to justify why it is important and how to set up proper evaluation.\n"
     if "claude" in model:
         prompt += "You should make each idea standalone and not dependent on the other ideas.\n"
     if method == "prompting":
@@ -109,9 +109,14 @@ if __name__ == "__main__":
     print ("idea generation cost: ", cost)
 
     ## cache the generated ideas
+    if "claude" in args.engine:
+        cache_dir = "../cache_results_claude/ideas"
+    else:
+        cache_dir = "../cache_results_gpt4/ideas"
+
     response = json.loads(response.strip())
     ideas = {"topic_description": topic_description, "ideas": response}
-    ideas_file = os.path.join("../cache_results/ideas", args.cache_name + '_' + args.method + ".json")
+    ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + ".json")
     
     ## if the idea_cache already exists, directly add to the current list
     if os.path.exists(ideas_file):
@@ -121,7 +126,7 @@ if __name__ == "__main__":
         ideas = ideas_cache
 
     ## save the cache
-    if not os.path.exists("../cache_results/ideas"):
-        os.makedirs("../cache_results/ideas")
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
     cache_output(ideas, ideas_file)
 
