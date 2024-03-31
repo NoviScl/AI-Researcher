@@ -1,6 +1,6 @@
 from openai import OpenAI
 import anthropic
-from utils import call_api
+from utils import call_api, shuffle_dict_and_convert_to_string
 import argparse
 import json
 import os
@@ -21,13 +21,13 @@ def idea_generation_method(method, paper_bank, grounding_k, examples, ideas_n, t
     prompt += "You should generate {} different ideas on this topic. Try to be creative and diverse in the idea generation, and do not repeat any similar ideas. The above papers are only for inspiration and you should not cite them and just make some incremental modifications. Instead, you should make sure your ideas are novel and distinct from the prior literature. You should aim for projects that can potentially win best paper awards at top conferences like ACL and NeurIPS.\n".format(str(ideas_n))
     prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be closely related to the topic description and something that large language models cannot solve well yet. (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any. (3) Motivation: Explain the inspiration of the proposed method and why it would work well. (4) Proposed Method: Propose your new method and describe it in detail. The proposed method should be maximally different from all existing work and baselines, and be more advanced and effective than the baselines. You should be as creative as possible in proposing new methods, we love unhinged ideas that sound crazy. This should be the most detailed section of the proposal. (5) Experiment Plan: Specify the experiment steps, baselines, and evaluation metrics.\n"
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted (but don't borrow the ideas themselves):\n" + examples + "\n"
-    prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ". You should try to tackle important problems that are well recognized in the field and considered challenging for current models. For example, think of novel solutions for problems with suitable benchmark datasets and baselines. In rare cases, you can propose to tackle a new research problem, but you will have to justify why it is important and how to set up proper evaluation.\n"
+    prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ". You should try to tackle important problems that are well recognized in the field and considered challenging for current models. For example, think of novel solutions for problems with existing benchmarks and baselines. In rare cases, you can propose to tackle a new problem, but you will have to justify why it is important and how to set up proper evaluation.\n"
     if "claude" in model:
         prompt += "You should make each idea standalone and not dependent on the other ideas.\n"
     if method == "prompting":
-        prompt += "Focus on novel and more complex prompting ideas for now, and we will generate finetuning ideas later. The proposed method section should specify how to construct the prompts for all steps involved.\n"
+        prompt += "Focus on novel prompting ideas for now. The proposed method section should specify how to construct the prompts for all steps involved. Try to avoid pretraining or finetuning experiments.\n"
     elif method == "finetuning":
-        prompt += "Focus on novel and more complex finetuning ideas for now, and we will generate prompting ideas later. The proposed method section should specify how to get the finetuning data and what's the training objective.\n"
+        prompt += "Focus on novel finetuning ideas for now. The proposed method section should specify how to get the finetuning data and what's the training objective.\n"
     prompt += "Please write down your {} ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format). Do not repeat idea names or contents.".format(str(ideas_n))
 
     prompt_messages = [{"role": "user", "content": prompt}]
@@ -81,18 +81,22 @@ if __name__ == "__main__":
             api_key=OAI_KEY
         )
 
-    with open(os.path.join("../cache_results/lit_review", args.cache_name + ".json"), "r") as f:
-        lit_review = json.load(f)
+    if "claude" in args.engine:
+        with open(os.path.join("../cache_results_claude/lit_review", args.cache_name + ".json"), "r") as f:
+            lit_review = json.load(f)
+    else:
+        with open(os.path.join("../cache_results_gpt4/lit_review", args.cache_name + ".json"), "r") as f:
+            lit_review = json.load(f)
     topic_description = lit_review["topic_description"]
     paper_bank = lit_review["paper_bank"]
 
     if args.method == "prompting":
-        with open("prompts/idea_examples_prompting_method.txt", "r") as f:
-            method_idea_examples = f.read().strip()
+        with open("prompts/idea_examples_prompting_method.json", "r") as f:
+            method_idea_examples = json.load(f)
     elif args.method == "finetuning":
-        with open("prompts/idea_examples_finetuning_method.txt", "r") as f:
-            method_idea_examples = f.read().strip()
-
+        with open("prompts/idea_examples_finetuning_method.json", "r") as f:
+            method_idea_examples = json.load(f)
+    
     # with open("prompts/idea_examples_method.txt", "r") as f:
     #     method_idea_examples = f.read().strip()
     

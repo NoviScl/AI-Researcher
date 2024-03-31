@@ -1,5 +1,6 @@
 import os
 import json
+import random 
 
 def calc_price(model, usage):
     if "claude" in model:
@@ -89,6 +90,17 @@ def format_plan_json(experiment_plan_json):
                         output_str += "    - " + sub_sub_k + ": " + sub_sub_v.strip() + "\n"
             output_str += "\n"
     return output_str
+
+def shuffle_dict_and_convert_to_string(input_dict):
+    # Convert dict items to a list and shuffle
+    items = list(input_dict.items())
+    random.shuffle(items)
+    
+    # Convert back to dict and then to a JSON-formatted string
+    shuffled_dict = dict(items)
+    json_str = json.dumps(shuffled_dict, indent=4)
+    
+    return json_str
 
 if __name__ == "__main__":
     filename = "/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/factuality/external_reference_check_prompt.json"

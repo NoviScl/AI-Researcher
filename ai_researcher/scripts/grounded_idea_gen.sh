@@ -20,13 +20,13 @@
 # done 
 
 
-cache_names=("multimodal_method")
+cache_names=("bias_prompting_new_method" "defense_prompting_new_method" "factuality_prompting_new_method" "multilingual_prompting_new_method" "multimodal_prompting_new_method" "reasoning_prompting_new_method" "uncertainty_prompting_new_method")
 
 # Number of ideas to generate
 ideas_n=5
 
 # Seed value
-seeds=(12)
+seeds=(12 42 102 2022 2023 2024)
 methods=("prompting")
 
 # Iterate over each seed
