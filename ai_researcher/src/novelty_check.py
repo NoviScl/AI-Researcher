@@ -1,10 +1,12 @@
 from openai import OpenAI
+import anthropic
 from utils import call_api
 import argparse
 import json
 import os
 from lit_review_tools import parse_and_execute, format_papers_for_printing, print_top_papers_from_paper_bank, dedup_paper_bank
 from utils import cache_output, format_plan_json
+from self_improvement import get_related_works
 import random 
 from tqdm import tqdm
 import retry
@@ -123,48 +125,88 @@ if __name__ == "__main__":
     with open("../keys.json", "r") as f:
         keys = json.load(f)
 
+    ANTH_KEY = keys["anthropic_key"]
     OAI_KEY = keys["api_key"]
     ORG_ID = keys["organization_id"]
     S2_KEY = keys["s2_key"]
-    openai_client = OpenAI(
-        organization=ORG_ID,
-        api_key=OAI_KEY
-    )
+    
+    if "claude" in args.engine:
+        client = anthropic.Anthropic(
+            api_key=ANTH_KEY,
+        )
+    else:
+        client = OpenAI(
+            organization=ORG_ID,
+            api_key=OAI_KEY
+        )
+
+    if "claude" in args.engine:
+        cache_dir = "../cache_results_claude/"
+    else:
+        cache_dir = "../cache_results_gpt4/"
+    
+    with open(cache_dir + "ideas/" + args.cache_name + ".json") as f:
+        idea_file = json.load(f)
+    topic_description = idea_file["topic_description"]
+    all_ideas = idea_file["ideas"]
 
     if args.idea_name == "all":
-        filenames = os.listdir("../cache_results/experiment_plans/"+args.cache_name)
+        # filenames = os.listdir(cache_dir + args.cache_name)
+        idea_names = list(all_ideas.keys())
     else:
-        filenames = ["_".join(args.idea_name.lower().split())+".json"]
+        # filenames = ["_".join(args.idea_name.lower().split())+".json"]
+        idea_names = [args.idea_name]
 
-    for filename in tqdm(filenames):
-        print ("working on: ", filename)
-        ## load the idea
-        cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, filename)
-        with open(cache_file, "r") as f:
-            ideas = json.load(f)
-
-        topic_description = ideas["topic_description"]
-        plan_json = ideas["final_revised_plan"]
-        related_papers = ideas["novelty_improvement_papers"]
-        ideas["novelty_check_papers"] = related_papers[ : args.check_n].copy()
-
-        novel = True 
-        for i in tqdm(range(args.check_n)):
-            prompt, response, cost = novelty_score(plan_json, related_papers[i], openai_client, args.engine, args.seed)
-            ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
-            final_judgment = response.strip().split()[-1].lower()
-            # print ("novelty judgment: ", final_judgment)
-            # print ("\n\n")
-            
-            if final_judgment == "yes":
-                novel = False
-            ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
-            
-            # print (format_papers_for_printing([related_papers[i]]))
-            # print (response)
-            # print (cost)
+    for idea_name in tqdm(idea_names):
+        idea_file = {}
+        idea_file["topic_description"] = topic_description
+        idea_file["idea_name"] = idea_name
+        idea_file["raw_idea"] = all_ideas[idea_name]
         
-        ideas["novelty"] = "yes" if novel else "no"
-        cache_output(ideas, cache_file)
+        print ("working on: ", idea_name)
+        idea = all_ideas[idea_name]
+
+        print ("Retrieving related works...")
+        paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, client, args.engine, args.seed)
+        output = format_papers_for_printing(paper_bank[ : 10])
+        print ("Top 10 papers: ")
+        print (output)
+        print ("Total cost: ", total_cost)
+
+        ## save the paper bank
+        if not os.path.exists(cache_dir + "experiment_plans/" + args.cache_name + "/"):
+            os.makedirs(cache_dir + "experiment_plans/" + args.cache_name + "/")
+        idea_file["novelty_queries"] = all_queries
+        idea_file["novelty_papers"] = paper_bank
+        cache_file = os.path.join(cache_dir + "experiment_plans/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
+        
+        # ## load the idea
+        # cache_file = os.path.join(cache_dir + args.cache_name, filename)
+        # with open(cache_file, "r") as f:
+        #     ideas = json.load(f)
+
+        # topic_description = ideas["topic_description"]
+        # plan_json = ideas["final_revised_plan"]
+        # related_papers = ideas["novelty_improvement_papers"]
+        # ideas["novelty_check_papers"] = related_papers[ : args.check_n].copy()
+
+        # novel = True 
+        # for i in tqdm(range(args.check_n)):
+        #     prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
+        #     ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
+        #     final_judgment = response.strip().split()[-1].lower()
+        #     # print ("novelty judgment: ", final_judgment)
+        #     # print ("\n\n")
+            
+        #     if final_judgment == "yes":
+        #         novel = False
+        #     ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
+            
+        #     # print (format_papers_for_printing([related_papers[i]]))
+        #     # print (response)
+        #     # print (cost)
+        
+        # idea_file["novelty"] = "yes" if novel else "no"
+        cache_output(idea_file, cache_file)
 
     

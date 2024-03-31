@@ -93,9 +93,11 @@ if __name__ == "__main__":
     if args.method == "prompting":
         with open("prompts/idea_examples_prompting_method.json", "r") as f:
             method_idea_examples = json.load(f)
+            method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
     elif args.method == "finetuning":
         with open("prompts/idea_examples_finetuning_method.json", "r") as f:
             method_idea_examples = json.load(f)
+            method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
     
     # with open("prompts/idea_examples_method.txt", "r") as f:
     #     method_idea_examples = f.read().strip()
