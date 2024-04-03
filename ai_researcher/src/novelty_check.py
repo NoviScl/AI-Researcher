@@ -118,7 +118,9 @@ if __name__ == "__main__":
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
     parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
-    parser.add_argument('--check_n', type=int, default=10, help="number of top papers to check for novelty")
+    parser.add_argument('--check_n', type=int, default=5, help="number of top papers to check for novelty")
+    parser.add_argument('--retrieve', action='store_true', help='whether to do the paper retrieval')
+    parser.add_argument('--novelty', action='store_true', help='whether to do the novelty check')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
@@ -156,57 +158,59 @@ if __name__ == "__main__":
     else:
         # filenames = ["_".join(args.idea_name.lower().split())+".json"]
         idea_names = [args.idea_name]
-
+    
     for idea_name in tqdm(idea_names):
-        idea_file = {}
-        idea_file["topic_description"] = topic_description
-        idea_file["idea_name"] = idea_name
-        idea_file["raw_idea"] = all_ideas[idea_name]
-        
-        print ("working on: ", idea_name)
-        idea = all_ideas[idea_name]
-
-        print ("Retrieving related works...")
-        paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, client, args.engine, args.seed)
-        output = format_papers_for_printing(paper_bank[ : 10])
-        print ("Top 10 papers: ")
-        print (output)
-        print ("Total cost: ", total_cost)
-
-        ## save the paper bank
-        if not os.path.exists(cache_dir + "experiment_plans/" + args.cache_name + "/"):
-            os.makedirs(cache_dir + "experiment_plans/" + args.cache_name + "/")
-        idea_file["novelty_queries"] = all_queries
-        idea_file["novelty_papers"] = paper_bank
         cache_file = os.path.join(cache_dir + "experiment_plans/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
-        
-        # ## load the idea
-        # cache_file = os.path.join(cache_dir + args.cache_name, filename)
-        # with open(cache_file, "r") as f:
-        #     ideas = json.load(f)
-
-        # topic_description = ideas["topic_description"]
-        # plan_json = ideas["final_revised_plan"]
-        # related_papers = ideas["novelty_improvement_papers"]
-        # ideas["novelty_check_papers"] = related_papers[ : args.check_n].copy()
-
-        # novel = True 
-        # for i in tqdm(range(args.check_n)):
-        #     prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
-        #     ideas["novelty_check_papers"][i]["novelty_score"] = response.strip()
-        #     final_judgment = response.strip().split()[-1].lower()
-        #     # print ("novelty judgment: ", final_judgment)
-        #     # print ("\n\n")
+        if args.retrieve:
+            idea_file = {}
+            idea_file["topic_description"] = topic_description
+            idea_file["idea_name"] = idea_name
+            idea_file["raw_idea"] = all_ideas[idea_name]
             
-        #     if final_judgment == "yes":
-        #         novel = False
-        #     ideas["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
-            
-        #     # print (format_papers_for_printing([related_papers[i]]))
-        #     # print (response)
-        #     # print (cost)
+            print ("working on: ", idea_name)
+            idea = all_ideas[idea_name]
+
+            print ("Retrieving related works...")
+            paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, client, args.engine, args.seed)
+            output = format_papers_for_printing(paper_bank[ : 10])
+            print ("Top 10 papers: ")
+            print (output)
+            print ("Total cost: ", total_cost)
+
+            ## save the paper bank
+            if not os.path.exists(cache_dir + "experiment_plans/" + args.cache_name + "/"):
+                os.makedirs(cache_dir + "experiment_plans/" + args.cache_name + "/")
+            idea_file["novelty_queries"] = all_queries
+            idea_file["novelty_papers"] = paper_bank
+            cache_output(idea_file, cache_file)
         
-        # idea_file["novelty"] = "yes" if novel else "no"
-        cache_output(idea_file, cache_file)
+        if args.novelty: 
+            with open(cache_file, "r") as f:
+                idea_file = json.load(f)
+
+            topic_description = idea_file["topic_description"]
+            plan_json = idea_file["raw_idea"]
+            related_papers = idea_file["novelty_papers"]
+            idea_file["novelty_check_papers"] = related_papers[ : args.check_n].copy()
+
+            novel = True 
+            print ("checking through top {} papers".format(str(args.check_n)))
+            for i in tqdm(range(args.check_n)):
+                prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
+                idea_file["novelty_check_papers"][i]["novelty_score"] = response.strip()
+                final_judgment = response.strip().split()[-1].lower()
+                print ("novelty judgment: ", final_judgment)
+                print ("\n\n")
+                
+                if final_judgment == "yes":
+                    novel = False
+                idea_file["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
+                
+                print (format_papers_for_printing([related_papers[i]]))
+                print (response)
+                print (cost)
+            
+            idea_file["novelty"] = "yes" if novel else "no"
+            cache_output(idea_file, cache_file)
 
     
