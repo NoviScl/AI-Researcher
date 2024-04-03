@@ -1,6 +1,6 @@
-cache_names=("factuality_prompting_new_method_prompting")
+cache_names=("bias_prompting_new_method_prompting" "multilingual_prompting_new_method_prompting")
 
 for cache_name in "${cache_names[@]}"; do
     echo "Running novelty_check.py with cache_name: $cache_name"
-    python3 src/novelty_check.py --engine "claude-3-opus-20240229" --cache_name "$cache_name" --idea_name "Attribute Grounding" --novelty
+    python3 src/novelty_check.py --engine "claude-3-opus-20240229" --cache_name "$cache_name" --idea_name "all" --novelty
 done

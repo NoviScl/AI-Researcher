@@ -159,7 +159,9 @@ if __name__ == "__main__":
         # filenames = ["_".join(args.idea_name.lower().split())+".json"]
         idea_names = [args.idea_name]
     
+    novel_idea = 0
     for idea_name in tqdm(idea_names):
+        print ("Idea name: ", idea_name)
         cache_file = os.path.join(cache_dir + "experiment_plans/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
         if args.retrieve:
             idea_file = {}
@@ -195,22 +197,27 @@ if __name__ == "__main__":
 
             novel = True 
             print ("checking through top {} papers".format(str(args.check_n)))
-            for i in tqdm(range(args.check_n)):
+            for i in range(args.check_n):
                 prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
                 idea_file["novelty_check_papers"][i]["novelty_score"] = response.strip()
                 final_judgment = response.strip().split()[-1].lower()
-                print ("novelty judgment: ", final_judgment)
-                print ("\n\n")
+                # print ("novelty judgment: ", final_judgment)
+                # print ("\n\n")
                 
                 if final_judgment == "yes":
                     novel = False
                 idea_file["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
                 
-                print (format_papers_for_printing([related_papers[i]]))
-                print (response)
-                print (cost)
+                # print (format_papers_for_printing([related_papers[i]]))
+                # print (response)
+                # print (cost)
             
             idea_file["novelty"] = "yes" if novel else "no"
+            if idea_file["novelty"] == "yes":
+                novel_idea += 1
             cache_output(idea_file, cache_file)
+            print ("Novelty judgment: ", idea_file["novelty"])
 
+    if args.novelty:
+        print ("Novelty rate: {} / {} = {}%".format(novel_idea, len(idea_names), novel_idea / len(idea_names) * 100))
     

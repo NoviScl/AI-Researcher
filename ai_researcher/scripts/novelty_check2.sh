@@ -1,4 +1,4 @@
-cache_names=("defense_prompting_new_method_prompting" "uncertainty_prompting_new_method_prompting" "multimodal_prompting_new_method_prompting" "reasoning_prompting_new_method_prompting")
+cache_names=("reasoning_prompting_new_method_prompting")
 
 for cache_name in "${cache_names[@]}"; do
     echo "Running novelty_check.py with cache_name: $cache_name"
