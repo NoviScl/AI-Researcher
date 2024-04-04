@@ -58,11 +58,13 @@ if __name__ == "__main__":
         client = anthropic.Anthropic(
             api_key=ANTH_KEY,
         )
+        cache_dir = "../cache_results_claude/"
     else:
         client = OpenAI(
             organization=ORG_ID,
             api_key=OAI_KEY
         )
+        cache_dir = "../cache_results_gpt4/"
 
     ## load the demo examples
     if args.method == "prompting":
@@ -71,50 +73,32 @@ if __name__ == "__main__":
     elif args.method == "finetuning":
         with open("prompts/experiment_plan_examples_finetuning.txt", "r") as f:
             demo_examples = f.read().strip()
-
+    
     if args.idea_name == "all":
-        ## load all ideas 
-        with open(os.path.join("../cache_results/ideas", args.cache_name+".json"), "r") as f:
-            ideas_file = json.load(f)
-        ideas = ideas_file["ideas"]
-        topic_description = ideas_file["topic_description"]
-        print ("topic: ", topic_description)
+        filenames = os.listdir(os.path.join(cache_dir, "experiment_plans", args.cache_name))
+    else:
+        filenames = ['_'.join(args.idea_name.lower().split()) + ".json"]
 
-        for idea_name, idea in tqdm(ideas.items()):
+    for filename in tqdm(filenames):
+        print ("working on idea: ", filename)
+        cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
+        
+        ## load the idea 
+        with open(cache_file, "r") as f:
+            ideas = json.load(f)
+        # idea = ideas[args.idea_name]
+        idea = ideas["raw_idea"]
+        topic_description = ideas["topic_description"]
+        if ideas["novelty"] == "yes":
             prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
-            response = json.loads(response.strip())
-            
-            # for k,v in response.items():
-            #     response = v
-            
-            print (idea_name)
             print (response)
             print ("Total cost: ", cost)
-            print ("\n")
-        
+            experiment_plan = json.loads(response.strip())
+            ideas["full_experiment_plan"] = experiment_plan
+
             ## save the cache
-            if not os.path.exists("../cache_results/experiment_plans/"+args.cache_name):
-                os.makedirs("../cache_results/experiment_plans/"+args.cache_name)
-            cache_dict = {"topic_description": topic_description, "idea_name": idea_name, "raw_idea": idea, "experiment_plan": response}
-            cache_file = os.path.join("../cache_results/experiment_plans/"+args.cache_name, "_".join(idea_name.lower().split())+".json")
-            cache_output(cache_dict, cache_file)
-
-    else:
-        ## load the idea 
-        with open(os.path.join("../cache_results/ideas", args.cache_name+".json"), "r") as f:
-            ideas = json.load(f)["ideas"]
-        idea = ideas[args.idea_name]
-        topic_description = ideas["topic_description"]
-
-        prompt, response, cost = plan_generation_method(idea, demo_examples, topic_description, client, args.engine, args.seed)
-        print (response)
-        print ("Total cost: ", cost)
-
-        ## save the cache
-        if not os.path.exists("cache_results/experiment_plans/"+args.cache_name):
-            os.makedirs("cache_results/experiment_plans/"+args.cache_name)
-        cache_dict = {"topic_description": topic_description, "idea_name": args.idea_name, "raw_idea": idea, "experiment_plan": response.strip()}
-        cache_file = os.path.join("cache_results/experiment_plans/"+args.cache_name, "_".join(args.idea_name.lower().split())+".json")
-        cache_output(cache_dict, cache_file)
+            cache_output(ideas, cache_file)
+        else:
+            print ("idea not novel, skipped...")
 
     
