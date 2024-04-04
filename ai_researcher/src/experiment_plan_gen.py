@@ -80,25 +80,28 @@ if __name__ == "__main__":
         filenames = ['_'.join(args.idea_name.lower().split()) + ".json"]
 
     for filename in tqdm(filenames):
-        print ("working on idea: ", filename)
-        cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
-        
-        ## load the idea 
-        with open(cache_file, "r") as f:
-            ideas = json.load(f)
-        # idea = ideas[args.idea_name]
-        idea = ideas["raw_idea"]
-        topic_description = ideas["topic_description"]
-        if ideas["novelty"] == "yes":
-            prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
-            print (response)
-            print ("Total cost: ", cost)
-            experiment_plan = json.loads(response.strip())
-            ideas["full_experiment_plan"] = experiment_plan
+        try:
+            print ("working on idea: ", filename)
+            cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
+            
+            ## load the idea 
+            with open(cache_file, "r") as f:
+                ideas = json.load(f)
+            # idea = ideas[args.idea_name]
+            idea = ideas["raw_idea"]
+            topic_description = ideas["topic_description"]
+            if ideas["novelty"] == "yes":
+                prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
+                print (response)
+                print ("Total cost: ", cost)
+                experiment_plan = json.loads(response.strip())
+                ideas["full_experiment_plan"] = experiment_plan
 
-            ## save the cache
-            cache_output(ideas, cache_file)
-        else:
-            print ("idea not novel, skipped...")
+                ## save the cache
+                cache_output(ideas, cache_file)
+            else:
+                print ("idea not novel, skipped...")
+        except: 
+            print ("error in generating experiment plan for idea")
 
     
