@@ -11,6 +11,13 @@
             "Step 4: Get Results": "Get answer predictions from the models on the QA datasets with both the baseline and according-to prompts.",
             "Step 5: Analyze Results": "Compare whether according-to prompts lead to better performance than the baseline prompts."
         },
+        "Test Case Examples": {
+            "Baseline Prompt Input (Direct Prompting)": "In what part of the digestive tube do you expect the initial digestion of starch?",
+            "Baseline Prompt Expected Output (Direct Prompting)": "The initial digestion of starch occurs in the mouth. Enzymes in saliva break down starch into smaller molecules.",
+            "Proposed Prompt Input (According-to Prompting)": "According to Wikipedia, in what part of the digestive tube do you expect the initial digestion of starch?",
+            "Proposed Prompt Expected Output (According-to Prompting)": "The initial digestion of starch happens in the mouth through our saliva. The enzymes found in saliva are essential in beginning the process of digestion of dietary starches. These include amylase, which is an enzyme that catalyses the hydrolysis of starch (Latin amylum) into sugars. Salivary amylase begins the chemical process of digestion.",
+            "Explanation": "According-to Prompting increases the proportion of quoted information and thus improves factuality."
+        },
         "Fallback Plan": "If the proposed according-to prompts do not work well, we can turn the project into an analysis to understand the impact of such grounding and also anti-grounding prompts. We can compare with changing grounding prompts into anto-grounding prompts, such as \"Respond by using information from Reddit in your response.\" or \"Respond without using any information from Wikipedia in your response.\" and see if we see opposite effects."
     },
     "Step-Back Prompting": {
@@ -24,6 +31,17 @@
             "Step 3: Select Models": "We test GPT-3.5 (Text-Davinci-003) and GPT-4 from the OpenAI API.",
             "Step 4: Get Results": "Get answer predictions from the models on the QA datasets with both the baselines and step-back prompts.",
             "Step 5: Analyze Results": "Compare whether step-back prompts lead to better performance than the baseline prompts."
+        },
+        "Test Case Examples": {
+            "Baseline Prompt Input (Direct Prompting)": "What happens to the pressure, P, of an ideal gas if the temperature is increased by a factor of 2 and the volume is increased by a factor of 8?",
+            "Baseline Prompt Expected Output (Direct Prompting)": "If the temperature is increased by a factor of 2 and the volume is increased by a factor of 8, then the pressure will decrease by a factor of 16.",
+            "Baseline Prompt Input (Chain-of-Thought Prompting)": "What happens to the pressure, P, of an ideal gas if the temperature is increased by a factor of 2 and the volume is increased by a factor of 8? Think step by step.",
+            "Baseline Prompt Expected Output (Chain-of-Thought Prompting)": "If the temperature is increased by a factor of 2 and the volume is increased by a factor of 8, we can rewrite the ideal gas law as: 2P' (8V) = nR(2T), where P' represents the new pressure. Simplifying the equation, we get: 16P'V = 2nRT or P' = (2nRT) / (16V). Since n, R, and V are constants, we can write this as: P' = (1/8) * (nRT/V). Since nRT/V is the original pressure P, we have: P' = (1/8) * P This means the new pressure P' is 1/8 of the original pressure P.",
+            "Proposed Prompt Input (Step-Back Prompting; Step 1: Stepback Question)": "What happens to the pressure, P, of an ideal gas if the temperature is increased by a factor of 2 and the volume is increased by a factor of 8? What are the physics principles behind this question?",
+            "Proposed Prompt Expected Output (Step-Back Prompting; Step 1: Stepback Question)": "Ideal gas law: PV = nRT, where P is the pressure, V is the volume, n is the number of moles, R is the gas constant, and T is the temperature.",
+            "Proposed Prompt Input (Step-Back Prompting; Step 2: Final Answer)": "(Prepend the question and answer from Step 1) Based on the above information, answer the original question.",
+            "Proposed Prompt Output (Step-Back Prompting; Step 2: Final Answer)": "Apply Ideal gas law to find out the pressure. If the temperature is increased by a factor of 2, then T becomes 2T. If the volume is increased by a factor of 8, then V becomes 8V. Substituting these values into the ideal gas law, we get: P(8V) = nR(2T).Dividing both sides by 8V, we get: P = nR(2T) / 8V. We can see that the pressure has decreased by a factor of 4.",
+            "Explanation": "This is an example of MMLU high-school physics where the first principle of Ideal Gas Law is retrieved via abstraction. Chain-of-Thought prompting ran into errors during intermediate reasoning but step-back prompting allows the model to answer the question correctly."
         },
         "Fallback Plan": "If the proposed step-back prompts do not work well, we can turn the project into an analyse why. For example, we can analyse the generated step-back questions and corresponding answers to see if the abstraction questions are relevant, and whether the generated answers are indeed relevant and factual."
     },
@@ -39,6 +57,13 @@
             "Step 4: Get Results": "Get answer predictions from the models on these datasets with both the baselines and proposed method.",
             "Step 5: Analyze Results": "Compare whether the new method improves the performance of LLMs in these tasks."
         },
+        "Test Case Examples": {
+            "Baseline Prompt Input (0-shot)": "Q: What is the area of the square with the four vertices at (-2, 2), (2, -2), (-2, -6), and (-6, -2)?",
+            "Baseline Prompt Expected Output (0-shot)": "20",
+            "Proposed Prompt Input (Analogical Prompting)": "Q: What is the area of the square with the four vertices at (-2, 2), (2, -2), (-2, -6), and (-6, -2)? Recall relevant exemplars first and then solve the initial problem:",
+            "Proposed Prompt Expected Output (Analogical Prompting)": "# Relevant exemplars:\nQ: What is the area of the square with a side length of 5?\nA: The area of a square is found by squaring the length of its side. So, the area of this square is 5^2 = 25.\n# Solve the initial problem:\nTo find the area of the square, we need to find the side length. The length is \\sqrt{(2 - (-2))^2 + (-2 - 2)^2} = \\sqrt{32}. So, the area of the square is(\\sqrt{32})^2 = 32",
+            "explanation": "Existing methods like 0-shot prompting are generic and lead to wrong answers, while analogical prompting can guide the model to self-generate relevant exemplars before solving the problem."
+        },
         "Fallback Plan": "If the proposed analogical prompts do not work well, we can turn the project into an analysis to understand why. We can analyze the generated relevant problems and solutions to see if they are indeed relevant, and whether the generated solutions are indeed correct and useful. We can also analyze the generated tutorials to see if they are indeed relevant and factually correct."
     },
     "Self-Refinement Prompting": {
@@ -52,6 +77,17 @@
             "Step 3: Select Models": "We use three main strong base LLM across all tasks: GPT-3.5 (text-davinci-003), ChatGPT (gpt-3.5-turbo), and GPT-4.",
             "Step 4: Get Results": "Get answer predictions from the models on these datasets with both the baselines and proposed method.",
             "Step 5: Analyze Results": "Compare whether the new method improves the performance of LLMs in these tasks."
+        },
+        "Test Case Examples": {
+            "Baseline Prompt Input (Direct Prompting)": "Write a Python function to generate sum of 1, ..., N.",
+            "Baseline Prompt Expected Output (Direct Prompting)": "def sum(n):\n    res = 0\n   for i in range(n+1):\n      res += i\n  return res",
+            "Proposed Prompt Input (Self-Refine Prompting; Step 1: Initial Solution)": "Write a Python function to generate sum of 1, ..., N.",
+            "Proposed Prompt Expected Output (Self-Refine Prompting; Step 1: Initial Solution)": "def sum(n):\n    res = 0\n   for i in range(n+1):\n      res += i\n  return res",
+            "Proposed Prompt Input (Self-Refine Prompting; Step 2: Feedback Generation)": "Provide some feedback on the code to enhance its efficiency. (Initial question and solution appended)",
+            "Proposed Prompt Output (Self-Refine Prompting; Step 2: Feedback Generation)": "This code is slow as it uses brute force. A better approach is to use the formula (n(n+1))/2.",
+            "Proposed Prompt Input (Self-Refine Prompting; Step 3: Refine)": "(Prepend the initial question, answer, and feedback) Refine the initial solution based on the feedback.",
+            "Proposed Prompt Output (Self-Refine Prompting; Step 3: Refine)": "def sum_faster(n):\n (n*(n+1))//2",
+            "explanation": "The code is made more efficient by applying feedback, as compared to the initial solution by direct prompting."
         },
         "Fallback Plan": "If the proposed self-refinement prompts do not improve over baselines, we can analyse whether it is because of the feedback generation step, or the refinement step. For example, we can also analyse the generated feedback to see if it is indeed relevant, and whether the generated refined drafts are indeed improved over the initial drafts to address the feedback. We can also tune the stopping condition to see if it is too early to stop the refinement process or if refining too many steps hurts performance."
     },
@@ -67,6 +103,15 @@
             "Step 4: Get Results": "Get answer predictions from the models on these datasets with both the baselines and proposed method.",
             "Step 5: Analyze Results": "Compare whether the new method improves the performance of LLMs in these tasks as compared to the baselines."
         },
+        "Test Case Examples": {
+            "Baseline Prompt Input (Direct Prompting)": "Sunnyvale is a city in California. Sunnyvale has many parks. Sunnyvale city is close to the mountains. Many notable people are born in Sunnyvale. In which city was San Jose’s mayor Sam Liccardo born?",
+            "Baseline Prompt Expected Output (Direct Prompting)": "Sam Liccardo was born in Sunnyvale, California.",
+            "Proposed Prompt Input (Selective Attention Prompting; Step 1: Context Selection)": "Given the following text by a user, extract the part that is related and useful, so that using that text alone would be good context for providing an accurate and correct answer to the question portion of the text. Text by user: Sunnyvale is a city in California. Sunnyvale has many parks. Sunnyvale city is close to the mountains. Many notable people are born in Sunnyvale. In which city was San Jose’s mayor Sam Liccardo born?",
+            "Proposed Prompt Expected Output (Selective Attention Prompting; Step 1: Context Selection)": "In which city was San Jose’s mayor Sam Liccardo born?",
+            "Proposed Prompt Input (Selective Attention Prompting; Step 2: Answer Generation)": "In which city was San Jose’s mayor Sam Liccardo born?",
+            "Proposed Prompt Expected Output (Selective Attention Prompting; Step 2: Answer Generation)": "Sam Liccardo, the former mayor of San Jose, was born in Saratoga, California.",
+            "explanation": "Selective attention regenerates the portion of the context it decides to pay attention to, successfully removing the distracting sentence, then hence answering correctly."
+        },
         "Fallback Plan": "If the proposed method does not help, analyze the selected contexts to see if they indeed contain the necessary information for answering the questions. This can help us debug the proposed method or turn this into interesting analysis on the model's ability to select relevant information in context."
     },
     "Chain-of-Verification Prompting": {
@@ -80,6 +125,17 @@
             "Step 3: Select Models": "We test GPT-3.5 (Text-Davinci-003) and GPT-4 from the OpenAI API, as well as the open-source LLaMA-2-70B-chat.",
             "Step 4: Get Results": "Get answer predictions from the models on these datasets with both the baselines and proposed method.",
             "Step 5: Analyze Results": "Compare whether the new method improves the performance of LLMs in these tasks as compared to the baselines."
+        },
+        "Test Case Examples": {
+            "Baseline Prompt Input (Direct Prompting)": "Name some politicians who were born in NY, New York.",
+            "Baseline Prompt Expected Output (Direct Prompting)": "Here are some politicians who were born in NY, New York:\n1. Hillary Clinton - former secretary of state and former Democratic presidential nominee.\n2. Donald Trump - former president of the United States.\n3. Michael Bloomberg - former Mayor of New York City and former Democratic presidential candidate.",
+            "Proposed Prompt Input (Chain-of-Verification Prompting; Step 1: Plan Verifications)": "Generate a set of verification questions to verify each answer.",
+            "Proposed Prompt Expected Output (Chain-of-Verification Prompting; Step 1: Plan Verifications)": "- Where was Hillary Clinton born?\n- Where was Donald Trump born?\n- Where was Michael Bloomberg born?",
+            "Proposed Prompt Input (Chain-of-Verification Prompting; Step 2: Execute Verifications)": "Answer each of the verification questions.",
+            "Proposed Prompt Expected Output (Chain-of-Verification Prompting; Step 2: Execute Verifications)": "1. Hillary Clinton was born in Chicago, Illinois, United States on October 26, 1947.\n2. Donald Trump was born on June 14, 1946, in Queens, New York City, New York, United States.\n3. Michael Bloomberg was born on February 14, 1942, in Boston, Massachusetts, United States.",
+            "Proposed Prompt Input (Chain-of-Verification Prompting; Step 3: Final Response)": "(Prepend the original question and the baseline response and the verification QA pairs) Given the verification answers, generate a revised response incorporating the verification results.",
+            "Proposed Prompt Expected Output (Chain-of-Verification Prompting; Step 3: Final Response)": "Here are some politicians who were born in NY, New York:\n1. Donald Trump - former president of the United States.\n2. Alexandria Ocasio-Cortez - Democratic member of the U.S. House of Representatives.",
+            "explanation": "Given a user query, a large language model with direct prompting generates a baseline response that may contain inaccuracies, e.g., factual hallucinations. To improve this, Chain-of-Verification first generates a plan of a set of verification questions to ask, and then executes that plan by answering them and hence checking for agreement. We find that individual verification questions are typically answered with higher accuracy than the original accuracy of the facts in the original longform generation. Finally, the revised response takes into account the verifications."
         },
         "Fallback Plan": "If the proposed method does not help as compared to the baseline, analyze each step of the CoVe process to see if the verification questions are relevant, if the answers to the verification questions are correct, and whether the generated final verified response is indeed improved over the baseline response by considering the verification QA pairs. This can help us debug the proposed method or turn this into interesting analysis on the model's ability to verify and correct its own responses."
     }
