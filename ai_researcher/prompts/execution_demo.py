@@ -3,7 +3,7 @@ import anthropic
 import json
 import random 
 from tqdm import tqdm 
-from utils import call_api
+from utils import call_api, load_model, evaluator
 from datasets import load_dataset
 import random
 random.seed(2024)
@@ -20,42 +20,7 @@ def load_testset(dataset_name, config=None, sample_size=10):
     return sampled_examples
 
 
-## Step 2: Load the model being evaluated 
-def load_model(model_name):
-    with open("../../../keys.json", "r") as f:
-        keys = json.load(f)
-
-    ANTH_KEY = keys["anthropic_key"]
-    OAI_KEY = keys["api_key"]
-    ORG_ID = keys["organization_id"]
-    
-    if "claude" in model_name:
-        client = anthropic.Anthropic(
-            api_key=ANTH_KEY,
-        )
-    else:
-        client = OpenAI(
-            organization=ORG_ID,
-            api_key=OAI_KEY
-        )
-    
-    return client
-
-
-## Step 3: Define the metric
-def evaluator(client, model_name, seed, question, gold_label, prediction):
-    ## we use the simple evaluator of asking the LLM to judge whether the prediction is correct given the gold label
-    prompt = "Given the following question and reference answer, determine if the prediction is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nQuestion: {}\n\nReference Answer: {}\n\nPrediction: {}\n\n".format(question, gold_label, prediction)
-    prompt_messages = [{"role": "user", "content": prompt}]
-    response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
-    judgment = False
-    if response.strip().lower() == "yes":
-        return True 
-    
-    return judgment
-
-
-## Step 4: Implement the baseline method 
+## Step 2: Implement the baseline method 
 def baseline_method(client, model_name, seed, question):
     ## zero-shot chain-of-thought
     prompt = "Answer the following question: {}\n".format(question)
@@ -65,7 +30,7 @@ def baseline_method(client, model_name, seed, question):
     return response.strip()
 
 
-## Step 5: Implement the proposed method 
+## Step 3: Implement the proposed method 
 def proposed_method(client, model_name, seed, question, print_all=False):
     if print_all:
         print ("question:\n", question)
@@ -101,7 +66,7 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     return final_answer.strip()
 
 
-## Step 6: Define the function that runs the experiments to obtain model predictions and performance
+## Step 4: Define the function that runs the experiments to obtain model predictions and performance
 def run_experiment(client, model_name, seed, testset):
     sample_size = len(testset) 
     baseline_predictions = []
@@ -124,10 +89,10 @@ def run_experiment(client, model_name, seed, testset):
     return baseline_correctness, proposed_correctness
 
 
-## Step 7: Execute the experiments and compare performance 
+## Step 5: Execute the experiments and compare performance 
 if __name__ == "__main__":
     dataset_name = "gsm8k"
-    testset = load_testset(dataset_name, config="main")
+    testset = load_testset(dataset_name, config="main", sample_size=1)
     print ("sampled {} examples from {} for evaluation.".format(len(testset), dataset_name))
 
     model_name = "claude-3-opus-20240229"
@@ -138,4 +103,3 @@ if __name__ == "__main__":
     baseline_correctness, proposed_correctness = run_experiment(client, model_name, seed, testset)
     print ("baseline correctness: ", sum(baseline_correctness) / len(baseline_correctness))
     print ("proposed correctness: ", sum(proposed_correctness) / len(proposed_correctness))
-
