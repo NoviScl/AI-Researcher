@@ -95,7 +95,7 @@ if __name__ == "__main__":
     testset = load_testset(dataset_name, config="main", sample_size=1)
     print ("sampled {} examples from {} for evaluation.".format(len(testset), dataset_name))
 
-    model_name = "claude-3-opus-20240229"
+    model_name = "claude-3-opus-20240229" ## don't change this
     seed = 2024 
     client = load_model(model_name)
     print ("using model: ", model_name)

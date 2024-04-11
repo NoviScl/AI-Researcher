@@ -102,6 +102,14 @@ def shuffle_dict_and_convert_to_string(input_dict):
     
     return json_str
 
+def clean_code_output(code_output):
+    code_output = code_output.strip()
+    if code_output.startswith("```python"):
+        code_output = code_output[len("```python"):].strip()
+    if code_output.endswith("```"):
+        code_output = code_output[:-len("```")].strip()
+    return code_output
+
 if __name__ == "__main__":
     filename = "/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/factuality/external_reference_check_prompt.json"
     print_idea_json(filename)

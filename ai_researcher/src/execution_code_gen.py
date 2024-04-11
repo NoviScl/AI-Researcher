@@ -4,7 +4,7 @@ from utils import call_api
 import argparse
 import json
 import os
-from utils import cache_output, format_plan_json
+from utils import cache_output, format_plan_json, clean_code_output
 import retry
 from tqdm import tqdm
 import random 
@@ -17,12 +17,12 @@ def execution_generation_method(experiment_plan, demo_experiment_plan, demo_exec
     prompt += "Example experiment plan:\n" + format_plan_json(demo_experiment_plan) + "\n"
     prompt += "Example implementation code:\n" + demo_execution_code + "\n\n"
     prompt += "Now write the code to implement the following idea:\n" + format_plan_json(experiment_plan) + "\n"
-    prompt += "You should mostly follow the example implmentation code, but customize the necessary parts such as the dataset name, baseline method, and proposed method. Directly output the full code without anything else.\n"
+    prompt += "You should mostly follow the example implmentation code, but customize the necessary parts such as the dataset name, baseline method, and proposed method. Directly output the full Python code without any prefix or suffix (e.g., do not prepend \"```python\").\n"
     
-    print (prompt)
-    # prompt_messages = [{"role": "user", "content": prompt}]
-    # response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=False)
-    # return prompt, response, cost
+    # print (prompt)
+    prompt_messages = [{"role": "user", "content": prompt}]
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=False)
+    return prompt, response, cost
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -67,25 +67,27 @@ if __name__ == "__main__":
 
     # print (filenames)
     for filename in tqdm(filenames):
-        # try:
-        print ("working on idea: ", filename)
-        cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
-        
-        ## load the idea 
-        with open(cache_file, "r") as f:
-            ideas = json.load(f)
-        experiment_plan = ideas["full_experiment_plan"]
-        if ideas["novelty"] == "yes":
-            prompt, response, cost = execution_generation_method(experiment_plan, demo_experiment_plan, demo_execution_code, client, args.engine, args.seed)
-            print (response)
-            print ("Total cost: ", cost)
-            experiment_plan = json.loads(response.strip())
-            ideas["full_experiment_plan"] = experiment_plan
-
-            ## save the cache
-            cache_output(ideas, cache_file)
-        else:
-            print ("idea not novel, skipped...")
-        # except: 
-        #     print ("error in generating code for idea")
+        try:
+            print ("working on idea: ", filename)
+            cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
+            
+            ## load the idea 
+            with open(cache_file, "r") as f:
+                ideas = json.load(f)
+            experiment_plan = ideas["full_experiment_plan"]
+            if ideas["novelty"] == "yes":
+                prompt, response, cost = execution_generation_method(experiment_plan, demo_experiment_plan, demo_execution_code, client, args.engine, args.seed)
+                execution_code = clean_code_output(response.strip())
+                print (execution_code)
+                print ("Total cost: ", cost)
+                
+                ## save the cache
+                with open(cache_file.replace("experiment_plans", "execution").replace(".json", ".py"), "w") as f:
+                    f.write(execution_code + "\n")
+                
+                # cache_output(ideas, cache_file.replace("experiment_plans", "execution").replace(".json", ".py"))
+            else:
+                print ("idea not novel, skipped...")
+        except: 
+            print ("error in generating code for idea")
 
