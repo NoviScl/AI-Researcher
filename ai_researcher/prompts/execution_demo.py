@@ -3,21 +3,32 @@ import anthropic
 import json
 import random 
 from tqdm import tqdm 
-from utils import call_api, load_model, evaluator
-from datasets import load_dataset
+from utils import call_api, load_model
 import random
 random.seed(2024)
 
+## Step 1: Generate synthetic test examples
+def generate_testset():
+    test_data = [
+        {
+            "input": "Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?",
+            "output": "Natalia sold 48/2 = <<48/2=24>>24 clips in May. Natalia sold 48+24 = <<48+24=72>>72 clips altogether in April and May. #### 72"
+        },
+        {
+            "input": "Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?",
+            "output": "Weng earns 12/60 = $<<12/60=0.2>>0.2 per minute. Working 50 minutes, she earned 0.2 x 50 = $<<0.2*50=10>>10. #### 10"
+        },
+        {
+            "input": "Tim has 30 less apples than Martha, and Harry has half as many apples as Tim. If Martha has 68 apples, how many apples does Harry have?",
+            "output": "Tim has 68-30 = <<68-30=38>>38 apples. Harry has 38/2 = <<38/2=19>>19 apples. #### 19"
+        },
+        {
+            "input": "Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?",
+            "output": "Second person = 27 - 7 = <<27-7=20>>20 kg 103 - 27 - 20 = <<103-27-20=56>>56 kg 56/2 = <<56/2=28>>28 kg The last two people each lost 28 kilograms of weight. #### 28"
+        }
+    ]
 
-## Step 1: Load the dataset 
-def load_testset(dataset_name, config=None, sample_size=10):
-    if not config:
-        testset = load_dataset(dataset_name, split="test")
-    else:
-        testset = load_dataset(dataset_name, config, split="test")
-    
-    sampled_examples = random.sample(list(testset), sample_size)
-    return sampled_examples
+    return test_data
 
 
 ## Step 2: Implement the baseline method 
@@ -65,6 +76,31 @@ def proposed_method(client, model_name, seed, question, print_all=False):
 
     return final_answer.strip()
 
+
+## Define the style evaluator
+def style_evaluator(client, model_name, seed, question, gold_label, prediction):
+    ## we use the simple evaluator of asking the LLM to judge whether the prediction is correct given the gold label
+    prompt = "Given the following question and reference answer, determine if the prediction is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nQuestion: {}\n\nReference Answer: {}\n\nPrediction: {}\n\n".format(question, gold_label, prediction)
+    prompt_messages = [{"role": "user", "content": prompt}]
+    response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
+    judgment = False
+    if response.strip().lower() == "yes":
+        return True 
+    
+    return judgment
+
+
+## Define the output evaluator
+def output_evaluator(client, model_name, seed, question, gold_label, prediction):
+    ## we use the simple evaluator of asking the LLM to judge whether the prediction is correct given the gold label
+    prompt = "Given the following question and reference answer, determine if the prediction is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nQuestion: {}\n\nReference Answer: {}\n\nPrediction: {}\n\n".format(question, gold_label, prediction)
+    prompt_messages = [{"role": "user", "content": prompt}]
+    response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
+    judgment = False
+    if response.strip().lower() == "yes":
+        return True 
+    
+    return judgment
 
 ## Step 4: Define the function that runs the experiments to obtain model predictions and performance
 def run_experiment(client, model_name, seed, testset):
