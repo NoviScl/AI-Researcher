@@ -80,7 +80,6 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     if print_all:
         print ("final answer:\n", final_answer)
 
-    # print (intermediate_outputs)
     return final_answer.strip(), intermediate_outputs
 
 
@@ -90,8 +89,8 @@ def style_evaluator(client, model_name, seed, question, baseline_prediction, pro
     ## and the advantages of the proposed method over the baseline method
     ## just need to check the style is correct
     prompt = "Given the task: {}\n".format(question)
-    prompt += "The baseline method produced the following output: {}\n\n".format(baseline_prediction)
-    prompt += "The proposed new method produced the following output: {}\n\n".format(proposed_prediction)
+    prompt += "The baseline method produced the following output:\n{}\n\n".format(baseline_prediction)
+    prompt += "The proposed new method produced the following output:\n{}\n\n".format(proposed_prediction)
     prompt += "Now determine if the proposed method is better by checking if it has satisfied the following criteria:\n"
     prompt += "1. The proposed method's output should produce all the intermediate components including: task decomposition, sub-task information generation, result combination, and reflection and refinement.\n"
     prompt += "2. The proposed method should provide a more detailed and comprehensive answer than the baseline method.\n"
@@ -137,14 +136,14 @@ def run_experiment(client, model_name, seed, testset):
         gold_label = testset[i]["output"].strip()
         
         baseline_prediction = baseline_method(client, model_name, seed, question)
-        proposed_prediction = proposed_method(client, model_name, seed, question)
+        proposed_prediction_final, proposed_prediction_intermediate = proposed_method(client, model_name, seed, question)
         baseline_predictions.append(baseline_prediction)
-        proposed_predictions.append(proposed_prediction)
+        proposed_predictions.append(proposed_prediction_final)
         
         baseline_correctness.append(output_evaluator(client, model_name, seed, question, gold_label, baseline_prediction))
-        proposed_correctness.append(output_evaluator(client, model_name, seed, question, gold_label, proposed_prediction))
+        proposed_correctness.append(output_evaluator(client, model_name, seed, question, gold_label, proposed_prediction_final))
 
-        style_check.append(style_evaluator(client, model_name, seed, question, baseline_prediction, proposed_prediction))
+        style_check.append(style_evaluator(client, model_name, seed, question, baseline_prediction, proposed_prediction_intermediate))
 
     return baseline_correctness, proposed_correctness, style_check
 
