@@ -43,6 +43,8 @@ def baseline_method(client, model_name, seed, question):
 
 ## Step 3: Implement the proposed method 
 def proposed_method(client, model_name, seed, question, print_all=False):
+    intermediate_outputs = "" 
+    
     if print_all:
         print ("question:\n", question)
 
@@ -50,6 +52,7 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     prompt = "Please break down the following task into smaller sub-tasks or steps:: {}".format(question)
     prompt_messages = [{"role": "user", "content": prompt}]
     decomposition, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "task decomposition:\n" + decomposition + "\n"
     if print_all:
         print ("decomposition:\n", decomposition)
 
@@ -57,6 +60,7 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     prompt = "For each of the following sub-tasks, please generate relevant information or intermediate results: \n{}".format(decomposition)
     prompt_messages = [{"role": "user", "content": prompt}]
     intermediate, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "sub-task results:\n" + intermediate + "\n"
     if print_all:
         print ("intermediate:\n", intermediate)
 
@@ -64,6 +68,7 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     prompt = "Given the following intermediate results: \n{}, please combine them to generate the final answer for the task: \n{}".format(intermediate, question)
     prompt_messages = [{"role": "user", "content": prompt}]
     answer, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "result combination:\n" + answer + "\n"
     if print_all:
         print ("initial answer:\n", answer)
 
@@ -71,10 +76,12 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     prompt = "Given the task: {}\nPlease reflect on the generated answer:\n{}.\n\nAre there any gaps or inconsistencies in the answer? If so, please identify and address them and give me an improved answer. If not, you don't have to edit anything and can just return the original answer.\n".format(question, answer)
     prompt_messages = [{"role": "user", "content": prompt}]
     final_answer, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "reflection and refinement:\n" + final_answer 
     if print_all:
         print ("final answer:\n", final_answer)
 
-    return final_answer.strip()
+    # print (intermediate_outputs)
+    return final_answer.strip(), intermediate_outputs
 
 
 ## Step 4: Define the style evaluator
