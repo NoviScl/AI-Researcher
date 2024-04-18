@@ -77,12 +77,21 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     return final_answer.strip()
 
 
-## Define the style evaluator
-def style_evaluator(client, model_name, seed, question, gold_label, prediction):
-    ## we use the simple evaluator of asking the LLM to judge whether the prediction is correct given the gold label
-    prompt = "Given the following question and reference answer, determine if the prediction is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nQuestion: {}\n\nReference Answer: {}\n\nPrediction: {}\n\n".format(question, gold_label, prediction)
+## Step 4: Define the style evaluator
+def style_evaluator(client, model_name, seed, question, baseline_prediction, proposed_prediction):
+    ## define all the components that the proposed method outputs should have
+    ## and the advantages of the proposed method over the baseline method
+    ## just need to check the style is correct
+    prompt = "Given the task: {}\n".format(question)
+    prompt += "The baseline method produced the following output: {}\n\n".format(baseline_prediction)
+    prompt += "The proposed new method produced the following output: {}\n\n".format(proposed_prediction)
+    prompt += "Now determine if the proposed method is better by checking if it has satisfied the following criteria:\n"
+    prompt += "1. The proposed method's output should produce all the intermediate components including: task decomposition, sub-task information generation, result combination, and reflection and refinement.\n"
+    prompt += "2. The proposed method should provide a more detailed and comprehensive answer than the baseline method.\n"
+    prompt += "Just tell me 'yes' or 'no' for whether the criteria are met, nothing else is needed."
     prompt_messages = [{"role": "user", "content": prompt}]
     response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
+    
     judgment = False
     if response.strip().lower() == "yes":
         return True 
@@ -90,52 +99,61 @@ def style_evaluator(client, model_name, seed, question, gold_label, prediction):
     return judgment
 
 
-## Define the output evaluator
+## Step 5: Define the output evaluator
 def output_evaluator(client, model_name, seed, question, gold_label, prediction):
-    ## we use the simple evaluator of asking the LLM to judge whether the prediction is correct given the gold label
+    ## check if the prediction is correct given the gold label
     prompt = "Given the following question and reference answer, determine if the prediction is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nQuestion: {}\n\nReference Answer: {}\n\nPrediction: {}\n\n".format(question, gold_label, prediction)
     prompt_messages = [{"role": "user", "content": prompt}]
     response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
+    
     judgment = False
     if response.strip().lower() == "yes":
         return True 
     
     return judgment
 
-## Step 4: Define the function that runs the experiments to obtain model predictions and performance
+
+## Step 6: Define the function that runs the experiments to obtain model predictions and performance
+## you shouldn't need to modify this function in most cases
 def run_experiment(client, model_name, seed, testset):
     sample_size = len(testset) 
     baseline_predictions = []
     proposed_predictions = []
+
     baseline_correctness = []
     proposed_correctness = []
 
+    style_check = []
+
     for i in tqdm(range(sample_size)):
-        question = testset[i]["question"].strip()
-        gold_label = testset[i]["answer"].strip()
+        question = testset[i]["input"].strip()
+        gold_label = testset[i]["output"].strip()
+        
         baseline_prediction = baseline_method(client, model_name, seed, question)
         proposed_prediction = proposed_method(client, model_name, seed, question)
         baseline_predictions.append(baseline_prediction)
         proposed_predictions.append(proposed_prediction)
-        baseline_judgment = evaluator(client, model_name, seed, question, gold_label, baseline_prediction)
-        proposed_judgment = evaluator(client, model_name, seed, question, gold_label, proposed_prediction)
-        baseline_correctness.append(baseline_judgment)
-        proposed_correctness.append(proposed_judgment)
+        
+        baseline_correctness.append(output_evaluator(client, model_name, seed, question, gold_label, baseline_prediction))
+        proposed_correctness.append(output_evaluator(client, model_name, seed, question, gold_label, proposed_prediction))
 
-    return baseline_correctness, proposed_correctness
+        style_check.append(style_evaluator(client, model_name, seed, question, baseline_prediction, proposed_prediction))
+
+    return baseline_correctness, proposed_correctness, style_check
 
 
-## Step 5: Execute the experiments and compare performance 
+## Step 7: Execute the experiments and compare performance 
 if __name__ == "__main__":
-    dataset_name = "gsm8k"
-    testset = load_testset(dataset_name, config="main", sample_size=1)
-    print ("sampled {} examples from {} for evaluation.".format(len(testset), dataset_name))
+    testset = generate_testset()
+    print ("simulated {} test examples for evaluation.".format(len(testset)))
 
     model_name = "claude-3-opus-20240229" ## don't change this
     seed = 2024 
     client = load_model(model_name)
     print ("using model: ", model_name)
 
-    baseline_correctness, proposed_correctness = run_experiment(client, model_name, seed, testset)
+    ## output correctness 
+    baseline_correctness, proposed_correctness, style_check = run_experiment(client, model_name, seed, testset)
     print ("baseline correctness: ", sum(baseline_correctness) / len(baseline_correctness))
     print ("proposed correctness: ", sum(proposed_correctness) / len(proposed_correctness))
+    print ("style check pass rate: ", sum(style_check) / len(style_check))
