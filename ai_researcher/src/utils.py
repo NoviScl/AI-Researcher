@@ -111,10 +111,18 @@ def clean_code_output(code_output):
     return code_output
 
 if __name__ == "__main__":
-    filename = "/Users/clsi/Desktop/ResearcherAgent/cache_results/experiment_plans/factuality/external_reference_check_prompt.json"
-    print_idea_json(filename)
+    filename = "/Users/clsi/Desktop/AI-Researcher/cache_results_claude/lit_review/uncertainty_prompting_method.json"
+    # print_idea_json(filename)
     with open(filename, "r") as f:
         ideas = json.load(f)
-    print ("Excitement Ranking: ")
-    print (ideas["excitement_rationale"])
-    print (ideas["excitement_score"])
+    # print ("Excitement Ranking: ")
+    # print (ideas["excitement_rationale"])
+    # print (ideas["excitement_score"])
+    
+    for i in range(10):
+        paper = ideas["paper_bank"][i]
+        print (i+1)
+        print ("Title: " + paper["title"])
+        print ("Abstract: " + paper["abstract"])
+        print ("\n\n")
+

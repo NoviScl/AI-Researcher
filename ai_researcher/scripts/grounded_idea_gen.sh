@@ -20,7 +20,7 @@
 # done 
 
 
-cache_names=("bias_prompting_new_method" "defense_prompting_new_method" "factuality_prompting_new_method" "multilingual_prompting_new_method" "multimodal_prompting_new_method" "reasoning_prompting_new_method" "uncertainty_prompting_new_method")
+cache_names=("safety_prompting_method")
 
 # Number of ideas to generate
 ideas_n=5

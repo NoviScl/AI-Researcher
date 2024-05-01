@@ -40,14 +40,14 @@ python3 src/lit_review.py \
 
 
 
-## defense 
-python3 src/lit_review.py \
- --engine "claude-3-opus-20240229" \
- --topic_description "novel prompting methods to defend against adversarial attacks or prompt injection on large language models and improve their robustness" \
- --cache_name "defense_prompting" \
- --track "method" \
- --max_paper_bank_size 70 \
- --print_all
+# ## defense 
+# python3 src/lit_review.py \
+#  --engine "claude-3-opus-20240229" \
+#  --topic_description "novel prompting methods to defend against adversarial attacks or prompt injection on large language models and improve their robustness" \
+#  --cache_name "defense_prompting" \
+#  --track "method" \
+#  --max_paper_bank_size 70 \
+#  --print_all
 
 
 ## multilingual
@@ -79,3 +79,14 @@ python3 src/lit_review.py \
  --max_paper_bank_size 70 \
  --print_all
 
+
+## safety
+python3 src/lit_review.py \
+ --engine "claude-3-opus-20240229" \
+ --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks and improve their security and privacy" \
+ --cache_name "safety_prompting" \
+ --track "method" \
+ --max_paper_bank_size 70 \
+ --print_all
+
+ 
