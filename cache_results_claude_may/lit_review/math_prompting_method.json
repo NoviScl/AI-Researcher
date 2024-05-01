@@ -1,0 +1,744 @@
+{
+    "topic_description": "novel prompting methods for large language models to improve mathematical problem solving",
+    "all_queries": [
+        "KeywordQuery(\"large language models mathematical problem solving prompting\")",
+        "PaperQuery(\"5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4\")",
+        "GetReferences(\"884a573e07ebcc80e855670e769d803a77505cbe\")",
+        "PaperQuery(\"6c943670dca38bfc7c8b477ae7c2d1fba1ad3691\")"
+    ],
+    "paper_bank": [
+        {
+            "id": "6c1e1cc1e0e1f8fd026fe517607b2d4535565fa7",
+            "paperId": "6c1e1cc1e0e1f8fd026fe517607b2d4535565fa7",
+            "title": "PAL: Program-aided Language Models",
+            "abstract": "Large language models (LLMs) have recently demonstrated an impressive ability to perform arithmetic and symbolic reasoning tasks, when provided with a few examples at test time (\"few-shot prompting\"). Much of this success can be attributed to prompting methods such as\"chain-of-thought'', which employ LLMs for both understanding the problem description by decomposing it into steps, as well as solving each step of the problem. While LLMs seem to be adept at this sort of step-by-step decomposition, LLMs often make logical and arithmetic mistakes in the solution part, even when the problem is decomposed correctly. In this paper, we present Program-Aided Language models (PAL): a novel approach that uses the LLM to read natural language problems and generate programs as the intermediate reasoning steps, but offloads the solution step to a runtime such as a Python interpreter. With PAL, decomposing the natural language problem into runnable steps remains the only learning task for the LLM, while solving is delegated to the interpreter. We demonstrate this synergy between a neural LLM and a symbolic interpreter across 13 mathematical, symbolic, and algorithmic reasoning tasks from BIG-Bench Hard and other benchmarks. In all these natural language reasoning tasks, generating code using an LLM and reasoning using a Python interpreter leads to more accurate results than much larger models. For example, PAL using Codex achieves state-of-the-art few-shot accuracy on the GSM8K benchmark of math word problems, surpassing PaLM-540B which uses chain-of-thought by absolute 15% top-1. Our code and data are publicly available at http://reasonwithpal.com/ .",
+            "year": 2022,
+            "citationCount": 254,
+            "score": 9
+        },
+        {
+            "id": "5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4",
+            "paperId": "5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4",
+            "title": "Look Before You Leap: Problem Elaboration Prompting Improves Mathematical Reasoning in Large Language Models",
+            "abstract": "Large language models (LLMs) still grapple with complex tasks like mathematical reasoning. Despite significant efforts invested in improving prefix prompts or reasoning process, the crucial role of problem context might have been neglected. Accurate recognition of inputs is fundamental for solving mathematical tasks, as ill-formed problems could potentially mislead LLM's reasoning. In this study, we propose a new approach named Problem Elaboration Prompting (PEP) to enhance the mathematical capacities of LLMs. Specifically, PEP decomposes and elucidates the problem context before reasoning, therefore enhancing the context modeling and parsing efficiency. Experiments across datasets and models demonstrate promising performances: (1) PEP demonstrates an overall enhancement in various mathematical tasks. For instance, with the GPT-3.5 model, PEP exhibits improvements of 9.93% and 8.80% on GSM8k through greedy decoding and self-consistency, respectively. (2) PEP can be easily implemented and integrated with other prompting methods. (3) PEP shows particular strength in handling distraction problems.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new approach named Problem Elaboration Prompting (PEP) is proposed to enhance the mathematical capacities of LLMs by decomposing and elucidates the problem context before reasoning, therefore enhancing the context modeling and parsing efficiency."
+            },
+            "score": 8
+        },
+        {
+            "id": "5437e8adab596d7294124c0e798708e050e25321",
+            "paperId": "5437e8adab596d7294124c0e798708e050e25321",
+            "title": "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models",
+            "abstract": "Chain-of-thought prompting has demonstrated remarkable performance on various natural language reasoning tasks. However, it tends to perform poorly on tasks which requires solving problems harder than the exemplars shown in the prompts. To overcome this challenge of easy-to-hard generalization, we propose a novel prompting strategy, least-to-most prompting. The key idea in this strategy is to break down a complex problem into a series of simpler subproblems and then solve them in sequence. Solving each subproblem is facilitated by the answers to previously solved subproblems. Our experimental results on tasks related to symbolic manipulation, compositional generalization, and math reasoning reveal that least-to-most prompting is capable of generalizing to more difficult problems than those seen in the prompts. A notable finding is that when the GPT-3 code-davinci-002 model is used with least-to-most prompting, it can solve the compositional generalization benchmark SCAN in any split (including length split) with an accuracy of at least 99% using just 14 exemplars, compared to only 16% accuracy with chain-of-thought prompting. This is particularly noteworthy because neural-symbolic models in the literature that specialize in solving SCAN are trained on the entire training set containing over 15,000 examples. We have included prompts for all the tasks in the Appendix.",
+            "year": 2022,
+            "citationCount": 581,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results on tasks related to symbolic manipulation, compositional generalization, and math reasoning reveal that least-to-most prompting is capable of generalizing to more difficult problems than those seen in the prompts."
+            },
+            "score": 8
+        },
+        {
+            "id": "884a573e07ebcc80e855670e769d803a77505cbe",
+            "paperId": "884a573e07ebcc80e855670e769d803a77505cbe",
+            "title": "Large Language Models are Contrastive Reasoners",
+            "abstract": "Prompting methods play a crucial role in enhancing the capabilities of pre-trained large language models (LLMs). We explore how contrastive prompting (CP) significantly improves the ability of large language models to perform complex reasoning. We demonstrate that LLMs are decent contrastive reasoners by simply adding\"Let's give a correct and a wrong answer.\"before LLMs provide answers. Experiments on two large language models show that zero-shot contrastive prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks without any hand-crafted few-shot examples, such as increasing the accuracy on GSM8K from 35.9% to 88.8% and AQUA-RAT from 41.3% to 62.2% with the state-of-the-art GPT-4 model. Our method not only surpasses zero-shot CoT and few-shot CoT in most arithmetic and commonsense reasoning tasks but also can seamlessly integrate with existing prompting methods, resulting in improved or comparable results when compared to state-of-the-art methods. Our code is available at https://github.com/yao8839836/cp",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "6c943670dca38bfc7c8b477ae7c2d1fba1ad3691",
+            "paperId": "6c943670dca38bfc7c8b477ae7c2d1fba1ad3691",
+            "title": "Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks",
+            "abstract": "Recently, there has been significant progress in teaching language models to perform step-by-step reasoning to solve complex numerical reasoning tasks. Chain-of-thoughts prompting (CoT) is by far the state-of-art method for these tasks. CoT uses language models to perform both reasoning and computation in the multi-step `thought' process. To disentangle computation from reasoning, we propose `Program of Thoughts' (PoT), which uses language models (mainly Codex) to express the reasoning process as a program. The computation is relegated to an external computer, which executes the generated programs to derive the answer. We evaluate PoT on five math word problem datasets (GSM, AQuA, SVAMP, TabMWP, MultiArith) and three financial-QA datasets (FinQA, ConvFinQA, TATQA) for both few-shot and zero-shot setups. Under both few-shot and zero-shot settings, PoT can show an average performance gain over CoT by around 12\\% across all the evaluated datasets. By combining PoT with self-consistency decoding, we can achieve SoTA performance on all math problem datasets and near-SoTA performance on financial datasets. All of our data and code are released in Github https://github.com/wenhuchen/Program-of-Thoughts",
+            "year": 2022,
+            "citationCount": 359,
+            "score": 8
+        },
+        {
+            "id": "b626560f19f815808a289ef5c24a17c57320da70",
+            "paperId": "b626560f19f815808a289ef5c24a17c57320da70",
+            "title": "MathPrompter: Mathematical Reasoning using Large Language Models",
+            "abstract": "Large Language Models (LLMs) have limited performance when solving arithmetic reasoning tasks and often provide incorrect answers. Unlike natural language understanding, math problems typically have a single correct answer, making the task of generating accurate solutions more challenging for LLMs. To the best of our knowledge, we are not aware of any LLMs that indicate their level of confidence in their responses which fuels a trust deficit in these models impeding their adoption. To address this deficiency, we propose \u2018MathPrompter\u2019, a technique that improves performance of LLMs on arithmetic problems along with increased reliance in the predictions. MathPrompter uses the Zero-shot chain-of-thought prompting technique to generate multiple algebraic expressions or python functions to solve the same math problem in different ways and thereby raise the confidence level in the output results. This is in contrast to other prompt based CoT methods, where there is no check on the validity of the intermediate steps followed. Our technique improves over state-of-the-art on the \u2018MultiArith\u2019 dataset (78.7% - 92.5%) evaluated using 175B parameter GPT-based LLM.",
+            "year": 2023,
+            "citationCount": 89,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes \u2018MathPrompter\u2019, a technique that improves performance of LLMs on arithmetic problems along with increased reliance in the predictions, using the Zero-shot chain-of-thought prompting technique to generate multiple algebraic expressions or python functions to solve the same math problem in different ways and thereby raise the confidence level in the output results."
+            },
+            "score": 7
+        },
+        {
+            "id": "3d68522abfadfc8ee6b7ec9edaaf91f1b2f38e5e",
+            "paperId": "3d68522abfadfc8ee6b7ec9edaaf91f1b2f38e5e",
+            "title": "Large Language Models Can Be Easily Distracted by Irrelevant Context",
+            "abstract": "Large language models have achieved impressive performance on various natural language processing tasks. However, so far they have been evaluated primarily on benchmarks where all information in the input context is relevant for solving the task. In this work, we investigate the distractibility of large language models, i.e., how the model problem-solving accuracy can be influenced by irrelevant context. In particular, we introduce Grade-School Math with Irrelevant Context (GSM-IC), an arithmetic reasoning dataset with irrelevant information in the problem description. We use this benchmark to measure the distractibility of cutting-edge prompting techniques for large language models, and find that the model performance is dramatically decreased when irrelevant information is included. We also identify several approaches for mitigating this deficiency, such as decoding with self-consistency and adding to the prompt an instruction that tells the language model to ignore the irrelevant information.",
+            "year": 2023,
+            "citationCount": 211,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the distractibility of large language models, i.e., how the model problem-solving accuracy can be influenced by irrelevant context, and introduces Grade-School Math with Irrelevant Context (GSM-IC), an arithmetic reasoning dataset with irrelevant information in the problem description."
+            },
+            "score": 7
+        },
+        {
+            "id": "f65cb50c7e91e4d123c21a5f9a13e6647a836c2e",
+            "paperId": "f65cb50c7e91e4d123c21a5f9a13e6647a836c2e",
+            "title": "Boosting of Thoughts: Trial-and-Error Problem Solving with Large Language Models",
+            "abstract": "The reasoning performance of Large Language Models (LLMs) on a wide range of problems critically relies on chain-of-thought prompting, which involves providing a few chain of thought demonstrations as exemplars in prompts. Recent work, e.g., Tree of Thoughts, has pointed out the importance of exploration and self-evaluation in reasoning step selection for complex problem solving. In this paper, we present Boosting of Thoughts (BoT), an automated prompting framework for problem solving with LLMs by iteratively exploring and self-evaluating many trees of thoughts in order to acquire an ensemble of trial-and-error reasoning experiences, which will serve as a new form of prompting to solve the complex problem. Starting from a simple prompt without requiring examples, BoT iteratively explores and evaluates a large collection of reasoning steps, and more importantly, uses error analysis obtained from the LLM on them to explicitly revise prompting, which in turn enhances reasoning step generation, until a final answer is attained. Our experiments with GPT-4 and Llama2 across extensive complex mathematical problems demonstrate that BoT consistently achieves higher or comparable problem-solving rates than other advanced prompting approaches.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Boosting of Thoughts is presented, an automated prompting framework for problem solving with LLMs by iteratively exploring and self-evaluating many trees of thoughts in order to acquire an ensemble of trial-and-error reasoning experiences, which will serve as a new form of prompting to solve the complex problem."
+            },
+            "score": 7
+        },
+        {
+            "id": "03ae1a664b52503594e4753f59615443d70695b6",
+            "paperId": "03ae1a664b52503594e4753f59615443d70695b6",
+            "title": "RankPrompt: Step-by-Step Comparisons Make Language Models Better Reasoners",
+            "abstract": "Large Language Models (LLMs) have achieved impressive performance across various reasoning tasks. However, even state-of-the-art LLMs such as ChatGPT are prone to logical errors during their reasoning processes. Existing solutions, such as deploying task-specific verifiers or voting over multiple reasoning paths, either require extensive human annotations or fail in scenarios with inconsistent responses. To address these challenges, we introduce RankPrompt, a new prompting method that enables LLMs to self-rank their responses without additional resources. RankPrompt breaks down the ranking problem into a series of comparisons among diverse responses, leveraging the inherent capabilities of LLMs to generate chains of comparison as contextual exemplars. Our experiments across 11 arithmetic and commonsense reasoning tasks show that RankPrompt significantly enhances the reasoning performance of ChatGPT and GPT-4, with improvements of up to 13%. Moreover, RankPrompt excels in LLM-based automatic evaluations for open-ended tasks, aligning with human judgments 74% of the time in the AlpacaEval dataset. It also exhibits robustness to variations in response order and consistency. Collectively, our results validate RankPrompt as an effective method for eliciting high-quality feedback from language models.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "90350aa626bed47b02d0c162462e5b0ca82be6b2",
+            "paperId": "90350aa626bed47b02d0c162462e5b0ca82be6b2",
+            "title": "Automatic Chain of Thought Prompting in Large Language Models",
+            "abstract": "Large language models (LLMs) can perform complex reasoning by generating intermediate reasoning steps. Providing these steps for prompting demonstrations is called chain-of-thought (CoT) prompting. CoT prompting has two major paradigms. One leverages a simple prompt like\"Let's think step by step\"to facilitate step-by-step thinking before answering a question. The other uses a few manual demonstrations one by one, each composed of a question and a reasoning chain that leads to an answer. The superior performance of the second paradigm hinges on the hand-crafting of task-specific demonstrations one by one. We show that such manual efforts may be eliminated by leveraging LLMs with the\"Let's think step by step\"prompt to generate reasoning chains for demonstrations one by one, i.e., let's think not just step by step, but also one by one. However, these generated chains often come with mistakes. To mitigate the effect of such mistakes, we find that diversity matters for automatically constructing demonstrations. We propose an automatic CoT prompting method: Auto-CoT. It samples questions with diversity and generates reasoning chains to construct demonstrations. On ten public benchmark reasoning tasks with GPT-3, Auto-CoT consistently matches or exceeds the performance of the CoT paradigm that requires manual designs of demonstrations. Code is available at https://github.com/amazon-research/auto-cot",
+            "year": 2022,
+            "citationCount": 295,
+            "score": 7
+        },
+        {
+            "id": "a7c0d9bf44045c9d4c41e329e2a87df0ae7e0af6",
+            "paperId": "a7c0d9bf44045c9d4c41e329e2a87df0ae7e0af6",
+            "title": "Federated Prompting and Chain-of-Thought Reasoning for Improving LLMs Answering",
+            "abstract": "We investigate how to enhance answer precision in frequently asked questions posed by distributed users using cloud-based Large Language Models (LLMs). Our study focuses on a typical situations where users ask similar queries that involve identical mathematical reasoning steps and problem-solving procedures. Due to the unsatisfactory accuracy of LLMs' zero-shot prompting with standalone questions, we propose to improve the distributed synonymous questions using Self-Consistency (SC) and Chain-of-Thought (CoT) techniques. Specifically, we first retrieve synonymous questions from a crowd-sourced database and create a federated question pool. We call these federated synonymous questions with the same or different parameters SP-questions or DP-questions, respectively. We refer to our methods as Fed-SP-SC and Fed-DP-CoT, which can generate significantly more accurate answers for all user queries without requiring sophisticated model-tuning. Through extensive experiments, we demonstrate that our proposed methods can significantly enhance question accuracy by fully exploring the synonymous nature of the questions and the consistency of the answers.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study proposes to improve the distributed synonymous questions using Self-Consistency (SC) and Chain-of-Thought (CoT) techniques, which can generate significantly more accurate answers for all user queries without requiring sophisticated model-tuning."
+            },
+            "score": 6
+        },
+        {
+            "id": "77b1f1c6d1658d120456b9046667cf009ceb39ce",
+            "paperId": "77b1f1c6d1658d120456b9046667cf009ceb39ce",
+            "title": "MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models",
+            "abstract": "Large language models (LLMs) have pushed the limits of natural language understanding and exhibited excellent problem-solving ability. Despite the great success, most existing open-source LLMs (e.g., LLaMA-2) are still far away from satisfactory for solving mathematical problem due to the complex reasoning procedures. To bridge this gap, we propose MetaMath, a fine-tuned language model that specializes in mathematical reasoning. Specifically, we start by bootstrapping mathematical questions by rewriting the question from multiple perspectives without extra knowledge, which results in a new dataset called MetaMathQA. Then we fine-tune the LLaMA-2 models on MetaMathQA. Experimental results on two popular benchmarks (i.e., GSM8K and MATH) for mathematical reasoning demonstrate that MetaMath outperforms a suite of open-source LLMs by a significant margin. Our MetaMath-7B model achieves 66.4% on GSM8K and 19.4% on MATH, exceeding the state-of-the-art models of the same size by 11.5% and 8.7%. Particularly, MetaMath-70B achieves an accuracy of 82.3% on GSM8K, slightly better than GPT-3.5-Turbo. We release all the MetaMathQA dataset, the MetaMath models with different model sizes and the training code for public use.",
+            "year": 2023,
+            "citationCount": 58,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results on two popular benchmarks for mathematical reasoning demonstrate that MetaMath outperforms a suite of open-source LLMs by a significant margin."
+            },
+            "score": 6
+        },
+        {
+            "id": "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+            "paperId": "aade40af0d85b0b4fe15c97f6222d5c2e4d6d9b3",
+            "title": "Graph of Thoughts: Solving Elaborate Problems with Large Language Models",
+            "abstract": "We introduce Graph of Thoughts (GoT): a framework that\nadvances prompting capabilities in large language models\n(LLMs) beyond those offered by paradigms such as \nChain-of-Thought or Tree of Thoughts (ToT). The key idea and \nprimary advantage of GoT is the ability to model the information \ngenerated by an LLM as an arbitrary graph, where units of \ninformation (\"LLM thoughts\") are vertices, and edges correspond\nto dependencies between these vertices. This approach enables \ncombining arbitrary LLM thoughts into synergistic outcomes, \ndistilling the essence of whole networks of thoughts,\nor enhancing thoughts using feedback loops. We illustrate\nthat GoT offers advantages over state of the art on different\ntasks, for example increasing the quality of sorting by 62%\nover ToT, while simultaneously reducing costs by >31%.\nWe ensure that GoT is extensible with new thought \ntransformations and thus can be used to spearhead new prompting\nschemes. This work brings the LLM reasoning closer to human \nthinking or brain mechanisms such as recurrence, both\nof which form complex networks",
+            "year": 2023,
+            "citationCount": 172,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Graph of Thoughts is introduced: a framework that advances prompting capabilities in large language models (LLMs) beyond those offered by paradigms such as Chain-of-Thought or Tree of Thoughts, and is ensured that GoT is extensible with new thought transformations and thus can be used to spearhead new prompting schemes."
+            },
+            "score": 6
+        },
+        {
+            "id": "d4bf36cbc5855ea87235d7a64f406717ac6aa3c9",
+            "paperId": "d4bf36cbc5855ea87235d7a64f406717ac6aa3c9",
+            "title": "Large Language Models as Analogical Reasoners",
+            "abstract": "Chain-of-thought (CoT) prompting for language models demonstrates impressive performance across reasoning tasks, but typically needs labeled exemplars of the reasoning process. In this work, we introduce a new prompting approach, analogical prompting, designed to automatically guide the reasoning process of large language models. Inspired by analogical reasoning, a cognitive process in which humans draw from relevant past experiences to tackle new problems, our approach prompts language models to self-generate relevant exemplars or knowledge in the context, before proceeding to solve the given problem. This method presents several advantages: it obviates the need for labeling or retrieving exemplars, offering generality and convenience; it can also tailor the generated exemplars and knowledge to each problem, offering adaptability. Experimental results show that our approach outperforms 0-shot CoT and manual few-shot CoT in a variety of reasoning tasks, including math problem solving in GSM8K and MATH, code generation in Codeforces, and other reasoning tasks in BIG-Bench.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results show that this approach outperforms 0-shot CoT and manual few-shot CoT in a variety of reasoning tasks, including math problem solving in GSM8K and MATH, code generation in Codeforces, and other reasoning tasks in BIG-Bench."
+            },
+            "score": 6
+        },
+        {
+            "id": "2f97fe9ce214394151536118b6e1f0bdd3b190ee",
+            "paperId": "2f97fe9ce214394151536118b6e1f0bdd3b190ee",
+            "title": "ChainLM: Empowering Large Language Models with Improved Chain-of-Thought Prompting",
+            "abstract": "Chain-of-Thought (CoT) prompting can enhance the reasoning capabilities of large language models (LLMs), establishing itself as a primary approach to solving complex reasoning tasks. Existing CoT synthesis approaches usually focus on simpler reasoning tasks and thus result in low-quality and inconsistent CoT prompts. In response to this challenge, we present an empirical investigation of CoT prompting and introduce CoTGenius, a novel framework designed for the automatic generation of superior CoT prompts. CoTGenius is developed based on three major evolution strategies, i.e., complicate, diversify, and specify-alongside two filtering mechanisms: evolutionary success judgement and correctness verification. We further employ CoTGenius to create an extensive CoT dataset, and subsequently fine-tune the Llama 2-Chat 7B and 13B models on this dataset. We call the resulting model ChainLM. To deal with the cumulative error issue in reasoning steps, we propose a step-level debating method, wherein multiple debaters discuss each reasoning step to arrive at the correct answer. Extensive experiments demonstrate that our ChainLM models exhibit enhanced proficiency in addressing a spectrum of complex reasoning problems compared to existing models. In addition, we conduct an in-depth analysis of the impact of data categories within CoTGenius on the model performance. We release our dataset and code at https://github.com/RUCAIBox/ChainLM.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 6
+        },
+        {
+            "id": "3455e135151b8026d8e68b1363b212982697a65c",
+            "paperId": "3455e135151b8026d8e68b1363b212982697a65c",
+            "title": "Instructing Large Language Models to Identify and Ignore Irrelevant Conditions",
+            "abstract": "Math word problem (MWP) solving requires generating a reasoning path based on a given problem description that often contains irrelevant conditions. Existing chain-of-thought (CoT) prompting methods elicited multi-step reasoning abilities of large language models (LLMs) to solve MWPs. However, they were seriously confused by the irrelevant conditions, resulting in low accuracy. In this paper, we propose a novel approach named I$^3$C that instructs LLMs to identify and ignore irrelevant conditions. It identifies a set of irrelevant condition candidates that have a weak semantic relevance with the question. Then it prompts LLMs to verify the irrelevant conditions. Lastly it instructs the LLMs with the verification on relevant and irrelevant conditions to avoid confusion and improve reasoning paths. Moreover, we propose to select (problem, reasoning paths) pairs as demonstrations to enhance I$^3$C with few-shot reasoning. We develop I$^3$C-Select that selects the most confusing problems based on the semantic relevance measurement. We conduct extensive experiments on eight MWP datasets. I$^3$C can be combined with any CoT prompting methods to improve the performance of solving MWPs. Notably, with GPT-3.5-Turbo and I$^3$C-Select, we achieve an accuracy of 96.0 and 94.1 on GSM-IC2-1K and GSM-ICM-1K, respectively, significantly outperforming the state-of-the-art few-shot prompting method Complex-CoT by +11.7 and +11.1. Our implementation is made publicly available at https://wzy6642.github.io/I3C.github.io/.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 6
+        },
+        {
+            "id": "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+            "paperId": "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+            "title": "Large Language Models are Zero-Shot Reasoners",
+            "abstract": "Pretrained large language models (LLMs) are widely used in many sub-fields of natural language processing (NLP) and generally known as excellent few-shot learners with task-specific exemplars. Notably, chain of thought (CoT) prompting, a recent technique for eliciting complex multi-step reasoning through step-by-step answer examples, achieved the state-of-the-art performances in arithmetics and symbolic reasoning, difficult system-2 tasks that do not follow the standard scaling laws for LLMs. While these successes are often attributed to LLMs' ability for few-shot learning, we show that LLMs are decent zero-shot reasoners by simply adding\"Let's think step by step\"before each answer. Experimental results demonstrate that our Zero-shot-CoT, using the same single prompt template, significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks including arithmetics (MultiArith, GSM8K, AQUA-RAT, SVAMP), symbolic reasoning (Last Letter, Coin Flip), and other logical reasoning tasks (Date Understanding, Tracking Shuffled Objects), without any hand-crafted few-shot examples, e.g. increasing the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with large InstructGPT model (text-davinci-002), as well as similar magnitudes of improvements with another off-the-shelf large model, 540B parameter PaLM. The versatility of this single prompt across very diverse reasoning tasks hints at untapped and understudied fundamental zero-shot capabilities of LLMs, suggesting high-level, multi-task broad cognitive capabilities may be extracted by simple prompting. We hope our work not only serves as the minimal strongest zero-shot baseline for the challenging reasoning benchmarks, but also highlights the importance of carefully exploring and analyzing the enormous zero-shot knowledge hidden inside LLMs before crafting finetuning datasets or few-shot exemplars.",
+            "year": 2022,
+            "citationCount": 1857,
+            "score": 6
+        },
+        {
+            "id": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "paperId": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+            "abstract": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Self-consistency leverages the intuition that a complex reasoning problem typically admits multiple different ways of thinking leading to its unique correct answer. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+            "year": 2022,
+            "citationCount": 1389,
+            "score": 6
+        },
+        {
+            "id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "paperId": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+            "abstract": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+            "year": 2022,
+            "citationCount": 3511,
+            "score": 6
+        },
+        {
+            "id": "2f3822eb380b5e753a6d579f31dfc3ec4c4a0820",
+            "paperId": "2f3822eb380b5e753a6d579f31dfc3ec4c4a0820",
+            "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+            "abstract": "Language models are increasingly being deployed for general problem solving across a wide range of tasks, but are still confined to token-level, left-to-right decision-making processes during inference. This means they can fall short in tasks that require exploration, strategic lookahead, or where initial decisions play a pivotal role. To surmount these challenges, we introduce a new framework for language model inference, Tree of Thoughts (ToT), which generalizes over the popular Chain of Thought approach to prompting language models, and enables exploration over coherent units of text (thoughts) that serve as intermediate steps toward problem solving. ToT allows LMs to perform deliberate decision making by considering multiple different reasoning paths and self-evaluating choices to decide the next course of action, as well as looking ahead or backtracking when necessary to make global choices. Our experiments show that ToT significantly enhances language models' problem-solving abilities on three novel tasks requiring non-trivial planning or search: Game of 24, Creative Writing, and Mini Crosswords. For instance, in Game of 24, while GPT-4 with chain-of-thought prompting only solved 4% of tasks, our method achieved a success rate of 74%. Code repo with all prompts: https://github.com/princeton-nlp/tree-of-thought-llm.",
+            "year": 2023,
+            "citationCount": 586,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new framework for language model inference, Tree of Thoughts (ToT), which generalizes over the popular Chain of Thought approach to prompting language models, and enables exploration over coherent units of text (thoughts) that serve as intermediate steps toward problem solving."
+            },
+            "score": 5
+        },
+        {
+            "id": "9e9e4df2996bac794c4f04cb887df3e553bae4fd",
+            "paperId": "9e9e4df2996bac794c4f04cb887df3e553bae4fd",
+            "title": "Logic-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning",
+            "abstract": "Large Language Models (LLMs) have shown human-like reasoning abilities but still struggle with complex logical problems. This paper introduces a novel framework, Logic-LM, which integrates LLMs with symbolic solvers to improve logical problem-solving. Our method first utilizes LLMs to translate a natural language problem into a symbolic formulation. Afterward, a deterministic symbolic solver performs inference on the formulated problem. We also introduce a self-refinement module, which utilizes the symbolic solver's error messages to revise symbolic formalizations. We demonstrate Logic-LM's effectiveness on five logical reasoning datasets: ProofWriter, PrOntoQA, FOLIO, LogicalDeduction, and AR-LSAT. On average, Logic-LM achieves a significant performance boost of 39.2% over using LLM alone with standard prompting and 18.4% over LLM with chain-of-thought prompting. Our findings suggest that Logic-LM, by combining LLMs with symbolic logic, offers a promising avenue for faithful logical reasoning. Code and data are publicly available at https://github.com/teacherpeterpan/Logic-LLM.",
+            "year": 2023,
+            "citationCount": 59,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a novel framework, Logic-LM, which integrates LLMs with symbolic solvers to improve logical problem-solving and suggests that it offers a promising avenue for faithful logical reasoning."
+            },
+            "score": 5
+        },
+        {
+            "id": "27a6dc0300eb6a002e8f53c2dacd3495c034f9ff",
+            "paperId": "27a6dc0300eb6a002e8f53c2dacd3495c034f9ff",
+            "title": "RoT: Enhancing Large Language Models with Reflection on Search Trees",
+            "abstract": "Large language models (LLMs) have demonstrated impressive capability in reasoning and planning when integrated with tree-search-based prompting methods. However, since these methods ignore the previous search experiences, they often make the same mistakes in the search process. To address this issue, we introduce Reflection on search Trees (RoT), an LLM reflection framework designed to improve the performance of tree-search-based prompting methods. It uses a strong LLM to summarize guidelines from previous tree search experiences to enhance the ability of a weak LLM. The guidelines are instructions about solving this task through tree search which can prevent the weak LLMs from making similar mistakes in the past search process. In addition, we proposed a novel state selection method, which identifies the critical information from historical search processes to help RoT generate more specific and meaningful guidelines. In our extensive experiments, we find that RoT significantly improves the performance of LLMs in reasoning or planning tasks with various tree-search-based prompting methods (e.g., BFS and MCTS). Non-tree-search-based prompting methods such as Chain-of-Thought (CoT) can also benefit from RoT guidelines since RoT can provide task-specific knowledge collected from the search experience.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "db5ca4c19b467352ba52470c60d15205783afe73",
+            "paperId": "db5ca4c19b467352ba52470c60d15205783afe73",
+            "title": "Attention-Driven Reasoning: Unlocking the Potential of Large Language Models",
+            "abstract": "Large Language Models (LLMs) have shown remarkable capabilities, but their reasoning abilities and underlying mechanisms remain poorly understood. We present a novel approach to enhance LLMs' reasoning through attention mechanism optimization, without additional training data. We identify inefficiencies in the attention distribution caused by non-semantic tokens and propose an algorithm to re-balance the skewed distribution, enabling the model to abstract more nuanced knowledge. Our experiments demonstrate significantly improved reasoning capabilities, particularly for non-STEM questions. We provide insights into the role of attention patterns in LLMs' reasoning and propose a method to enhance these abilities, paving the way for more powerful and versatile language models.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "11b95e33f1a61079105e06090984b9dd8742887e",
+            "paperId": "11b95e33f1a61079105e06090984b9dd8742887e",
+            "title": "Contrastive Chain-of-Thought Prompting",
+            "abstract": "Despite the success of chain of thought in enhancing language model reasoning, the underlying process remains less well understood. Although logically sound reasoning appears inherently crucial for chain of thought, prior studies surprisingly reveal minimal impact when using invalid demonstrations instead. Furthermore, the conventional chain of thought does not inform language models on what mistakes to avoid, which potentially leads to more errors. Hence, inspired by how humans can learn from both positive and negative examples, we propose contrastive chain of thought to enhance language model reasoning. Compared to the conventional chain of thought, our approach provides both valid and invalid reasoning demonstrations, to guide the model to reason step-by-step while reducing reasoning mistakes. To improve generalization, we introduce an automatic method to construct contrastive demonstrations. Our experiments on reasoning benchmarks demonstrate that contrastive chain of thought can serve as a general enhancement of chain-of-thought prompting.",
+            "year": 2023,
+            "citationCount": 7,
+            "score": 5
+        },
+        {
+            "id": "6b50f585dcaaea31a0ec4e630d652057f3f911c1",
+            "paperId": "6b50f585dcaaea31a0ec4e630d652057f3f911c1",
+            "title": "Mixture-of-Instructions: Comprehensive Alignment of a Large Language Model through the Mixture of Diverse System Prompting Instructions",
+            "abstract": "With the proliferation of large language models (LLMs), the comprehensive alignment of such models across multiple tasks has emerged as a critical area of research. Existing alignment methodologies primarily address single task, such as multi-turn dialogue, coding, mathematical problem-solving, and tool usage. However, AI-driven products that leverage language models usually necessitate a fusion of these abilities to function effectively in real-world scenarios. Moreover, the considerable computational resources required for proper alignment of LLMs underscore the need for a more robust, efficient, and encompassing approach to multi-task alignment, ensuring improved generative performance. In response to these challenges, we introduce a novel technique termed Mixture-of-Instructions (MoI), which employs a strategy of instruction concatenation combined with diverse system prompts to boost the alignment efficiency of language models. We have also compiled a diverse set of seven benchmark datasets to rigorously evaluate the alignment efficacy of the MoI-enhanced language model. Our methodology was applied to the open-source Qwen-7B-chat model, culminating in the development of Qwen-SFT-MoI. This enhanced model demonstrates significant advancements in generative capabilities across coding, mathematics, and tool use tasks.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel technique termed Mixture-of-Instructions (MoI), which employs a strategy of instruction concatenation combined with diverse system prompts to boost the alignment efficiency of language models, and demonstrates significant advancements in generative capabilities across coding, mathematics, and tool use tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "434b9f9bc71c935e4a46a1aff36a8cc4c22d9afa",
+            "paperId": "434b9f9bc71c935e4a46a1aff36a8cc4c22d9afa",
+            "title": "Unleashing the Emergent Cognitive Synergy in Large Language Models: A Task-Solving Agent through Multi-Persona Self-Collaboration",
+            "abstract": "Human intelligence thrives on cognitive synergy, where collaboration among different minds yield superior outcomes compared to isolated individuals. In this work, we propose Solo Performance Prompting (SPP), which transforms a single LLM into a cognitive synergist by engaging in multi-turn self-collaboration with multiple personas. A cognitive synergist is an intelligent agent that collaboratively combines multiple minds' strengths and knowledge to enhance problem-solving in complex tasks. By dynamically identifying and simulating different personas based on task inputs, SPP unleashes the potential of cognitive synergy in LLMs. Our in-depth analysis shows that assigning multiple fine-grained personas in LLMs improves problem-solving abilities compared to using a single or fixed number of personas. We evaluate SPP on three challenging tasks: Trivia Creative Writing, Codenames Collaborative, and Logic Grid Puzzle, encompassing both knowledge-intensive and reasoning-intensive types. Unlike previous works, such as Chain-of-Thought, that solely enhance the reasoning abilities in LLMs, experimental results demonstrate that SPP effectively reduces factual hallucination, and maintains strong reasoning capabilities. Additionally, comparative experiments show that cognitive synergy only emerges in GPT-4 and does not appear in less capable models, such as GPT-3.5-turbo and Llama2-13b-chat, which draws an interesting analogy to human development. Code, data, and prompts can be found at: https://github.com/MikeWangWZHL/Solo-Performance-Prompting.git.",
+            "year": 2023,
+            "citationCount": 42,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Solo Performance Prompting (SPP), which transforms a single LLM into a cognitive synergist by engaging in multi-turn self-collaboration with multiple personas by dynamically identifying and simulating different personas based on task inputs, which unleashes the potential of cognitive synergy in LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "36f46391b00a7eb4ffc991f964a36b264811057d",
+            "paperId": "36f46391b00a7eb4ffc991f964a36b264811057d",
+            "title": "Mathify: Evaluating Large Language Models on Mathematical Problem Solving Tasks",
+            "abstract": "The rapid progress in the field of natural language processing (NLP) systems and the expansion of large language models (LLMs) have opened up numerous opportunities in the field of education and instructional methods. These advancements offer the potential for tailored learning experiences and immediate feedback, all delivered through accessible and cost-effective services. One notable application area for this technological advancement is in the realm of solving mathematical problems. Mathematical problem-solving not only requires the ability to decipher complex problem statements but also the skill to perform precise arithmetic calculations at each step of the problem-solving process. However, the evaluation of the arithmetic capabilities of large language models remains an area that has received relatively little attention. In response, we introduce an extensive mathematics dataset called\"MathQuest\"sourced from the 11th and 12th standard Mathematics NCERT textbooks. This dataset encompasses mathematical challenges of varying complexity and covers a wide range of mathematical concepts. Utilizing this dataset, we conduct fine-tuning experiments with three prominent LLMs: LLaMA-2, WizardMath, and MAmmoTH. These fine-tuned models serve as benchmarks for evaluating their performance on our dataset. Our experiments reveal that among the three models, MAmmoTH-13B emerges as the most proficient, achieving the highest level of competence in solving the presented mathematical problems. Consequently, MAmmoTH-13B establishes itself as a robust and dependable benchmark for addressing NCERT mathematics problems.",
+            "year": 2024,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An extensive mathematics dataset called \"MathQuest\"ourced from the 11th and 12th standard Mathematics NCERT textbooks is introduced, and MAmmoTH-13B establishes itself as a robust and dependable benchmark for addressing NCERT mathematics problems."
+            },
+            "score": 4
+        },
+        {
+            "id": "8d806a91e5f2166ee6823eb7e6e8e56826b6776d",
+            "paperId": "8d806a91e5f2166ee6823eb7e6e8e56826b6776d",
+            "title": "NLPBench: Evaluating Large Language Models on Solving NLP Problems",
+            "abstract": "Recent developments in large language models (LLMs) have shown promise in enhancing the capabilities of natural language processing (NLP). Despite these successes, there remains a dearth of research dedicated to the NLP problem-solving abilities of LLMs. To fill the gap in this area, we present a unique benchmarking dataset, NLPBench, comprising 378 college-level NLP questions spanning various NLP topics sourced from Yale University's prior final exams. NLPBench includes questions with context, in which multiple sub-questions share the same public information, and diverse question types, including multiple choice, short answer, and math. Our evaluation, centered on LLMs such as GPT-3.5/4, PaLM-2, and LLAMA-2, incorporates advanced prompting strategies like the chain-of-thought (CoT) and tree-of-thought (ToT). Our study reveals that the effectiveness of the advanced prompting strategies can be inconsistent, occasionally damaging LLM performance, especially in smaller models like the LLAMA-2 (13b). Furthermore, our manual assessment illuminated specific shortcomings in LLMs' scientific problem-solving skills, with weaknesses in logical decomposition and reasoning notably affecting results.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study presents a unique benchmarking dataset, NLPBench, comprising 378 college-level NLP questions spanning various NLP topics sourced from Yale University's prior final exams, and reveals that the effectiveness of the advanced prompting strategies can be inconsistent, occasionally damaging LLM performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "906f4a3c6d5fe64c1e8d107013713abe2942b630",
+            "paperId": "906f4a3c6d5fe64c1e8d107013713abe2942b630",
+            "title": "Puzzle in a Haystack: Understanding & Enhancing Long Context Reasoning",
+            "abstract": "As the context windows of Large Language Models (LLMs) increase, they have the ability of accepting entire novels to textbooks as input. The popular Needle in a Haystack (NIAH) evaluation, while providing a minimum standard for evaluating this long context performance, falls short of assessing the more important reasoning and information synthesis capabilities of possible with long context LLMs. Hence, we introduce the Progressive Needles Test: a simple logic puzzle to evaluate a model\u2019s ability to reason over, synthesize, and deduce information from multiple parts of its inputted context. In the Progressive Needles test, we place information relevant to a query (\"needles\") within a larger text of thematically related but irrelevant information (\"haystack\"). The needles are logically connected to one another, necessitating the models to engage in deep reasoning to extract and synthesize this scattered information to arrive at the correct answer. We generate Progressive Needles questions for haystacks for both natural language numerical/mathematical reasoning tasks as well as code tasks, the latter simulating chained function calls across code bases. We find that LLMs like GPT-4, GPT-3.5, and Mixtal exhibit a marked decline in performance on the Progressive Needles test when the size of the haystack is increased and queries are made to require more complex reasoning, exposing gaps both within current long context benchmarks and weaknesses in LLM\u2019s reasoning abilities. By fine-tuning GPT-3.5 on the Progressive Needles tasks, we also demonstrate that learning to solve Progressive Needles tasks leads to a tangible improvement of \u223c 2% in performance on the real-world QuALITY benchmark, suggesting that our task helps enhance LLM reasoning capabilities and other real world tasks.",
+            "year": null,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "7374edea34729efd3371377d827705e678a71742",
+            "paperId": "7374edea34729efd3371377d827705e678a71742",
+            "title": "Towards Systematic Evaluation of Logical Reasoning Ability of Large Language Models",
+            "abstract": "Recently developed large language models (LLMs) have been shown to perform remarkably well on a wide range of language understanding tasks. But, can they really\"reason\"over the natural language? This question has been receiving significant research attention and many reasoning skills such as commonsense, numerical, and qualitative have been studied. However, the crucial skill pertaining to 'logical reasoning' has remained underexplored. Existing work investigating this reasoning ability of LLMs has focused only on a couple of inference rules (such as modus ponens and modus tollens) of propositional and first-order logic. Addressing the above limitation, we comprehensively evaluate the logical reasoning ability of LLMs on 25 different reasoning patterns spanning over propositional, first-order, and non-monotonic logics. To enable systematic evaluation, we introduce LogicBench, a natural language question-answering dataset focusing on the use of a single inference rule. We conduct detailed analysis with a range of LLMs such as GPT-4, ChatGPT, Gemini, Llama-2, and Mistral using chain-of-thought prompting. Experimental results show that existing LLMs do not fare well on LogicBench; especially, they struggle with instances involving complex reasoning and negations. Furthermore, they sometimes overlook contextual information necessary for reasoning to arrive at the correct conclusion. We believe that our work and findings facilitate future research for evaluating and enhancing the logical reasoning ability of LLMs. Data and code are available at https://github.com/Mihir3009/LogicBench.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "c41ff6575a0eb5942212de2cfdb09396bcb3601e",
+            "paperId": "c41ff6575a0eb5942212de2cfdb09396bcb3601e",
+            "title": "NPHardEval4V: A Dynamic Reasoning Benchmark of Multimodal Large Language Models",
+            "abstract": "Understanding the reasoning capabilities of Multimodal Large Language Models (MLLMs) is an important area of research. In this study, we introduce a dynamic benchmark, NPHardEval4V, aimed at addressing the existing gaps in evaluating the pure reasoning abilities of MLLMs. Our benchmark aims to provide a venue to disentangle the effect of various factors such as image recognition and instruction following, from the overall performance of the models, allowing us to focus solely on evaluating their reasoning abilities. It is built by converting textual description of questions from NPHardEval to image representations. Our findings reveal significant discrepancies in reasoning abilities across different models and highlight the relatively weak performance of MLLMs compared to LLMs in terms of reasoning. We also investigate the impact of different prompting styles, including visual, text, and combined visual and text prompts, on the reasoning abilities of MLLMs, demonstrating the different impacts of multimodal inputs in model performance. Unlike traditional benchmarks, which focus primarily on static evaluations, our benchmark will be updated monthly to prevent overfitting and ensure a more authentic and fine-grained evaluation of the models. We believe that this benchmark can aid in understanding and guide the further development of reasoning abilities in MLLMs. The benchmark dataset and code are available at https://github.com/lizhouf/NPHardEval4V",
+            "year": 2024,
+            "citationCount": 4,
+            "score": 4
+        },
+        {
+            "id": "450d97c7f456eafbb69dd70322d341058028b171",
+            "paperId": "450d97c7f456eafbb69dd70322d341058028b171",
+            "title": "In-Context Principle Learning from Mistakes",
+            "abstract": "In-context learning (ICL, also known as few-shot prompting) has been the standard method of adapting LLMs to downstream tasks, by learning from a few input-output examples. Nonetheless, all ICL-based approaches only learn from correct input-output pairs. In this paper, we revisit this paradigm, by learning more from the few given input-output examples. We introduce Learning Principles (LEAP): First, we intentionally induce the model to make mistakes on these few examples; then we reflect on these mistakes, and learn explicit task-specific\"principles\"from them, which help solve similar problems and avoid common mistakes; finally, we prompt the model to answer unseen test questions using the original few-shot examples and these learned general principles. We evaluate LEAP on a wide range of benchmarks, including multi-hop question answering (Hotpot QA), textual QA (DROP), Big-Bench Hard reasoning, and math problems (GSM8K and MATH); in all these benchmarks, LEAP improves the strongest available LLMs such as GPT-3.5-turbo, GPT-4, GPT-4 turbo and Claude-2.1. For example, LEAP improves over the standard few-shot prompting using GPT-4 by 7.5% in DROP, and by 3.3% in HotpotQA. Importantly, LEAP does not require any more input or examples than the standard few-shot prompting settings.",
+            "year": 2024,
+            "citationCount": 4,
+            "score": 4
+        },
+        {
+            "id": "adb9acaf9184bdbd23105f1a383848eed9bc82fc",
+            "paperId": "adb9acaf9184bdbd23105f1a383848eed9bc82fc",
+            "title": "Beyond Chain-of-Thought, Effective Graph-of-Thought Reasoning in Large Language Models",
+            "abstract": "With the widespread use of large language models (LLMs) in NLP tasks, researchers have discovered the potential of Chain-of-thought (CoT) to assist LLMs in accomplishing complex reasoning tasks by generating intermediate steps. However, human thought processes are often non-linear, rather than simply sequential chains of thoughts. Therefore, we propose Graph-of-Thought (GoT) reasoning, which models human thought processes not only as a chain but also as a graph. By representing thought units as nodes and connections between them as edges, our approach captures the non-sequential nature of human thinking and allows for a more realistic modeling of thought processes. Similar to Multimodal-CoT [1], we modeled GoT reasoning as a two-stage framework, generating rationales first and then producing the final answer. Specifically, we employ an additional graph-of-thoughts encoder for GoT representation learning and fuse the GoT representation with the original input representation through a gated fusion mechanism. We implement a GoT reasoning model on the T5 pre-trained model and evaluate its performance on a text-only reasoning task (GSM8K) and a multimodal reasoning task (ScienceQA). Our model achieves significant improvement over the strong CoT baseline with 3.41% and 5.08% on the GSM8K test set with T5-base and T5-large architectures, respectively. Additionally, our model boosts accuracy from 84.91% to 91.54% using the T5-base model and from 91.68% to 92.77% using the T5-large model over the state-of-the-art Multimodal-CoT on the ScienceQA test set. Experiments have shown that GoT achieves comparable results to Multimodal-CoT large with over 700M parameters, despite having fewer than 250M backbone model parameters, demonstrating the effectiveness of GoT.",
+            "year": 2023,
+            "citationCount": 32,
+            "score": 4
+        },
+        {
+            "id": "b5bffe41155052a43010ec7197f832e81c546268",
+            "paperId": "b5bffe41155052a43010ec7197f832e81c546268",
+            "title": "Quiet-STaR: Language Models Can Teach Themselves to Think Before Speaking",
+            "abstract": "When writing and talking, people sometimes pause to think. Although reasoning-focused works have often framed reasoning as a method of answering questions or completing agentic tasks, reasoning is implicit in almost all written text. For example, this applies to the steps not stated between the lines of a proof or to the theory of mind underlying a conversation. In the Self-Taught Reasoner (STaR, Zelikman et al. 2022), useful thinking is learned by inferring rationales from few-shot examples in question-answering and learning from those that lead to a correct answer. This is a highly constrained setting -- ideally, a language model could instead learn to infer unstated rationales in arbitrary text. We present Quiet-STaR, a generalization of STaR in which LMs learn to generate rationales at each token to explain future text, improving their predictions. We address key challenges, including 1) the computational cost of generating continuations, 2) the fact that the LM does not initially know how to generate or use internal thoughts, and 3) the need to predict beyond individual next tokens. To resolve these, we propose a tokenwise parallel sampling algorithm, using learnable tokens indicating a thought's start and end, and an extended teacher-forcing technique. Encouragingly, generated rationales disproportionately help model difficult-to-predict tokens and improve the LM's ability to directly answer difficult questions. In particular, after continued pretraining of an LM on a corpus of internet text with Quiet-STaR, we find zero-shot improvements on GSM8K (5.9%$\\rightarrow$10.9%) and CommonsenseQA (36.3%$\\rightarrow$47.2%) and observe a perplexity improvement of difficult tokens in natural text. Crucially, these improvements require no fine-tuning on these tasks. Quiet-STaR marks a step towards LMs that can learn to reason in a more general and scalable way.",
+            "year": 2024,
+            "citationCount": 3,
+            "score": 4
+        },
+        {
+            "id": "08a27745e0bb3e98fb0ec7e3b2443675fdecf883",
+            "paperId": "08a27745e0bb3e98fb0ec7e3b2443675fdecf883",
+            "title": "Mathematical Reasoning Through LLM Finetuning",
+            "abstract": "Using LLMs to generate step-by-step solutions to math problems can be extremely difficult due to the logical reasoning required. In this paper, we explore several different methods to finetune LLMs for this task. We first implement Multi-Task Sequential Fine-Tuning (MTSFT) from Liu et al. (2023), which works off the observation that training language models sequentially as solution evaluators then as solution generators improves their performance. We then implement our own novel method, Logic-Enhanced Sequential Fine-Tuning (LESFT), which combines MTSFT with additional fine-tuning on the LogiQA dataset of multiple-choice deductive reasoning questions to improve the model\u2019s general logical reasoning abilities. We use the open-source Mistral-7B model and measure Pass@1 and Maj1@64 accuracy on the MATH dataset. When compared to a baseline model with no fine-tuning, we notice accuracy improvements of roughly 10% in Pass@1 accuracy and roughly 15% in Maj1@64 accuracy for both MTSFT and LESFT trained models. Upon further analysis of specific problems, we notice that fine-tuning helps the model correctly execute the logic for problems it could not initially. However, the task still remains quite difficult - when using an LESFT trained model and generating 64 solutions for each problem, upwards of 50% of problems have less than 5% of generated solutions correct.",
+            "year": null,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "2cf1f6c723006f258599fd9f000bb616ae83387a",
+            "paperId": "2cf1f6c723006f258599fd9f000bb616ae83387a",
+            "title": "Have LLMs Advanced Enough? A Challenging Problem Solving Benchmark For Large Language Models",
+            "abstract": "The performance of large language models (LLMs) on existing reasoning benchmarks has significantly improved over the past years. In response, we present JEEBench, a considerably more challenging benchmark dataset for evaluating the problem solving abilities of LLMs. We curate 515 challenging pre-engineering mathematics, physics and chemistry problems from the highly competitive IIT JEE-Advanced exam. Long-horizon reasoning on top of deep in-domain knowledge is essential for solving problems in this benchmark. Our evaluation on various open-source and proprietary models reveals that the highest performance, even after using techniques like self-consistency, self-refinement and chain-of-thought prompting, is less than 40%. The typical failure modes of GPT-4, the best model, are errors in algebraic manipulation, difficulty in grounding abstract concepts into mathematical equations accurately and failure in retrieving relevant domain-specific concepts. We also observe that by mere prompting, GPT-4 is unable to assess risk introduced by negative marking for incorrect answers. For this, we develop a post-hoc confidence-thresholding method over self-consistency, which enables effective response selection. We hope that our challenging benchmark will guide future re-search in problem-solving using LLMs.",
+            "year": 2023,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "JEEBench is presented, a considerably more challenging benchmark dataset for evaluating the problem solving abilities of LLMs, and a post-hoc confidence-thresholding method over self-consistency is developed, which enables effective response selection."
+            },
+            "score": 3
+        },
+        {
+            "id": "4993258852711c4e3d0011325ac3db680eae84f4",
+            "paperId": "4993258852711c4e3d0011325ac3db680eae84f4",
+            "title": "SciBench: Evaluating College-Level Scientific Problem-Solving Abilities of Large Language Models",
+            "abstract": "Most of the existing Large Language Model (LLM) benchmarks on scientific problem reasoning focus on problems grounded in high-school subjects and are confined to elementary algebraic operations. To systematically examine the reasoning capabilities required for solving complex scientific problems, we introduce an expansive benchmark suite SciBench for LLMs. SciBench contains a carefully curated dataset featuring a range of collegiate-level scientific problems from mathematics, chemistry, and physics domains. Based on the dataset, we conduct an in-depth benchmarking study of representative open-source and proprietary LLMs with various prompting strategies. The results reveal that the current LLMs fall short of delivering satisfactory performance, with the best overall score of merely 43.22%. Furthermore, through a detailed user study, we categorize the errors made by LLMs into ten problem-solving abilities. Our analysis indicates that no single prompting strategy significantly outperforms the others and some strategies that demonstrate improvements in certain problem-solving skills could result in declines in other skills. We envision that SciBench will catalyze further developments in the reasoning abilities of LLMs, thereby ultimately contributing to scientific research and discovery.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An in-depth benchmarking study of representative open-source and proprietary LLMs with various prompting strategies indicates that no single prompting strategy significantly outperforms the others and some strategies that demonstrate improvements in certain problem-solving skills could result in declines in other skills."
+            },
+            "score": 3
+        },
+        {
+            "id": "cf3522700d89af9dabfbad44c509a0fed2bde517",
+            "paperId": "cf3522700d89af9dabfbad44c509a0fed2bde517",
+            "title": "Human-like problem-solving abilities in large language models using ChatGPT",
+            "abstract": "Backgrounds The field of Artificial Intelligence (AI) has seen a major shift in recent years due to the development of new Machine Learning (ML) models such as Generative Pre-trained Transformer (GPT). GPT has achieved previously unheard-of levels of accuracy in most computerized language processing tasks and their chat-based variations. Aim The aim of this study was to investigate the problem-solving abilities of ChatGPT using two sets of verbal insight problems, with a known performance level established by a sample of human participants. Materials and methods A total of 30 problems labeled as \u201cpractice problems\u201d and \u201ctransfer problems\u201d were administered to ChatGPT. ChatGPT's answers received a score of \u201c0\u201d for each incorrectly answered problem and a score of \u201c1\u201d for each correct response. The highest possible score for both the practice and transfer problems was 15 out of 15. The solution rate for each problem (based on a sample of 20 subjects) was used to assess and compare the performance of ChatGPT with that of human subjects. Results The study highlighted that ChatGPT can be trained in out-of-the-box thinking and demonstrated potential in solving verbal insight problems. The global performance of ChatGPT equalled the most probable outcome for the human sample in both practice problems and transfer problems as well as upon their combination. Additionally, ChatGPT answer combinations were among the 5% of most probable outcomes for the human sample both when considering practice problems and pooled problem sets. These findings demonstrate that ChatGPT performance on both set of problems was in line with the mean rate of success of human subjects, indicating that it performed reasonably well. Conclusions The use of transformer architecture and self-attention in ChatGPT may have helped to prioritize inputs while predicting, contributing to its potential in verbal insight problem-solving. ChatGPT has shown potential in solving insight problems, thus highlighting the importance of incorporating AI into psychological research. However, it is acknowledged that there are still open challenges. Indeed, further research is required to fully understand AI's capabilities and limitations in verbal problem-solving.",
+            "year": 2023,
+            "citationCount": 33,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The study highlighted that ChatGPT can be trained in out-of-the-box thinking and demonstrated potential in solving verbal insight problems, highlighting the importance of incorporating AI into psychological research."
+            },
+            "score": 3
+        },
+        {
+            "id": "b8d0ad089cb774dec70a29c21f23a4526b06cf72",
+            "paperId": "b8d0ad089cb774dec70a29c21f23a4526b06cf72",
+            "title": "Improving performance in large language models through diversity of thoughts",
+            "abstract": "Large language models (LLMs) have shown remarkable reasoning capabilities but still lack in solving complex reasoning tasks. To enhance performance, the DyLAN framework Liu et al. (2023) introduces an interaction architecture where an LLM is prompted to assume \u2018multiple roles,\u2019 fostering diversity in approaches to problem-solving. This method has achieved accuracy improvements of 13.0% , 13.3% , and up to 25.0% on the MATH , HumanEval , and MMLU datasets, respectively, for mathematical, code generation, and general reasoning tasks. However, it incurs high computational costs, especially in terms of API calls/prompts. Our project aims to internalize the DyLAN framework\u2019s \u2018diversity of thought\u2019 to reduce inference numbers, allowing the LLM to mimic human problem-solving approaches more efficiently. We fine-tuned a LLaMA-2-7B model using a custom-generated dataset consisting of 811 MATH problems with solutions from four distinct roles. Our approach improved accuracy from approximately 6% to 10% on the MATH dataset and from 7.5% to 15% on the MMLU dataset, indicating successful generalization in a zero-shot setting. In summary, by fine-tuning the LLaMA-2-7B model with a dataset that incorporates \"diversity of thought,\" we achieved a 56% improvement on the MATH dataset and a 77% improvement on MMLU tasks compared to the baseline. The source code supporting the findings of this study has been made openly available at the following repository on GitHub",
+            "year": null,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "4fc87dc2ac306a1527c60f3cd55534d412de078b",
+            "paperId": "4fc87dc2ac306a1527c60f3cd55534d412de078b",
+            "title": "Tree-of-Reasoning Question Decomposition for Complex Question Answering with Large Language Models",
+            "abstract": "Large language models (LLMs) have recently demonstrated remarkable performance across various Natual Language Processing tasks. In the field of multi-hop reasoning, the Chain-of-thought (CoT) prompt method has emerged as a paradigm, using curated stepwise reasoning demonstrations to enhance LLM's ability to reason and produce coherent rational pathways. To ensure the accuracy, reliability, and traceability of the generated answers, many studies have incorporated information retrieval (IR) to provide LLMs with external knowledge. However, existing CoT with IR methods decomposes questions into sub-questions based on a single compositionality type, which limits their effectiveness for questions involving multiple compositionality types. Additionally, these methods suffer from inefficient retrieval, as complex questions often contain abundant information, leading to the retrieval of irrelevant information inconsistent with the query's intent. In this work, we propose a novel question decomposition framework called TRQA for multi-hop question answering, which addresses these limitations. Our framework introduces a reasoning tree (RT) to represent the structure of complex questions. It consists of four components: the Reasoning Tree Constructor (RTC), the Question Generator (QG), the Retrieval and LLM Interaction Module (RAIL), and the Answer Aggregation Module (AAM). Specifically, the RTC predicts diverse sub-question structures to construct the reasoning tree, allowing a more comprehensive representation of complex questions. The QG generates sub-questions for leaf-node in the reasoning tree, and we explore two methods for QG: prompt-based and T5-based approaches. The IR module retrieves documents aligned with sub-questions, while the LLM formulates answers based on the retrieved information. Finally, the AAM aggregates answers along the reason tree, producing a definitive response from bottom to top.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "d487db04e4146a4fb02a2c3318042c846b62f2d3",
+            "paperId": "d487db04e4146a4fb02a2c3318042c846b62f2d3",
+            "title": "PECC: Problem Extraction and Coding Challenges",
+            "abstract": "Recent advancements in large language models (LLMs) have showcased their exceptional abilities across various tasks, such as code generation, problem-solving and reasoning. Existing benchmarks evaluate tasks in isolation, yet the extent to which LLMs can understand prose-style tasks, identify the underlying problems, and then generate appropriate code solutions is still unexplored. Addressing this gap, we introduce PECC, a novel benchmark derived from Advent Of Code (AoC) challenges and Project Euler, including 2396 problems. Unlike conventional benchmarks, PECC requires LLMs to interpret narrative-embedded problems, extract requirements, and generate executable code. A key feature of our dataset is the complexity added by natural language prompting in chat-based evaluations, mirroring real-world instruction ambiguities. Results show varying model performance between narrative and neutral problems, with specific challenges in the Euler math-based subset with GPT-3.5-Turbo passing 50% of the AoC challenges and only 8% on the Euler problems. By probing the limits of LLMs' capabilities, our benchmark provides a framework to monitor and assess the subsequent progress of LLMs as a universal problem solver.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "ef1d74ddfc09a367050bc54b7be846769061d95e",
+            "paperId": "ef1d74ddfc09a367050bc54b7be846769061d95e",
+            "title": "Call Me When Necessary: LLMs can Efficiently and Faithfully Reason over Structured Environments",
+            "abstract": "Large Language Models (LLMs) have shown potential in reasoning over structured environments, e.g., knowledge graph and table. Such tasks typically require multi-hop reasoning, i.e., match natural language utterance with instances in the environment. Previous methods leverage LLMs to incrementally build a reasoning path, where the LLMs either invoke tools or pick up schemas by step-by-step interacting with the environment. We propose Reasoning-Path-Editing (Readi), a novel framework where LLMs can efficiently and faithfully reason over structured environments. In Readi, LLMs initially generate a reasoning path given a query, and edit the path only when necessary. We instantiate the path on structured environments and provide feedback to edit the path if anything goes wrong. Experimental results on three KGQA datasets and two TableQA datasets show the effectiveness of Readi, significantly surpassing all LLM-based methods (by 9.1% on WebQSP, 12.4% on MQA-3H and 10.9% on WTQ), comparable with state-of-the-art fine-tuned methods (67% on CWQ and 74.7% on WebQSP) and substantially boosting the vanilla LLMs (by 14.9% on CWQ). Our code will be available upon publication.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "c7135a1ea0d979719dbf7a8a394673dc92ea2a4b",
+            "paperId": "c7135a1ea0d979719dbf7a8a394673dc92ea2a4b",
+            "title": "Reasoning on Efficient Knowledge Paths:Knowledge Graph Guides Large Language Model for Domain Question Answering",
+            "abstract": "Large language models (LLMs), such as GPT3.5, GPT4 and LLAMA2 perform surprisingly well and outperform human experts on many tasks. However, in many domain-specific evaluations, these LLMs often suffer from hallucination problems due to insufficient training of relevant corpus. Furthermore, fine-tuning large models may face problems such as the LLMs are not open source or the construction of high-quality domain instruction is difficult. Therefore, structured knowledge databases such as knowledge graph can better provide domain background knowledge for LLMs and make full use of the reasoning and analysis capabilities of LLMs. In some previous works, LLM was called multiple times to determine whether the current triplet was suitable for inclusion in the subgraph when retrieving subgraphs through a question. Especially for the question that require a multi-hop reasoning path, frequent calls to LLM will consume a lot of computing power. Moreover, when choosing the reasoning path, LLM will be called once for each step, and if one of the steps is selected incorrectly, it will lead to the accumulation of errors in the following steps. In this paper, we integrated and optimized a pipeline for selecting reasoning paths from KG based on LLM, which can reduce the dependency on LLM. In addition, we propose a simple and effective subgraph retrieval method based on chain of thought (CoT) and page rank which can returns the paths most likely to contain the answer. We conduct experiments on three datasets: GenMedGPT-5k [14], WebQuestions [2], and CMCQA [21]. Finally, RoK can demonstrate that using fewer LLM calls can achieve the same results as previous SOTAs models.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "2268d8104f4dd921fd90f4d2d6df9ecf8e7ce3eb",
+            "paperId": "2268d8104f4dd921fd90f4d2d6df9ecf8e7ce3eb",
+            "title": "ProTrix: Building Models for Planning and Reasoning over Tables with Sentence Context",
+            "abstract": "Tables play a crucial role in conveying information in various domains, serving as indispensable tools for organizing and presenting data in a structured manner. We propose a Plan-then-Reason framework to answer different types of user queries over tables with sentence context. The framework first plans the reasoning paths over the context, then assigns each step to program-based or textual reasoning to reach the final answer. We construct an instruction tuning set TrixInstruct following the framework. Our dataset cover queries that are program-unsolvable or need combining information from tables and sentences to obtain planning and reasoning abilities. We present ProTrix by finetuning Llama-2-7B on TrixInstruct. Our experiments show that ProTrix generalizes to diverse tabular tasks and achieves comparable performance to GPT-3.5-turbo. We further demonstrate that ProTrix can generate accurate and faithful explanations to answer complex free-form questions. Our work underscores the importance of the planning and reasoning abilities towards a model over tabular tasks with generalizability and interpretability. We will release our dataset and model at https://github.com/WilliamZR/ProTrix.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "3aaf6a2cbad5850ad81ab5c163599cb3d523436f",
+            "paperId": "3aaf6a2cbad5850ad81ab5c163599cb3d523436f",
+            "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+            "abstract": "Like humans, large language models (LLMs) do not always generate the best output on their first try. Motivated by how humans refine their written text, we introduce Self-Refine, an approach for improving initial outputs from LLMs through iterative feedback and refinement. The main idea is to generate an initial output using an LLMs; then, the same LLMs provides feedback for its output and uses it to refine itself, iteratively. Self-Refine does not require any supervised training data, additional training, or reinforcement learning, and instead uses a single LLM as the generator, refiner, and feedback provider. We evaluate Self-Refine across 7 diverse tasks, ranging from dialog response generation to mathematical reasoning, using state-of-the-art (GPT-3.5, ChatGPT, and GPT-4) LLMs. Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance. Our work demonstrates that even state-of-the-art LLMs like GPT-4 can be further improved at test time using our simple, standalone approach.",
+            "year": 2023,
+            "citationCount": 504,
+            "score": 3
+        },
+        {
+            "id": "ed319f9be78419b68f9e32a0e7602fc1cad3ccc1",
+            "paperId": "ed319f9be78419b68f9e32a0e7602fc1cad3ccc1",
+            "title": "More Effectively Searching Trees of Thought for Increased Reasoning Ability in Large Language Models",
+            "abstract": "Large Language Models (LLMs) are capable of completing problem-solving tasks requiring different types of reasoning, but rely on token-level autogressive mechanisms for text generation and are limited in their ability to reason through complex, multi-step problems. The Tree of Thoughts framework extends Chain of Thought reasoning in LLMs to integrate a variety of possible options at each stage of reasoning. We introduce a new framework that extends the Tree of Thoughts approach by applying a separate value function that can more effectively evaluate reasoning paths and incorporating exploration from Monte Carlo Tree Search (MCTS). We find that vanilla tree of thoughts greatly outperforms a chain of thought based approach on the Game of 24, a task requiring non-trivial search through reasoning paths. However, upon incorporation of a separate finetuned value function, we find that the chain of thoughts based approach is actually able to match the solve rates of MCTS and BFS which use the LLM as a value function, but at a fraction (1/7) of the runtime. Consequently, we find that the efficacy and efficiency of a Tree of Thoughts reasoning is more contingent on the efficacy of the method to propose and evaluate paths rather than the search strategy through the paths themselves.",
+            "year": null,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "53cd612f5046901ca454f3c72dcad45a84f4f31d",
+            "paperId": "53cd612f5046901ca454f3c72dcad45a84f4f31d",
+            "title": "SAAS: Solving Ability Amplification Strategy for Enhanced Mathematical Reasoning in Large Language Models",
+            "abstract": "This study presents a novel learning approach designed to enhance both mathematical reasoning and problem-solving abilities of Large Language Models (LLMs). We focus on integrating the Chain-of-Thought (CoT) and the Program-of-Thought (PoT) learning, hypothesizing that prioritizing the learning of mathematical reasoning ability is helpful for the amplification of problem-solving ability. Thus, the initial learning with CoT is essential for solving challenging mathematical problems. To this end, we propose a sequential learning approach, named SAAS (Solving Ability Amplification Strategy), which strategically transitions from CoT learning to PoT learning. Our empirical study, involving an extensive performance comparison using several benchmarks, demonstrates that our SAAS achieves state-of-the-art (SOTA) performance. The results underscore the effectiveness of our sequential learning approach, marking a significant advancement in the field of mathematical reasoning in LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "f4e723958a93762befb4d4a039b44a7d752f9917",
+            "paperId": "f4e723958a93762befb4d4a039b44a7d752f9917",
+            "title": "Large Language Models are Zero-Shot Rankers for Recommender Systems",
+            "abstract": "Recently, large language models (LLMs) (e.g., GPT-4) have demonstrated impressive general-purpose task-solving abilities, including the potential to approach recommendation tasks. Along this line of research, this work aims to investigate the capacity of LLMs that act as the ranking model for recommender systems. We first formalize the recommendation problem as a conditional ranking task, considering sequential interaction histories as conditions and the items retrieved by other candidate generation models as candidates. To solve the ranking task by LLMs, we carefully design the prompting template and conduct extensive experiments on two widely-used datasets. We show that LLMs have promising zero-shot ranking abilities but (1) struggle to perceive the order of historical interactions, and (2) can be biased by popularity or item positions in the prompts. We demonstrate that these issues can be alleviated using specially designed prompting and bootstrapping strategies. Equipped with these insights, zero-shot LLMs can even challenge conventional recommendation models when ranking candidates are retrieved by multiple candidate generators. The code and processed datasets are available at https://github.com/RUCAIBox/LLMRank.",
+            "year": 2023,
+            "citationCount": 109,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the capacity of LLMs that act as the ranking model for recommender systems, and shows that LLMs have promising zero-shot ranking abilities but struggle to perceive the order of historical interactions, and can be biased by popularity or item positions in the prompts."
+            },
+            "score": 2
+        },
+        {
+            "id": "0e044b432911de4997e88bf1f271ecba738ee09e",
+            "paperId": "0e044b432911de4997e88bf1f271ecba738ee09e",
+            "title": "CuriousLLM: Elevating Multi-Document QA with Reasoning-Infused Knowledge Graph Prompting",
+            "abstract": "In the field of Question Answering (QA), unifying large language models (LLMs) with external databases has shown great success. However, these methods often fall short in providing the advanced reasoning needed for complex QA tasks. To address these issues, we improve over a novel approach called Knowledge Graph Prompting (KGP), which combines knowledge graphs with a LLM-based agent to improve reasoning and search accuracy. Nevertheless, the original KGP framework necessitates costly fine-tuning with large datasets yet still suffers from LLM hallucination. Therefore, we propose a reasoning-infused LLM agent to enhance this framework. This agent mimics human curiosity to ask follow-up questions to more efficiently navigate the search. This simple modification significantly boosts the LLM performance in QA tasks without the high costs and latency associated with the initial KGP framework. Our ultimate goal is to further develop this approach, leading to more accurate, faster, and cost-effective solutions in the QA domain.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "3567ddec4c3c2925f15f95010f9be658cf7fb50b",
+            "paperId": "3567ddec4c3c2925f15f95010f9be658cf7fb50b",
+            "title": "Eliciting Better Multilingual Structured Reasoning from LLMs through Code",
+            "abstract": "Development of large language models (LLM) have shown progress on reasoning, though studies have been limited to English or simple reasoning tasks. We thus introduce a multilingual structured reasoning and explanation dataset, termed xSTREET, that covers four tasks across six languages. xSTREET exposes a gap in base LLM performance between English and non-English reasoning tasks. We then propose two methods to remedy this gap, building on the insight that LLMs trained on code are better reasoners. First, at training time, we augment a code dataset with multi-lingual comments using machine translation while keeping program code as-is. Second, at inference time, we bridge the gap between training and inference by employing a prompt structure that incorporates step-by-step code primitives to derive new facts and find a solution. Our methods show improved multilingual performance on xSTREET, most notably on the scientific commonsense reasoning subtask. Furthermore, the models show no regression on non-reasoning tasks, thus showing our techniques maintain general-purpose abilities.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "c741cc9d082dc41b0421dda2909a9e8566d2225f",
+            "paperId": "c741cc9d082dc41b0421dda2909a9e8566d2225f",
+            "title": "TabSQLify: Enhancing Reasoning Capabilities of LLMs Through Table Decomposition",
+            "abstract": "Table reasoning is a challenging task that requires understanding both natural language questions and structured tabular data. Large language models (LLMs) have shown impressive capabilities in natural language understanding and generation, but they often struggle with large tables due to their limited input length. In this paper, we propose TabSQLify, a novel method that leverages text-to-SQL generation to decompose tables into smaller and relevant sub-tables, containing only essential information for answering questions or verifying statements, before performing the reasoning task. In our comprehensive evaluation on four challenging datasets, our approach demonstrates comparable or superior performance compared to prevailing methods reliant on full tables as input. Moreover, our method can reduce the input context length significantly, making it more scalable and efficient for large-scale table reasoning applications. Our method performs remarkably well on the WikiTQ benchmark, achieving an accuracy of 64.7%. Additionally, on the TabFact benchmark, it achieves a high accuracy of 79.5%. These results surpass other LLM-based baseline models on gpt-3.5-turbo (chatgpt). TabSQLify can reduce the table size significantly alleviating the computational load on LLMs when handling large tables without compromising performance.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "de542a756ed96c360813b0293063b13653474708",
+            "paperId": "de542a756ed96c360813b0293063b13653474708",
+            "title": "Evaluating Generative Language Models in Information Extraction as Subjective Question Correction",
+            "abstract": "Modern Large Language Models (LLMs) have showcased remarkable prowess in various tasks necessitating sophisticated cognitive behaviors. Nevertheless, a paradoxical performance discrepancy is observed, where these models underperform in seemingly elementary tasks like relation extraction and event extraction due to two issues in conventional evaluation. (1) The imprecision of existing evaluation metrics that struggle to effectively gauge semantic consistency between model outputs and ground truth, and (2) The inherent incompleteness of evaluation benchmarks, primarily due to restrictive human annotation schemas, resulting in underestimated LLM performances. Inspired by the principles in subjective question correction, we propose a new evaluation method, SQC-Score. This method innovatively utilizes LLMs, fine-tuned through subjective question correction data, to refine matching between model outputs and golden labels. Additionally, by incorporating a Natural Language Inference (NLI) model, SQC-Score enriches golden labels, addressing benchmark incompleteness by acknowledging correct yet previously omitted answers. Results on three information extraction tasks show that SQC-Score is more preferred by human annotators than the baseline metrics. Utilizing SQC-Score, we conduct a comprehensive evaluation of the state-of-the-art LLMs and provide insights for future research for information extraction. Dataset and associated codes can be accessed at https://github.com/THU-KEG/SQC-Score.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "4c9ea71ebca90fa902c718a40c19dcef5d6cdfbe",
+            "paperId": "4c9ea71ebca90fa902c718a40c19dcef5d6cdfbe",
+            "title": "PARADISE: Evaluating Implicit Planning Skills of Language Models with Procedural Warnings and Tips Dataset",
+            "abstract": "Recently, there has been growing interest within the community regarding whether large language models are capable of planning or executing plans. However, most prior studies use LLMs to generate high-level plans for simplified scenarios lacking linguistic complexity and domain diversity, limiting analysis of their planning abilities. These setups constrain evaluation methods (e.g., predefined action space), architectural choices (e.g., only generative models), and overlook the linguistic nuances essential for realistic analysis. To tackle this, we present PARADISE, an abductive reasoning task using Q\\&A format on practical procedural text sourced from wikiHow. It involves warning and tip inference tasks directly associated with goals, excluding intermediary steps, with the aim of testing the ability of the models to infer implicit knowledge of the plan solely from the given goal. Our experiments, utilizing fine-tuned language models and zero-shot prompting, reveal the effectiveness of task-specific small models over large language models in most scenarios. Despite advancements, all models fall short of human performance. Notably, our analysis uncovers intriguing insights, such as variations in model behavior with dropped keywords, struggles of BERT-family and GPT-4 with physical and abstract goals, and the proposed tasks offering valuable prior knowledge for other unseen procedural tasks. The PARADISE dataset and associated resources are publicly available for further research exploration with https://github.com/GGLAB-KU/paradise.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "0671fd553dd670a4e820553a974bc48040ba0819",
+            "paperId": "0671fd553dd670a4e820553a974bc48040ba0819",
+            "title": "Reflexion: language agents with verbal reinforcement learning",
+            "abstract": "Large language models (LLMs) have been increasingly used to interact with external environments (e.g., games, compilers, APIs) as goal-driven agents. However, it remains challenging for these language agents to quickly and efficiently learn from trial-and-error as traditional reinforcement learning methods require extensive training samples and expensive model fine-tuning. We propose Reflexion, a novel framework to reinforce language agents not by updating weights, but instead through linguistic feedback. Concretely, Reflexion agents verbally reflect on task feedback signals, then maintain their own reflective text in an episodic memory buffer to induce better decision-making in subsequent trials. Reflexion is flexible enough to incorporate various types (scalar values or free-form language) and sources (external or internally simulated) of feedback signals, and obtains significant improvements over a baseline agent across diverse tasks (sequential decision-making, coding, language reasoning). For example, Reflexion achieves a 91% pass@1 accuracy on the HumanEval coding benchmark, surpassing the previous state-of-the-art GPT-4 that achieves 80%. We also conduct ablation and analysis studies using different feedback signals, feedback incorporation methods, and agent types, and provide insights into how they affect performance.",
+            "year": 2023,
+            "citationCount": 332,
+            "score": 2
+        },
+        {
+            "id": "a3077828a7ba2f0762816718adcd5357c9f24303",
+            "paperId": "a3077828a7ba2f0762816718adcd5357c9f24303",
+            "title": "THOUGHTSCULPT: Reasoning with Intermediate Revision and Search",
+            "abstract": "We present THOUGHTSCULPT, a general reasoning and search method for tasks with outputs that can be decomposed into components. THOUGHTSCULPT explores a search tree of potential solutions using Monte Carlo Tree Search (MCTS), building solutions one action at a time and evaluating according to any domain-specific heuristic, which in practice is often simply an LLM evaluator. Critically, our action space includes revision actions: THOUGHTSCULPT may choose to revise part of its previous output rather than continuing to build the rest of its output. Empirically, THOUGHTSCULPT outperforms state-of-the-art reasoning methods across three challenging tasks: Story Outline Improvement (up to +30% interestingness), Mini-Crosswords Solving (up to +16% word success rate), and Constrained Generation (up to +10% concept coverage).",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "90e97ee8a3421fb83f967c8f9bed7328f8aa8d9c",
+            "paperId": "90e97ee8a3421fb83f967c8f9bed7328f8aa8d9c",
+            "title": "Aligning Large and Small Language Models via Chain-of-Thought Reasoning",
+            "abstract": "Chain-of-Thought (CoT) prompting empowersthe reasoning abilities of Large Language Models (LLMs), eliciting them to solve complexreasoning tasks in a step-wise manner. However, these capabilities appear only in models with billions of parameters, which represent an entry barrier for many users who are constrained to operate on a smaller model scale, i.e., Small Language Models (SLMs). Although many companies are releasing LLMs of the same family with fewer parameters, these models tend not to preserve all the reasoning capabilities of the original models, including CoT reasoning.In this paper, we propose a method for aligning and transferring reasoning abilities between larger to smaller Language Models. By using an Instruction-tuning-CoT method, that is, an Instruction-tuning designed around CoT-Demonstrations, we enable the SLMs to generate multi-step controlled reasoned answers when they are elicited with the CoT mechanism. Hence, we instruct a smaller Language Model using outputs generated by more robust models belonging to the same family or not, evaluating the impact across different types of models. Results obtained on question-answering and mathematical reasoning benchmarks show that LMs instructed via the Instruction-tuning CoT method produced by LLMs outperform baselines within both in-domain and out-domain scenarios.",
+            "year": 2024,
+            "citationCount": 4,
+            "score": 2
+        },
+        {
+            "id": "d06f6d6c903a2467ede9bd117af21598bff7c0e7",
+            "paperId": "d06f6d6c903a2467ede9bd117af21598bff7c0e7",
+            "title": "MindMap: Constructing Evidence Chains for Multi-Step Reasoning in Large Language Models",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable performance in various natural language processing tasks. However, they still face significant challenges in automated reasoning, particularly in scenarios involving multi-step reasoning. In this paper, we focus on the logical reasoning problem. The main task is to answer a question based on a set of available facts and rules. A lot of work has focused on guiding LLMs to think logically by generating reasoning paths, ignoring the structure among available facts. In this paper, we propose a simple approach MindMap by introducing evidence chains for supporting reasoning. An evidence chain refers to a set of facts that involve the same subject. In this way, we can organize related facts together to avoid missing important information. MindMap can be integrated with existing reasoning framework, such as Chain-of-Thought (CoT) and Selection-Inference (SI), by letting the model select relevant evidence chains instead of independent facts. The experimental results on the bAbI and ProofWriterOWA datasets demonstrate the effectiveness of MindMap.It can significantly improve CoT and SI, especially in multi-step reasoning tasks.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "0d1c76d45afa012ded7ab741194baf142117c495",
+            "paperId": "0d1c76d45afa012ded7ab741194baf142117c495",
+            "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+            "abstract": "While large-scale unsupervised language models (LMs) learn broad world knowledge and some reasoning skills, achieving precise control of their behavior is difficult due to the completely unsupervised nature of their training. Existing methods for gaining such steerability collect human labels of the relative quality of model generations and fine-tune the unsupervised LM to align with these preferences, often with reinforcement learning from human feedback (RLHF). However, RLHF is a complex and often unstable procedure, first fitting a reward model that reflects the human preferences, and then fine-tuning the large unsupervised LM using reinforcement learning to maximize this estimated reward without drifting too far from the original model. In this paper we introduce a new parameterization of the reward model in RLHF that enables extraction of the corresponding optimal policy in closed form, allowing us to solve the standard RLHF problem with only a simple classification loss. The resulting algorithm, which we call Direct Preference Optimization (DPO), is stable, performant, and computationally lightweight, eliminating the need for sampling from the LM during fine-tuning or performing significant hyperparameter tuning. Our experiments show that DPO can fine-tune LMs to align with human preferences as well as or better than existing methods. Notably, fine-tuning with DPO exceeds PPO-based RLHF in ability to control sentiment of generations, and matches or improves response quality in summarization and single-turn dialogue while being substantially simpler to implement and train.",
+            "year": 2023,
+            "citationCount": 640,
+            "score": 1
+        },
+        {
+            "id": "9a75e23639bfcc3a51da57a3b682a984d1d8ac0b",
+            "paperId": "9a75e23639bfcc3a51da57a3b682a984d1d8ac0b",
+            "title": "Language Models can Solve Computer Tasks",
+            "abstract": "Agents capable of carrying out general tasks on a computer can improve efficiency and productivity by automating repetitive tasks and assisting in complex problem-solving. Ideally, such agents should be able to solve new computer tasks presented to them through natural language commands. However, previous approaches to this problem require large amounts of expert demonstrations and task-specific reward functions, both of which are impractical for new tasks. In this work, we show that a pre-trained large language model (LLM) agent can execute computer tasks guided by natural language using a simple prompting scheme where the agent Recursively Criticizes and Improves its output (RCI). The RCI approach significantly outperforms existing LLM methods for automating computer tasks and surpasses supervised learning (SL) and reinforcement learning (RL) approaches on the MiniWoB++ benchmark. We compare multiple LLMs and find that RCI with the InstructGPT-3+RLHF LLM is state-of-the-art on MiniWoB++, using only a handful of demonstrations per task rather than tens of thousands, and without a task-specific reward function. Furthermore, we demonstrate RCI prompting's effectiveness in enhancing LLMs' reasoning abilities on a suite of natural language reasoning tasks, outperforming chain of thought (CoT) prompting with external feedback. We find that RCI combined with CoT performs better than either separately. Our code can be found here: https://github.com/posgnu/rci-agent.",
+            "year": 2023,
+            "citationCount": 158,
+            "score": 1
+        },
+        {
+            "id": "57e849d0de13ed5f91d086936296721d4ff75a75",
+            "paperId": "57e849d0de13ed5f91d086936296721d4ff75a75",
+            "title": "LLaMA: Open and Efficient Foundation Language Models",
+            "abstract": "We introduce LLaMA, a collection of foundation language models ranging from 7B to 65B parameters. We train our models on trillions of tokens, and show that it is possible to train state-of-the-art models using publicly available datasets exclusively, without resorting to proprietary and inaccessible datasets. In particular, LLaMA-13B outperforms GPT-3 (175B) on most benchmarks, and LLaMA-65B is competitive with the best models, Chinchilla-70B and PaLM-540B. We release all our models to the research community.",
+            "year": 2023,
+            "citationCount": 5100,
+            "score": 1
+        },
+        {
+            "id": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+            "paperId": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+            "title": "Training language models to follow instructions with human feedback",
+            "abstract": "Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by fine-tuning with human feedback. Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API, we collect a dataset of labeler demonstrations of the desired model behavior, which we use to fine-tune GPT-3 using supervised learning. We then collect a dataset of rankings of model outputs, which we use to further fine-tune this supervised model using reinforcement learning from human feedback. We call the resulting models InstructGPT. In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters. Moreover, InstructGPT models show improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets. Even though InstructGPT still makes simple mistakes, our results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent.",
+            "year": 2022,
+            "citationCount": 5924,
+            "score": 1
+        },
+        {
+            "id": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+            "paperId": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+            "title": "Finetuned Language Models Are Zero-Shot Learners",
+            "abstract": "This paper explores a simple method for improving the zero-shot learning abilities of language models. We show that instruction tuning -- finetuning language models on a collection of tasks described via instructions -- substantially improves zero-shot performance on unseen tasks. We take a 137B parameter pretrained language model and instruction-tune it on over 60 NLP tasks verbalized via natural language instruction templates. We evaluate this instruction-tuned model, which we call FLAN, on unseen task types. FLAN substantially improves the performance of its unmodified counterpart and surpasses zero-shot 175B GPT-3 on 20 of 25 tasks that we evaluate. FLAN even outperforms few-shot GPT-3 by a large margin on ANLI, RTE, BoolQ, AI2-ARC, OpenbookQA, and StoryCloze. Ablation studies reveal that number of finetuning datasets, model scale, and natural language instructions are key to the success of instruction tuning.",
+            "year": 2021,
+            "citationCount": 2090,
+            "score": 1
+        },
+        {
+            "id": "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+            "paperId": "50796b0f3edf9cb5ff1e447c298b33755378aa4f",
+            "title": "GLM: General Language Model Pretraining with Autoregressive Blank Infilling",
+            "abstract": "There have been various types of pretraining architectures including autoencoding models (e.g., BERT), autoregressive models (e.g., GPT), and encoder-decoder models (e.g., T5). However, none of the pretraining frameworks performs the best for all tasks of three main categories including natural language understanding (NLU), unconditional generation, and conditional generation. We propose a General Language Model (GLM) based on autoregressive blank infilling to address this challenge. GLM improves blank filling pretraining by adding 2D positional encodings and allowing an arbitrary order to predict spans, which results in performance gains over BERT and T5 on NLU tasks. Meanwhile, GLM can be pretrained for different types of tasks by varying the number and lengths of blanks. On a wide range of tasks across NLU, conditional and unconditional generation, GLM outperforms BERT, T5, and GPT given the same model sizes and data, and achieves the best performance from a single pretrained model with 1.25\u00d7 parameters of BERT Large , demonstrating its generalizability to different downstream tasks.",
+            "year": 2021,
+            "citationCount": 679,
+            "score": 1
+        },
+        {
+            "id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+            "paperId": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+            "title": "Language Models are Few-Shot Learners",
+            "abstract": "Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by fine-tuning on a specific task. While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a few examples or from simple instructions - something which current NLP systems still largely struggle to do. Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic. At the same time, we also identify some datasets where GPT-3's few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora. Finally, we find that GPT-3 can generate samples of news articles which human evaluators have difficulty distinguishing from articles written by humans. We discuss broader societal impacts of this finding and of GPT-3 in general.",
+            "year": 2020,
+            "citationCount": 24211,
+            "score": 1
+        },
+        {
+            "id": "37d641537819490558b963a79f6e73ec14944df0",
+            "paperId": "37d641537819490558b963a79f6e73ec14944df0",
+            "title": "Post-Semantic-Thinking: A Robust Strategy to Distill Reasoning Capacity from Large Language Models",
+            "abstract": "Chain of thought finetuning aims to endow small student models with reasoning capacity to improve their performance towards a specific task by allowing them to imitate the reasoning procedure of large language models (LLMs) beyond simply predicting the answer to the question. However, the existing methods 1) generate rationale before the answer, making their answer correctness sensitive to the hallucination in the rationale;2) force the student model to repeat the exact LLMs rationale expression word-after-word, which could have the model biased towards learning the expression in rationale but count against the model from understanding the core logic behind it. Therefore, we propose a robust Post-Semantic-Thinking (PST) strategy to generate answers before rationale. Thanks to this answer-first setting, 1) the answering procedure can escape from the adverse effects caused by hallucinations in the rationale; 2) the complex reasoning procedure is tightly bound with the relatively concise answer, making the reasoning for questions easier with the prior information in the answer; 3) the efficiency of the method can also benefit from the setting since users can stop the generation right after answers are outputted when inference is conducted. Furthermore, the PST strategy loose the constraint against the generated rationale to be close to the LLMs gold standard in the hidden semantic space instead of the vocabulary space, thus making the small student model better comprehend the semantic reasoning logic in rationale. Extensive experiments conducted across 12 reasoning tasks demonstrate the effectiveness of PST.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "51cec4b81405b7881a6f7f66d6b88015f71f93b7",
+            "paperId": "51cec4b81405b7881a6f7f66d6b88015f71f93b7",
+            "title": "Can Large Language Models Reason About Goal-Oriented Tasks?",
+            "abstract": "Most adults can complete a sequence of steps to achieve a certain goal, such as making a sandwich or repairing a bicycle tire. In completing these goal-oriented tasks, or simply tasks in this paper, one must use sequential reasoning to understand the relationship between the sequence of steps and the goal. LLMs have shown impressive capabilities across various natural language understanding tasks. However, prior work has mainlyfocused on logical reasoning tasks (e.g. arithmetic, commonsense QA); how well LLMs can perform on more complex reasoning tasks like sequential reasoning is not clear. In this paper, we address this gap and conduct a comprehensive evaluation of how well LLMs are able to conduct this reasoning for tasks and how they scale w.r.t multiple dimensions(e.g. adaptive prompting strategies, number of in-context examples, varying complexity of the sequential task). Our findings reveal that while Chain of Thought (CoT) prompting can significantly enhance LLMs\u2019 sequential reasoning in certain scenarios, it can also be detrimental in others, whereas Tree of Thoughts (ToT) reasoning is less effective for this type of task. Additionally, we discover that an increase in model size or in-context examples does not consistently lead to improved performance.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "4bfb6070f6a80de6a85b9edab1fb332fd0a56e69",
+            "paperId": "4bfb6070f6a80de6a85b9edab1fb332fd0a56e69",
+            "title": "Learning From Correctness Without Prompting Makes LLM Efficient Reasoner",
+            "abstract": "Large language models (LLMs) have demonstrated outstanding performance across various tasks, yet they still exhibit limitations such as hallucination, unfaithful reasoning, and toxic content. One potential approach to mitigate these issues is learning from human or external feedback (e.g. tools). In this paper, we introduce an intrinsic self-correct reasoning framework for LLMs that eliminates the need for human feedback, external tools, and handcraft prompts. The proposed framework, based on a multi-step reasoning paradigm \\textbf{Le}arning from \\textbf{Co}rrectness (\\textsc{LeCo}), improves reasoning performance without needing to learn from errors. This paradigm prioritizes learning from correct reasoning steps, and a unique method to measure confidence for each reasoning step based on generation logits. Experimental results across various multi-step reasoning tasks demonstrate the effectiveness of the framework in improving reasoning performance with reduced token consumption.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "95b59d6cc01d2b92d14c169d8f8cd47bd0ac6626",
+            "paperId": "95b59d6cc01d2b92d14c169d8f8cd47bd0ac6626",
+            "title": "MasonTigers at SemEval-2024 Task 9: Solving Puzzles with an Ensemble of Chain-of-Thoughts",
+            "abstract": "Our paper presents team MasonTigers submission to the SemEval-2024 Task 9 - which provides a dataset of puzzles for testing natural language understanding. We employ large language models (LLMs) to solve this task through several prompting techniques. Zero-shot and few-shot prompting generate reasonably good results when tested with proprietary LLMs, compared to the open-source models. We obtain further improved results with chain-of-thought prompting, an iterative prompting method that breaks down the reasoning process step-by-step. We obtain our best results by utilizing an ensemble of chain-of-thought prompts, placing 2nd in the word puzzle subtask and 13th in the sentence puzzle subtask. The strong performance of prompted LLMs demonstrates their capability for complex reasoning when provided with a decomposition of the thought process. Our work sheds light on how step-wise explanatory prompts can unlock more of the knowledge encoded in the parameters of large models.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 1
+        },
+        {
+            "id": "33bc65cdcea955e4e2b60f854eb02ba92887c28f",
+            "paperId": "33bc65cdcea955e4e2b60f854eb02ba92887c28f",
+            "title": "An Incomplete Loop: Deductive, Inductive, and Abductive Learning in Large Language Models",
+            "abstract": "Modern language models (LMs) can learn to perform new tasks in different ways: in instruction following, the target task is described explicitly in natural language; in few-shot prompting, the task is specified implicitly with a small number of examples; in instruction inference, LMs are presented with in-context examples and are then prompted to generate a natural language task description before making predictions. Each of these procedures may be thought of as invoking a different form of reasoning: instruction following involves deductive reasoning, few-shot prompting involves inductive reasoning, and instruction inference involves abductive reasoning. How do these different capabilities relate? Across four LMs (from the gpt and llama families) and two learning problems (involving arithmetic functions and machine translation) we find a strong dissociation between the different types of reasoning: LMs can sometimes learn effectively from few-shot prompts even when they are unable to explain their own prediction rules; conversely, they sometimes infer useful task descriptions while completely failing to learn from human-generated descriptions of the same task. Our results highlight the non-systematic nature of reasoning even in some of today's largest LMs, and underscore the fact that very different learning mechanisms may be invoked by seemingly similar prompting procedures.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "819f30b2535a62b1d4342beadb7f3e4cab93ca51",
+            "paperId": "819f30b2535a62b1d4342beadb7f3e4cab93ca51",
+            "title": "Distilling Algorithmic Reasoning from LLMs via Explaining Solution Programs",
+            "abstract": "Distilling explicit chain-of-thought reasoning paths has emerged as an effective method for improving the reasoning abilities of large language models (LLMs) across various tasks. However, when tackling complex tasks that pose significant challenges for state-of-the-art models, this technique often struggles to produce effective chains of thought that lead to correct answers. In this work, we propose a novel approach to distill reasoning abilities from LLMs by leveraging their capacity to explain solutions. We apply our method to solving competitive-level programming challenges. More specifically, we employ an LLM to generate explanations for a set ofpairs, then usepairs to fine-tune a smaller language model, which we refer to as the Reasoner, to learn algorithmic reasoning that can generate\"how-to-solve\"hints for unseen problems. Our experiments demonstrate that learning from explanations enables the Reasoner to more effectively guide program implementation by a Coder, resulting in higher solve rates than strong chain-of-thought baselines on competitive-level programming problems. It also outperforms models that learn directly frompairs. We curated an additional test set in the CodeContests format, which includes 246 more recent problems posted after the models' knowledge cutoff.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "7038ca4b5cfd645b0dd8bad34030a870f819da5e",
+            "paperId": "7038ca4b5cfd645b0dd8bad34030a870f819da5e",
+            "title": "Making Natural Language Reasoning Explainable and Faithful",
+            "abstract": "Neural models, including large language models (LLMs), achieve superior performance on logical reasoning tasks such as question answering. To elicit reasoning capabilities from LLMs, recent works propose using the chain-of-thought (CoT) mechanism to generate both the reasoning chain and the answer, which enhances the model\u2019s capabilities in conducting reasoning. However, due to LLM\u2019s uninterpretable nature and the extreme flexibility of free-form explanations, several challenges remain: such as struggling with inaccurate reasoning, hallucinations, and not aligning with human preferences. In this talk, we will focus on (1) our design of leveraging structured information (that is grounded to the context), for the explainable complex question answering and reasoning; (2) our multi-module interpretable framework for inductive reasoning, which conducts step-wise faithful reasoning with iterative feedback.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "b1ee831883f7f6ab17a34875df23afa8fc56f59e",
+            "paperId": "b1ee831883f7f6ab17a34875df23afa8fc56f59e",
+            "title": "Think before You Simulate: Symbolic Reasoning to Orchestrate Neural Computation for Counterfactual Question Answering",
+            "abstract": "Causal and temporal reasoning about video dynamics is a challenging problem. While neuro-symbolic models that combine symbolic reasoning with neural-based perception and prediction have shown promise, they exhibit limitations, especially in answering counterfactual questions. This paper introduces a method to enhance a neuro-symbolic model for counterfactual reasoning, leveraging symbolic reasoning about causal relations among events. We define the notion of a causal graph to represent such relations and use Answer Set Programming (ASP), a declarative logic programming method, to find how to coordinate perception and simulation modules. We validate the effectiveness of our approach on two benchmarks, CLEVRER and CRAFT. Our enhancement achieves state-of-the-art performance on the CLEVRER challenge, significantly outperforming existing models. In the case of the CRAFT benchmark, we leverage a large pre-trained language model, such as GPT-3.5 and GPT-4, as a proxy for a dynamics simulator. Our findings show that this method can further improve its performance on counterfactual questions by providing alternative prompts instructed by symbolic causal reasoning.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "62edcd3612243ffc82a291b6c8b7f69b66cbba45",
+            "paperId": "62edcd3612243ffc82a291b6c8b7f69b66cbba45",
+            "title": "VURF: A General-purpose Reasoning and Self-refinement Framework for Video Understanding",
+            "abstract": "Recent studies have demonstrated the effectiveness of Large Language Models (LLMs) as reasoning modules that can deconstruct complex tasks into more manageable sub-tasks, particularly when applied to visual reasoning tasks for images. In contrast, this paper introduces a Video Understanding and Reasoning Framework (VURF) based on the reasoning power of LLMs. Ours is a novel approach to extend the utility of LLMs in the context of video tasks, leveraging their capacity to generalize from minimal input and output demonstrations within a contextual framework. By presenting LLMs with pairs of instructions and their corresponding high-level programs, we harness their contextual learning capabilities to generate executable visual programs for video understanding. To enhance program's accuracy and robustness, we implement two important strategies. Firstly, we employ a feedback-generation approach, powered by GPT-3.5, to rectify errors in programs utilizing unsupported functions. Secondly, taking motivation from recent works on self refinement of LLM outputs, we introduce an iterative procedure for improving the quality of the in-context examples by aligning the initial outputs to the outputs that would have been generated had the LLM not been bound by the structure of the in-context examples. Our results on several video-specific tasks, including visual QA, video anticipation, pose estimation and multi-video QA illustrate the efficacy of these enhancements in improving the performance of visual programming approaches for video tasks.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        }
+    ]
+}

@@ -1,0 +1,775 @@
+{
+    "topic_description": "novel prompting methods to improve large language models' robustness against adversarial attacks and improve their security and privacy",
+    "all_queries": [
+        "KeywordQuery(\"language model adversarial robustness prompting\")",
+        "PaperQuery(\"6fb6cbc70ed7b2779c7a1fbbffd8703654acfbeb\")",
+        "GetReferences(\"c060976628a0a27489f2c1268818eac5991ad52f\")",
+        "PaperQuery(\"fdb361ea83c010ed0011d179567de5a1112651ac\")"
+    ],
+    "paper_bank": [
+        {
+            "id": "de2fd685f45ee916b9142bcb983d306b7da643a4",
+            "paperId": "de2fd685f45ee916b9142bcb983d306b7da643a4",
+            "title": "A Prompting-based Approach for Adversarial Example Generation and Robustness Enhancement",
+            "abstract": "Recent years have seen the wide application of NLP models in crucial areas such as finance, medical treatment, and news media, raising concerns of the model robustness and vulnerabilities. In this paper, we propose a novel prompt-based adversarial attack to compromise NLP models and robustness enhancement technique. We first construct malicious prompts for each instance and generate adversarial examples via mask-and-filling under the effect of a malicious purpose. Our attack technique targets the inherent vulnerabilities of NLP models, allowing us to generate samples even without interacting with the victim NLP model, as long as it is based on pre-trained language models (PLMs). Furthermore, we design a prompt-based adversarial training method to improve the robustness of PLMs. As our training method does not actually generate adversarial samples, it can be applied to large-scale training sets efficiently. The experimental results show that our attack method can achieve a high attack success rate with more diverse, fluent and natural adversarial examples. In addition, our robustness enhancement method can significantly improve the robustness of models to resist adversarial attacks. Our work indicates that prompting paradigm has great potential in probing some fundamental flaws of PLMs and fine-tuning them for downstream tasks.",
+            "year": 2022,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel prompt-based adversarial attack to compromise NLP models and robustness enhancement technique that can significantly improve the robustness of models to resist adversarial attacks and indicates that prompting paradigm has great potential in probing some fundamental flaws of PLMs and fine-tuning them for downstream tasks."
+            },
+            "score": 9
+        },
+        {
+            "id": "32316f1d08911b397f52f8644f46f5c129619383",
+            "paperId": "32316f1d08911b397f52f8644f46f5c129619383",
+            "title": "Defending Against Indirect Prompt Injection Attacks With Spotlighting",
+            "abstract": "Large Language Models (LLMs), while powerful, are built and trained to process a single text input. In common applications, multiple inputs can be processed by concatenating them together into a single stream of text. However, the LLM is unable to distinguish which sections of prompt belong to various input sources. Indirect prompt injection attacks take advantage of this vulnerability by embedding adversarial instructions into untrusted data being processed alongside user commands. Often, the LLM will mistake the adversarial instructions as user commands to be followed, creating a security vulnerability in the larger system. We introduce spotlighting, a family of prompt engineering techniques that can be used to improve LLMs' ability to distinguish among multiple sources of input. The key insight is to utilize transformations of an input to provide a reliable and continuous signal of its provenance. We evaluate spotlighting as a defense against indirect prompt injection attacks, and find that it is a robust defense that has minimal detrimental impact to underlying NLP tasks. Using GPT-family models, we find that spotlighting reduces the attack success rate from greater than {50}\\% to below {2}\\% in our experiments with minimal impact on task efficacy.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 9
+        },
+        {
+            "id": "6fb6cbc70ed7b2779c7a1fbbffd8703654acfbeb",
+            "paperId": "6fb6cbc70ed7b2779c7a1fbbffd8703654acfbeb",
+            "title": "Prompting for explanations improves Adversarial NLI. Is this true? {Yes} it is {true} because {it weakens superficial cues}",
+            "abstract": "Explanation prompts ask language models to not only assign a particular label to a giveninput, such as true, entailment, or contradiction in the case of natural language inference but also to generate a free-text explanation that supports this label. For example: \u201cThis is {label} because {explanation}.\u201d While this type of prompt was originally introduced with the aim of improving model interpretability, we showhere that explanation prompts also improve robustness to adversarial perturbations in naturallanguage inference benchmarks. Compared to prompting for labels only, explanation prompting consistently yields stronger performance on adversarial benchmarks, outperforming the state of the art on Adversarial Natural Language Inference, Counterfactually-Augmented Natural Language Inference, and SNLI-Hard datasets. We argue that the increase in robustness is due to the fact that prompting for explanations weakens superficial cues. Specifically, single tokens that are highly predictive of the correct answer in the label-only setting become uninformative when the model also has to generate explanations.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is argued that the increase in robustness is due to the fact that prompting for explanations weakens superficial cues, and single tokens that are highly predictive of the correct answer in the label-only setting become uninformative when the model also has to generate explanations."
+            },
+            "score": 8
+        },
+        {
+            "id": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "paperId": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "title": "PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts",
+            "abstract": "The increasing reliance on Large Language Models (LLMs) across academia and industry necessitates a comprehensive understanding of their robustness to prompts. In response to this vital need, we introduce PromptBench, a robustness benchmark designed to measure LLMs' resilience to adversarial prompts. This study uses a plethora of adversarial textual attacks targeting prompts across multiple levels: character, word, sentence, and semantic. The adversarial prompts, crafted to mimic plausible user errors like typos or synonyms, aim to evaluate how slight deviations can affect LLM outcomes while maintaining semantic integrity. These prompts are then employed in diverse tasks, such as sentiment analysis, natural language inference, reading comprehension, machine translation, and math problem-solving. Our study generates 4788 adversarial prompts, meticulously evaluated over 8 tasks and 13 datasets. Our findings demonstrate that contemporary LLMs are not robust to adversarial prompts. Furthermore, we present comprehensive analysis to understand the mystery behind prompt robustness and its transferability. We then offer insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users. Code is available at: https://github.com/microsoft/promptbench.",
+            "year": 2023,
+            "citationCount": 111,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study generates 4788 adversarial prompts and presents comprehensive analysis to understand the mystery behind prompt robustness and its transferability, and offers insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users."
+            },
+            "score": 8
+        },
+        {
+            "id": "fdb361ea83c010ed0011d179567de5a1112651ac",
+            "paperId": "fdb361ea83c010ed0011d179567de5a1112651ac",
+            "title": "Red Teaming Language Model Detectors with Language Models",
+            "abstract": "Abstract The prevalence and strong capability of large language models (LLMs) present significant safety and ethical risks if exploited by malicious users. To prevent the potentially deceptive usage of LLMs, recent work has proposed algorithms to detect LLM-generated text and protect LLMs. In this paper, we investigate the robustness and reliability of these LLM detectors under adversarial attacks. We study two types of attack strategies: 1) replacing certain words in an LLM\u2019s output with their synonyms given the context; 2) automatically searching for an instructional prompt to alter the writing style of the generation. In both strategies, we leverage an auxiliary LLM to generate the word replacements or the instructional prompt. Different from previous works, we consider a challenging setting where the auxiliary LLM can also be protected by a detector. Experiments reveal that our attacks effectively compromise the performance of all detectors in the study with plausible generations, underscoring the urgent need to improve the robustness of LLM-generated text detection systems. Code is available at https://github.com/shizhouxing/LLM-Detector-Robustness.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments reveal that attacks effectively compromise the performance of all detectors in the study with plausible generations, underscoring the urgent need to improve the robustness of LLM-generated text detection systems."
+            },
+            "score": 8
+        },
+        {
+            "id": "c060976628a0a27489f2c1268818eac5991ad52f",
+            "paperId": "c060976628a0a27489f2c1268818eac5991ad52f",
+            "title": "Do you really follow me? Adversarial Instructions for Evaluating the Robustness of Large Language Models",
+            "abstract": "Large Language Models (LLMs) have shown remarkable proficiency in following instructions, making them valuable in customer-facing applications. However, their impressive capabilities also raise concerns about the amplification of risks posed by adversarial instructions, which can be injected into the model input by third-party attackers to manipulate LLMs\u2019 original instructions and prompt unintended actions and content. Therefore, it is crucial to understand LLMs\u2019 ability to accurately discern which instructions to follow to ensure their safe deployment in real-world scenarios. In this paper, we propose a pioneering benchmark for automatically evaluating the robustness of LLMs against adversarial instructions. The objective of this benchmark is to quantify the extent to which LLMs are influenced by injected adversarial instructions and assess their ability to differentiate between these adversarial instructions and original user instructions. Through experiments conducted with state-of-the-art instruction-following LLMs, we uncover significant limitations in their robustness against adversarial instruction attacks. Furthermore, our findings indicate that prevalent instruction-tuned models are prone to being \u201coverfitted\u201d to follow any instruction phrase in the prompt without truly understanding which instructions should be followed. This highlights the need to address the challenge of training models to comprehend prompts instead of merely following instruction phrases and completing the text.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A pioneering benchmark for automatically evaluating the robustness of LLMs against adversarial instructions is proposed and it is found that prevalent instruction-tuned models are prone to being \u201coverfitted\u201d to follow any instruction phrase in the prompt without truly understanding which instructions should be followed."
+            },
+            "score": 8
+        },
+        {
+            "id": "eb6f866999cf558b66762ce05083d054cfacdcbf",
+            "paperId": "eb6f866999cf558b66762ce05083d054cfacdcbf",
+            "title": "Protecting Your LLMs with Information Bottleneck",
+            "abstract": "The advent of large language models (LLMs) has revolutionized the field of natural language processing, yet they might be attacked to produce harmful content. Despite efforts to ethically align LLMs, these are often fragile and can be circumvented by jailbreaking attacks through optimized or manual adversarial prompts. To address this, we introduce the Information Bottleneck Protector (IBProtector), a defense mechanism grounded in the information bottleneck principle, and we modify the objective to avoid trivial solutions. The IBProtector selectively compresses and perturbs prompts, facilitated by a lightweight and trainable extractor, preserving only essential information for the target LLMs to respond with the expected answer. Moreover, we further consider a situation where the gradient is not visible to be compatible with any LLM. Our empirical evaluations show that IBProtector outperforms current defense methods in mitigating jailbreak attempts, without overly affecting response quality or inference speed. Its effectiveness and adaptability across various attack methods and target LLMs underscore the potential of IBProtector as a novel, transferable defense that bolsters the security of LLMs without requiring modifications to the underlying models.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "d42625e5d8c0ba481fc58be28849c3231250aa0b",
+            "paperId": "d42625e5d8c0ba481fc58be28849c3231250aa0b",
+            "title": "JAB: Joint Adversarial Prompting and Belief Augmentation",
+            "abstract": "With the recent surge of language models in different applications, attention to safety and robustness of these models has gained significant importance. Here we introduce a joint framework in which we simultaneously probe and improve the robustness of a black-box target model via adversarial prompting and belief augmentation using iterative feedback loops. This framework utilizes an automated red teaming approach to probe the target model, along with a belief augmenter to generate instructions for the target model to improve its robustness to those adversarial probes. Importantly, the adversarial model and the belief generator leverage the feedback from past interactions to improve the effectiveness of the adversarial prompts and beliefs, respectively. In our experiments, we demonstrate that such a framework can reduce toxic content generation both in dynamic cases where an adversary directly interacts with a target model and static cases where we use a static benchmark dataset to evaluate our model.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A joint framework in which an automated red teaming approach is used to probe and improve the robustness of a black-box target model via adversarial prompting and belief augmentation using iterative feedback loops is introduced."
+            },
+            "score": 7
+        },
+        {
+            "id": "1c91b23d78944f7f237cb512029c2165972ae9d5",
+            "paperId": "1c91b23d78944f7f237cb512029c2165972ae9d5",
+            "title": "On Robustness of Prompt-based Semantic Parsing with Large Pre-trained Language Model: An Empirical Study on Codex",
+            "abstract": "Semantic parsing is a technique aimed at constructing a structured representation of the meaning of a natural-language question. Recent advances in language models trained on code have shown superior performance in generating these representations compared to language models trained solely on natural language text. The existing fine-tuned neural semantic parsers are vulnerable to adversarial attacks on natural-language inputs. While it has been established that the robustness of smaller semantic parsers can be enhanced through adversarial training, this approach is not feasible for large language models in real-world scenarios, as it requires both substantial computational resources and expensive human annotation on in-domain semantic parsing data. This paper presents the first empirical study on the adversarial robustness of a prompt-based semantic parser based on CODEX, a stateof-the-art (SOTA) language model trained on code. Our results demonstrate that the large language model of code is vulnerable to carefully crafted adversarial examples. To overcome this challenge, we propose methods for enhancing robustness without requiring substantial amounts of labelled data or intensive computational resources.",
+            "year": 2023,
+            "citationCount": 30,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents the first empirical study on the adversarial robustness of a prompt-based semantic parser based on CODEX, a stateof-the-art (SOTA) language model trained on code."
+            },
+            "score": 7
+        },
+        {
+            "id": "20cb40199d03395d63615854863f9eda9c7863e2",
+            "paperId": "20cb40199d03395d63615854863f9eda9c7863e2",
+            "title": "Visual Prompting for Adversarial Robustness",
+            "abstract": "In this work, we leverage visual prompting (VP) to improve adversarial robustness of a fixed, pre-trained model at test time. Compared to conventional adversarial defenses, VP allows us to design universal (i.e., data-agnostic) input prompting templates, which have plug-and-play capabilities at test time to achieve desired model performance without introducing much computation overhead. Although VP has been successfully applied to improving model generalization, it remains elusive whether and how it can be used to defend against adversarial attacks. We investigate this problem and show that the vanilla VP approach is not effective in adversarial defense since a universal input prompt lacks the capacity for robust learning against sample-specific adversarial perturbations. To circumvent it, we propose a new VP method, termed Class-wise Adversarial Visual Prompting (C-AVP), to generate class-wise visual prompts so as to not only leverage the strengths of ensemble prompts but also optimize their interrelations to improve model robustness. Our experiments show that C-AVP outperforms the conventional VP method, with 2.1\u00d7 standard accuracy gain and 2\u00d7 robust accuracy gain. Compared to classical test-time defenses, C-AVP also yields a 42\u00d7 inference time speedup. Code is available at https://github.com/Phoveran/vp-for-adversarial-robustness.",
+            "year": 2022,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a new VP method, termed Class-wise Adversarial Visual Prompting (C-AVP), to generate class-wise visual prompts so as to not only leverage the strengths of ensemble prompts but also optimize their interrelations to improve model robustness."
+            },
+            "score": 7
+        },
+        {
+            "id": "a4c0144062d8e36485bad438968894cbf49ab998",
+            "paperId": "a4c0144062d8e36485bad438968894cbf49ab998",
+            "title": "Adversarial Robustness of Prompt-based Few-Shot Learning for Natural Language Understanding",
+            "abstract": "State-of-the-art few-shot learning (FSL) methods leverage prompt-based fine-tuning to obtain remarkable results for natural language understanding (NLU) tasks. While much of the prior FSL methods focus on improving downstream task performance, there is a limited understanding of the adversarial robustness of such methods. In this work, we conduct an extensive study of several state-of-the-art FSL methods to assess their robustness to adversarial perturbations. To better understand the impact of various factors towards robustness (or the lack of it), we evaluate prompt-based FSL methods against fully fine-tuned models for aspects such as the use of unlabeled data, multiple prompts, number of few-shot examples, model size and type. Our results on six GLUE tasks indicate that compared to fully fine-tuned models, vanilla FSL methods lead to a notable relative drop in task performance (i.e., are less robust) in the face of adversarial perturbations. However, using (i) unlabeled data for prompt-based FSL and (ii) multiple prompts flip the trend. We further demonstrate that increasing the number of few-shot examples and model size lead to increased adversarial robustness of vanilla FSL methods. Broadly, our work sheds light on the adversarial robustness evaluation of prompt-based FSL methods for NLU tasks.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work conducts an extensive study of several state-of-the-art FSL methods to assess their robustness to adversarial perturbations, and demonstrates that increasing the number of few-shot examples and model size lead to increased adversarial robustness of vanilla F SL methods."
+            },
+            "score": 7
+        },
+        {
+            "id": "8a25739903cab07c74556b8c2d9743749e1be1e5",
+            "paperId": "8a25739903cab07c74556b8c2d9743749e1be1e5",
+            "title": "AdaShield: Safeguarding Multimodal Large Language Models from Structure-based Attack via Adaptive Shield Prompting",
+            "abstract": "With the advent and widespread deployment of Multimodal Large Language Models (MLLMs), the imperative to ensure their safety has become increasingly pronounced. However, with the integration of additional modalities, MLLMs are exposed to new vulnerabilities, rendering them prone to structured-based jailbreak attacks, where semantic content (e.g.,\"harmful text\") has been injected into the images to mislead MLLMs. In this work, we aim to defend against such threats. Specifically, we propose \\textbf{Ada}ptive \\textbf{Shield} Prompting (\\textbf{AdaShield}), which prepends inputs with defense prompts to defend MLLMs against structure-based jailbreak attacks without fine-tuning MLLMs or training additional modules (e.g., post-stage content detector). Initially, we present a manually designed static defense prompt, which thoroughly examines the image and instruction content step by step and specifies response methods to malicious queries. Furthermore, we introduce an adaptive auto-refinement framework, consisting of a target MLLM and a LLM-based defense prompt generator (Defender). These components collaboratively and iteratively communicate to generate a defense prompt. Extensive experiments on the popular structure-based jailbreak attacks and benign datasets show that our methods can consistently improve MLLMs' robustness against structure-based jailbreak attacks without compromising the model's general capabilities evaluated on standard benign tasks. Our code is available at https://github.com/rain305f/AdaShield.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 7
+        },
+        {
+            "id": "d25abd12a3453180900bd6194a6f30f6ed893f94",
+            "paperId": "d25abd12a3453180900bd6194a6f30f6ed893f94",
+            "title": "Fool Your (Vision and) Language Model With Embarrassingly Simple Permutations",
+            "abstract": "Large language and vision-language models are rapidly being deployed in practice thanks to their impressive capabilities in instruction following, in-context learning, and so on. This raises an urgent need to carefully analyse their robustness so that stakeholders can understand if and when such models are trustworthy enough to be relied upon in any given application. In this paper, we highlight a specific vulnerability in popular models, namely permutation sensitivity in multiple-choice question answering (MCQA). Specifically, we show empirically that popular models are vulnerable to adversarial permutation in answer sets for multiple-choice prompting, which is surprising as models should ideally be as invariant to prompt permutation as humans are. These vulnerabilities persist across various model sizes, and exist in very recent language and vision-language models. Code is available at \\url{https://github.com/ys-zong/FoolyourVLLMs}.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown empirically that popular models are vulnerable to adversarial permutation in answer sets for multiple-choice prompting, which is surprising as models should ideally be as invariant to prompt permutation as humans are."
+            },
+            "score": 6
+        },
+        {
+            "id": "559b1dfa068df845453cd4e361f36063c9bd9579",
+            "paperId": "559b1dfa068df845453cd4e361f36063c9bd9579",
+            "title": "AVIBench: Towards Evaluating the Robustness of Large Vision-Language Model on Adversarial Visual-Instructions",
+            "abstract": "Large Vision-Language Models (LVLMs) have shown significant progress in well responding to visual-instructions from users. However, these instructions, encompassing images and text, are susceptible to both intentional and inadvertent attacks. Despite the critical importance of LVLMs' robustness against such threats, current research in this area remains limited. To bridge this gap, we introduce AVIBench, a framework designed to analyze the robustness of LVLMs when facing various adversarial visual-instructions (AVIs), including four types of image-based AVIs, ten types of text-based AVIs, and nine types of content bias AVIs (such as gender, violence, cultural, and racial biases, among others). We generate 260K AVIs encompassing five categories of multimodal capabilities (nine tasks) and content bias. We then conduct a comprehensive evaluation involving 14 open-source LVLMs to assess their performance. AVIBench also serves as a convenient tool for practitioners to evaluate the robustness of LVLMs against AVIs. Our findings and extensive experimental results shed light on the vulnerabilities of LVLMs, and highlight that inherent biases exist even in advanced closed-source LVLMs like GeminiProVision and GPT-4V. This underscores the importance of enhancing the robustness, security, and fairness of LVLMs. The source code and benchmark will be made publicly available.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "AVIBench is introduced, a framework designed to analyze the robustness of LVLMs when facing various adversarial visual-instructions (AVIs), including four types of image-based AVIs, ten types of text-based AVIs, and nine types of content bias AVIs (such as gender, violence, cultural, and racial biases, among others)."
+            },
+            "score": 6
+        },
+        {
+            "id": "e6a690d40d1811140ef12b4977e43e9fd2908e18",
+            "paperId": "e6a690d40d1811140ef12b4977e43e9fd2908e18",
+            "title": "Improving Adversarial Robustness of Masked Autoencoders via Test-time Frequency-domain Prompting",
+            "abstract": "In this paper, we investigate the adversarial robustness of vision transformers that are equipped with BERT pretraining (e.g., BEiT, MAE). A surprising observation is that MAE has significantly worse adversarial robustness than other BERT pretraining methods. This observation drives us to rethink the basic differences between these BERT pretraining methods and how these differences affect the robustness against adversarial perturbations. Our empirical analysis reveals that the adversarial robustness of BERT pretraining is highly related to the reconstruction target, i.e., predicting the raw pixels of masked image patches will degrade more adversarial robustness of the model than predicting the semantic context, since it guides the model to concentrate more on medium-/high-frequency components of images. Based on our analysis, we provide a simple yet effective way to boost the adversarial robustness of MAE. The basic idea is using the dataset-extracted domain knowledge to occupy the medium-/high-frequency of images, thus narrowing the optimization space of adversarial perturbations. Specifically, we group the distribution of pretraining data and optimize a set of cluster-specific visual prompts on frequency domain. These prompts are incorporated with input images through prototype-based prompt selection during test period. Extensive evaluation shows that our method clearly boost MAE\u2019s adversarial robustness while maintaining its clean performance on ImageNet-1k classification. Our code is available at: https://github.com/shikiw/RobustMAE.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper provides a simple yet effective way to boost MAE\u2019s adversarial robustness by using the dataset-extracted domain knowledge to occupy the medium-/high-frequency of images, thus narrowing the optimization space of adversarial perturbations."
+            },
+            "score": 6
+        },
+        {
+            "id": "e6133a72012f69caf6876e6b135b93d870e441be",
+            "paperId": "e6133a72012f69caf6876e6b135b93d870e441be",
+            "title": "Language-Driven Anchors for Zero-Shot Adversarial Robustness",
+            "abstract": "Deep Neural Networks (DNNs) are known to be susceptible to adversarial attacks. Previous researches mainly focus on improving adversarial robustness in the fully supervised setting, leaving the challenging domain of zero-shot adversarial robustness an open question. In this work, we investigate this domain by leveraging the recent advances in large vision-language models, such as CLIP, to introduce zero-shot adversarial robustness to DNNs. We propose LAAT, a Language-driven, Anchor-based Adversarial Training strategy. LAAT utilizes the features of a text encoder for each category as fixed anchors (normalized feature embeddings) for each category, which are then employed for adversarial training. By leveraging the semantic consistency of the text encoders, LAAT aims to enhance the adversarial robustness of the image model on novel categories. However, naively using text encoders leads to poor results. Through analysis, we identified the issue to be the high cosine similarity between text encoders. We then design an expansion algorithm and an alignment cross-entropy loss to alleviate the problem. Our experimental results demonstrated that LAAT significantly improves zero-shot adversarial robustness over state-of-the-art methods. LAAT has the potential to enhance adversarial robustness by large-scale multimodal models, especially when labeled data is unavailable during training.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes LAAT, a Language-driven, Anchor-based Adversarial Training strategy, which has the potential to enhance adversarial robustness by large-scale multimodal models, especially when labeled data is unavailable during training."
+            },
+            "score": 6
+        },
+        {
+            "id": "9716a2876d08fce9d8e5c5ba4d7b1a9af44806d6",
+            "paperId": "9716a2876d08fce9d8e5c5ba4d7b1a9af44806d6",
+            "title": "Ignore Previous Prompt: Attack Techniques For Language Models",
+            "abstract": "Transformer-based large language models (LLMs) provide a powerful foundation for natural language tasks in large-scale customer-facing applications. However, studies that explore their vulnerabilities emerging from malicious user interaction are scarce. By proposing PromptInject, a prosaic alignment framework for mask-based iterative adversarial prompt composition, we examine how GPT-3, the most widely deployed language model in production, can be easily misaligned by simple handcrafted inputs. In particular, we investigate two types of attacks -- goal hijacking and prompt leaking -- and demonstrate that even low-aptitude, but sufficiently ill-intentioned agents, can easily exploit GPT-3's stochastic nature, creating long-tail risks. The code for PromptInject is available at https://github.com/agencyenterprise/PromptInject.",
+            "year": 2022,
+            "citationCount": 177,
+            "score": 6
+        },
+        {
+            "id": "dceabf5eec3d1ef36c938fae8defbf6775d487f1",
+            "paperId": "dceabf5eec3d1ef36c938fae8defbf6775d487f1",
+            "title": "Eliciting Language Model Behaviors using Reverse Language Models",
+            "abstract": "Despite advances in fine-tuning methods, language models (LMs) continue to output toxic and harmful responses on worst-case inputs, including adversarial attacks and jailbreaks. We train an LM on tokens in reverse order\u2014a reverse LM \u2014as a tool for identifying such worst-case inputs. By prompting a reverse LM with a problematic string, we can sample prefixes that are likely to precede the problematic suffix. We test our reverse LM by using it to guide beam search for prefixes that have high probability of generating toxic statements when input to a forwards LM. Our 160m parameter reverse LM outperforms the existing state-of-the-art adversarial attack method, GCG, when measuring the probability of toxic continuations from the Pythia-160m LM. We also find that the prefixes generated by our reverse LM for the Pythia model are more likely to transfer to other models, eliciting toxic responses also from Llama 2 when compared to GCG-generated attacks.",
+            "year": null,
+            "citationCount": 6,
+            "score": 6
+        },
+        {
+            "id": "8ecdbfe011b7189fa0ee49ffc4e42a93d728a371",
+            "paperId": "8ecdbfe011b7189fa0ee49ffc4e42a93d728a371",
+            "title": "On Evaluating Adversarial Robustness of Large Vision-Language Models",
+            "abstract": "Large vision-language models (VLMs) such as GPT-4 have achieved unprecedented performance in response generation, especially with visual inputs, enabling more creative and adaptable interaction than large language models such as ChatGPT. Nonetheless, multimodal generation exacerbates safety concerns, since adversaries may successfully evade the entire system by subtly manipulating the most vulnerable modality (e.g., vision). To this end, we propose evaluating the robustness of open-source large VLMs in the most realistic and high-risk setting, where adversaries have only black-box system access and seek to deceive the model into returning the targeted responses. In particular, we first craft targeted adversarial examples against pretrained models such as CLIP and BLIP, and then transfer these adversarial examples to other VLMs such as MiniGPT-4, LLaVA, UniDiffuser, BLIP-2, and Img2Prompt. In addition, we observe that black-box queries on these VLMs can further improve the effectiveness of targeted evasion, resulting in a surprisingly high success rate for generating targeted responses. Our findings provide a quantitative understanding regarding the adversarial vulnerability of large VLMs and call for a more thorough examination of their potential security flaws before deployment in practice. Code is at https://github.com/yunqing-me/AttackVLM.",
+            "year": 2023,
+            "citationCount": 47,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Evaluating the robustness of open-source large VLMs in the most realistic and high-risk setting, where adversaries have only black-box system access and seek to deceive the model into returning the targeted responses is proposed."
+            },
+            "score": 5
+        },
+        {
+            "id": "294a3bbfaa5382c7b475ebd283aac7ad02e2d075",
+            "paperId": "294a3bbfaa5382c7b475ebd283aac7ad02e2d075",
+            "title": "A Differentiable Language Model Adversarial Attack on Text Classifiers",
+            "abstract": "Transformer models play a crucial role in state of the art solutions to problems arising in the field of natural language processing (NLP). They have billions of parameters and are typically considered as black boxes. Robustness of huge Transformer-based models for NLP is an important question due to their wide adoption. One way to understand and improve robustness of these models is an exploration of an adversarial attack scenario: check if a small perturbation of an input invisible to a human eye can fool a model. Due to the discrete nature of textual data, gradient-based adversarial methods, widely used in computer vision, are not applicable per se. The standard strategy to overcome this issue is to develop token-level transformations, which do not take the whole sentence into account. In this paper, we propose a new black-box sentence-level attack. Our method fine-tunes a pre-trained language model to generate adversarial examples. A proposed differentiable loss function depends on a substitute classifier score and an approximate edit distance computed via a deep learning model. We show that the proposed attack outperforms competitors on a diverse set of NLP problems for both computed metrics and human evaluation. Moreover, due to the usage of the fine-tuned language model, the generated adversarial examples are hard to detect, thus current models are not robust. Hence, it is difficult to defend from the proposed attack, which is not the case for others.",
+            "year": 2021,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new black-box sentence-level attack that fine-tunes a pre-trained language model to generate adversarial examples that outperforms competitors on a diverse set of NLP problems for both computed metrics and human evaluation."
+            },
+            "score": 5
+        },
+        {
+            "id": "111c468c742f1b94c1153e6d779d472e691ef4af",
+            "paperId": "111c468c742f1b94c1153e6d779d472e691ef4af",
+            "title": "Adversarial Knowledge Stimulated Contrastive Prompting for Few-shot Language Learners",
+            "abstract": "Prompt-based fine-tuning has boosted the performance of Pre-trained Language Models (PLMs) on few-shot Natural Language Understanding (NLU) tasks by employing task-specific prompts. Yet, PLMs are unfamiliar with prompt-style expressions during pre-training, which limits the few-shot learning performance on downstream tasks. It would be desirable if the models can stimulate prompting knowledge while adaptation to specific NLU tasks. We present the Adversarial Knowledge Stimulated Contrastive Prompting (AKSCP) framework, leading to better few-shot NLU tasks for language models by implicitly stimulate knowledge from pretrained language model. In AKSCP, a novel paradigm Cloze-driven prompt is proposed for joint prompt tuning across word cloze task and prompt-based learning, forcing PLMs to stimulate prompting knowledge. We further design an Adversarial Contrastive learning method to improve the generalization ability of PLM for different downstream tasks. Experiments over a variety of NLU tasks show that AKSCP consistently outperforms state-of-the-arts for prompt-based fine-tuning.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "In AKSCP, a novel paradigm Cloze-driven prompt is proposed for joint prompt tuning across word cloze task and prompt-based learning, forcing PLMs to stimulate prompting knowledge, and an Adversarial Contrastive learning method is designed to improve the generalization ability of PLM for different downstream tasks."
+            },
+            "score": 5
+        },
+        {
+            "id": "eccbb1cd788f7f48a896821af91eac7ca9ae4d02",
+            "paperId": "eccbb1cd788f7f48a896821af91eac7ca9ae4d02",
+            "title": "Vocabulary Attack to Hijack Large Language Model Applications",
+            "abstract": "The fast advancements in Large Language Models (LLMs) are driving an increasing number of applications. Together with the growing number of users, we also see an increasing number of attackers who try to outsmart these systems. They want the model to reveal confidential information, specific false information, or offensive behavior. To this end, they manipulate their instructions for the LLM by inserting separators or rephrasing them systematically until they reach their goal. Our approach is different. It inserts words from the model vocabulary. We find these words using an optimization procedure and embeddings from another LLM (attacker LLM). We prove our approach by goal hijacking two popular open-source LLMs from the Llama2 and the Flan-T5 families, respectively. We present two main findings. First, our approach creates inconspicuous instructions and therefore it is hard to detect. For many attack cases, we find that even a single word insertion is sufficient. Second, we demonstrate that we can conduct our attack using a different model than the target model to conduct our attack with.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "1b09b2e6716999a4afcf3ffc1abc0b1f25b23ef9",
+            "paperId": "1b09b2e6716999a4afcf3ffc1abc0b1f25b23ef9",
+            "title": "FMM-Attack: A Flow-based Multi-modal Adversarial Attack on Video-based LLMs",
+            "abstract": "Despite the remarkable performance of video-based large language models (LLMs), their adversarial threat remains unexplored. To fill this gap, we propose the first adversarial attack tailored for video-based LLMs by crafting flow-based multi-modal adversarial perturbations on a small fraction of frames within a video, dubbed FMM-Attack. Extensive experiments show that our attack can effectively induce video-based LLMs to generate incorrect answers when videos are added with imperceptible adversarial perturbations. Intriguingly, our FMM-Attack can also induce garbling in the model output, prompting video-based LLMs to hallucinate. Overall, our observations inspire a further understanding of multi-modal robustness and safety-related feature alignment across different modalities, which is of great importance for various large multi-modal models. Our code is available at https://github.com/THU-Kingmin/FMM-Attack.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The first adversarial attack tailored for video-based LLMs is proposed by crafting flow-based multi-modal adversarial perturbations on a small fraction of frames within a video, dubbed FMM-Attack, which can effectively induce video-based LLMs to generate incorrect answers when videos are added with imperceptible adversarial perturbations."
+            },
+            "score": 4
+        },
+        {
+            "id": "f398724b417aa9d40c5a9b77d09010c1bc65c32f",
+            "paperId": "f398724b417aa9d40c5a9b77d09010c1bc65c32f",
+            "title": "Camouflage is all you need: Evaluating and Enhancing Language Model Robustness Against Camouflage Adversarial Attacks",
+            "abstract": "Adversarial attacks represent a substantial challenge in Natural Language Processing (NLP). This study undertakes a systematic exploration of this challenge in two distinct phases: vulnerability evaluation and resilience enhancement of Transformer-based models under adversarial attacks. In the evaluation phase, we assess the susceptibility of three Transformer configurations, encoder-decoder, encoder-only, and decoder-only setups, to adversarial attacks of escalating complexity across datasets containing offensive language and misinformation. Encoder-only models manifest a 14% and 21% performance drop in offensive language detection and misinformation detection tasks, respectively. Decoder-only models register a 16% decrease in both tasks, while encoder-decoder models exhibit a maximum performance drop of 14% and 26% in the respective tasks. The resilience-enhancement phase employs adversarial training, integrating pre-camouflaged and dynamically altered data. This approach effectively reduces the performance drop in encoder-only models to an average of 5% in offensive language detection and 2% in misinformation detection tasks. Decoder-only models, occasionally exceeding original performance, limit the performance drop to 7% and 2% in the respective tasks. Although not surpassing the original performance, Encoder-decoder models can reduce the drop to an average of 6% and 2% respectively. Results suggest a trade-off between performance and robustness, with some models maintaining similar performance while gaining robustness. Our study and adversarial training techniques have been incorporated into an open-source tool for generating camouflaged datasets. However, methodology effectiveness depends on the specific camouflage technique and data encountered, emphasizing the need for continued exploration.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results suggest a trade-off between performance and robustness, with some models maintaining similar performance while gaining robustness and some models maintaining similar performance while gaining robustness."
+            },
+            "score": 4
+        },
+        {
+            "id": "91099bbb96133c70db091041900ecff502a5e3a8",
+            "paperId": "91099bbb96133c70db091041900ecff502a5e3a8",
+            "title": "Harnessing the Power of Adversarial Prompting and Large Language Models for Robust Hypothesis Generation in Astronomy",
+            "abstract": "This study investigates the application of Large Language Models (LLMs), specifically GPT-4, within Astronomy. We employ in-context prompting, supplying the model with up to 1000 papers from the NASA Astrophysics Data System, to explore the extent to which performance can be improved by immersing the model in domain-specific literature. Our findings point towards a substantial boost in hypothesis generation when using in-context prompting, a benefit that is further accentuated by adversarial prompting. We illustrate how adversarial prompting empowers GPT-4 to extract essential details from a vast knowledge base to produce meaningful hypotheses, signaling an innovative step towards employing LLMs for scientific research in Astronomy.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is illustrated how adversarial prompting empowers GPT-4 to extract essential details from a vast knowledge base to produce meaningful hypotheses, signaling an innovative step towards employing LLMs for scientific research in Astronomy."
+            },
+            "score": 4
+        },
+        {
+            "id": "65c89f37522931900882abc360d5d6a1eec96863",
+            "paperId": "65c89f37522931900882abc360d5d6a1eec96863",
+            "title": "Shortcuts Arising from Contrast: Effective and Covert Clean-Label Attacks in Prompt-Based Learning",
+            "abstract": "Prompt-based learning paradigm has demonstrated remarkable efficacy in enhancing the adaptability of pretrained language models (PLMs), particularly in few-shot scenarios. However, this learning paradigm has been shown to be vulnerable to backdoor attacks. The current clean-label attack, employing a specific prompt as a trigger, can achieve success without the need for external triggers and ensure correct labeling of poisoned samples, which is more stealthy compared to the poisoned-label attack, but on the other hand, it faces significant issues with false activations and poses greater challenges, necessitating a higher rate of poisoning. Using conventional negative data augmentation methods, we discovered that it is challenging to trade off between effectiveness and stealthiness in a clean-label setting. In addressing this issue, we are inspired by the notion that a backdoor acts as a shortcut and posit that this shortcut stems from the contrast between the trigger and the data utilized for poisoning. In this study, we propose a method named Contrastive Shortcut Injection (CSI), by leveraging activation values, integrates trigger design and data selection strategies to craft stronger shortcut features. With extensive experiments on full-shot and few-shot text classification tasks, we empirically validate CSI's high effectiveness and high stealthiness at low poisoning rates. Notably, we found that the two approaches play leading roles in full-shot and few-shot settings, respectively.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "4d1f37057fd008317d634d3f10ff73c81b442035",
+            "paperId": "4d1f37057fd008317d634d3f10ff73c81b442035",
+            "title": "Goal-guided Generative Prompt Injection Attack on Large Language Models",
+            "abstract": "Current large language models (LLMs) provide a strong foundation for large-scale user-oriented natural language tasks. A large number of users can easily inject adversarial text or instructions through the user interface, thus causing LLMs model security challenges. Although there is currently a large amount of research on prompt injection attacks, most of these black-box attacks use heuristic strategies. It is unclear how these heuristic strategies relate to the success rate of attacks and thus effectively improve model robustness. To solve this problem, we redefine the goal of the attack: to maximize the KL divergence between the conditional probabilities of the clean text and the adversarial text. Furthermore, we prove that maximizing the KL divergence is equivalent to maximizing the Mahalanobis distance between the embedded representation $x$ and $x'$ of the clean text and the adversarial text when the conditional probability is a Gaussian distribution and gives a quantitative relationship on $x$ and $x'$. Then we designed a simple and effective goal-guided generative prompt injection strategy (G2PIA) to find an injection text that satisfies specific constraints to achieve the optimal attack effect approximately. It is particularly noteworthy that our attack method is a query-free black-box attack method with low computational cost. Experimental results on seven LLM models and four datasets show the effectiveness of our attack method.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "0cf694b8f85ab2e11d45595de211a15cfbadcd22",
+            "paperId": "0cf694b8f85ab2e11d45595de211a15cfbadcd22",
+            "title": "Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks",
+            "abstract": "Recent advances in instruction-following large language models (LLMs) have led to dramatic improvements in a range of NLP tasks. Unfortunately, we find that the same improved capabilities amplify the dual-use risks for malicious purposes of these models. Dual-use is difficult to prevent as instruction-following capabilities now enable standard attacks from computer security. The capabilities of these instruction-following LLMs provide strong economic incentives for dual-use by malicious actors. In particular, we show that instruction-following LLMs can produce targeted malicious content, including hate speech and scams, bypassing in-the-wild defenses implemented by LLM API vendors. Our analysis shows that this content can be generated economically and at cost likely lower than with human effort alone. Together, our findings suggest that LLMs will increasingly attract more sophisticated adversaries and attacks, and addressing these attacks may require new approaches to mitigations.",
+            "year": 2023,
+            "citationCount": 108,
+            "score": 4
+        },
+        {
+            "id": "425d3c381dde8f576b6237a6d443b97880dd6bc2",
+            "paperId": "425d3c381dde8f576b6237a6d443b97880dd6bc2",
+            "title": "Tastle: Distract Large Language Models for Automatic Jailbreak Attack",
+            "abstract": "Large language models (LLMs) have achieved significant advances in recent days. Extensive efforts have been made before the public release of LLMs to align their behaviors with human values. The primary goal of alignment is to ensure their helpfulness, honesty and harmlessness. However, even meticulously aligned LLMs remain vulnerable to malicious manipulations such as jailbreaking, leading to unintended behaviors. The jailbreak is to intentionally develop a malicious prompt that escapes from the LLM security restrictions to produce uncensored detrimental contents. Previous works explore different jailbreak methods for red teaming LLMs, yet they encounter challenges regarding to effectiveness and scalability. In this work, we propose Tastle, a novel black-box jailbreak framework for automated red teaming of LLMs. We designed malicious content concealing and memory reframing with an iterative optimization algorithm to jailbreak LLMs, motivated by the research about the distractibility and over-confidence phenomenon of LLMs. Extensive experiments of jailbreaking both open-source and proprietary LLMs demonstrate the superiority of our framework in terms of effectiveness, scalability and transferability. We also evaluate the effectiveness of existing jailbreak defense methods against our attack and highlight the crucial need to develop more effective and practical defense strategies.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "92f5bb715d8938e815470b41337d00cb808dd851",
+            "paperId": "92f5bb715d8938e815470b41337d00cb808dd851",
+            "title": "Sandwich attack: Multi-language Mixture Adaptive Attack on LLMs",
+            "abstract": "Large Language Models (LLMs) are increasingly being developed and applied, but their widespread use faces challenges. These include aligning LLMs' responses with human values to prevent harmful outputs, which is addressed through safety training methods. Even so, bad actors and malicious users have succeeded in attempts to manipulate the LLMs to generate misaligned responses for harmful questions such as methods to create a bomb in school labs, recipes for harmful drugs, and ways to evade privacy rights. Another challenge is the multilingual capabilities of LLMs, which enable the model to understand and respond in multiple languages. Consequently, attackers exploit the unbalanced pre-training datasets of LLMs in different languages and the comparatively lower model performance in low-resource languages than high-resource ones. As a result, attackers use a low-resource languages to intentionally manipulate the model to create harmful responses. Many of the similar attack vectors have been patched by model providers, making the LLMs more robust against language-based manipulation. In this paper, we introduce a new black-box attack vector called the \\emph{Sandwich attack}: a multi-language mixture attack, which manipulates state-of-the-art LLMs into generating harmful and misaligned responses. Our experiments with five different models, namely Google's Bard, Gemini Pro, LLaMA-2-70-B-Chat, GPT-3.5-Turbo, GPT-4, and Claude-3-OPUS, show that this attack vector can be used by adversaries to generate harmful responses and elicit misaligned responses from these models. By detailing both the mechanism and impact of the Sandwich attack, this paper aims to guide future research and development towards more secure and resilient LLMs, ensuring they serve the public good while minimizing potential for misuse.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "c5474f53250bfc7569382deb170c467a84879015",
+            "paperId": "c5474f53250bfc7569382deb170c467a84879015",
+            "title": "WEDGE: A multi-weather autonomous driving dataset built from generative vision-language models",
+            "abstract": "The open road poses many challenges to autonomous perception, including poor visibility from extreme weather conditions. Models trained on good-weather datasets frequently fail at detection in these out-of-distribution settings. To aid adversarial robustness in perception, we introduce WEDGE (WEather images by DALL-E GEneration): a synthetic dataset generated with a vision-language generative model via prompting. WEDGE consists of 3360 images in 16 extreme weather conditions manually annotated with 16513 bounding boxes, supporting research in the tasks of weather classification and 2D object detection. We have analyzed WEDGE from research standpoints, verifying its effectiveness for extreme-weather autonomous perception. We establish baseline performance for classification and detection with 53.87% test accuracy and 45.41 mAP. Most importantly, WEDGE can be used to fine-tune state-of-the-art detectors, improving SOTA performance on real-world weather benchmarks (such as DAWN) by 4.48 AP for well-generated classes like trucks. WEDGE has been collected under OpenAI\u2019s terms 1 of use and is released for public use under the CC BY-NC-SA 4.0 license. The repository for this work and dataset is available at https://infernolia.github.io/WEDGE.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "WEDGE (WEather images by DALL-E GEneration): a synthetic dataset generated with a vision-language generative model via prompting that can be used to fine-tune state-of-the-art detectors, improving SOTA performance on real-world weather benchmarks by 4.48 AP for well-generated classes like trucks."
+            },
+            "score": 3
+        },
+        {
+            "id": "9a0f53a0ff25d1a5fb016aaa22185c4d6b5a2ac8",
+            "paperId": "9a0f53a0ff25d1a5fb016aaa22185c4d6b5a2ac8",
+            "title": "LinkPrompt: Natural and Universal Adversarial Attacks on Prompt-based Language Models",
+            "abstract": "Prompt-based learning is a new language model training paradigm that adapts the Pre-trained Language Models (PLMs) to downstream tasks, which revitalizes the performance benchmarks across various natural language processing (NLP) tasks. Instead of using a fixed prompt template to fine-tune the model, some research demonstrates the effectiveness of searching for the prompt via optimization. Such prompt optimization process of prompt-based learning on PLMs also gives insight into generating adversarial prompts to mislead the model, raising concerns about the adversarial vulnerability of this paradigm. Recent studies have shown that universal adversarial triggers (UATs) can be generated to alter not only the predictions of the target PLMs but also the prediction of corresponding Prompt-based Fine-tuning Models (PFMs) under the prompt-based learning paradigm. However, UATs found in previous works are often unreadable tokens or characters and can be easily distinguished from natural texts with adaptive defenses. In this work, we consider the naturalness of the UATs and develop $\\textit{LinkPrompt}$, an adversarial attack algorithm to generate UATs by a gradient-based beam search algorithm that not only effectively attacks the target PLMs and PFMs but also maintains the naturalness among the trigger tokens. Extensive results demonstrate the effectiveness of $\\textit{LinkPrompt}$, as well as the transferability of UATs generated by $\\textit{LinkPrompt}$ to open-sourced Large Language Model (LLM) Llama2 and API-accessed LLM GPT-3.5-turbo. The resource is available at $\\href{https://github.com/SavannahXu79/LinkPrompt}{https://github.com/SavannahXu79/LinkPrompt}$.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "59faaf0c63d2e4281d985e373b286c517577a933",
+            "paperId": "59faaf0c63d2e4281d985e373b286c517577a933",
+            "title": "The Probabilities Also Matter: A More Faithful Metric for Faithfulness of Free-Text Explanations in Large Language Models",
+            "abstract": "In order to oversee advanced AI systems, it is important to understand their underlying decision-making process. When prompted, large language models (LLMs) can provide natural language explanations or reasoning traces that sound plausible and receive high ratings from human annotators. However, it is unclear to what extent these explanations are faithful, i.e., truly capture the factors responsible for the model's predictions. In this work, we introduce Correlational Explanatory Faithfulness (CEF), a metric that can be used in faithfulness tests based on input interventions. Previous metrics used in such tests take into account only binary changes in the predictions. Our metric accounts for the total shift in the model's predicted label distribution, more accurately reflecting the explanations' faithfulness. We then introduce the Correlational Counterfactual Test (CCT) by instantiating CEF on the Counterfactual Test (CT) from Atanasova et al. (2023). We evaluate the faithfulness of free-text explanations generated by few-shot-prompted LLMs from the Llama2 family on three NLP tasks. We find that our metric measures aspects of faithfulness which the CT misses.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "db55cf346d7851cde50c1b25ab8fbcdaef8e2ee0",
+            "paperId": "db55cf346d7851cde50c1b25ab8fbcdaef8e2ee0",
+            "title": "Talking Nonsense: Probing Large Language Models' Understanding of Adversarial Gibberish Inputs",
+            "abstract": "Large language models (LLMs) exhibit excellent ability to understand human languages, but do they also understand their own language that appears gibberish to us? In this work we delve into this question, aiming to uncover the mechanisms underlying such behavior in LLMs. We employ the Greedy Coordinate Gradient optimizer to craft prompts that compel LLMs to generate coherent responses from seemingly nonsensical inputs. We call these inputs LM Babel and this work systematically studies the behavior of LLMs manipulated by these prompts. We find that the manipulation efficiency depends on the target text's length and perplexity, with the Babel prompts often located in lower loss minima compared to natural prompts. We further examine the structure of the Babel prompts and evaluate their robustness. Notably, we find that guiding the model to generate harmful texts is not more difficult than into generating benign texts, suggesting lack of alignment for out-of-distribution prompts.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "4bfb6070f6a80de6a85b9edab1fb332fd0a56e69",
+            "paperId": "4bfb6070f6a80de6a85b9edab1fb332fd0a56e69",
+            "title": "Learning From Correctness Without Prompting Makes LLM Efficient Reasoner",
+            "abstract": "Large language models (LLMs) have demonstrated outstanding performance across various tasks, yet they still exhibit limitations such as hallucination, unfaithful reasoning, and toxic content. One potential approach to mitigate these issues is learning from human or external feedback (e.g. tools). In this paper, we introduce an intrinsic self-correct reasoning framework for LLMs that eliminates the need for human feedback, external tools, and handcraft prompts. The proposed framework, based on a multi-step reasoning paradigm \\textbf{Le}arning from \\textbf{Co}rrectness (\\textsc{LeCo}), improves reasoning performance without needing to learn from errors. This paradigm prioritizes learning from correct reasoning steps, and a unique method to measure confidence for each reasoning step based on generation logits. Experimental results across various multi-step reasoning tasks demonstrate the effectiveness of the framework in improving reasoning performance with reduced token consumption.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f",
+            "paperId": "fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f",
+            "title": "HalluciBot: Is There No Such Thing as a Bad Question?",
+            "abstract": "Hallucination continues to be one of the most critical challenges in the institutional adoption journey of Large Language Models (LLMs). In this context, an overwhelming number of studies have focused on analyzing the post-generation phase - refining outputs via feedback, analyzing logit output values, or deriving clues via the outputs' artifacts. We propose HalluciBot, a model that predicts the probability of hallucination $\\textbf{before generation}$, for any query imposed to an LLM. In essence, HalluciBot does not invoke any generation during inference. To derive empirical evidence for HalluciBot, we employ a Multi-Agent Monte Carlo Simulation using a Query Perturbator to craft $n$ variations per query at train time. The construction of our Query Perturbator is motivated by our introduction of a new definition of hallucination - $\\textit{truthful hallucination}$. Our training methodology generated 2,219,022 estimates for a training corpus of 369,837 queries, spanning 13 diverse datasets and 3 question-answering scenarios. HalluciBot predicts both binary and multi-class probabilities of hallucination, enabling a means to judge the query's quality with regards to its propensity to hallucinate. Therefore, HalluciBot paves the way to revise or cancel a query before generation and the ensuing computational waste. Moreover, it provides a lucid means to measure user accountability for hallucinatory queries.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+            "paperId": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+            "title": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+            "abstract": "Large \u201cinstruction-tuned\u201d language models (i.e., finetuned to respond to instructions) have demonstrated a remarkable ability to generalize zero-shot to new tasks. Nevertheless, they depend heavily on human-written instruction data that is often limited in quantity, diversity, and creativity, therefore hindering the generality of the tuned model. We introduce Self-Instruct, a framework for improving the instruction-following capabilities of pretrained language models by bootstrapping off their own generations. Our pipeline generates instructions, input, and output samples from a language model, then filters invalid or similar ones before using them to finetune the original model. Applying our method to the vanilla GPT3, we demonstrate a 33% absolute improvement over the original model on Super-NaturalInstructions, on par with the performance of InstructGPT-001, which was trained with private user data and human annotations. For further evaluation, we curate a set of expert-written instructions for novel tasks, and show through human evaluation that tuning GPT3 with Self-Instruct outperforms using existing public instruction datasets by a large margin, leaving only a 5% absolute gap behind InstructGPT-001. Self-Instruct provides an almost annotation-free method for aligning pre-trained language models with instructions, and we release our large synthetic dataset to facilitate future studies on instruction tuning.",
+            "year": 2022,
+            "citationCount": 1001,
+            "score": 3
+        },
+        {
+            "id": "8436897e713c2242d6291df9a6a33c1544d4dd39",
+            "paperId": "8436897e713c2242d6291df9a6a33c1544d4dd39",
+            "title": "Adversarial GLUE: A Multi-Task Benchmark for Robustness Evaluation of Language Models",
+            "abstract": "Large-scale pre-trained language models have achieved tremendous success across a wide range of natural language understanding (NLU) tasks, even surpassing human performance. However, recent studies reveal that the robustness of these models can be challenged by carefully crafted textual adversarial examples. While several individual datasets have been proposed to evaluate model robustness, a principled and comprehensive benchmark is still missing. In this paper, we present Adversarial GLUE (AdvGLUE), a new multi-task benchmark to quantitatively and thoroughly explore and evaluate the vulnerabilities of modern large-scale language models under various types of adversarial attacks. In particular, we systematically apply 14 textual adversarial attack methods to GLUE tasks to construct AdvGLUE, which is further validated by humans for reliable annotations. Our findings are summarized as follows. (i) Most existing adversarial attack algorithms are prone to generating invalid or ambiguous adversarial examples, with around 90% of them either changing the original semantic meanings or misleading human annotators as well. Therefore, we perform a careful filtering process to curate a high-quality benchmark. (ii) All the language models and robust training methods we tested perform poorly on AdvGLUE, with scores lagging far behind the benign accuracy. We hope our work will motivate the development of new adversarial attacks that are more stealthy and semantic-preserving, as well as new robust language models against sophisticated adversarial attacks. AdvGLUE is available at https://adversarialglue.github.io.",
+            "year": 2021,
+            "citationCount": 125,
+            "score": 3
+        },
+        {
+            "id": "0a6a350653369dc92fde4cf9992951534ed1f169",
+            "paperId": "0a6a350653369dc92fde4cf9992951534ed1f169",
+            "title": "Automatic and Universal Prompt Injection Attacks against Large Language Models",
+            "abstract": "Large Language Models (LLMs) excel in processing and generating human language, powered by their ability to interpret and follow instructions. However, their capabilities can be exploited through prompt injection attacks. These attacks manipulate LLM-integrated applications into producing responses aligned with the attacker's injected content, deviating from the user's actual requests. The substantial risks posed by these attacks underscore the need for a thorough understanding of the threats. Yet, research in this area faces challenges due to the lack of a unified goal for such attacks and their reliance on manually crafted prompts, complicating comprehensive assessments of prompt injection robustness. We introduce a unified framework for understanding the objectives of prompt injection attacks and present an automated gradient-based method for generating highly effective and universal prompt injection data, even in the face of defensive measures. With only five training samples (0.3% relative to the test data), our attack can achieve superior performance compared with baselines. Our findings emphasize the importance of gradient-based testing, which can avoid overestimation of robustness, especially for defense mechanisms.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "1b8552e62c60f67b2f84bca4cd0361529a099f5f",
+            "paperId": "1b8552e62c60f67b2f84bca4cd0361529a099f5f",
+            "title": "Talk Too Much: Poisoning Large Language Models under Token Limit",
+            "abstract": "Mainstream poisoning attacks on large language models (LLMs) typically set a fixed trigger in the input instance and specific responses for triggered queries. However, the fixed trigger setting (e.g., unusual words) may be easily detected by human detection, limiting the effectiveness and practicality in real-world scenarios. To enhance the stealthiness of the trigger, we present a poisoning attack against LLMs that is triggered by a generation/output condition-token limitation, which is a commonly adopted strategy by users for reducing costs. The poisoned model performs normally for output without token limitation, while becomes harmful for output with limited tokens. To achieve this objective, we introduce BrieFool, an efficient attack framework. It leverages the characteristics of generation limitation by efficient instruction sampling and poisoning data generation, thereby influencing the behavior of LLMs under target conditions. Our experiments demonstrate that BrieFool is effective across safety domains and knowledge domains. For instance, with only 20 generated poisoning examples against GPT-3.5-turbo, BrieFool achieves a 100% Attack Success Rate (ASR) and a 9.28/10 average Harmfulness Score (HS) under token limitation conditions while maintaining the benign performance.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "f9f23c63e2822687096b86edf4ae9435cb579b8c",
+            "paperId": "f9f23c63e2822687096b86edf4ae9435cb579b8c",
+            "title": "Do-Not-Answer: Evaluating Safeguards in LLMs",
+            "abstract": "With the rapid evolution of large language models (LLMs), new and hard-to-predict harmful capabilities are emerging. This requires developers to identify potential risks through the evaluation of \u201cdangerous capabilities\u201d in order to responsibly deploy LLMs. Here we aim to facilitate this process. In particular, we collect an open-source dataset to evaluate the safeguards in LLMs, to facilitate the deployment of safer open-source LLMs at a low cost. Our dataset is curated and filtered to consist only of instructions that responsible language models should not follow. We assess the responses of six popular LLMs to these instructions, and we find that simple BERT-style classifiers can achieve results that are comparable to GPT-4 on automatic safety evaluation. Our data and code are available at https://github.com/Libr-AI/do-not-answer",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "80a5b9ca71a81b8f032f60cc5a011e238f0e455b",
+            "paperId": "80a5b9ca71a81b8f032f60cc5a011e238f0e455b",
+            "title": "DUPE: Detection Undermining via Prompt Engineering for Deepfake Text",
+            "abstract": "As large language models (LLMs) become increasingly commonplace, concern about distinguishing between human and AI text increases as well. The growing power of these models is of particular concern to teachers, who may worry that students will use LLMs to write school assignments. Facing a technology with which they are unfamiliar, teachers may turn to publicly-available AI text detectors. Yet the accuracy of many of these detectors has not been thoroughly verified, posing potential harm to students who are falsely accused of academic dishonesty. In this paper, we evaluate three different AI text detectors-Kirchenbauer et al. watermarks, ZeroGPT, and GPTZero-against human and AI-generated essays. We find that watermarking results in a high false positive rate, and that ZeroGPT has both high false positive and false negative rates. Further, we are able to significantly increase the false negative rate of all detectors by using ChatGPT 3.5 to paraphrase the original AI-generated texts, thereby effectively bypassing the detectors.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "83c41d2701bbd1a3d9b2dd89a65d288295611185",
+            "paperId": "83c41d2701bbd1a3d9b2dd89a65d288295611185",
+            "title": "Comparing Plausibility Estimates in Base and Instruction-Tuned Large Language Models",
+            "abstract": "Instruction-tuned LLMs can respond to explicit queries formulated as prompts, which greatly facilitates interaction with human users. However, prompt-based approaches might not always be able to tap into the wealth of implicit knowledge acquired by LLMs during pre-training. This paper presents a comprehensive study of ways to evaluate semantic plausibility in LLMs. We compare base and instruction-tuned LLM performance on an English sentence plausibility task via (a) explicit prompting and (b) implicit estimation via direct readout of the probabilities models assign to strings. Experiment 1 shows that, across model architectures and plausibility datasets, (i) log likelihood ($\\textit{LL}$) scores are the most reliable indicator of sentence plausibility, with zero-shot prompting yielding inconsistent and typically poor results; (ii) $\\textit{LL}$-based performance is still inferior to human performance; (iii) instruction-tuned models have worse $\\textit{LL}$-based performance than base models. In Experiment 2, we show that $\\textit{LL}$ scores across models are modulated by context in the expected way, showing high performance on three metrics of context-sensitive plausibility and providing a direct match to explicit human plausibility judgments. Overall, $\\textit{LL}$ estimates remain a more reliable measure of plausibility in LLMs than direct prompting.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 2
+        },
+        {
+            "id": "094b6847434be00e41686529f45d895bd632f68a",
+            "paperId": "094b6847434be00e41686529f45d895bd632f68a",
+            "title": "Can LLMs Learn from Previous Mistakes? Investigating LLMs' Errors to Boost for Reasoning",
+            "abstract": "Recent works have shown the benefits to LLMs from fine-tuning golden-standard Chain-of-Thought (CoT) rationales or using them as correct examples in few-shot prompting. While humans can indeed imitate correct examples, learning from our mistakes is another vital aspect of human cognition. Hence, a question naturally arises: \\textit{can LLMs learn and benefit from their mistakes, especially for their reasoning? } This study investigates this problem from both the prompting and model-tuning perspectives. We begin by introducing \\textsc{CoTErrorSet}, a new benchmark with 609,432 questions, each designed with both correct and error references, and demonstrating the types and reasons for making such mistakes. To explore the effectiveness of those mistakes, we design two methods: (1) \\textbf{Self-rethinking} prompting guides LLMs to rethink whether they have made similar previous mistakes; and (2) \\textbf{Mistake tuning} involves finetuning models in both correct and incorrect reasoning domains, rather than only tuning models to learn ground truth in traditional methodology. We conduct a series of experiments to prove LLMs can obtain benefits from mistakes in both directions. Our two methods offer potentially cost-effective strategies by leveraging errors to enhance reasoning capabilities, which costs significantly less than creating meticulously hand-crafted golden references. We ultimately make a thorough analysis of the reasons behind LLMs' errors, which provides directions that future research needs to overcome. \\textsc{CoTErrorSet} will be published soon on \\texttt{Anonymity Link}.",
+            "year": 2024,
+            "citationCount": 3,
+            "score": 2
+        },
+        {
+            "id": "75d61f9286e298f13ff7913e4f839b839f61cb02",
+            "paperId": "75d61f9286e298f13ff7913e4f839b839f61cb02",
+            "title": "SNIFFER: Multimodal Large Language Model for Explainable Out-of-Context Misinformation Detection",
+            "abstract": "Misinformation is a prevalent societal issue due to its potential high risks. Out-of-context (OOC) misinformation, where authentic images are repurposed with false text, is one of the easiest and most effective ways to mislead audiences. Current methods focus on assessing image-text consistency but lack convincing explanations for their judgments, which is essential for debunking misinformation. While Multimodal Large Language Models (MLLMs) have rich knowledge and innate capability for visual reasoning and explanation generation, they still lack sophistication in understanding and discovering the subtle crossmodal differences. In this paper, we introduce SNIFFER, a novel multimodal large language model specifically engineered for OOC misinformation detection and explanation. SNIFFER employs two-stage instruction tuning on InstructBLIP. The first stage refines the model's concept alignment of generic objects with news-domain entities and the second stage leverages language-only GPT-4 generated OOC-specific instruction data to fine-tune the model's discriminatory powers. Enhanced by external tools and retrieval, SNIFFER not only detects inconsistencies between text and image but also utilizes external knowledge for contextual verification. Our experiments show that SNIFFER surpasses the original MLLM by over 40% and outperforms state-of-the-art methods in detection accuracy. SNIFFER also provides accurate and persuasive explanations as validated by quantitative and human evaluations.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 2
+        },
+        {
+            "id": "415c594667bb94f086ea980f897c4f62f9a22d18",
+            "paperId": "415c594667bb94f086ea980f897c4f62f9a22d18",
+            "title": "Eyes Can Deceive: Benchmarking Counterfactual Reasoning Abilities of Multi-modal Large Language Models",
+            "abstract": "Counterfactual reasoning, as a crucial manifestation of human intelligence, refers to making presuppositions based on established facts and extrapolating potential outcomes. Existing multimodal large language models (MLLMs) have exhibited impressive cognitive and reasoning capabilities, which have been examined across a wide range of Visual Question Answering (VQA) benchmarks. Nevertheless, how will existing MLLMs perform when faced with counterfactual questions? To answer this question, we first curate a novel \\textbf{C}ounter\\textbf{F}actual \\textbf{M}ulti\\textbf{M}odal reasoning benchmark, abbreviated as \\textbf{CFMM}, to systematically assess the counterfactual reasoning capabilities of MLLMs. Our CFMM comprises six challenging tasks, each including hundreds of carefully human-labeled counterfactual questions, to evaluate MLLM's counterfactual reasoning capabilities across diverse aspects. Through experiments, interestingly, we find that existing MLLMs prefer to believe what they see, but ignore the counterfactual presuppositions presented in the question, thereby leading to inaccurate responses. Furthermore, we evaluate a wide range of prevalent MLLMs on our proposed CFMM. The significant gap between their performance on our CFMM and that on several VQA benchmarks indicates that there is still considerable room for improvement in existing MLLMs toward approaching human-level intelligence. On the other hand, through boosting MLLMs performances on our CFMM in the future, potential avenues toward developing MLLMs with advanced intelligence can be explored.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "a88699b5eb5b0b88b816a9b5257d37d6dce95233",
+            "paperId": "a88699b5eb5b0b88b816a9b5257d37d6dce95233",
+            "title": "PromptExplainer: Explaining Language Models through Prompt-based Learning",
+            "abstract": "Pretrained language models have become workhorses for various natural language processing (NLP) tasks, sparking a growing demand for enhanced interpretability and transparency. However, prevailing explanation methods, such as attention-based and gradient-based strategies, largely rely on linear approximations, potentially causing inaccuracies such as accentuating irrelevant input tokens. To mitigate the issue, we develop PromptExplainer, a novel method for explaining language models through prompt-based learning. PromptExplainer aligns the explanation process with the masked language modeling (MLM) task of pretrained language models and leverages the prompt-based learning framework for explanation generation. It disentangles token representations into the explainable embedding space using the MLM head and extracts discriminative features with a verbalizer to generate class-dependent explanations. Extensive experiments demonstrate that PromptExplainer significantly outperforms state-of-the-art explanation methods.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "9e8cb8c91a0acb6e661b58ad724aa758490f2bea",
+            "paperId": "9e8cb8c91a0acb6e661b58ad724aa758490f2bea",
+            "title": "Instruction Tuning with GPT-4",
+            "abstract": "Prior work has shown that finetuning large language models (LLMs) using machine-generated instruction-following data enables such models to achieve remarkable zero-shot capabilities on new tasks, and no human-written instructions are needed. In this paper, we present the first attempt to use GPT-4 to generate instruction-following data for LLM finetuning. Our early experiments on instruction-tuned LLaMA models show that the 52K English and Chinese instruction-following data generated by GPT-4 leads to superior zero-shot performance on new tasks to the instruction-following data generated by previous state-of-the-art models. We also collect feedback and comparison data from GPT-4 to enable a comprehensive evaluation and reward model training. We make our data generated using GPT-4 as well as our codebase publicly available.",
+            "year": 2023,
+            "citationCount": 305,
+            "score": 2
+        },
+        {
+            "id": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+            "paperId": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+            "title": "Training language models to follow instructions with human feedback",
+            "abstract": "Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by fine-tuning with human feedback. Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API, we collect a dataset of labeler demonstrations of the desired model behavior, which we use to fine-tune GPT-3 using supervised learning. We then collect a dataset of rankings of model outputs, which we use to further fine-tune this supervised model using reinforcement learning from human feedback. We call the resulting models InstructGPT. In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters. Moreover, InstructGPT models show improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets. Even though InstructGPT still makes simple mistakes, our results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent.",
+            "year": 2022,
+            "citationCount": 5924,
+            "score": 2
+        },
+        {
+            "id": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+            "paperId": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+            "title": "Finetuned Language Models Are Zero-Shot Learners",
+            "abstract": "This paper explores a simple method for improving the zero-shot learning abilities of language models. We show that instruction tuning -- finetuning language models on a collection of tasks described via instructions -- substantially improves zero-shot performance on unseen tasks. We take a 137B parameter pretrained language model and instruction-tune it on over 60 NLP tasks verbalized via natural language instruction templates. We evaluate this instruction-tuned model, which we call FLAN, on unseen task types. FLAN substantially improves the performance of its unmodified counterpart and surpasses zero-shot 175B GPT-3 on 20 of 25 tasks that we evaluate. FLAN even outperforms few-shot GPT-3 by a large margin on ANLI, RTE, BoolQ, AI2-ARC, OpenbookQA, and StoryCloze. Ablation studies reveal that number of finetuning datasets, model scale, and natural language instructions are key to the success of instruction tuning.",
+            "year": 2021,
+            "citationCount": 2090,
+            "score": 2
+        },
+        {
+            "id": "207da6d2c07289bf72a2b5974bb3f011ebb5dd0d",
+            "paperId": "207da6d2c07289bf72a2b5974bb3f011ebb5dd0d",
+            "title": "Adversarial NLI: A New Benchmark for Natural Language Understanding",
+            "abstract": "We introduce a new large-scale NLI benchmark dataset, collected via an iterative, adversarial human-and-model-in-the-loop procedure. We show that training models on this new dataset leads to state-of-the-art performance on a variety of popular NLI benchmarks, while posing a more difficult challenge with its new test set. Our analysis sheds light on the shortcomings of current state-of-the-art models, and shows that non-expert annotators are successful at finding their weaknesses. The data collection method can be applied in a never-ending learning scenario, becoming a moving target for NLU, rather than a static benchmark that will quickly saturate.",
+            "year": 2019,
+            "citationCount": 778,
+            "score": 2
+        },
+        {
+            "id": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "paperId": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "title": "Adversarial Examples for Evaluating Reading Comprehension Systems",
+            "abstract": "Standard accuracy metrics indicate that reading comprehension systems are making rapid progress, but the extent to which these systems truly understand language remains unclear. To reward systems with real language understanding abilities, we propose an adversarial evaluation scheme for the Stanford Question Answering Dataset (SQuAD). Our method tests whether systems can answer questions about paragraphs that contain adversarially inserted sentences, which are automatically generated to distract computer systems without changing the correct answer or misleading humans. In this adversarial setting, the accuracy of sixteen published models drops from an average of 75% F1 score to 36%; when the adversary is allowed to add ungrammatical sequences of words, average accuracy on four models decreases further to 7%. We hope our insights will motivate the development of new models that understand language more precisely.",
+            "year": 2017,
+            "citationCount": 1465,
+            "score": 2
+        },
+        {
+            "id": "388de598bb3609fb793c0bd26c365e98139f00ce",
+            "paperId": "388de598bb3609fb793c0bd26c365e98139f00ce",
+            "title": "Unveiling the Misuse Potential of Base Large Language Models via In-Context Learning",
+            "abstract": "The open-sourcing of large language models (LLMs) accelerates application development, innovation, and scientific progress. This includes both base models, which are pre-trained on extensive datasets without alignment, and aligned models, deliberately designed to align with ethical standards and human values. Contrary to the prevalent assumption that the inherent instruction-following limitations of base LLMs serve as a safeguard against misuse, our investigation exposes a critical oversight in this belief. By deploying carefully designed demonstrations, our research demonstrates that base LLMs could effectively interpret and execute malicious instructions. To systematically assess these risks, we introduce a novel set of risk evaluation metrics. Empirical results reveal that the outputs from base LLMs can exhibit risk levels on par with those of models fine-tuned for malicious purposes. This vulnerability, requiring neither specialized knowledge nor training, can be manipulated by almost anyone, highlighting the substantial risk and the critical need for immediate attention to the base LLMs' security protocols.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "4acdc5859d86c8fd1e14afa83c46f0340ba70ebb",
+            "paperId": "4acdc5859d86c8fd1e14afa83c46f0340ba70ebb",
+            "title": "Linguistic Obfuscation Attacks and Large Language Model Uncertainty",
+            "abstract": "Large Language Models (LLMs) have taken the research field of Natural Language Processing by storm. Researchers are not only investigating their capabilities and possible applications, but also their weaknesses and how they may be exploited.This has resulted in various attacks and \u201cjailbreaking\u201d approaches that have gained large interest within the community.The vulnerability of LLMs to certain types of input may pose major risks regarding the real-world usage of LLMs in productive operations.We therefore investigate the relationship between a LLM\u2019s uncertainty and its vulnerability to jailbreaking attacks.To this end, we focus on a probabilistic point of view of uncertainty and employ a state-of-the art open-source LLM.We investigate an attack that is based on linguistic obfuscation.Our results indicate that the model is subject to a higher level of uncertainty when confronted with manipulated prompts that aim to evade security mechanisms.This study lays the foundation for future research into the link between model uncertainty and its vulnerability to jailbreaks.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "dfc9bb24627d1dd61c8d495cd86a874a2a1130ad",
+            "paperId": "dfc9bb24627d1dd61c8d495cd86a874a2a1130ad",
+            "title": "ALERT: A Comprehensive Benchmark for Assessing Large Language Models' Safety through Red Teaming",
+            "abstract": "When building Large Language Models (LLMs), it is paramount to bear safety in mind and protect them with guardrails. Indeed, LLMs should never generate content promoting or normalizing harmful, illegal, or unethical behavior that may contribute to harm to individuals or society. This principle applies to both normal and adversarial use. In response, we introduce ALERT, a large-scale benchmark to assess safety based on a novel fine-grained risk taxonomy. It is designed to evaluate the safety of LLMs through red teaming methodologies and consists of more than 45k instructions categorized using our novel taxonomy. By subjecting LLMs to adversarial testing scenarios, ALERT aims to identify vulnerabilities, inform improvements, and enhance the overall safety of the language models. Furthermore, the fine-grained taxonomy enables researchers to perform an in-depth evaluation that also helps one to assess the alignment with various policies. In our experiments, we extensively evaluate 10 popular open- and closed-source LLMs and demonstrate that many of them still struggle to attain reasonable levels of safety.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "721ea8aad94376db2489428334c7be98b0c53878",
+            "paperId": "721ea8aad94376db2489428334c7be98b0c53878",
+            "title": "Detectors for Safe and Reliable LLMs: Implementations, Uses, and Limitations",
+            "abstract": "Large language models (LLMs) are susceptible to a variety of risks, from non-faithful output to biased and toxic generations. Due to several limiting factors surrounding LLMs (training cost, API access, data availability, etc.), it may not always be feasible to impose direct safety constraints on a deployed model. Therefore, an efficient and reliable alternative is required. To this end, we present our ongoing efforts to create and deploy a library of detectors: compact and easy-to-build classification models that provide labels for various harms. In addition to the detectors themselves, we discuss a wide range of uses for these detector models - from acting as guardrails to enabling effective AI governance. We also deep dive into inherent challenges in their development and discuss future work aimed at making the detectors more reliable and broadening their scope.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 2
+        },
+        {
+            "id": "8673d46f2b5abce2f11bb0960a0d095bab8081ea",
+            "paperId": "8673d46f2b5abce2f11bb0960a0d095bab8081ea",
+            "title": "Knowledge-Augmented Visual Question Answering With Natural Language Explanation",
+            "abstract": "Visual question answering with natural language explanation (VQA-NLE) is a challenging task that requires models to not only generate accurate answers but also to provide explanations that justify the relevant decision-making processes. This task is accomplished by generating natural language sentences based on the given question-image pair. However, existing methods often struggle to ensure consistency between the answers and explanations due to their disregard of the crucial interactions between these factors. Moreover, existing methods overlook the potential benefits of incorporating additional knowledge, which hinders their ability to effectively bridge the semantic gap between questions and images, leading to less accurate explanations. In this paper, we present a novel approach denoted the knowledge-based iterative consensus VQA-NLE (KICNLE) model to address these limitations. To maintain consistency, our model incorporates an iterative consensus generator that adopts a multi-iteration generative method, enabling multiple iterations of the answer and explanation in each generation. In each iteration, the current answer is utilized to generate an explanation, which in turn guides the generation of a new answer. Additionally, a knowledge retrieval module is introduced to provide potentially valid candidate knowledge, guide the generation process, effectively bridge the gap between questions and images, and enable the production of high-quality answer-explanation pairs. Extensive experiments conducted on three different datasets demonstrate the superiority of our proposed KICNLE model over competing state-of-the-art approaches. Our code is available at https://github.com/Gary-code/KICNLE.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "adfac93d6b6ccc9a83e2e37c337f1cb9c69392df",
+            "paperId": "adfac93d6b6ccc9a83e2e37c337f1cb9c69392df",
+            "title": "Learn from Failure: Fine-Tuning LLMs with Trial-and-Error Data for Intuitionistic Propositional Logic Proving",
+            "abstract": "Recent advances in Automated Theorem Proving have shown the effectiveness of leveraging a (large) language model that generates tactics (i.e. proof steps) to search through proof states. The current model, while trained solely on successful proof paths, faces a discrepancy at the inference stage, as it must sample and try various tactics at each proof state until finding success, unlike its training which does not incorporate learning from failed attempts. Intuitively, a tactic that leads to a failed search path would indicate that similar tactics should receive less attention during the following trials. In this paper, we demonstrate the benefit of training models that additionally learn from failed search paths. Facing the lack of such trial-and-error data in existing open-source theorem-proving datasets, we curate a dataset on intuitionistic propositional logic theorems and formalize it in Lean, such that we can reliably check the correctness of proofs. We compare our model trained on relatively short trial-and-error information (TrialMaster) with models trained only on the correct paths and discover that the former solves more unseen theorems with lower trial searches.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "ddb3fa882bdfaae60995435d63455ca1889350f2",
+            "paperId": "ddb3fa882bdfaae60995435d63455ca1889350f2",
+            "title": "It is not True that Transformers are Inductive Learners: Probing NLI Models with External Negation",
+            "abstract": "NLI tasks necessitate a substantial degree of logical reasoning; as such, the remarkable performance of SoTA transformers on these tasks may lead us to believe that those models have learned to reason logically. The results presented in this paper demonstrate that (i) models fine-tuned on NLI datasets learn to treat external negation as a distractor, effectively ignoring its presence in hypothesis sentences; (ii) several near-SoTA encoder and encoder-decoder transformer models fail to inductively learn the law of the excluded middle for a single external negation prefix with respect to NLI tasks, despite extensive fine-tuning; (iii) those models which are are able to learn the law of the excluded middle for a single prefix are unable to generalize this pattern to similar prefixes. Given the critical role of negation in logical reasoning, we may conclude from these findings that transformers do not learn to reason logically when fine-tuned for NLI tasks. Furthermore, these results suggest that transformers may not be able to inductively learn the role of negation with respect to NLI tasks, calling into question their capacity to fully acquire logical reasoning abilities.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "8026767bb102dea29473386e37a0956f080f427e",
+            "paperId": "8026767bb102dea29473386e37a0956f080f427e",
+            "title": "More Labels or Cases? Assessing Label Variation in Natural Language Inference",
+            "abstract": "In this work, we analyze the uncertainty that is inherently present in the labels used for supervised machine learning in natural language inference (NLI). In cases where multiple annotations per instance are available, neither the majority vote nor the frequency of individual class votes is a trustworthy representation of the labeling uncertainty. We propose modeling the votes via a Bayesian mixture model to recover the data-generating process, i.e., the \u201ctrue\u201d latent classes, and thus gain insight into the class variations. This will enable a better understanding of the confusion happening during the annotation process. We also assess the stability of the proposed estimation procedure by systematically varying the numbers of i) instances and ii) labels. Thereby, we observe that few instances with many labels can predict the latent class borders reasonably well, while the estimation fails for many instances with only a few labels. This leads us to conclude that multiple labels are a crucial building block for properly analyzing label uncertainty.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "7633d8e74d9749becc0fdc14826ee98048ec1a36",
+            "paperId": "7633d8e74d9749becc0fdc14826ee98048ec1a36",
+            "title": "PRobELM: Plausibility Ranking Evaluation for Language Models",
+            "abstract": "This paper introduces PRobELM (Plausibility Ranking Evaluation for Language Models), a benchmark designed to assess language models' ability to discern more plausible from less plausible scenarios through their parametric knowledge. While benchmarks such as TruthfulQA emphasise factual accuracy or truthfulness, and others such as COPA explore plausible scenarios without explicitly incorporating world knowledge, PRobELM seeks to bridge this gap by evaluating models' capabilities to prioritise plausible scenarios that leverage world knowledge over less plausible alternatives. This design allows us to assess the potential of language models for downstream use cases such as literature-based discovery where the focus is on identifying information that is likely but not yet known. Our benchmark is constructed from a dataset curated from Wikidata edit histories, tailored to align the temporal bounds of the training data for the evaluated models. PRobELM facilitates the evaluation of language models across multiple prompting types, including statement, text completion, and question-answering. Experiments with 10 models of various sizes and architectures on the relationship between model scales, training recency, and plausibility performance, reveal that factual accuracy does not directly correlate with plausibility performance and that up-to-date training data enhances plausibility assessment across different model architectures.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "19e499d76a2e49574b499cd9ebd31304880d33d6",
+            "paperId": "19e499d76a2e49574b499cd9ebd31304880d33d6",
+            "title": "Language Model Cascades: Token-level uncertainty and beyond",
+            "abstract": "Recent advances in language models (LMs) have led to significant improvements in quality on complex NLP tasks, but at the expense of increased inference costs. Cascading offers a simple strategy to achieve more favorable cost-quality tradeoffs: here, a small model is invoked for most\"easy\"instances, while a few\"hard\"instances are deferred to the large model. While the principles underpinning cascading are well-studied for classification tasks - with deferral based on predicted class uncertainty favored theoretically and practically - a similar understanding is lacking for generative LM tasks. In this work, we initiate a systematic study of deferral rules for LM cascades. We begin by examining the natural extension of predicted class uncertainty to generative LM tasks, namely, the predicted sequence uncertainty. We show that this measure suffers from the length bias problem, either over- or under-emphasizing outputs based on their lengths. This is because LMs produce a sequence of uncertainty values, one for each output token; and moreover, the number of output tokens is variable across examples. To mitigate this issue, we propose to exploit the richer token-level uncertainty information implicit in generative LMs. We argue that naive predicted sequence uncertainty corresponds to a simple aggregation of these uncertainties. By contrast, we show that incorporating token-level uncertainty through learned post-hoc deferral rules can significantly outperform such simple aggregation strategies, via experiments on a range of natural language benchmarks with FLAN-T5 models. We further show that incorporating embeddings from the smaller model and intermediate layers of the larger model can give an additional boost in the overall cost-quality tradeoff.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "2da19b856e6d3270f9dc4483ca2f389b7761b1f7",
+            "paperId": "2da19b856e6d3270f9dc4483ca2f389b7761b1f7",
+            "title": "The First to Know: How Token Distributions Reveal Hidden Knowledge in Large Vision-Language Models?",
+            "abstract": "Large vision-language models (LVLMs), designed to interpret and respond to human instructions, occasionally generate hallucinated or harmful content due to inappropriate instructions. This study uses linear probing to shed light on the hidden knowledge at the output layer of LVLMs. We demonstrate that the logit distributions of the first tokens contain sufficient information to determine whether to respond to the instructions, including recognizing unanswerable visual questions, defending against multi-modal jailbreaking attack, and identifying deceptive questions. Such hidden knowledge is gradually lost in logits of subsequent tokens during response generation. Then, we illustrate a simple decoding strategy at the generation of the first token, effectively improving the generated content. In experiments, we find a few interesting insights: First, the CLIP model already contains a strong signal for solving these tasks, indicating potential bias in the existing datasets. Second, we observe performance improvement by utilizing the first logit distributions on three additional tasks, including indicting uncertainty in math solving, mitigating hallucination, and image classification. Last, with the same training data, simply finetuning LVLMs improve models' performance but is still inferior to linear probing on these tasks.",
+            "year": 2024,
+            "citationCount": 2,
+            "score": 1
+        },
+        {
+            "id": "1733eb7792f7a43dd21f51f4d1017a1bffd217b5",
+            "paperId": "1733eb7792f7a43dd21f51f4d1017a1bffd217b5",
+            "title": "Lost in the Middle: How Language Models Use Long Contexts",
+            "abstract": "Abstract While recent language models have the ability to take long contexts as input, relatively little is known about how well they use longer context. We analyze the performance of language models on two tasks that require identifying relevant information in their input contexts: multi-document question answering and key-value retrieval. We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts. In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models. Our analysis provides a better understanding of how language models use their input context and provides new evaluation protocols for future long-context language models.",
+            "year": 2023,
+            "citationCount": 387,
+            "score": 1
+        },
+        {
+            "id": "025ca4c125d6ecabc816a56f160e5c992abc76d9",
+            "paperId": "025ca4c125d6ecabc816a56f160e5c992abc76d9",
+            "title": "Multi-step Jailbreaking Privacy Attacks on ChatGPT",
+            "abstract": "With the rapid progress of large language models (LLMs), many downstream NLP tasks can be well solved given appropriate prompts. Though model developers and researchers work hard on dialog safety to avoid generating harmful content from LLMs, it is still challenging to steer AI-generated content (AIGC) for the human good. As powerful LLMs are devouring existing text data from various domains (e.g., GPT-3 is trained on 45TB texts), it is natural to doubt whether the private information is included in the training data and what privacy threats can these LLMs and their downstream applications bring. In this paper, we study the privacy threats from OpenAI's ChatGPT and the New Bing enhanced by ChatGPT and show that application-integrated LLMs may cause new privacy threats. To this end, we conduct extensive experiments to support our claims and discuss LLMs' privacy implications.",
+            "year": 2023,
+            "citationCount": 161,
+            "score": 1
+        },
+        {
+            "id": "85cc48276c69924d3e92ddb38facb7d92be9a4a6",
+            "paperId": "85cc48276c69924d3e92ddb38facb7d92be9a4a6",
+            "title": "Evaluating the Logical Reasoning Ability of ChatGPT and GPT-4",
+            "abstract": "Harnessing logical reasoning ability is a comprehensive natural language understanding endeavor. With the release of Generative Pretrained Transformer 4 (GPT-4), highlighted as\"advanced\"at reasoning tasks, we are eager to learn the GPT-4 performance on various logical reasoning tasks. This report analyses multiple logical reasoning datasets, with popular benchmarks like LogiQA and ReClor, and newly-released datasets like AR-LSAT. We test the multi-choice reading comprehension and natural language inference tasks with benchmarks requiring logical reasoning. We further construct a logical reasoning out-of-distribution dataset to investigate the robustness of ChatGPT and GPT-4. We also make a performance comparison between ChatGPT and GPT-4. Experiment results show that ChatGPT performs significantly better than the RoBERTa fine-tuning method on most logical reasoning benchmarks. With early access to the GPT-4 API we are able to conduct intense experiments on the GPT-4 model. The results show GPT-4 yields even higher performance on most logical reasoning datasets. Among benchmarks, ChatGPT and GPT-4 do relatively well on well-known datasets like LogiQA and ReClor. However, the performance drops significantly when handling newly released and out-of-distribution datasets. Logical reasoning remains challenging for ChatGPT and GPT-4, especially on out-of-distribution and natural language inference datasets. We release the prompt-style logical reasoning datasets as a benchmark suite and name it LogiEval.",
+            "year": 2023,
+            "citationCount": 136,
+            "score": 1
+        },
+        {
+            "id": "163b4d6a79a5b19af88b8585456363340d9efd04",
+            "paperId": "163b4d6a79a5b19af88b8585456363340d9efd04",
+            "title": "GPT-4 Technical Report",
+            "abstract": "We report the development of GPT-4, a large-scale, multimodal model which can accept image and text inputs and produce text outputs. While less capable than humans in many real-world scenarios, GPT-4 exhibits human-level performance on various professional and academic benchmarks, including passing a simulated bar exam with a score around the top 10% of test takers. GPT-4 is a Transformer-based model pre-trained to predict the next token in a document. The post-training alignment process results in improved performance on measures of factuality and adherence to desired behavior. A core component of this project was developing infrastructure and optimization methods that behave predictably across a wide range of scales. This allowed us to accurately predict some aspects of GPT-4's performance based on models trained with no more than 1/1,000th the compute of GPT-4.",
+            "year": 2023,
+            "citationCount": 3770,
+            "score": 1
+        },
+        {
+            "id": "57e849d0de13ed5f91d086936296721d4ff75a75",
+            "paperId": "57e849d0de13ed5f91d086936296721d4ff75a75",
+            "title": "LLaMA: Open and Efficient Foundation Language Models",
+            "abstract": "We introduce LLaMA, a collection of foundation language models ranging from 7B to 65B parameters. We train our models on trillions of tokens, and show that it is possible to train state-of-the-art models using publicly available datasets exclusively, without resorting to proprietary and inaccessible datasets. In particular, LLaMA-13B outperforms GPT-3 (175B) on most benchmarks, and LLaMA-65B is competitive with the best models, Chinchilla-70B and PaLM-540B. We release all our models to the research community.",
+            "year": 2023,
+            "citationCount": 5100,
+            "score": 1
+        },
+        {
+            "id": "3d68522abfadfc8ee6b7ec9edaaf91f1b2f38e5e",
+            "paperId": "3d68522abfadfc8ee6b7ec9edaaf91f1b2f38e5e",
+            "title": "Large Language Models Can Be Easily Distracted by Irrelevant Context",
+            "abstract": "Large language models have achieved impressive performance on various natural language processing tasks. However, so far they have been evaluated primarily on benchmarks where all information in the input context is relevant for solving the task. In this work, we investigate the distractibility of large language models, i.e., how the model problem-solving accuracy can be influenced by irrelevant context. In particular, we introduce Grade-School Math with Irrelevant Context (GSM-IC), an arithmetic reasoning dataset with irrelevant information in the problem description. We use this benchmark to measure the distractibility of cutting-edge prompting techniques for large language models, and find that the model performance is dramatically decreased when irrelevant information is included. We also identify several approaches for mitigating this deficiency, such as decoding with self-consistency and adding to the prompt an instruction that tells the language model to ignore the irrelevant information.",
+            "year": 2023,
+            "citationCount": 211,
+            "score": 1
+        },
+        {
+            "id": "83851f1a32d41975582ca62355858ab5e34738f7",
+            "paperId": "83851f1a32d41975582ca62355858ab5e34738f7",
+            "title": "News Summarization and Evaluation in the Era of GPT-3",
+            "abstract": "The recent success of prompting large language models like GPT-3 has led to a paradigm shift in NLP research. In this paper, we study its impact on text summarization, focusing on the classic benchmark domain of news summarization. First, we investigate how GPT-3 compares against fine-tuned models trained on large summarization datasets. We show that not only do humans overwhelmingly prefer GPT-3 summaries, prompted using only a task description, but these also do not suffer from common dataset-specific issues such as poor factuality. Next, we study what this means for evaluation, particularly the role of gold standard test sets. Our experiments show that both reference-based and reference-free automatic metrics cannot reliably evaluate GPT-3 summaries. Finally, we evaluate models on a setting beyond generic summarization, specifically keyword-based summarization, and show how dominant fine-tuning approaches compare to prompting. To support further research, we release: (a) a corpus of 10K generated summaries from fine-tuned and prompt-based models across 4 standard summarization benchmarks, (b) 1K human preference judgments comparing different systems for generic- and keyword-based summarization.",
+            "year": 2022,
+            "citationCount": 229,
+            "score": 1
+        },
+        {
+            "id": "002c256d30d6be4b23d365a8de8ae0e67e4c9641",
+            "paperId": "002c256d30d6be4b23d365a8de8ae0e67e4c9641",
+            "title": "Improving language models by retrieving from trillions of tokens",
+            "abstract": "We enhance auto-regressive language models by conditioning on document chunks retrieved from a large corpus, based on local similarity with preceding tokens. With a $2$ trillion token database, our Retrieval-Enhanced Transformer (RETRO) obtains comparable performance to GPT-3 and Jurassic-1 on the Pile, despite using 25$\\times$ fewer parameters. After fine-tuning, RETRO performance translates to downstream knowledge-intensive tasks such as question answering. RETRO combines a frozen Bert retriever, a differentiable encoder and a chunked cross-attention mechanism to predict tokens based on an order of magnitude more data than what is typically consumed during training. We typically train RETRO from scratch, yet can also rapidly RETROfit pre-trained transformers with retrieval and still achieve good performance. Our work opens up new avenues for improving language models through explicit memory at unprecedented scale.",
+            "year": 2021,
+            "citationCount": 587,
+            "score": 1
+        },
+        {
+            "id": "17dbd7b72029181327732e4d11b52a08ed4630d0",
+            "paperId": "17dbd7b72029181327732e4d11b52a08ed4630d0",
+            "title": "Natural Questions: A Benchmark for Question Answering Research",
+            "abstract": "We present the Natural Questions corpus, a question answering data set. Questions consist of real anonymized, aggregated queries issued to the Google search engine. An annotator is presented with a question along with a Wikipedia page from the top 5 search results, and annotates a long answer (typically a paragraph) and a short answer (one or more entities) if present on the page, or marks null if no long/short answer is present. The public release consists of 307,373 training examples with single annotations; 7,830 examples with 5-way annotations for development data; and a further 7,842 examples with 5-way annotated sequestered as test data. We present experiments validating quality of the data. We also describe analysis of 25-way annotations on 302 examples, giving insights into human variability on the annotation task. We introduce robust metrics for the purposes of evaluating question answering systems; demonstrate high human upper bounds on these metrics; and establish baseline results using competitive methods drawn from related literature.",
+            "year": 2019,
+            "citationCount": 2072,
+            "score": 1
+        },
+        {
+            "id": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "paperId": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+            "abstract": "We present TriviaQA, a challenging reading comprehension dataset containing over 650K question-answer-evidence triples. TriviaQA includes 95K question-answer pairs authored by trivia enthusiasts and independently gathered evidence documents, six per question on average, that provide high quality distant supervision for answering the questions. We show that, in comparison to other recently introduced large-scale datasets, TriviaQA (1) has relatively complex, compositional questions, (2) has considerable syntactic and lexical variability between questions and corresponding answer-evidence sentences, and (3) requires more cross sentence reasoning to find answers. We also present two baseline algorithms: a feature-based classifier and a state-of-the-art neural network, that performs well on SQuAD reading comprehension. Neither approach comes close to human performance (23% and 40% vs. 80%), suggesting that TriviaQA is a challenging testbed that is worth significant future study.",
+            "year": 2017,
+            "citationCount": 1635,
+            "score": 1
+        },
+        {
+            "id": "920f6419edfaacba894a1d6ee2345b6b7107c0b7",
+            "paperId": "920f6419edfaacba894a1d6ee2345b6b7107c0b7",
+            "title": "Trojan Detection in Large Language Models: Insights from The Trojan Detection Challenge",
+            "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in various domains, but their vulnerability to trojan or backdoor attacks poses significant security risks. This paper explores the challenges and insights gained from the Trojan Detection Competition 2023 (TDC2023), which focused on identifying and evaluating trojan attacks on LLMs. We investigate the difficulty of distinguishing between intended and unintended triggers, as well as the feasibility of reverse engineering trojans in real-world scenarios. Our comparative analysis of various trojan detection methods reveals that achieving high Recall scores is significantly more challenging than obtaining high Reverse-Engineering Attack Success Rate (REASR) scores. The top-performing methods in the competition achieved Recall scores around 0.16, comparable to a simple baseline of randomly sampling sentences from a distribution similar to the given training prefixes. This finding raises questions about the detectability and recoverability of trojans inserted into the model, given only the harmful targets. Despite the inability to fully solve the problem, the competition has led to interesting observations about the viability of trojan detection and improved techniques for optimizing LLM input prompts. The phenomenon of unintended triggers and the difficulty in distinguishing them from intended triggers highlights the need for further research into the robustness and interpretability of LLMs. The TDC2023 has provided valuable insights into the challenges and opportunities associated with trojan detection in LLMs, laying the groundwork for future research in this area to ensure their safety and reliability in real-world applications.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "ee5e077b6492f408897a63d5abbee5fa0349fb8e",
+            "paperId": "ee5e077b6492f408897a63d5abbee5fa0349fb8e",
+            "title": "Enhancing Fault Detection for Large Language Models via Mutation-Based Confidence Smoothing",
+            "abstract": "Large language models (LLMs) achieved great success in multiple application domains and attracted huge attention from different research communities recently. Unfortunately, even for the best LLM, there still exist many faults that LLM cannot correctly predict. Such faults will harm the usability of LLMs. How to quickly reveal them in LLMs is important, but challenging. The reasons are twofold, 1) the heavy labeling effort for preparing the test data, and 2) accessing closed-source LLMs such as GPT4 is money-required. To handle this problem, in the traditional deep learning testing field, test selection methods have been proposed for efficiently testing deep learning models by prioritizing faults. However, the usefulness of these methods on LLMs is unclear and under exploration. In this paper, we first study the effectiveness of existing fault detection methods for LLMs. Experimental results on four different tasks~(including both code tasks and natural language processing tasks) and four LLMs (e.g., LLaMA and GPT4) demonstrated that existing fault detection methods cannot perform well on LLMs (e.g., seven out of eight methods perform worse than random selection on LLaMA). To enhance existing fault detection methods, we propose MuCS, a prompt Mutation-based prediction Confidence Smoothing method for LLMs. Concretely, we mutate the prompts and compute the average prediction confidence of all mutants as the input of fault detection methods. The results show that our proposed solution significantly enhances existing methods with the improvement of test relative coverage by up to 97.64%.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "f95c28b724b4e816a5cad77795f5ac5ff87283f7",
+            "paperId": "f95c28b724b4e816a5cad77795f5ac5ff87283f7",
+            "title": "Revisiting Unnaturalness for Automated Program Repair in the Era of Large Language Models",
+            "abstract": "Language models have improved by orders of magnitude with the recent emergence of Transformer-based Large Language Models (LLMs). LLMs have demonstrated their ability to generate natural code that is highly similar to code written by professional developers. One intermediate value an LLM can emit is entropy, which measures the naturalness of a token of code. We hypothesize that entropy can be used to improve the performance of Automated Program Repair (APR) tasks. While much progress has been made in Automated Program Repair (APR), fault localization techniques suffer from a lack of diversity in ranking scores, patch generation tools tend to be inefficient as all tests need to run before determining if a patch is likely to be correct, and patch ranking often suffers from the test-suite over-fitting problem. However, using an LLM directly for APR introduces concerns for training data leakage. In this work, we introduce a novel way of using the entropy of LLMs in combination with prior APR tools to improve all stages of APR. We show that entropy is highly complementary with prior fault localization tools. Our proposed re-ranking method achieves a 50% Top-5 score improvement over SBFL. We propose a patch-naturalness measurement, entropy-delta, to improve the efficiency of template-based repair techniques by ranking plausible patches before undergoing testing. When using entropy-delta for patch ranking and classification, our proposed method can rank correct patches more effectively than state-of-the-art machine learning tools with an 49% improvement in Top-1. Our work suggests that LLMs can be an effective addition to compliment prior APR tasks while minimizing both the test-suite overfitting problem and the LLM data leakage problem.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        }
+    ]
+}

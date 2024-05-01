@@ -1,0 +1,726 @@
+{
+    "topic_description": "novel prompting methods to improve large language models\u2019 performance on multilingual tasks or low-resource languages and vernacular languages",
+    "all_queries": [
+        "KeywordQuery(\"multilingual prompting low-resource languages\")",
+        "PaperQuery(\"97992c13baa6185c03d9e672f53185bc59822596\")",
+        "GetReferences(\"4bf921e7d4b11e8a546129188c8c5358d3d30caf\")",
+        "PaperQuery(\"0b29ff236bb8f547d017bf747ad74ad2b8303851\")"
+    ],
+    "paper_bank": [
+        {
+            "id": "97992c13baa6185c03d9e672f53185bc59822596",
+            "paperId": "97992c13baa6185c03d9e672f53185bc59822596",
+            "title": "Chain-of-Dictionary Prompting Elicits Translation in Large Language Models",
+            "abstract": "Large language models (LLMs) have shown surprisingly good performance in multilingual neural machine translation (MNMT) even when trained without parallel data. Yet, despite the fact that the amount of training data is gigantic, they still struggle with translating rare words, particularly for low-resource languages. Even worse, it is usually unrealistic to retrieve relevant demonstrations for in-context learning with low-resource languages on LLMs, which restricts the practical use of LLMs for translation -- how should we mitigate this problem? To this end, we present a novel method, CoD, which augments LLMs with prior knowledge with the chains of multilingual dictionaries for a subset of input words to elicit translation abilities for LLMs. Extensive experiments indicate that augmenting ChatGPT with CoD elicits large gains by up to 13x chrF++ points for MNMT (3.08 to 42.63 for English to Serbian written in Cyrillic script) on FLORES-200 full devtest set. We further demonstrate the importance of chaining the multilingual dictionaries, as well as the superiority of CoD to few-shot demonstration for low-resource languages.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel method, CoD, is presented, which augments LLMs with prior knowledge with the chains of multilingual dictionaries for a subset of input words to elicit translation abilities for LLMs, and indicates that augmenting ChatGPT with CoD elicits large gains for MNMT."
+            },
+            "score": 9
+        },
+        {
+            "id": "4bf921e7d4b11e8a546129188c8c5358d3d30caf",
+            "paperId": "4bf921e7d4b11e8a546129188c8c5358d3d30caf",
+            "title": "Few-Shot Cross-Lingual Transfer for Prompting Large Language Models in Low-Resource Languages",
+            "abstract": "Large pre-trained language models (PLMs) are at the forefront of advances in Natural Language Processing. One widespread use case of PLMs is\"prompting\"- or in-context learning - where a user provides a description of a task and some completed examples of the task to a PLM as context before prompting the PLM to perform the task on a new example. Only the largest, most capable PLMs are able to perform in-context learning effectively, and these models are typically trained with a predominantly English corpus, leaving all other languages behind. The data limitations in most languages preclude the training of language-specific PLMs capable of prompting. Albeit the surge in work of prompting settings, it is still unclear how PLMs should be adapted cross-lingually specifically for prompting. We evaluate the possible methods to adapt LLaMa, a 7B parameter open-source PLM mainly trained in English, for prompting in low-resource languages, namely for Kinyarwanda, Hausa, and Luganda. We consider three methods: few-shot prompting (prompt), language-adaptive fine-tuning (LAFT), and neural machine translation (translate), and evaluate on abstractive summarization, multi-class topic classification, and named-entity recognition. Although LAFT carries the greatest compute cost and intuitively should lead to the best results, our experiments exhibit that LAFT is only occasionally the optimal choice for adapting PLMs for prompting. Rather, the translate and prompt settings are a compute-efficient and cost-effective method of few-shot prompting for the selected low-resource languages. We find that the results are task and language dependent but find that the prompting method is the best on average across all tasks and languages. Results show that the prompt setting performs better than both translating and LAFT with statistical significance for all shots when aggregated across all tasks and languages.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 9
+        },
+        {
+            "id": "0b29ff236bb8f547d017bf747ad74ad2b8303851",
+            "paperId": "0b29ff236bb8f547d017bf747ad74ad2b8303851",
+            "title": "Not All Languages Are Created Equal in LLMs: Improving Multilingual Capability by Cross-Lingual-Thought Prompting",
+            "abstract": "Large language models (LLMs) demonstrate impressive multilingual capability, but their performance varies substantially across different languages. In this work, we introduce a simple yet effective method, called cross-lingual-thought prompting (XLT), to systematically improve the multilingual capability of LLMs. Specifically, XLT is a generic template prompt that stimulates cross-lingual and logical reasoning skills to enhance task performance across languages. We conduct comprehensive evaluations on 7 typical benchmarks related to reasoning, understanding, and generation tasks, covering both high-resource and low-resource languages. Experimental results show that XLT not only remarkably enhances the performance of various multilingual tasks but also significantly reduces the gap between the average performance and the best performance of each task in different languages. Notably, XLT brings over 10 points of average improvement in arithmetic reasoning and open-domain question-answering tasks.",
+            "year": 2023,
+            "citationCount": 50,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results show that XLT not only remarkably enhances the performance of various multilingual tasks but also significantly reduces the gap between the average performance and the best performance of each task in different languages."
+            },
+            "score": 8
+        },
+        {
+            "id": "cb02e1646a45f1473c67bea53f4c4f117bfff94c",
+            "paperId": "cb02e1646a45f1473c67bea53f4c4f117bfff94c",
+            "title": "Low-Resource Machine Translation through Retrieval-Augmented LLM Prompting: A Study on the Mambai Language",
+            "abstract": "This study explores the use of large language models (LLMs) for translating English into Mambai, a low-resource Austronesian language spoken in Timor-Leste, with approximately 200,000 native speakers. Leveraging a novel corpus derived from a Mambai language manual and additional sentences translated by a native speaker, we examine the efficacy of few-shot LLM prompting for machine translation (MT) in this low-resource context. Our methodology involves the strategic selection of parallel sentences and dictionary entries for prompting, aiming to enhance translation accuracy, using open-source and proprietary LLMs (LlaMa 2 70b, Mixtral 8x7B, GPT-4). We find that including dictionary entries in prompts and a mix of sentences retrieved through TF-IDF and semantic embeddings significantly improves translation quality. However, our findings reveal stark disparities in translation performance across test sets, with BLEU scores reaching as high as 21.2 on materials from the language manual, in contrast to a maximum of 4.4 on a test set provided by a native speaker. These results underscore the importance of diverse and representative corpora in assessing MT for low-resource languages. Our research provides insights into few-shot LLM prompting for low-resource MT, and makes available an initial corpus for the Mambai language.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "769f8b6d73fcb5b5013ae2c1c48b94c801c88ba3",
+            "paperId": "769f8b6d73fcb5b5013ae2c1c48b94c801c88ba3",
+            "title": "Discrete and Soft Prompting for Multilingual Models",
+            "abstract": "It has been shown for English that discrete and soft prompting perform strongly in few-shot learning with pretrained language models (PLMs). In this paper, we show that discrete and soft prompting perform better than finetuning in multilingual cases: Crosslingual transfer and in-language training of multilingual natural language inference. For example, with 48 English training examples, finetuning obtains 33.74% accuracy in crosslingual transfer, barely surpassing the majority baseline (33.33%). In contrast, discrete and soft prompting outperform finetuning, achieving 36.43% and 38.79%. We also demonstrate good performance of prompting with training data in multiple languages other than English.",
+            "year": 2021,
+            "citationCount": 61,
+            "score": 8
+        },
+        {
+            "id": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+            "paperId": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+            "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+            "abstract": "In this work, we explore \u201cprompt tuning,\u201d a simple yet effective mechanism for learning \u201csoft prompts\u201d to condition frozen language models to perform specific downstream tasks. Unlike the discrete text prompts used by GPT-3, soft prompts are learned through backpropagation and can be tuned to incorporate signals from any number of labeled examples. Our end-to-end learned approach outperforms GPT-3\u2019s few-shot learning by a large margin. More remarkably, through ablations on model size using T5, we show that prompt tuning becomes more competitive with scale: as models exceed billions of parameters, our method \u201ccloses the gap\u201d and matches the strong performance of model tuning (where all model weights are tuned). This finding is especially relevant because large models are costly to share and serve and the ability to reuse one frozen model for multiple downstream tasks can ease this burden. Our method can be seen as a simplification of the recently proposed \u201cprefix tuning\u201d of Li and Liang (2021) and we provide a comparison to this and other similar approaches. Finally, we show that conditioning a frozen model with soft prompts confers benefits in robustness to domain transfer and enables efficient \u201cprompt ensembling.\u201d We release code and model checkpoints to reproduce our experiments.",
+            "year": 2021,
+            "citationCount": 2337,
+            "score": 8
+        },
+        {
+            "id": "a9fe5bd8da2d9603cf2cf6c6ea8b0f83c6d3a4f9",
+            "paperId": "a9fe5bd8da2d9603cf2cf6c6ea8b0f83c6d3a4f9",
+            "title": "How many data points is a prompt worth?",
+            "abstract": "When fine-tuning pretrained models for classification, researchers either use a generic model head or a task-specific prompt for prediction. Proponents of prompting have argued that prompts provide a method for injecting task-specific guidance, which is beneficial in low-data regimes. We aim to quantify this benefit through rigorous testing of prompts in a fair setting: comparing prompted and head-based fine-tuning in equal conditions across many tasks and data sizes. By controlling for many sources of advantage, we find that prompting does indeed provide a benefit, and that this benefit can be quantified per task. Results show that prompting is often worth 100s of data points on average across classification tasks.",
+            "year": 2021,
+            "citationCount": 251,
+            "score": 8
+        },
+        {
+            "id": "f30444fbb6ad806168e2564db4815cd27faa7fd9",
+            "paperId": "f30444fbb6ad806168e2564db4815cd27faa7fd9",
+            "title": "It\u2019s Not Just Size That Matters: Small Language Models Are Also Few-Shot Learners",
+            "abstract": "When scaled to hundreds of billions of parameters, pretrained language models such as GPT-3 (Brown et al., 2020) achieve remarkable few-shot performance. However, enormous amounts of compute are required for training and applying such big models, resulting in a large carbon footprint and making it difficult for researchers and practitioners to use them. We show that performance similar to GPT-3 can be obtained with language models that are much \u201cgreener\u201d in that their parameter count is several orders of magnitude smaller. This is achieved by converting textual inputs into cloze questions that contain a task description, combined with gradient-based optimization; exploiting unlabeled data gives further improvements. We identify key factors required for successful natural language understanding with small language models.",
+            "year": 2020,
+            "citationCount": 775,
+            "score": 8
+        },
+        {
+            "id": "fcba7fcd30d9857fe43e86b155a23b2bbaf88b92",
+            "paperId": "fcba7fcd30d9857fe43e86b155a23b2bbaf88b92",
+            "title": "CrossIn: An Efficient Instruction Tuning Approach for Cross-Lingual Knowledge Alignment",
+            "abstract": "Multilingual proficiency presents a significant challenge for large language models (LLMs). English-centric models are usually suboptimal in other languages, particularly those that are linguistically distant from English. This performance discrepancy mainly stems from the imbalanced distribution of training data across languages during pre-training and instruction tuning stages. To address this problem, we propose a novel approach called CrossIn, which utilizes a mixed composition of cross-lingual instruction tuning data. Our method leverages the compressed representation shared by various languages to efficiently enhance the model's task-solving capabilities and multilingual proficiency within a single process. In addition, we introduce a multi-task and multi-faceted benchmark to evaluate the effectiveness of CrossIn. Experimental results demonstrate that our method substantially improves performance across tasks and languages, and we provide extensive insights into the impact of cross-lingual data volume and the integration of translation data on enhancing multilingual consistency and accuracy.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "0d2934b1ae60b763b8da43f080f6841fb10aed0b",
+            "paperId": "0d2934b1ae60b763b8da43f080f6841fb10aed0b",
+            "title": "ProMap: Effective Bilingual Lexicon Induction via Language Model Prompting",
+            "abstract": "Bilingual Lexicon Induction (BLI), where words are translated between two languages, is an important NLP task. While noticeable progress on BLI in rich resource languages using static word embeddings has been achieved. The word translation performance can be further improved by incorporating information from contextualized word embeddings. In this paper, we introduce ProMap, a novel approach for BLI that leverages the power of prompting pretrained multilingual and multidialectal language models to address these challenges. To overcome the employment of subword tokens in these models, ProMap relies on an effective padded prompting of language models with a seed dictionary that achieves good performance when used independently. We also demonstrate the effectiveness of ProMap in re-ranking results from other BLI methods such as with aligned static word embeddings. When evaluated on both rich-resource and low-resource languages, ProMap consistently achieves state-of-the-art results. Furthermore, ProMap enables strong performance in few-shot scenarios (even with less than 10 training examples), making it a valuable tool for low-resource language translation. Overall, we believe our method offers both exciting and promising direction for BLI in general and low-resource languages in particular. ProMap code and data are available at \\url{https://github.com/4mekki4/promap}.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "To overcome the employment of subword tokens in these models, ProMap relies on an effective padded prompting of language models with a seed dictionary that achieves good performance when used independently, and consistently achieves state-of-the-art results."
+            },
+            "score": 7
+        },
+        {
+            "id": "1ea077aa7cfe8f7d1a13305b37d3cb831b5889dc",
+            "paperId": "1ea077aa7cfe8f7d1a13305b37d3cb831b5889dc",
+            "title": "Cross-Lingual Transfer for Natural Language Inference via Multilingual Prompt Translator",
+            "abstract": "Based on multilingual pre-trained models, cross-lingual transfer with prompt learning has shown promising effectiveness, where soft prompt learned in a source language is transferred to target languages for downstream tasks, particularly in the low-resource scenario. To efficiently transfer soft prompt, we propose a novel framework, Multilingual Prompt Translator (MPT), where a multilingual prompt translator is introduced to properly process crucial knowledge embedded in prompt by changing language knowledge while retaining task knowledge. Concretely, we first train prompt in source language and employ translator to translate it into target prompt. Besides, we extend an external corpus as auxiliary data, on which an alignment task for predicted answer probability is designed to convert language knowledge, thereby equipping target prompt with multilingual knowledge. In few-shot settings on XNLI, MPT demonstrates superiority over baselines by remarkable improvements. MPT is more prominent compared with vanilla prompting when transferring to languages quite distinct from source language.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework, Multilingual Prompt Translator (MPT), is proposed, where a multilingual prompt translator is introduced to properly process crucial knowledge embedded in prompt by changing language knowledge while retaining task knowledge."
+            },
+            "score": 7
+        },
+        {
+            "id": "3b3edb8edb749a88c2e4306b0640fc6e8e7eb18c",
+            "paperId": "3b3edb8edb749a88c2e4306b0640fc6e8e7eb18c",
+            "title": "MuCoT: Multilingual Contrastive Training for Question-Answering in Low-resource Languages",
+            "abstract": "Accuracy of English-language Question Answering (QA) systems has improved significantly in recent years with the advent of Transformer-based models (e.g., BERT). These models are pre-trained in a self-supervised fashion with a large English text corpus and further fine-tuned with a massive English QA dataset (e.g., SQuAD). However, QA datasets on such a scale are not available for most of the other languages. Multi-lingual BERT-based models (mBERT) are often used to transfer knowledge from high-resource languages to low-resource languages. Since these models are pre-trained with huge text corpora containing multiple languages, they typically learn language-agnostic embeddings for tokens from different languages. However, directly training an mBERT-based QA system for low-resource languages is challenging due to the paucity of training data. In this work, we augment the QA samples of the target language using translation and transliteration into other languages and use the augmented data to fine-tune an mBERT-based QA model, which is already pre-trained in English. Experiments on the Google ChAII dataset show that fine-tuning the mBERT model with translations from the same language family boosts the question-answering performance, whereas the performance degrades in the case of cross-language families. We further show that introducing a contrastive loss between the translated question-context feature pairs during the fine-tuning process, prevents such degradation with cross-lingual family translations and leads to marginal improvement. The code for this work is available at https://github.com/gokulkarthik/mucot.",
+            "year": 2022,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments on the Google ChAII dataset show that fine-tuning the mBERT model with translations from the same language family boosts the question-answering performance, whereas the performance degrades in the case of cross-language families."
+            },
+            "score": 7
+        },
+        {
+            "id": "d75ab34449b2875511c9eb2aef7417f30512ca76",
+            "paperId": "d75ab34449b2875511c9eb2aef7417f30512ca76",
+            "title": "A Novel Paradigm Boosting Translation Capabilities of Large Language Models",
+            "abstract": "This paper presents a study on strategies to enhance the translation capabilities of large language models (LLMs) in the context of machine translation (MT) tasks. The paper proposes a novel paradigm consisting of three stages: Secondary Pre-training using Extensive Monolingual Data, Continual Pre-training with Interlinear Text Format Documents, and Leveraging Source-Language Consistent Instruction for Supervised Fine-Tuning. Previous research on LLMs focused on various strategies for supervised fine-tuning (SFT), but their effectiveness has been limited. While traditional machine translation approaches rely on vast amounts of parallel bilingual data, our paradigm highlights the importance of using smaller sets of high-quality bilingual data. We argue that the focus should be on augmenting LLMs' cross-lingual alignment abilities during pre-training rather than solely relying on extensive bilingual data during SFT. Experimental results conducted using the Llama2 model, particularly on Chinese-Llama2 after monolingual augmentation, demonstrate the improved translation capabilities of LLMs. A significant contribution of our approach lies in Stage2: Continual Pre-training with Interlinear Text Format Documents, which requires less than 1B training data, making our method highly efficient. Additionally, in Stage3, we observed that setting instructions consistent with the source language benefits the supervised fine-tuning process. Experimental results demonstrate that our approach surpasses previous work and achieves superior performance compared to models such as NLLB-54B and GPT3.5-text-davinci-003, despite having a significantly smaller parameter count of only 7B or 13B. This achievement establishes our method as a pioneering strategy in the field of machine translation.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "8dc4ac4446f787f0647e1e16a9c43b2880e04008",
+            "paperId": "8dc4ac4446f787f0647e1e16a9c43b2880e04008",
+            "title": "Teaching Llama a New Language Through Cross-Lingual Knowledge Transfer",
+            "abstract": "This paper explores cost-efficient methods to adapt pretrained Large Language Models (LLMs) to new lower-resource languages, with a specific focus on Estonian. Leveraging the Llama 2 model, we investigate the impact of combining cross-lingual instruction-tuning with additional monolingual pretraining. Our results demonstrate that even a relatively small amount of additional monolingual pretraining followed by cross-lingual instruction-tuning significantly enhances results on Estonian. Furthermore, we showcase cross-lingual knowledge transfer from high-quality English instructions to Estonian, resulting in improvements in commonsense reasoning and multi-turn conversation capabilities. Our best model, named \\textsc{Llammas}, represents the first open-source instruction-following LLM for Estonian. Additionally, we publish Alpaca-est, the first general task instruction dataset for Estonia. These contributions mark the initial progress in the direction of developing open-source LLMs for Estonian.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "c909718ec002e05e4ac77da2bfbec5ac88f18c3e",
+            "paperId": "c909718ec002e05e4ac77da2bfbec5ac88f18c3e",
+            "title": "What Is Missing in Multilingual Visual Reasoning and How to Fix It",
+            "abstract": "NLP models today strive for supporting multiple languages and modalities, improving accessibility for diverse users. In this paper, we evaluate their multilingual, multimodal capabilities by testing on a visual reasoning task. We observe that proprietary systems like GPT-4V obtain the best performance on this task now, but open models lag in comparison. Surprisingly, GPT-4V exhibits similar performance between English and other languages, indicating the potential for equitable system development across languages. Our analysis on model failures reveals three key aspects that make this task challenging: multilinguality, complex reasoning, and multimodality. To address these challenges, we propose three targeted interventions including a translate-test approach to tackle multilinguality, a visual programming approach to break down complex reasoning, and a novel method that leverages image captioning to address multimodality. Our interventions achieve the best open performance on this task in a zero-shot setting, boosting open model LLaVA by 13.4%, while also minorly improving GPT-4V's performance.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "c0e62e324dfc7bd45ec0a5ce4055823d1f0c03f1",
+            "paperId": "c0e62e324dfc7bd45ec0a5ce4055823d1f0c03f1",
+            "title": "Leveraging LLMs for Synthesizing Training Data Across Many Languages in Multilingual Dense Retrieval",
+            "abstract": "There has been limited success for dense retrieval models in multilingual retrieval, due to uneven and scarce training data available across multiple languages. Synthetic training data generation is promising (e.g., InPars or Promptagator), but has been investigated only for English. Therefore, to study model capabilities across both cross-lingual and monolingual retrieval tasks, we develop SWIM-IR, a synthetic retrieval training dataset containing 33 (high to very-low resource) languages for fine-tuning multilingual dense retrievers without requiring any human supervision. To construct SWIM-IR, we propose SAP (summarize-then-ask prompting), where the large language model (LLM) generates a textual summary prior to the query generation step. SAP assists the LLM in generating informative queries in the target language. Using SWIM-IR, we explore synthetic fine-tuning of multilingual dense retrieval models and evaluate them robustly on three retrieval benchmarks: XOR-Retrieve (cross-lingual), MIRACL (monolingual) and XTREME-UP (cross-lingual). Our models, called SWIM-X, are competitive with human-supervised dense retrieval models, e.g., mContriever-X, finding that SWIM-IR can cheaply substitute for expensive human-labeled retrieval training data. SWIM-IR dataset and SWIM-X models are available at https://github.com/google-research-datasets/SWIM-IR.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed SWIM-IR, a synthetic retrieval training dataset containing 33 languages for fine-tuning multilingual dense retrievers without requiring any human supervision, and its models, called SWIM-X, are competitive with human-supervised dense retrieval models, e.g., mContriever-X."
+            },
+            "score": 6
+        },
+        {
+            "id": "dda0f7f086fc875d583604f8b0cf4a8678bc4de4",
+            "paperId": "dda0f7f086fc875d583604f8b0cf4a8678bc4de4",
+            "title": "Bootstrapping Multilingual Semantic Parsers using Large Language Models",
+            "abstract": "Despite cross-lingual generalization demonstrated by pre-trained multilingual models, the translate-train paradigm of transferring English datasets across multiple languages remains to be a key mechanism for training task-specific multilingual models. However, for many low-resource languages, the availability of a reliable translation service entails significant amounts of costly human-annotated translation pairs. Further, translation services may continue to be brittle due to domain mismatch between task-specific input text and general-purpose text used for training translation models. For multilingual semantic parsing, we demonstrate the effectiveness and flexibility offered by large language models (LLMs) for translating English datasets into several languages via few-shot prompting. Through extensive comparisons on two public datasets, MTOP and MASSIVE, spanning 50 languages and several domains, we show that our method of translating data using LLMs outperforms a strong translate-train baseline on 41 out of 50 languages. We study the key design choices that enable more effective multilingual data translation via prompted LLMs.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The effectiveness and flexibility offered by large language models (LLMs) for translating English datasets into several languages via few-shot prompting are demonstrated and it is shown that the method of translating data using LLMs outperforms a strong translate-train baseline on 41 out of 50 languages."
+            },
+            "score": 6
+        },
+        {
+            "id": "7673114da5d82381cf8e75408089c98f73fad06d",
+            "paperId": "7673114da5d82381cf8e75408089c98f73fad06d",
+            "title": "adaptMLLM: Fine-Tuning Multilingual Language Models on Low-Resource Languages with Integrated LLM Playgrounds",
+            "abstract": "The advent of Multilingual Language Models (MLLMs) and Large Language Models (LLMs) has spawned innovation in many areas of natural language processing. Despite the exciting potential of this technology, its impact on developing high-quality Machine Translation (MT) outputs for low-resource languages remains relatively under-explored. Furthermore, an open-source application, dedicated to both fine-tuning MLLMs and managing the complete MT workflow for low-resources languages, remains unavailable. We aim to address these imbalances through the development of adaptMLLM, which streamlines all processes involved in the fine-tuning of MLLMs for MT. This open-source application is tailored for developers, translators, and users who are engaged in MT. It is particularly useful for newcomers to the field, as it significantly streamlines the configuration of the development environment. An intuitive interface allows for easy customisation of hyperparameters, and the application offers a range of metrics for model evaluation and the capability to deploy models as a translation service directly within the application. As a multilingual tool, we used adaptMLLM to fine-tune models for two low-resource language pairs: English to Irish (EN\u2194 GA) and English to Marathi (EN\u2194MR). Compared with baselines from the LoResMT2021 Shared Task, the adaptMLLM system demonstrated significant improvements. In the EN\u2192GA direction, an improvement of 5.2 BLEU points was observed and an increase of 40.5 BLEU points was recorded in the GA\u2192EN direction representing relative improvements of 14% and 117%, respectively. Significant improvements in the translation performance of the EN\u2194MR pair were also observed notably in the MR\u2192EN direction with an increase of 21.3 BLEU points which corresponds to a relative improvement of 68%. Finally, a fine-grained human evaluation of the MLLM output on the EN\u2192GA pair was conducted using the Multidimensional Quality Metrics and Scalar Quality Metrics error taxonomies. The application and models are freely available.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The development of adaptMLLM is developed, which streamlines all processes involved in the fine-tuning of MLLMs for MT and is particularly useful for newcomers to the field, as it significantly streamlines the configuration of the development environment."
+            },
+            "score": 6
+        },
+        {
+            "id": "6d1f1caed7d43fc76ec7ea7bd555026d8c477e58",
+            "paperId": "6d1f1caed7d43fc76ec7ea7bd555026d8c477e58",
+            "title": "Negative Stances Detection from Multilingual Data Streams in Low-resource Languages on Social Media using BERT and CNN based Transfer Learning Model",
+            "abstract": "Online social media allows users to connect with a large number of people across the globe and facilitate the exchange of information efficiently. These platforms cater to many of our day-to-day needs. However, at the same time, social media have been increasingly used to transmit negative stances like derogatory language, hate speech, and cyberbullying. The task of identifying the negative stances from social media posts or comments, or tweets is termed negative stance detection. One of the major challenges associated with negative stance detection is that most of the content published on social media is often in a multi-lingual format. This work aims to identify negative stances from multilingual data streams in low-resource languages on social media using a hybrid transfer learning and deep convolutional neural network approach. The proposed work strats by preprocessing the multi-lingual datasets by removing irrelevant information like special characters, hyperlinks, etc. The processed dataset is then passed through a pre-trained BERT (bidirectional encoder representations from transformers) model to generate embeddings by fine-tuning the model as per the dataset under consideration. The generated word embeddings are then passed to a deep convolutional neural network for extracting the latent features from the texts and removing the unessential information. This helps our model to achieve robustness and effectiveness for efficient learning on the given dataset and make appropriate predictions on zero-shot data. The paper utilizes several optimization strategies for examining the impact of fine-tuning different BERT layers on the model\u2019s performance. ntensive experiments on a variety of languages, namely, English, French, Italian, Danish, Arabic, Spanish, Indonesian, German, and Portuguese are performed. The experimental results demonstrate the effectiveness and efficiency of the proposed framework.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work aims to identify negative stances from multilingual data streams in low-resource languages on social media using a hybrid transfer learning and deep convolutional neural network approach and demonstrates the effectiveness and efficiency of the proposed framework."
+            },
+            "score": 6
+        },
+        {
+            "id": "7bdbce7e6de063936c60be5afc71c30f513fc8c0",
+            "paperId": "7bdbce7e6de063936c60be5afc71c30f513fc8c0",
+            "title": "UIO at SemEval-2023 Task 12: Multilingual fine-tuning for sentiment classification in low-resource Languages",
+            "abstract": "Our contribution to the 2023 AfriSenti-SemEval shared task 12: Sentiment Analysis for African Languages, provides insight into how a multilingual large language model can be a resource for sentiment analysis in languages not seen during pretraining. The shared task provides datasets of a variety of African languages from different language families. The languages are to various degrees related to languages used during pretraining, and the language data contain various degrees of code-switching. We experiment with both monolingual and multilingual datasets for the final fine-tuning, and find that with the provided datasets that contain samples in the thousands, monolingual fine-tuning yields the best results.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 6
+        },
+        {
+            "id": "83608aadb17443beba22c4087030c8704ccd7c64",
+            "paperId": "83608aadb17443beba22c4087030c8704ccd7c64",
+            "title": "SMaLL-100: Introducing Shallow Multilingual Machine Translation Model for Low-Resource Languages",
+            "abstract": "In recent years, multilingual machine translation models have achieved promising performance on low-resource language pairs by sharing information between similar languages, thus enabling zero-shot translation. To overcome the \u201ccurse of multilinguality\u201d, these models often opt for scaling up the number of parameters, which makes their use in resource-constrained environments challenging. We introduce SMaLL-100, a distilled version of the M2M-100(12B) model, a massively multilingual machine translation model covering 100 languages. We train SMaLL-100 with uniform sampling across all language pairs and therefore focus on preserving the performance of low-resource languages. We evaluate SMaLL-100 on different low-resource benchmarks: FLORES-101, Tatoeba, and TICO-19 and demonstrate that it outperforms previous massively multilingual models of comparable sizes (200-600M) while improving inference latency and memory usage. Additionally, our model achieves comparable results to M2M-100 (1.2B), while being 3.6x smaller and 4.3x faster at inference.",
+            "year": 2022,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces SMaLL-100, a distilled version of the M2M-100(12B) model, a massively multilingual machine translation model covering 100 languages and demonstrates that it outperforms previous massively mult bilingual models of comparable sizes while improving inference latency and memory usage."
+            },
+            "score": 6
+        },
+        {
+            "id": "2ac5442a32988f86730e460b3198f475592ae410",
+            "paperId": "2ac5442a32988f86730e460b3198f475592ae410",
+            "title": "Improving Low-Resource Languages in Pre-Trained Multilingual Language Models",
+            "abstract": "Pre-trained multilingual language models are the foundation of many NLP approaches, including cross-lingual transfer solutions. However, languages with small available monolingual corpora are often not well-supported by these models leading to poor performance. We propose an unsupervised approach to improve the cross-lingual representations of low-resource languages by bootstrapping word translation pairs from monolingual corpora and using them to improve language alignment in pre-trained language models. We perform experiments on nine languages, using contextual word retrieval and zero-shot named entity recognition to measure both intrinsic cross-lingual word representation quality and downstream task performance, showing improvements on both tasks. Our results show that it is possible to improve pre-trained multilingual language models by relying only on non-parallel resources.",
+            "year": 2022,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an unsupervised approach to improve the cross-lingual representations of low-resource languages by bootstrapping word translation pairs from monolingual corpora and using them to improve language alignment in pre-trained language models."
+            },
+            "score": 6
+        },
+        {
+            "id": "c1f9b85ac8145808767a52954af8fb6d40fa7879",
+            "paperId": "c1f9b85ac8145808767a52954af8fb6d40fa7879",
+            "title": "Prefix Text as a Yarn: Eliciting Non-English Alignment in Foundation Language Model",
+            "abstract": "While supervised fine-tuning (SFT) has been a straightforward approach for tailoring the output of foundation large language model (LLM) to specific preferences, concerns have been raised about the depth of this alignment, with some critiques suggesting it is merely\"superficial\". We critically examine this hypothesis within the scope of cross-lingual generation tasks, proposing that the effectiveness of SFT may be constrained by its reliance on prior tokens to guide cross-lingual generation. Based on this crucial insight, and in response to the challenges posed by the costly and limited availability of non-English data for SFT, we introduce a novel training-free alignment method named PreTTY, which employs minimal task-related prior tokens to bridge the foundation LLM and the SFT LLM, achieving comparable performance without training. Experiments on machine translation and part-of-speech tagging across eight languages demonstrate the efficacy of PreTTY in cross-lingual settings. Remarkably, by initiating the decoding process with only one or two prior tokens, foundation LLMs can achieve performance comparable to their SFT counterparts. This method presents a cost-effective alternative to SFT and advances the democratization of multilingual LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "3567ddec4c3c2925f15f95010f9be658cf7fb50b",
+            "paperId": "3567ddec4c3c2925f15f95010f9be658cf7fb50b",
+            "title": "Eliciting Better Multilingual Structured Reasoning from LLMs through Code",
+            "abstract": "Development of large language models (LLM) have shown progress on reasoning, though studies have been limited to English or simple reasoning tasks. We thus introduce a multilingual structured reasoning and explanation dataset, termed xSTREET, that covers four tasks across six languages. xSTREET exposes a gap in base LLM performance between English and non-English reasoning tasks. We then propose two methods to remedy this gap, building on the insight that LLMs trained on code are better reasoners. First, at training time, we augment a code dataset with multi-lingual comments using machine translation while keeping program code as-is. Second, at inference time, we bridge the gap between training and inference by employing a prompt structure that incorporates step-by-step code primitives to derive new facts and find a solution. Our methods show improved multilingual performance on xSTREET, most notably on the scientific commonsense reasoning subtask. Furthermore, the models show no regression on non-reasoning tasks, thus showing our techniques maintain general-purpose abilities.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "8f2630c308b46ce02a06ff623fcbc130d481481d",
+            "paperId": "8f2630c308b46ce02a06ff623fcbc130d481481d",
+            "title": "Multilingual Pretraining and Instruction Tuning Improve Cross-Lingual Knowledge Alignment, But Only Shallowly",
+            "abstract": "Despite their strong ability to retrieve knowledge in English, current large language models show imbalance abilities in different languages. Two approaches are proposed to address this, i.e., multilingual pretraining and multilingual instruction tuning. However, whether and how do such methods contribute to the cross-lingual knowledge alignment inside the models is unknown. In this paper, we propose CLiKA, a systematic framework to assess the cross-lingual knowledge alignment of LLMs in the Performance, Consistency and Conductivity levels, and explored the effect of multilingual pretraining and instruction tuning on the degree of alignment. Results show that: while both multilingual pretraining and instruction tuning are beneficial for cross-lingual knowledge alignment, the training strategy needs to be carefully designed. Namely, continued pretraining improves the alignment of the target language at the cost of other languages, while mixed pretraining affect other languages less. Also, the overall cross-lingual knowledge alignment, especially in the conductivity level, is unsatisfactory for all tested LLMs, and neither multilingual pretraining nor instruction tuning can substantially improve the cross-lingual knowledge conductivity.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 6
+        },
+        {
+            "id": "4e1a4d6804c7983c659feb7e41d49ad8c21aaa43",
+            "paperId": "4e1a4d6804c7983c659feb7e41d49ad8c21aaa43",
+            "title": "Revisiting non-English Text Simplification: A Unified Multilingual Benchmark",
+            "abstract": "Recent advancements in high-quality, large-scale English resources have pushed the frontier of English Automatic Text Simplification (ATS) research. However, less work has been done on multilingual text simplification due to the lack of a diverse evaluation benchmark that covers complex-simple sentence pairs in many languages. This paper introduces the MultiSim benchmark, a collection of 27 resources in 12 distinct languages containing over 1.7 million complex-simple sentence pairs. This benchmark will encourage research in developing more effective multilingual text simplification models and evaluation metrics. Our experiments using MultiSim with pre-trained multilingual language models reveal exciting performance improvements from multilingual training in non-English settings. We observe strong performance from Russian in zero-shot cross-lingual transfer to low-resource languages. We further show that few-shot prompting with BLOOM-176b achieves comparable quality to reference simplifications outperforming fine-tuned models in most languages. We validate these findings through human evaluation.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The MultiSim benchmark, a collection of 27 resources in 12 distinct languages containing over 1.7 million complex-simple sentence pairs, is introduced to encourage research in developing more effective multilingual text simplification models and evaluation metrics."
+            },
+            "score": 5
+        },
+        {
+            "id": "384e058c262e7f29b50cc4feeb0bd731f6e5377e",
+            "paperId": "384e058c262e7f29b50cc4feeb0bd731f6e5377e",
+            "title": "Is ChatGPT A Good Translator? A Preliminary Study",
+            "abstract": "This report provides a preliminary evaluation of ChatGPT for machine translation, including translation prompt, multilingual translation, and translation robustness. We adopt the prompts advised by ChatGPT to trigger its translation ability and \ufb01nd that the candidate prompts generally work well and show minor performance differences. By evaluating on a number of benchmark test sets 1 , we \ufb01nd that ChatGPT performs competitively with commercial translation products (e.g., Google Translate) on high-resource European languages but lags behind signi\ufb01cantly on low-resource or distant languages. For distant languages, we explore an interesting strategy named pivot prompting that asks ChatGPT to translate the source sentence into a high-resource pivot language before into the target language, which improves the translation performance signi\ufb01cantly. As for the translation robustness, ChatGPT does not perform as well as the commercial systems on biomedical abstracts or Reddit comments but is potentially a good translator for spoken language.",
+            "year": 2023,
+            "citationCount": 246,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that ChatGPT performs competitively with commercial translation products on high-resource European languages but lags behind signi\ufb01cantly on low-resource or distant languages and translation robustness."
+            },
+            "score": 5
+        },
+        {
+            "id": "780c99d13537370f63c03feeb1343bed9d98a4f9",
+            "paperId": "780c99d13537370f63c03feeb1343bed9d98a4f9",
+            "title": "Is ChatGPT A Good Translator? Yes With GPT-4 As The Engine",
+            "abstract": "This report provides a preliminary evaluation of ChatGPT for machine translation, including translation prompt, multilingual translation, and translation robustness. We adopt the prompts advised by ChatGPT to trigger its translation ability and find that the candidate prompts generally work well with minor performance differences. By evaluating on a number of benchmark test sets, we find that ChatGPT performs competitively with commercial translation products (e.g., Google Translate) on high-resource European languages but lags behind significantly on low-resource or distant languages. As for the translation robustness, ChatGPT does not perform as well as the commercial systems on biomedical abstracts or Reddit comments but exhibits good results on spoken language. Further, we explore an interesting strategy named $\\mathbf{pivot~prompting}$ for distant languages, which asks ChatGPT to translate the source sentence into a high-resource pivot language before into the target language, improving the translation performance noticeably. With the launch of the GPT-4 engine, the translation performance of ChatGPT is significantly boosted, becoming comparable to commercial translation products, even for distant languages. Human analysis on Google Translate and ChatGPT suggests that ChatGPT with GPT-3.5 tends to generate more hallucinations and mis-translation errors while that with GPT-4 makes the least errors. In other words, ChatGPT has already become a good translator. Please refer to our Github project for more details: https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator",
+            "year": 2023,
+            "citationCount": 155,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An interesting strategy named $\\mathbf{pivot~prompting}$ for distant languages, which asks ChatGPT to translate the source sentence into a high-resource pivot language before into the target language, improving the translation performance noticeably."
+            },
+            "score": 5
+        },
+        {
+            "id": "538bcc850b49aa0bdeb98d9cc095c3933e7e6e2e",
+            "paperId": "538bcc850b49aa0bdeb98d9cc095c3933e7e6e2e",
+            "title": "Multilingual Contextual Adapters To Improve Custom Word Recognition In Low-resource Languages",
+            "abstract": "Connectionist Temporal Classification (CTC) models are popular for their balance between speed and performance for Automatic Speech Recognition (ASR). However, these CTC models still struggle in other areas, such as personalization towards custom words. A recent approach explores Contextual Adapters, wherein an attention-based biasing model for CTC is used to improve the recognition of custom entities. While this approach works well with enough data, we showcase that it isn't an effective strategy for low-resource languages. In this work, we propose a supervision loss for smoother training of the Contextual Adapters. Further, we explore a multilingual strategy to improve performance with limited training data. Our method achieves 48% F1 improvement in retrieving unseen custom entities for a low-resource language. Interestingly, as a by-product of training the Contextual Adapters, we see a 5-11% Word Error Rate (WER) reduction in the performance of the base CTC model as well.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a supervision loss for smoother training of the Contextual Adapters, a multilingual strategy to improve performance with limited training data, and achieves 48% F1 improvement in retrieving unseen custom entities for a low-resource language."
+            },
+            "score": 5
+        },
+        {
+            "id": "b1e08e85d6f268b45c003bb4a9dec5b6d1d3f7e7",
+            "paperId": "b1e08e85d6f268b45c003bb4a9dec5b6d1d3f7e7",
+            "title": "Crosslingual Transfer Learning for Low-Resource Languages Based on Multilingual Colexification Graphs",
+            "abstract": "In comparative linguistics, colexification refers to the phenomenon of a lexical form conveying two or more distinct meanings. Existing work on colexification patterns relies on annotated word lists, limiting scalability and usefulness in NLP. In contrast, we identify colexification patterns of more than 2,000 concepts across 1,335 languages directly from an unannotated parallel corpus. We then propose simple and effective methods to build multilingual graphs from the colexification patterns: ColexNet and ColexNet+. ColexNet's nodes are concepts and its edges are colexifications. In ColexNet+, concept nodes are additionally linked through intermediate nodes, each representing an ngram in one of 1,334 languages. We use ColexNet+ to train $\\overrightarrow{\\mbox{ColexNet+}}$, high-quality multilingual embeddings that are well-suited for transfer learning. In our experiments, we first show that ColexNet achieves high recall on CLICS, a dataset of crosslingual colexifications. We then evaluate $\\overrightarrow{\\mbox{ColexNet+}}$ on roundtrip translation, sentence retrieval and sentence classification and show that our embeddings surpass several transfer learning baselines. This demonstrates the benefits of using colexification as a source of information in multilingual NLP.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The benefits of using colexification as a source of information in multilingual NLP are demonstrated by using ColexNet+ to train high-quality multilingual embeddings that are well-suited for transfer learning."
+            },
+            "score": 5
+        },
+        {
+            "id": "e21758889543ca7ce958084078dc52ac2b0fba62",
+            "paperId": "e21758889543ca7ce958084078dc52ac2b0fba62",
+            "title": "Where does In-context Translation Happen in Large Language Models",
+            "abstract": "Self-supervised large language models have demonstrated the ability to perform Machine Translation (MT) via in-context learning, but little is known about where the model performs the task with respect to prompt instructions and demonstration examples. In this work, we attempt to characterize the region where large language models transition from in-context learners to translation models. Through a series of layer-wise context-masking experiments on \\textsc{GPTNeo2.7B}, \\textsc{Bloom3B}, \\textsc{Llama7b} and \\textsc{Llama7b-chat}, we demonstrate evidence of a\"task recognition\"point where the translation task is encoded into the input representations and attention to context is no longer necessary. We further observe correspondence between the low performance when masking out entire layers, and the task recognition layers. Taking advantage of this redundancy results in 45\\% computational savings when prompting with 5 examples, and task recognition achieved at layer 14 / 32. Our layer-wise fine-tuning experiments indicate that the most effective layers for MT fine-tuning are the layers critical to task recognition.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "9a66a6b97601f207ac5e640122fce6ed407f494f",
+            "paperId": "9a66a6b97601f207ac5e640122fce6ed407f494f",
+            "title": "Quantifying Multilingual Performance of Large Language Models Across Languages",
+            "abstract": "The training process of Large Language Models (LLMs) requires extensive text corpus. However, these data are often unevenly distributed in different languages. As a result, LLMs perform well on common languages, such as English, German, and French, but perform poorly on low-resource languages. However, currently there is no work to quantitatively measure the performance of LLMs in low-resource languages. To fill this gap, we proposed the Language Ranker that aims to benchmark and rank different languages according to the performance of LLMs on those languages. We employ the LLM's performance on the English corpus as a baseline to compare the performances of different languages and English. We have the following three findings: 1. The performance rankings of different LLMs in all languages are roughly the same. 2. LLMs with different sizes have the same partial order of performance. 3. There is a strong correlation between LlaMa2's performance in different languages and the proportion of the pre-training corpus. These findings illustrate that the Language Ranker can be used as an indicator to measure the language performance of LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "7d61b2dc1893638e0846263489c940496c01a89d",
+            "paperId": "7d61b2dc1893638e0846263489c940496c01a89d",
+            "title": "IndicGenBench: A Multilingual Benchmark to Evaluate Generation Capabilities of LLMs on Indic Languages",
+            "abstract": "As large language models (LLMs) see increasing adoption across the globe, it is imperative for LLMs to be representative of the linguistic diversity of the world. India is a linguistically diverse country of 1.4 Billion people. To facilitate research on multilingual LLM evaluation, we release IndicGenBench - the largest benchmark for evaluating LLMs on user-facing generation tasks across a diverse set 29 of Indic languages covering 13 scripts and 4 language families. IndicGenBench is composed of diverse generation tasks like cross-lingual summarization, machine translation, and cross-lingual question answering. IndicGenBench extends existing benchmarks to many Indic languages through human curation providing multi-way parallel evaluation data for many under-represented Indic languages for the first time. We evaluate a wide range of proprietary and open-source LLMs including GPT-3.5, GPT-4, PaLM-2, mT5, Gemma, BLOOM and LLaMA on IndicGenBench in a variety of settings. The largest PaLM-2 models performs the best on most tasks, however, there is a significant performance gap in all languages compared to English showing that further research is needed for the development of more inclusive multilingual language models. IndicGenBench is released at www.github.com/google-research-datasets/indic-gen-bench",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "8ee77f496e74ebc92161629cbd7de58ac9508a33",
+            "paperId": "8ee77f496e74ebc92161629cbd7de58ac9508a33",
+            "title": "LLMs for Low Resource Languages in Multilingual, Multimodal and Dialectal Settings",
+            "abstract": "The recent breakthroughs in Artificial Intelligence (AI) can be attributed to the remarkable performance of Large Language Models (LLMs) across a spectrum of research areas (e.g., machine translation, question-answering, automatic speech recognition, text-to-speech generation) and application domains (e.g., business, law, healthcare, education, and psychology). The success of these LLMs largely de- pends on specific training techniques, most notably instruction tuning, RLHF, and subsequent prompting to achieve the desired output. As the development of such LLMs continues to increase in both closed and open settings, evaluation has become crucial for understanding their generalization capabilities across different tasks, modalities, languages, and dialects. This evaluation process is tightly coupled with prompting, which plays a key role in obtain- ing better outputs. There has been attempts to evaluate such models focusing on diverse tasks, languages, and dialects, which suggests that the capabilities of LLMs are still limited to medium-to-low-resource languages due to the lack of representative datasets. The tutorial offers an overview of this emerging research area. We explore the capabilities of LLMs in terms of their performance, zero- and few-shot settings, fine-tuning, instructions tuning, and close vs. open models with a special emphasis on low-resource settings. In addition to LLMs for standard NLP tasks, we will focus on speech and multimodality.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The capabilities of LLMs in terms of their performance, zero- and few-shot settings, fine-tuning, instructions tuning, and close vs. open models with a special emphasis on low-resource settings are explored."
+            },
+            "score": 4
+        },
+        {
+            "id": "a517575328ca3b8289fa95bd9f71669e1cf7127a",
+            "paperId": "a517575328ca3b8289fa95bd9f71669e1cf7127a",
+            "title": "SIB-200: A Simple, Inclusive, and Big Evaluation Dataset for Topic Classification in 200+ Languages and Dialects",
+            "abstract": "Despite the progress in building multilingual language models, evaluation is often limited to a few languages with available datasets which excludes a large number of low-resource languages. In this paper, we create SIB-200\u2014a large-scale open-sourced benchmark dataset for topic classification in 205 languages and dialects to address the lack of evaluation dataset for Natural Language Understanding (NLU). For many of the languages covered in SIB-200, this is the first publicly available evaluation dataset for NLU. The dataset is based on Flores-200 machine translation corpus. We annotated the English portion of the dataset and extended the sentence-level annotation to the remaining 204 languages covered in the corpus. Despite the simplicity of this task, our evaluation in full-supervised setting, cross-lingual transfer setting and prompting of large language model setting show that there is still a large gap between the performance of high-resource and low-resource languages when multilingual evaluation is scaled to numerous world languages. We found that languages unseen during the pre-training of multilingual language models, languages from under-represented families (like Nilotic and Altantic-Congo), and languages from the regions of Africa, Americas, Oceania and South East Asia, often have the lowest performance on our topic classification dataset. We hope our dataset %will encourages a more inclusive evaluation of multilingual language models on a more diverse set of languages.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that languages unseen during the pre-training of multilingual language models, languages from under-represented families, and languages from the regions of Africa, Americas, Oceania and South East Asia, often have the lowest performance on the authors' topic classification dataset."
+            },
+            "score": 4
+        },
+        {
+            "id": "220d4a8da8a8778b43044533d02851c82d755ae9",
+            "paperId": "220d4a8da8a8778b43044533d02851c82d755ae9",
+            "title": "A Preference-driven Paradigm for Enhanced Translation with Large Language Models",
+            "abstract": "Recent research has shown that large language models (LLMs) can achieve remarkable translation performance through supervised fine-tuning (SFT) using only a small amount of parallel data. However, SFT simply instructs the model to imitate the reference translations at the token level, making it vulnerable to the noise present in the references. Hence, the assistance from SFT often reaches a plateau once the LLMs have achieved a certain level of translation capability, and further increasing the size of parallel data does not provide additional benefits. To overcome this plateau associated with imitation-based SFT, we propose a preference-based approach built upon the Plackett-Luce model. The objective is to steer LLMs towards a more nuanced understanding of translation preferences from a holistic view, while also being more resilient in the absence of gold translations. We further build a dataset named MAPLE to verify the effectiveness of our approach, which includes multiple translations of varying quality for each source sentence. Extensive experiments demonstrate the superiority of our approach in\"breaking the plateau\"across diverse LLMs and test settings. Our in-depth analysis underscores the pivotal role of diverse translations and accurate preference scores in the success of our approach.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "c9629421113a3dda8b544e9eac3b174dc40eda4b",
+            "paperId": "c9629421113a3dda8b544e9eac3b174dc40eda4b",
+            "title": "Is Translation All You Need? A Study on Solving Multilingual Tasks with Large Language Models",
+            "abstract": "Large language models (LLMs) have demonstrated strong multilingual capabilities; yet, they are mostly English-centric due to the imbalanced training corpora. Existing works leverage this phenomenon to improve their multilingual performances on NLP tasks. In this work, we extend the evaluation from NLP tasks to real user queries. We find that even though translation into English can help improve the performance of multilingual NLP tasks for English-centric LLMs, it may not be optimal for all scenarios. For culture-related tasks that need deep language understanding, prompting in the native language proves to be more promising since it can capture the nuances related to culture and language. Therefore, we advocate for more efforts towards the development of strong multilingual LLMs instead of just English-centric LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "0ff6da555f20936578f745a5d80673c2ae69057c",
+            "paperId": "0ff6da555f20936578f745a5d80673c2ae69057c",
+            "title": "Breaking the Language Barrier: Can Direct Inference Outperform Pre-Translation in Multilingual LLM Applications?",
+            "abstract": "Large language models hold significant promise in multilingual applications. However, inherent biases stemming from predominantly English-centric pre-training have led to the widespread practice of pre-translation, i.e., translating non-English inputs to English before inference, leading to complexity and information loss. This study re-evaluates the need for pre-translation in the context of PaLM2 models (Anil et al., 2023), which have been established as highly performant in multilingual tasks. We offer a comprehensive investigation across 108 languages and 6 diverse benchmarks, including open-end generative tasks, which were excluded from previous similar studies. Our findings challenge the pre-translation paradigm established in prior research, highlighting the advantages of direct inference in PaLM2. Specifically, PaLM2-L consistently outperforms pre-translation in 94 out of 108 languages. These findings pave the way for more efficient and effective multilingual applications, alleviating the limitations associated with pre-translation and unlocking linguistic authenticity.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "41173fa8cb93f51a4f8e2c023a2767c4f03e2ad0",
+            "paperId": "41173fa8cb93f51a4f8e2c023a2767c4f03e2ad0",
+            "title": "An Efficient Approach for Studying Cross-Lingual Transfer in Multilingual Language Models",
+            "abstract": "The capacity and effectiveness of pre-trained multilingual models (MLMs) for zero-shot cross-lingual transfer is well established. However, phenomena of positive or negative transfer, and the effect of language choice still need to be fully understood, especially in the complex setting of massively multilingual LMs. We propose an \\textit{efficient} method to study transfer language influence in zero-shot performance on another target language. Unlike previous work, our approach disentangles downstream tasks from language, using dedicated adapter units. Our findings suggest that some languages do not largely affect others, while some languages, especially ones unseen during pre-training, can be extremely beneficial or detrimental for different target languages. We find that no transfer language is beneficial for all target languages. We do, curiously, observe languages previously unseen by MLMs consistently benefit from transfer from almost any language. We additionally use our modular approach to quantify negative interference efficiently and categorize languages accordingly. Furthermore, we provide a list of promising transfer-target language configurations that consistently lead to target language performance improvements. Code and data are publicly available: https://github.com/ffaisal93/neg_inf",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "47cda129fc742647739591351fb3f40676018cf6",
+            "paperId": "47cda129fc742647739591351fb3f40676018cf6",
+            "title": "Tele-FLM Technical Report",
+            "abstract": "Large language models (LLMs) have showcased profound capabilities in language understanding and generation, facilitating a wide array of applications. However, there is a notable paucity of detailed, open-sourced methodologies on efficiently scaling LLMs beyond 50 billion parameters with minimum trial-and-error cost and computational resources. In this report, we introduce Tele-FLM (aka FLM-2), a 52B open-sourced multilingual large language model that features a stable, efficient pre-training paradigm and enhanced factual judgment capabilities. Tele-FLM demonstrates superior multilingual language modeling abilities, measured by BPB on textual corpus. Besides, in both English and Chinese foundation model evaluation, it is comparable to strong open-sourced models that involve larger pre-training FLOPs, such as Llama2-70B and DeepSeek-67B. In addition to the model weights, we share the core designs, engineering practices, and training details, which we expect to benefit both the academic and industrial communities.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "c113d96c532c11eca026f50e80541eafb112e35f",
+            "paperId": "c113d96c532c11eca026f50e80541eafb112e35f",
+            "title": "COIG-CQIA: Quality is All You Need for Chinese Instruction Fine-tuning",
+            "abstract": "Recently, there have been significant advancements in large language models (LLMs), particularly focused on the English language. These advancements have enabled these LLMs to understand and execute complex instructions with unprecedented accuracy and fluency. However, despite these advancements, there remains a noticeable gap in the development of Chinese instruction tuning. The unique linguistic features and cultural depth of the Chinese language pose challenges for instruction tuning tasks. Existing datasets are either derived from English-centric LLMs or are ill-suited for aligning with the interaction patterns of real-world Chinese users. To bridge this gap, we introduce COIG-CQIA, a high-quality Chinese instruction tuning dataset. Our aim is to build a diverse, wide-ranging instruction-tuning dataset to better align model behavior with human interactions. To this end, we collect a high-quality human-written corpus from various sources on the Chinese Internet, including Q&A communities, Wikis, examinations, and existing NLP datasets. This corpus was rigorously filtered and carefully processed to form the COIG-CQIA dataset. Furthermore, we train models of various scales on different subsets of CQIA, following in-depth evaluation and analyses. The findings from our experiments offer valuable insights for selecting and developing Chinese instruction-tuning datasets. We also find that models trained on CQIA-Subset achieve competitive results in human assessment as well as knowledge and security benchmarks. Data are available at https://huggingface.co/datasets/m-a-p/COIG-CQIA",
+            "year": 2024,
+            "citationCount": 2,
+            "score": 4
+        },
+        {
+            "id": "bf68f8b3118652450e79e6679040cd9e4c15866e",
+            "paperId": "bf68f8b3118652450e79e6679040cd9e4c15866e",
+            "title": "Crossing Linguistic Horizons: Finetuning and Comprehensive Evaluation of Vietnamese Large Language Models",
+            "abstract": "Recent advancements in large language models (LLMs) have underscored their importance in the evolution of artificial intelligence. However, despite extensive pretraining on multilingual datasets, available open-sourced LLMs exhibit limited effectiveness in processing Vietnamese. The challenge is exacerbated by the absence of systematic benchmark datasets and metrics tailored for Vietnamese LLM evaluation. To mitigate these issues, we have finetuned LLMs specifically for Vietnamese and developed a comprehensive evaluation framework encompassing 10 common tasks and 31 metrics. Our evaluation results reveal that the fine-tuned LLMs exhibit enhanced comprehension and generative capabilities in Vietnamese. Moreover, our analysis indicates that models with more parameters can introduce more biases and uncalibrated outputs and the key factor influencing LLM performance is the quality of the training or fine-tuning datasets. These insights underscore the significance of meticulous fine-tuning with high-quality datasets in enhancing LLM performance.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "56318a5ded349c27dbb1358ce1a19a013ec56724",
+            "paperId": "56318a5ded349c27dbb1358ce1a19a013ec56724",
+            "title": "Large Language Models are Parallel Multilingual Learners",
+            "abstract": "In this study, we reveal an in-context learning (ICL) capability of multilingual large language models (LLMs): by translating the input to several languages, we provide Parallel Input in Multiple Languages (PiM) to LLMs, which significantly enhances their comprehension abilities. To test this capability, we design extensive experiments encompassing 8 typical datasets, 7 languages and 8 state-of-the-art multilingual LLMs. Experimental results show that (1) incorporating more languages help PiM surpass the conventional ICL further; (2) even combining with the translations that are inferior to baseline performance can also help. Moreover, by examining the activated neurons in LLMs, we discover a counterintuitive but interesting phenomenon. Contrary to the common thought that PiM would activate more neurons than monolingual input to leverage knowledge learned from diverse languages, PiM actually inhibits neurons and promotes more precise neuron activation especially when more languages are added. This phenomenon aligns with the neuroscience insight about synaptic pruning, which removes less used neural connections, strengthens remainders, and then enhances brain intelligence.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "ab8d436e1792907294cb7707c94b3eb66ec0da17",
+            "paperId": "ab8d436e1792907294cb7707c94b3eb66ec0da17",
+            "title": "Poro 34B and the Blessing of Multilinguality",
+            "abstract": "The pretraining of state-of-the-art large language models now requires trillions of words of text, which is orders of magnitude more than available for the vast majority of languages. While including text in more than one language is an obvious way to acquire more pretraining data, multilinguality is often seen as a curse, and most model training efforts continue to focus near-exclusively on individual large languages. We believe that multilinguality can be a blessing and that it should be possible to substantially improve over the capabilities of monolingual models for small languages through multilingual training. In this study, we introduce Poro 34B, a 34 billion parameter model trained for 1 trillion tokens of Finnish, English, and programming languages, and demonstrate that a multilingual training approach can produce a model that not only substantially advances over the capabilities of existing models for Finnish, but also excels in translation and is competitive in its class in generating English and programming languages. We release the model parameters, scripts, and data under open licenses at https://huggingface.co/LumiOpen/Poro-34B.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "022b5b58058e5af5745f4d783f64bb77b38ffdda",
+            "paperId": "022b5b58058e5af5745f4d783f64bb77b38ffdda",
+            "title": "Evaluating and Mitigating Linguistic Discrimination in Large Language Models",
+            "abstract": "By training on text in various languages, large language models (LLMs) typically possess multilingual support and demonstrate remarkable capabilities in solving tasks described in different languages. However, LLMs can exhibit linguistic discrimination due to the uneven distribution of training data across languages. That is, LLMs are hard to keep the consistency of responses when faced with the same task but depicted in different languages. In this study, we first explore the consistency in the LLMs' outputs responding to queries in various languages from two aspects: safety and quality. We conduct this analysis with two datasets (AdvBench and NQ) based on four LLMs (Llama2-13b, Gemma-7b, GPT-3.5-turbo and Gemini-pro). The results show that LLMs exhibit stronger human alignment capabilities with queries in English, French, Russian, and Spanish (only 1.04\\% of harmful queries successfully jailbreak on average) compared to queries in Bengali, Georgian, Nepali and Maithili (27.7\\% of harmful queries jailbreak successfully on average). Moreover, for queries in English, Danish, Czech and Slovenian, LLMs tend to produce responses with a higher quality (with 0.1494 $F_1$ score on average) compared to the other languages. Upon these findings, we propose LDFighter, a similarity-based voting, to mitigate the linguistic discrimination in LLMs. LDFighter ensures consistent service for different language speakers. We evaluate LDFighter with both benign queries and harmful queries. The results show that LDFighter not only significantly reduces the jailbreak success rate but also improve the response quality on average, demonstrating its effectiveness.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "19b8f8b386f030dc5bd2dfcad71fcc1d90a728fd",
+            "paperId": "19b8f8b386f030dc5bd2dfcad71fcc1d90a728fd",
+            "title": "Language Imbalance Can Boost Cross-lingual Generalisation",
+            "abstract": "Multilinguality is crucial for extending recent advancements in language modelling to diverse linguistic communities. To maintain high performance while representing multiple languages, multilingual models ideally align representations, allowing what is learned in one language to generalise to others. Prior research has emphasised the importance of parallel data and shared vocabulary elements as key factors for such alignment. In this study, we investigate an unintuitive novel driver of cross-lingual generalisation: language imbalance. In controlled experiments on perfectly equivalent cloned languages, we observe that the existence of a predominant language during training boosts the performance of less frequent languages and leads to stronger alignment of model representations across languages. Furthermore, we find that this trend is amplified with scale: with large enough models or long enough training, we observe that bilingual training data with a 90/10 language split yields better performance on both languages than a balanced 50/50 split. Building on these insights, we design training schemes that can improve performance in all cloned languages, even without altering the training data. As we extend our analysis to real languages, we find that infrequent languages still benefit from frequent ones, yet whether language imbalance causes cross-lingual generalisation there is not conclusive.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 3
+        },
+        {
+            "id": "7cd7032168dd88f6ae9e2282aeada544fee46b86",
+            "paperId": "7cd7032168dd88f6ae9e2282aeada544fee46b86",
+            "title": "Using C-LARA to evaluate GPT-4\u2019s multilingual processing",
+            "abstract": "We present a cross-linguistic study in which the open source C-LARA platform was used to evaluate GPT-4\u2019s ability to perform several key tasks relevant to Computer Assisted Language Learning. For each of the languages English, Farsi, Faroese, Mandarin and Russian, we instructed GPT-4, through C-LARA, to write six different texts, using prompts chosen to obtain texts of widely differing character. We then further instructed GPT-4 to annotate each text with segmentation markup, glosses and lemma/part-of-speech information; native speakers hand-corrected the texts and annotations to obtain error rates on the different component tasks. The C-LARA platform makes it easy to combine the results into a single multimodal document, further facilitating checking of their correctness. GPT-4\u2019s performance varied widely across languages and processing tasks, but performance on different text genres was roughly comparable. In some cases, most notably glossing of English text, we found that GPT-4 was consistently able to revise its annotations to improve them.",
+            "year": 2023,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "884a573e07ebcc80e855670e769d803a77505cbe",
+            "paperId": "884a573e07ebcc80e855670e769d803a77505cbe",
+            "title": "Large Language Models are Contrastive Reasoners",
+            "abstract": "Prompting methods play a crucial role in enhancing the capabilities of pre-trained large language models (LLMs). We explore how contrastive prompting (CP) significantly improves the ability of large language models to perform complex reasoning. We demonstrate that LLMs are decent contrastive reasoners by simply adding\"Let's give a correct and a wrong answer.\"before LLMs provide answers. Experiments on two large language models show that zero-shot contrastive prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks without any hand-crafted few-shot examples, such as increasing the accuracy on GSM8K from 35.9% to 88.8% and AQUA-RAT from 41.3% to 62.2% with the state-of-the-art GPT-4 model. Our method not only surpasses zero-shot CoT and few-shot CoT in most arithmetic and commonsense reasoning tasks but also can seamlessly integrate with existing prompting methods, resulting in improved or comparable results when compared to state-of-the-art methods. Our code is available at https://github.com/yao8839836/cp",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "a992a1ff27c1bd04a964bf7ed82c6db19fd7f671",
+            "paperId": "a992a1ff27c1bd04a964bf7ed82c6db19fd7f671",
+            "title": "Fine-Tuning Large Language Models to Translate: Will a Touch of Noisy Data in Misaligned Languages Suffice?",
+            "abstract": "Traditionally, success in multilingual machine translation can be attributed to three key factors in training data: large volume, diverse translation directions, and high quality. In the current practice of fine-tuning large language models (LLMs) for translation, we revisit the importance of all these factors. We find that LLMs display strong translation capability after being fine-tuned on as few as 32 training instances, and that fine-tuning on a single translation direction effectively enables LLMs to translate in multiple directions. However, the choice of direction is critical: fine-tuning LLMs with English on the target side can lead to task misinterpretation, which hinders translations into non-English languages. A similar problem arises when noise is introduced into the target side of parallel data, especially when the target language is well-represented in the LLM's pre-training. In contrast, noise in an under-represented language has a less pronounced effect. Our findings suggest that attaining successful alignment hinges on teaching the model to maintain a\"superficial\"focus, thereby avoiding the learning of erroneous biases beyond translation.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "dee01ce21fec1d9731a922e980b598f33b4e264f",
+            "paperId": "dee01ce21fec1d9731a922e980b598f33b4e264f",
+            "title": "Evaluating the Elementary Multilingual Capabilities of Large Language Models with MultiQ",
+            "abstract": "Large language models (LLMs) need to serve everyone, including a global majority of non-English speakers. However, most LLMs today, and open LLMs in particular, are often intended for use in just English (e.g. Llama2, Mistral) or a small handful of high-resource languages (e.g. Mixtral, Qwen). Recent research shows that, despite limits in their intended use, people prompt LLMs in many different languages. Therefore, in this paper, we investigate the basic multilingual capabilities of state-of-the-art open LLMs beyond their intended use. For this purpose, we introduce MultiQ, a new silver standard benchmark for basic open-ended question answering with 27.4k test questions across a typologically diverse set of 137 languages. With MultiQ, we evaluate language fidelity, i.e.\\ whether models respond in the prompted language, and question answering accuracy. All LLMs we test respond faithfully and/or accurately for at least some languages beyond their intended use. Most models are more accurate when they respond faithfully. However, differences across models are large, and there is a long tail of languages where models are neither accurate nor faithful. We explore differences in tokenization as a potential explanation for our findings, identifying possible correlations that warrant further investigation.",
+            "year": 2024,
+            "citationCount": 3,
+            "score": 2
+        },
+        {
+            "id": "0513deb168e7e877e8e3448aabcdd8e22611259e",
+            "paperId": "0513deb168e7e877e8e3448aabcdd8e22611259e",
+            "title": "Multilingual Sentence-T5: Scalable Sentence Encoders for Multilingual Applications",
+            "abstract": "Prior work on multilingual sentence embedding has demonstrated that the efficient use of natural language inference (NLI) data to build high-performance models can outperform conventional methods. However, the potential benefits from the recent ``exponential'' growth of language models with billions of parameters have not yet been fully explored. In this paper, we introduce Multilingual Sentence T5 (m-ST5), as a larger model of NLI-based multilingual sentence embedding, by extending Sentence T5, an existing monolingual model. By employing the low-rank adaptation (LoRA) technique, we have achieved a successful scaling of the model's size to 5.7 billion parameters. We conducted experiments to evaluate the performance of sentence embedding and verified that the method outperforms the NLI-based prior approach. Furthermore, we also have confirmed a positive correlation between the size of the model and its performance. It was particularly noteworthy that languages with fewer resources or those with less linguistic similarity to English benefited more from the parameter increase. Our model is available at https://huggingface.co/pkshatech/m-ST5.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "68380754d46c99d1b86d26a70040ddf499b7b486",
+            "paperId": "68380754d46c99d1b86d26a70040ddf499b7b486",
+            "title": "Pointer-Generator Networks for Low-Resource Machine Translation: Don't Copy That!",
+            "abstract": "While Transformer-based neural machine translation (NMT) is very effective in high-resource settings, many languages lack the necessary large parallel corpora to benefit from it. In the context of low-resource (LR) MT between two closely-related languages, a natural intuition is to seek benefits from structural\"shortcuts\", such as copying subwords from the source to the target, given that such language pairs often share a considerable number of identical words, cognates, and borrowings. We test Pointer-Generator Networks for this purpose for six language pairs over a variety of resource ranges, and find weak improvements for most settings. However, analysis shows that the model does not show greater improvements for closely-related vs. more distant language pairs, or for lower resource ranges, and that the models do not exhibit the expected usage of the mechanism for shared subwords. Our discussion of the reasons for this behaviour highlights several general challenges for LR NMT, such as modern tokenization strategies, noisy real-world conditions, and linguistic complexities. We call for better scrutiny of linguistically motivated improvements to NMT given the blackbox nature of Transformer models, as well as for a focus on the above problems in the field.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "aa3af9a41370f50cca6e77e5f591dd9bc7de3699",
+            "paperId": "aa3af9a41370f50cca6e77e5f591dd9bc7de3699",
+            "title": "Investigating Neural Machine Translation for Low-Resource Languages: Using Bavarian as a Case Study",
+            "abstract": "Machine Translation has made impressive progress in recent years offering close to human-level performance on many languages, but studies have primarily focused on high-resource languages with broad online presence and resources. With the help of growing Large Language Models, more and more low-resource languages achieve better results through the presence of other languages. However, studies have shown that not all low-resource languages can benefit from multilingual systems, especially those with insufficient training and evaluation data. In this paper, we revisit state-of-the-art Neural Machine Translation techniques to develop automatic translation systems between German and Bavarian. We investigate conditions of low-resource languages such as data scarcity and parameter sensitivity and focus on refined solutions that combat low-resource difficulties and creative solutions such as harnessing language similarity. Our experiment entails applying Back-translation and Transfer Learning to automatically generate more training data and achieve higher translation performance. We demonstrate noisiness in the data and present our approach to carry out text preprocessing extensively. Evaluation was conducted using combined metrics: BLEU, chrF and TER. Statistical significance results with Bonferroni correction show surprisingly high baseline systems, and that Back-translation leads to significant improvement. Furthermore, we present a qualitative analysis of translation errors and system limitations.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "5ab54edcc6ee2b322716fc7cc7a4e14ab318c210",
+            "paperId": "5ab54edcc6ee2b322716fc7cc7a4e14ab318c210",
+            "title": "Did Translation Models Get More Robust Without Anyone Even Noticing?",
+            "abstract": "Neural machine translation (MT) models achieve strong results across a variety of settings, but it is widely believed that they are highly sensitive to\"noisy\"inputs, such as spelling errors, abbreviations, and other formatting issues. In this paper, we revisit this insight in light of recent multilingual MT models and large language models (LLMs) applied to machine translation. Somewhat surprisingly, we show through controlled experiments that these models are far more robust to many kinds of noise than previous models, even when they perform similarly on clean data. This is notable because, even though LLMs have more parameters and more complex training processes than past models, none of the open ones we consider use any techniques specifically designed to encourage robustness. Next, we show that similar trends hold for social media translation experiments -- LLMs are more robust to social media text. We include an analysis of the circumstances in which source correction techniques can be used to mitigate the effects of noise. Altogether, we show that robustness to many types of noise has increased.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 2
+        },
+        {
+            "id": "428d1773377c3b6976f4738b678813617189a135",
+            "paperId": "428d1773377c3b6976f4738b678813617189a135",
+            "title": "Can we obtain significant success in RST discourse parsing by using Large Language Models?",
+            "abstract": "Recently, decoder-only pre-trained large language models (LLMs), with several tens of billion parameters, have significantly impacted a wide range of natural language processing (NLP) tasks. While encoder-only or encoder-decoder pre-trained language models have already proved to be effective in discourse parsing, the extent to which LLMs can perform this task remains an open research question. Therefore, this paper explores how beneficial such LLMs are for Rhetorical Structure Theory (RST) discourse parsing. Here, the parsing process for both fundamental top-down and bottom-up strategies is converted into prompts, which LLMs can work with. We employ Llama 2 and fine-tune it with QLoRA, which has fewer parameters that can be tuned. Experimental results on three benchmark datasets, RST-DT, Instr-DT, and the GUM corpus, demonstrate that Llama 2 with 70 billion parameters in the bottom-up strategy obtained state-of-the-art (SOTA) results with significant differences. Furthermore, our parsers demonstrated generalizability when evaluated on RST-DT, showing that, in spite of being trained with the GUM corpus, it obtained similar performances to those of existing parsers trained with RST-DT.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "32ac52069e562d4f900afee70bdca63f53461481",
+            "paperId": "32ac52069e562d4f900afee70bdca63f53461481",
+            "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+            "abstract": "We present QLoRA, an efficient finetuning approach that reduces memory usage enough to finetune a 65B parameter model on a single 48GB GPU while preserving full 16-bit finetuning task performance. QLoRA backpropagates gradients through a frozen, 4-bit quantized pretrained language model into Low Rank Adapters~(LoRA). Our best model family, which we name Guanaco, outperforms all previous openly released models on the Vicuna benchmark, reaching 99.3% of the performance level of ChatGPT while only requiring 24 hours of finetuning on a single GPU. QLoRA introduces a number of innovations to save memory without sacrificing performance: (a) 4-bit NormalFloat (NF4), a new data type that is information theoretically optimal for normally distributed weights (b) double quantization to reduce the average memory footprint by quantizing the quantization constants, and (c) paged optimziers to manage memory spikes. We use QLoRA to finetune more than 1,000 models, providing a detailed analysis of instruction following and chatbot performance across 8 instruction datasets, multiple model types (LLaMA, T5), and model scales that would be infeasible to run with regular finetuning (e.g. 33B and 65B parameter models). Our results show that QLoRA finetuning on a small high-quality dataset leads to state-of-the-art results, even when using smaller models than the previous SoTA. We provide a detailed analysis of chatbot performance based on both human and GPT-4 evaluations showing that GPT-4 evaluations are a cheap and reasonable alternative to human evaluation. Furthermore, we find that current chatbot benchmarks are not trustworthy to accurately evaluate the performance levels of chatbots. A lemon-picked analysis demonstrates where Guanaco fails compared to ChatGPT. We release all of our models and code, including CUDA kernels for 4-bit training.",
+            "year": 2023,
+            "citationCount": 702,
+            "score": 1
+        },
+        {
+            "id": "62f0db3a5ad5c795ec18fc7a6e7b01836809df57",
+            "paperId": "62f0db3a5ad5c795ec18fc7a6e7b01836809df57",
+            "title": "Language Models are Multilingual Chain-of-Thought Reasoners",
+            "abstract": "We evaluate the reasoning abilities of large language models in multilingual settings. We introduce the Multilingual Grade School Math (MGSM) benchmark, by manually translating 250 grade-school math problems from the GSM8K dataset (Cobbe et al., 2021) into ten typologically diverse languages. We find that the ability to solve MGSM problems via chain-of-thought prompting emerges with increasing model scale, and that models have strikingly strong multilingual reasoning abilities, even in underrepresented languages such as Bengali and Swahili. Finally, we show that the multilingual reasoning abilities of language models extend to other tasks such as commonsense reasoning and word-in-context semantic judgment. The MGSM benchmark is publicly available at https://github.com/google-research/url-nlp.",
+            "year": 2022,
+            "citationCount": 152,
+            "score": 1
+        },
+        {
+            "id": "c08c2fd7b269bd9d6c1162adc3b059cdf21d40a6",
+            "paperId": "c08c2fd7b269bd9d6c1162adc3b059cdf21d40a6",
+            "title": "Lifting the Curse of Multilinguality by Pre-training Modular Transformers",
+            "abstract": "Multilingual pre-trained models are known to suffer from the curse of multilinguality, which causes per-language performance to drop as they cover more languages. We address this issue by introducing language-specific modules, which allows us to grow the total capacity of the model, while keeping the total number of trainable parameters per language constant. In contrast with prior work that learns language-specific components post-hoc, we pre-train the modules of our Cross-lingual Modular (X-Mod) models from the start. Our experiments on natural language inference, named entity recognition and question answering show that our approach not only mitigates the negative interference between languages, but also enables positive transfer, resulting in improved monolingual and cross-lingual performance. Furthermore, our approach enables adding languages post-hoc with no measurable drop in performance, no longer limiting the model usage to the set of pre-trained languages.",
+            "year": 2022,
+            "citationCount": 99,
+            "score": 1
+        },
+        {
+            "id": "2ac19d63e1adba20473a6d1122c598f81efc3c58",
+            "paperId": "2ac19d63e1adba20473a6d1122c598f81efc3c58",
+            "title": "Adapting Pre-trained Language Models to African Languages via Multilingual Adaptive Fine-Tuning",
+            "abstract": "Multilingual pre-trained language models (PLMs) have demonstrated impressive performance on several downstream tasks for both high-resourced and low-resourced languages. However, there is still a large performance drop for languages unseen during pre-training, especially African languages. One of the most effective approaches to adapt to a new language is language adaptive fine-tuning (LAFT) \u2014 fine-tuning a multilingual PLM on monolingual texts of a language using the pre-training objective. However, adapting to target language individually takes large disk space and limits the cross-lingual transfer abilities of the resulting models because they have been specialized for a single language. In this paper, we perform multilingual adaptive fine-tuning on 17 most-resourced African languages and three other high-resource languages widely spoken on the African continent to encourage cross-lingual transfer learning. To further specialize the multilingual PLM, we removed vocabulary tokens from the embedding layer that corresponds to non-African writing scripts before MAFT, thus reducing the model size by around 50%. Our evaluation on two multilingual PLMs (AfriBERTa and XLM-R) and three NLP tasks (NER, news topic classification, and sentiment classification) shows that our approach is competitive to applying LAFT on individual languages while requiring significantly less disk space. Additionally, we show that our adapted PLM also improves the zero-shot cross-lingual transfer abilities of parameter efficient fine-tuning methods.",
+            "year": 2022,
+            "citationCount": 85,
+            "score": 1
+        },
+        {
+            "id": "42fc019b2668c9d9d984154d4c57f6c6d5a91619",
+            "paperId": "42fc019b2668c9d9d984154d4c57f6c6d5a91619",
+            "title": "Language Models are Few-shot Multilingual Learners",
+            "abstract": "General-purpose language models have demonstrated impressive capabilities, performing on par with state-of-the-art approaches on a range of downstream natural language processing (NLP) tasks and benchmarks when inferring instructions from very few examples. Here, we evaluate the multilingual skills of the GPT and T5 models in conducting multi-class classification on non-English languages without any parameter updates. We show that, given a few English examples as context, pre-trained language models can predict not only English test samples but also non-English ones. Finally, we find the in-context few-shot cross-lingual prediction results of language models are significantly better than random prediction, and they are competitive compared to the existing state-of-the-art cross-lingual models and translation models.",
+            "year": 2021,
+            "citationCount": 92,
+            "score": 1
+        },
+        {
+            "id": "ecf5618b513aa5c4d5bf62ca251923a188251117",
+            "paperId": "ecf5618b513aa5c4d5bf62ca251923a188251117",
+            "title": "XL-Sum: Large-Scale Multilingual Abstractive Summarization for 44 Languages",
+            "abstract": "Contemporary works on abstractive text summarization have focused primarily on high-resource languages like English, mostly due to the limited availability of datasets for low/mid-resource ones. In this work, we present XL-Sum, a comprehensive and diverse dataset comprising 1 million professionally annotated article-summary pairs from BBC, extracted using a set of carefully designed heuristics. The dataset covers 44 languages ranging from low to high-resource, for many of which no public dataset is currently available. XL-Sum is highly abstractive, concise, and of high quality, as indicated by human and intrinsic evaluation. We fine-tune mT5, a state-of-the-art pretrained multilingual model, with XL-Sum and experiment on multilingual and low-resource summarization tasks. XL-Sum induces competitive results compared to the ones obtained using similar monolingual datasets: we show higher than 11 ROUGE-2 scores on 10 languages we benchmark on, with some of them exceeding 15, as obtained by multilingual training. Additionally, training on low-resource languages individually also provides competitive performance. To the best of our knowledge, XL-Sum is the largest abstractive summarization dataset in terms of the number of samples collected from a single source and the number of languages covered. We are releasing our dataset and models to encourage future research on multilingual abstractive summarization. The resources can be found at \\url{https://github.com/csebuetnlp/xl-sum}.",
+            "year": 2021,
+            "citationCount": 208,
+            "score": 1
+        },
+        {
+            "id": "a8ca46b171467ceb2d7652fbfb67fe701ad86092",
+            "paperId": "a8ca46b171467ceb2d7652fbfb67fe701ad86092",
+            "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+            "abstract": "An important paradigm of natural language processing consists of large-scale pre-training on general domain data and adaptation to particular tasks or domains. As we pre-train larger models, full fine-tuning, which retrains all model parameters, becomes less feasible. Using GPT-3 175B as an example -- deploying independent instances of fine-tuned models, each with 175B parameters, is prohibitively expensive. We propose Low-Rank Adaptation, or LoRA, which freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, greatly reducing the number of trainable parameters for downstream tasks. Compared to GPT-3 175B fine-tuned with Adam, LoRA can reduce the number of trainable parameters by 10,000 times and the GPU memory requirement by 3 times. LoRA performs on-par or better than fine-tuning in model quality on RoBERTa, DeBERTa, GPT-2, and GPT-3, despite having fewer trainable parameters, a higher training throughput, and, unlike adapters, no additional inference latency. We also provide an empirical investigation into rank-deficiency in language model adaptation, which sheds light on the efficacy of LoRA. We release a package that facilitates the integration of LoRA with PyTorch models and provide our implementations and model checkpoints for RoBERTa, DeBERTa, and GPT-2 at https://github.com/microsoft/LoRA.",
+            "year": 2021,
+            "citationCount": 3254,
+            "score": 1
+        },
+        {
+            "id": "56446cb1da48cbe6e19e5051ed80c3861021e5ba",
+            "paperId": "56446cb1da48cbe6e19e5051ed80c3861021e5ba",
+            "title": "As Good as New. How to Successfully Recycle English GPT-2 to Make Models for Other Languages",
+            "abstract": "Large generative language models have been very successful for English, but other languages lag behind due to data and computational limitations. We propose a method that may overcome these problems by adapting existing pre-trained language models to new languages. Specifically, we describe the adaptation of English GPT-2 to Italian and Dutch by retraining lexical embeddings without tuning the Transformer layers. As a result, we obtain lexical embeddings for Italian and Dutch that are aligned with the original English lexical embeddings and induce a bilingual lexicon from this alignment. Additionally, we show how to scale up complexity by transforming relearned lexical embeddings of GPT-2 small to the GPT-2 medium embedding space. This method minimises the amount of training and prevents losing information during adaptation that was learned by GPT-2. English GPT-2 models with relearned lexical embeddings can generate realistic sentences in Italian and Dutch, but on average these sentences are still identifiable as artificial by humans. Based on perplexity scores and human judgements, we find that generated sentences become more realistic with some additional full model finetuning, especially for Dutch. For Italian, we see that they are evaluated on par with sentences generated by a GPT-2 model fully trained from scratch. Our work can be conceived as a blueprint for training GPT-2s for other languages, and we provide a 'recipe' to do so.",
+            "year": 2020,
+            "citationCount": 48,
+            "score": 1
+        },
+        {
+            "id": "1109d62ebd2b29a7dc148bc30dd6cfc803a63dec",
+            "paperId": "1109d62ebd2b29a7dc148bc30dd6cfc803a63dec",
+            "title": "IndoLEM and IndoBERT: A Benchmark Dataset and Pre-trained Language Model for Indonesian NLP",
+            "abstract": "Although the Indonesian language is spoken by almost 200 million people and the 10th most spoken language in the world, it is under-represented in NLP research. Previous work on Indonesian has been hampered by a lack of annotated datasets, a sparsity of language resources, and a lack of resource standardization. In this work, we release the IndoLEM dataset comprising seven tasks for the Indonesian language, spanning morpho-syntax, semantics, and discourse. We additionally release IndoBERT, a new pre-trained language model for Indonesian, and evaluate it over IndoLEM, in addition to benchmarking it against existing resources. Our experiments show that IndoBERT achieves state-of-the-art performance over most of the tasks in IndoLEM.",
+            "year": 2020,
+            "citationCount": 159,
+            "score": 1
+        },
+        {
+            "id": "c360814d32fe45b7db2fcbaebb5d01402aff9b4f",
+            "paperId": "c360814d32fe45b7db2fcbaebb5d01402aff9b4f",
+            "title": "KINNEWS and KIRNEWS: Benchmarking Cross-Lingual Text Classification for Kinyarwanda and Kirundi",
+            "abstract": "Recent progress in text classification has been focused on high-resource languages such as English and Chinese. For low-resource languages, amongst them most African languages, the lack of well-annotated data and effective preprocessing, is hindering the progress and the transfer of successful methods. In this paper, we introduce two news datasets (KINNEWS and IRNEWS) for multi-class classification of news articles in Kinyarwanda and Kirundi, two low-resource African languages. The two languages are mutually intelligible, but while Kinyarwanda has been studied in Natural Language Processing (NLP) to some extent, this work constitutes the first study on Kirundi. Along with the datasets, we provide statistics, guidelines for preprocessing, and monolingual and cross-lingual baseline models. Our experiments show that training embeddings on the relatively higher-resourced Kinyarwanda yields successful cross-lingual transfer to Kirundi. In addition, the design of the created datasets allows for a wider use in NLP beyond text classification in future studies, such as representation learning, cross-lingual learning with more distant languages, or as base for new annotations for tasks such as parsing, POS tagging, and NER. The datasets, stopwords, and pre-trained embeddings are publicly available at https://github.com/Andrews2017/KINNEWS-and-KIRNEWS-Corpus.",
+            "year": 2020,
+            "citationCount": 31,
+            "score": 1
+        },
+        {
+            "id": "268d347e8a55b5eb82fb5e7d2f800e33c75ab18a",
+            "paperId": "268d347e8a55b5eb82fb5e7d2f800e33c75ab18a",
+            "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+            "abstract": "While the Transformer architecture has become the de-facto standard for natural language processing tasks, its applications to computer vision remain limited. In vision, attention is either applied in conjunction with convolutional networks, or used to replace certain components of convolutional networks while keeping their overall structure in place. We show that this reliance on CNNs is not necessary and a pure transformer applied directly to sequences of image patches can perform very well on image classification tasks. When pre-trained on large amounts of data and transferred to multiple mid-sized or small image recognition benchmarks (ImageNet, CIFAR-100, VTAB, etc.), Vision Transformer (ViT) attains excellent results compared to state-of-the-art convolutional networks while requiring substantially fewer computational resources to train.",
+            "year": 2020,
+            "citationCount": 20162,
+            "score": 1
+        },
+        {
+            "id": "74276a37bfa50f90dfae37f767b2b67784bd402a",
+            "paperId": "74276a37bfa50f90dfae37f767b2b67784bd402a",
+            "title": "mT5: A Massively Multilingual Pre-trained Text-to-Text Transformer",
+            "abstract": "The recent \u201cText-to-Text Transfer Transformer\u201d (T5) leveraged a unified text-to-text format and scale to attain state-of-the-art results on a wide variety of English-language NLP tasks. In this paper, we introduce mT5, a multilingual variant of T5 that was pre-trained on a new Common Crawl-based dataset covering 101 languages. We detail the design and modified training of mT5 and demonstrate its state-of-the-art performance on many multilingual benchmarks. We also describe a simple technique to prevent \u201caccidental translation\u201d in the zero-shot setting, where a generative model chooses to (partially) translate its prediction into the wrong language. All of the code and model checkpoints used in this work are publicly available.",
+            "year": 2020,
+            "citationCount": 1672,
+            "score": 1
+        },
+        {
+            "id": "03f22e693a0c00bae8a66a64a2fecb0f11a4b034",
+            "paperId": "03f22e693a0c00bae8a66a64a2fecb0f11a4b034",
+            "title": "IndoNLU: Benchmark and Resources for Evaluating Indonesian Natural Language Understanding",
+            "abstract": "Although Indonesian is known to be the fourth most frequently used language over the internet, the research progress on this language in natural language processing (NLP) is slow-moving due to a lack of available resources. In response, we introduce the first-ever vast resource for training, evaluation, and benchmarking on Indonesian natural language understanding (IndoNLU) tasks. IndoNLU includes twelve tasks, ranging from single sentence classification to pair-sentences sequence labeling with different levels of complexity. The datasets for the tasks lie in different domains and styles to ensure task diversity. We also provide a set of Indonesian pre-trained models (IndoBERT) trained from a large and clean Indonesian dataset (Indo4B) collected from publicly available sources such as social media texts, blogs, news, and websites. We release baseline models for all twelve tasks, as well as the framework for benchmark evaluation, thus enabling everyone to benchmark their system performances.",
+            "year": 2020,
+            "citationCount": 204,
+            "score": 1
+        },
+        {
+            "id": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+            "paperId": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+            "title": "Language Models are Few-Shot Learners",
+            "abstract": "Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by fine-tuning on a specific task. While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a few examples or from simple instructions - something which current NLP systems still largely struggle to do. Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic. At the same time, we also identify some datasets where GPT-3's few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora. Finally, we find that GPT-3 can generate samples of news articles which human evaluators have difficulty distinguishing from articles written by humans. We discuss broader societal impacts of this finding and of GPT-3 in general.",
+            "year": 2020,
+            "citationCount": 24212,
+            "score": 1
+        },
+        {
+            "id": "495da6f19baa09c6db3697d839e10432cdc25934",
+            "paperId": "495da6f19baa09c6db3697d839e10432cdc25934",
+            "title": "Multilingual Denoising Pre-training for Neural Machine Translation",
+            "abstract": "Abstract This paper demonstrates that multilingual denoising pre-training produces significant performance gains across a wide variety of machine translation (MT) tasks. We present mBART\u2014a sequence-to-sequence denoising auto-encoder pre-trained on large-scale monolingual corpora in many languages using the BART objective (Lewis et al., 2019). mBART is the first method for pre-training a complete sequence-to-sequence model by denoising full texts in multiple languages, whereas previous approaches have focused only on the encoder, decoder, or reconstructing parts of the text. Pre-training a complete model allows it to be directly fine-tuned for supervised (both sentence-level and document-level) and unsupervised machine translation, with no task- specific modifications. We demonstrate that adding mBART initialization produces performance gains in all but the highest-resource settings, including up to 12 BLEU points for low resource MT and over 5 BLEU points for many document-level and unsupervised models. We also show that it enables transfer to language pairs with no bi-text or that were not in the pre-training corpus, and present extensive analysis of which factors contribute the most to effective pre-training.1",
+            "year": 2020,
+            "citationCount": 1377,
+            "score": 1
+        },
+        {
+            "id": "63a71de0dafc90910e37a2b07169ff486d9b5fe5",
+            "paperId": "63a71de0dafc90910e37a2b07169ff486d9b5fe5",
+            "title": "Common Voice: A Massively-Multilingual Speech Corpus",
+            "abstract": "The Common Voice corpus is a massively-multilingual collection of transcribed speech intended for speech technology research and development. Common Voice is designed for Automatic Speech Recognition purposes but can be useful in other domains (e.g. language identification). To achieve scale and sustainability, the Common Voice project employs crowdsourcing for both data collection and data validation. The most recent release includes 29 languages, and as of November 2019 there are a total of 38 languages collecting data. Over 50,000 individuals have participated so far, resulting in 2,500 hours of collected audio. To our knowledge this is the largest audio corpus in the public domain for speech recognition, both in terms of number of hours and number of languages. As an example use case for Common Voice, we present speech recognition experiments using Mozilla\u2019s DeepSpeech Speech-to-Text toolkit. By applying transfer learning from a source English model, we find an average Character Error Rate improvement of 5.99 \u00b1 5.48 for twelve target languages (German, French, Italian, Turkish, Catalan, Slovenian, Welsh, Irish, Breton, Tatar, Chuvash, and Kabyle). For most of these languages, these are the first ever published results on end-to-end Automatic Speech Recognition.",
+            "year": 2019,
+            "citationCount": 993,
+            "score": 1
+        }
+    ]
+}

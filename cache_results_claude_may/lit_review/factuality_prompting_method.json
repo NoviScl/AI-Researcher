@@ -1,0 +1,817 @@
+{
+    "topic_description": "novel prompting methods that can improve factuality and reduce hallucination of large language models",
+    "all_queries": [
+        "KeywordQuery(\"language model prompting factuality hallucination\")",
+        "PaperQuery(\"4b0b56be0ae9479d2bd5c2f0943db1906343c10f\")",
+        "GetReferences(\"fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f\")",
+        "PaperQuery(\"93e71ad3f5e2b203a3f5fa7adbea5c31d8c5f24f\")",
+        "PaperQuery(\"620a1a585a5e433a47103c112de17553a81fcbe6\")"
+    ],
+    "paper_bank": [
+        {
+            "id": "fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f",
+            "paperId": "fcdcd4b0c5e6c4726e31576e83fc4554bc09e59f",
+            "title": "HalluciBot: Is There No Such Thing as a Bad Question?",
+            "abstract": "Hallucination continues to be one of the most critical challenges in the institutional adoption journey of Large Language Models (LLMs). In this context, an overwhelming number of studies have focused on analyzing the post-generation phase - refining outputs via feedback, analyzing logit output values, or deriving clues via the outputs' artifacts. We propose HalluciBot, a model that predicts the probability of hallucination $\\textbf{before generation}$, for any query imposed to an LLM. In essence, HalluciBot does not invoke any generation during inference. To derive empirical evidence for HalluciBot, we employ a Multi-Agent Monte Carlo Simulation using a Query Perturbator to craft $n$ variations per query at train time. The construction of our Query Perturbator is motivated by our introduction of a new definition of hallucination - $\\textit{truthful hallucination}$. Our training methodology generated 2,219,022 estimates for a training corpus of 369,837 queries, spanning 13 diverse datasets and 3 question-answering scenarios. HalluciBot predicts both binary and multi-class probabilities of hallucination, enabling a means to judge the query's quality with regards to its propensity to hallucinate. Therefore, HalluciBot paves the way to revise or cancel a query before generation and the ensuing computational waste. Moreover, it provides a lucid means to measure user accountability for hallucinatory queries.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 9
+        },
+        {
+            "id": "411b725522e2747e890ba5acfbf43d22f759c00a",
+            "paperId": "411b725522e2747e890ba5acfbf43d22f759c00a",
+            "title": "Unsupervised Real-Time Hallucination Detection based on the Internal States of Large Language Models",
+            "abstract": "Hallucinations in large language models (LLMs) refer to the phenomenon of LLMs producing responses that are coherent yet factually inaccurate. This issue undermines the effectiveness of LLMs in practical applications, necessitating research into detecting and mitigating hallucinations of LLMs. Previous studies have mainly concentrated on post-processing techniques for hallucination detection, which tend to be computationally intensive and limited in effectiveness due to their separation from the LLM's inference process. To overcome these limitations, we introduce MIND, an unsupervised training framework that leverages the internal states of LLMs for real-time hallucination detection without requiring manual annotations. Additionally, we present HELM, a new benchmark for evaluating hallucination detection across multiple LLMs, featuring diverse LLM outputs and the internal states of LLMs during their inference process. Our experiments demonstrate that MIND outperforms existing state-of-the-art methods in hallucination detection.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 9
+        },
+        {
+            "id": "620a1a585a5e433a47103c112de17553a81fcbe6",
+            "paperId": "620a1a585a5e433a47103c112de17553a81fcbe6",
+            "title": "Automatic Hallucination Assessment for Aligned Large Language Models via Transferable Adversarial Attacks",
+            "abstract": "Although remarkable progress has been achieved in preventing large language model (LLM) hallucinations using instruction tuning and retrieval augmentation, it remains challenging to measure the reliability of LLMs using human-crafted evaluation data which is not available for many tasks and domains and could suffer from data leakage. Inspired by adversarial machine learning, this paper aims to develop a method of automatically generating evaluation data by appropriately modifying existing data on which LLMs behave faithfully. Specifically, this paper presents AutoDebug, an LLM-based framework to use prompting chaining to generate transferable adversarial attacks in the form of question-answering examples. We seek to understand the extent to which these examples trigger the hallucination behaviors of LLMs. We implement AutoDebug using ChatGPT and evaluate the resulting two variants of a popular open-domain question-answering dataset, Natural Questions (NQ), on a collection of open-source and proprietary LLMs under various prompting settings. Our generated evaluation data is human-readable and, as we show, humans can answer these modified questions well. Nevertheless, we observe pronounced accuracy drops across multiple LLMs including GPT-4. Our experimental results show that LLMs are likely to hallucinate in two categories of question-answering scenarios where (1) there are conflicts between knowledge given in the prompt and their parametric knowledge, or (2) the knowledge expressed in the prompt is complex. Finally, we find that the adversarial examples generated by our method are transferable across all considered LLMs. The examples generated by a small model can be used to debug a much larger model, making our approach cost-effective.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents AutoDebug, an LLM-based framework to use prompting chaining to generate transferable adversarial attacks in the form of question-answering examples, and finds that the adversarial examples generated by the method are transferable across all considered LLMs."
+            },
+            "score": 8
+        },
+        {
+            "id": "3a89e289e2dd29f5e52a2bf354a637762b661257",
+            "paperId": "3a89e289e2dd29f5e52a2bf354a637762b661257",
+            "title": "Fine-tuning Language Models for Factuality",
+            "abstract": "The fluency and creativity of large pre-trained language models (LLMs) have led to their widespread use, sometimes even as a replacement for traditional search engines. Yet language models are prone to making convincing but factually inaccurate claims, often referred to as 'hallucinations.' These errors can inadvertently spread misinformation or harmfully perpetuate misconceptions. Further, manual fact-checking of model responses is a time-consuming process, making human factuality labels expensive to acquire. In this work, we fine-tune language models to be more factual, without human labeling and targeting more open-ended generation settings than past work. We leverage two key recent innovations in NLP to do so. First, several recent works have proposed methods for judging the factuality of open-ended text by measuring consistency with an external knowledge base or simply a large model's confidence scores. Second, the direct preference optimization algorithm enables straightforward fine-tuning of language models on objectives other than supervised imitation, using a preference ranking over possible model responses. We show that learning from automatically generated factuality preference rankings, generated either through existing retrieval systems or our novel retrieval-free approach, significantly improves the factuality (percent of generated claims that are correct) of Llama-2 on held-out topics compared with RLHF or decoding strategies targeted at factuality. At 7B scale, compared to Llama-2-chat, we observe 58% and 40% reduction in factual error rate when generating biographies and answering medical questions, respectively.",
+            "year": 2023,
+            "citationCount": 55,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that learning from automatically generated factuality preference rankings, generated either through existing retrieval systems or the novel retrieval-free approach, significantly improves the factuality of Llama-2 on held-out topics compared with RLHF or decoding strategies targeted at factuality."
+            },
+            "score": 8
+        },
+        {
+            "id": "4b0b56be0ae9479d2bd5c2f0943db1906343c10f",
+            "paperId": "4b0b56be0ae9479d2bd5c2f0943db1906343c10f",
+            "title": "Chain-of-Verification Reduces Hallucination in Large Language Models",
+            "abstract": "Generation of plausible yet incorrect factual information, termed hallucination, is an unsolved issue in large language models. We study the ability of language models to deliberate on the responses they give in order to correct their mistakes. We develop the Chain-of-Verification (CoVe) method whereby the model first (i) drafts an initial response; then (ii) plans verification questions to fact-check its draft; (iii) answers those questions independently so the answers are not biased by other responses; and (iv) generates its final verified response. In experiments, we show CoVe decreases hallucinations across a variety of tasks, from list-based questions from Wikidata, closed book MultiSpanQA and longform text generation.",
+            "year": 2023,
+            "citationCount": 53,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Chain-of-Verification (CoVe) method is developed, whereby the model first drafts an initial response; then plans verification questions to fact-check its draft; and answers those questions independently so the answers are not biased by other responses."
+            },
+            "score": 8
+        },
+        {
+            "id": "6073b9a4856d726c270f03ebee54ea7658f16ec1",
+            "paperId": "6073b9a4856d726c270f03ebee54ea7658f16ec1",
+            "title": "Entropy Guided Extrapolative Decoding to Improve Factuality in Large Language Models",
+            "abstract": "Large language models (LLMs) exhibit impressive natural language capabilities but suffer from hallucination -- generating content ungrounded in the realities of training data. Recent work has focused on decoding techniques to improve factuality during inference by leveraging LLMs' hierarchical representation of factual knowledge, manipulating the predicted distributions at inference time. Current state-of-the-art approaches refine decoding by contrasting early-exit distributions from a lower layer with the final layer to exploit information related to factuality within the model forward procedure. However, such methods often assume the final layer is the most reliable and the lower layer selection process depends on it. In this work, we first propose extrapolation of critical token probabilities beyond the last layer for more accurate contrasting. We additionally employ layer-wise entropy-guided lower layer selection, decoupling the selection process from the final layer. Experiments demonstrate strong performance - surpassing state-of-the-art on multiple different datasets by large margins. Analyses show different kinds of prompts respond to different selection strategies.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work first proposes extrapolation of critical token probabilities beyond the last layer for more accurate contrasting, and additionally employs layer-wise entropy-guided lower layer selection, decoupling the selection process from the final layer."
+            },
+            "score": 8
+        },
+        {
+            "id": "f05e64c2a096e3762939dfdb7f475724c04a46bd",
+            "paperId": "f05e64c2a096e3762939dfdb7f475724c04a46bd",
+            "title": "Collaborative decoding of critical tokens for boosting factuality of large language models",
+            "abstract": "The most common training pipeline for large language models includes pretraining, finetuning and aligning phases, with their respective resulting models, such as the pretrained model and the finetuned model. Finetuned and aligned models show improved abilities of instruction following and safe generation, however their abilities to stay factual about the world are impacted by the finetuning process. Furthermore, the common practice of using sampling during generation also increases chances of hallucination. In this work, we introduce a collaborative decoding framework to harness the high factuality within pretrained models through the concept of critical tokens. We first design a critical token classifier to decide which model to use for the next token, and subsequently generates the next token using different decoding strategies. Experiments with different models and datasets show that our decoding framework is able to reduce model hallucination significantly, showcasing the importance of the collaborative decoding framework.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a collaborative decoding framework to harness the high factuality within pretrained models through the concept of critical tokens, and designs a critical token classifier to decide which model to use for the next token, and subsequently generates the next token using different decoding strategies."
+            },
+            "score": 8
+        },
+        {
+            "id": "ed8f46f493abce9498851e647d900a4628f6ff7f",
+            "paperId": "ed8f46f493abce9498851e647d900a4628f6ff7f",
+            "title": "In-Context Sharpness as Alerts: An Inner Representation Perspective for Hallucination Mitigation",
+            "abstract": "Large language models (LLMs) frequently hallucinate and produce factual errors, yet our understanding of why they make these errors remains limited. In this study, we delve into the underlying mechanisms of LLM hallucinations from the perspective of inner representations, and discover a salient pattern associated with hallucinations: correct generations tend to have sharper context activations in the hidden states of the in-context tokens, compared to the incorrect ones. Leveraging this insight, we propose an entropy-based metric to quantify the ``sharpness'' among the in-context hidden states and incorporate it into the decoding process to formulate a constrained decoding approach. Experiments on various knowledge-seeking and hallucination benchmarks demonstrate our approach's consistent effectiveness, for example, achieving up to an 8.6 point improvement on TruthfulQA. We believe this study can improve our understanding of hallucinations and serve as a practical solution for hallucination mitigation.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "8c1ad202149f6d9f6aca957734844c077d76c8b8",
+            "paperId": "8c1ad202149f6d9f6aca957734844c077d76c8b8",
+            "title": "In Search of Truth: An Interrogation Approach to Hallucination Detection",
+            "abstract": "Despite the many advances of Large Language Models (LLMs) and their unprecedented rapid evolution, their impact and integration into every facet of our daily lives is limited due to various reasons. One critical factor hindering their widespread adoption is the occurrence of hallucinations, where LLMs invent answers that sound realistic, yet drift away from factual truth. In this paper, we present a novel method for detecting hallucinations in large language models, which tackles a critical issue in the adoption of these models in various real-world scenarios. Through extensive evaluations across multiple datasets and LLMs, including Llama-2, we study the hallucination levels of various recent LLMs and demonstrate the effectiveness of our method to automatically detect them. Notably, we observe up to 62% hallucinations for Llama-2 in a specific experiment, where our method achieves a Balanced Accuracy (B-ACC) of 87%, all without relying on external knowledge.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "93e71ad3f5e2b203a3f5fa7adbea5c31d8c5f24f",
+            "paperId": "93e71ad3f5e2b203a3f5fa7adbea5c31d8c5f24f",
+            "title": "KnowHalu: Hallucination Detection via Multi-Form Knowledge Based Factual Checking",
+            "abstract": "This paper introduces KnowHalu, a novel approach for detecting hallucinations in text generated by large language models (LLMs), utilizing step-wise reasoning, multi-formulation query, multi-form knowledge for factual checking, and fusion-based detection mechanism. As LLMs are increasingly applied across various domains, ensuring that their outputs are not hallucinated is critical. Recognizing the limitations of existing approaches that either rely on the self-consistency check of LLMs or perform post-hoc fact-checking without considering the complexity of queries or the form of knowledge, KnowHalu proposes a two-phase process for hallucination detection. In the first phase, it identifies non-fabrication hallucinations--responses that, while factually correct, are irrelevant or non-specific to the query. The second phase, multi-form based factual checking, contains five key steps: reasoning and query decomposition, knowledge retrieval, knowledge optimization, judgment generation, and judgment aggregation. Our extensive evaluations demonstrate that KnowHalu significantly outperforms SOTA baselines in detecting hallucinations across diverse tasks, e.g., improving by 15.65% in QA tasks and 5.50% in summarization tasks, highlighting its effectiveness and versatility in detecting hallucinations in LLM-generated content.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "22fd8b1c45c43cb5c6d076b16e7de0dd557ef790",
+            "paperId": "22fd8b1c45c43cb5c6d076b16e7de0dd557ef790",
+            "title": "In-Context Learning for Scalable and Online Hallucination Detection in RAGS",
+            "abstract": "Ensuring fidelity to source documents is crucial for the responsible use of Large Language Models (LLMs) in Retrieval Augmented Generation (RAG) systems. We propose a lightweight method for real-time hallucination detection, with potential to be deployed as a model-agnostic microservice to bolster reliability. Using in-context learning, our approach evaluates response factuality at the sentence level without annotated data, promoting transparency and user trust. Compared to other prompt-based and semantic similarity baselines from recent literature, our method improves hallucination detection F1 scores by at least 11%, with consistent performance across different models. This research offers a practical solution for real-time validation of response accuracy in RAG systems, fostering responsible adoption, especially in critical domains where document fidelity is paramount.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "1827dd28ef866eaeb929ddf4bcfa492880aba4c7",
+            "paperId": "1827dd28ef866eaeb929ddf4bcfa492880aba4c7",
+            "title": "A Stitch in Time Saves Nine: Detecting and Mitigating Hallucinations of LLMs by Validating Low-Confidence Generation",
+            "abstract": "Recently developed large language models have achieved remarkable success in generating fluent and coherent text. However, these models often tend to 'hallucinate' which critically hampers their reliability. In this work, we address this crucial problem and propose an approach that actively detects and mitigates hallucinations during the generation process. Specifically, we first identify the candidates of potential hallucination leveraging the model's logit output values, check their correctness through a validation procedure, mitigate the detected hallucinations, and then continue with the generation process. Through extensive experiments with GPT-3.5 (text-davinci-003) on the 'article generation task', we first demonstrate the individual efficacy of our detection and mitigation techniques. Specifically, the detection technique achieves a recall of ~88% and the mitigation technique successfully mitigates 57.6% of the correctly detected hallucinations. Importantly, our mitigation technique does not introduce new hallucinations even in the case of incorrectly detected hallucinations, i.e., false positives. Then, we show that the proposed active detection and mitigation approach successfully reduces the hallucinations of the GPT-3.5 model from 47.5% to 14.5% on average. We further demonstrate the effectiveness and wide applicability of our approach through additional studies including performance on different types of questions (multi-hop and false premise questions) and with another LLM from a different model family (Vicuna). In summary, our work contributes to improving the reliability and trustworthiness of large language models, a crucial step en route to enabling their widespread adoption in real-world applications.",
+            "year": 2023,
+            "citationCount": 57,
+            "score": 8
+        },
+        {
+            "id": "659df3de2c4f21b17811b70e45a04702adbf8bfc",
+            "paperId": "659df3de2c4f21b17811b70e45a04702adbf8bfc",
+            "title": "Ask, Assess, and Refine: Rectifying Factual Consistency and Hallucination in LLMs with Metric-Guided Feedback Learning",
+            "abstract": "Recent advancements in Large Language Models (LLMs) have heralded unprecedented capabilities in information-seeking and text generation, as evidenced by applications like Bing Chat and perplexity.ai. Despite these strides, challenges on hallucination and factual inconsistency continue to impede their wider real-world adoption. Contemporary methods, including retrieval-augmented LLMs and feedback-based learning, serve as alternatives to mitigate these challenges. However, challenges remain, particularly regarding referencing erroneous evidence (citation errors) and generating information not present in the evidence (hallucination). In this paper, we introduce the \\mathsf{A}^2\\mathsf{R} framework: Ask, Assess, and Refine. Our approach utilizes an explicit evaluation paradigm, incorporating metrics specifically tailored to assess citation errors and hallucination, aiming to address these prevalent challenges robustly. Capitalizing on these evaluations, we devise a strategy to formulate actionable natural language feedback, enabling iterative refinements that yield improved factual consistency and reduced hallucinations in responses. Our experiments on ASQA, ELI5, and QAMPARI datasets demonstrate our method\u2019s superiority in enhancing correctness, fluency, and citation quality.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 8
+        },
+        {
+            "id": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "paperId": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in language generation, understanding, and few-shot learning in recent years. An extensive body of work has explored how their performance may be further improved through the tools of prompting, ranging from verification, self-consistency, or intermediate scratchpads. In this paper, we present a complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer. Our findings indicate that this approach significantly enhances mathematical and strategic reasoning across a number of tasks. We also demonstrate that our approach improves the factual validity of generated content, reducing fallacious answers and hallucinations that contemporary models are prone to. Our approach may be directly applied to existing black-box models and uses identical procedure and prompts for all tasks we investigate. Overall, our findings suggest that such\"society of minds\"approach has the potential to significantly advance the capabilities of LLMs and pave the way for further breakthroughs in language generation and understanding.",
+            "year": 2023,
+            "citationCount": 206,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer is presented, indicating that this approach significantly enhances mathematical and strategic reasoning across a number of tasks."
+            },
+            "score": 7
+        },
+        {
+            "id": "9efa81ec4954b0859c47dad8f42edfaf8bced69b",
+            "paperId": "9efa81ec4954b0859c47dad8f42edfaf8bced69b",
+            "title": "Boosting Language Models Reasoning with Chain-of-Knowledge Prompting",
+            "abstract": "Recently, Chain-of-Thought (CoT) prompting has delivered success on complex reasoning tasks, which aims at designing a simple prompt like ``Let's think step by step'' or multiple in-context exemplars with well-designed rationales to elicit Large Language Models (LLMs) to generate intermediate reasoning steps. However, the generated rationales often come with mistakes, making unfactual and unfaithful reasoning chains. To mitigate this brittleness, we propose a novel Chain-of-Knowledge (CoK) prompting, where we aim at eliciting LLMs to generate explicit pieces of knowledge evidence in the form of structure triple. This is inspired by our human behaviors, i.e., we can draw a mind map or knowledge map as the reasoning evidence in the brain before answering a complex question. Benefiting from CoK, we additionally introduce a F^2-Verification method to estimate the reliability of the reasoning chains in terms of factuality and faithfulness. For the unreliable response, the wrong evidence can be indicated to prompt the LLM to rethink. Extensive experiments demonstrate that our method can further improve the performance of commonsense, factual, symbolic, and arithmetic reasoning tasks.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel Chain-of-Knowledge prompting, where it aims at eliciting LLMs to generate explicit pieces of knowledge evidence in the form of structure triple, and introduces a F^2-Verification method to estimate the reliability of the reasoning chains in terms of factuality and faithfulness."
+            },
+            "score": 7
+        },
+        {
+            "id": "cd2e04598909158494e556823d9de8baa692cee2",
+            "paperId": "cd2e04598909158494e556823d9de8baa692cee2",
+            "title": "Towards Mitigating Hallucination in Large Language Models via Self-Reflection",
+            "abstract": "Large language models (LLMs) have shown promise for generative and knowledge-intensive tasks including question-answering (QA) tasks. However, the practical deployment still faces challenges, notably the issue of\"hallucination\", where models generate plausible-sounding but unfaithful or nonsensical information. This issue becomes particularly critical in the medical domain due to the uncommon professional concepts and potential social risks involved. This paper analyses the phenomenon of hallucination in medical generative QA systems using widely adopted LLMs and datasets. Our investigation centers on the identification and comprehension of common problematic answers, with a specific emphasis on hallucination. To tackle this challenge, we present an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation. Through this feedback process, our approach steadily enhances the factuality, consistency, and entailment of the generated answers. Consequently, we harness the interactivity and multitasking ability of LLMs and produce progressively more precise and accurate answers. Experimental results on both automatic and human evaluation demonstrate the superiority of our approach in hallucination reduction compared to baselines.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper analyses the phenomenon of hallucination in medical generative QA systems using widely adopted LLMs and datasets and presents an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation that steadily enhances the factuality, consistency, and entailment of the generated answers."
+            },
+            "score": 7
+        },
+        {
+            "id": "8a9ede4be8458629d54451d241a8d0ae318d471b",
+            "paperId": "8a9ede4be8458629d54451d241a8d0ae318d471b",
+            "title": "Prompting with Divide-and-Conquer Program Makes Large Language Models Discerning to Hallucination and Deception",
+            "abstract": "Foundation models, such as Large language Models (LLMs), have attracted significant amount of interest due to their large number of applications. Existing works show that appropriate prompt design, such as Chain-of-Thoughts, can unlock LLM's powerful capacity in diverse areas. However, when handling tasks involving repetitive sub-tasks and/or deceptive contents, such as arithmetic calculation and article-level fake news detection, existing prompting strategies either suffers from insufficient expressive power or intermediate errors triggered by hallucination. To make LLM more discerning to such intermediate errors, we propose to guide LLM with a Divide-and-Conquer program that simultaneously ensures superior expressive power and disentangles task decomposition, sub-task resolution, and resolution assembly process. Theoretic analysis reveals that our strategy can guide LLM to extend the expressive power of fixed-depth Transformer. Experiments indicate that our proposed method can achieve better performance than typical prompting strategies in tasks bothered by intermediate errors and deceptive contents, such as large integer multiplication, hallucination detection and misinformation detection.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes to guide LLM with a Divide-and-Conquer program that simultaneously ensures superior expressive power and disentangles task decomposition, sub-task resolution, and resolution assembly process andoretic analysis reveals that this strategy can guide LLM to extend the expressive power of fixed-depth Transformer."
+            },
+            "score": 7
+        },
+        {
+            "id": "6af460d34bfc8e955e43fbe15cedcf329b48bc19",
+            "paperId": "6af460d34bfc8e955e43fbe15cedcf329b48bc19",
+            "title": "SAC3: Reliable Hallucination Detection in Black-Box Language Models via Semantic-aware Cross-check Consistency",
+            "abstract": "Hallucination detection is a critical step toward understanding the trustworthiness of modern language models (LMs). To achieve this goal, we re-examine existing detection approaches based on the self-consistency of LMs and uncover two types of hallucinations resulting from 1) question-level and 2) model-level, which cannot be effectively identified through self-consistency check alone. Building upon this discovery, we propose a novel sampling-based method, i.e., semantic-aware cross-check consistency (SAC3) that expands on the principle of self-consistency checking. Our SAC3 approach incorporates additional mechanisms to detect both question-level and model-level hallucinations by leveraging advances including semantically equivalent question perturbation and cross-model response consistency checking. Through extensive and systematic empirical analysis, we demonstrate that SAC3 outperforms the state of the art in detecting both non-factual and factual statements across multiple question-answering and open-domain generation benchmarks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel sampling-based method, i.e., semantic-aware cross-check consistency (SAC3) that expands on the principle of self-consistency checking and demonstrates that SAC3 outperforms the state of the art in detecting both non-factual and factual statements across multiple question-answering and open-domain generation benchmarks."
+            },
+            "score": 7
+        },
+        {
+            "id": "5ca298600704d76adfc546742f85010f168efd1f",
+            "paperId": "5ca298600704d76adfc546742f85010f168efd1f",
+            "title": "Mechanisms of non-factual hallucinations in language models",
+            "abstract": "State-of-the-art language models (LMs) sometimes generate non-factual hallucinations that misalign with world knowledge. Despite extensive efforts to detect and mitigate hallucinations, understanding their internal mechanisms remains elusive. Our study investigates the mechanistic causes of hallucination, specifically non-factual ones where the LM incorrectly predicts object attributes in response to subject-relation queries. With causal mediation analysis and embedding space projection, we identify two general mechanistic causes of hallucinations shared across LMs of various scales and designs: 1) insufficient subject attribute knowledge in lower layer MLPs, and 2) failing to select the correct object attribute in upper layer attention heads and MLPs. These two mechanisms exhibit varying degrees of subject-object association, predictive uncertainty and perturbation robustness. Additionally, we scrutinize LM pre-training checkpoints, revealing distinct learning dynamics for the two mechanistic causes of hallucinations. We also highlight how attribution features from our causal analysis can effectively construct hallucination detectors. Our work proposes a mechanistic understanding of LM factual errors.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "fc90bbf8c1a5584bc252ca0b5c4555e36f1ff963",
+            "paperId": "fc90bbf8c1a5584bc252ca0b5c4555e36f1ff963",
+            "title": "MetaCheckGPT -- A Multi-task Hallucination Detector Using LLM Uncertainty and Meta-models",
+            "abstract": "Hallucinations in large language models (LLMs) have recently become a significant problem. A recent effort in this direction is a shared task at Semeval 2024 Task 6, SHROOM, a Shared-task on Hallucinations and Related Observable Overgeneration Mistakes. This paper describes our winning solution ranked 1st and 2nd in the 2 sub-tasks of model agnostic and model aware tracks respectively. We propose a meta-regressor framework of LLMs for model evaluation and integration that achieves the highest scores on the leaderboard. We also experiment with various transformer-based models and black box methods like ChatGPT, Vectara, and others. In addition, we perform an error analysis comparing GPT4 against our best model which shows the limitations of the former.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "7b1be2e7e8cf044959b3d711bd0d3806a2d2fd12",
+            "paperId": "7b1be2e7e8cf044959b3d711bd0d3806a2d2fd12",
+            "title": "Zero-Shot Multi-task Hallucination Detection",
+            "abstract": "In recent studies, the extensive utilization of large language models has underscored the importance of robust evaluation methodologies for assessing text generation quality and relevance to specific tasks. This has revealed a prevalent issue known as hallucination, an emergent condition in the model where generated text lacks faithfulness to the source and deviates from the evaluation criteria. In this study, we formally define hallucination and propose a framework for its quantitative detection in a zero-shot setting, leveraging our definition and the assumption that model outputs entail task and sample specific inputs. In detecting hallucinations, our solution achieves an accuracy of 0.78 in a model-aware setting and 0.61 in a model-agnostic setting. Notably, our solution maintains computational efficiency, requiring far less computational resources than other SOTA approaches, aligning with the trend towards lightweight and compressed models.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "3aaf6a2cbad5850ad81ab5c163599cb3d523436f",
+            "paperId": "3aaf6a2cbad5850ad81ab5c163599cb3d523436f",
+            "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+            "abstract": "Like humans, large language models (LLMs) do not always generate the best output on their first try. Motivated by how humans refine their written text, we introduce Self-Refine, an approach for improving initial outputs from LLMs through iterative feedback and refinement. The main idea is to generate an initial output using an LLMs; then, the same LLMs provides feedback for its output and uses it to refine itself, iteratively. Self-Refine does not require any supervised training data, additional training, or reinforcement learning, and instead uses a single LLM as the generator, refiner, and feedback provider. We evaluate Self-Refine across 7 diverse tasks, ranging from dialog response generation to mathematical reasoning, using state-of-the-art (GPT-3.5, ChatGPT, and GPT-4) LLMs. Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance. Our work demonstrates that even state-of-the-art LLMs like GPT-4 can be further improved at test time using our simple, standalone approach.",
+            "year": 2023,
+            "citationCount": 504,
+            "score": 7
+        },
+        {
+            "id": "b2542a738b75ee9b7ce1a13d8b78f9095d212412",
+            "paperId": "b2542a738b75ee9b7ce1a13d8b78f9095d212412",
+            "title": "Generate rather than Retrieve: Large Language Models are Strong Context Generators",
+            "abstract": "Knowledge-intensive tasks, such as open-domain question answering (QA), require access to a large amount of world or domain knowledge. A common approach for knowledge-intensive tasks is to employ a retrieve-then-read pipeline that first retrieves a handful of relevant contextual documents from an external corpus such as Wikipedia and then predicts an answer conditioned on the retrieved documents. In this paper, we present a novel perspective for solving knowledge-intensive tasks by replacing document retrievers with large language model generators. We call our method generate-then-read (GenRead), which first prompts a large language model to generate contextutal documents based on a given question, and then reads the generated documents to produce the final answer. Furthermore, we propose a novel clustering-based prompting method that selects distinct prompts, resulting in the generated documents that cover different perspectives, leading to better recall over acceptable answers. We conduct extensive experiments on three different knowledge-intensive tasks, including open-domain QA, fact checking, and dialogue system. Notably, GenRead achieves 71.6 and 54.4 exact match scores on TriviaQA and WebQ, significantly outperforming the state-of-the-art retrieve-then-read pipeline DPR-FiD by +4.0 and +3.9, without retrieving any documents from any external knowledge source. Lastly, we demonstrate the model performance can be further improved by combining retrieval and generation. Our code and generated documents can be found at https://github.com/wyu97/GenRead.",
+            "year": 2022,
+            "citationCount": 178,
+            "score": 7
+        },
+        {
+            "id": "92173d081b15824d22a9ef070e118744ceee8052",
+            "paperId": "92173d081b15824d22a9ef070e118744ceee8052",
+            "title": "Show Your Work: Scratchpads for Intermediate Computation with Language Models",
+            "abstract": "Large pre-trained language models perform remarkably well on tasks that can be done\"in one pass\", such as generating realistic text or synthesizing computer programs. However, they struggle with tasks that require unbounded multi-step computation, such as adding integers or executing programs. Surprisingly, we find that these same models are able to perform complex multi-step computations -- even in the few-shot regime -- when asked to perform the operation\"step by step\", showing the results of intermediate computations. In particular, we train transformers to perform multi-step computations by asking them to emit intermediate computation steps into a\"scratchpad\". On a series of increasingly complex tasks ranging from long addition to the execution of arbitrary programs, we show that scratchpads dramatically improve the ability of language models to perform multi-step computations.",
+            "year": 2021,
+            "citationCount": 448,
+            "score": 7
+        },
+        {
+            "id": "27d55a944b5c02b8c10eb250773d8eb082e06476",
+            "paperId": "27d55a944b5c02b8c10eb250773d8eb082e06476",
+            "title": "Detecting and Mitigating Hallucination in Large Vision Language Models via Fine-Grained AI Feedback",
+            "abstract": "The rapidly developing Large Vision Language Models (LVLMs) have shown notable capabilities on a range of multi-modal tasks, but still face the hallucination phenomena where the generated texts do not align with the given contexts, significantly restricting the usages of LVLMs. Most previous work detects and mitigates hallucination at the coarse-grained level or requires expensive annotation (e.g., labeling by proprietary models or human experts). To address these issues, we propose detecting and mitigating hallucinations in LVLMs via fine-grained AI feedback. The basic idea is that we generate a small-size sentence-level hallucination annotation dataset by proprietary models, whereby we train a hallucination detection model which can perform sentence-level hallucination detection, covering primary hallucination types (i.e., object, attribute, and relationship). Then, we propose a detect-then-rewrite pipeline to automatically construct preference dataset for training hallucination mitigating model. Furthermore, we propose differentiating the severity of hallucinations, and introducing a Hallucination Severity-Aware Direct Preference Optimization (HSA-DPO) for mitigating hallucination in LVLMs by incorporating the severity of hallucinations into preference learning. Extensive experiments demonstrate the effectiveness of our method.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "e6dab08d936e0192b0ea197527f5a4e845db424a",
+            "paperId": "e6dab08d936e0192b0ea197527f5a4e845db424a",
+            "title": "Truth-Aware Context Selection: Mitigating the Hallucinations of Large Language Models Being Misled by Untruthful Contexts",
+            "abstract": "Although large language models (LLMs) have demonstrated impressive text generation capabilities, they are easily misled by the untruthful context provided by users or knowledge augmentation tools, thereby producing hallucinations. To alleviate the LLMs from being misled by untruthful information and take advantage of knowledge augmentation, we propose Truth-Aware Context Selection (TACS), a lightweight method to shield untruthful context from the inputs. TACS begins by performing truth detection on the input context, leveraging the parameterized knowledge within the LLM. Subsequently, it constructs a corresponding attention mask based on the truthfulness of each position, selecting the truthful context and discarding the untruthful context. Additionally, we introduce a new evaluation metric, Disturbance Adaption Rate, to further study the LLMs' ability to accept truthful information and resist untruthful information. Experimental results show that TACS can effectively filter information in context and significantly improve the overall quality of LLMs' responses when presented with misleading information.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 7
+        },
+        {
+            "id": "678cfca72b7de72b005f71207bc8a522ea9ac62c",
+            "paperId": "678cfca72b7de72b005f71207bc8a522ea9ac62c",
+            "title": "Knowledge-Augmented Language Model Prompting for Zero-Shot Knowledge Graph Question Answering",
+            "abstract": "Large Language Models (LLMs) are capable of performing zero-shot closed-book question answering tasks, based on their internal knowledge stored in parameters during pre-training. However, such internalized knowledge might be insufficient and incorrect, which could lead LLMs to generate factually wrong answers. Furthermore, fine-tuning LLMs to update their knowledge is expensive. To this end, we propose to augment the knowledge directly in the input of LLMs. Specifically, we first retrieve the relevant facts to the input question from the knowledge graph based on semantic similarities between the question and its associated facts. After that, we prepend the retrieved facts to the input question in the form of the prompt, which is then forwarded to LLMs to generate the answer. Our framework, Knowledge-Augmented language model PromptING (KAPING), requires no model training, thus completely zero-shot. We validate the performance of our KAPING framework on the knowledge graph question answering task, that aims to answer the user\u2019s question based on facts over a knowledge graph, on which ours outperforms relevant zero-shot baselines by up to 48% in average, across multiple LLMs of various sizes.",
+            "year": 2023,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The framework, Knowledge-Augmented language model PromptING (KAPING), requires no model training, thus completely zero-shot, and aims to answer the user\u2019s question based on facts over a knowledge graph, on which the authors' outperforms relevant zero- shot baselines by up to 48% in average, across multiple LLMs of various sizes."
+            },
+            "score": 6
+        },
+        {
+            "id": "2c8945b1730f64dc30b13befa7cc8c3f89d08a37",
+            "paperId": "2c8945b1730f64dc30b13befa7cc8c3f89d08a37",
+            "title": "WikiChat: Stopping the Hallucination of Large Language Model Chatbots by Few-Shot Grounding on Wikipedia",
+            "abstract": "This paper presents the first few-shot LLM-based chatbot that almost never hallucinates and has high conversationality and low latency. WikiChat is grounded on the English Wikipedia, the largest curated free-text corpus. WikiChat generates a response from an LLM, retains only the grounded facts, and combines them with additional information it retrieves from the corpus to form factual and engaging responses. We distill WikiChat based on GPT-4 into a 7B-parameter LLaMA model with minimal loss of quality, to significantly improve its latency, cost and privacy, and facilitate research and deployment. Using a novel hybrid human-and-LLM evaluation methodology, we show that our best system achieves 97.3% factual accuracy in simulated conversations. It significantly outperforms all retrieval-based and LLM-based baselines, and by 3.9%, 38.6% and 51.0% on head, tail and recent knowledge compared to GPT-4. Compared to previous state-of-the-art retrieval-based chatbots, WikiChat is also significantly more informative and engaging, just like an LLM. WikiChat achieves 97.9% factual accuracy in conversations with human users about recent topics, 55.0% better than GPT-4, while receiving significantly higher user ratings and more favorable comments.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper distill WikiChat based on GPT-4 into a 7B-parameter LLaMA model with minimal loss of quality, to significantly improve its latency, cost and privacy, and facilitate research and deployment."
+            },
+            "score": 6
+        },
+        {
+            "id": "f543f1d36e4556b50b160c68fd18da3d7db40867",
+            "paperId": "f543f1d36e4556b50b160c68fd18da3d7db40867",
+            "title": "Hallucination Augmented Recitations for Language Models",
+            "abstract": "Attribution is a key concept in large language models (LLMs) as it enables control over information sources and enhances the factuality of LLMs. While existing approaches utilize open book question answering to improve attribution, factual datasets may reward language models to recall facts that they already know from their pretraining data, not attribution. In contrast, counterfactual open book QA datasets would further improve attribution because the answer could only be grounded in the given text. We propose Hallucination Augmented Recitations (HAR) for creating counterfactual datasets by utilizing hallucination in LLMs to improve attribution. For open book QA as a case study, we demonstrate that models finetuned with our counterfactual datasets improve text grounding, leading to better open book QA performance, with up to an 8.0% increase in F1 score. Our counterfactual dataset leads to significantly better performance than using humanannotated factual datasets, even with 4x smaller datasets and 4x smaller models. We observe that improvements are consistent across various model sizes and datasets, including multi-hop, biomedical, and adversarial QA datasets.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Hallucination Augmented Recitations (HAR) for creating counterfactual datasets by utilizing hallucination in LLMs to improve attribution and demonstrates that improvements are consistent across various model sizes and datasets, including multi-hop, biomedical, and adversarial QA datasets."
+            },
+            "score": 6
+        },
+        {
+            "id": "ca261cb681b082e90ca6c7a9d325b4265ed1dc28",
+            "paperId": "ca261cb681b082e90ca6c7a9d325b4265ed1dc28",
+            "title": "MindMap: Knowledge Graph Prompting Sparks Graph of Thoughts in Large Language Models",
+            "abstract": "Large language models (LLMs) have achieved remarkable performance in natural language understanding and generation tasks. However, they often suffer from limitations such as difficulty in incorporating new knowledge, generating hallucinations, and explaining their reasoning process. To address these challenges, we propose a novel prompting pipeline, named \\method, that leverages knowledge graphs (KGs) to enhance LLMs' inference and transparency. Our method enables LLMs to comprehend KG inputs and infer with a combination of implicit and external knowledge. Moreover, our method elicits the mind map of LLMs, which reveals their reasoning pathways based on the ontology of knowledge. We evaluate our method on diverse question \\&answering tasks, especially in medical domains, and show significant improvements over baselines. We also introduce a new hallucination evaluation benchmark and analyze the effects of different components of our method. Our results demonstrate the effectiveness and robustness of our method in merging knowledge from LLMs and KGs for combined inference. To reproduce our results and extend the framework further, we make our codebase available at https://github.com/wyl-willing/MindMap.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel prompting pipeline is proposed that leverages knowledge graphs (KGs) to enhance LLMs' inference and transparency and elicits the mind map of LLMs, which reveals their reasoning pathways based on the ontology of knowledge."
+            },
+            "score": 6
+        },
+        {
+            "id": "c7184f9a914dbfbad59faa5aeaf9ba7019dfcf74",
+            "paperId": "c7184f9a914dbfbad59faa5aeaf9ba7019dfcf74",
+            "title": "Think-on-Graph: Deep and Responsible Reasoning of Large Language Model on Knowledge Graph",
+            "abstract": "Although large language models (LLMs) have achieved significant success in various tasks, they often struggle with hallucination problems, especially in scenarios requiring deep and responsible reasoning. These issues could be partially addressed by introducing external knowledge graphs (KG) in LLM reasoning. In this paper, we propose a new LLM-KG integrating paradigm ``$\\hbox{LLM}\\otimes\\hbox{KG}$'' which treats the LLM as an agent to interactively explore related entities and relations on KGs and perform reasoning based on the retrieved knowledge. We further implement this paradigm by introducing a new approach called Think-on-Graph (ToG), in which the LLM agent iteratively executes beam search on KG, discovers the most promising reasoning paths, and returns the most likely reasoning results. We use a number of well-designed experiments to examine and illustrate the following advantages of ToG: 1) compared with LLMs, ToG has better deep reasoning power; 2) ToG has the ability of knowledge traceability and knowledge correctability by leveraging LLMs reasoning and expert feedback; 3) ToG provides a flexible plug-and-play framework for different LLMs, KGs and prompting strategies without any additional training cost; 4) the performance of ToG with small LLM models could exceed large LLM such as GPT-4 in certain scenarios and this reduces the cost of LLM deployment and application. As a training-free method with lower computational cost and better generality, ToG achieves overall SOTA in 6 out of 9 datasets where most previous SOTAs rely on additional training.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new LLM-KG integrating paradigm is proposed which treats the LLM as an agent to interactively explore related entities and relations on KGs and perform reasoning based on the retrieved knowledge."
+            },
+            "score": 6
+        },
+        {
+            "id": "d48c56dbce88580736c037797666060cb3b03bf7",
+            "paperId": "d48c56dbce88580736c037797666060cb3b03bf7",
+            "title": "On Large Language Models' Hallucination with Regard to Known Facts",
+            "abstract": "Large language models are successful in answering factoid questions but are also prone to hallucination.We investigate the phenomenon of LLMs possessing correct answer knowledge yet still hallucinating from the perspective of inference dynamics, an area not previously covered in studies on hallucinations.We are able to conduct this analysis via two key ideas.First, we identify the factual questions that query the same triplet knowledge but result in different answers. The difference between the model behaviors on the correct and incorrect outputs hence suggests the patterns when hallucinations happen. Second, to measure the pattern, we utilize mappings from the residual streams to vocabulary space. We reveal the different dynamics of the output token probabilities along the depths of layers between the correct and hallucinated cases. In hallucinated cases, the output token's information rarely demonstrates abrupt increases and consistent superiority in the later stages of the model. Leveraging the dynamic curve as a feature, we build a classifier capable of accurately detecting hallucinatory predictions with an 88\\% success rate. Our study shed light on understanding the reasons for LLMs' hallucinations on their known facts, and more importantly, on accurately predicting when they are hallucinating.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "b1e3eaa8d51d53037d01ebb7805d882e5e7860b1",
+            "paperId": "b1e3eaa8d51d53037d01ebb7805d882e5e7860b1",
+            "title": "FACTOID: FACtual enTailment fOr hallucInation Detection",
+            "abstract": "The widespread adoption of Large Language Models (LLMs) has facilitated numerous benefits. However, hallucination is a significant concern. In response, Retrieval Augmented Generation (RAG) has emerged as a highly promising paradigm to improve LLM outputs by grounding them in factual information. RAG relies on textual entailment (TE) or similar methods to check if the text produced by LLMs is supported or contradicted, compared to retrieved documents. This paper argues that conventional TE methods are inadequate for spotting hallucinations in content generated by LLMs. For instance, consider a prompt about the 'USA's stance on the Ukraine war''. The AI-generated text states, ...U.S. President Barack Obama says the U.S. will not put troops in Ukraine...'' However, during the war the U.S. president is Joe Biden which contradicts factual reality. Moreover, current TE systems are unable to accurately annotate the given text and identify the exact portion that is contradicted. To address this, we introduces a new type of TE called ``Factual Entailment (FE).'', aims to detect factual inaccuracies in content generated by LLMs while also highlighting the specific text segment that contradicts reality. We present FACTOID (FACTual enTAILment for hallucInation Detection), a benchmark dataset for FE. We propose a multi-task learning (MTL) framework for FE, incorporating state-of-the-art (SoTA) long text embeddings such as e5-mistral-7b-instruct, along with GPT-3, SpanBERT, and RoFormer. The proposed MTL architecture for FE achieves an avg. 40\\% improvement in accuracy on the FACTOID benchmark compared to SoTA TE methods. As FE automatically detects hallucinations, we assessed 15 modern LLMs and ranked them using our proposed Auto Hallucination Vulnerability Index (HVI_auto). This index quantifies and offers a comparative scale to evaluate and rank LLMs according to their hallucinations.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "7a6fc147f2c0cc43c253778bd712191b10911b9c",
+            "paperId": "7a6fc147f2c0cc43c253778bd712191b10911b9c",
+            "title": "Groundedness in Retrieval-augmented Long-form Generation: An Empirical Study",
+            "abstract": "We present an empirical study of groundedness in long-form question answering (LFQA) by retrieval-augmented large language models (LLMs). In particular, we evaluate whether every generated sentence is grounded in the retrieved documents or the model's pre-training data. Across 3 datasets and 4 model families, our findings reveal that a significant fraction of generated sentences are consistently ungrounded, even when those sentences contain correct ground-truth answers. Additionally, we examine the impacts of factors such as model size, decoding strategy, and instruction tuning on groundedness. Our results show that while larger models tend to ground their outputs more effectively, a significant portion of correct answers remains compromised by hallucinations. This study provides novel insights into the groundedness challenges in LFQA and underscores the necessity for more robust mechanisms in LLMs to mitigate the generation of ungrounded content.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "48a91be5a11140010fe49a912ca834dc3feb50b2",
+            "paperId": "48a91be5a11140010fe49a912ca834dc3feb50b2",
+            "title": "On Early Detection of Hallucinations in Factual Question Answering",
+            "abstract": "While large language models (LLMs) have taken great strides towards helping humans with a plethora of tasks like search and summarization, hallucinations remain a major impediment towards gaining user trust. The fluency and coherence of model generations even when hallucinating makes it difficult to detect whether or not a model is hallucinating. In this work, we explore if the artifacts associated with the model generations can provide hints that the generation will contain hallucinations. Specifically, we probe LLMs at 1) the inputs via Integrated Gradients based token attribution, 2) the outputs via the Softmax probabilities, and 3) the internal state via self-attention and fully-connected layer activations for signs of hallucinations on open-ended question answering tasks. Our results show that the distributions of these artifacts differ between hallucinated and non-hallucinated generations. Building on this insight, we train binary classifiers that use these artifacts as input features to classify model generations into hallucinations and non-hallucinations. These hallucination classifiers achieve up to 0.80 AUROC. We further show that tokens preceding a hallucination can predict the subsequent hallucination before it occurs.",
+            "year": 2023,
+            "citationCount": 2,
+            "score": 6
+        },
+        {
+            "id": "142ebbf4760145f591166bde2564ac70c001e927",
+            "paperId": "142ebbf4760145f591166bde2564ac70c001e927",
+            "title": "Language Models (Mostly) Know What They Know",
+            "abstract": "We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We first show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format. Thus we can approach self-evaluation on open-ended sampling tasks by asking models to first propose answers, and then to evaluate the probability\"P(True)\"that their answers are correct. We find encouraging performance, calibration, and scaling for P(True) on a diverse array of tasks. Performance at self-evaluation further improves when we allow models to consider many of their own samples before predicting the validity of one specific possibility. Next, we investigate whether models can be trained to predict\"P(IK)\", the probability that\"I know\"the answer to a question, without reference to any particular proposed answer. Models perform well at predicting P(IK) and partially generalize across tasks, though they struggle with calibration of P(IK) on new tasks. The predicted P(IK) probabilities also increase appropriately in the presence of relevant source materials in the context, and in the presence of hints towards the solution of mathematical word problems. We hope these observations lay the groundwork for training more honest models, and for investigating how honesty generalizes to cases where models are trained on objectives other than the imitation of human writing.",
+            "year": 2022,
+            "citationCount": 338,
+            "score": 6
+        },
+        {
+            "id": "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+            "paperId": "e7ad08848d5d7c5c47673ffe0da06af443643bda",
+            "title": "Large Language Models are Zero-Shot Reasoners",
+            "abstract": "Pretrained large language models (LLMs) are widely used in many sub-fields of natural language processing (NLP) and generally known as excellent few-shot learners with task-specific exemplars. Notably, chain of thought (CoT) prompting, a recent technique for eliciting complex multi-step reasoning through step-by-step answer examples, achieved the state-of-the-art performances in arithmetics and symbolic reasoning, difficult system-2 tasks that do not follow the standard scaling laws for LLMs. While these successes are often attributed to LLMs' ability for few-shot learning, we show that LLMs are decent zero-shot reasoners by simply adding\"Let's think step by step\"before each answer. Experimental results demonstrate that our Zero-shot-CoT, using the same single prompt template, significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks including arithmetics (MultiArith, GSM8K, AQUA-RAT, SVAMP), symbolic reasoning (Last Letter, Coin Flip), and other logical reasoning tasks (Date Understanding, Tracking Shuffled Objects), without any hand-crafted few-shot examples, e.g. increasing the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with large InstructGPT model (text-davinci-002), as well as similar magnitudes of improvements with another off-the-shelf large model, 540B parameter PaLM. The versatility of this single prompt across very diverse reasoning tasks hints at untapped and understudied fundamental zero-shot capabilities of LLMs, suggesting high-level, multi-task broad cognitive capabilities may be extracted by simple prompting. We hope our work not only serves as the minimal strongest zero-shot baseline for the challenging reasoning benchmarks, but also highlights the importance of carefully exploring and analyzing the enormous zero-shot knowledge hidden inside LLMs before crafting finetuning datasets or few-shot exemplars.",
+            "year": 2022,
+            "citationCount": 1857,
+            "score": 6
+        },
+        {
+            "id": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "paperId": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+            "abstract": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Self-consistency leverages the intuition that a complex reasoning problem typically admits multiple different ways of thinking leading to its unique correct answer. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+            "year": 2022,
+            "citationCount": 1389,
+            "score": 6
+        },
+        {
+            "id": "8f0c4a91b5b7389bdd0ede1d5352212f8664e4cc",
+            "paperId": "8f0c4a91b5b7389bdd0ede1d5352212f8664e4cc",
+            "title": "Is Factuality Decoding a Free Lunch for LLMs? Evaluation on Knowledge Editing Benchmark",
+            "abstract": "The rapid development of large language models (LLMs) enables them to convey factual knowledge in a more human-like fashion. Extensive efforts have been made to reduce factual hallucinations by modifying LLMs with factuality decoding. However, they also pose risks of hindering knowledge updates, as they make models overly confident in known facts. In this work, we first revisite the current factuality decoding methods and verified their effectiveness in enhancing factual accuracy. Subsequently, we conduct further evaluation of several strong factuality decoding methods on the knowledge editing benchmark. All these decoding methods significantly diminish the performance of llama2 models compared to their original decoding, with the largest decrease being a staggering 81.3\\%. This further indicates that the current existing decoding methods still cannot perfectly address the factual hallucinations, as they overlook the importance of preserving the flexibility for knowledge editing. Therefore, our work suggests that research into factual alignment should simultaneously focus on the effectiveness of knowledge editing.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "0b217fdd06c4757bd843cd8be79df0e0288d477b",
+            "paperId": "0b217fdd06c4757bd843cd8be79df0e0288d477b",
+            "title": "Pensieve: Retrospect-then-Compare Mitigates Visual Hallucination",
+            "abstract": "Multi-modal Large Language Models (MLLMs) demonstrate remarkable success across various vision-language tasks. However, they suffer from visual hallucination, where the generated responses diverge from the provided image. Are MLLMs completely oblivious to accurate visual cues when they hallucinate? Our investigation reveals that the visual branch may simultaneously advocate both accurate and non-existent content. To address this issue, we propose Pensieve, a training-free method inspired by our observation that analogous visual hallucinations can arise among images sharing common semantic and appearance characteristics. During inference, Pensieve enables MLLMs to retrospect relevant images as references and compare them with the test image. This paradigm assists MLLMs in downgrading hallucinatory content mistakenly supported by the visual input. Experiments on Whoops, MME, POPE, and LLaVA Bench demonstrate the efficacy of Pensieve in mitigating visual hallucination, surpassing other advanced decoding strategies. Additionally, Pensieve aids MLLMs in identifying details in the image and enhancing the specificity of image descriptions.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 6
+        },
+        {
+            "id": "fa6618681476b6bec51b4233ab83658f1f9a6db7",
+            "paperId": "fa6618681476b6bec51b4233ab83658f1f9a6db7",
+            "title": "Enhancing LLM Factual Accuracy with RAG to Counter Hallucinations: A Case Study on Domain-Specific Queries in Private Knowledge-Bases",
+            "abstract": "We proposed an end-to-end system design towards utilizing Retrieval Augmented Generation (RAG) to improve the factual accuracy of Large Language Models (LLMs) for domain-specific and time-sensitive queries related to private knowledge-bases. Our system integrates RAG pipeline with upstream datasets processing and downstream performance evaluation. Addressing the challenge of LLM hallucinations, we finetune models with a curated dataset which originates from CMU's extensive resources and annotated with the teacher model. Our experiments demonstrate the system's effectiveness in generating more accurate answers to domain-specific and time-sensitive inquiries. The results also revealed the limitations of fine-tuning LLMs with small-scale and skewed datasets. This research highlights the potential of RAG systems in augmenting LLMs with external datasets for improved performance in knowledge-intensive tasks. Our code and models are available on Github.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 6
+        },
+        {
+            "id": "4e274196324bad3e750e83235516af06733e701d",
+            "paperId": "4e274196324bad3e750e83235516af06733e701d",
+            "title": "Unfamiliar Finetuning Examples Control How Language Models Hallucinate",
+            "abstract": "Large language models (LLMs) have a tendency to generate plausible-sounding yet factually incorrect responses, especially when queried on unfamiliar concepts. In this work, we explore the underlying mechanisms that govern how finetuned LLMs hallucinate. Our investigation reveals an interesting pattern: as inputs become more unfamiliar, LLM outputs tend to default towards a ``hedged'' prediction, whose form is determined by how the unfamiliar examples in the finetuning data are supervised. Thus, by strategically modifying these examples' supervision, we can control LLM predictions for unfamiliar inputs (e.g., teach them to say ``I don't know''). Based on these principles, we develop an RL approach that more reliably mitigates hallucinations for long-form generation tasks, by tackling the challenges presented by reward model hallucinations. We validate our findings with a series of controlled experiments in multiple-choice QA on MMLU, as well as long-form biography and book/movie plot generation tasks.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+            "paperId": "f1e56def812bc398d1b2b8c9a7ea6a623abd38e5",
+            "title": "Gradient-based Constrained Sampling from Language Models",
+            "abstract": "Large pretrained language models are successful at generating fluent text but are notoriously hard to controllably sample from. In this work, we study constrained sampling from such language models, i.e., generating text that satisfies user-defined constraints, while maintaining fluency and model\u2019s performance in a downstream task. We propose MuCoLa\u2014a sampling procedure that combines the log-likelihood of the language model with arbitrary (differentiable) constraints in a single energy function, and then generates samples in a non-autoregressive manner. Specifically, it initializes the entire output sequence with noise and follows a Markov chain defined by Langevin Dynamics using the gradients of this energy. We evaluate MuCoLa on text generation with soft and hard constraints as well as their combinations, obtaining significant improvements over competitive baselines for toxicity avoidance, sentiment control, and keyword-guided generation.",
+            "year": 2022,
+            "citationCount": 33,
+            "score": 5
+        },
+        {
+            "id": "77d956cdab4508d569ae5741549b78e715fd0749",
+            "paperId": "77d956cdab4508d569ae5741549b78e715fd0749",
+            "title": "TruthfulQA: Measuring How Models Mimic Human Falsehoods",
+            "abstract": "We propose a benchmark to measure whether a language model is truthful in generating answers to questions. The benchmark comprises 817 questions that span 38 categories, including health, law, finance and politics. We crafted questions that some humans would answer falsely due to a false belief or misconception. To perform well, models must avoid generating false answers learned from imitating human texts. We tested GPT-3, GPT-Neo/J, GPT-2 and a T5-based model. The best model was truthful on 58% of questions, while human performance was 94%. Models generated many false answers that mimic popular misconceptions and have the potential to deceive humans. The largest models were generally the least truthful. This contrasts with other NLP tasks, where performance improves with model size. However, this result is expected if false answers are learned from the training distribution. We suggest that scaling up models alone is less promising for improving truthfulness than fine-tuning using training objectives other than imitation of text from the web.",
+            "year": 2021,
+            "citationCount": 703,
+            "score": 5
+        },
+        {
+            "id": "c1bceabbbd5459c3e1d268ed84ab31c6ad28e3b2",
+            "paperId": "c1bceabbbd5459c3e1d268ed84ab31c6ad28e3b2",
+            "title": "Detecting Hallucination and Coverage Errors in Retrieval Augmented Generation for Controversial Topics",
+            "abstract": "We explore a strategy to handle controversial topics in LLM-based chatbots based on Wikipedia's Neutral Point of View (NPOV) principle: acknowledge the absence of a single true answer and surface multiple perspectives. We frame this as retrieval augmented generation, where perspectives are retrieved from a knowledge base and the LLM is tasked with generating a fluent and faithful response from the given perspectives. As a starting point, we use a deterministic retrieval system and then focus on common LLM failure modes that arise during this approach to text generation, namely hallucination and coverage errors. We propose and evaluate three methods to detect such errors based on (1) word-overlap, (2) salience, and (3) LLM-based classifiers. Our results demonstrate that LLM-based classifiers, even when trained only on synthetic errors, achieve high error detection performance, with ROC AUC scores of 95.3% for hallucination and 90.5% for coverage error detection on unambiguous error cases. We show that when no training data is available, our other methods still yield good results on hallucination (84.0%) and coverage error (85.2%) detection.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "4d0f471f0d5c28feab13a0f3bd90228a009b34e1",
+            "paperId": "4d0f471f0d5c28feab13a0f3bd90228a009b34e1",
+            "title": "Prescribing the Right Remedy: Mitigating Hallucinations in Large Vision-Language Models via Targeted Instruction Tuning",
+            "abstract": "Despite achieving outstanding performance on various cross-modal tasks, current large vision-language models (LVLMs) still suffer from hallucination issues, manifesting as inconsistencies between their generated responses and the corresponding images. Prior research has implicated that the low quality of instruction data, particularly the skewed balance between positive and negative samples, is a significant contributor to model hallucinations. Recently, researchers have proposed high-quality instruction datasets, such as LRV-Instruction, to mitigate model hallucination. Nonetheless, our investigation reveals that hallucinatory concepts from different LVLMs exhibit specificity, i.e. the distribution of hallucinatory concepts varies significantly across models. Existing datasets did not consider the hallucination specificity of different models in the design processes, thereby diminishing their efficacy in mitigating model hallucination. In this paper, we propose a targeted instruction data generation framework named DFTG that tailored to the hallucination specificity of different models. Concretely, DFTG consists of two stages: hallucination diagnosis, which extracts the necessary information from the model's responses and images for hallucination diagnosis; and targeted data generation, which generates targeted instruction data based on diagnostic results. The experimental results on hallucination benchmarks demonstrate that the targeted instruction data generated by our method are more effective in mitigating hallucinations compared to previous datasets.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 5
+        },
+        {
+            "id": "1b387e3fbec0447c8bf2dcee21f6db59cdddf698",
+            "paperId": "1b387e3fbec0447c8bf2dcee21f6db59cdddf698",
+            "title": "The Dawn After the Dark: An Empirical Study on Factuality Hallucination in Large Language Models",
+            "abstract": "In the era of large language models (LLMs), hallucination (i.e., the tendency to generate factually incorrect content) poses great challenge to trustworthy and reliable deployment of LLMs in real-world applications. To tackle the LLM hallucination, three key questions should be well studied: how to detect hallucinations (detection), why do LLMs hallucinate (source), and what can be done to mitigate them (mitigation). To address these challenges, this work presents a systematic empirical study on LLM hallucination, focused on the the three aspects of hallucination detection, source and mitigation. Specially, we construct a new hallucination benchmark HaluEval 2.0, and designs a simple yet effective detection method for LLM hallucination. Furthermore, we zoom into the different training or utilization stages of LLMs and extensively analyze the potential factors that lead to the LLM hallucination. Finally, we implement and examine a series of widely used techniques to mitigate the hallucinations in LLMs. Our work has led to several important findings to understand the hallucination origin and mitigate the hallucinations in LLMs. Our code and data can be accessed at https://github.com/RUCAIBox/HaluEval-2.0.",
+            "year": 2024,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work constructs a new hallucination benchmark HaluEval 2.0, designs a simple yet effective detection method for LLM hallucination, and implements and examines a series of widely used techniques to mitigate the hallucinations in LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "17dcfef70619c0423e0527f0c9d90f4858125f5f",
+            "paperId": "17dcfef70619c0423e0527f0c9d90f4858125f5f",
+            "title": "Knowledge Prompting in Pre-trained Language Model for Natural Language Understanding",
+            "abstract": "Knowledge-enhanced Pre-trained Language Model (PLM) has recently received significant attention, which aims to incorporate factual knowledge into PLMs. However, most existing methods modify the internal structures of fixed types of PLMs by stacking complicated modules, and introduce redundant and irrelevant factual knowledge from knowledge bases (KBs). In this paper, to address these problems, we introduce a seminal knowledge prompting paradigm and further propose a knowledge-prompting-based PLM framework KP-PLM. This framework can be flexibly combined with existing mainstream PLMs. Specifically, we first construct a knowledge sub-graph from KBs for each context. Then we design multiple continuous prompts rules and transform the knowledge sub-graph into natural language prompts. To further leverage the factual knowledge from these prompts, we propose two novel knowledge-aware self-supervised tasks including prompt relevance inspection and masked prompt modeling. Extensive experiments on multiple natural language understanding (NLU) tasks show the superiority of KP-PLM over other state-of-the-art methods in both full-resource and low-resource settings. Our source codes will be released upon the acceptance of the paper.",
+            "year": 2022,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a seminal knowledge prompting paradigm and proposes a knowledge-prompting-based PLM framework KP-PLM that can be flexibly combined with existing mainstream PLMs and proposes two novel knowledge-aware self-supervised tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "54b72835912c46b7a5afce4d156f1dadf085b551",
+            "paperId": "54b72835912c46b7a5afce4d156f1dadf085b551",
+            "title": "SLPL SHROOM at SemEval2024 Task 06: A comprehensive study on models ability to detect hallucination",
+            "abstract": "Language models, particularly generative models, are susceptible to hallucinations, generating outputs that contradict factual knowledge or the source text. This study explores methods for detecting hallucinations in three SemEval-2024 Task 6 tasks: Machine Translation, Definition Modeling, and Paraphrase Generation. We evaluate two methods: semantic similarity between the generated text and factual references, and an ensemble of language models that judge each other's outputs. Our results show that semantic similarity achieves moderate accuracy and correlation scores in trial data, while the ensemble method offers insights into the complexities of hallucination detection but falls short of expectations. This work highlights the challenges of hallucination detection and underscores the need for further research in this critical area.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 4
+        },
+        {
+            "id": "108bc0498629f4710b44076fe0c6270954494097",
+            "paperId": "108bc0498629f4710b44076fe0c6270954494097",
+            "title": "On the Limitations of Large Language Models (LLMs): False Attribution",
+            "abstract": "In this work, we provide insight into one important limitation of large language models (LLMs), i.e. false attribution, and introduce a new hallucination metric - Simple Hallucination Index (SHI). The task of automatic author attribution for relatively small chunks of text is an important NLP task but can be challenging. We empirically evaluate the power of 3 open SotA LLMs in zero-shot setting (LLaMA-2-13B, Mixtral 8x7B, and Gemma-7B), especially as human annotation can be costly. We collected the top 10 most popular books, according to Project Gutenberg, divided each one into equal chunks of 400 words, and asked each LLM to predict the author. We then randomly sampled 162 chunks for human evaluation from each of the annotated books, based on the error margin of 7% and a confidence level of 95% for the book with the most chunks (Great Expectations by Charles Dickens, having 922 chunks). The average results show that Mixtral 8x7B has the highest prediction accuracy, the lowest SHI, and a Pearson's correlation (r) of 0.737, 0.249, and -0.9996, respectively, followed by LLaMA-2-13B and Gemma-7B. However, Mixtral 8x7B suffers from high hallucinations for 3 books, rising as high as an SHI of 0.87 (in the range 0-1, where 1 is the worst). The strong negative correlation of accuracy and SHI, given by r, demonstrates the fidelity of the new hallucination metric, which is generalizable to other tasks. We publicly release the annotated chunks of data and our codes to aid the reproducibility and evaluation of other models.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "681406324bdd5a26cbc094d5c74abf9b2cb25d1e",
+            "paperId": "681406324bdd5a26cbc094d5c74abf9b2cb25d1e",
+            "title": "Quantity Matters: Towards Assessing and Mitigating Number Hallucination in Large Vision-Language Models",
+            "abstract": "Large-scale vision-language models have demonstrated impressive skill in handling tasks that involve both areas. Nevertheless, these models frequently experience significant issues with generating inaccurate information, which is hallucination. In this study, we concentrate on a specific type of hallucination-number hallucination, referring to models incorrectly identifying the number of certain objects in pictures. We perform quantitative evaluations regarding number hallucination, showing it to be critical in major open-source large vision-language models. Furthermore, we utilizes two related tasks to conduct an in-depth analysis of number hallucination, revealing the severe inner and outer inconsistency among all tasks. Based on this examination, we devise a training approach aimed at improving consistency to reduce number hallucinations, which leads to an 8% enhancement in performance over direct finetuning methods. Our code and dataset will be released to the community.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 4
+        },
+        {
+            "id": "0f733817e82026f7c29909a51cb4df7d2685f0e7",
+            "paperId": "0f733817e82026f7c29909a51cb4df7d2685f0e7",
+            "title": "PromptChainer: Chaining Large Language Model Prompts through Visual Programming",
+            "abstract": "While LLMs have made it possible to rapidly prototype new ML functionalities, many real-world applications involve complex tasks that cannot be easily handled via a single run of an LLM. Recent work has found that chaining multiple LLM runs together (with the output of one step being the input to the next) can help users accomplish these more complex tasks, and in a way that is perceived to be more transparent and controllable. However, it remains unknown what users need when authoring their own LLM chains \u2013 a key step to lowering the barriers for non-AI-experts to prototype AI-infused applications. In this work, we explore the LLM chain authoring process. We find from pilot studies that users need support transforming data between steps of a chain, as well as debugging the chain at multiple granularities. To address these needs, we designed PromptChainer, an interactive interface for visually programming chains. Through case studies with four designers and developers, we show that PromptChainer supports building prototypes for a range of applications, and conclude with open questions on scaling chains to even more complex tasks, as well as supporting low-fi chain prototyping.",
+            "year": 2022,
+            "citationCount": 131,
+            "score": 4
+        },
+        {
+            "id": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+            "paperId": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+            "title": "Finetuned Language Models Are Zero-Shot Learners",
+            "abstract": "This paper explores a simple method for improving the zero-shot learning abilities of language models. We show that instruction tuning -- finetuning language models on a collection of tasks described via instructions -- substantially improves zero-shot performance on unseen tasks. We take a 137B parameter pretrained language model and instruction-tune it on over 60 NLP tasks verbalized via natural language instruction templates. We evaluate this instruction-tuned model, which we call FLAN, on unseen task types. FLAN substantially improves the performance of its unmodified counterpart and surpasses zero-shot 175B GPT-3 on 20 of 25 tasks that we evaluate. FLAN even outperforms few-shot GPT-3 by a large margin on ANLI, RTE, BoolQ, AI2-ARC, OpenbookQA, and StoryCloze. Ablation studies reveal that number of finetuning datasets, model scale, and natural language instructions are key to the success of instruction tuning.",
+            "year": 2021,
+            "citationCount": 2090,
+            "score": 4
+        },
+        {
+            "id": "59641c10ed7431a3cf841f308367dc2dc0281b74",
+            "paperId": "59641c10ed7431a3cf841f308367dc2dc0281b74",
+            "title": "What Makes Good In-Context Examples for GPT-3?",
+            "abstract": "GPT-3 has attracted lots of attention due to its superior performance across a wide range of NLP tasks, especially with its in-context learning abilities. Despite its success, we found that the empirical results of GPT-3 depend heavily on the choice of in-context examples. In this work, we investigate whether there are more effective strategies for judiciously selecting in-context examples (relative to random sampling) that better leverage GPT-3\u2019s in-context learning capabilities.Inspired by the recent success of leveraging a retrieval module to augment neural networks, we propose to retrieve examples that are semantically-similar to a test query sample to formulate its corresponding prompt. Intuitively, the examples selected with such a strategy may serve as more informative inputs to unleash GPT-3\u2019s power of text generation. We evaluate the proposed approach on several natural language understanding and generation benchmarks, where the retrieval-based prompt selection approach consistently outperforms the random selection baseline. Moreover, it is observed that the sentence encoders fine-tuned on task-related datasets yield even more helpful retrieval results. Notably, significant gains are observed on tasks such as table-to-text generation (44.3% on the ToTTo dataset) and open-domain question answering (45.5% on the NQ dataset).",
+            "year": 2021,
+            "citationCount": 801,
+            "score": 4
+        },
+        {
+            "id": "33422275fbb9958f55419620697faf531482699b",
+            "paperId": "33422275fbb9958f55419620697faf531482699b",
+            "title": "How Can We Know When Language Models Know? On the Calibration of Language Models for Question Answering",
+            "abstract": "Abstract Recent works have shown that language models (LM) capture different types of knowledge regarding facts or common sense. However, because no model is perfect, they still fail to provide appropriate answers in many cases. In this paper, we ask the question, \u201cHow can we know when language models know, with confidence, the answer to a particular query?\u201d We examine this question from the point of view of calibration, the property of a probabilistic model\u2019s predicted probabilities actually being well correlated with the probabilities of correctness. We examine three strong generative models\u2014T5, BART, and GPT-2\u2014and study whether their probabilities on QA tasks are well calibrated, finding the answer is a relatively emphatic no. We then examine methods to calibrate such models to make their confidence scores correlate better with the likelihood of correctness through fine-tuning, post-hoc probability modification, or adjustment of the predicted outputs or inputs. Experiments on a diverse range of datasets demonstrate the effectiveness of our methods. We also perform analysis to study the strengths and limitations of these methods, shedding light on further improvements that may be made in methods for calibrating LMs. We have released the code at https://github.com/jzbjyb/lm-calibration.",
+            "year": 2020,
+            "citationCount": 232,
+            "score": 4
+        },
+        {
+            "id": "222ed42c00e0b6134e5ebcb6dc068a811ef81cb4",
+            "paperId": "222ed42c00e0b6134e5ebcb6dc068a811ef81cb4",
+            "title": "Multi-Modal Hallucination Control by Visual Information Grounding",
+            "abstract": "Generative Vision-Language Models (VLMs) are prone to generate plausible-sounding textual answers that, however, are not always grounded in the input image. We investigate this phenomenon, usually referred to as\"hallucination\"and show that it stems from an excessive reliance on the language prior. In particular, we show that as more tokens are generated, the reliance on the visual prompt decreases, and this behavior strongly correlates with the emergence of hallucinations. To reduce hallucinations, we introduce Multi-Modal Mutual-Information Decoding (M3ID), a new sampling method for prompt amplification. M3ID amplifies the influence of the reference image over the language prior, hence favoring the generation of tokens with higher mutual information with the visual prompt. M3ID can be applied to any pre-trained autoregressive VLM at inference time without necessitating further training and with minimal computational overhead. If training is an option, we show that M3ID can be paired with Direct Preference Optimization (DPO) to improve the model's reliance on the prompt image without requiring any labels. Our empirical findings show that our algorithms maintain the fluency and linguistic capabilities of pre-trained VLMs while reducing hallucinations by mitigating visually ungrounded answers. Specifically, for the LLaVA 13B model, M3ID and M3ID+DPO reduce the percentage of hallucinated objects in captioning tasks by 25% and 28%, respectively, and improve the accuracy on VQA benchmarks such as POPE by 21% and 24%.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 4
+        },
+        {
+            "id": "db577479470b45c0d81fe1b96fe5b133f2d106ec",
+            "paperId": "db577479470b45c0d81fe1b96fe5b133f2d106ec",
+            "title": "PhD: A Prompted Visual Hallucination Evaluation Dataset",
+            "abstract": "The rapid growth of Large Language Models (LLMs) has driven the development of Large Vision-Language Models (LVLMs). The challenge of hallucination, prevalent in LLMs, also emerges in LVLMs. However, most existing efforts mainly focus on object hallucination in LVLM, ignoring diverse types of LVLM hallucinations. In this study, we delve into the Intrinsic Vision-Language Hallucination (IVL-Hallu) issue, thoroughly analyzing different types of IVL-Hallu on their causes and reflections. Specifically, we propose several novel IVL-Hallu tasks and categorize them into four types: (a) object hallucination, which arises from the misidentification of objects, (b) attribute hallucination, which is caused by the misidentification of attributes, (c) multi-modal conflicting hallucination, which derives from the contradictions between textual and visual information, and (d) counter-common-sense hallucination, which owes to the contradictions between the LVLM knowledge and actual images. Based on these taxonomies, we propose a more challenging benchmark named PhD to evaluate and explore IVL-Hallu. An automated pipeline is proposed for generating different types of IVL-Hallu data. Extensive experiments on five SOTA LVLMs reveal their inability to effectively tackle our proposed IVL-Hallu tasks, with detailed analyses and insights on the origins and possible solutions of these new challenging IVL-Hallu tasks, facilitating future researches on IVL-Hallu and LVLM. The benchmark can be accessed at \\href{https://github.com/jiazhen-code/IntrinsicHallu}{this https URL}.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 4
+        },
+        {
+            "id": "982bc3b4025e971f95d8ba071f7bb667cc71e7a4",
+            "paperId": "982bc3b4025e971f95d8ba071f7bb667cc71e7a4",
+            "title": "Mitigating Hallucinations in Large Vision-Language Models with Instruction Contrastive Decoding",
+            "abstract": "Large Vision-Language Models (LVLMs) are increasingly adept at generating contextually detailed and coherent responses from visual inputs. However, their application in multimodal decision-making and open-ended generation is hindered by a notable rate of hallucinations, where generated text inaccurately represents the visual contents. To address this issue, this paper introduces the Instruction Contrastive Decoding (ICD) method, a novel approach designed to reduce hallucinations during LVLM inference. Our method is inspired by our observation that what we call disturbance instructions significantly exacerbate hallucinations in multimodal fusion modules. ICD contrasts distributions from standard and instruction disturbance, thereby increasing alignment uncertainty and effectively subtracting hallucinated concepts from the original distribution. Through comprehensive experiments on discriminative benchmarks (POPE and MME) and a generative benchmark (LLaVa-Bench), we demonstrate that ICD significantly mitigates both object-level and attribute-level hallucinations. Moreover, our method not only addresses hallucinations but also significantly enhances the general perception and recognition capabilities of LVLMs.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 4
+        },
+        {
+            "id": "7d8905a1fd288068f12c8347caeabefd36d0dd6c",
+            "paperId": "7d8905a1fd288068f12c8347caeabefd36d0dd6c",
+            "title": "Gorilla: Large Language Model Connected with Massive APIs",
+            "abstract": "Large Language Models (LLMs) have seen an impressive wave of advances recently, with models now excelling in a variety of tasks, such as mathematical reasoning and program synthesis. However, their potential to effectively use tools via API calls remains unfulfilled. This is a challenging task even for today's state-of-the-art LLMs such as GPT-4, largely due to their inability to generate accurate input arguments and their tendency to hallucinate the wrong usage of an API call. We release Gorilla, a finetuned LLaMA-based model that surpasses the performance of GPT-4 on writing API calls. When combined with a document retriever, Gorilla demonstrates a strong capability to adapt to test-time document changes, enabling flexible user updates or version changes. It also substantially mitigates the issue of hallucination, commonly encountered when prompting LLMs directly. To evaluate the model's ability, we introduce APIBench, a comprehensive dataset consisting of HuggingFace, TorchHub, and TensorHub APIs. The successful integration of the retrieval system with Gorilla demonstrates the potential for LLMs to use tools more accurately, keep up with frequently updated documentation, and consequently increase the reliability and applicability of their outputs. Gorilla's code, model, data, and demo are available at https://gorilla.cs.berkeley.edu",
+            "year": 2023,
+            "citationCount": 200,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Gorilla is released, a finetuned LLaMA-based model that surpasses the performance of GPT-4 on writing API calls and substantially mitigates the issue of hallucination, commonly encountered when prompting LLMs directly."
+            },
+            "score": 3
+        },
+        {
+            "id": "e0985ed4b7745afc3d54c02d55e8f332b788bbcf",
+            "paperId": "e0985ed4b7745afc3d54c02d55e8f332b788bbcf",
+            "title": "Large Language Model with Graph Convolution for Recommendation",
+            "abstract": "In recent years, efforts have been made to use text information for better user profiling and item characterization in recommendations. However, text information can sometimes be of low quality, hindering its effectiveness for real-world applications. With knowledge and reasoning capabilities capsuled in Large Language Models (LLMs), utilizing LLMs emerges as a promising way for description improvement. However, existing ways of prompting LLMs with raw texts ignore structured knowledge of user-item interactions, which may lead to hallucination problems like inconsistent description generation. To this end, we propose a Graph-aware Convolutional LLM method to elicit LLMs to capture high-order relations in the user-item graph. To adapt text-based LLMs with structured graphs, We use the LLM as an aggregator in graph processing, allowing it to understand graph-based information step by step. Specifically, the LLM is required for description enhancement by exploring multi-hop neighbors layer by layer, thereby propagating information progressively in the graph. To enable LLMs to capture large-scale graph information, we break down the description task into smaller parts, which drastically reduces the context length of the token input with each step. Extensive experiments on three real-world datasets show that our method consistently outperforms state-of-the-art methods.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Graph-aware Convolutional LLM method to elicit LLMs to capture high-order relations in the user-item graph, which consistently outperforms state-of-the-art methods on three real-world datasets."
+            },
+            "score": 3
+        },
+        {
+            "id": "786f8f73415f3d67312427743ccd2d5016479496",
+            "paperId": "786f8f73415f3d67312427743ccd2d5016479496",
+            "title": "The Hallucinations Leaderboard -- An Open Effort to Measure Hallucinations in Large Language Models",
+            "abstract": "Large Language Models (LLMs) have transformed the Natural Language Processing (NLP) landscape with their remarkable ability to understand and generate human-like text. However, these models are prone to ``hallucinations'' -- outputs that do not align with factual reality or the input context. This paper introduces the Hallucinations Leaderboard, an open initiative to quantitatively measure and compare the tendency of each model to produce hallucinations. The leaderboard uses a comprehensive set of benchmarks focusing on different aspects of hallucinations, such as factuality and faithfulness, across various tasks, including question-answering, summarisation, and reading comprehension. Our analysis provides insights into the performance of different models, guiding researchers and practitioners in choosing the most reliable models for their applications.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "032cbe48a88325c50ad9bc73e8d5f000fb84ffe7",
+            "paperId": "032cbe48a88325c50ad9bc73e8d5f000fb84ffe7",
+            "title": "Visual Hallucination: Definition, Quantification, and Prescriptive Remediations",
+            "abstract": "The troubling rise of hallucination presents perhaps the most significant impediment to the advancement of responsible AI. In recent times, considerable research has focused on detecting and mitigating hallucination in Large Language Models (LLMs). However, it's worth noting that hallucination is also quite prevalent in Vision-Language models (VLMs). In this paper, we offer a fine-grained discourse on profiling VLM hallucination based on two tasks: i) image captioning, and ii) Visual Question Answering (VQA). We delineate eight fine-grained orientations of visual hallucination: i) Contextual Guessing, ii) Identity Incongruity, iii) Geographical Erratum, iv) Visual Illusion, v) Gender Anomaly, vi) VLM as Classifier, vii) Wrong Reading, and viii) Numeric Discrepancy. We curate Visual HallucInation eLiciTation (VHILT), a publicly available dataset comprising 2,000 samples generated using eight VLMs across two tasks of captioning and VQA along with human annotations for the categories as mentioned earlier.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "094ff971d6a8b8ff870946c9b3ce5aa173617bfb",
+            "paperId": "094ff971d6a8b8ff870946c9b3ce5aa173617bfb",
+            "title": "PaLM: Scaling Language Modeling with Pathways",
+            "abstract": "Large language models have been shown to achieve remarkable performance across a variety of natural language tasks using few-shot learning, which drastically reduces the number of task-specific training examples needed to adapt the model to a particular application. To further our understanding of the impact of scale on few-shot learning, we trained a 540-billion parameter, densely activated, Transformer language model, which we call Pathways Language Model PaLM. We trained PaLM on 6144 TPU v4 chips using Pathways, a new ML system which enables highly efficient training across multiple TPU Pods. We demonstrate continued benefits of scaling by achieving state-of-the-art few-shot learning results on hundreds of language understanding and generation benchmarks. On a number of these tasks, PaLM 540B achieves breakthrough performance, outperforming the finetuned state-of-the-art on a suite of multi-step reasoning tasks, and outperforming average human performance on the recently released BIG-bench benchmark. A significant number of BIG-bench tasks showed discontinuous improvements from model scale, meaning that performance steeply increased as we scaled to our largest model. PaLM also has strong capabilities in multilingual tasks and source code generation, which we demonstrate on a wide array of benchmarks. We additionally provide a comprehensive analysis on bias and toxicity, and study the extent of training data memorization with respect to model scale. Finally, we discuss the ethical considerations related to large language models and discuss potential mitigation strategies.",
+            "year": 2022,
+            "citationCount": 3756,
+            "score": 3
+        },
+        {
+            "id": "814a4f680b9ba6baba23b93499f4b48af1a27678",
+            "paperId": "814a4f680b9ba6baba23b93499f4b48af1a27678",
+            "title": "Measuring Massive Multitask Language Understanding",
+            "abstract": "We propose a new test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more. To attain high accuracy on this test, models must possess extensive world knowledge and problem solving ability. We find that while most recent models have near random-chance accuracy, the very largest GPT-3 model improves over random chance by almost 20 percentage points on average. However, on every one of the 57 tasks, the best models still need substantial improvements before they can reach expert-level accuracy. Models also have lopsided performance and frequently do not know when they are wrong. Worse, they still have near-random accuracy on some socially important subjects such as morality and law. By comprehensively evaluating the breadth and depth of a model's academic and professional understanding, our test can be used to analyze models across many tasks and to identify important shortcomings.",
+            "year": 2020,
+            "citationCount": 1280,
+            "score": 3
+        },
+        {
+            "id": "8d748af62da9c251ae419a3ee494cd9e656db891",
+            "paperId": "8d748af62da9c251ae419a3ee494cd9e656db891",
+            "title": "Constructing Benchmarks and Interventions for Combating Hallucinations in LLMs",
+            "abstract": "Large language models (LLMs) are susceptible to hallucination, which sparked a widespread effort to detect and prevent them. Recent work attempts to mitigate hallucinations by intervening in the model's computation during generation, using different setups and heuristics. Those works lack separation between different hallucination causes. In this work, we first introduce an approach for constructing datasets based on the model knowledge for detection and intervention methods in closed-book and open-book question-answering settings. We then characterize the effect of different choices for intervention, such as the intervened components (MLPs, attention block, residual stream, and specific heads), and how often and how strongly to intervene. We find that intervention success varies depending on the component, with some components being detrimental to language modeling capabilities. Finally, we find that interventions can benefit from pre-hallucination steering direction instead of post-hallucination. The code is available at https://github.com/technion-cs-nlp/hallucination-mitigation",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 3
+        },
+        {
+            "id": "df7d26339adf4eb0c07160947b9d2973c24911ba",
+            "paperId": "df7d26339adf4eb0c07160947b9d2973c24911ba",
+            "title": "Extracting Training Data from Large Language Models",
+            "abstract": "It has become common to publish large (billion parameter) language models that have been trained on private datasets. This paper demonstrates that in such settings, an adversary can perform a training data extraction attack to recover individual training examples by querying the language model. \nWe demonstrate our attack on GPT-2, a language model trained on scrapes of the public Internet, and are able to extract hundreds of verbatim text sequences from the model's training data. These extracted examples include (public) personally identifiable information (names, phone numbers, and email addresses), IRC conversations, code, and 128-bit UUIDs. Our attack is possible even though each of the above sequences are included in just one document in the training data. \nWe comprehensively evaluate our extraction attack to understand the factors that contribute to its success. For example, we find that larger models are more vulnerable than smaller models. We conclude by drawing lessons and discussing possible safeguards for training large language models.",
+            "year": 2020,
+            "citationCount": 1096,
+            "score": 2
+        },
+        {
+            "id": "0b09448f7543453cc066416f547292dc1e4471f6",
+            "paperId": "0b09448f7543453cc066416f547292dc1e4471f6",
+            "title": "KILT: a Benchmark for Knowledge Intensive Language Tasks",
+            "abstract": "Challenging problems such as open-domain question answering, fact checking, slot filling and entity linking require access to large, external knowledge sources. While some models do well on individual tasks, developing general models is difficult as each task might require computationally expensive indexing of custom knowledge sources, in addition to dedicated infrastructure. To catalyze research on models that condition on specific information in large textual resources, we present a benchmark for knowledge-intensive language tasks (KILT). All tasks in KILT are grounded in the same snapshot of Wikipedia, reducing engineering turnaround through the re-use of components, as well as accelerating research into task-agnostic memory architectures. We test both task-specific and general baselines, evaluating downstream performance in addition to the ability of the models to provide provenance. We find that a shared dense vector index coupled with a seq2seq model is a strong baseline, outperforming more tailor-made approaches for fact checking, open-domain question answering and dialogue, and yielding competitive results on entity linking and slot filling, by generating disambiguated text. KILT data and code are available at https://github.com/facebookresearch/KILT.",
+            "year": 2020,
+            "citationCount": 390,
+            "score": 2
+        },
+        {
+            "id": "e384a3e5c43f1a40bd2be5d4296da61a1c385e04",
+            "paperId": "e384a3e5c43f1a40bd2be5d4296da61a1c385e04",
+            "title": "Mitigating Dialogue Hallucination for Large Multi-modal Models via Adversarial Instruction Tuning",
+            "abstract": "Mitigating hallucinations of Large Multi-modal Models(LMMs) is crucial to enhance their reliability for general-purpose assistants. This paper shows that such hallucinations of LMMs can be significantly exacerbated by preceding user-system dialogues. To precisely measure this, we first present an evaluation benchmark by extending popular multi-modal benchmark datasets with prepended hallucinatory dialogues generated by our novel Adversarial Question Generator, which can automatically generate image-related yet adversarial dialogues by adopting adversarial attacks on LMMs. On our benchmark, the zero-shot performance of state-of-the-art LMMs dropped significantly for both the VQA and Captioning tasks. Next, we further reveal this hallucination is mainly due to the prediction bias toward preceding dialogues rather than visual content. To reduce this bias, we propose Adversarial Instruction Tuning that robustly fine-tunes LMMs on augmented multi-modal instruction-following datasets with hallucinatory dialogues. Extensive experiments show that our proposed approach successfully reduces dialogue hallucination while maintaining or even improving performance.",
+            "year": 2024,
+            "citationCount": 1,
+            "score": 2
+        },
+        {
+            "id": "8699bca4352569c1634d36c5986399670d450ef9",
+            "paperId": "8699bca4352569c1634d36c5986399670d450ef9",
+            "title": "Monte Carlo simulations as a route to compute probabilities",
+            "abstract": "Monte Carlo simulations are based on the manipulation of random numbers to evaluate probable outcomes, with applicability in a variety of different fields. By assigning probabilities, which can be determined a priori, to various events, it is possible to track the evolution of the system over length and time scales which are not normally accessible to other simulation techniques. Monte Carlo simulations can provide insights, which can be used to develop more realistic models. In this work, these simulations are used to model a variety of probability problems normally encountered at the high school and undergraduate level. The simulations are used to introduce concepts related to system size, simulation runs (repeatability), and basic statistics. While many of the problems discussed here have analytical expressions, systems where easy analytical solutions are not available are also discussed. In this work, MATLAB is used to model these systems and the rand function in the software is used extensively for random number generation.",
+            "year": 2021,
+            "citationCount": 1,
+            "score": 1
+        },
+        {
+            "id": "0839722fb5369c0abaff8515bfc08299efc790a1",
+            "paperId": "0839722fb5369c0abaff8515bfc08299efc790a1",
+            "title": "ViLT: Vision-and-Language Transformer Without Convolution or Region Supervision",
+            "abstract": "Vision-and-Language Pre-training (VLP) has improved performance on various joint vision-and-language downstream tasks. Current approaches to VLP heavily rely on image feature extraction processes, most of which involve region supervision (e.g., object detection) and the convolutional architecture (e.g., ResNet). Although disregarded in the literature, we find it problematic in terms of both (1) efficiency/speed, that simply extracting input features requires much more computation than the multimodal interaction steps; and (2) expressive power, as it is upper bounded to the expressive power of the visual embedder and its predefined visual vocabulary. In this paper, we present a minimal VLP model, Vision-and-Language Transformer (ViLT), monolithic in the sense that the processing of visual inputs is drastically simplified to just the same convolution-free manner that we process textual inputs. We show that ViLT is up to tens of times faster than previous VLP models, yet with competitive or better downstream task performance. Our code and pre-trained weights are available at https://github.com/dandelin/vilt.",
+            "year": 2021,
+            "citationCount": 1131,
+            "score": 1
+        },
+        {
+            "id": "03cfdde24c6b9837ad8933cb535a2c4a7c0fd971",
+            "paperId": "03cfdde24c6b9837ad8933cb535a2c4a7c0fd971",
+            "title": "HaluEval-Wild: Evaluating Hallucinations of Language Models in the Wild",
+            "abstract": "Hallucinations pose a significant challenge to the reliability of large language models (LLMs) in critical domains. Recent benchmarks designed to assess LLM hallucinations within conventional NLP tasks, such as knowledge-intensive question answering (QA) and summarization, are insufficient for capturing the complexities of user-LLM interactions in dynamic, real-world settings. To address this gap, we introduce HaluEval-Wild, the first benchmark specifically designed to evaluate LLM hallucinations in the wild. We meticulously collect challenging (adversarially filtered by Alpaca) user queries from existing real-world user-LLM interaction datasets, including ShareGPT, to evaluate the hallucination rates of various LLMs. Upon analyzing the collected queries, we categorize them into five distinct types, which enables a fine-grained analysis of the types of hallucinations LLMs exhibit, and synthesize the reference answers with the powerful GPT-4 model and retrieval-augmented generation (RAG). Our benchmark offers a novel approach towards enhancing our comprehension and improvement of LLM reliability in scenarios reflective of real-world interactions.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "31968a970f14beab3cbadf9f6ad45c1a51f4ea95",
+            "paperId": "31968a970f14beab3cbadf9f6ad45c1a51f4ea95",
+            "title": "Benchmarking Hallucination in Large Language Models based on Unanswerable Math Word Problem",
+            "abstract": "Large language models (LLMs) are highly effective in various natural language processing (NLP) tasks. However, they are susceptible to producing unreliable conjectures in ambiguous contexts called hallucination. This paper presents a new method for evaluating LLM hallucination in Question Answering (QA) based on the unanswerable math word problem (MWP). To support this approach, we innovatively develop a dataset called Unanswerable Math Word Problem (UMWP) which comprises 5200 questions across five categories. We developed an evaluation methodology combining text similarity and mathematical expression detection to determine whether LLM considers the question unanswerable. The results of extensive experiments conducted on 31 LLMs, including GPT-3, InstructGPT, LLaMA, and Claude, demonstrate that in-context learning and reinforcement learning with human feedback (RLHF) training significantly enhance the model's ability to avoid hallucination. We show that utilizing MWP is a reliable and effective approach to assess hallucination. Our code and data are available at https://github.com/Yuki-Asuuna/UMWP.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "9a0f53a0ff25d1a5fb016aaa22185c4d6b5a2ac8",
+            "paperId": "9a0f53a0ff25d1a5fb016aaa22185c4d6b5a2ac8",
+            "title": "LinkPrompt: Natural and Universal Adversarial Attacks on Prompt-based Language Models",
+            "abstract": "Prompt-based learning is a new language model training paradigm that adapts the Pre-trained Language Models (PLMs) to downstream tasks, which revitalizes the performance benchmarks across various natural language processing (NLP) tasks. Instead of using a fixed prompt template to fine-tune the model, some research demonstrates the effectiveness of searching for the prompt via optimization. Such prompt optimization process of prompt-based learning on PLMs also gives insight into generating adversarial prompts to mislead the model, raising concerns about the adversarial vulnerability of this paradigm. Recent studies have shown that universal adversarial triggers (UATs) can be generated to alter not only the predictions of the target PLMs but also the prediction of corresponding Prompt-based Fine-tuning Models (PFMs) under the prompt-based learning paradigm. However, UATs found in previous works are often unreadable tokens or characters and can be easily distinguished from natural texts with adaptive defenses. In this work, we consider the naturalness of the UATs and develop $\\textit{LinkPrompt}$, an adversarial attack algorithm to generate UATs by a gradient-based beam search algorithm that not only effectively attacks the target PLMs and PFMs but also maintains the naturalness among the trigger tokens. Extensive results demonstrate the effectiveness of $\\textit{LinkPrompt}$, as well as the transferability of UATs generated by $\\textit{LinkPrompt}$ to open-sourced Large Language Model (LLM) Llama2 and API-accessed LLM GPT-3.5-turbo. The resource is available at $\\href{https://github.com/SavannahXu79/LinkPrompt}{https://github.com/SavannahXu79/LinkPrompt}$.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "db55cf346d7851cde50c1b25ab8fbcdaef8e2ee0",
+            "paperId": "db55cf346d7851cde50c1b25ab8fbcdaef8e2ee0",
+            "title": "Talking Nonsense: Probing Large Language Models' Understanding of Adversarial Gibberish Inputs",
+            "abstract": "Large language models (LLMs) exhibit excellent ability to understand human languages, but do they also understand their own language that appears gibberish to us? In this work we delve into this question, aiming to uncover the mechanisms underlying such behavior in LLMs. We employ the Greedy Coordinate Gradient optimizer to craft prompts that compel LLMs to generate coherent responses from seemingly nonsensical inputs. We call these inputs LM Babel and this work systematically studies the behavior of LLMs manipulated by these prompts. We find that the manipulation efficiency depends on the target text's length and perplexity, with the Babel prompts often located in lower loss minima compared to natural prompts. We further examine the structure of the Babel prompts and evaluate their robustness. Notably, we find that guiding the model to generate harmful texts is not more difficult than into generating benign texts, suggesting lack of alignment for out-of-distribution prompts.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "0c3d8ea68ed9114d74eceaffc5c32cd0ee31d993",
+            "paperId": "0c3d8ea68ed9114d74eceaffc5c32cd0ee31d993",
+            "title": "Understanding Privacy Risks of Embeddings Induced by Large Language Models",
+            "abstract": "Large language models (LLMs) show early signs of artificial general intelligence but struggle with hallucinations. One promising solution to mitigate these hallucinations is to store external knowledge as embeddings, aiding LLMs in retrieval-augmented generation. However, such a solution risks compromising privacy, as recent studies experimentally showed that the original text can be partially reconstructed from text embeddings by pre-trained language models. The significant advantage of LLMs over traditional pre-trained models may exacerbate these concerns. To this end, we investigate the effectiveness of reconstructing original knowledge and predicting entity attributes from these embeddings when LLMs are employed. Empirical findings indicate that LLMs significantly improve the accuracy of two evaluated tasks over those from pre-trained models, regardless of whether the texts are in-distribution or out-of-distribution. This underscores a heightened potential for LLMs to jeopardize user privacy, highlighting the negative consequences of their widespread use. We further discuss preliminary strategies to mitigate this risk.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "5e168847bb7e96a805893652ace4f7d42f2887c1",
+            "paperId": "5e168847bb7e96a805893652ace4f7d42f2887c1",
+            "title": "VALOR-EVAL: Holistic Coverage and Faithfulness Evaluation of Large Vision-Language Models",
+            "abstract": "Large Vision-Language Models (LVLMs) suffer from hallucination issues, wherein the models generate plausible-sounding but factually incorrect outputs, undermining their reliability. A comprehensive quantitative evaluation is necessary to identify and understand the extent of hallucinations in these models. However, existing benchmarks are often limited in scope, focusing mainly on object hallucinations. Furthermore, current evaluation methods struggle to effectively address the subtle semantic distinctions between model outputs and reference data, as well as the balance between hallucination and informativeness. To address these issues, we introduce a multi-dimensional benchmark covering objects, attributes, and relations, with challenging images selected based on associative biases. Moreover, we propose an large language model (LLM)-based two-stage evaluation framework that generalizes the popular CHAIR metric and incorporates both faithfulness and coverage into the evaluation. Experiments on 10 established LVLMs demonstrate that our evaluation metric is more comprehensive and better correlated with humans than existing work when evaluating on our challenging human annotated benchmark dataset. Our work also highlights the critical balance between faithfulness and coverage of model outputs, and encourages future works to address hallucinations in LVLMs while keeping their outputs informative.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "3a391dfd536625e068f3888c817cc6cbe7fcea9c",
+            "paperId": "3a391dfd536625e068f3888c817cc6cbe7fcea9c",
+            "title": "One Prompt Word is Enough to Boost Adversarial Robustness for Pre-trained Vision-Language Models",
+            "abstract": "Large pre-trained Vision-Language Models (VLMs) like CLIP, despite having remarkable generalization ability, are highly vulnerable to adversarial examples. This work studies the adversarial robustness of VLMs from the novel perspective of the text prompt instead of the extensively studied model weights (frozen in this work). We first show that the effectiveness of both adversarial attack and defense are sensitive to the used text prompt. Inspired by this, we propose a method to improve resilience to adversarial attacks by learning a robust text prompt for VLMs. The proposed method, named Adversarial Prompt Tuning (APT), is effective while being both computationally and data efficient. Extensive experiments are conducted across 15 datasets and 4 data sparsity schemes (from 1-shot to full training data settings) to show APT's superiority over hand-engineered prompts and other state-of-the-art adaption methods. APT demonstrated excellent abilities in terms of the in-distribution performance and the generalization under input distribution shift and across datasets. Surprisingly, by simply adding one learned word to the prompts, APT can significantly boost the accuracy and robustness (epsilon=4/255) over the hand-engineered prompts by +13% and +8.5% on average respectively. The improvement further increases, in our most effective setting, to +26.4% for accuracy and +16.7% for robustness. Code is available at https://github.com/TreeLLi/APT.",
+            "year": 2024,
+            "citationCount": 2,
+            "score": 1
+        },
+        {
+            "id": "4c3447dce6798b894313bb3ff2735ef139cbf071",
+            "paperId": "4c3447dce6798b894313bb3ff2735ef139cbf071",
+            "title": "PoLLMgraph: Unraveling Hallucinations in Large Language Models via State Transition Dynamics",
+            "abstract": "Despite tremendous advancements in large language models (LLMs) over recent years, a notably urgent challenge for their practical deployment is the phenomenon of hallucination, where the model fabricates facts and produces non-factual statements. In response, we propose PoLLMgraph, a Polygraph for LLMs, as an effective model-based white-box detection and forecasting approach. PoLLMgraph distinctly differs from the large body of existing research that concentrates on addressing such challenges through black-box evaluations. In particular, we demonstrate that hallucination can be effectively detected by analyzing the LLM's internal state transition dynamics during generation via tractable probabilistic models. Experimental results on various open-source LLMs confirm the efficacy of PoLLMgraph, outperforming state-of-the-art methods by a considerable margin, evidenced by over 20% improvement in AUC-ROC on common benchmarking datasets like TruthfulQA. Our work paves a new way for model-based white-box analysis of LLMs, motivating the research community to further explore, understand, and refine the intricate dynamics of LLM behaviors.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "f767f0a883c8fc70de03fb8b65ed87e1fef5f415",
+            "paperId": "f767f0a883c8fc70de03fb8b65ed87e1fef5f415",
+            "title": "Hallucination Diversity-Aware Active Learning for Text Summarization",
+            "abstract": "Large Language Models (LLMs) have shown propensity to generate hallucinated outputs, i.e., texts that are factually incorrect or unsupported. Existing methods for alleviating hallucinations typically require costly human annotations to identify and correct hallucinations in LLM outputs. Moreover, most of these methods focus on a specific type of hallucination, e.g., entity or token errors, which limits their effectiveness in addressing various types of hallucinations exhibited in LLM outputs. To our best knowledge, in this paper we propose the first active learning framework to alleviate LLM hallucinations, reducing costly human annotations of hallucination needed. By measuring fine-grained hallucinations from errors in semantic frame, discourse and content verifiability in text summarization, we propose HAllucination Diversity-Aware Sampling (HADAS) to select diverse hallucinations for annotations in active learning for LLM finetuning. Extensive experiments on three datasets and different backbone models demonstrate advantages of our method in effectively and efficiently mitigating LLM hallucinations.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "13f2985246d6b91f788bb222360a199967af32c8",
+            "paperId": "13f2985246d6b91f788bb222360a199967af32c8",
+            "title": "Rethinking LLM Memorization through the Lens of Adversarial Compression",
+            "abstract": "Large language models (LLMs) trained on web-scale datasets raise substantial concerns regarding permissible data usage. One major question is whether these models\"memorize\"all their training data or they integrate many data sources in some way more akin to how a human would learn and synthesize information. The answer hinges, to a large degree, on $\\textit{how we define memorization}$. In this work, we propose the Adversarial Compression Ratio (ACR) as a metric for assessing memorization in LLMs -- a given string from the training data is considered memorized if it can be elicited by a prompt shorter than the string itself. In other words, these strings can be\"compressed\"with the model by computing adversarial prompts of fewer tokens. We outline the limitations of existing notions of memorization and show how the ACR overcomes these challenges by (i) offering an adversarial view to measuring memorization, especially for monitoring unlearning and compliance; and (ii) allowing for the flexibility to measure memorization for arbitrary strings at a reasonably low compute. Our definition serves as a valuable and practical tool for determining when model owners may be violating terms around data usage, providing a potential legal tool and a critical lens through which to address such scenarios. Project page: https://locuslab.github.io/acr-memorization.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        },
+        {
+            "id": "4d1f37057fd008317d634d3f10ff73c81b442035",
+            "paperId": "4d1f37057fd008317d634d3f10ff73c81b442035",
+            "title": "Goal-guided Generative Prompt Injection Attack on Large Language Models",
+            "abstract": "Current large language models (LLMs) provide a strong foundation for large-scale user-oriented natural language tasks. A large number of users can easily inject adversarial text or instructions through the user interface, thus causing LLMs model security challenges. Although there is currently a large amount of research on prompt injection attacks, most of these black-box attacks use heuristic strategies. It is unclear how these heuristic strategies relate to the success rate of attacks and thus effectively improve model robustness. To solve this problem, we redefine the goal of the attack: to maximize the KL divergence between the conditional probabilities of the clean text and the adversarial text. Furthermore, we prove that maximizing the KL divergence is equivalent to maximizing the Mahalanobis distance between the embedded representation $x$ and $x'$ of the clean text and the adversarial text when the conditional probability is a Gaussian distribution and gives a quantitative relationship on $x$ and $x'$. Then we designed a simple and effective goal-guided generative prompt injection strategy (G2PIA) to find an injection text that satisfies specific constraints to achieve the optimal attack effect approximately. It is particularly noteworthy that our attack method is a query-free black-box attack method with low computational cost. Experimental results on seven LLM models and four datasets show the effectiveness of our attack method.",
+            "year": 2024,
+            "citationCount": 0,
+            "score": 1
+        }
+    ]
+}
