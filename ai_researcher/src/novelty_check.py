@@ -143,35 +143,33 @@ if __name__ == "__main__":
         )
 
     if "claude" in args.engine:
-        cache_dir = "../cache_results_claude/"
+        cache_dir = "../cache_results_claude_may/"
     else:
         cache_dir = "../cache_results_gpt4/"
     
-    with open(cache_dir + "ideas/" + args.cache_name + ".json") as f:
-        idea_file = json.load(f)
-    topic_description = idea_file["topic_description"]
-    all_ideas = idea_file["ideas"]
+    # with open(cache_dir + "ideas/" + args.cache_name + ".json") as f:
+    #     idea_file = json.load(f)
+    # topic_description = idea_file["topic_description"]
+    # all_ideas = idea_file["ideas"]
 
     if args.idea_name == "all":
-        # filenames = os.listdir(cache_dir + args.cache_name)
-        idea_names = list(all_ideas.keys())
+        filenames = os.listdir(cache_dir + "experiment_plans/" + args.cache_name)
+        # idea_names = list(all_ideas.keys())
     else:
-        # filenames = ["_".join(args.idea_name.lower().split())+".json"]
-        idea_names = [args.idea_name]
+        filenames = ["_".join(args.idea_name.lower().split())+".json"]
+        # idea_names = [args.idea_name]
     
     novel_idea = 0
-    for idea_name in tqdm(idea_names):
-        print ("Idea name: ", idea_name)
-        cache_file = os.path.join(cache_dir + "experiment_plans/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
+    for filename in tqdm(filenames):
+        print ("working on: ", filename)
+        cache_file = os.path.join(cache_dir + "experiment_plans/" + args.cache_name + "/" + filename)
+        with open(cache_file, "r") as f:
+            idea_file = json.load(f)
+        idea_name = idea_file["idea_name"]
+        idea = idea_file["full_experiment_plan"]
+        topic_description = idea_file["topic_description"]
+        
         if args.retrieve:
-            idea_file = {}
-            idea_file["topic_description"] = topic_description
-            idea_file["idea_name"] = idea_name
-            idea_file["raw_idea"] = all_ideas[idea_name]
-            
-            print ("working on: ", idea_name)
-            idea = all_ideas[idea_name]
-
             print ("Retrieving related works...")
             paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, client, args.engine, args.seed)
             output = format_papers_for_printing(paper_bank[ : 10])
@@ -191,22 +189,22 @@ if __name__ == "__main__":
                 idea_file = json.load(f)
 
             topic_description = idea_file["topic_description"]
-            plan_json = idea_file["raw_idea"]
+            plan_json = idea_file["full_experiment_plan"]
             related_papers = idea_file["novelty_papers"]
-            idea_file["novelty_check_papers"] = related_papers[ : args.check_n].copy()
+            # idea_file["novelty_check_papers"] = related_papers[ : args.check_n].copy()
 
             novel = True 
             print ("checking through top {} papers".format(str(args.check_n)))
             for i in range(args.check_n):
                 prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
-                idea_file["novelty_check_papers"][i]["novelty_score"] = response.strip()
+                idea_file["novelty_papers"][i]["novelty_score"] = response.strip()
                 final_judgment = response.strip().split()[-1].lower()
                 # print ("novelty judgment: ", final_judgment)
                 # print ("\n\n")
                 
                 if final_judgment == "yes":
                     novel = False
-                idea_file["novelty_check_papers"][i]["novelty_judgment"] = final_judgment
+                idea_file["novelty_papers"][i]["novelty_judgment"] = final_judgment
                 
                 # print (format_papers_for_printing([related_papers[i]]))
                 # print (response)
@@ -219,5 +217,5 @@ if __name__ == "__main__":
             print ("Novelty judgment: ", idea_file["novelty"])
 
     if args.novelty:
-        print ("Novelty rate: {} / {} = {}%".format(novel_idea, len(idea_names), novel_idea / len(idea_names) * 100))
+        print ("Novelty rate: {} / {} = {}%".format(novel_idea, len(filenames), novel_idea / len(filenames) * 100))
     
