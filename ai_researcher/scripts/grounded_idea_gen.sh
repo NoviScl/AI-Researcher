@@ -20,13 +20,13 @@
 # done 
 
 
-cache_names=("safety_prompting_method")
+cache_names=("factuality_prompting_method" "safety_prompting_method" "uncertainty_prompting_method" "math_prompting_method" "coding_prompting_method" "bias_prompting_method")
 
 # Number of ideas to generate
 ideas_n=5
 
 # Seed value
-seeds=(12 42 102 2022 2023 2024)
+seeds=(12 42 102 512 1024 2022 2023 2024)
 methods=("prompting")
 
 # Iterate over each seed

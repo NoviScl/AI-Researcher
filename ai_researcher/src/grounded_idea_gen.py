@@ -10,7 +10,7 @@ import random
 import retry
 
 @retry.retry(tries=3, delay=2)
-def idea_generation_method(method, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed):
+def idea_generation_method(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed):
     ## retrieve top papers (with some randomization)
     top_papers = paper_bank[ : int(grounding_k * 2)]
     random.shuffle(top_papers)
@@ -28,6 +28,8 @@ def idea_generation_method(method, paper_bank, grounding_k, examples, ideas_n, t
         prompt += "Focus on novel prompting ideas for now. The proposed method section should specify how to construct the prompts for all steps involved. Try to avoid pretraining or finetuning experiments.\n"
     elif method == "finetuning":
         prompt += "Focus on novel finetuning ideas for now. The proposed method section should specify how to get the finetuning data and what's the training objective.\n"
+    if existing_ideas:
+        prompt += "You should avoid repeating the following existing ideas: " + existing_ideas + "\n"
     prompt += "Please write down your {} ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format). Do not repeat idea names or contents.".format(str(ideas_n))
 
     prompt_messages = [{"role": "user", "content": prompt}]
@@ -82,7 +84,7 @@ if __name__ == "__main__":
         )
 
     if "claude" in args.engine:
-        with open(os.path.join("../cache_results_claude/lit_review", args.cache_name + ".json"), "r") as f:
+        with open(os.path.join("../cache_results_claude_may/lit_review", args.cache_name + ".json"), "r") as f:
             lit_review = json.load(f)
     else:
         with open(os.path.join("../cache_results_gpt4/lit_review", args.cache_name + ".json"), "r") as f:
@@ -90,6 +92,22 @@ if __name__ == "__main__":
     topic_description = lit_review["topic_description"]
     paper_bank = lit_review["paper_bank"]
 
+    ## cache dir and file
+    if "claude" in args.engine:
+        cache_dir = "../cache_results_claude_may/ideas"
+    else:
+        cache_dir = "../cache_results_gpt4/ideas"
+    ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + ".json")
+
+    ## extract existing ideas
+    existing_ideas = None
+    if os.path.exists(ideas_file):
+        with open(ideas_file, "r") as f:
+            ideas_cache = json.load(f)
+        if "ideas" in ideas_cache:
+            existing_ideas = list(ideas_cache["ideas"].keys())
+            existing_ideas = "; ".join(existing_ideas)
+    
     if args.method == "prompting":
         with open("prompts/idea_examples_prompting_method.json", "r") as f:
             method_idea_examples = json.load(f)
@@ -99,30 +117,21 @@ if __name__ == "__main__":
             method_idea_examples = json.load(f)
             method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
     
-    # with open("prompts/idea_examples_method.txt", "r") as f:
-    #     method_idea_examples = f.read().strip()
-    
     print ("topic: ", topic_description)
     print ("method: ", args.method)
+    print ("existing ideas: ", existing_ideas)
     print ("\n")
     print ("generating {} ideas...".format(str(args.ideas_n)))
+    
     if "method" in args.cache_name:
-        prompt, response, cost = idea_generation_method(args.method, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
-    elif "analysis" in args.cache_name:
-        prompt, response, cost = idea_generation_analysis(paper_bank, args.grounding_k, args.ideas_n, topic_description, client, args.engine, args.seed)
+        prompt, response, cost = idea_generation_method(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
+    
     print ("prompt: ", prompt)
     print ("ideas: ", response)
     print ("idea generation cost: ", cost)
 
-    ## cache the generated ideas
-    if "claude" in args.engine:
-        cache_dir = "../cache_results_claude/ideas"
-    else:
-        cache_dir = "../cache_results_gpt4/ideas"
-
     response = json.loads(response.strip())
     ideas = {"topic_description": topic_description, "ideas": response}
-    ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + ".json")
     
     ## if the idea_cache already exists, directly add to the current list
     if os.path.exists(ideas_file):
