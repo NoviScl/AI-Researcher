@@ -41,5 +41,1022 @@
             }
         },
         "Fallback Plan": "If the proposed CPV method does not significantly outperform the baselines in terms of robustness against adversarial prompts and output quality, we can consider the following alternative approaches:\n1. Analyze the failure cases to understand why CPV was not effective. Are the models generating useful verification questions and feedback? Are they able to reach consensus and improve their outputs based on the feedback? Identifying the bottlenecks can inform improvements to the CPV algorithm.\n2. Experiment with different model selection strategies for the ensemble, such as using models with more diverse training data or specialized models for safety and fact-checking. A more diverse and complementary ensemble may lead to better verification performance.\n3. Incorporate additional verification steps or external knowledge sources. For example, use a separate fact-checking model or knowledge base to verify the factual accuracy of the outputs. Or use a safety classifier to filter out potentially unsafe content before the verification process.\n4. Collect human feedback on the CPV outputs and use it to fine-tune the models or improve the verification process. Human ratings on the safety, coherence, and factual correctness of the outputs can serve as a valuable training signal.\n5. If CPV still does not yield satisfactory results, pivot the project to focus on analyzing the limitations and challenges of collaborative verification for language models. Conduct a thorough error analysis and ablation study to gain insights into why the approach did not work as expected. Identify the key factors that influence the models' ability to verify and improve each other's outputs. These findings can inform future research directions and alternative approaches for building more robust and reliable language models."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"collaborative language models verification\")",
+        "KeywordQuery(\"ensemble language models adversarial prompts\")",
+        "KeywordQuery(\"multi-model consensus language models safety\")",
+        "KeywordQuery(\"Collaborative Prompt Verification NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "99da2f941c0a606278463f1e5e60a2bdbaf8eb99",
+            "paperId": "99da2f941c0a606278463f1e5e60a2bdbaf8eb99",
+            "title": "Enabling Synergistic Knowledge Sharing and Reasoning in Large Language Models with Collaborative Multi-Agents",
+            "abstract": "Despite the significant advancements in the field of Natural Language Processing (NLP), Large Language Models (LLMs) have shown limitations in performing complex tasks that require arithmetic, commonsense, and symbolic reasoning. Reasoning frameworks like ReAct, Chain-of-thought (CoT), Tree-of-thoughts (ToT), etc. have shown success but with limitations in solving long-form complex tasks. To address this, we pro-pose a knowledge-sharing and collaborative multi-agent assisted framework on LLMs that leverages the capabilities of existing reasoning frameworks and the collaborative skills of multi-agent systems (MASs). The objectives of the proposed framework are to overcome the limitations of LLMs, enhance their reasoning capabilities, and improve their performance in complex tasks. It involves generating natural language rationales and in-context few-shot learning via prompting, and integrates the reasoning techniques with efficient knowledge-sharing and communication-driven agent networks. The potential benefits of the proposed framework include saving time and money, improved efficiency for computationally intensive reasoning, and the ability to incor-porate multiple collaboration strategies for dynamically changing environments.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A knowledge-sharing and collaborative multi-agent assisted framework that leverages the capabilities of existing reasoning frameworks and the collaborative skills of multi-agent systems (MASs) to overcome the limitations of LLMs, enhance their reasoning capabilities, and improve their performance in complex tasks."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts by using collaborative verification among multiple models. The approach is to have an ensemble of diverse language models engage in a multi-round process of generating outputs, scrutinizing each other's responses, and revising based on feedback until a consensus is reached.\n\nThe research problem in the paper is enhancing the reasoning capabilities and performance of large language models in complex tasks. The approach is to integrate reasoning techniques with knowledge-sharing and communication-driven multi-agent systems.\n\nWhile both works involve collaboration among multiple models or agents, the specific research problems and approaches are different. The proposal focuses on adversarial robustness and collaborative verification, while the paper focuses on complex reasoning and knowledge sharing in multi-agent systems.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "paperId": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "title": "PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts",
+            "abstract": "The increasing reliance on Large Language Models (LLMs) across academia and industry necessitates a comprehensive understanding of their robustness to prompts. In response to this vital need, we introduce PromptBench, a robustness benchmark designed to measure LLMs' resilience to adversarial prompts. This study uses a plethora of adversarial textual attacks targeting prompts across multiple levels: character, word, sentence, and semantic. The adversarial prompts, crafted to mimic plausible user errors like typos or synonyms, aim to evaluate how slight deviations can affect LLM outcomes while maintaining semantic integrity. These prompts are then employed in diverse tasks, such as sentiment analysis, natural language inference, reading comprehension, machine translation, and math problem-solving. Our study generates 4788 adversarial prompts, meticulously evaluated over 8 tasks and 13 datasets. Our findings demonstrate that contemporary LLMs are not robust to adversarial prompts. Furthermore, we present comprehensive analysis to understand the mystery behind prompt robustness and its transferability. We then offer insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users. Code is available at: https://github.com/microsoft/promptbench.",
+            "year": 2023,
+            "citationCount": 111,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study generates 4788 adversarial prompts and presents comprehensive analysis to understand the mystery behind prompt robustness and its transferability, and offers insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts, and the proposed approach is to use collaborative verification among multiple models.\n\nThe research problem in the paper is evaluating the robustness of large language models against adversarial prompts, and the approach is to create a benchmark dataset with various adversarial attacks on prompts.\n\nWhile both works focus on the robustness of language models against adversarial prompts, the proposal aims to improve robustness through a novel method (collaborative verification), whereas the paper aims to evaluate robustness using a benchmark dataset. The approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "c4ff1be5c254b60b96b7455eefcc4ec9583f82ed",
+            "paperId": "c4ff1be5c254b60b96b7455eefcc4ec9583f82ed",
+            "title": "A Wolf in Sheep's Clothing: Generalized Nested Jailbreak Prompts can Fool Large Language Models Easily",
+            "abstract": "Large Language Models (LLMs), such as ChatGPT and GPT-4, are designed to provide useful and safe responses. However, adversarial prompts known as 'jailbreaks' can circumvent safeguards, leading LLMs to generate potentially harmful content. Exploring jailbreak prompts can help to better reveal the weaknesses of LLMs and further steer us to secure them. Unfortunately, existing jailbreak methods either suffer from intricate manual design or require optimization on other white-box models, which compromises either generalization or efficiency. In this paper, we generalize jailbreak prompt attacks into two aspects: (1) Prompt Rewriting and (2) Scenario Nesting. Based on this, we propose ReNeLLM, an automatic framework that leverages LLMs themselves to generate effective jailbreak prompts. Extensive experiments demonstrate that ReNeLLM significantly improves the attack success rate while greatly reducing the time cost compared to existing baselines. Our study also reveals the inadequacy of current defense methods in safeguarding LLMs. Finally, we analyze the failure of LLMs defense from the perspective of prompt execution priority, and propose corresponding defense strategies. We hope that our research can catalyze both the academic community and LLMs developers towards the provision of safer and more regulated LLMs. The code is available at https://github.com/NJUNLP/ReNeLLM.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes ReNeLLM, an automatic framework that leverages LLMs themselves to generate effective jailbreak prompts and significantly improves the attack success rate while greatly reducing the time cost compared to existing baselines."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of prompts and outputs. In contrast, the paper focuses on exploring the weaknesses of language models and generating effective jailbreak prompts that can fool the models and bypass their safeguards.\n\nProject proposal: Collaborative Prompt Verification for robust and reliable prompting using multiple language models.\nPaper: Generalized Nested Jailbreak Prompts for revealing weaknesses and fooling large language models.\n\nThe two works have different goals and approaches. The project proposal aims to defend against adversarial prompts, while the paper aims to generate effective adversarial prompts.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e8b3b37c0d301ea41c75765f6ceb7fcbb2e088a4",
+            "paperId": "e8b3b37c0d301ea41c75765f6ceb7fcbb2e088a4",
+            "title": "AutoDAN: Automatic and Interpretable Adversarial Attacks on Large Language Models",
+            "abstract": "Safety alignment of Large Language Models (LLMs) can be compromised with manual jailbreak attacks and (automatic) adversarial attacks. Recent work suggests that patching LLMs against these attacks is possible: manual jailbreak attacks are human-readable but often limited and public, making them easy to block; adversarial attacks generate gibberish prompts that can be detected using perplexity-based filters. In this paper, we show that these solutions may be too optimistic. We propose an interpretable adversarial attack, AutoDAN , that combines the strengths of both types of attacks. It automatically generates attack prompts that bypass perplexity-based filters while maintaining a high attack success rate like manual jailbreak attacks. These prompts are interpretable and diverse, exhibiting strategies commonly used in manual jailbreak attacks, and transfer better than their non-readable counterparts when using limited training data or a single proxy model. We also customize AutoDAN \u2019s objective to leak system prompts, another jailbreak application not addressed in the adversarial attack literature. Our work provides a new way to red-team LLMs and to understand the mechanism of jailbreak attacks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An interpretable adversarial attack, AutoDAN, is proposed, that combines the strengths of both types of attacks and provides a new way to red-team LLMs and to understand the mechanism of jailbreak attacks."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of outputs. The approach is to have an ensemble of diverse language models engage in a multi-round verification process to scrutinize each other's outputs and provide feedback to reach a consensus.\n\nThe research problem in the paper is automatically generating interpretable adversarial prompts that can bypass perplexity-based filters and compromise the safety alignment of large language models. The approach is to propose an attack method called AutoDAN that combines the strengths of manual jailbreak attacks and adversarial attacks.\n\nThe proposal focuses on defending against adversarial prompts, while the paper focuses on generating more effective adversarial prompts. They have opposite goals and different approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "paperId": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+            "abstract": "Because\"out-of-the-box\"large language models are capable of generating a great deal of objectionable content, recent work has focused on aligning these models in an attempt to prevent undesirable generation. While there has been some success at circumventing these measures -- so-called\"jailbreaks\"against LLMs -- these attacks have required significant human ingenuity and are brittle in practice. In this paper, we propose a simple and effective attack method that causes aligned language models to generate objectionable behaviors. Specifically, our approach finds a suffix that, when attached to a wide range of queries for an LLM to produce objectionable content, aims to maximize the probability that the model produces an affirmative response (rather than refusing to answer). However, instead of relying on manual engineering, our approach automatically produces these adversarial suffixes by a combination of greedy and gradient-based search techniques, and also improves over past automatic prompt generation methods. Surprisingly, we find that the adversarial prompts generated by our approach are quite transferable, including to black-box, publicly released LLMs. Specifically, we train an adversarial attack suffix on multiple prompts (i.e., queries asking for many different types of objectionable content), as well as multiple models (in our case, Vicuna-7B and 13B). When doing so, the resulting attack suffix is able to induce objectionable content in the public interfaces to ChatGPT, Bard, and Claude, as well as open source LLMs such as LLaMA-2-Chat, Pythia, Falcon, and others. In total, this work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information. Code is available at github.com/llm-attacks/llm-attacks.",
+            "year": 2023,
+            "citationCount": 385,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of outputs. The approach is to have an ensemble of diverse language models engage in a multi-round verification process to scrutinize each other's outputs and provide feedback to reach a consensus.\n\nThe research problem in the paper is finding universal and transferable adversarial attacks that can cause aligned language models to generate objectionable content. The approach is to automatically produce adversarial prompt suffixes using greedy and gradient-based search techniques to maximize the probability of the model producing an affirmative response to queries for objectionable content.\n\nThe proposal focuses on defending against adversarial prompts, while the paper focuses on attacking aligned language models to generate objectionable content. The proposal uses collaborative verification among multiple models, while the paper uses adversarial prompt engineering.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "1227c2fcb8437441b7d72a29a4bc9eef1f5275d2",
+            "paperId": "1227c2fcb8437441b7d72a29a4bc9eef1f5275d2",
+            "title": "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models",
+            "abstract": "Safety alignment of Large Language Models (LLMs) can be compromised with manual jailbreak attacks and (automatic) adversarial attacks. Recent studies suggest that defending against these attacks is possible: adversarial attacks generate unlimited but unreadable gibberish prompts, detectable by perplexity-based filters; manual jailbreak attacks craft readable prompts, but their limited number due to the necessity of human creativity allows for easy blocking. In this paper, we show that these solutions may be too optimistic. We introduce AutoDAN, an interpretable, gradient-based adversarial attack that merges the strengths of both attack types. Guided by the dual goals of jailbreak and readability, AutoDAN optimizes and generates tokens one by one from left to right, resulting in readable prompts that bypass perplexity filters while maintaining high attack success rates. Notably, these prompts, generated from scratch using gradients, are interpretable and diverse, with emerging strategies commonly seen in manual jailbreak attacks. They also generalize to unforeseen harmful behaviors and transfer to black-box LLMs better than their unreadable counterparts when using limited training data or a single proxy model. Furthermore, we show the versatility of AutoDAN by automatically leaking system prompts using a customized objective. Our work offers a new way to red-team LLMs and understand jailbreak mechanisms via interpretability.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work offers a new way to red-team LLMs and understand jailbreak mechanisms via interpretability, by introducing AutoDAN, an interpretable, gradient-based adversarial attack that merges the strengths of both attack types."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of outputs. The approach is to have an ensemble of diverse language models engage in a multi-round verification process to scrutinize each other's outputs and provide feedback to reach a consensus.\n\nThe research problem in the paper is compromising the safety alignment of large language models using interpretable, gradient-based adversarial attacks that generate readable prompts to bypass perplexity filters. The approach is AutoDAN, which optimizes and generates tokens one by one from left to right, guided by the dual goals of jailbreak and readability.\n\nThe proposal focuses on defending against adversarial prompts, while the paper focuses on generating interpretable adversarial prompts to compromise language models. They have different goals and approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "cf65db0934696e1f8896da52811b3d7f79836abd",
+            "paperId": "cf65db0934696e1f8896da52811b3d7f79836abd",
+            "title": "From Instructions to Constraints: Language Model Alignment with Automatic Constraint Verification",
+            "abstract": "User alignment is crucial for adapting general-purpose language models (LMs) to downstream tasks, but human annotations are often not available for all types of instructions, especially those with customized constraints. We observe that user instructions typically contain constraints. While assessing response quality in terms of the whole instruction is often costly, efficiently evaluating the satisfaction rate of constraints is feasible. We investigate common constraints in NLP tasks, categorize them into three classes based on the types of their arguments, and propose a unified framework, ACT (Aligning to ConsTraints), to automatically produce supervision signals for user alignment with constraints. Specifically, ACT uses constraint verifiers, which are typically easy to implement in practice, to compute constraint satisfaction rate (CSR) of each response. It samples multiple responses for each prompt and collect preference labels based on their CSR automatically. Subsequently, ACT adapts the LM to the target task through a ranking-based learning process. Experiments on fine-grained entity typing, abstractive summarization, and temporal question answering show that ACT is able to enhance LMs' capability to adhere to different classes of constraints, thereby improving task performance. Further experiments show that the constraint-following capabilities are transferable.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A unified framework, ACT (Aligning to ConsTraints), is proposed, to automatically produce supervision signals for user alignment with constraints, and is able to enhance LMs' capability to adhere to different classes of constraints, thereby improving task performance."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of prompts and outputs. The paper focuses on aligning language models with user-specified constraints by automatically generating supervision signals based on constraint satisfaction rates.\n\nThe project proposal and the paper address different research problems and propose different approaches:\n- The project proposal tackles the issue of language models being vulnerable to adversarial prompts and proposes a collaborative verification method using multiple models.\n- The paper studies the problem of aligning language models with user instructions containing constraints and proposes a framework to automatically generate preference labels based on constraint satisfaction.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "792fd55d79d120173e0a944ce6bfe4787239c1d2",
+            "paperId": "792fd55d79d120173e0a944ce6bfe4787239c1d2",
+            "title": "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
+            "abstract": "Remarkable progress has been made on automated problem solving through societies of agents based on large language models (LLMs). Existing LLM-based multi-agent systems can already solve simple dialogue tasks. Solutions to more complex tasks, however, are complicated through logic inconsistencies due to cascading hallucinations caused by naively chaining LLMs. Here we introduce MetaGPT, an innovative meta-programming framework incorporating efficient human workflows into LLM-based multi-agent collaborations. MetaGPT encodes Standardized Operating Procedures (SOPs) into prompt sequences for more streamlined workflows, thus allowing agents with human-like domain expertise to verify intermediate results and reduce errors. MetaGPT utilizes an assembly line paradigm to assign diverse roles to various agents, efficiently breaking down complex tasks into subtasks involving many agents working together. On collaborative software engineering benchmarks, MetaGPT generates more coherent solutions than previous chat-based multi-agent systems. Our project can be found at https://github.com/geekan/MetaGPT",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "MetaGPT is introduced, an innovative meta-programming framework incorporating efficient human workflows into LLM-based multi-agent collaborations, thus allowing agents with human-like domain expertise to verify intermediate results and reduce errors."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts, and the proposed approach is to use collaborative verification among multiple models. The research problem in the paper is improving the coherence and accuracy of multi-agent systems for complex tasks, and the proposed approach is to use meta-programming to encode standardized operating procedures and assign diverse roles to agents.\n\nThe proposal focuses on defending against adversarial prompts, while the paper focuses on improving multi-agent collaboration for complex tasks. The proposal uses collaborative verification among models, while the paper uses meta-programming to encode workflows and assign roles.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "59eeb8a259ef2a9c981868470480f53b67854060",
+            "paperId": "59eeb8a259ef2a9c981868470480f53b67854060",
+            "title": "Meta-Prompting: Enhancing Language Models with Task-Agnostic Scaffolding",
+            "abstract": "We introduce meta-prompting, an effective scaffolding technique designed to enhance the functionality of language models (LMs). This approach transforms a single LM into a multi-faceted conductor, adept at managing and integrating multiple independent LM queries. By employing high-level instructions, meta-prompting guides the LM to break down complex tasks into smaller, more manageable subtasks. These subtasks are then handled by distinct\"expert\"instances of the same LM, each operating under specific, tailored instructions. Central to this process is the LM itself, in its role as the conductor, which ensures seamless communication and effective integration of the outputs from these expert models. It additionally employs its inherent critical thinking and robust verification processes to refine and authenticate the end result. This collaborative prompting approach empowers a single LM to simultaneously act as a comprehensive orchestrator and a panel of diverse experts, significantly enhancing its performance across a wide array of tasks. The zero-shot, task-agnostic nature of meta-prompting greatly simplifies user interaction by obviating the need for detailed, task-specific instructions. Furthermore, our research demonstrates the seamless integration of external tools, such as a Python interpreter, into the meta-prompting framework, thereby broadening its applicability and utility. Through rigorous experimentation with GPT-4, we establish the superiority of meta-prompting over conventional scaffolding methods: When averaged across all tasks, including the Game of 24, Checkmate-in-One, and Python Programming Puzzles, meta-prompting, augmented with a Python interpreter functionality, surpasses standard prompting by 17.1%, expert (dynamic) prompting by 17.3%, and multipersona prompting by 15.2%.",
+            "year": 2024,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Meta-prompting is introduced, an effective scaffolding technique designed to enhance the functionality of language models (LMs) and the seamless integration of external tools, such as a Python interpreter, into the meta-prompting framework, thereby broadening its applicability and utility."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of outputs. The paper proposes a meta-prompting technique that uses a single language model to break down complex tasks into subtasks handled by expert instances of the same model, and then integrates the results.\n\nWhile both the project proposal and the paper aim to enhance the performance of language models, their research problems and approaches are different. The project focuses on defending against adversarial prompts using collaborative verification, while the paper focuses on improving general task performance using task decomposition and expert integration.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "9397d56e35b1597e62af5d4fa773e4dacf3c20f9",
+            "paperId": "9397d56e35b1597e62af5d4fa773e4dacf3c20f9",
+            "title": "STEAM: Simulating the InTeractive BEhavior of ProgrAMmers for Automatic Bug Fixing",
+            "abstract": "Bug fixing holds significant importance in software development and maintenance. Recent research has made notable progress in exploring the potential of large language models (LLMs) for automatic bug fixing. However, existing studies often overlook the collaborative nature of bug resolution, treating it as a single-stage process. To overcome this limitation, we introduce a novel stage-wise framework named STEAM in this paper. The objective of STEAM is to simulate the interactive behavior of multiple programmers involved in various stages across the bug's life cycle. Taking inspiration from bug management practices, we decompose the bug fixing task into four distinct stages: bug reporting, bug diagnosis, patch generation, and patch verification. These stages are performed interactively by LLMs, aiming to imitate the collaborative abilities of programmers during the resolution of software bugs. By harnessing the collective contribution, STEAM effectively enhances the bug-fixing capabilities of LLMs. We implement STEAM by employing the powerful dialogue-based LLM -- ChatGPT. Our evaluation on the widely adopted bug-fixing benchmark demonstrates that STEAM has achieved a new state-of-the-art level of bug-fixing performance.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a novel stage-wise framework named STEAM, aiming to imitate the collaborative abilities of programmers during the resolution of software bugs, and demonstrates that STEAM has achieved a new state-of-the-art level of bug-fixing performance."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the robustness and reliability of language models against adversarial prompts by leveraging multiple models to collaboratively verify the safety and correctness of outputs. The approach is to have an ensemble of diverse language models engage in a multi-round verification process to scrutinize each other's outputs and provide feedback for revision.\n\nThe research problem in the paper is improving the performance of language models in automatic bug fixing by simulating the interactive behavior of multiple programmers. The approach is to decompose the bug fixing task into four stages (bug reporting, diagnosis, generation, and verification) performed interactively by language models to imitate the collaborative process.\n\nWhile both works involve using multiple language models to solve a task collaboratively, the specific problems and approaches are quite different. The proposal focuses on adversarial prompts and collaborative verification for safety and correctness, while the paper focuses on bug fixing and collaborative generation through task decomposition.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "b5a624da64475d735f0e298dc6f2f6669b5bb697",
+            "paperId": "b5a624da64475d735f0e298dc6f2f6669b5bb697",
+            "title": "Robust Safety Classifier for Large Language Models: Adversarial Prompt Shield",
+            "abstract": "Large Language Models' safety remains a critical concern due to their vulnerability to adversarial attacks, which can prompt these systems to produce harmful responses. In the heart of these systems lies a safety classifier, a computational model trained to discern and mitigate potentially harmful, offensive, or unethical outputs. However, contemporary safety classifiers, despite their potential, often fail when exposed to inputs infused with adversarial noise. In response, our study introduces the Adversarial Prompt Shield (APS), a lightweight model that excels in detection accuracy and demonstrates resilience against adversarial prompts. Additionally, we propose novel strategies for autonomously generating adversarial training datasets, named Bot Adversarial Noisy Dialogue (BAND) datasets. These datasets are designed to fortify the safety classifier's robustness, and we investigate the consequences of incorporating adversarial examples into the training process. Through evaluations involving Large Language Models, we demonstrate that our classifier has the potential to decrease the attack success rate resulting from adversarial attacks by up to 60%. This advancement paves the way for the next generation of more reliable and resilient conversational agents.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces the Adversarial Prompt Shield (APS), a lightweight model that excels in detection accuracy and demonstrates resilience against adversarial prompts, and proposes novel strategies for autonomously generating adversarial training datasets, designed to fortify the safety classifier's robustness."
+            },
+            "score": 6
+        },
+        {
+            "id": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "paperId": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "title": "Baseline Defenses for Adversarial Attacks Against Aligned Language Models",
+            "abstract": "As Large Language Models quickly become ubiquitous, it becomes critical to understand their security vulnerabilities. Recent work shows that text optimizers can produce jailbreaking prompts that bypass moderation and alignment. Drawing from the rich body of work on adversarial machine learning, we approach these attacks with three questions: What threat models are practically useful in this domain? How do baseline defense techniques perform in this new domain? How does LLM security differ from computer vision? We evaluate several baseline defense strategies against leading adversarial attacks on LLMs, discussing the various settings in which each is feasible and effective. Particularly, we look at three types of defenses: detection (perplexity based), input preprocessing (paraphrase and retokenization), and adversarial training. We discuss white-box and gray-box settings and discuss the robustness-performance trade-off for each of the defenses considered. We find that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs. Future research will be needed to uncover whether more powerful optimizers can be developed, or whether the strength of filtering and preprocessing defenses is greater in the LLMs domain than it has been in computer vision.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs."
+            },
+            "score": 6
+        },
+        {
+            "id": "d4177489596748e43aa571f59556097f2cc4c8be",
+            "paperId": "d4177489596748e43aa571f59556097f2cc4c8be",
+            "title": "GPTFUZZER: Red Teaming Large Language Models with Auto-Generated Jailbreak Prompts",
+            "abstract": "Large language models (LLMs) have recently experienced tremendous popularity and are widely used from casual conversations to AI-driven programming. However, despite their considerable success, LLMs are not entirely reliable and can give detailed guidance on how to conduct harmful or illegal activities. While safety measures can reduce the risk of such outputs, adversarial jailbreak attacks can still exploit LLMs to produce harmful content. These jailbreak templates are typically manually crafted, making large-scale testing challenging. In this paper, we introduce GPTFuzz, a novel black-box jailbreak fuzzing framework inspired by the AFL fuzzing framework. Instead of manual engineering, GPTFuzz automates the generation of jailbreak templates for red-teaming LLMs. At its core, GPTFuzz starts with human-written templates as initial seeds, then mutates them to produce new templates. We detail three key components of GPTFuzz: a seed selection strategy for balancing efficiency and variability, mutate operators for creating semantically equivalent or similar sentences, and a judgment model to assess the success of a jailbreak attack. We evaluate GPTFuzz against various commercial and open-source LLMs, including ChatGPT, LLaMa-2, and Vicuna, under diverse attack scenarios. Our results indicate that GPTFuzz consistently produces jailbreak templates with a high success rate, surpassing human-crafted templates. Remarkably, GPTFuzz achieves over 90% attack success rates against ChatGPT and Llama-2 models, even with suboptimal initial seed templates. We anticipate that GPTFuzz will be instrumental for researchers and practitioners in examining LLM robustness and will encourage further exploration into enhancing LLM safety.",
+            "year": 2023,
+            "citationCount": 78,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "GPTFuzz is introduced, a novel black-box jailbreak fuzzing framework inspired by the AFL fuzzed framework that automates the generation of jailbreak templates for red-teaming LLMs and consistently produces jailbreaks with a high success rate, surpassing human-crafted templates."
+            },
+            "score": 6
+        },
+        {
+            "id": "1abfc211793c683972ded8d3268475e3ee7a88b0",
+            "paperId": "1abfc211793c683972ded8d3268475e3ee7a88b0",
+            "title": "Adversarial Demonstration Attacks on Large Language Models",
+            "abstract": "With the emergence of more powerful large language models (LLMs), such as ChatGPT and GPT-4, in-context learning (ICL) has gained significant prominence in leveraging these models for specific tasks by utilizing data-label pairs as precondition prompts. While incorporating demonstrations can greatly enhance the performance of LLMs across various tasks, it may introduce a new security concern: attackers can manipulate only the demonstrations without changing the input to perform an attack. In this paper, we investigate the security concern of ICL from an adversarial perspective, focusing on the impact of demonstrations. We propose a novel attack method named advICL, which aims to manipulate only the demonstration without changing the input to mislead the models. Our results demonstrate that as the number of demonstrations increases, the robustness of in-context learning would decrease. Additionally, we also identify the intrinsic property of the demonstrations is that they can be used (prepended) with different inputs. As a result, it introduces a more practical threat model in which an attacker can attack the test input example even without knowing and manipulating it. To achieve it, we propose the transferable version of advICL, named Transferable-advICL. Our experiment shows that the adversarial demonstration generated by Transferable-advICL can successfully attack the unseen test input examples. We hope that our study reveals the critical security risks associated with ICL and underscores the need for extensive research on the robustness of ICL, particularly given its increasing significance in the advancement of LLMs.",
+            "year": 2023,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates the security concern of ICL from an adversarial perspective, focusing on the impact of demonstrations, and proposes a novel attack method named advICL, which aims to manipulate only the demonstration without changing the input to mislead the models."
+            },
+            "score": 6
+        },
+        {
+            "id": "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+            "paperId": "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+            "title": "Hijacking Large Language Models via Adversarial In-Context Learning",
+            "abstract": "In-context learning (ICL) has emerged as a powerful paradigm leveraging LLMs for specific tasks by utilizing labeled examples as demonstrations in the precondition prompts. Despite its promising performance, ICL suffers from instability with the choice and arrangement of examples. Additionally, crafted adversarial attacks pose a notable threat to the robustness of ICL. However, existing attacks are either easy to detect, rely on external models, or lack specificity towards ICL. To address these issues, this work introduces a novel transferable attack for ICL, aiming to hijack LLMs to generate the targeted response. The proposed LLM hijacking attack leverages a gradient-based prompt search method to learn and append imperceptible adversarial suffixes to the in-context demonstrations. Extensive experimental results on various tasks and datasets demonstrate the effectiveness of our LLM hijacking attack, resulting in a distracted attention towards adversarial tokens, consequently leading to the targeted unwanted outputs.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel transferable attack for ICL, aiming to hijack LLMs to generate the targeted response, and leverages a gradient-based prompt search method to learn and append imperceptible adversarial suffixes to the in-context demonstrations."
+            },
+            "score": 6
+        },
+        {
+            "id": "56e952fd463accff09cf2e35432aaabd7c7c57f3",
+            "paperId": "56e952fd463accff09cf2e35432aaabd7c7c57f3",
+            "title": "MQuAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions",
+            "abstract": "The information stored in large language models (LLMs) falls out of date quickly, and retraining from scratch is often not an option. This has recently given rise to a range of techniques for injecting new facts through updating model weights. Current evaluation paradigms are extremely limited, mainly validating the recall of edited facts, but changing one fact should cause rippling changes to the model's related beliefs. If we edit the UK Prime Minister to now be Rishi Sunak, then we should get a different answer to Who is married to the British Prime Minister? In this work, we present a benchmark, MQuAKE (Multi-hop Question Answering for Knowledge Editing), comprising multi-hop questions that assess whether edited models correctly answer questions where the answer should change as an entailed consequence of edited facts. While we find that current knowledge-editing approaches can recall edited facts accurately, they fail catastrophically on the constructed multi-hop questions. We thus propose a simple memory-based approach, MeLLo, which stores all edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts. While MQuAKE remains challenging, we show that MeLLo scales well with LLMs (up to 175B) and outperforms previous model editors by a large margin.",
+            "year": 2023,
+            "citationCount": 68,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a benchmark, MQuAKE (Multi-hop Question Answering for Knowledge Editing), comprising multi-hop questions that assess whether edited models correctly answer questions where the answer should change as an entailed consequence of edited facts, and proposes a simple memory-based approach, MeLLo."
+            },
+            "score": 6
+        },
+        {
+            "id": "9a9b1e2968302eb882870537d4af6e2c722dfd1a",
+            "paperId": "9a9b1e2968302eb882870537d4af6e2c722dfd1a",
+            "title": "Self-Polish: Enhance Reasoning in Large Language Models via Problem Refinement",
+            "abstract": "To enhance the multi-step reasoning capabilities of large language models, researchers have extensively explored prompting methods, notably the Chain-of-Thought (CoT) method which explicitly elicits human-like rationales. However, they have inadvertently overlooked the potential of enhancing model reasoning performance by formulating higher-quality problems. In this work, we start from the problem side and propose Self-Polish (SP), a novel method that facilitates the model's reasoning by guiding it to progressively refine the given problems to be more comprehensible and solvable. We also explore several automatic prompting varients and propose the Self-Polish prompt bank for the community. SP is orthogonal to all other prompting methods of answer/reasoning side like CoT, allowing for seamless integration with state-of-the-art techniques for further improvement. Thorough experiments show that the proposed method attains notable and consistent effectiveness on five reasoning benchmarks across different models. Furthermore, our method also showcases impressive performance on robustness evaluation. Codes and prompts are available at https://github.com/WooooDyy/Self-Polish.",
+            "year": 2023,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-Polish (SP) is proposed, a novel method that facilitates the model's reasoning by guiding it to progressively refine the given problems to be more comprehensible and solvable and seamless integration with state-of-the-art techniques for further improvement."
+            },
+            "score": 6
+        },
+        {
+            "id": "385c74957858e7d6856d48e72b5a902b4c1aa28c",
+            "paperId": "385c74957858e7d6856d48e72b5a902b4c1aa28c",
+            "title": "Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate",
+            "abstract": "Modern large language models (LLMs) like ChatGPT have shown remarkable performance on general language tasks but still struggle on complex reasoning tasks, which drives the research on cognitive behaviors of LLMs to explore human-like problem-solving strategies. Along this direction, one representative strategy is self-reflection, which asks an LLM to refine the solution with the feedback generated by itself iteratively. However, our study shows that such reflection-style methods suffer from the Degeneration-of-Thought (DoT) problem: once the LLM has established confidence in its solutions, it is unable to generate novel thoughts later through reflection even if its initial stance is incorrect. To address the DoT problem, we propose a Multi-Agent Debate (MAD) framework, in which multiple agents express their arguments in the state of\"tit for tat\"and a judge manages the debate process to obtain a final solution. Clearly, our MAD framework encourages divergent thinking in LLMs which would be helpful for tasks that require deep levels of contemplation. Experiment results on two challenging datasets, commonsense machine translation and counter-intuitive arithmetic reasoning, demonstrate the effectiveness of our MAD framework. Extensive analyses suggest that the adaptive break of debate and the modest level of\"tit for tat\"state are required for MAD to obtain good performance. Moreover, we find that LLMs might not be a fair judge if different LLMs are used for agents. Codes: https://github.com/Skytliang/Multi-Agents-Debate",
+            "year": 2023,
+            "citationCount": 125,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Multi-Agent Debate (MAD) framework is proposed, in which multiple agents express their arguments in the state of\"tit for tat\"and a judge manages the debate process to obtain a final solution."
+            },
+            "score": 6
+        },
+        {
+            "id": "7011bf9aa7e68fabaa1df498da6d2dd8a950f037",
+            "paperId": "7011bf9aa7e68fabaa1df498da6d2dd8a950f037",
+            "title": "Pushing the Limits of ChatGPT on NLP Tasks",
+            "abstract": "Despite the success of ChatGPT, its performances on most NLP tasks are still well below the supervised baselines. In this work, we looked into the causes, and discovered that its subpar performance was caused by the following factors: (1) token limit in the prompt does not allow for the full utilization of the supervised datasets; (2) mismatch between the generation nature of ChatGPT and NLP tasks; (3) intrinsic pitfalls of LLMs models, e.g., hallucination, overly focus on certain keywords, etc. In this work, we propose a collection of general modules to address these issues, in an attempt to push the limits of ChatGPT on NLP tasks. Our proposed modules include (1) a one-input-multiple-prompts strategy that employs multiple prompts for one input to accommodate more demonstrations; (2) using fine-tuned models for better demonstration retrieval; (3) transforming tasks to formats that are more tailored to the generation nature; (4) employing reasoning strategies that are tailored to addressing the task-specific complexity; (5) the self-verification strategy to address the hallucination issue of LLMs; (6) the paraphrase strategy to improve the robustness of model predictions. We conduct experiments on 21 datasets of 10 representative NLP tasks, including question answering, commonsense reasoning, natural language inference, sentiment analysis, named entity recognition, entity-relation extraction, event extraction, dependency parsing, semantic role labeling, and part-of-speech tagging. Using the proposed assemble of techniques, we are able to significantly boost the performance of ChatGPT on the selected NLP tasks, achieving performances comparable to or better than supervised baselines, or even existing SOTA performances.",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using the proposed assemble of techniques, this work is able to significantly boost the performance of ChatGPT on the selected NLP tasks, achieving performances comparable to or better than supervised baselines, or even existing SOTA performances."
+            },
+            "score": 6
+        },
+        {
+            "id": "7baaaa623d2c3011a52e2bb515e030825fa6e36c",
+            "paperId": "7baaaa623d2c3011a52e2bb515e030825fa6e36c",
+            "title": "An Enhanced Prompt-Based LLM Reasoning Scheme via Knowledge Graph-Integrated Collaboration",
+            "abstract": "While Large Language Models (LLMs) demonstrate exceptional performance in a multitude of Natural Language Processing (NLP) tasks, they encounter challenges in practical applications, including issues with hallucinations, inadequate knowledge updating, and limited transparency in the reasoning process. To overcome these limitations, this study innovatively proposes a collaborative training-free reasoning scheme involving tight cooperation between Knowledge Graph (KG) and LLMs. This scheme first involves using LLMs to iteratively explore KG, selectively retrieving a task-relevant knowledge subgraph to support reasoning. The LLMs are then guided to further combine inherent implicit knowledge to reason on the subgraph while explicitly elucidating the reasoning process. Through such a cooperative approach, our scheme achieves more reliable knowledge-based reasoning and facilitates the tracing of the reasoning results. Experimental results show that our scheme significantly progressed across multiple datasets, notably achieving over a 10% improvement on the QALD10 dataset compared to the best baseline and the fine-tuned state-of-the-art (SOTA) work. Building on this success, this study hopes to offer a valuable reference for future research in the fusion of KG and LLMs, thereby enhancing LLMs' proficiency in solving complex issues.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study innovatively proposes a collaborative training-free reasoning scheme involving tight cooperation between Knowledge Graph (KG) and LLMs that achieves more reliable knowledge-based reasoning and facilitates the tracing of the reasoning results."
+            },
+            "score": 6
+        },
+        {
+            "id": "348608968d6d066599c69bf8f4366af20d6b3a25",
+            "paperId": "348608968d6d066599c69bf8f4366af20d6b3a25",
+            "title": "Towards Agent-Based Modeling and Verification of Collaborative Business Processes: an Approach Centered on Interactions and Behaviors",
+            "abstract": "This paper presents the process-oriented aspects of a formal and visual agent-based business process modeling language. The language is of use for (networks of) organizations that elect or envisage multi-agent systems for the support of collaborative business processes. The paper argues that the design of a collaborative business process should start with a proper understanding of the work practice of the agents in the business domain under consideration. The language introduces a novel diagram to represent the wide range of (cross-enterprise) business interactions as a hierarchy of role-based interactions (including their ordering relations) in a tree structure. The behaviors owned by the agents playing the roles in the tree are specified in separate process diagrams. A collaborative business process studied in the context of a case study at a Dutch gas transport company is used to exemplify the modeling approach. Explicit (agent-based) process models can and should be verified using formal methods. In the business process community, design-time verification of a process design is considered vital in order to ensure the correctness and termination of a collaborative business process. The proposed modeling approach is enhanced with a design-time verification method. The direction taken in this research is to combine the interaction tree and the associated agent behaviors into a verifiable hierarchical colored Petri net in order to take advantage of its well-defined (execution) semantics and proven (computerized) verification techniques. The verification method presented in this paper consists of three steps: (1) the translation of the agent-based process design to a hierarchical colored Petri net, (2) the identification of process design errors, and (3) the correction and rollback of process design errors to the agent-based model. The translation technique has been implemented in a software tool that outputs the hierarchical colored Petri net in a format that can be loaded in the widely used CPN Tools software package. Verification results are discussed for the case study model.",
+            "year": 2009,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The direction taken in this research is to combine the interaction tree and the associated agent behaviors into a verifiable hierarchical colored Petri net in order to take advantage of its well-defined (execution) semantics and proven (computerized) verification techniques."
+            },
+            "score": 5
+        },
+        {
+            "id": "1104d766527dead44a40532e8a89444d9cef5c65",
+            "paperId": "1104d766527dead44a40532e8a89444d9cef5c65",
+            "title": "\"Do Anything Now\": Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models",
+            "abstract": "The misuse of large language models (LLMs) has garnered significant attention from the general public and LLM vendors. In response, efforts have been made to align LLMs with human values and intent use. However, a particular type of adversarial prompts, known as jailbreak prompt, has emerged and continuously evolved to bypass the safeguards and elicit harmful content from LLMs. In this paper, we conduct the first measurement study on jailbreak prompts in the wild, with 6,387 prompts collected from four platforms over six months. Leveraging natural language processing technologies and graph-based community detection methods, we discover unique characteristics of jailbreak prompts and their major attack strategies, such as prompt injection and privilege escalation. We also observe that jailbreak prompts increasingly shift from public platforms to private ones, posing new challenges for LLM vendors in proactive detection. To assess the potential harm caused by jailbreak prompts, we create a question set comprising 46,800 samples across 13 forbidden scenarios. Our experiments show that current LLMs and safeguards cannot adequately defend jailbreak prompts in all scenarios. Particularly, we identify two highly effective jailbreak prompts which achieve 0.99 attack success rates on ChatGPT (GPT-3.5) and GPT-4, and they have persisted online for over 100 days. Our work sheds light on the severe and evolving threat landscape of jailbreak prompts. We hope our study can facilitate the research community and LLM vendors in promoting safer and regulated LLMs.",
+            "year": 2023,
+            "citationCount": 69,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The first measurement study on jailbreak prompts in the wild is conducted, with 6,387 prompts collected from four platforms over six months, and it is shown that current LLMs and safeguards cannot adequately defend jailbreak Prompts in all scenarios."
+            },
+            "score": 5
+        },
+        {
+            "id": "5c4a75e7436e402af046c24655fefe71ee87e379",
+            "paperId": "5c4a75e7436e402af046c24655fefe71ee87e379",
+            "title": "Robust Testing of AI Language Model Resiliency with Novel Adversarial Prompts",
+            "abstract": "In the rapidly advancing field of Artificial Intelligence (AI), this study presents a critical evaluation of the resilience and cybersecurity efficacy of leading AI models, including ChatGPT-4, Bard, Claude, and Microsoft Copilot. Central to this research are innovative adversarial prompts designed to rigorously test the content moderation capabilities of these AI systems. This study introduces new adversarial tests and the Response Quality Score (RQS), a metric specifically developed to assess the nuances of AI responses. Additionally, the research spotlights FreedomGPT, an AI tool engineered to optimize the alignment between user intent and AI interpretation. The empirical results from this investigation are pivotal for assessing AI models\u2019 current robustness and security. They highlight the necessity for ongoing development and meticulous testing to bolster AI defenses against various adversarial challenges. Notably, this study also delves into the ethical and societal implications of employing advanced \u201cjailbreak\u201d techniques in AI testing. The findings are significant for understanding AI vulnerabilities and formulating strategies to enhance AI technologies\u2019 reliability and ethical soundness, paving the way for safer and more secure AI applications.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces new adversarial tests and the Response Quality Score (RQS), a metric specifically developed to assess the nuances of AI responses, and spotlights FreedomGPT, an AI tool engineered to optimize the alignment between user intent and AI interpretation."
+            },
+            "score": 5
+        },
+        {
+            "id": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "paperId": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "title": "More than you've asked for: A Comprehensive Analysis of Novel Prompt Injection Threats to Application-Integrated Large Language Models",
+            "abstract": "We are currently witnessing dramatic advances in the capabilities of Large Language Models (LLMs). They are already being adopted in practice and integrated into many systems, including integrated development environments (IDEs) and search engines. The functionalities of current LLMs can be modulated via natural language prompts, while their exact internal functionality remains implicit and unassessable. This property, which makes them adaptable to even unseen tasks, might also make them susceptible to targeted adversarial prompting . Recently, several ways to misalign LLMs using Prompt Injection (PI) attacks have been introduced. In such attacks, an adversary can prompt the LLM to produce malicious content or override the original instructions and the employed \ufb01ltering schemes. Recent work showed that these attacks are hard to mitigate, as state-of-the-art LLMs are instruction-following . So far, these attacks assumed that the adversary is directly prompting the LLM. In this work, we show that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs ) induces a whole new set of attack vectors. These LLMs might process poisoned content retrieved from the Web that contains malicious prompts pre-injected and selected by adversaries. We demonstrate that an attacker can indirectly perform such PI attacks. Based on this key insight, we systematically analyze the resulting threat landscape of Application-Integrated LLMs and discuss a variety of new attack vectors. To demonstrate the practical viability of our attacks, we implemented speci\ufb01c demonstrations",
+            "year": 2023,
+            "citationCount": 73,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs) induces a whole new set of attack vectors and systematically analyzes the resulting threat landscape of Application-Integrated LLMs."
+            },
+            "score": 5
+        },
+        {
+            "id": "7cf64070fd3d7e53d80f260c10e6bd7018d580e1",
+            "paperId": "7cf64070fd3d7e53d80f260c10e6bd7018d580e1",
+            "title": "IdealGPT: Iteratively Decomposing Vision and Language Reasoning via Large Language Models",
+            "abstract": "The field of vision-and-language (VL) understanding has made unprecedented progress with end-to-end large pre-trained VL models (VLMs). However, they still fall short in zero-shot reasoning tasks that require multi-step inferencing. To achieve this goal, previous works resort to a divide-and-conquer pipeline. In this paper, we argue that previous efforts have several inherent shortcomings: 1) They rely on domain-specific sub-question decomposing models. 2) They force models to predict the final answer even if the sub-questions or sub-answers provide insufficient information. We address these limitations via IdealGPT, a framework that iteratively decomposes VL reasoning using large language models (LLMs). Specifically, IdealGPT utilizes an LLM to generate sub-questions, a VLM to provide corresponding sub-answers, and another LLM to reason to achieve the final answer. These three modules perform the divide-and-conquer procedure iteratively until the model is confident about the final answer to the main question. We evaluate IdealGPT on multiple challenging VL reasoning tasks under a zero-shot setting. In particular, our IdealGPT outperforms the best existing GPT-4-like models by an absolute 10% on VCR and 15% on SNLI-VE. Code is available at https://github.com/Hxyou/IdealGPT",
+            "year": 2023,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The IdealGPT framework is presented, a framework that iteratively decomposes VL reasoning using large language models (LLMs) and outperforms the best existing GPT-4-like models by an absolute 10% on VCR and 15% on SNLI-VE."
+            },
+            "score": 5
+        },
+        {
+            "id": "e070ff286709db28312e08b52b05539debe88146",
+            "paperId": "e070ff286709db28312e08b52b05539debe88146",
+            "title": "Measuring and Narrowing the Compositionality Gap in Language Models",
+            "abstract": "We investigate the ability of language models to perform compositional reasoning tasks where the overall solution depends on correctly composing the answers to sub-problems. We measure how often models can correctly answer all sub-problems but not generate the overall solution, a ratio we call the compositionality gap. We evaluate this ratio by asking multi-hop questions with answers that require composing multiple facts unlikely to have been observed together during pretraining. In the GPT-3 family of models, as model size increases we show that the single-hop question answering performance improves faster than the multi-hop performance does, therefore the compositionality gap does not decrease. This surprising result suggests that while more powerful models memorize and recall more factual knowledge, they show no corresponding improvement in their ability to perform this kind of compositional reasoning. We then demonstrate how elicitive prompting (such as chain of thought) narrows the compositionality gap by reasoning explicitly. We present a new method, self-ask, that further improves on chain of thought. In our method, the model explicitly asks itself (and answers) follow-up questions before answering the initial question. We finally show that self-ask's structured prompting lets us easily plug in a search engine to answer the follow-up questions, which additionally improves accuracy.",
+            "year": 2022,
+            "citationCount": 296,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that the single-hop question answering performance improves faster than the multi-hop performance does, therefore the compositionality gap does not decrease, and while more powerful models memorize and recall more factual knowledge, they show no corresponding improvement in their ability to perform compositional reasoning."
+            },
+            "score": 5
+        },
+        {
+            "id": "187f4521e6080f93fc2a26bf91b4e7d64f94e18a",
+            "paperId": "187f4521e6080f93fc2a26bf91b4e7d64f94e18a",
+            "title": "FedBPT: Efficient Federated Black-box Prompt Tuning for Large Language Models",
+            "abstract": "Pre-trained language models (PLM) have revolutionized the NLP landscape, achieving stellar performances across diverse tasks. These models, while benefiting from vast training data, often require fine-tuning on specific data to cater to distinct downstream tasks. However, this data adaptation process has inherent security and privacy concerns, primarily when leveraging user-generated, device-residing data. Federated learning (FL) provides a solution, allowing collaborative model fine-tuning without centralized data collection. However, applying FL to finetune PLMs is hampered by challenges, including restricted model parameter access, high computational requirements, and communication overheads. This paper introduces Federated Black-box Prompt Tuning (FedBPT), a framework designed to address these challenges. FedBPT does not require the clients to access the model parameters. By focusing on training optimal prompts and utilizing gradient-free optimization methods, FedBPT reduces the number of exchanged variables, boosts communication efficiency, and minimizes computational and storage costs. Experiments highlight the framework's ability to drastically cut communication and memory costs while maintaining competitive performance. Ultimately, FedBPT presents a promising solution for efficient, privacy-preserving fine-tuning of PLM in the age of large language models.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Federated Black-box Prompt Tuning (FedBPT) is introduced, a framework designed to address challenges of fine-tuning of PLM in the age of large language models that reduces the number of exchanged variables, boosts communication efficiency, and minimizes computational and storage costs."
+            },
+            "score": 5
+        },
+        {
+            "id": "dfab0f3ee6f47e36cccee145794cd117773e6f73",
+            "paperId": "dfab0f3ee6f47e36cccee145794cd117773e6f73",
+            "title": "Towards LLM-based Fact Verification on News Claims with a Hierarchical Step-by-Step Prompting Method",
+            "abstract": "While large pre-trained language models (LLMs) have shown their impressive capabilities in various NLP tasks, they are still under-explored in the misinformation domain. In this paper, we examine LLMs with in-context learning (ICL) for news claim verification, and find that only with 4-shot demonstration examples, the performance of several prompting methods can be comparable with previous supervised models. To further boost performance, we introduce a Hierarchical Step-by-Step (HiSS) prompting method which directs LLMs to separate a claim into several subclaims and then verify each of them via multiple questions-answering steps progressively. Experiment results on two public misinformation datasets show that HiSS prompting outperforms state-of-the-art fully-supervised approach and strong few-shot ICL-enabled baselines.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Hierarchical Step-by-Step (HiSS) prompting method is introduced which directs LLMs to separate a claim into several subclaims and then verify each of them via multiple questions-answering steps progressively."
+            },
+            "score": 5
+        },
+        {
+            "id": "1fbdb74cdf6c2fb4062e976813d638b419dc3362",
+            "paperId": "1fbdb74cdf6c2fb4062e976813d638b419dc3362",
+            "title": "HawkEye: a tool for collaborative business process modelling and verification",
+            "abstract": "In this paper we propose a collaborative Business Process modeling approach where multiple stakeholders can be coordinate considering global and local views on Business Processes. In the modeling phase we use a standard language such as BPMN 2.0 that provides both local view, via collaboration specification, and global view, via choreography models specification. The approach provides support also for analysis activities aiming at reconciling local and global views to effectively and efficiently derive inter-organizational Business Processes. For the analysis phase we adapted well known verification approaches in order to check behavioral constraints.",
+            "year": 2013,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposed a collaborative Business Process modeling approach where multiple stakeholders can be coordinate considering global and local views on Business Processes and adapted well known verification approaches in order to check behavioral constraints."
+            },
+            "score": 4
+        },
+        {
+            "id": "9ea338f622f0d1df1fec5a4124f7e81fcd46c21b",
+            "paperId": "9ea338f622f0d1df1fec5a4124f7e81fcd46c21b",
+            "title": "A Verification Method for Collaborative Business Processes",
+            "abstract": null,
+            "year": 2011,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Global Interaction Nets are introduced, which are based on Hierarchical and Colored Petri Nets, and the Global Interaction Soundness property is adapted from the classical definition of soundness, as the main correctness criterion, and can be used to formalize and verify models defined with different modeling languages."
+            },
+            "score": 4
+        },
+        {
+            "id": "7a75c1db046456c2192645c34a31622407c801be",
+            "paperId": "7a75c1db046456c2192645c34a31622407c801be",
+            "title": "V\u00e9rification Formelle des Processus Workflow Collaboratifs",
+            "abstract": "In this paper, we present a method of verification of collaborative workflow processes based on model checking techniques. In particular, we propose to verify soundness properties of these processes using SPIN model checker. First we translate the adopted specification of workflows (i.e. the WF-net) to Promela which is the description language of models to be verified by SPIN. Then we express the soundness properties in Linear Temporal Logic (LTL) and use SPIN to test whether each property is satisfied by the Promela model of the WF-net in question. Finally, we express the properties of k-soundness for WF-nets modeling multiple instances and (k,R)-soundness for workflow processes with multiple instances and sharing resources.",
+            "year": 2012,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes to verify soundness properties of collaborative workflow processes using SPIN model checker using the description language of models to be verified by SPIN, and expresses the properties of k-soundness for WF-nets modeling multiple instances and (k,R)- soundness for workflow processes with multiple instance and sharing resources."
+            },
+            "score": 4
+        },
+        {
+            "id": "5605d7aed0e831cdb7e55ee5019966b4927fee5e",
+            "paperId": "5605d7aed0e831cdb7e55ee5019966b4927fee5e",
+            "title": "Towards workflow verification",
+            "abstract": "Workflow Management Systems (WfMS) that help the design and deployment of automated business processes as well as aid their execution and monitoring continue to evolve. Many WfMS use Workflow Patterns as their basic modeling constructs; however, the absence of verification facilities in most WfMS causes the resulting implementation to be at risk of undesirable runtime executions. Model Checking can facilitate the verification of workflow models, provided that we can conveniently implement the workflow model and provide the resources to handle the space requirement of the model. DiVinE is a distributed and parallel Model Checker that can effectively handle the well-known state explosion problem of this domain. In this paper, we present a translation of a collection of established Workflow Patterns into DVE, the input specification language of DiVinE. Thus, by assembling the corresponding DVE translated patterns into a whole model, we can verify properties of workflow models. We discuss the difficulties we have experienced with this approach and explain how that led to the development of an automatic translator tool from YAWL to DVE. We present two case studies and some ongoing work in our research group.",
+            "year": 2010,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a translation of a collection of established Workflow Patterns into DVE, the input specification language of DiVinE, and can verify properties of workflow models by assembling the corresponding DVE translated patterns into a whole model."
+            },
+            "score": 4
+        },
+        {
+            "id": "173e309208fc0be8764c0579183a44867ddba85e",
+            "paperId": "173e309208fc0be8764c0579183a44867ddba85e",
+            "title": "A Tool for Model-Driven Development of Collaborative Business Processes",
+            "abstract": ". New management models encourage enterprises setting up collaborative relationships with their partners through Business-to-Business (B2B) solutions. This requires the modeling and specification of collaborative business processes that define the global view and behavior of the inter-enterprise collaboration. In order to provide a development environment that enables the development of B2B solutions, in this work we propose a tool that supports a model-driven development method for modeling, verification and specification of collaborative business processes. The tool consists of a set of plug-ins for the Eclipse platform. On one hand, we discuss the development of a set of graphical editor plug-ins that support the visual modeling of collaborative processes by using the UP-ColBPIP Language. On the other hand, we discuss the implementation of a model transformation machine that supports the model transformations required to generate Petri Net specifications for verifying the correctness of collaborative process models.",
+            "year": 2008,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a tool that supports a model-driven development method for modeling, verification and specification of collaborative business processes and discusses the development of a set of graphical editor plug-ins that support the visual modeling of collaborative processes by using the UP-ColBPIP Language."
+            },
+            "score": 4
+        },
+        {
+            "id": "142e934dd5d6c53f877c30243d436255e3a0dde7",
+            "paperId": "142e934dd5d6c53f877c30243d436255e3a0dde7",
+            "title": "Visual Adversarial Examples Jailbreak Aligned Large Language Models",
+            "abstract": "Warning: this paper contains data, prompts, and model outputs that are offensive in nature.\n\nRecently, there has been a surge of interest in integrating vision into Large Language Models (LLMs), exemplified by Visual Language Models (VLMs) such as Flamingo and GPT-4. This paper sheds light on the security and safety implications of this trend. First, we underscore that the continuous and high-dimensional nature of the visual input makes it a weak link against adversarial attacks, representing an expanded attack surface of vision-integrated LLMs. Second, we highlight that the versatility of LLMs also presents visual attackers with a wider array of achievable adversarial objectives, extending the implications of security failures beyond mere misclassification. As an illustration, we present a case study in which we exploit visual adversarial examples to circumvent the safety guardrail of aligned LLMs with integrated vision. Intriguingly, we discover that a single visual adversarial example can universally jailbreak an aligned LLM, compelling it to heed a wide range of harmful instructions (that it otherwise would not) and generate harmful content that transcends the narrow scope of a `few-shot' derogatory corpus initially employed to optimize the adversarial example. Our study underscores the escalating adversarial risks associated with the pursuit of multimodality. Our findings also connect the long-studied adversarial vulnerabilities of neural networks to the nascent field of AI alignment. The presented attack suggests a fundamental adversarial challenge for AI alignment, especially in light of the emerging trend toward multimodality in frontier foundation models.",
+            "year": 2023,
+            "citationCount": 44,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that a single visual adversarial example can universally jailbreak an aligned LLM, compelling it to heed a wide range of harmful instructions and generate harmful content that transcends the narrow scope of a `few-shot' derogatory corpus initially employed to optimize the adversarial example."
+            },
+            "score": 4
+        },
+        {
+            "id": "3bb87d605856411c6f002d480fc29d355c3ba245",
+            "paperId": "3bb87d605856411c6f002d480fc29d355c3ba245",
+            "title": "An Image Is Worth 1000 Lies: Adversarial Transferability across Prompts on Vision-Language Models",
+            "abstract": "Different from traditional task-specific vision models, recent large VLMs can readily adapt to different vision tasks by simply using different textual instructions, i.e., prompts. However, a well-known concern about traditional task-specific vision models is that they can be misled by imperceptible adversarial perturbations. Furthermore, the concern is exacerbated by the phenomenon that the same adversarial perturbations can fool different task-specific models. Given that VLMs rely on prompts to adapt to different tasks, an intriguing question emerges: Can a single adversarial image mislead all predictions of VLMs when a thousand different prompts are given? This question essentially introduces a novel perspective on adversarial transferability: cross-prompt adversarial transferability. In this work, we propose the Cross-Prompt Attack (CroPA). This proposed method updates the visual adversarial perturbation with learnable prompts, which are designed to counteract the misleading effects of the adversarial image. By doing this, CroPA significantly improves the transferability of adversarial examples across prompts. Extensive experiments are conducted to verify the strong cross-prompt adversarial transferability of CroPA with prevalent VLMs including Flamingo, BLIP-2, and InstructBLIP in various different tasks. Our source code is available at \\url{https://github.com/Haochen-Luo/CroPA}.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes the Cross-Prompt Attack (CroPA), a method that updates the visual adversarial perturbation with learnable prompts, which are designed to counteract the misleading effects of the adversarial image."
+            },
+            "score": 4
+        },
+        {
+            "id": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "paperId": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "title": "Jailbreak in pieces: Compositional Adversarial Attacks on Multi-Modal Language Models",
+            "abstract": "We introduce new jailbreak attacks on vision language models (VLMs), which use aligned LLMs and are resilient to text-only jailbreak attacks. Specifically, we develop cross-modality attacks on alignment where we pair adversarial images going through the vision encoder with textual prompts to break the alignment of the language model. Our attacks employ a novel compositional strategy that combines an image, adversarially targeted towards toxic embeddings, with generic prompts to accomplish the jailbreak. Thus, the LLM draws the context to answer the generic prompt from the adversarial image. The generation of benign-appearing adversarial images leverages a novel embedding-space-based methodology, operating with no access to the LLM model. Instead, the attacks require access only to the vision encoder and utilize one of our four embedding space targeting strategies. By not requiring access to the LLM, the attacks lower the entry barrier for attackers, particularly when vision encoders such as CLIP are embedded in closed-source LLMs. The attacks achieve a high success rate across different VLMs, highlighting the risk of cross-modality alignment vulnerabilities, and the need for new alignment approaches for multi-modal models.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Cross-modality attacks on alignment where adversarial images going through the vision encoder with textual prompts to break the alignment of the language model are developed."
+            },
+            "score": 4
+        },
+        {
+            "id": "9d4cd5e3ab44f0d1dfe201c6be70aa7a692ac7f1",
+            "paperId": "9d4cd5e3ab44f0d1dfe201c6be70aa7a692ac7f1",
+            "title": "GuardT2I: Defending Text-to-Image Models from Adversarial Prompts",
+            "abstract": "Recent advancements in Text-to-Image (T2I) models have raised significant safety concerns about their potential misuse for generating inappropriate or Not-Safe-For-Work (NSFW) contents, despite existing countermeasures such as NSFW classifiers or model fine-tuning for inappropriate concept removal. Addressing this challenge, our study unveils GuardT2I, a novel moderation framework that adopts a generative approach to enhance T2I models' robustness against adversarial prompts. Instead of making a binary classification, GuardT2I utilizes a Large Language Model (LLM) to conditionally transform text guidance embeddings within the T2I models into natural language for effective adversarial prompt detection, without compromising the models' inherent performance. Our extensive experiments reveal that GuardT2I outperforms leading commercial solutions like OpenAI-Moderation and Microsoft Azure Moderator by a significant margin across diverse adversarial scenarios.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study unveils GuardT2I, a novel moderation framework that adopts a generative approach to enhance T2I models' robustness against adversarial prompts, and outperforms leading commercial solutions like OpenAI-Moderation and Microsoft Azure Moderator by a significant margin across diverse adversarial scenarios."
+            },
+            "score": 4
+        },
+        {
+            "id": "f4cd7b7ffb0ab5ccef7cca23eeb436a933f7c776",
+            "paperId": "f4cd7b7ffb0ab5ccef7cca23eeb436a933f7c776",
+            "title": "Frontier Language Models are not Robust to Adversarial Arithmetic, or \"What do I need to say so you agree 2+2=5?",
+            "abstract": "We introduce and study the problem of adversarial arithmetic, which provides a simple yet challenging testbed for language model alignment. This problem is comprised of arithmetic questions posed in natural language, with an arbitrary adversarial string inserted before the question is complete. Even in the simple setting of 1-digit addition problems, it is easy to find adversarial prompts that make all tested models (including PaLM2, GPT4, Claude2) misbehave, and even to steer models to a particular wrong answer. We additionally provide a simple algorithm for finding successful attacks by querying those same models, which we name\"prompt inversion rejection sampling\"(PIRS). We finally show that models can be partially hardened against these attacks via reinforcement learning and via agentic constitutional loops. However, we were not able to make a language model fully robust against adversarial arithmetic attacks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that models can be partially hardened against these attacks via reinforcement learning and via agentic constitutional loops, however, they were not able to make a language model fully robust against adversarial arithmetic attacks."
+            },
+            "score": 4
+        },
+        {
+            "id": "0e0ea3593dda3039cb93d2ec795a87420006ec08",
+            "paperId": "0e0ea3593dda3039cb93d2ec795a87420006ec08",
+            "title": "R-Judge: Benchmarking Safety Risk Awareness for LLM Agents",
+            "abstract": "Large language models (LLMs) have exhibited great potential in autonomously completing tasks across real-world applications. Despite this, these LLM agents introduce unexpected safety risks when operating in interactive environments. Instead of centering on LLM-generated content safety in most prior studies, this work addresses the imperative need for benchmarking the behavioral safety of LLM agents within diverse environments. We introduce R-Judge, a benchmark crafted to evaluate the proficiency of LLMs in judging and identifying safety risks given agent interaction records. R-Judge comprises 162 records of multi-turn agent interaction, encompassing 27 key risk scenarios among 7 application categories and 10 risk types. It incorporates human consensus on safety with annotated safety labels and high-quality risk descriptions. Evaluation of 9 LLMs on R-Judge shows considerable room for enhancing the risk awareness of LLMs: The best-performing model, GPT-4, achieves 72.52% in contrast to the human score of 89.07%, while all other models score less than the random. Moreover, further experiments demonstrate that leveraging risk descriptions as environment feedback achieves substantial performance gains. With case studies, we reveal that correlated to parameter amount, risk awareness in open agent scenarios is a multi-dimensional capability involving knowledge and reasoning, thus challenging for current LLMs. R-Judge is publicly available at https://github.com/Lordog/R-Judge.",
+            "year": 2024,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces R-Judge, a benchmark crafted to evaluate the proficiency of LLMs in judging and identifying safety risks given agent interaction records, and reveals that correlated to parameter amount, risk awareness in open agent scenarios is a multi-dimensional capability involving knowledge and reasoning, thus challenging for current LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "70ca99ac3c21f353b3db948004510a09fdebc4f2",
+            "paperId": "70ca99ac3c21f353b3db948004510a09fdebc4f2",
+            "title": "Towards a Mechanistic Interpretation of Multi-Step Reasoning Capabilities of Language Models",
+            "abstract": "Recent work has shown that language models (LMs) have strong multi-step (i.e., procedural) reasoning capabilities. However, it is unclear whether LMs perform these tasks by cheating with answers memorized from pretraining corpus, or, via a multi-step reasoning mechanism. In this paper, we try to answer this question by exploring a mechanistic interpretation of LMs for multi-step reasoning tasks. Concretely, we hypothesize that the LM implicitly embeds a reasoning tree resembling the correct reasoning process within it. We test this hypothesis by introducing a new probing approach (called MechanisticProbe) that recovers the reasoning tree from the model's attention patterns. We use our probe to analyze two LMs: GPT-2 on a synthetic task (k-th smallest element), and LLaMA on two simple language-based reasoning tasks (ProofWriter&AI2 Reasoning Challenge). We show that MechanisticProbe is able to detect the information of the reasoning tree from the model's attentions for most examples, suggesting that the LM indeed is going through a process of multi-step reasoning within its architecture in many cases.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that MechanisticProbe is able to detect the information of the reasoning tree from the model's attentions for most examples, suggesting that the LM indeed is going through a process of multi-step reasoning within its architecture in many cases."
+            },
+            "score": 4
+        },
+        {
+            "id": "b3848d32f7294ec708627897833c4097eb4d8778",
+            "paperId": "b3848d32f7294ec708627897833c4097eb4d8778",
+            "title": "LaMDA: Language Models for Dialog Applications",
+            "abstract": "We present LaMDA: Language Models for Dialog Applications. LaMDA is a family of Transformer-based neural language models specialized for dialog, which have up to 137B parameters and are pre-trained on 1.56T words of public dialog data and web text. While model scaling alone can improve quality, it shows less improvements on safety and factual grounding. We demonstrate that fine-tuning with annotated data and enabling the model to consult external knowledge sources can lead to significant improvements towards the two key challenges of safety and factual grounding. The first challenge, safety, involves ensuring that the model's responses are consistent with a set of human values, such as preventing harmful suggestions and unfair bias. We quantify safety using a metric based on an illustrative set of human values, and we find that filtering candidate responses using a LaMDA classifier fine-tuned with a small amount of crowdworker-annotated data offers a promising approach to improving model safety. The second challenge, factual grounding, involves enabling the model to consult external knowledge sources, such as an information retrieval system, a language translator, and a calculator. We quantify factuality using a groundedness metric, and we find that our approach enables the model to generate responses grounded in known sources, rather than responses that merely sound plausible. Finally, we explore the use of LaMDA in the domains of education and content recommendations, and analyze their helpfulness and role consistency.",
+            "year": 2022,
+            "citationCount": 1130,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that fine-tuning with annotated data and enabling the model to consult external knowledge sources can lead to significant improvements towards the two key challenges of safety and factual grounding."
+            },
+            "score": 4
+        },
+        {
+            "id": "034c8d4eb031786925ef274e6d275c7c210c4f1d",
+            "paperId": "034c8d4eb031786925ef274e6d275c7c210c4f1d",
+            "title": "Unveiling the Implicit Toxicity in Large Language Models",
+            "abstract": "The open-endedness of large language models (LLMs) combined with their impressive capabilities may lead to new safety issues when being exploited for malicious use. While recent studies primarily focus on probing toxic outputs that can be easily detected with existing toxicity classifiers, we show that LLMs can generate diverse implicit toxic outputs that are exceptionally difficult to detect via simply zero-shot prompting. Moreover, we propose a reinforcement learning (RL) based attacking method to further induce the implicit toxicity in LLMs. Specifically, we optimize the language model with a reward that prefers implicit toxic outputs to explicit toxic and non-toxic ones. Experiments on five widely-adopted toxicity classifiers demonstrate that the attack success rate can be significantly improved through RL fine-tuning. For instance, the RL-finetuned LLaMA-13B model achieves an attack success rate of 90.04% on BAD and 62.85% on Davinci003. Our findings suggest that LLMs pose a significant threat in generating undetectable implicit toxic outputs. We further show that fine-tuning toxicity classifiers on the annotated examples from our attacking method can effectively enhance their ability to detect LLM-generated implicit toxic language. The code is publicly available at https://github.com/thu-coai/Implicit-Toxicity.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that LLMs can generate diverse implicit toxic outputs that are exceptionally difficult to detect via simply zero-shot prompting, and proposes a reinforcement learning (RL) based attacking method to further induce the implicit toxicity in LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "281a7a99c16ce8f53bfbfb7aeb460dbd28648d28",
+            "paperId": "281a7a99c16ce8f53bfbfb7aeb460dbd28648d28",
+            "title": "Toxicity in ChatGPT: Analyzing Persona-assigned Language Models",
+            "abstract": "Large language models (LLMs) have shown incredible capabilities and transcended the natural language processing (NLP) community, with adoption throughout many services like healthcare, therapy, education, and customer service. Since users include people with critical information needs like students or patients engaging with chatbots, the safety of these systems is of prime importance. Therefore, a clear understanding of the capabilities and limitations of LLMs is necessary. To this end, we systematically evaluate toxicity in over half a million generations of ChatGPT, a popular dialogue-based LLM. We find that setting the system parameter of ChatGPT by assigning it a persona, say that of the boxer Muhammad Ali, significantly increases the toxicity of generations. Depending on the persona assigned to ChatGPT, its toxicity can increase up to 6x, with outputs engaging in incorrect stereotypes, harmful dialogue, and hurtful opinions. This may be potentially defamatory to the persona and harmful to an unsuspecting user. Furthermore, we find concerning patterns where specific entities (e.g., certain races) are targeted more than others (3x more) irrespective of the assigned persona, that reflect inherent discriminatory biases in the model. We hope that our findings inspire the broader AI community to rethink the efficacy of current safety guardrails and develop better techniques that lead to robust, safe, and trustworthy AI systems.",
+            "year": 2023,
+            "citationCount": 159,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work systematically evaluates toxicity in over half a million generations of ChatGPT, a popular dialogue-based LLM, and finds concerning patterns where specific entities are targeted more than others irrespective of the assigned persona, that reflect inherent discriminatory biases in the model."
+            },
+            "score": 4
+        },
+        {
+            "id": "e476b207fffb2b15f0adc39f8f8c1c8643a63311",
+            "paperId": "e476b207fffb2b15f0adc39f8f8c1c8643a63311",
+            "title": "PromptCARE: Prompt Copyright Protection by Watermark Injection and Verification",
+            "abstract": "Large language models (LLMs) have witnessed a meteoric rise in popularity among the general public users over the past few months, facilitating diverse downstream tasks with human-level accuracy and proficiency. Prompts play an essential role in this success, which efficiently adapt pre-trained LLMs to task-specific applications by simply prepending a sequence of tokens to the query texts. However, designing and selecting an optimal prompt can be both expensive and demanding, leading to the emergence of Prompt-as-a-Service providers who profit by providing well-designed prompts for authorized use. With the growing popularity of prompts and their indispensable role in LLM-based services, there is an urgent need to protect the copyright of prompts against unauthorized use. In this paper, we propose PromptCARE, the first framework for prompt copyright protection through watermark injection and verification. Prompt watermarking presents unique challenges that render existing watermarking techniques developed for model and dataset copyright verification ineffective. PromptCARE overcomes these hurdles by proposing watermark injection and verification schemes tailor-made for prompts and NLP characteristics. Extensive experiments on six well-known benchmark datasets, using three prevalent pre-trained LLMs (BERT, RoBERTa, and Facebook OPT-1.3b), demonstrate the effectiveness, harmlessness, robustness, and stealthiness of PromptCARE.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes PromptCARE, the first framework for prompt copyright protection through watermark injection and verification schemes tailor-made for prompts and NLP characteristics, and demonstrates the effectiveness, harmlessness, robustness, and stealthiness of this proposed framework."
+            },
+            "score": 4
+        },
+        {
+            "id": "185a429c53a6ee00f49d9d043bafc790e310f625",
+            "paperId": "185a429c53a6ee00f49d9d043bafc790e310f625",
+            "title": "An Empirical Study of Using ChatGPT for Fact Verification Task",
+            "abstract": "ChatGPT has recently emerged as a powerful tool for performing diverse NLP tasks. However, ChatGPT has been criticized for generating nonfactual responses, raising concerns about its usability for sensitive tasks like fact verification. This study investigates three key research questions: (1) Can ChatGPT be used for fact verification tasks? (2) What are different prompts performance using ChatGPT for fact verification tasks? (3) For the best-performing prompt, what common mistakes does ChatGPT make? Specifically, this study focuses on conducting a comprehensive and systematic analysis by designing and comparing the performance of three different prompts for fact verification tasks on the benchmark FEVER dataset using ChatGPT.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study focuses on conducting a comprehensive and systematic analysis by designing and comparing the performance of three different prompts for fact verification tasks on the benchmark FEVER dataset using ChatGPT."
+            },
+            "score": 4
+        },
+        {
+            "id": "ab90da70bf4671bb95d8e7ff97b2cce19768c579",
+            "paperId": "ab90da70bf4671bb95d8e7ff97b2cce19768c579",
+            "title": "Efficient Federated Prompt Tuning for Black-box Large Pre-trained Models",
+            "abstract": "With the blowout development of pre-trained models (PTMs), the efficient tuning of these models for diverse downstream applications has emerged as a pivotal research concern. Although recent investigations into prompt tuning have provided promising avenues, three salient challenges persist: (1) memory constraint: the continuous growth in the size of open-source PTMs renders fine-tuning, even a fraction of their parameters, challenging for many practitioners. (2) model privacy: existing PTMs often function as public API services, with their parameters inaccessible for effective or tailored fine-tuning. (3) data privacy: the fine-tuning of PTMs necessitates high-quality datasets, which are typically localized and not shared to public. To optimally harness each local dataset while navigating memory constraints and preserving privacy, we propose Federated Black-Box Prompt Tuning (Fed-BBPT). This innovative approach eschews reliance on parameter architectures and private dataset access, instead capitalizing on a central server that aids local users in collaboratively training a prompt generator through regular aggregation. Local users leverage API-driven learning via a zero-order optimizer, obviating the need for PTM deployment. Relative to extensive fine-tuning, Fed-BBPT proficiently sidesteps memory challenges tied to PTM storage and fine-tuning on local machines, tapping into comprehensive, high-quality, yet private training datasets. A thorough evaluation across 40 datasets spanning CV and NLP tasks underscores the robustness of our proposed model.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Federated Black-Box Prompt Tuning proficiently sidesteps memory challenges tied to PTM storage and fine-tuning on local machines, tapping into comprehensive, high-quality, yet private training datasets."
+            },
+            "score": 4
+        },
+        {
+            "id": "ff9d264896b540f1f4609deb90b6e544038fef3e",
+            "paperId": "ff9d264896b540f1f4609deb90b6e544038fef3e",
+            "title": "MEGAnno+: A Human-LLM Collaborative Annotation System",
+            "abstract": "Large language models (LLMs) can label data faster and cheaper than humans for various NLP tasks. Despite their prowess, LLMs may fall short in understanding of complex, sociocultural, or domain-specific context, potentially leading to incorrect annotations. Therefore, we advocate a collaborative approach where humans and LLMs work together to produce reliable and high-quality labels. We present MEGAnno+, a human-LLM collaborative annotation system that offers effective LLM agent and annotation management, convenient and robust LLM annotation, and exploratory verification of LLM labels by humans.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "MEGAnno+, a human-LLM collaborative annotation system that offers effective LLM agent and annotation management, convenient and robust LLM annotation, and exploratory verification of LLM labels by humans."
+            },
+            "score": 3
+        },
+        {
+            "id": "6a5194c8ce13c98e64d9ca82cdb8499b5b9d683c",
+            "paperId": "6a5194c8ce13c98e64d9ca82cdb8499b5b9d683c",
+            "title": "Specification and verification of railway safety-critical systems using TLA+: A Case Study",
+            "abstract": "In this paper, we describe our experience in using the TLA+ formal language for modelling and analysis of a concrete scenario from the railway domain. A train status alert system has been specified and verified using the TLA+ by formally verifying abstract specifications of the real system. The verification of TLA+ models enabled us to detected ambiguity in machine transitions before implementing the real system. A translation algorithm is proposed to produce relay logic from the state-machine model in order to verify interlocking components. Our contribution helps to integrate formal methods into existing railway development process without needing to update the legacy railway computer-based systems.",
+            "year": 2020,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper describes the experience in using the TLA+ formal language for modelling and analysis of a concrete scenario from the railway domain and proposes a translation algorithm to produce relay logic from the state-machine model in order to verify interlocking components."
+            },
+            "score": 3
+        },
+        {
+            "id": "426c77718dd2a770d470dacb1f03f0613664e712",
+            "paperId": "426c77718dd2a770d470dacb1f03f0613664e712",
+            "title": "Construction and Verification of Knowledge Repository of Complex Product Collaborative Design Based on Ontology",
+            "abstract": "A high speed rotary machine rotor-bearing system collaborative design knowledge repository is constructed by ontological method and technology,and the functions of knowledge base prototype system are verified.The ontological models are made for multi-disciplinary field design knowledge of high speed rotary machine rotor-bearing system and ontology web language format design knowledge ontology repository is developed based on protege ontology development platform.Then the complex product collaborative design knowledge repository is established with Jena technical framework,by mapping and data transferring from ontology repository to knowledge repository.Taking with the design of two-span rotor test-bed as an engineering example,the knowledge repository prototype system functions of tribology design and collaborative analysis module of simulated and experimental data are verified by implementing knowledge sharing,reuse and interoperability of heterogeneous system.",
+            "year": 2010,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A high speed rotary machine rotor-bearing system collaborative design knowledge repository is constructed by ontological method and technology, and the functions of knowledge base prototype system are verified by implementing knowledge sharing, reuse and interoperability of heterogeneous system."
+            },
+            "score": 3
+        },
+        {
+            "id": "17cfa6594cdf87fb4fa6597dde19cbae8c68d98a",
+            "paperId": "17cfa6594cdf87fb4fa6597dde19cbae8c68d98a",
+            "title": "Model-based collaborative development of manufacturing and control systems",
+            "abstract": "This paper presents a collaborative model-based development method for a manufacturing system and its control system. The method is aimed towards improving the traditional manufacturing and control systems development approaches that are often done independently and in sequence. First the interactions and dependencies in the multi-disciplinary development process are identified. Depending on the desired the level of abstraction, a system is modelled in a discipline neutral modelling language from which domain-specific models are automatically transformed to a language of a target modelling environment. These models are then used as a basis for further development by domain experts. As an illustrative case, SysML is used for modelling of a high level system concept of a manufacturing cell. The subsequent modelling, simulation and the associated verification, validation and control code generation steps are described.",
+            "year": 2018,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A collaborative model-based development method for a manufacturing system and its control system aimed towards improving the traditional manufacturing and control systems development approaches that are often done independently and in sequence is presented."
+            },
+            "score": 3
+        },
+        {
+            "id": "5a13e40f6ad796faaddffff355af70322a59605f",
+            "paperId": "5a13e40f6ad796faaddffff355af70322a59605f",
+            "title": "Model-Driven Development of Groupware Systems",
+            "abstract": "Building Collaborative systems with awareness (or groupware) is a very complex task. This article presents the use of the domain specific language CSSL v2.0 - Collaborative Software System Language -built as an extension of UML, using the metamodeling mechanism. CSSL provides simplicity, expressiveness and precision to model the main concepts of collaborative systems, especially collaborative processes, protocols and awareness.The CSSL concrete syntax is defined via a set of editors through which collaborative systems models are created. According to the MDD methodology, models are independent of the implementation platform and are formally prepared to be transformed. The target of the transformation is a web application that provides a set of basic functions that developers can refine to complete the development of the collaborative system. Finally, evaluation, validation and verification of the language is performed, determining that the CSSL tools allow developers to solve central aspects of collaborative systems implementation in a simple and reasonable way.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This article presents the use of the domain specific language CSSL v2.0 - Collaborative Software System Language -built as an extension of UML, using the metamodeling mechanism."
+            },
+            "score": 3
+        },
+        {
+            "id": "ac5b4df0e398ca48388330ac5c795b6fe708793c",
+            "paperId": "ac5b4df0e398ca48388330ac5c795b6fe708793c",
+            "title": "Misusing Tools in Large Language Models With Visual Adversarial Examples",
+            "abstract": "Large Language Models (LLMs) are being enhanced with the ability to use tools and to process multiple modalities. These new capabilities bring new benefits and also new security risks. In this work, we show that an attacker can use visual adversarial examples to cause attacker-desired tool usage. For example, the attacker could cause a victim LLM to delete calendar events, leak private conversations and book hotels. Different from prior work, our attacks can affect the confidentiality and integrity of user resources connected to the LLM while being stealthy and generalizable to multiple input prompts. We construct these attacks using gradient-based adversarial training and characterize performance along multiple dimensions. We find that our adversarial images can manipulate the LLM to invoke tools following real-world syntax almost always (~98%) while maintaining high similarity to clean images (~0.9 SSIM). Furthermore, using human scoring and automated metrics, we find that the attacks do not noticeably affect the conversation (and its semantics) between the user and the LLM.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that an attacker can use visual adversarial examples to cause attacker-desired tool usage to cause a victim LLM to delete calendar events, leak private conversations and book hotels."
+            },
+            "score": 3
+        },
+        {
+            "id": "b6cf4579b59b51d7df416e096ad86c1e6a48b458",
+            "paperId": "b6cf4579b59b51d7df416e096ad86c1e6a48b458",
+            "title": "Adversarial Prompt Tuning for Vision-Language Models",
+            "abstract": "With the rapid advancement of multimodal learning, pre-trained Vision-Language Models (VLMs) such as CLIP have demonstrated remarkable capacities in bridging the gap between visual and language modalities. However, these models remain vulnerable to adversarial attacks, particularly in the image modality, presenting considerable security risks. This paper introduces Adversarial Prompt Tuning (AdvPT), a novel technique to enhance the adversarial robustness of image encoders in VLMs. AdvPT innovatively leverages learnable text prompts and aligns them with adversarial image embeddings, to address the vulnerabilities inherent in VLMs without the need for extensive parameter training or modification of the model architecture. We demonstrate that AdvPT improves resistance against white-box and black-box adversarial attacks and exhibits a synergistic effect when combined with existing image-processing-based defense techniques, further boosting defensive capabilities. Comprehensive experimental analyses provide insights into adversarial prompt tuning, a novel paradigm devoted to improving resistance to adversarial images through textual input modifications, paving the way for future robust multimodal learning research. These findings open up new possibilities for enhancing the security of VLMs. Our code is available at https://github.com/jiamingzhang94/Adversarial-Prompt-Tuning.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Adversarial Prompt Tuning is introduced, a novel technique to enhance the adversarial robustness of image encoders in VLMs and improves resistance against white-box and black-box adversarial attacks and exhibits a synergistic effect when combined with existing image-processing-based defense techniques, further boosting defensive capabilities."
+            },
+            "score": 3
+        },
+        {
+            "id": "5cac6430bd379c9d2fe13137dfd6ae7721a2679f",
+            "paperId": "5cac6430bd379c9d2fe13137dfd6ae7721a2679f",
+            "title": "SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities",
+            "abstract": "Multi-modal large language models are regarded as a crucial step towards Artificial General Intelligence (AGI) and have garnered significant interest with the emergence of ChatGPT. However, current speech-language models typically adopt the cascade paradigm, preventing inter-modal knowledge transfer. In this paper, we propose SpeechGPT, a large language model with intrinsic cross-modal conversational abilities, capable of perceiving and generating multi-model content. With discrete speech representations, we first construct SpeechInstruct, a large-scale cross-modal speech instruction dataset. Additionally, we employ a three-stage training strategy that includes modality-adaptation pre-training, cross-modal instruction fine-tuning, and chain-of-modality instruction fine-tuning. The experimental results demonstrate that SpeechGPT has an impressive capacity to follow multi-modal human instructions and highlight the potential of handling multiple modalities with one model. Demos are shown in https://0nutation.github.io/SpeechGPT.github.io/.",
+            "year": 2023,
+            "citationCount": 86,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "SpeechGPT is proposed, a large language model with intrinsic cross-modal conversational abilities, capable of perceiving and generating multi-model content and highlighting the potential of handling multiple modalities with one model."
+            },
+            "score": 3
+        },
+        {
+            "id": "95ca67ba607d7859ee8eec457f4b59b115d69bf5",
+            "paperId": "95ca67ba607d7859ee8eec457f4b59b115d69bf5",
+            "title": "ChatCoT: Tool-Augmented Chain-of-Thought Reasoning on Chat-based Large Language Models",
+            "abstract": "Although large language models (LLMs) have achieved excellent performance in a variety of evaluation benchmarks, they still struggle in complex reasoning tasks which require specific knowledge and multi-hop reasoning. To improve the reasoning abilities, we propose \\textbf{ChatCoT}, a tool-augmented chain-of-thought reasoning framework for chat-based LLMs. In ChatCoT, we model the chain-of-thought~(CoT) reasoning as multi-turn conversations, to utilize tools in a more natural way through chatting. At each turn, LLMs can either interact with tools or perform the reasoning. Our approach can effectively leverage the multi-turn conversation ability of chat-based LLMs, and integrate the thought chain following and tools manipulation in a unified way. Specially, we initialize the early turns of the conversation by the tools, tasks and reasoning format, and propose an iterative \\emph{tool-augmented reasoning} step to perform step-by-step tool-augmented reasoning. The experiment results on two complex reasoning datasets (MATH and HotpotQA) have shown the effectiveness of ChatCoT on complex reasoning tasks, achieving a 6.8\\% relative improvement over the state-of-the-art baseline. Our code and data are available at: \\url{https://github.com/RUCAIBOX/ChatCoT}.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ChatCoT, a tool-augmented chain-of-thought reasoning framework for chat-based LLMs that can effectively leverage the multi-turn conversation ability of chat- based LLMs, and integrate the thought chain following and tools manipulation in a unified way."
+            },
+            "score": 3
+        },
+        {
+            "id": "a122863d239643453195424c04067e89406246e1",
+            "paperId": "a122863d239643453195424c04067e89406246e1",
+            "title": "Enhancing Chat Language Models by Scaling High-quality Instructional Conversations",
+            "abstract": "Fine-tuning on instruction data has been widely validated as an effective practice for implementing chat language models like ChatGPT. Scaling the diversity and quality of such data, although straightforward, stands a great chance of leading to improved performance. This paper aims to improve the upper bound of open-source models further. We first provide a systematically designed, diverse, informative, large-scale dataset of instructional conversations, UltraChat, which does not involve human queries. Our objective is to capture the breadth of interactions that a human might have with an AI assistant and employs a comprehensive framework to generate multi-turn conversation iteratively. UltraChat contains 1.5 million high-quality multi-turn dialogues and covers a wide range of topics and instructions. Our statistical analysis of UltraChat reveals its superiority in various key metrics, including scale, average length, diversity, coherence, etc., solidifying its position as a leading open-source dataset. Building upon UltraChat, we fine-tune a LLaMA model to create a powerful conversational model, UltraLLaMA. Our evaluations indicate that UltraLLaMA consistently outperforms other open-source models, including Vicuna, the previously recognized state-of-the-art open-source model. The dataset and the model will be publicly released\\footnote{\\url{https://github.com/thunlp/UltraChat}}.",
+            "year": 2023,
+            "citationCount": 141,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper provides a systematically designed, diverse, informative, large-scale dataset of instructional conversations, UltraChat, and fine-tune a LLaMA model to create a powerful conversational model, UltraLLaMA, which consistently outperforms other open-source models, including Vicuna."
+            },
+            "score": 3
+        },
+        {
+            "id": "974f0e1a85c1ece2555718342ff2abb6bcb6a825",
+            "paperId": "974f0e1a85c1ece2555718342ff2abb6bcb6a825",
+            "title": "KG-GPT: A General Framework for Reasoning on Knowledge Graphs Using Large Language Models",
+            "abstract": "While large language models (LLMs) have made considerable advancements in understanding and generating unstructured text, their application in structured data remains underexplored. Particularly, using LLMs for complex reasoning tasks on knowledge graphs (KGs) remains largely untouched. To address this, we propose KG-GPT, a multi-purpose framework leveraging LLMs for tasks employing KGs. KG-GPT comprises three steps: Sentence Segmentation, Graph Retrieval, and Inference, each aimed at partitioning sentences, retrieving relevant graph components, and deriving logical conclusions, respectively. We evaluate KG-GPT using KG-based fact verification and KGQA benchmarks, with the model showing competitive and robust performance, even outperforming several fully-supervised models. Our work, therefore, marks a significant step in unifying structured and unstructured data processing within the realm of LLMs.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "KG-GPT is proposed, a multi-purpose framework leveraging LLMs for complex reasoning tasks on knowledge graphs, with the model showing competitive and robust performance, even outperforming several fully-supervised models."
+            },
+            "score": 3
+        },
+        {
+            "id": "45cf036cfd96581f34a4f5287c24b9948c79d44a",
+            "paperId": "45cf036cfd96581f34a4f5287c24b9948c79d44a",
+            "title": "Who Wrote it and Why? Prompting Large-Language Models for Authorship Verification",
+            "abstract": "Authorship verification (AV) is a fundamental task in natural language processing (NLP) and computational linguistics, with applications in forensic analysis, plagiarism detection, and identification of deceptive content. Existing AV techniques, including traditional stylometric and deep learning approaches, face limitations in terms of data requirements and lack of explainability. To address these limitations, this paper proposes PromptAV, a novel technique that leverages Large-Language Models (LLMs) for AV by providing step-by-step stylometric explanation prompts. PromptAV outperforms state-of-the-art baselines, operates effectively with limited training data, and enhances interpretability through intuitive explanations, showcasing its potential as an effective and interpretable solution for the AV task.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 3
+        },
+        {
+            "id": "e90c2f1b74d2108cafbdfb5d287d771bf2d6e5bd",
+            "paperId": "e90c2f1b74d2108cafbdfb5d287d771bf2d6e5bd",
+            "title": "Toward Auto-Modeling of Formal Verification for NextG Protocols: A Multimodal Cross- and Self-Attention Large Language Model Approach",
+            "abstract": "This paper introduces Auto-modeling of Formal Verification with Real-world Prompting for 5G and NextG protocols (AVRE), a novel system designed for the formal verification of Next Generation (NextG) communication protocols, addressing the increasing complexity and scalability challenges in network protocol design and verification. Utilizing Large Language Models (LLMs), AVRE transforms protocol descriptions into dependency graphs and formal models, efficiently resolving ambiguities and capturing design intent. The system integrates a transformer model with LLMs to autonomously establish quantifiable dependency relationships through cross- and self-attention mechanisms. Enhanced by iterative feedback from the HyFuzz experimental platform, AVRE significantly advances the accuracy and relevance of formal verification in complex communication protocols, offering a groundbreaking approach to validating sophisticated communication systems. We compare CAL\u2019s performance with state-of-the-art LLM-based models and traditional time sequence models, demonstrating its superiority in accuracy and robustness, achieving an accuracy of 95.94% and an AUC of 0.98. This NLP-based approach enables, for the first time, the creation of exploits directly from design documents, making remarkable progress in scalable system verification and validation.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This NLP-based approach enables, for the first time, the creation of exploits directly from design documents, making remarkable progress in scalable system verification and validation."
+            },
+            "score": 3
+        },
+        {
+            "id": "a5b7633d836b0430225774cdcf63e6a18385c251",
+            "paperId": "a5b7633d836b0430225774cdcf63e6a18385c251",
+            "title": "PRSA: Prompt Reverse Stealing Attacks against Large Language Models",
+            "abstract": "Prompt, recognized as crucial intellectual property, enables large language models (LLMs) to perform specific tasks without the need of fine-tuning, underscoring their escalating importance. With the rise of prompt-based services, such as prompt marketplaces and LLM applications, providers often display prompts' capabilities through input-output examples to attract users. However, this paradigm raises a pivotal security concern: does the exposure of input-output pairs pose the risk of potential prompt leakage, infringing on the intellectual property rights of the developers? To our knowledge, this problem still has not been comprehensively explored yet. To remedy this gap, in this paper, we perform the first in depth exploration and propose a novel attack framework for reverse-stealing prompts against commercial LLMs, namely PRSA. The main idea of PRSA is that by analyzing the critical features of the input-output pairs, we mimic and gradually infer (steal) the target prompts. In detail, PRSA mainly consists of two key phases: prompt mutation and prompt pruning. In the mutation phase, we propose a prompt attention algorithm based on differential feedback to capture these critical features for effectively inferring the target prompts. In the prompt pruning phase, we identify and mask the words dependent on specific inputs, enabling the prompts to accommodate diverse inputs for generalization. Through extensive evaluation, we verify that PRSA poses a severe threat in real world scenarios. We have reported these findings to prompt service providers and actively collaborate with them to take protective measures for prompt copyright.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper performs the first in depth exploration and proposes a novel attack framework for reverse-stealing prompts against commercial LLMs, namely PRSA, and verifies that PRSA poses a severe threat in real world scenarios."
+            },
+            "score": 3
+        },
+        {
+            "id": "035ef28bc7603e6a92d913a97595d97a24b3c743",
+            "paperId": "035ef28bc7603e6a92d913a97595d97a24b3c743",
+            "title": "Flexible verification of user-defined semantic constraints in modelling tools",
+            "abstract": "Many modelling tools embed verification rules that are checked against user-defined models to ensure they satisfy the static semantic constraints of the modelling language. However, there are many other contexts where required constraints vary with the intended purpose of the model, and not just the modelling language used. In this paper, we propose a flexible and practical approach for users to define, select, store, group, exchange, enable, and verify custom semantic constraints on metamodels with the Object Constraint Language. We illustrate the benefits of this approach with extensions to an Eclipse-based modelling tool, called jUCMNav, and applications to various contexts such as style compliance, analysis, and transformations that involve chains of tools. We believe this approach to be easily adaptable to other Eclipse-based modelling tools, which could then enjoy similar benefits.",
+            "year": 2008,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a flexible and practical approach for users to define, select, store, group, exchange, enable, and verify custom semantic constraints on metamodels with the Object Constraint Language."
+            },
+            "score": 2
+        },
+        {
+            "id": "9a0cf3d0b27f6a6ef6c746b50e91c861f0a322a8",
+            "paperId": "9a0cf3d0b27f6a6ef6c746b50e91c861f0a322a8",
+            "title": "Transformation et v\u00e9rification de coh\u00e9rence entre mod\u00e8les du G\u00e9nie Logiciel et mod\u00e8les de l'Interface Homme-Machine",
+            "abstract": "Within the framework of collaborative design, it is necessary that specialists of any domain can automatically manage links between different models that are semantically close. Based on a concrete transformation example from a use case diagram (Software Engineering) to a task tree (HCI), languages proposed by model driven engineering (MDE) are evaluated. Our goal is to find an adequate language for our model transformation. Among the multitude of MDE tools, a comparison is realised with respect to criteria according to our collaborative design needs. The tools that best correspond to our expectations are then tested more thoroughly on the concrete example of the transformation. MOTS-CLES : Conception collaborative, IDM, transformation de modeles, langages de transformation, outils pour l\u2019IDM",
+            "year": 2007,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Based on a concrete transformation example from a use case diagram to a task tree, languages proposed by model driven engineering (MDE) are evaluated and an adequate language is found for the model transformation."
+            },
+            "score": 2
+        },
+        {
+            "id": "9cdcebd18f4f7138d7f1ac61302b70ff429438b2",
+            "paperId": "9cdcebd18f4f7138d7f1ac61302b70ff429438b2",
+            "title": "Integrating SysML with Simulation Environments (Simulink) by Model Transformation Approach",
+            "abstract": "In system-level design, descriptive system models seem to be insufficient in order to perform a system verification which fulfils various stakeholders0 requirements. This fact is accentuated by the increasing complexity of system engineering projects and, as a consequence, the difficulties to deal with both their coordination and trace ability. Even if SysML (System Modeling Language) is considered as a flexible and standard tool for system engineering, using only descriptive models are insufficient for system behavior verifications. To deal with this concern, simulation environments (i.e. MATLAB/Simulink) allow verifying if the system preliminary design satisfies requirements or not. As a consequence, various research works have been centered on combining the potential of both SysML modeling and simulation tools. This paper proposes an integration approach based on metamodeling and model transformations to generate Simulink models from SysML diagrams. This approach is handled by models and modern techniques of MDE (Model-Driven Engineering).",
+            "year": 2016,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes an integration approach based on metamodeling and model transformations to generate Simulink models from SysML diagrams which is handled by models and modern techniques of MDE (Model-Driven Engineering)."
+            },
+            "score": 2
+        },
+        {
+            "id": "0871fab693e77b8a4ae0d622fb046ba9f93a4f43",
+            "paperId": "0871fab693e77b8a4ae0d622fb046ba9f93a4f43",
+            "title": "Multi-Task Training with In-Domain Language Models for Diagnostic Reasoning",
+            "abstract": "Generative artificial intelligence (AI) is a promising direction for augmenting clinical diagnostic decision support and reducing diagnostic errors, a leading contributor to medical errors. To further the development of clinical AI systems, the Diagnostic Reasoning Benchmark (DR.BENCH) was introduced as a comprehensive generative AI framework, comprised of six tasks representing key components in clinical reasoning. We present a comparative analysis of in-domain versus out-of-domain language models as well as multi-task versus single task training with a focus on the problem summarization task in DR.BENCH. We demonstrate that a multi-task, clinically-trained language model outperforms its general domain counterpart by a large margin, establishing a new state-of-the-art performance, with a ROUGE-L score of 28.55. This research underscores the value of domain-specific training for optimizing clinical diagnostic reasoning tasks.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that a multi-task, clinically-trained language model outperforms its general domain counterpart by a large margin, establishing a new state-of-the-art performance, with a ROUGE-L score of 28.55."
+            },
+            "score": 2
+        },
+        {
+            "id": "cf2d8886def9e199b348499bc5c26775da3eb291",
+            "paperId": "cf2d8886def9e199b348499bc5c26775da3eb291",
+            "title": "ExtremITA at EVALITA 2023: Multi-Task Sustainable Scaling to Large Language Models at its Extreme",
+            "abstract": "This paper explores the potential application of a monolithic neural model for all tasks in EVALITA 2023. We evaluated two models: extremIT5 , an encoder-decoder model, and extremITLLaMA an instruction-tuned Decoder-only Large Language Model, specifically designed for handling Italian instructions. Our approach revolves around representing tasks in natural language, where we provide instructions to the model using prompts that define the expected responses. Remarkably, our best-performing model achieved first place in 41% of the subtasks and showcased top-three performance in 64%. These subtasks encompass various semantic dimensions, including Affect Detection, Authorship Analysis, Computational Ethics, Named Entity Recognition, Information Extraction, and Discourse Coherence.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 2
+        },
+        {
+            "id": "5ae6fb6b5a3c7df515ff4a82ac9673bae6a8e200",
+            "paperId": "5ae6fb6b5a3c7df515ff4a82ac9673bae6a8e200",
+            "title": "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints",
+            "abstract": "Multi-query attention (MQA), which only uses a single key-value head, drastically speeds up decoder inference. However, MQA can lead to quality degradation, and moreover it may not be desirable to train a separate model just for faster inference. We (1) propose a recipe for uptraining existing multi-head language model checkpoints into models with MQA using 5% of original pre-training compute, and (2) introduce grouped-query attention (GQA), a generalization of multi-query attention which uses an intermediate (more than one, less than number of query heads) number of key-value heads. We show that uptrained GQA achieves quality close to multi-head attention with comparable speed to MQA.",
+            "year": 2023,
+            "citationCount": 108,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a recipe for uptraining existing multi-head language model checkpoints into models with MQA using 5% of original pre-training compute, and introduces grouped-query attention (GQA), a generalization of multi- query attention which uses an intermediate number of query heads."
+            },
+            "score": 2
+        },
+        {
+            "id": "de1c7ae2818aa26fc86a0ea8ed70014cffc8b20a",
+            "paperId": "de1c7ae2818aa26fc86a0ea8ed70014cffc8b20a",
+            "title": "Fine-tuning language models to find agreement among humans with diverse preferences",
+            "abstract": "Recent work in large language modeling (LLMs) has used fine-tuning to align outputs with the preferences of a prototypical user. This work assumes that human preferences are static and homogeneous across individuals, so that aligning to a a single\"generic\"user will confer more general alignment. Here, we embrace the heterogeneity of human preferences to consider a different challenge: how might a machine help people with diverse views find agreement? We fine-tune a 70 billion parameter LLM to generate statements that maximize the expected approval for a group of people with potentially diverse opinions. Human participants provide written opinions on thousands of questions touching on moral and political issues (e.g.,\"should we raise taxes on the rich?\"), and rate the LLM's generated candidate consensus statements for agreement and quality. A reward model is then trained to predict individual preferences, enabling it to quantify and rank consensus statements in terms of their appeal to the overall group, defined according to different aggregation (social welfare) functions. The model produces consensus statements that are preferred by human users over those from prompted LLMs (>70%) and significantly outperforms a tight fine-tuned baseline that lacks the final ranking step. Further, our best model's consensus statements are preferred over the best human-generated opinions (>65%). We find that when we silently constructed consensus statements from only a subset of group members, those who were excluded were more likely to dissent, revealing the sensitivity of the consensus to individual contributions. These results highlight the potential to use LLMs to help groups of humans align their values with one another.",
+            "year": 2022,
+            "citationCount": 107,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work fine-tunes a 70 billion parameter LLM to generate statements that maximize the expected approval for a group of people with potentially diverse opinions and produces consensus statements that are preferred by human users over those from prompted LLMs and significantly outperforms a tight fine-tuned baseline that lacks the final ranking step."
+            },
+            "score": 2
+        },
+        {
+            "id": "f92e80ce8c78d733a7a2895ba3fd63707911b61d",
+            "paperId": "f92e80ce8c78d733a7a2895ba3fd63707911b61d",
+            "title": "Towards Large-scale 3D Representation Learning with Multi-dataset Point Prompt Training",
+            "abstract": "The rapid advancement of deep learning models often attributes to their ability to leverage massive training data. In contrast, such privilege has not yet fully benefited 3D deep learning, mainly due to the limited availability of large-scale 3D datasets. Merging multiple available data sources and letting them collaboratively train a single model is a potential solution. However, due to the large domain gap between 3D point cloud datasets, such mixed supervision could adversely affect the model's performance and lead to degenerated performance (i.e., negative transfer) compared to single-dataset training. In view of this challenge, we introduce Point Prompt Training (PPT), a novel framework for multi-dataset synergistic learning in the context of 3D representation learning that supports multiple pre-training paradigms. Based on this framework, we propose Prompt-driven Normalization, which adapts the model to different datasets with domain-specific prompts and Language-guided Categorical Alignment that decently unifies the multiple-dataset label spaces by leveraging the relationship between label text. Extensive experiments verify that PPT can overcome the negative transfer associated with synergistic learning and produce generalizable representations. Notably, it achieves state-of-the-art performance on each dataset using a single weight-shared model with supervised multi-dataset training. Moreover, when served as a pre-training framework, it outperforms other pre-training approaches regarding representation quality and attains remarkable state-of-the-art performance across over ten diverse downstream tasks spanning both indoor and outdoor 3D scenarios.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PPT is introduced, a novel framework for multi-dataset synergistic learning in the context of 3D representation learning that supports multiple pre-training paradigms and achieves state-of-the-art performance on each dataset using a single weight-shared model with supervised multi- dataset training."
+            },
+            "score": 2
+        },
+        {
+            "id": "c5d552ec1382cdc3c3f95854aefbc91cc4933b7e",
+            "paperId": "c5d552ec1382cdc3c3f95854aefbc91cc4933b7e",
+            "title": "Personalized Prompt for Sequential Recommendation",
+            "abstract": "Pre-training models have shown their power in sequential recommendation. Recently, prompt has been widely explored and verified for tuning in NLP pre-training, which could help to more effectively and efficiently extract useful knowledge from pre-training models for downstream tasks, especially in cold-start scenarios. However, it is challenging to bring prompt-tuning from NLP to recommendation, since the tokens in recommendation (i.e., items) do not have explicit explainable semantics, and the sequence modeling should be personalized. In this work, we first introduces prompt to recommendation and propose a novel Personalized prompt-based recommendation (PPR) framework for cold-start recommendation. Specifically, we build the personalized soft prefix prompt via a prompt generator based on user profiles and enable a sufficient training of prompts via a prompt-oriented contrastive learning with both prompt- and behavior-based augmentations. We conduct extensive evaluations on various tasks. In both few-shot and zero-shot recommendation, PPR models achieve significant improvements over baselines on various metrics in three large-scale open datasets. We also conduct ablation tests and sparsity analysis for a better understanding of PPR. Moreover, We further verify PPR's universality on different pre-training models, and conduct explorations on PPR's other promising downstream tasks including cross-domain recommendation and user profile prediction.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces prompt to recommendation and proposes a novel Personalized prompt-based recommendation (PPR) framework for cold-start recommendation, which builds the personalized soft prefix prompt via a prompt generator based on user profiles and enables a sufficient training of prompts via a Prompt-oriented contrastive learning with both prompt- and behavior-based augmentations."
+            },
+            "score": 2
+        },
+        {
+            "id": "eab7e876257923cd84339b857902501eb81c0b91",
+            "paperId": "eab7e876257923cd84339b857902501eb81c0b91",
+            "title": "Innovative Personal Assistance: Speech Recognition and NLP-Driven Robot Prototype",
+            "abstract": "This paper presents the development and evaluation of a personal assistant robot prototype with advanced speech recognition and natural language processing (NLP) capabilities. Powered by a Raspberry Pi microprocessor, it is the core component of the robot's hardware. It is designed to receive commands and promptly respond by performing the requested actions, utilizing integrated speech recognition and NLP technologies. The prototype aims to enhance meeting efficiency and productivity through audio-to-text conversion and high-quality image capture. Results show excellent performance, with accuracy rates of 100% in Indonesian and 99% in English. The efficient processing speed, averaging 9.07 seconds per minute in Indonesian and 15.3 seconds per minute in English, further enhances the robot's functionality. Additionally, integrating a high-resolution webcam enables high-quality image capture at 1280 x 720 pixels. Real-time integration with Google Drive ensures secure storage and seamless data management. The findings highlight the prototype's effectiveness in facilitating smooth interactions and effective communication, leveraging NLP for intelligent language understanding. Integrating NLP-based speech recognition, visual documentation, and data transfer provides a comprehensive platform for managing audio, text, and image data. The personal assistant robot prototype presented in this research represents a significant advancement in human-robot interaction, particularly in meeting and collaborative work settings. Further refinements in NLP can enhance efficiency and foster seamless human-robot interaction experiences.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The personal assistant robot prototype presented in this research represents a significant advancement in human-robot interaction, particularly in meeting and collaborative work settings, as well as a comprehensive platform for managing audio, text, and image data."
+            },
+            "score": 2
+        },
+        {
+            "id": "0ecb636829c1c8e37a49dd5754c6ed98ae933401",
+            "paperId": "0ecb636829c1c8e37a49dd5754c6ed98ae933401",
+            "title": "An agent-based model to support community forest management and non-timber forest product harvesting in northern Thailand",
+            "abstract": "Agent-based models are popular in common-pool resource management to represent complex systems and stimulate collective action and management, where they are used to evaluate scenarios of stakeholders\u2019 choice in participatory simulations. We developed the \u201cCoComForest\u201d (COllaborative COMmunity FOREST management) model to support community forest management (CFM) and non-timber forest product (NTFP) harvesting in Nan Province, northern Thailand. The model was used as a computer-based role-playing game to support sharing of perceptions and knowledge among stakeholders, and in participatory simulations to explore future CFM scenarios. The Unified Modelling Language was used to build the conceptual model, subsequently implemented under the CORMAS (COmmon-pool Resource and Multi-Agent System) simulation platform. Several tests were conducted in the laboratory for verification and calibration before using this tool with 21 diverse stakeholders during a field workshop. Three different participatory gaming and simulation sessions were organized. The first one focused on the co-validation of the model with participants. They accepted most of the model functionalities and the scheduling of the rounds of play. The model was used in the subsequent two sessions to simulate the scenarios of firebreak establishment and introduction of outsiders intensively harvesting NTFPs, respectively. The results showed that the intensive harvesting practices of outsiders accelerated the depletion of resources, whereas the prevention of wildfire by establishing firebreaks could increase the resource availability in the landscape. The debriefing session at the end of the workshop focused on the analysis of simulation results and the relationships between the players\u2019 decision-making and their actual circumstances. Individual in-depth interviews conducted after the workshop helped to evaluate the use of this model with local stakeholders. Most participants considered the model as a useful common representation of the system they manage collectively. Its use in participatory simulations facilitated communication among the stakeholders searching for an adapted and acceptable collective action plan to improve CFM at the sub-district level in order to prevent the overharvesting of NTFPs by outsiders.",
+            "year": 2021,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The CoComForest model was developed to support community forest management (CFM) and non-timber forest product (NTFP) harvesting in Nan Province, northern Thailand and showed that the intensive harvesting practices of outsiders accelerated the depletion of resources, whereas the prevention of wildfire by establishing firebreaks could increase the resource availability in the landscape."
+            },
+            "score": 1
+        },
+        {
+            "id": "e12495d1af130daa8e5800b340f8caf985d467fc",
+            "paperId": "e12495d1af130daa8e5800b340f8caf985d467fc",
+            "title": "Speechfind for CDP: Advances in spoken document retrieval for the U. S. collaborative digitization program",
+            "abstract": "This paper presents our recent advances for SpeechFind, a CRSS-UTD designed spoken document retrieval system for the U.S. based Collaborative Digitization Program (CDP). A proto-type of SpeechFind for the CDP is currently serving as the search engine for 1,300 hours of CDP audio content which contain a wide range of acoustic conditions, vocabulary and period selection, and topics. In an effort to determine the amount of user corrected transcripts needed to impact automatic speech recognition (ASR) and audio search, a web-based online interface for verification of ASR-generated transcripts was developed. The procedure for enhancing the transcription performance for SpeechFind is also presented. A selection of adaptation methods for language and acoustic models are employed depending on the acoustics of the corpora under test. Experimental results on the CDP corpus demonstrate that the employed model adaptation scheme using the verified transcripts is effective in improving recognition accuracy. Through a combination of feature/acoustic model enhancement and language model selection, up to 24.8% relative improvement in ASR was obtained. The SpeechFind system, employing automatic transcript generation, online CDP transcript correction, and our transcript reliability estimator, demonstrates a comprehensive support mechanism to ensure reliable transcription and search for U.S. libraries with limited speech technology experience.",
+            "year": 2007,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The SpeechFind system, employing automatic transcript generation, online CDP transcript correction, and the transcript reliability estimator, demonstrates a comprehensive support mechanism to ensure reliable transcription and search for U.S. libraries with limited speech technology experience."
+            },
+            "score": 1
+        },
+        {
+            "id": "1863e595357f3b9b78dda51def1ce4f379da4584",
+            "paperId": "1863e595357f3b9b78dda51def1ce4f379da4584",
+            "title": "1.5.4 Capability Maturity Model Integration (CMMI) Process Using Unified Modelling Language (UML) for Flight Safety Process Modernization at a Major Range Test Facility Base",
+            "abstract": "The Capability Maturity Model Integration (CMMI) initiative is a blend of systems engineering and software procedures that promote process improvement in multi\u2010discipline activities such as a support system modernization at a Test Range. Using processes that promote consensus, the CMMI provides a cohesive framework for development that accommodates multiple disciplines toward a modernization development effort. This paper describes the on\u2010going processes involved in applying systems modeling techniques within a CMMI process environment to Flight Safety modernization at a Major Test Range. The system analysis and modeling is being done using various Requirements Engineering methods and is being expressed in the Unified Modeling Language (UML). This modeling effort is still at the conceptual or requirements elicitation phase. Some initial models will be presented in this paper along with the process framework that is being applied.",
+            "year": 2002,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The on\u2010going processes involved in applying systems modeling techniques within a CMMI process environment to Flight Safety modernization at a Major Test Range are described."
+            },
+            "score": 1
+        },
+        {
+            "id": "9153fa1e824c556118b29f3d85658dda20c7c083",
+            "paperId": "9153fa1e824c556118b29f3d85658dda20c7c083",
+            "title": "PLM-ICD: Automatic ICD Coding with Pretrained Language Models",
+            "abstract": "Automatically classifying electronic health records (EHRs) into diagnostic codes has been challenging to the NLP community. State-of-the-art methods treated this problem as a multi-label classification problem and proposed various architectures to model this problem. However, these systems did not leverage the superb performance of pretrained language models, which achieved superb performance on natural language understanding tasks. Prior work has shown that pretrained language models underperformed on this task with the regular fine-tuning scheme. Therefore, this paper aims at analyzing the causes of the underperformance and developing a framework for automatic ICD coding with pretrained language models. We spotted three main issues through the experiments: 1) large label space, 2) long input sequences, and 3) domain mismatch between pretraining and fine-tuning. We propose PLM-ICD, a framework that tackles the challenges with various strategies. The experimental results show that our proposed framework can overcome the challenges and achieves state-of-the-art performance in terms of multiple metrics on the benchmark MIMIC data. Our source code is available at https://github.com/MiuLab/PLM-ICD.",
+            "year": 2022,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The causes of the underperformance are analyzed and a framework for automatic ICD coding with pretrained language models, PLM-ICD is proposed, a framework that tackles the challenges with various strategies and achieves state-of-the-art performance in terms of multiple metrics on the benchmark MIMIC data."
+            },
+            "score": 1
+        },
+        {
+            "id": "d50cc0073b676d585f2e831a511aa6a891a911b1",
+            "paperId": "d50cc0073b676d585f2e831a511aa6a891a911b1",
+            "title": "The writing process in online mass collaboration NLP-supported approaches to analyzing collaborative revision and user Interaction",
+            "abstract": "In the past 15 years, the rapid development of web technologies has created novel ways of collaborative editing. Open online platforms have attracted millions of users from all over the world. The open encyclopedia Wikipedia, started in 2001, has become a very prominent example of a largely successful platform for collaborative editing and knowledge creation. The wiki model has enabled collaboration at a new scale, with more than 30,000 monthly active users on the English Wikipedia. \nTraditional writing research deals with questions concerning revision and the writing process itself. The analysis of collaborative writing additionally raises questions about the interaction of the involved authors. Interaction takes place when authors write on the same document (indirect interaction), or when they coordinate the collaborative writing process by means of communication (direct interaction). The study of collaborative writing in online mass collaboration poses several interesting challenges. First and foremost, the writing process in open online collaboration is typically characterized by a large number of revisions from many different authors. Therefore, it is important to understand the interplay and the sequences of different revision categories. As the quality of documents produced in a collaborative writing process varies greatly, the relationship between collaborative revision and document quality is an important field of study. Furthermore, the impact of direct user interaction through background discussions on the collaborative writing process is largely unknown. In this thesis, we tackle these challenges in the context of online mass collaboration, using one of the largest collaboratively created resources, Wikipedia, as our data source. We will also discuss to which extent our conclusions are valid beyond Wikipedia. \nWe will be dealing with three aspects of collaborative writing in Wikipedia. First, we carry out a content-oriented analysis of revisions in the Wikipedia revision history. This includes the segmentation of article revisions into human-interpretable edits. We develop a taxonomy of edit categories such as spelling error corrections, vandalism or information adding, and verify our taxonomy in an annotation study on a corpus of edits from the English and German Wikipedia. We use the annotated corpora as training data to create models which enable the automatic classification of edits. To show that our model is able to generalize beyond our own data, we train and test it on a second corpus of English Wikipedia revisions. We analyze the distribution of edit categories and frequent patterns in edit sequences within a larger set of article revisions. We also assess the relationship between edit categories and article quality, finding that the information content in high-quality articles tends to become more stable after their promotion and that high-quality articles show a higher degree of homogeneity with respect to frequent collaboration patterns as compared to random articles. \nSecond, we investigate activity-based roles of users in Wikipedia and how they relate to the collaborative writing process. We automatically classify all revisions in a representative sample of Wikipedia articles and cluster users in this sample into seven intuitive roles. The roles are based on the editing behavior of the users. We find roles such as Vandals, Watchdogs, or All-round Contributors. We also analyze the stability of our discovered roles across time and analyze role transitions. The results show that although the nature of roles remains stable across time, more than half of the users in our sample changed their role between two time periods. \nThird, we analyze the correspondence between indirect user interaction through collaborative editing and direct user interaction through background discussion. We analyze direct user interaction using the notion of turns, which has been established in previous work. Turns are snippets from Wikipedia discussion pages. We introduce the notion of corresponding edit-turn-pairs. A corresponding edit-turn-pair consists of a turn and an edit from the same Wikipedia article; the turn forms an explicit performative and the edit corresponds to this performative. This happens, for example, when a user complains about a missing reference in the discussion about an article, and another user adds an appropriate reference to the article itself. We identify the distinctive properties of corresponding edit-turn-pairs and use them to create a model for the automatic detection of corresponding and non-corresponding edit-turn-pairs. We show that the percentage of corresponding edit-turn-pairs in a corpus of flawed English Wikipedia articles is typically below 5% and varies considerably across different articles. \nThe thesis is concluded with a summary of our main contributions and findings. The growing number of collaborative platforms in commercial applications and education, e.g. in massive open online learning courses, demonstrates the need to understand the collaborative writing process and to support collaborating authors. We also discuss several open issues with respect to the questions addressed in the main parts of the thesis and point out possible directions for future work. Many of the experiments we carried out in the course of this thesis rely on supervised text classification. In the appendix, we explain the concepts and technologies underlying these experiments. We also introduce the DKPro TC framework, which was substantially extended as part of this thesis.",
+            "year": 2016,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A content-oriented analysis of revisions in the Wikipedia revision history, which includes the segmentation of article revisions into human-interpretable edits, and develops a taxonomy of edit categories such as spelling error corrections, vandalism or information adding, which is verified in an annotation study on a corpus of edits from the English and German Wikipedia."
+            },
+            "score": 1
+        },
+        {
+            "id": "9c42db008f14494cf6e7f7f1fc33b552e79a5cd4",
+            "paperId": "9c42db008f14494cf6e7f7f1fc33b552e79a5cd4",
+            "title": "LAWTRIX: NLP Powered Legal Revolution",
+            "abstract": "In an era of digital transformation, LAWTRIX emerges as a pioneering platform set to revolutionize the legal services landscape in India. With a mission to bridge the space between legal service providers and citizens,LAWTRIX introduces an innovative incentives-based design. The core objectives and features of LAWTRIX, encompasses the onboarding of diverse legal service providers, legal to normal text translation, and a LinkedIn-like interface for seamless networking and collaboration. The legal services market in India presents unique challenges, and Lawtrix is strategically positioned to address them. By providing a user-friendly and intuitive interface, LAWTRIX promises to simplify the complex world of legal services for both providers and users. Central to its design is an incentives-based model that incentivizes active participation, creating a vibrant and engaged community. The integration of legal to normal text translation using NLP is a testament to LAWTRIX\u2019s commitment to effective communication, ensuring that the legal professionals and citizens can engage meaningfully. The onboarding process for the legal service providers, including Advocates, Notaries, Arbitrators, Mediators and other legal services, is meticulously detailed, outlining the verification and credentialing procedures. With a LinkedIn-like interface, LAWTRIX empowers legal professionals to network, collaborate, and expand their horizons within the legal community.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The integration of legal to normal text translation using NLP is a testament to LAWTRIX\u2019s commitment to effective communication, ensuring that the legal professionals and citizens can engage meaningfully."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

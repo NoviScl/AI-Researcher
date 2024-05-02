@@ -13,7 +13,7 @@ random.seed(2024)
 def paper_query(idea, openai_client, model, seed):
     prompt = "You are a professor in Natural Language Processing. You need to evaluate the novelty of a proposed research idea.\n"
 
-    prompt += "The idea is:\n" + format_plan_json(idea) + "\n\n"
+    prompt += "The idea is:\n" + json.dumps(idea).strip() + "\n\n"
     prompt += "You want to do a round of paper search in order to find out whether the proposed project has already been done. "
     prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this proposed idea. Formulate your query as: KeywordQuery(\"keyword\"). Give me 2 - 4 queries, the keyword can be a concatenation of multiple keywords (just put a space between every word) but please be concise and try to cover all the main aspects.\n"
     prompt += "The query keywords should be specific to the proposed research idea, in order to find whether there are similar ideas in the literature. Try to include the keyword \"language models\" to find relevant papers within NLP. "
@@ -27,7 +27,7 @@ def paper_query(idea, openai_client, model, seed):
 def paper_scoring(paper_lst, idea, topic_description, openai_client, model, seed):
     ## use gpt4 to score each paper 
     prompt = "You are a research assistant whose job is to read the below set of papers and score each paper based on how similar the paper is to the proposed idea.\n"
-    prompt += "The proposed idea is: " + format_plan_json(idea) + ".\n"
+    prompt += "The proposed idea is: " + json.dumps(idea).strip() + ".\n"
     prompt += "The topic is " + topic_description.strip() + " and it should be related to large language models and NLP broadly.\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10 based on the similarity and relevance to the proposed idea. 10 means the paper is essentially the same as the proposed idea; 1 means the paper is not even relevant to the topic; 5 means the paper shares some similarity but some key details are different.\n"
