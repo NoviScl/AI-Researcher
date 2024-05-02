@@ -51,5 +51,1003 @@
             }
         },
         "Fallback Plan": "If the proposed Feedback-Driven Prompting method does not significantly improve factual accuracy compared to the baseline methods, there are several alternative approaches to consider:\n1. Analyze the generated feedback to determine if it is accurately identifying factual errors, inconsistencies, and unsupported claims. If the feedback is not sufficiently specific or accurate, consider modifying the feedback prompts to elicit more targeted and useful feedback.\n2. Evaluate the quality of the refined responses to determine if they are effectively incorporating the feedback and addressing the identified issues. If the refined responses do not show significant improvement, consider modifying the response refinement prompts to encourage more substantial revisions based on the feedback.\n3. Experiment with different numbers of iterations and analyze the impact on factual accuracy. It may be that a different number of iterations is optimal for different types of queries or datasets.\n4. Consider incorporating additional prompting techniques, such as providing more context or examples in the prompts, to guide the model towards generating more factually accurate responses.\n5. If the proposed method does not yield significant improvements after these modifications, consider pivoting the project to focus on analyzing the limitations of language models in generating factually accurate responses. This could involve conducting error analysis to identify common types of factual errors, inconsistencies, and unsupported claims, and proposing potential solutions or areas for future research."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"language models iterative refinement\")",
+        "KeywordQuery(\"language models self-reflection feedback\")",
+        "KeywordQuery(\"language models factual accuracy prompting\")",
+        "KeywordQuery(\"Feedback-Driven Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "3aaf6a2cbad5850ad81ab5c163599cb3d523436f",
+            "paperId": "3aaf6a2cbad5850ad81ab5c163599cb3d523436f",
+            "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+            "abstract": "Like humans, large language models (LLMs) do not always generate the best output on their first try. Motivated by how humans refine their written text, we introduce Self-Refine, an approach for improving initial outputs from LLMs through iterative feedback and refinement. The main idea is to generate an initial output using an LLMs; then, the same LLMs provides feedback for its output and uses it to refine itself, iteratively. Self-Refine does not require any supervised training data, additional training, or reinforcement learning, and instead uses a single LLM as the generator, refiner, and feedback provider. We evaluate Self-Refine across 7 diverse tasks, ranging from dialog response generation to mathematical reasoning, using state-of-the-art (GPT-3.5, ChatGPT, and GPT-4) LLMs. Across all evaluated tasks, outputs generated with Self-Refine are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ~20% absolute on average in task performance. Our work demonstrates that even state-of-the-art LLMs like GPT-4 can be further improved at test time using our simple, standalone approach.",
+            "year": 2023,
+            "citationCount": 505,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-Refine is introduced, an approach for improving initial outputs from LLMs through iterative feedback and refinement that demonstrates that even state-of-the-art LLMs like GPT-4 can be further improved at test time using this simple, standalone approach."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving the factual accuracy of language model outputs, especially for complex or ambiguous queries, without relying on external resources or human feedback. The proposed approach, Feedback-Driven Prompting (FDP), iteratively refines the model's output using self-reflection and self-feedback.\n\nThe research problem in the paper is improving the initial outputs from large language models through iterative feedback and refinement. The proposed approach, Self-Refine, generates an initial output using an LLM, then the same LLM provides feedback for its output and uses it to refine itself iteratively.\n\nBoth the proposal and the paper aim to improve the quality of language model outputs through iterative refinement using the model's own feedback, without requiring additional training data or human intervention.\nYes",
+            "novelty_judgment": "yes"
+        },
+        {
+            "id": "696bc5ba0d023822bbee6b878a71ea2e4a4b0e5a",
+            "paperId": "696bc5ba0d023822bbee6b878a71ea2e4a4b0e5a",
+            "title": "N-Critics: Self-Refinement of Large Language Models with Ensemble of Critics",
+            "abstract": "We propose a self-correction mechanism for Large Language Models (LLMs) to mitigate issues such as toxicity and fact hallucination. This method involves refining model outputs through an ensemble of critics and the model's own feedback. Drawing inspiration from human behavior, we explore whether LLMs can emulate the self-correction process observed in humans who often engage in self-reflection and seek input from others to refine their understanding of complex topics. Our approach is model-agnostic and can be applied across various domains to enhance trustworthiness by addressing fairness, bias, and robustness concerns. We consistently observe performance improvements in LLMs for reducing toxicity and correcting factual errors.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a self-correction mechanism for Large Language Models (LLMs) to mitigate issues such as toxicity and fact hallucination and consistently observe performance improvements in LLMs for reducing toxicity and correcting factual errors."
+            },
+            "score": 8,
+            "novelty_score": "The proposed research problem in the project is improving the factual accuracy of language model outputs, and the approach is to use the model's own self-reflection and feedback to iteratively refine the generated text.\n\nThe research problem in the paper is mitigating issues such as toxicity and fact hallucination in language model outputs, and the approach is to use an ensemble of critics and the model's own feedback to refine the outputs.\n\nBoth the project and the paper aim to improve the quality of language model outputs by using the model's own feedback for refinement. However, the project focuses specifically on factual accuracy, while the paper addresses a broader range of issues including toxicity and fact hallucination.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "a173b47ee90fb18948d70126f4d40b5561b7d932",
+            "paperId": "a173b47ee90fb18948d70126f4d40b5561b7d932",
+            "title": "SELF: Self-Evolution with Language Feedback",
+            "abstract": "Large Language Models (LLMs) have demonstrated remarkable versatility across various domains. To further advance LLMs, we propose 'SELF' (Self-Evolution with Language Feedback), a novel approach that enables LLMs to self-improve through self-reflection, akin to human learning processes. SELF initiates with a meta-skill learning process that equips the LLMs with capabilities for self-feedback and self-refinement. Subsequently, the model undergoes an iterative process of self-evolution. In each iteration, it utilizes an unlabeled dataset of instructions to generate initial responses. These responses are enhanced through self-feedback and self-refinement. The model is then fine-tuned using this enhanced data. The model undergoes progressive improvement through this iterative self-evolution process. Moreover, the SELF framework enables the model to apply self-refinement during inference, which further improves response quality. Our experiments in mathematics and general tasks demonstrate that SELF can enhance the capabilities of LLMs without human intervention. The SELF framework indicates a promising direction for the autonomous evolution of LLMs, transitioning them from passive information receivers to active participants in their development.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed 'SELF' (Self-Evolution with Language Feedback), a novel approach that enables LLMs to self-improve through self-reflection, akin to human learning processes, indicates a promising direction for the autonomous evolution of LLMs."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the factual accuracy of language model outputs by using self-reflection and iterative refinement through feedback-driven prompting. The paper proposes a self-evolution framework that enables language models to self-improve through self-reflection, self-feedback, and self-refinement.\n\nWhile both the project proposal and the paper focus on improving language models using self-reflection and iterative refinement, the project proposal specifically targets factual accuracy, while the paper aims for general capability enhancement. Additionally, the project proposal uses prompting techniques, whereas the paper employs fine-tuning during the self-evolution process.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "d0b5d78e562e426519469e1f4ec84ee3b34e6fbe",
+            "paperId": "d0b5d78e562e426519469e1f4ec84ee3b34e6fbe",
+            "title": "What if you said that differently?: How Explanation Formats Affect Human Feedback Efficacy and User Perception",
+            "abstract": "Eliciting feedback from end users of NLP models can be beneficial for improving models. However, how should we present model responses to users so they are most amenable to be corrected from user feedback? Further, what properties do users value to understand and trust responses? We answer these questions by analyzing the effect of rationales (or explanations) generated by QA models to support their answers. We specifically consider decomposed QA models that first extract an intermediate rationale based on a context and a question and then use solely this rationale to answer the question. A rationale outlines the approach followed by the model to answer the question. Our work considers various formats of these rationales that vary according to well-defined properties of interest. We sample rationales from language models using few-shot prompting for two datasets, and then perform two user studies. First, we present users with incorrect answers and corresponding rationales in various formats and ask them to provide natural language feedback to revise the rationale. We then measure the effectiveness of this feedback in patching these rationales through in-context learning. The second study evaluates how well different rationale formats enable users to understand and trust model answers, when they are correct. We find that rationale formats significantly affect how easy it is (1) for users to give feedback for rationales, and (2) for models to subsequently execute this feedback. In addition, formats with attributions to the context and in-depth reasoning significantly enhance user-reported understanding and trust of model outputs.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The effect of rationales generated by QA models to support their answers is analyzed and it is found that rationale formats significantly affect how easy it is for users to give feedback for rationales, and for models to subsequently execute this feedback."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving the factual accuracy of language model outputs, and the proposed approach is to use iterative refinement based on the model's self-reflection and feedback. The research problem in the paper is improving the effectiveness of human feedback for correcting model outputs, and the proposed approach is to study the effect of different explanation formats on user feedback and perception.\n\nThe proposal focuses on using the model's own feedback to iteratively refine its outputs, while the paper focuses on using human feedback to correct model outputs. The proposal does not involve human feedback or explanation formats, which are the main aspects of the paper.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e69b41e53ce897a576ab80a6e9d59a253cbd6c62",
+            "paperId": "e69b41e53ce897a576ab80a6e9d59a253cbd6c62",
+            "title": "Iterative Prompt Refinement for Radiation Oncology Symptom Extraction Using Teacher-Student Large Language Models",
+            "abstract": "This study introduces a novel teacher-student architecture utilizing Large Language Models (LLMs) to improve prostate cancer radiotherapy symptom extraction from clinical notes. Mixtral, the student model, initially extracts symptoms, followed by GPT-4, the teacher model, which refines prompts based on Mixtral's performance. This iterative process involved 294 single symptom clinical notes across 12 symptoms, with up to 16 rounds of refinement per epoch. Results showed significant improvements in extracting symptoms from both single and multi-symptom notes. For 59 single symptom notes, accuracy increased from 0.51 to 0.71, precision from 0.52 to 0.82, recall from 0.52 to 0.72, and F1 score from 0.49 to 0.73. In 375 multi-symptom notes, accuracy rose from 0.24 to 0.43, precision from 0.6 to 0.76, recall from 0.24 to 0.43, and F1 score from 0.20 to 0.44. These results demonstrate the effectiveness of advanced prompt engineering in LLMs for radiation oncology use.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel teacher-student architecture utilizing Large Language Models (LLMs) to improve prostate cancer radiotherapy symptom extraction from clinical notes is introduced, demonstrating the effectiveness of advanced prompt engineering in LLMs for radiation oncology use."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factual accuracy of language model outputs, and the proposed approach is iterative refinement using the model's own feedback. The research problem in the paper is improving symptom extraction from clinical notes, and the proposed approach is iterative prompt refinement using a teacher-student architecture.\n\nWhile both studies involve iterative refinement, the application domains (factual accuracy in general vs. symptom extraction from clinical notes) and the specific approaches (self-feedback vs. teacher-student models) are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "cd2e04598909158494e556823d9de8baa692cee2",
+            "paperId": "cd2e04598909158494e556823d9de8baa692cee2",
+            "title": "Towards Mitigating Hallucination in Large Language Models via Self-Reflection",
+            "abstract": "Large language models (LLMs) have shown promise for generative and knowledge-intensive tasks including question-answering (QA) tasks. However, the practical deployment still faces challenges, notably the issue of\"hallucination\", where models generate plausible-sounding but unfaithful or nonsensical information. This issue becomes particularly critical in the medical domain due to the uncommon professional concepts and potential social risks involved. This paper analyses the phenomenon of hallucination in medical generative QA systems using widely adopted LLMs and datasets. Our investigation centers on the identification and comprehension of common problematic answers, with a specific emphasis on hallucination. To tackle this challenge, we present an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation. Through this feedback process, our approach steadily enhances the factuality, consistency, and entailment of the generated answers. Consequently, we harness the interactivity and multitasking ability of LLMs and produce progressively more precise and accurate answers. Experimental results on both automatic and human evaluation demonstrate the superiority of our approach in hallucination reduction compared to baselines.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper analyses the phenomenon of hallucination in medical generative QA systems using widely adopted LLMs and datasets and presents an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation that steadily enhances the factuality, consistency, and entailment of the generated answers."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factual accuracy of language model outputs, especially for complex or ambiguous queries, without relying on external resources or human feedback. The proposed approach, Feedback-Driven Prompting (FDP), iteratively refines the model's output using self-reflection and incorporating the model's own feedback.\n\nThe research problem in the paper is mitigating hallucination in large language models for medical question-answering tasks. The proposed approach is an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation to enhance the factuality, consistency, and entailment of the generated answers.\n\nBoth the proposal and the paper aim to improve the factual accuracy of language model outputs and reduce hallucination. They also share a similar approach of using the model's own feedback and self-reflection to iteratively refine the generated responses. However, the proposal focuses on a general domain and does not rely on external resources, while the paper specifically targets the medical domain and incorporates knowledge acquisition.\n\nYes",
+            "novelty_judgment": "yes"
+        },
+        {
+            "id": "ab15a0fc78532b2cae1007e5315f838ae23d0a4a",
+            "paperId": "ab15a0fc78532b2cae1007e5315f838ae23d0a4a",
+            "title": "Mirror: A Multiple-perspective Self-Reflection Method for Knowledge-rich Reasoning",
+            "abstract": "While Large language models (LLMs) have the capability to iteratively reflect on their own outputs, recent studies have observed their struggles with knowledge-rich problems without access to external resources. In addition to the inefficiency of LLMs in self-assessment, we also observe that LLMs struggle to revisit their predictions despite receiving explicit negative feedback. Therefore, We propose Mirror, a Multiple-perspective self-reflection method for knowledge-rich reasoning, to avoid getting stuck at a particular reflection iteration. Mirror enables LLMs to reflect from multiple-perspective clues, achieved through a heuristic interaction between a Navigator and a Reasoner. It guides agents toward diverse yet plausibly reliable reasoning trajectory without access to ground truth by encouraging (1) diversity of directions generated by Navigator and (2) agreement among strategically induced perturbations in responses generated by the Reasoner. The experiments on five reasoning datasets demonstrate that Mirror's superiority over several contemporary self-reflection approaches. Additionally, the ablation study studies clearly indicate that our strategies alleviate the aforementioned challenges.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Mirror, a Multiple-perspective self-reflection method for knowledge-rich reasoning, is proposed to avoid getting stuck at a particular reflection iteration, to avoid getting stuck at a particular reflection iteration."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factual accuracy of language model outputs through iterative self-reflection and refinement, while the paper focuses on enhancing the reasoning capabilities of language models in knowledge-rich problems using a multiple-perspective self-reflection approach.\n\nProject Proposal:\n- Problem: Improving factual accuracy of language model outputs\n- Approach: Iterative self-reflection and refinement of outputs\n\nPaper:\n- Problem: Enhancing reasoning capabilities of language models in knowledge-rich problems\n- Approach: Multiple-perspective self-reflection method\n\nAlthough both the project proposal and the paper involve self-reflection techniques for language models, they address different problems (factual accuracy vs. knowledge-rich reasoning) and propose distinct approaches (iterative refinement vs. multiple-perspective reflection).\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e01515c6138bc525f7aec30fc85f2adf028d4156",
+            "paperId": "e01515c6138bc525f7aec30fc85f2adf028d4156",
+            "title": "Principle-Driven Self-Alignment of Language Models from Scratch with Minimal Human Supervision",
+            "abstract": "Recent AI-assistant agents, such as ChatGPT, predominantly rely on supervised fine-tuning (SFT) with human annotations and reinforcement learning from human feedback (RLHF) to align the output of large language models (LLMs) with human intentions, ensuring they are helpful, ethical, and reliable. However, this dependence can significantly constrain the true potential of AI-assistant agents due to the high cost of obtaining human supervision and the related issues on quality, reliability, diversity, self-consistency, and undesirable biases. To address these challenges, we propose a novel approach called SELF-ALIGN, which combines principle-driven reasoning and the generative power of LLMs for the self-alignment of AI agents with minimal human supervision. Our approach encompasses four stages: first, we use an LLM to generate synthetic prompts, and a topic-guided method to augment the prompt diversity; second, we use a small set of human-written principles for AI models to follow, and guide the LLM through in-context learning from demonstrations (of principles application) to produce helpful, ethical, and reliable responses to user's queries; third, we fine-tune the original LLM with the high-quality self-aligned responses so that the resulting model can generate desirable responses for each query directly without the principle set and the demonstrations anymore; and finally, we offer a refinement step to address the issues of overly-brief or indirect responses. Applying SELF-ALIGN to the LLaMA-65b base language model, we develop an AI assistant named Dromedary. With fewer than 300 lines of human annotations (including<200 seed prompts, 16 generic principles, and 5 exemplars for in-context learning). Dromedary significantly surpasses the performance of several state-of-the-art AI systems, including Text-Davinci-003 and Alpaca, on benchmark datasets with various settings.",
+            "year": 2023,
+            "citationCount": 137,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An AI assistant named Dromedary is developed, which combines principle-driven reasoning and the generative power of LLMs for the self-alignment of AI agents with minimal human supervision and significantly surpasses the performance of several state-of-the-art AI systems on benchmark datasets with various settings."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factual accuracy of language model outputs without relying on external resources or human feedback, and the proposed approach is to use the model's own ability to self-reflect and identify potential errors in its generated output through an iterative process of generating responses, providing feedback on the responses, and refining the responses based on the feedback.\n\nThe research problem in the paper is aligning language model outputs with human intentions using minimal human supervision, and the proposed approach is to combine principle-driven reasoning and the generative power of language models for self-alignment through a four-stage process: generating synthetic prompts, guiding the model with human-written principles to produce desirable responses, fine-tuning the model with the self-aligned responses, and refining the responses to address issues like brevity or indirectness.\n\nWhile both the proposal and the paper aim to improve the quality of language model outputs, the specific research problems and approaches are different. The proposal focuses on factual accuracy and uses the model's self-reflection abilities, while the paper focuses on alignment with human intentions and uses principle-driven reasoning and fine-tuning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e3c316369d0f366267958afe5b9f4a263b9e8a68",
+            "paperId": "e3c316369d0f366267958afe5b9f4a263b9e8a68",
+            "title": "\"Sorry, Come Again?\" Prompting - Enhancing Comprehension and Diminishing Hallucination with [PAUSE]-injected Optimal Paraphrasing",
+            "abstract": "Hallucination has emerged as the most vulnerable aspect of contemporary Large Language Models (LLMs). In this paper, we introduce the Sorry, Come Again (SCA) prompting, aimed to avoid LLM hallucinations by enhancing comprehension through: (i) optimal paraphrasing and (ii) injecting [PAUSE] tokens to delay LLM generation. First, we provide an in-depth analysis of linguistic nuances: formality, readability, and concreteness of prompts for 21 LLMs, and elucidate how these nuances contribute to hallucinated generation. Prompts with lower readability, formality, or concreteness pose comprehension challenges for LLMs, similar to those faced by humans. In such scenarios, an LLM tends to speculate and generate content based on its imagination (associative memory) to fill these information gaps. Although these speculations may occasionally align with factual information, their accuracy is not assured, often resulting in hallucination. Recent studies reveal that an LLM often neglects the middle sections of extended prompts, a phenomenon termed as lost in the middle. While a specific paraphrase may suit one LLM, the same paraphrased version may elicit a different response from another LLM. Therefore, we propose an optimal paraphrasing technique to identify the most comprehensible paraphrase of a given prompt, evaluated using Integrated Gradient (and its variations) to guarantee that the LLM accurately processes all words. While reading lengthy sentences, humans often pause at various points to better comprehend the meaning read thus far. We have fine-tuned an LLM with injected [PAUSE] tokens, allowing the LLM to pause while reading lengthier prompts. This has brought several key contributions: (i) determining the optimal position to inject [PAUSE], (ii) determining the number of [PAUSE] tokens to be inserted, and (iii) introducing reverse proxy tuning to fine-tune the LLM for [PAUSE] insertion.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Sorry, Come Again (SCA) prompting is introduced, aimed to avoid LLM hallucinations by enhancing comprehension through: (i) optimal paraphrasing and (ii) injecting [PAUSE] tokens to delay LLM generation."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the project proposal is improving the factual accuracy of language model outputs, and the proposed approach is using self-reflection and iterative refinement of the model's own outputs.\n\nThe research problem in the paper is avoiding language model hallucinations, and the proposed approach is using optimal paraphrasing and injecting [PAUSE] tokens to enhance comprehension.\n\nWhile both works aim to improve the quality of language model outputs, the specific problems they focus on (factual accuracy vs. hallucination) and the approaches they propose (self-reflection and iterative refinement vs. optimal paraphrasing and [PAUSE] tokens) are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0885471c0215b3c0d31c82518066913f7f738128",
+            "paperId": "0885471c0215b3c0d31c82518066913f7f738128",
+            "title": "Phenomenal Yet Puzzling: Testing Inductive Reasoning Capabilities of Language Models with Hypothesis Refinement",
+            "abstract": "The ability to derive underlying principles from a handful of observations and then generalize to novel situations -- known as inductive reasoning -- is central to human intelligence. Prior work suggests that language models (LMs) often fall short on inductive reasoning, despite achieving impressive success on research benchmarks. In this work, we conduct a systematic study of the inductive reasoning capabilities of LMs through iterative hypothesis refinement, a technique that more closely mirrors the human inductive process than standard input-output prompting. Iterative hypothesis refinement employs a three-step process: proposing, selecting, and refining hypotheses in the form of textual rules. By examining the intermediate rules, we observe that LMs are phenomenal hypothesis proposers (i.e., generating candidate rules), and when coupled with a (task-specific) symbolic interpreter that is able to systematically filter the proposed set of rules, this hybrid approach achieves strong results across inductive reasoning benchmarks that require inducing causal relations, language-like instructions, and symbolic concepts. However, they also behave as puzzling inductive reasoners, showing notable performance gaps between rule induction (i.e., identifying plausible rules) and rule application (i.e., applying proposed rules to instances), suggesting that LMs are proposing hypotheses without being able to actually apply the rules. Through empirical and human analyses, we further reveal several discrepancies between the inductive reasoning processes of LMs and humans, shedding light on both the potentials and limitations of using LMs in inductive reasoning tasks.",
+            "year": 2023,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work conducts a systematic study of the inductive reasoning capabilities of LMs through iterative hypothesis refinement, a technique that more closely mirrors the human inductive process than standard input-output prompting."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factual accuracy of language model outputs, and the proposed approach is iterative refinement using self-reflection and feedback incorporation.\n\nThe research problem in the paper is studying the inductive reasoning capabilities of language models, and the proposed approach is iterative hypothesis refinement using a propose-select-refine process.\n\nWhile both works involve iterative refinement of language model outputs, the research problems and approaches are different. The proposal focuses on improving factual accuracy, while the paper studies inductive reasoning capabilities. The proposal uses self-reflection and feedback incorporation, while the paper employs a propose-select-refine process with a symbolic interpreter.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "20eecb9ead20ffe49a66588a9662336eefb20a54",
+            "paperId": "20eecb9ead20ffe49a66588a9662336eefb20a54",
+            "title": "MAF: Multi-Aspect Feedback for Improving Reasoning in Large Language Models",
+            "abstract": "Language Models (LMs) have shown impressive performance in various natural language tasks. However, when it comes to natural language reasoning, LMs still face challenges such as hallucination, generating incorrect intermediate reasoning steps, and making mathematical errors. Recent research has focused on enhancing LMs through self-improvement using feedback. Nevertheless, existing approaches relying on a single generic feedback source fail to address the diverse error types found in LM-generated reasoning chains. In this work, we propose Multi-Aspect Feedback, an iterative refinement framework that integrates multiple feedback modules, including frozen LMs and external tools, each focusing on a specific error category. Our experimental results demonstrate the efficacy of our approach to addressing several errors in the LM-generated reasoning chain and thus improving the overall performance of an LM in several reasoning tasks. We see a relative improvement of up to 20% in Mathematical Reasoning and up to 18% in Logical Entailment.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Multi-Aspect Feedback, an iterative refinement framework that integrates multiple feedback modules, including frozen LMs and external tools, each focusing on a specific error category in the LM-generated reasoning chain to improve the overall performance of an LM in several reasoning tasks."
+            },
+            "score": 6
+        },
+        {
+            "id": "385c74957858e7d6856d48e72b5a902b4c1aa28c",
+            "paperId": "385c74957858e7d6856d48e72b5a902b4c1aa28c",
+            "title": "Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate",
+            "abstract": "Modern large language models (LLMs) like ChatGPT have shown remarkable performance on general language tasks but still struggle on complex reasoning tasks, which drives the research on cognitive behaviors of LLMs to explore human-like problem-solving strategies. Along this direction, one representative strategy is self-reflection, which asks an LLM to refine the solution with the feedback generated by itself iteratively. However, our study shows that such reflection-style methods suffer from the Degeneration-of-Thought (DoT) problem: once the LLM has established confidence in its solutions, it is unable to generate novel thoughts later through reflection even if its initial stance is incorrect. To address the DoT problem, we propose a Multi-Agent Debate (MAD) framework, in which multiple agents express their arguments in the state of\"tit for tat\"and a judge manages the debate process to obtain a final solution. Clearly, our MAD framework encourages divergent thinking in LLMs which would be helpful for tasks that require deep levels of contemplation. Experiment results on two challenging datasets, commonsense machine translation and counter-intuitive arithmetic reasoning, demonstrate the effectiveness of our MAD framework. Extensive analyses suggest that the adaptive break of debate and the modest level of\"tit for tat\"state are required for MAD to obtain good performance. Moreover, we find that LLMs might not be a fair judge if different LLMs are used for agents. Codes: https://github.com/Skytliang/Multi-Agents-Debate",
+            "year": 2023,
+            "citationCount": 125,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Multi-Agent Debate (MAD) framework is proposed, in which multiple agents express their arguments in the state of\"tit for tat\"and a judge manages the debate process to obtain a final solution."
+            },
+            "score": 6
+        },
+        {
+            "id": "1ca3b6ff250b4f73486a89f6954edcc4ae21834e",
+            "paperId": "1ca3b6ff250b4f73486a89f6954edcc4ae21834e",
+            "title": "When Hindsight is Not 20/20: Testing Limits on Reflective Thinking in Large Language Models",
+            "abstract": "Recent studies suggest that self-reflective prompting can significantly enhance the reasoning capabilities of Large Language Models (LLMs). However, the use of external feedback as a stop criterion raises doubts about the true extent of LLMs' ability to emulate human-like self-reflection. In this paper, we set out to clarify these capabilities under a more stringent evaluation setting in which we disallow any kind of external feedback. Our findings under this setting show a split: while self-reflection enhances performance in TruthfulQA, it adversely affects results in HotpotQA. We conduct follow-up analyses to clarify the contributing factors in these patterns, and find that the influence of self-reflection is impacted both by reliability of accuracy in models' initial responses, and by overall question difficulty: specifically, self-reflection shows the most benefit when models are less likely to be correct initially, and when overall question difficulty is higher. We also find that self-reflection reduces tendency toward majority voting. Based on our findings, we propose guidelines for decisions on when to implement self-reflection. We release the codebase for reproducing our experiments at https://github.com/yanhong-lbh/LLM-SelfReflection-Eval.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The influence of self-reflection is impacted both by reliability of accuracy in models' initial responses, and by overall question difficulty: specifically, self-reflection shows the most benefit when models are less likely to be correct initially, and when overall question difficulty is higher."
+            },
+            "score": 6
+        },
+        {
+            "id": "9e3c493fb09dcd61bb05e8c5659f23327b7b6340",
+            "paperId": "9e3c493fb09dcd61bb05e8c5659f23327b7b6340",
+            "title": "Teaching Large Language Models to Self-Debug",
+            "abstract": "Large language models (LLMs) have achieved impressive performance on code generation. However, for complex programming tasks, generating the correct solution in one go becomes challenging, thus some prior works have designed program repair approaches to improve code generation performance. In this work, we propose Self-Debugging, which teaches a large language model to debug its predicted program via few-shot demonstrations. In particular, we demonstrate that Self-Debugging can teach the large language model to perform rubber duck debugging; i.e., without any human feedback on the code correctness or error messages, the model is able to identify its mistakes by investigating the execution results and explaining the generated code in natural language. Self-Debugging achieves the state-of-the-art performance on several code generation benchmarks, including the Spider dataset for text-to-SQL generation, TransCoder for C++-to-Python translation, and MBPP for text-to-Python generation. On the Spider benchmark where there are no unit tests to verify the correctness of predictions, Self-Debugging with code explanation consistently improves the baseline by 2-3%, and improves the prediction accuracy on problems of the hardest level by 9%. On TransCoder and MBPP where unit tests are available, Self-Debugging improves the baseline accuracy by up to 12%. Meanwhile, by leveraging feedback messages and reusing failed predictions, Self-Debugging notably improves sample efficiency, and can match or outperform baseline models that generate more than 10x candidate programs.",
+            "year": 2023,
+            "citationCount": 258,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-Debugging is proposed, which teaches a large language model to debug its predicted program via few-shot demonstrations, and can match or outperform baseline models that generate more than 10x candidate programs."
+            },
+            "score": 6
+        },
+        {
+            "id": "bcdaf6c98ddbd6809cf6241aa77200d7394db163",
+            "paperId": "bcdaf6c98ddbd6809cf6241aa77200d7394db163",
+            "title": "CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing",
+            "abstract": "Recent developments in large language models (LLMs) have been impressive. However, these models sometimes show inconsistencies and problematic behavior, such as hallucinating facts, generating flawed code, or creating offensive and toxic content. Unlike these models, humans typically utilize external tools to cross-check and refine their initial content, like using a search engine for fact-checking, or a code interpreter for debugging. Inspired by this observation, we introduce a framework called CRITIC that allows LLMs, which are essentially\"black boxes\"to validate and progressively amend their own outputs in a manner similar to human interaction with tools. More specifically, starting with an initial output, CRITIC interacts with appropriate tools to evaluate certain aspects of the text, and then revises the output based on the feedback obtained during this validation process. Comprehensive evaluations involving free-form question answering, mathematical program synthesis, and toxicity reduction demonstrate that CRITIC consistently enhances the performance of LLMs. Meanwhile, our research highlights the crucial importance of external feedback in promoting the ongoing self-improvement of LLMs.",
+            "year": 2023,
+            "citationCount": 120,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A framework called CRITIC is introduced that allows LLMs, which are essentially\"black boxes\" to validate and progressively amend their own outputs in a manner similar to human interaction with tools."
+            },
+            "score": 6
+        },
+        {
+            "id": "152d9a231c00d4495c9bc4a466f42165ce2e2164",
+            "paperId": "152d9a231c00d4495c9bc4a466f42165ce2e2164",
+            "title": "Evaluating Factual Consistency of Summaries with Large Language Models",
+            "abstract": "Detecting factual errors in summaries has been an important and challenging subject in summarization research. Inspired by the emergent ability of large language models (LLMs), we explore evaluating factual consistency of summaries by directly prompting LLMs. We present a comprehensive empirical study to assess the ability of LLMs as factual consistency evaluators, which consists of (1) analyzing different LLMs such as the GPT model series and Flan-T5; (2) investigating a variety of prompting methods including vanilla prompting, chain-of-thought prompting, and a sentence-by-sentence prompting method to tackle long summaries; and (3) evaluating on diverse summaries generated by multiple summarization systems, ranging from pre-transformer methods to SOTA pretrained models. Our experiments demonstrate that prompting LLMs is able to outperform the previous best factuality systems in all settings, by up to 12.2 absolute points in terms of the binary classification accuracy on inconsistency detection.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive empirical study to assess the ability of LLMs as factual consistency evaluators, which consists of analyzing different LLMs such as the GPT model series and Flan-T5 and investigating a variety of prompting methods including vanilla prompting, chain-of-thought prompting, and a sentence-by-sentence prompting method to tackle long summaries."
+            },
+            "score": 6
+        },
+        {
+            "id": "85b5068d3e1364b44ec9f46b0930b521b4089df6",
+            "paperId": "85b5068d3e1364b44ec9f46b0930b521b4089df6",
+            "title": "Self-Checker: Plug-and-Play Modules for Fact-Checking with Large Language Models",
+            "abstract": "Fact-checking is an essential task in NLP that is commonly utilized for validating the factual accuracy of claims. Prior work has mainly focused on fine-tuning pre-trained languages models on specific datasets, which can be computationally intensive and time-consuming. With the rapid development of large language models (LLMs), such as ChatGPT and GPT-3, researchers are now exploring their in-context learning capabilities for a wide range of tasks. In this paper, we aim to assess the capacity of LLMs for fact-checking by introducing Self-Checker, a framework comprising a set of plug-and-play modules that facilitate fact-checking by purely prompting LLMs in an almost zero-shot setting. This framework provides a fast and efficient way to construct fact-checking systems in low-resource environments. Empirical results demonstrate the potential of Self-Checker in utilizing LLMs for fact-checking. However, there is still significant room for improvement compared to SOTA fine-tuned models, which suggests that LLM adoption could be a promising approach for future fact-checking research.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-Checker, a framework comprising a set of plug-and-play modules that facilitate fact-checking by purely prompting LLMs in an almost zero-shot setting, is introduced, which provides a fast and efficient way to construct fact- checking systems in low-resource environments."
+            },
+            "score": 6
+        },
+        {
+            "id": "716178841e169f5c02a1fd5da241825699501248",
+            "paperId": "716178841e169f5c02a1fd5da241825699501248",
+            "title": "The student becomes the master: Outperforming GPT3 on Scientific Factual Error Correction",
+            "abstract": "Due to the prohibitively high cost of creating error correction datasets, most Factual Claim Correction methods rely on a powerful verification model to guide the correction process. This leads to a significant drop in performance in domains like scientific claims, where good verification models do not always exist. In this work, we introduce SciFix, a scientific claim correction system that does not require a verifier but can outperform existing methods by a considerable margin -- achieving correction accuracy of 84% on the SciFact dataset, 77% on SciFact-Open and 72% on the CovidFact dataset, compared to next best accuracies of 7%, 5%, and 15% on the same datasets respectively. Our method leverages the power of prompting with LLMs during training to create a richly annotated dataset that can be used for fully supervised training and regularization. We additionally use a claim-aware decoding procedure to improve the quality of corrected claims. Our method outperforms the very LLM that was used to generate the annotated dataset -- with Few-Shot Prompting on GPT3.5 achieving 58%, 61%, and 64% on the respective datasets, a consistently lower correction accuracy, despite using nearly 800 times as many parameters as our model.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "SciFix is introduced, a scientific claim correction system that does not require a verifier but can outperform existing methods by a considerable margin -- achieving correction accuracy of 84% on the SciFact dataset, 77% on SciFact-Open and 72% onthe CovidFact dataset."
+            },
+            "score": 6
+        },
+        {
+            "id": "629c441076da3f8185b1cf85e8036064b714e249",
+            "paperId": "629c441076da3f8185b1cf85e8036064b714e249",
+            "title": "Verify-and-Edit: A Knowledge-Enhanced Chain-of-Thought Framework",
+            "abstract": "As large language models (LLMs) have become the norm in NLP, demonstrating good performance in generation and reasoning tasks, one of its most fatal disadvantages is the lack of factual correctness. Generating unfactual texts not only leads to lower performances but also degrades the trust and validity of their applications. Chain-of-Thought (CoT) prompting improves trust and model performance on complex reasoning tasks by generating interpretable reasoning chains, but still suffers from factuality concerns in knowledge-intensive tasks. In this paper, we propose the Verify-and-Edit framework for CoT prompting, which seeks to increase prediction factuality by post-editing reasoning chains according to external knowledge. Building on top of GPT-3, our framework lead to accuracy improvements in multiple open-domain question-answering tasks.",
+            "year": 2023,
+            "citationCount": 69,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Verify-and-Edit framework for CoT prompting is proposed, which seeks to increase prediction factuality by post-editing reasoning chains according to external knowledge and lead to accuracy improvements in multiple open-domain question-answering tasks."
+            },
+            "score": 6
+        },
+        {
+            "id": "62176de125738e3b95850d1227bac81fd646b78e",
+            "paperId": "62176de125738e3b95850d1227bac81fd646b78e",
+            "title": "Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models",
+            "abstract": "Large language models (LLMs) have recently been shown to deliver impressive performance in various NLP tasks. To tackle multi-step reasoning tasks, Few-shot chain-of-thought (CoT) prompting includes a few manually crafted step-by-step reasoning demonstrations which enable LLMs to explicitly generate reasoning steps and improve their reasoning task accuracy. To eliminate the manual efforts, Zero-shot-CoT concatenates the target problem statement with \u201cLet\u2019s think step by step\u201d as an input prompt to LLMs. Despite the success of Zero-shot-CoT, it still suffers from three pitfalls: calculation errors, missing-step errors, and semantic misunderstanding errors. To address the missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists of two components: first, devising a plan to divide the entire task into smaller subtasks, and then carrying out the subtasks according to the plan. To address the calculation errors and improve the quality of generated reasoning steps, we extend PS prompting with more detailed instructions and derive PS+ prompting. We evaluate our proposed prompting strategy on ten datasets across three reasoning problems. The experimental results over GPT-3 show that our proposed zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem. The code can be found at https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting.",
+            "year": 2023,
+            "citationCount": 115,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results over GPT-3 show that the proposed zero-shot prompting consistently outperforms Zero- shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem."
+            },
+            "score": 6
+        },
+        {
+            "id": "261549439aebdda72b648ecc462448fd24857ac1",
+            "paperId": "261549439aebdda72b648ecc462448fd24857ac1",
+            "title": "Progressive-Hint Prompting Improves Reasoning in Large Language Models",
+            "abstract": "The performance of Large Language Models (LLMs) in reasoning tasks depends heavily on prompt design, with Chain-of-Thought (CoT) and self-consistency being critical methods that enhance this ability. However, these methods do not fully exploit the answers generated by the LLM to guide subsequent responses. This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers. PHP is orthogonal to CoT and self-consistency, making it easy to combine with state-of-the-art techniques to further improve performance. We conducted extensive and comprehensive experiments on seven benchmarks. The results show that PHP significantly improves accuracy while remaining highly efficient. For instance, with text-davinci-003, we observed a 4.2% improvement on GSM8K with greedy decoding compared to Complex CoT, and a 46.17% reduction in sample paths with self-consistency. With GPT-4 and PHP, we achieve state-of-the-art performances on SVAMP (89.1% ->91.9%), GSM8K (92% ->95.5%), AQuA (76.4% ->79.9%) and MATH (50.3% ->53.9%).",
+            "year": 2023,
+            "citationCount": 64,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers."
+            },
+            "score": 6
+        },
+        {
+            "id": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "paperId": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in language generation, understanding, and few-shot learning in recent years. An extensive body of work has explored how their performance may be further improved through the tools of prompting, ranging from verification, self-consistency, or intermediate scratchpads. In this paper, we present a complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer. Our findings indicate that this approach significantly enhances mathematical and strategic reasoning across a number of tasks. We also demonstrate that our approach improves the factual validity of generated content, reducing fallacious answers and hallucinations that contemporary models are prone to. Our approach may be directly applied to existing black-box models and uses identical procedure and prompts for all tasks we investigate. Overall, our findings suggest that such\"society of minds\"approach has the potential to significantly advance the capabilities of LLMs and pave the way for further breakthroughs in language generation and understanding.",
+            "year": 2023,
+            "citationCount": 206,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer is presented, indicating that this approach significantly enhances mathematical and strategic reasoning across a number of tasks."
+            },
+            "score": 6
+        },
+        {
+            "id": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "paperId": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "title": "Context-faithful Prompting for Large Language Models",
+            "abstract": "Large language models (LLMs) encode parametric knowledge about world facts and have shown remarkable performance in knowledge-driven NLP tasks. However, their reliance on parametric knowledge may cause them to overlook contextual cues, leading to incorrect predictions in context-sensitive NLP tasks (e.g., knowledge acquisition tasks). In this paper, we seek to assess and enhance LLMs' contextual faithfulness in two aspects: knowledge conflict and prediction with abstention. We demonstrate that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies. In particular, we identify opinion-based prompts and counterfactual demonstrations as the most effective methods. Opinion-based prompts reframe the context as a narrator's statement and inquire about the narrator's opinions, while counterfactual demonstrations use instances containing false facts to improve faithfulness in knowledge conflict situations. Neither technique requires additional training. We conduct experiments on three datasets of two standard NLP tasks, machine reading comprehension and relation extraction, and the results demonstrate significant improvement in faithfulness to contexts. Code and data are released at https://github.com/wzhouad/context-faithful-llm.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies, and opinion-based prompts and counterfactual demonstrations are identified as the most effective methods."
+            },
+            "score": 6
+        },
+        {
+            "id": "5fb3521f87d03899731b98718702927afd227f3a",
+            "paperId": "5fb3521f87d03899731b98718702927afd227f3a",
+            "title": "Enhancing Ethical Explanations of Large Language Models through Iterative Symbolic Refinement",
+            "abstract": "An increasing amount of research in Natural Language Inference (NLI) focuses on the application and evaluation of Large Language Models (LLMs) and their reasoning capabilities. Despite their success, however, LLMs are still prone to factual errors and inconsistencies in their explanations, offering limited control and interpretability for inference in complex domains. In this paper, we focus on ethical NLI, investigating how hybrid neuro-symbolic techniques can enhance the logical validity and alignment of ethical explanations produced by LLMs. Specifically, we present an abductive-deductive framework named Logic-Explainer, which integrates LLMs with an external backward-chaining solver to refine step-wise natural language explanations and jointly verify their correctness, reduce incompleteness and minimise redundancy. An extensive empirical analysis demonstrates that Logic-Explainer can improve explanations generated via in-context learning methods and Chain-of-Thought (CoT) on challenging ethical NLI tasks, while, at the same time, producing formal proofs describing and supporting models\u2019 reasoning. As ethical NLI requires commonsense reasoning to identify underlying moral violations, our results suggest the effectiveness of neuro-symbolic methods for multi-step NLI more broadly, opening new opportunities to enhance the logical consistency, reliability, and alignment of LLMs.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An abductive-deductive framework named Logic-Explainer is presented, which integrates LLMs with an external backward-chaining solver to refine step-wise natural language explanations and jointly verify their correctness, reduce incompleteness and minimise redundancy."
+            },
+            "score": 5
+        },
+        {
+            "id": "4a94be767309f9d461f4b90943002c5c54d9d867",
+            "paperId": "4a94be767309f9d461f4b90943002c5c54d9d867",
+            "title": "MATEval: A Multi-Agent Discussion Framework for Advancing Open-Ended Text Evaluation",
+            "abstract": "Recent advancements in generative Large Language Models(LLMs) have been remarkable, however, the quality of the text generated by these models often reveals persistent issues. Evaluating the quality of text generated by these models, especially in open-ended text, has consistently presented a significant challenge. Addressing this, recent work has explored the possibility of using LLMs as evaluators. While using a single LLM as an evaluation agent shows potential, it is filled with significant uncertainty and instability. To address these issues, we propose the MATEval: A\"Multi-Agent Text Evaluation framework\"where all agents are played by LLMs like GPT-4. The MATEval framework emulates human collaborative discussion methods, integrating multiple agents' interactions to evaluate open-ended text. Our framework incorporates self-reflection and Chain-of-Thought (CoT) strategies, along with feedback mechanisms, enhancing the depth and breadth of the evaluation process and guiding discussions towards consensus, while the framework generates comprehensive evaluation reports, including error localization, error types and scoring. Experimental results show that our framework outperforms existing open-ended text evaluation methods and achieves the highest correlation with human evaluation, which confirms the effectiveness and advancement of our framework in addressing the uncertainties and instabilities in evaluating LLMs-generated text. Furthermore, our framework significantly improves the efficiency of text evaluation and model iteration in industrial scenarios.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results show that the MATEval framework outperforms existing open-ended text evaluation methods and achieves the highest correlation with human evaluation, which confirms the effectiveness and advancement of the framework in addressing the uncertainties and instabilities in evaluating LLMs-generated text."
+            },
+            "score": 5
+        },
+        {
+            "id": "6d4bacb69923e1e94fb4de468b939ce6db32fb51",
+            "paperId": "6d4bacb69923e1e94fb4de468b939ce6db32fb51",
+            "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+            "abstract": "Large Language Models (LLMs) have emerged as a groundbreaking technology with their unparalleled text generation capabilities across various applications. Nevertheless, concerns persist regarding the accuracy and appropriateness of their generated content. A contemporary methodology, self-correction, has been proposed as a remedy to these issues. Building upon this premise, this paper critically examines the role and efficacy of self-correction within LLMs, shedding light on its true potential and limitations. Central to our investigation is the notion of intrinsic self-correction, whereby an LLM attempts to correct its initial responses based solely on its inherent capabilities, without the crutch of external feedback. In the context of reasoning, our research indicates that LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction. Drawing from these insights, we offer suggestions for future research and practical applications in this field.",
+            "year": 2023,
+            "citationCount": 122,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is indicated that LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction."
+            },
+            "score": 5
+        },
+        {
+            "id": "7633d8e74d9749becc0fdc14826ee98048ec1a36",
+            "paperId": "7633d8e74d9749becc0fdc14826ee98048ec1a36",
+            "title": "PRobELM: Plausibility Ranking Evaluation for Language Models",
+            "abstract": "This paper introduces PRobELM (Plausibility Ranking Evaluation for Language Models), a benchmark designed to assess language models' ability to discern more plausible from less plausible scenarios through their parametric knowledge. While benchmarks such as TruthfulQA emphasise factual accuracy or truthfulness, and others such as COPA explore plausible scenarios without explicitly incorporating world knowledge, PRobELM seeks to bridge this gap by evaluating models' capabilities to prioritise plausible scenarios that leverage world knowledge over less plausible alternatives. This design allows us to assess the potential of language models for downstream use cases such as literature-based discovery where the focus is on identifying information that is likely but not yet known. Our benchmark is constructed from a dataset curated from Wikidata edit histories, tailored to align the temporal bounds of the training data for the evaluated models. PRobELM facilitates the evaluation of language models across multiple prompting types, including statement, text completion, and question-answering. Experiments with 10 models of various sizes and architectures on the relationship between model scales, training recency, and plausibility performance, reveal that factual accuracy does not directly correlate with plausibility performance and that up-to-date training data enhances plausibility assessment across different model architectures.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments with 10 models of various sizes and architectures reveal that factual accuracy does not directly correlate with plausibility performance and that up-to-date training data enhances plausibility assessment across different model architectures."
+            },
+            "score": 5
+        },
+        {
+            "id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "paperId": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+            "abstract": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+            "year": 2022,
+            "citationCount": 3517,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks."
+            },
+            "score": 5
+        },
+        {
+            "id": "f727f928e7e179307d8d4a1da2387393f2bd7915",
+            "paperId": "f727f928e7e179307d8d4a1da2387393f2bd7915",
+            "title": "Methods for Measuring, Updating, and Visualizing Factual Beliefs in Language Models",
+            "abstract": "Language models can memorize a considerable amount of factual information during pretraining that can be elicited through prompting or finetuning models on tasks like question answering. In this paper, we discuss approaches to measuring model factual beliefs, updating incorrect factual beliefs in models, and visualizing graphical relationships between factual beliefs. Our main contributions include: (1) new metrics for evaluating belief-updating methods focusing on the logical consistency of beliefs, (2) a training objective for Sequential, Local, and Generalizing updates (SLAG) that improves the performance of existing hypernetwork approaches, and (3) the introduction of the belief graph, a new form of visualization for language models that shows relationships between stored model beliefs. Our experiments suggest that models show only limited consistency between factual beliefs, but update methods can both fix incorrect model beliefs and greatly improve their consistency. Although off-the-shelf optimizers are surprisingly strong belief-updating baselines, our learned optimizers can outperform them in more difficult settings than have been considered in past work.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experiments suggest that models show only limited consistency between factual beliefs, but update methods can both fix incorrect model beliefs and greatly improve their consistency, and off-the-shelf optimizers can outperform them in more difficult settings than have been considered in past work."
+            },
+            "score": 5
+        },
+        {
+            "id": "41a41c75ba336dec98d58c563605f261019e5df0",
+            "paperId": "41a41c75ba336dec98d58c563605f261019e5df0",
+            "title": "\u201cAccording to . . . \u201d: Prompting Language Models Improves Quoting from Pre-Training Data",
+            "abstract": "Large Language Models (LLMs) may hallucinate and generate fake information, despite pre-training on factual data. Inspired by the journalistic device of \u201caccording to sources\u201d, we propose according-to prompting: directing LLMs to ground responses against previously observed text. To quantify this grounding, we propose a novel evaluation metric (QUIP-Score) that measures the extent to which model-produced answers are directly found in underlying text corpora. We illustrate with experiments on three corpora (Wikipedia, PubMed, and the U.S. legal tax code) that these prompts improve grounding under our metrics, with the additional benefit of often improving end-task performance. Furthermore, prompts that ask the model to decrease grounding (or to ground to other corpora) indeed decrease QUIP-Score, indicating the ability of LLMs to increase or decrease grounded generations on request.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "According-to prompting is proposed: directing LLMs to ground responses against previously observed text, to quantify this grounding, and proposes a novel evaluation metric (QUIP-Score) that measures the extent to which model-produced answers are directly found in underlying text corpora."
+            },
+            "score": 5
+        },
+        {
+            "id": "fdc75b7b51ca98e555a4a8f0bc261e76bac6fb70",
+            "paperId": "fdc75b7b51ca98e555a4a8f0bc261e76bac6fb70",
+            "title": "Attention Satisfies: A Constraint-Satisfaction Lens on Factual Errors of Language Models",
+            "abstract": "We investigate the internal behavior of Transformer-based Large Language Models (LLMs) when they generate factually incorrect text. We propose modeling factual queries as constraint satisfaction problems and use this framework to investigate how the LLM interacts internally with factual constraints. We find a strong positive relationship between the LLM's attention to constraint tokens and the factual accuracy of generations. We curate a suite of 10 datasets containing over 40,000 prompts to study the task of predicting factual errors with the Llama-2 family across all scales (7B, 13B, 70B). We propose SAT Probe, a method probing attention patterns, that can predict factual errors and fine-grained constraint satisfaction, and allow early error identification. The approach and findings take another step towards using the mechanistic understanding of LLMs to enhance their reliability.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A strong positive relationship is found between the LLM's attention to constraint tokens and the factual accuracy of generations, and SAT Probe, a method probing attention patterns, that can predict factual errors and fine-grained constraint satisfaction, and allow early error identification."
+            },
+            "score": 5
+        },
+        {
+            "id": "6ad7b84eba57e9d506444d604e6719d1b419dca0",
+            "paperId": "6ad7b84eba57e9d506444d604e6719d1b419dca0",
+            "title": "AMERICANO: Argument Generation with Discourse-driven Decomposition and Agent Interaction",
+            "abstract": "Argument generation is a challenging task in natural language processing, which requires rigorous reasoning and proper content organization. Inspired by recent chain-of-thought prompting that breaks down a complex task into intermediate steps, we propose Americano, a novel framework with agent interaction for argument generation. Our approach decomposes the generation process into sequential actions grounded on argumentation theory, which first executes actions sequentially to generate argumentative discourse components, and then produces a final argument conditioned on the components. To further mimic the human writing process and improve the left-to-right generation paradigm of current autoregressive language models, we introduce an argument refinement module which automatically evaluates and refines argument drafts based on feedback received. We evaluate our framework on the task of counterargument generation using a subset of Reddit/CMV dataset. The results show that our method outperforms both end-to-end and chain-of-thought prompting methods and can generate more coherent and persuasive arguments with diverse and rich contents.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Americano, a novel framework with agent interaction for argument generation that outperforms both end-to-end and chain-of-thought prompting methods and can generate more coherent and persuasive arguments with diverse and rich contents."
+            },
+            "score": 5
+        },
+        {
+            "id": "bf4810017b54e50354cccffd8966121c7166cb17",
+            "paperId": "bf4810017b54e50354cccffd8966121c7166cb17",
+            "title": "Iterative Translation Refinement with Large Language Models",
+            "abstract": "Large language models have shown surprising performances in understanding instructions and performing natural language tasks. In this paper, we propose iterative translation refinement to leverage the power of large language models for more natural translation and post-editing. We show that by simply involving a large language model in an iterative process, the output quality improves beyond mere translation. Extensive test scenarios with GPT-3.5 reveal that although iterations reduce string-based metric scores, neural metrics indicate comparable if not improved translation quality. Further, human evaluations demonstrate that our method effectively reduces translationese compared to initial GPT translations and even human references, especially for into-English directions. Ablation studies underscore the importance of anchoring the refinement process to the source input and a reasonable initial translation.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that by simply involving a large language model in an iterative process, the output quality improves beyond mere translation, and that although iterations reduce string-based metric scores, neural metrics indicate comparable if not improved translation quality."
+            },
+            "score": 4
+        },
+        {
+            "id": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+            "paperId": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+            "title": "Jailbreaking Black Box Large Language Models in Twenty Queries",
+            "abstract": "There is growing interest in ensuring that large language models (LLMs) align with human values. However, the alignment of such models is vulnerable to adversarial jailbreaks, which coax LLMs into overriding their safety guardrails. The identification of these vulnerabilities is therefore instrumental in understanding inherent weaknesses and preventing future misuse. To this end, we propose Prompt Automatic Iterative Refinement (PAIR), an algorithm that generates semantic jailbreaks with only black-box access to an LLM. PAIR -- which is inspired by social engineering attacks -- uses an attacker LLM to automatically generate jailbreaks for a separate targeted LLM without human intervention. In this way, the attacker LLM iteratively queries the target LLM to update and refine a candidate jailbreak. Empirically, PAIR often requires fewer than twenty queries to produce a jailbreak, which is orders of magnitude more efficient than existing algorithms. PAIR also achieves competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM-2.",
+            "year": 2023,
+            "citationCount": 119,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PAIR is an algorithm that generates semantic jailbreaks with only black-box access to an LLM with competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM."
+            },
+            "score": 4
+        },
+        {
+            "id": "b73ea8adfef3cdc63167e3a7f1f2be3f4ef4219d",
+            "paperId": "b73ea8adfef3cdc63167e3a7f1f2be3f4ef4219d",
+            "title": "Knowledge Refinement via Interaction Between Search Engines and Large Language Models",
+            "abstract": "Information retrieval (IR) plays a crucial role in locating relevant resources from vast amounts of data, and its applications have evolved from traditional knowledge bases to modern search engines (SEs). The emergence of large language models (LLMs) has further revolutionized the IR field by enabling users to interact with search systems in natural language. In this paper, we explore the advantages and disadvantages of LLMs and SEs, highlighting their respective strengths in understanding user-issued queries and retrieving up-to-date information. To leverage the benefits of both paradigms while circumventing their limitations, we propose InteR, a novel framework that facilitates knowledge refinement through interaction between SEs and LLMs. InteR allows SEs to expand knowledge in queries using LLM-generated knowledge collections and enables LLMs to enhance prompt formulation using SE-retrieved documents. This iterative refinement process augments the inputs of SEs and LLMs, leading to more accurate retrieval. Experiments on large-scale retrieval benchmarks involving web search and low-resource retrieval tasks demonstrate that InteR achieves overall superior zero-shot retrieval performance compared to state-of-the-art methods, even those using relevance judgment. Source code is available at https://github.com/Cyril-JZ/InteR.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "InteR is proposed, a novel framework that facilitates knowledge refinement through interaction between SEs and LLMs, which allows SEs to expand knowledge in queries using LLM-generated knowledge collections and enables LLMs to enhance prompt formulation using SE-retrieved documents."
+            },
+            "score": 4
+        },
+        {
+            "id": "afee8cdc51e95b50d7574ed1700a797874bf792c",
+            "paperId": "afee8cdc51e95b50d7574ed1700a797874bf792c",
+            "title": "Adversarial Fine-Tuning of Language Models: An Iterative Optimisation Approach for the Generation and Detection of Problematic Content",
+            "abstract": "In this paper, we tackle the emerging challenge of unintended harmful content generation in Large Language Models (LLMs) with a novel dual-stage optimisation technique using adversarial fine-tuning. Our two-pronged approach employs an adversarial model, fine-tuned to generate potentially harmful prompts, and a judge model, iteratively optimised to discern these prompts. In this adversarial cycle, the two models seek to outperform each other in the prompting phase, generating a dataset of rich examples which are then used for fine-tuning. This iterative application of prompting and fine-tuning allows continuous refinement and improved performance. The performance of our approach is evaluated through classification accuracy on a dataset consisting of problematic prompts not detected by GPT-4, as well as a selection of contentious but unproblematic prompts. We show considerable increase in classification accuracy of the judge model on this challenging dataset as it undergoes the optimisation process. Furthermore, we show that a rudimentary model \\texttt{ada} can achieve 13\\% higher accuracy on the hold-out test set than GPT-4 after only a few rounds of this process, and that this fine-tuning improves performance in parallel tasks such as toxic comment identification.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper shows that a rudimentary model can achieve 13\\% higher accuracy on the hold-out test set than GPT-4 after only a few rounds of this process, and that this fine-tuning improves performance in parallel tasks such as toxic comment identification."
+            },
+            "score": 4
+        },
+        {
+            "id": "2a6ac0c014ada425a9e0470d6f3a2391782d59b3",
+            "paperId": "2a6ac0c014ada425a9e0470d6f3a2391782d59b3",
+            "title": "IBADR: an Iterative Bias-Aware Dataset Refinement Framework for Debiasing NLU models",
+            "abstract": "As commonly-used methods for debiasing natural language understanding (NLU) models, dataset refinement approaches heavily rely on manual data analysis, and thus maybe unable to cover all the potential biased features. In this paper, we propose IBADR, an Iterative Bias-Aware Dataset Refinement framework, which debiases NLU models without predefining biased features. We maintain an iteratively expanded sample pool. Specifically, at each iteration, we first train a shallow model to quantify the bias degree of samples in the pool. Then, we pair each sample with a bias indicator representing its bias degree, and use these extended samples to train a sample generator. In this way, this generator can effectively learn the correspondence relationship between bias indicators and samples. Furthermore, we employ the generator to produce pseudo samples with fewer biased features by feeding specific bias indicators. Finally, we incorporate the generated pseudo samples into the pool. Experimental results and in-depth analyses on two NLU tasks show that IBADR not only significantly outperforms existing dataset refinement approaches, achieving SOTA, but also is compatible with model-centric methods.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results and in-depth analyses show that IBADR not only significantly outperforms existing dataset refinement approaches, achieving SOTA, but also is compatible with model-centric methods."
+            },
+            "score": 4
+        },
+        {
+            "id": "58a282c89864f35bff1741f5ab439222da6bb3ec",
+            "paperId": "58a282c89864f35bff1741f5ab439222da6bb3ec",
+            "title": "MLLM-DataEngine: An Iterative Refinement Approach for MLLM",
+            "abstract": "Despite the great advance of Multimodal Large Language Models (MLLMs) in both instruction dataset building and benchmarking, the independence of training and evaluation makes current MLLMs hard to further improve their capability under the guidance of evaluation results with a relatively low human cost. In this paper, we propose MLLM-DataEngine, a novel closed-loop system that bridges data generation, model training, and evaluation. Within each loop iteration, the MLLM-DataEngine first analyze the weakness of the model based on the evaluation results, then generate a proper incremental dataset for the next training iteration and enhance the model capability iteratively. Compared with previous data collection methods which are separate from the benchmarking, the data generated by MLLM-DataEngine shows better targeting, quality, and correctness. For targeting, we propose an Adaptive Bad-case Sampling module, which adjusts the ratio of different types of data within each incremental dataset based on the benchmarking results. For quality, we resort to GPT-4 to generate high-quality data with each given data type. For correctness, prompt design is critical for the data generation results. Rather than previous hand-crafted prompt, we propose an Interactive Prompt Optimization strategy, which optimizes the prompt with the multi-round interaction between human and GPT, and improve the correctness of generated data greatly. Through extensive experiments, we find our MLLM-DataEngine could boost the MLLM capability in a targeted and automatic manner, with only a few human participation. We hope it could be a general solution for the following MLLMs building. The MLLM-DataEngine has been open-sourced and is now available at https://github.com/opendatalab/MLLM-DataEngine.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes MLLM-DataEngine, a novel closed-loop system that bridges data generation, model training, and evaluation, and proposes an Interactive Prompt Optimization strategy, which optimizes the prompt with the multi-round interaction between human and GPT, and improves the correctness of generated data greatly."
+            },
+            "score": 4
+        },
+        {
+            "id": "d52adda00a98e76446285f2be334cb9cd70b3d9a",
+            "paperId": "d52adda00a98e76446285f2be334cb9cd70b3d9a",
+            "title": "Extrapolative Controlled Sequence Generation via Iterative Refinement",
+            "abstract": "We study the problem of extrapolative controlled generation, i.e., generating sequences with attribute values beyond the range seen in training. This task is of significant importance in automated design, especially drug discovery, where the goal is to design novel proteins that are \\textit{better} (e.g., more stable) than existing sequences. Thus, by definition, the target sequences and their attribute values are out of the training distribution, posing challenges to existing methods that aim to directly generate the target sequence. Instead, in this work, we propose Iterative Controlled Extrapolation (ICE) which iteratively makes local edits to a sequence to enable extrapolation. We train the model on synthetically generated sequence pairs that demonstrate small improvement in the attribute value. Results on one natural language task (sentiment analysis) and two protein engineering tasks (ACE2 stability and AAV fitness) show that ICE considerably outperforms state-of-the-art approaches despite its simplicity. Our code and models are available at: https://github.com/vishakhpk/iter-extrapolation.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Iterative Controlled Extrapolation (ICE) which iteratively makes local edits to a sequence to enable extrapolation, and trains the model on synthetically generated sequence pairs that demonstrate small improvement in the attribute value."
+            },
+            "score": 4
+        },
+        {
+            "id": "39c974bb16dad006353032942186087b40e25949",
+            "paperId": "39c974bb16dad006353032942186087b40e25949",
+            "title": "Synergistic Interplay between Search and Large Language Models for Information Retrieval",
+            "abstract": "Information retrieval (IR) plays a crucial role in locating relevant resources from vast amounts of data, and its applications have evolved from traditional knowledge bases to modern retrieval models (RMs). The emergence of large language models (LLMs) has further revolutionized the IR field by enabling users to interact with search systems in natural languages. In this paper, we explore the advantages and disadvantages of LLMs and RMs, highlighting their respective strengths in understanding user-issued queries and retrieving up-to-date information. To leverage the benefits of both paradigms while circumventing their limitations, we propose InteR, a novel framework that facilitates information refinement through synergy between RMs and LLMs. InteR allows RMs to expand knowledge in queries using LLM-generated knowledge collections and enables LLMs to enhance prompt formulation using retrieved documents. This iterative refinement process augments the inputs of RMs and LLMs, leading to more accurate retrieval. Experiments on large-scale retrieval benchmarks involving web search and low-resource retrieval tasks demonstrate that InteR achieves overall superior zero-shot retrieval performance compared to state-of-the-art methods, even those using relevance judgment. Source code is available at https://github.com/Cyril-JZ/InteR",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "InteR, a novel framework that facilitates information refinement through synergy between RMs and LLMs, allows RMs to expand knowledge in queries using LLM-generated knowledge collections and enables LLMs to enhance prompt formulation using retrieved documents, leading to more accurate retrieval."
+            },
+            "score": 4
+        },
+        {
+            "id": "d56d8cf62f7b734b814cf75576ab0bde5afd26fd",
+            "paperId": "d56d8cf62f7b734b814cf75576ab0bde5afd26fd",
+            "title": "NHANES-GPT: Large Language Models (LLMs) and the Future of Biostatistics",
+            "abstract": "Background - Large Language Models (LLMs) like ChatGPT have significant potential in biomedicine and health, particularly in biostatistics, where they can lower barriers to complex data analysis for novices and experts alike. However, concerns regarding data accuracy and model-generated hallucinations necessitate strategies for independent verification. Objective - This study, using NHANES data as a representative case study, demonstrates how ChatGPT can assist clinicians, students, and trained biostatisticians in conducting analyses and illustrates a method to independently verify the information provided by ChatGPT, addressing concerns about data accuracy. Methods - The study employed ChatGPT to guide the analysis of obesity and diabetes trends in the NHANES dataset from 2005-2006 to 2017-2018. The process included data preparation, logistic regression modeling, and iterative refinement of analyses with confounding variables. Verification of ChatGPT's recommendations was conducted through direct statistical data analysis and cross-referencing with established statistical methodologies. Results - ChatGPT effectively guided the statistical analysis process, simplifying the interpretation of NHANES data. Initial models indicated increasing trends in obesity and diabetes prevalence in the U.S. Adjusted models, controlling for confounders such as age, gender, and socioeconomic status, provided nuanced insights, confirming the general trends but also highlighting the influence of these factors. Conclusions - ChatGPT can facilitate biostatistical analyses in healthcare research, making statistical methods more accessible. The study also underscores the importance of independent verification mechanisms to ensure the accuracy of LLM-assisted analyses. This approach can be pivotal in harnessing the potential of LLMs while maintaining rigorous standards of data accuracy and reliability in biomedical research.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "ChatGPT can facilitate biostatistical analyses in healthcare research, making statistical methods more accessible and underscores the importance of independent verification mechanisms to ensure the accuracy of LLM-assisted analyses."
+            },
+            "score": 4
+        },
+        {
+            "id": "dcf87f11e245b76437c2f551c1ff6a7842585811",
+            "paperId": "dcf87f11e245b76437c2f551c1ff6a7842585811",
+            "title": "ISR-LLM: Iterative Self-Refined Large Language Model for Long-Horizon Sequential Task Planning",
+            "abstract": "Motivated by the substantial achievements observed in Large Language Models (LLMs) in the field of natural language processing, recent research has commenced investigations into the application of LLMs for complex, long-horizon sequential task planning challenges in robotics. LLMs are advantageous in offering the potential to enhance the generalizability as task-agnostic planners and facilitate flexible interaction between human instructors and planning systems. However, task plans generated by LLMs often lack feasibility and correctness. To address this challenge, we introduce ISR-LLM, a novel framework that improves LLM-based planning through an iterative self-refinement process. The framework operates through three sequential steps: preprocessing, planning, and iterative self-refinement. During preprocessing, an LLM translator is employed to convert natural language input into a Planning Domain Definition Language (PDDL) formulation. In the planning phase, an LLM planner formulates an initial plan, which is then assessed and refined in the iterative self-refinement step by using a validator. We examine the performance of ISR-LLM across three distinct planning domains. The results show that ISR-LLM is able to achieve markedly higher success rates in task accomplishments compared to state-of-the-art LLM-based planners. Moreover, it also preserves the broad applicability and generalizability of working with natural language instructions.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results show that ISR-LLM is able to achieve markedly higher success rates in task accomplishments compared to state-of-the-art LLM-based planners and preserves the broad applicability and generalizability of working with natural language instructions."
+            },
+            "score": 4
+        },
+        {
+            "id": "29e1ad90206023b2a9ddde36be019a04a166df60",
+            "paperId": "29e1ad90206023b2a9ddde36be019a04a166df60",
+            "title": "Self-Play Preference Optimization for Language Model Alignment",
+            "abstract": "Traditional reinforcement learning from human feedback (RLHF) approaches relying on parametric models like the Bradley-Terry model fall short in capturing the intransitivity and irrationality in human preferences. Recent advancements suggest that directly working with preference probabilities can yield a more accurate reflection of human preferences, enabling more flexible and accurate language model alignment. In this paper, we propose a self-play-based method for language model alignment, which treats the problem as a constant-sum two-player game aimed at identifying the Nash equilibrium policy. Our approach, dubbed \\textit{Self-Play Preference Optimization} (SPPO), approximates the Nash equilibrium through iterative policy updates and enjoys theoretical convergence guarantee. Our method can effectively increase the log-likelihood of the chosen response and decrease that of the rejected response, which cannot be trivially achieved by symmetric pairwise loss such as Direct Preference Optimization (DPO) and Identity Preference Optimization (IPO). In our experiments, using only 60k prompts (without responses) from the UltraFeedback dataset and without any prompt augmentation, by leveraging a pre-trained preference model PairRM with only 0.4B parameters, SPPO can obtain a model from fine-tuning Mistral-7B-Instruct-v0.2 that achieves the state-of-the-art length-controlled win-rate of 28.53% against GPT-4-Turbo on AlpacaEval 2.0. It also outperforms the (iterative) DPO and IPO on MT-Bench and the Open LLM Leaderboard. Notably, the strong performance of SPPO is achieved without additional external supervision (e.g., responses, preferences, etc.) from GPT-4 or other stronger language models.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A self-play-based method for language model alignment, which approximates the Nash equilibrium through iterative policy updates and enjoys theoretical convergence guarantee, and can effectively increase the log-likelihood of the chosen response and decrease that of the rejected response."
+            },
+            "score": 4
+        },
+        {
+            "id": "79902c0b7692c4ba122fbd15faf517a8d82308db",
+            "paperId": "79902c0b7692c4ba122fbd15faf517a8d82308db",
+            "title": "Harnessing Large Language Models to Enhance Self-Regulated Learning via Formative Feedback",
+            "abstract": "Effectively supporting students in mastering all facets of self-regulated learning is a central aim of teachers and educational researchers. Prior research could demonstrate that formative feedback is an effective way to support students during self-regulated learning (SRL). However, for formative feedback to be effective, it needs to be tailored to the learners, requiring information about their learning progress. In this work, we introduce LEAP, a novel platform that utilizes advanced large language models (LLMs), such as ChatGPT, to provide formative feedback to students. LEAP empowers teachers with the ability to effectively pre-prompt and assign tasks to the LLM, thereby stimulating students' cognitive and metacognitive processes and promoting self-regulated learning. We demonstrate that a systematic prompt design based on theoretical principles can provide a wide range of types of scaffolds to students, including sense-making, elaboration, self-explanation, partial task-solution scaffolds, as well as metacognitive and motivational scaffolds. In this way, we emphasize the critical importance of synchronizing educational technological advances with empirical research and theoretical frameworks.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that a systematic prompt design based on theoretical principles can provide a wide range of types of scaffolds to students, including sense-making, elaboration, self-explanation, partial task-solution scaffolds, as well as metacognitive and motivational scaffolds."
+            },
+            "score": 4
+        },
+        {
+            "id": "6fbf4e4c7872efdc03f7003d2d89b15ad8c4c552",
+            "paperId": "6fbf4e4c7872efdc03f7003d2d89b15ad8c4c552",
+            "title": "The Capacity for Moral Self-Correction in Large Language Models",
+            "abstract": "We test the hypothesis that language models trained with reinforcement learning from human feedback (RLHF) have the capability to\"morally self-correct\"-- to avoid producing harmful outputs -- if instructed to do so. We find strong evidence in support of this hypothesis across three different experiments, each of which reveal different facets of moral self-correction. We find that the capability for moral self-correction emerges at 22B model parameters, and typically improves with increasing model size and RLHF training. We believe that at this level of scale, language models obtain two capabilities that they can use for moral self-correction: (1) they can follow instructions and (2) they can learn complex normative concepts of harm like stereotyping, bias, and discrimination. As such, they can follow instructions to avoid certain kinds of morally harmful outputs. We believe our results are cause for cautious optimism regarding the ability to train language models to abide by ethical principles.",
+            "year": 2023,
+            "citationCount": 101,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 4
+        },
+        {
+            "id": "8e37dc1215681aa153a51c07078ba8befd6a6e01",
+            "paperId": "8e37dc1215681aa153a51c07078ba8befd6a6e01",
+            "title": "AdaPlanner: Adaptive Planning from Feedback with Language Models",
+            "abstract": "Large language models (LLMs) have recently demonstrated the potential in acting as autonomous agents for sequential decision-making tasks. However, most existing methods either take actions greedily without planning or rely on static plans that are not adaptable to environmental feedback. Consequently, the sequential decision-making performance of LLM agents degenerates with problem complexity and plan horizons increase. We propose a closed-loop approach, AdaPlanner, which allows the LLM agent to refine its self-generated plan adaptively in response to environmental feedback. In AdaPlanner, the LLM agent adaptively refines its plan from feedback with both in-plan and out-of-plan refinement strategies. To mitigate hallucination, we develop a code-style LLM prompt structure that facilitates plan generation across a variety of tasks, environments, and agent capabilities. Furthermore, we propose a skill discovery mechanism that leverages successful plans as few-shot exemplars, enabling the agent to plan and refine with fewer task demonstrations. Our experiments in the ALFWorld and MiniWoB++ environments demonstrate that AdaPlanner outperforms state-of-the-art baselines by 3.73% and 4.11% while utilizing 2x and 600x fewer samples, respectively.",
+            "year": 2023,
+            "citationCount": 49,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A closed-loop approach, AdaPlanner, is proposed, which allows the LLM agent to refine its self-generated plan adaptively in response to environmental feedback, and develops a code-style LLM prompt structure that facilitates plan generation across a variety of tasks, environments, and agent capabilities."
+            },
+            "score": 4
+        },
+        {
+            "id": "3aa200f562346a5e312767e5e9c1333a4f2c951b",
+            "paperId": "3aa200f562346a5e312767e5e9c1333a4f2c951b",
+            "title": "Large Language Models, scientific knowledge and factuality: A systematic analysis in antibiotic discovery",
+            "abstract": "Inferring over and extracting information from Large Language Models (LLMs) trained on a large corpus of scientific literature can potentially drive a new era in biomedical research, reducing the barriers for accessing existing medical evidence. This work examines the potential of LLMs for dialoguing with biomedical background knowledge, using the context of antibiotic discovery. The systematic analysis is applied to ten state-of-the-art models, from models specialised on biomedical scientific corpora to general models such as ChatGPT, GPT-4 and Llama 2 in two prompting-based tasks: chemical compound definition generation and chemical compound-fungus relation determination. The work provides a systematic assessment on the ability of LLMs to encode and express these relations, verifying for fluency, prompt-alignment, semantic coherence, factual knowledge and specificity of generated responses. Results show that while recent models have improved in fluency, factual accuracy is still low and models are biased towards over-represented entities. The ability of LLMs to serve as biomedical knowledge bases is questioned, and the need for additional systematic evaluation frameworks is highlighted. The best performing GPT-4 produced a factual definition for 70% of chemical compounds and 43.6% factual relations to fungi, whereas the best open source model BioGPT-large 30% of the compounds and 30% of the relations for the best-performing prompt. The results show that while LLMs are currently not fit for purpose to be used as biomedical factual knowledge bases, there is a promising emerging property in the direction of factuality as the models become domain specialised, scale-up in size and level of human feedback.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work examines the potential of LLMs for dialoguing with biomedical background knowledge, using the context of antibiotic discovery, and shows a promising emerging property in the direction of factuality as the models become domain specialised, scale-up in size and level of human feedback."
+            },
+            "score": 4
+        },
+        {
+            "id": "e6e3020251d354159885a7c603c0e6fa28144f2a",
+            "paperId": "e6e3020251d354159885a7c603c0e6fa28144f2a",
+            "title": "Reliability Check: An Analysis of GPT-3\u2019s Response to Sensitive Topics and Prompt Wording",
+            "abstract": "Large language models (LLMs) have become mainstream technology with their versatile use cases and impressive performance. Despite the countless out-of-the-box applications, LLMs are still not reliable. A lot of work is being done to improve the factual accuracy, consistency, and ethical standards of these models through fine-tuning, prompting, and Reinforcement Learning with Human Feedback (RLHF), but no systematic analysis of the responses of these models to different categories of statements, or on their potential vulnerabilities to simple prompting changes is available. In this work, we analyze what confuses GPT-3: how the model responds to certain sensitive topics and what effects the prompt wording has on the model response. We find that GPT-3 correctly disagrees with obvious Conspiracies and Stereotypes but makes mistakes with common Misconceptions and Controversies. The model responses are inconsistent across prompts and settings, highlighting GPT-3\u2019s unreliability.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work analyzes what confuses GPT-3: how the model responds to certain sensitive topics and what effects the prompt wording has on the model response."
+            },
+            "score": 4
+        },
+        {
+            "id": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "paperId": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+            "abstract": "Large Language Models (LLMs) can achieve strong performance on many tasks by producing step-by-step reasoning before giving a final output, often referred to as chain-of-thought reasoning (CoT). It is tempting to interpret these CoT explanations as the LLM's process for solving a task. This level of transparency into LLMs' predictions would yield significant safety benefits. However, we find that CoT explanations can systematically misrepresent the true reason for a model's prediction. We demonstrate that CoT explanations can be heavily influenced by adding biasing features to model inputs--e.g., by reordering the multiple-choice options in a few-shot prompt to make the answer always\"(A)\"--which models systematically fail to mention in their explanations. When we bias models toward incorrect answers, they frequently generate CoT explanations rationalizing those answers. This causes accuracy to drop by as much as 36% on a suite of 13 tasks from BIG-Bench Hard, when testing with GPT-3.5 from OpenAI and Claude 1.0 from Anthropic. On a social-bias task, model explanations justify giving answers in line with stereotypes without mentioning the influence of these social biases. Our findings indicate that CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety. Building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods.",
+            "year": 2023,
+            "citationCount": 137,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that CoT explanations can be plausible yet misleading, which risks increasing trust in LLMs without guaranteeing their safety, and building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods."
+            },
+            "score": 4
+        },
+        {
+            "id": "84b77180228051040286423cec82b62c323a8fda",
+            "paperId": "84b77180228051040286423cec82b62c323a8fda",
+            "title": "Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation",
+            "abstract": "Knowledge-intensive tasks (e.g., open-domain question answering (QA)) require a substantial amount of factual knowledge and often rely on external information for assistance. Recently, large language models (LLMs) (e.g., ChatGPT), have demonstrated impressive prowess in solving a wide range of tasks with world knowledge, including knowledge-intensive tasks. However, it remains unclear how well LLMs are able to perceive their factual knowledge boundaries, particularly how they behave when incorporating retrieval augmentation. In this study, we present an initial analysis of the factual knowledge boundaries of LLMs and how retrieval augmentation affects LLMs on open-domain QA. Specially, we focus on three primary research questions and analyze them by examining QA performance, priori judgement and posteriori judgement of LLMs. We show evidence that LLMs possess unwavering confidence in their capabilities to respond to questions and the accuracy of their responses. Furthermore, retrieval augmentation proves to be an effective approach in enhancing LLMs' awareness of knowledge boundaries, thereby improving their judgemental abilities. Additionally, we also find that LLMs have a propensity to rely on the provided retrieval results when formulating answers, while the quality of these results significantly impacts their reliance. The code to reproduce this work is available at https://github.com/RUCAIBox/LLM-Knowledge-Boundary.",
+            "year": 2023,
+            "citationCount": 48,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study presents an initial analysis of the factual knowledge boundaries of LLMs and how retrieval augmentation affects LLMs on open-domain QA and finds that LLMs have a propensity to rely on the provided retrieval results when formulating answers, while the quality of these results significantly impacts their reliance."
+            },
+            "score": 4
+        },
+        {
+            "id": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "paperId": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "title": "Enabling Large Language Models to Generate Text with Citations",
+            "abstract": "Large language models (LLMs) have emerged as a widely-used tool for information seeking, but their generated outputs are prone to hallucination. In this work, our aim is to allow LLMs to generate text with citations, improving their factual correctness and verifiability. Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches. We propose ALCE, the first benchmark for Automatic LLMs' Citation Evaluation. ALCE collects a diverse set of questions and retrieval corpora and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. We develop automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrate their strong correlation with human judgements. Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement -- For example, on the ELI5 dataset, even the best models lack complete citation support 50% of the time. Our analyses further highlight promising future directions, including developing better retrievers, advancing long-context LLMs, and improving the ability to synthesize information from multiple sources.",
+            "year": 2023,
+            "citationCount": 102,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ALCE, the first benchmark for Automatic LLMs' Citation Evaluation, and develops automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrates their strong correlation with human judgements."
+            },
+            "score": 4
+        },
+        {
+            "id": "0286b2736a114198b25fb5553c671c33aed5d477",
+            "paperId": "0286b2736a114198b25fb5553c671c33aed5d477",
+            "title": "Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback",
+            "abstract": "We apply preference modeling and reinforcement learning from human feedback (RLHF) to \ufb01netune language models to act as helpful and harmless assistants. We \ufb01nd this alignment training improves performance on almost all NLP evaluations, and is fully compatible with training for specialized skills such as python coding and summarization. We explore an iterated online mode of training, where preference models and RL policies are updated on a weekly cadence with fresh human feedback data, ef\ufb01ciently improving our datasets and models. Finally, we investigate the robustness of RLHF training, and identify a roughly linear relation between the RL reward and the square root of the KL divergence between the policy and its initialization. Alongside our main results, we perform peripheral analyses on calibration, competing objectives, and the use of OOD detection, compare our models with human writers, and provide samples from our models using prompts appearing in recent related work. Figure These plots show that PM accuracy decreases as we focus exclusively on comparisons between pairs of samples with high score. We have normalized all preference models to have the same mean score on a held-out dataset so that they\u2019re directly comparable, and then plotted accuracy for the comparisons where both samples have scores above a speci\ufb01c threshold.",
+            "year": 2022,
+            "citationCount": 930,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An iterated online mode of training, where preference models and RL policies are updated on a weekly cadence with fresh human feedback data, and a roughly linear relation between the RL reward and the square root of the KL divergence between the policy and its initialization is identified."
+            },
+            "score": 4
+        },
+        {
+            "id": "d4a8e483f23a8680d6d81ae5a37a73a22757d0ad",
+            "paperId": "d4a8e483f23a8680d6d81ae5a37a73a22757d0ad",
+            "title": "Test-Case-Driven Programming Understanding in Large Language Models for Better Code Generation",
+            "abstract": "Code generation is to automatically generate source code conforming to a given programming specification, which has received extensive attention especially with the development of large language models (LLMs). Due to the inherent difficulty of code generation, the code generated by LLMs may be not aligned with the specification. To improve the performance of LLMs in code generation, some thought-eliciting prompting techniques have been proposed to guide LLMs for specification understanding. However, it is still hard to produce correct understanding for complicated programming problems, leading to unsatisfactory code generation performance. Also, some feedback-based prompting techniques have been proposed to fix incorrect code using error messages produced by test execution. However, when the generated code deviates significantly from the ground truth, they encounter difficulties in improving performance based on such coarse-grained information. In this work, we propose a novel prompting technique, called {\\mu}FiX, to improve the code generation performance of LLMs by devising both sophisticated thought-eliciting prompting and feedback-based prompting and making the first exploration on their synergy. It first exploits test case analysis to obtain specification understanding and enables a self-improvement process to identify and fix the misunderstanding in the thought-eliciting prompting phase. {\\mu}FiX further fixes the specification understanding towards the direction reducing the gap between the provided understanding and the actual understanding implicitly utilized by LLMs for code generation in the feedback-based prompting phase. By obtaining as correct understanding as possible with {\\mu}FiX, the code generation performance of LLMs can be largely improved.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel prompting technique, called {\\mu}FiX, is proposed to improve the code generation performance of LLMs by devising both sophisticated thought-eliciting prompting and feedback-based prompting and making the first exploration on their synergy."
+            },
+            "score": 4
+        },
+        {
+            "id": "57865d9894e1bf199fd566e963c8f58057dc9042",
+            "paperId": "57865d9894e1bf199fd566e963c8f58057dc9042",
+            "title": "Words into Action: Learning Diverse Humanoid Robot Behaviors using Language Guided Iterative Motion Refinement",
+            "abstract": "Humanoid robots are well suited for human habitats due to their morphological similarity, but developing controllers for them is a challenging task that involves multiple sub-problems, such as control, planning and perception. In this paper, we introduce a method to simplify controller design by enabling users to train and fine-tune robot control policies using natural language commands. We first learn a neural network policy that generates behaviors given a natural language command, such as\"walk forward\", by combining Large Language Models (LLMs), motion retargeting, and motion imitation. Based on the synthesized motion, we iteratively fine-tune by updating the text prompt and querying LLMs to find the best checkpoint associated with the closest motion in history. We validate our approach using a simulated Digit humanoid robot and demonstrate learning of diverse motions, such as walking, hopping, and kicking, without the burden of complex reward engineering. In addition, we show that our iterative refinement enables us to learn 3x times faster than a naive formulation that learns from scratch.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a method to simplify controller design by enabling users to train and fine-tune robot control policies using natural language commands, by combining Large Language Models, motion retargeting, and motion imitation."
+            },
+            "score": 3
+        },
+        {
+            "id": "e962f95e03a50ff2f3a0fe7840daebac04578c46",
+            "paperId": "e962f95e03a50ff2f3a0fe7840daebac04578c46",
+            "title": "Structure-informed Language Models Are Protein Designers",
+            "abstract": "This paper demonstrates that language models are strong structure-based protein designers. We present LM-Design, a generic approach to reprogramming sequence-based protein language models (pLMs), that have learned massive sequential evolutionary knowledge from the universe of natural protein sequences, to acquire an immediate capability to design preferable protein sequences for given folds. We conduct a structural surgery on pLMs, where a lightweight structural adapter is implanted into pLMs and endows it with structural awareness. During inference, iterative refinement is performed to effectively optimize the generated protein sequences. Experiments show that LM-Design improves the state-of-the-art results by a large margin, leading to 4% to 12% accuracy gains in sequence recovery (e.g., 55.65%/56.63% on CATH 4.2/4.3 single-chain benchmarks, and >60% when designing protein complexes). We provide extensive and in-depth analyses, which verify that LM-Design can (1) indeed leverage both structural and sequential knowledge to accurately handle structurally non-deterministic regions, (2) benefit from scaling data and model size, and (3) generalize to other proteins (e.g., antibodies and de novo proteins).",
+            "year": 2023,
+            "citationCount": 37,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LM-Design, a generic approach to reprogramming sequence-based protein language models (pLMs), that have learned massive sequential evolutionary knowledge from the universe of natural protein sequences, to acquire an immediate capability to design preferable protein sequences for given folds is presented."
+            },
+            "score": 3
+        },
+        {
+            "id": "9c5c89199114858eafbe50b46d77d38ffd03b28a",
+            "paperId": "9c5c89199114858eafbe50b46d77d38ffd03b28a",
+            "title": "Deterministic Non-Autoregressive Neural Sequence Modeling by Iterative Refinement",
+            "abstract": "We propose a conditional non-autoregressive neural sequence model based on iterative refinement. The proposed model is designed based on the principles of latent variable models and denoising autoencoders, and is generally applicable to any sequence generation task. We extensively evaluate the proposed model on machine translation (En-De and En-Ro) and image caption generation, and observe that it significantly speeds up decoding while maintaining the generation quality comparable to the autoregressive counterpart.",
+            "year": 2018,
+            "citationCount": 421,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed conditional non-autoregressive neural sequence model is evaluated on machine translation and image caption generation, and it is observed that it significantly speeds up decoding while maintaining the generation quality comparable to the autoregressive counterpart."
+            },
+            "score": 3
+        },
+        {
+            "id": "cbf58855bbc4b5a7f419feb58841df33747816d9",
+            "paperId": "cbf58855bbc4b5a7f419feb58841df33747816d9",
+            "title": "Dynamic Language Refinement for Graceful Degradation in Scene Text Recognition",
+            "abstract": "Scene text recognition is a mature technology which can get a near-perfect result in regular scenes. However, there are still troubles in recognizing scene texts with image blur, characters missing, and occlusion. Recent end-to-end frameworks have investigated the importance of linguistic knowledge, utilizing either implicit or explicit language models. However, joint training of language and vision models tends to interfere the tunings of each other. In this paper, we present a novel gradient isolation method to train language and vision models separately, yet in an end-to-end architecture. In addition, we propose a dynamic iterative training procedure for graceful refining the language model. Extensive experiments confirm that the proposed method has superiority on regular and irregular scene text images and achieves state-of-the-art results.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel gradient isolation method to train language and vision models separately, yet in an end-to-end architecture is presented and a dynamic iterative training procedure for graceful refining the language model is proposed."
+            },
+            "score": 3
+        },
+        {
+            "id": "9aa6a885754a27fe42a87e4dfaed87d618fd8518",
+            "paperId": "9aa6a885754a27fe42a87e4dfaed87d618fd8518",
+            "title": "Iterative Refinement of Project-Level Code Context for Precise Code Generation with Compiler Feedback",
+            "abstract": "Large language models (LLMs) have shown remarkable progress in automated code generation. Yet, incorporating LLM-based code generation into real-life software projects poses challenges, as the generated code may contain errors in API usage, class, data structure, or missing project-specific information. As much of this project-specific context cannot fit into the prompts of LLMs, we must find ways to allow the model to explore the project-level code context. To this end, this paper puts forward a novel approach, termed ProCoder, which iteratively refines the project-level code context for precise code generation, guided by the compiler feedback. In particular, ProCoder first leverages compiler techniques to identify a mismatch between the generated code and the project's context. It then iteratively aligns and fixes the identified errors using information extracted from the code repository. We integrate ProCoder with two representative LLMs, i.e., GPT-3.5-Turbo and Code Llama (13B), and apply it to Python code generation. Experimental results show that ProCoder significantly improves the vanilla LLMs by over 80% in generating code dependent on project context, and consistently outperforms the existing retrieval-based code generation baselines.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel approach, termed ProCoder, which iteratively refines the project-level code context for precise code generation, guided by the compiler feedback, and consistently outperforms the existing retrieval-based code generation baselines."
+            },
+            "score": 3
+        },
+        {
+            "id": "4dc023ce9ef579a797b21e5395df706130d3fefa",
+            "paperId": "4dc023ce9ef579a797b21e5395df706130d3fefa",
+            "title": "Welding Natural Language Queries to Analytics IRs with LLMs",
+            "abstract": "From the recent momentum behind translating natural language to SQL (nl2sql), to commercial product offerings such as Co-Pilot for Microsoft Fabric, Large Language Models (LLMs) are poised to have a big impact on data analytics. In this paper, we show that LLMs can be used to convert natural language analytics queries directly to custom intermediate query representations (IRs) of modern data analytics systems. This has the direct benefit of making IRs more accessible to end-users, but interestingly, it can also result in improved translation accuracy and better end-to-end performance, especially when the query semantics is better captured in the IR rather than in SQL. We build an LLM-based pipeline (nl2weld) for one instance of this flow, to translate natural language queries to the Weld IR using gpt-4. nl2weld is carefully designed to harness self-reflection and instruction-following capabilities of gpt-4, providing it various forms of feedback such as domain specific instructions and feedback from the Weld compiler. We evaluate nl2weld on a subset of the Spider benchmark and compare it against the gold standard SQL and DIN-SQL , a state-of-the-art nl2sql system. We report a comparable accuracy of 77 . 4% on the dataset, and also demonstrate examples on which nl2weld produces code that is 1 . 2 \u2212 3 \u00d7 faster than the gold standard and DIN-SQL .",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLMs can be used to convert natural language analytics queries directly to custom intermediate query representations (IRs) of modern data analytics systems, and can result in improved translation accuracy and better end-to-end performance, especially when the query semantics is better captured in the IR rather than in SQL."
+            },
+            "score": 3
+        },
+        {
+            "id": "3657d153f8e2e10b0a9b481bdfef3cdedd959fce",
+            "paperId": "3657d153f8e2e10b0a9b481bdfef3cdedd959fce",
+            "title": "A model of formative assessment for foreign language teaching in a secondary school",
+            "abstract": "We develop and present a model of formative assessment. The analysis of official educational requirements and existing models is carried out. Further, we compare some of the existing models of formative assessment presented by domestic and foreign authors. Then we develop our own model of formative assessment for foreign language teaching in a secondary school on the base of Spotlight course. The model is developed as a supplementary tool for the assessment model designed by the authors of the course. The main purpose of the model is to involve students in the process of assessment and make them active agents of their own learning. The model consists of the following stages: learning aims delivery and sharing, students\u2019 self and peer assessment, formative feedback, given by a teacher and reflection. Each stage assumes use of certain assess-ment tools. They are: checklists, headings, Forms of comparative assessment, Map of differen-tiated assessment, Achievement Tree and a learning diary.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 3
+        },
+        {
+            "id": "96d6bb5d6abdeda9b2db9af6296527200ba7aa32",
+            "paperId": "96d6bb5d6abdeda9b2db9af6296527200ba7aa32",
+            "title": "Boosting Theory-of-Mind Performance in Large Language Models via Prompting",
+            "abstract": "Large language models (LLMs) excel in many tasks in 2023, but they still face challenges in complex reasoning. Theory-of-mind (ToM) tasks, which require understanding agents' beliefs, goals, and mental states, are essential for common-sense reasoning involving humans, making it crucial to enhance LLM performance in this area. This study measures the ToM performance of GPT-4 and three GPT-3.5 variants (Davinci-2, Davinci-3, GPT-3.5-Turbo), and investigates the effectiveness of in-context learning in improving their ToM comprehension. We evaluated prompts featuring two-shot chain of thought reasoning and step-by-step thinking instructions. We found that LLMs trained with Reinforcement Learning from Human Feedback (RLHF) (all models excluding Davinci-2) improved their ToM accuracy via in-context learning. GPT-4 performed best in zero-shot settings, reaching nearly 80% ToM accuracy, but still fell short of the 87% human accuracy on the test set. However, when supplied with prompts for in-context learning, all RLHF-trained LLMs exceeded 80% ToM accuracy, with GPT-4 reaching 100%. These results demonstrate that appropriate prompting enhances LLM ToM reasoning, and they underscore the context-dependent nature of LLM cognitive capacities.",
+            "year": 2023,
+            "citationCount": 43,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that appropriate prompting enhances LLM ToM reasoning, and the context-dependent nature of LLM cognitive capacities is underscored, as it is found that LLMs trained with Reinforcement Learning from Human Feedback improved their ToM accuracy via in-context learning."
+            },
+            "score": 3
+        },
+        {
+            "id": "468d1e2d75a23fecaf96fe65d8b01ff35ea5d0bd",
+            "paperId": "468d1e2d75a23fecaf96fe65d8b01ff35ea5d0bd",
+            "title": "Cross-Lingual Consistency of Factual Knowledge in Multilingual Language Models",
+            "abstract": "Multilingual large-scale Pretrained Language Models (PLMs) have been shown to store considerable amounts of factual knowledge, but large variations are observed across languages. With the ultimate goal of ensuring that users with different language backgrounds obtain consistent feedback from the same model, we study the cross-lingual consistency (CLC) of factual knowledge in various multilingual PLMs. To this end, we propose a Ranking-based Consistency (RankC) metric to evaluate knowledge consistency across languages independently from accuracy. Using this metric, we conduct an in-depth analysis of the determining factors for CLC, both at model level and at language-pair level. Among other results, we find that increasing model size leads to higher factual probing accuracy in most languages, but does not improve cross-lingual consistency. Finally, we conduct a case study on CLC when new factual associations are inserted in the PLMs via model editing. Results on a small sample of facts inserted in English reveal a clear pattern whereby the new piece of knowledge transfers only to languages with which English has a high RankC score.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Ranking-based Consistency (RankC) metric to evaluate knowledge consistency across languages independently from accuracy, and conducts an in-depth analysis of the determining factors for CLC, both at model level and at language-pair level."
+            },
+            "score": 3
+        },
+        {
+            "id": "7afca77a3b64200ab58835538d44878576130e79",
+            "paperId": "7afca77a3b64200ab58835538d44878576130e79",
+            "title": "An Affective, Formative and Data-Driven Feedback Intervention in Teacher Education",
+            "abstract": "Educators and researchers have long contemplated the most effective ways to provide feedback to students, to build sustainable feedback practices, and to establish feedback literacy. While a considerable amount of research, theory, and practical approaches exist to support the effect of formative feedback practices, less research exists on the impact of affective elements related to feedback. This study set out to explore pre-service teachers\u2019 perceptions of a feedback intervention that included affective, formative, and data-driven aspects. A mixed-reality simulation environment was selected as the context for the study, and eight pre-service teachers performing in the simulation were selected as participants. This qualitative multicase study included three rounds of simulation observations, a feedback intervention, and interviews. Data were analyzed using a thematic analysis framework. Findings showed that the application of confirmation, empathy, and reciprocity in the feedback intervention prompted the development of helping relationships that promoted personal growth. Humanism became a useful framework for these emergent findings. In addition, findings included participants\u2019 preferences for formative feedback over data-feedback, particularly formative feedback that introduced engaging language, purposeful organization, and details and examples. Lastly, findings revealed participants\u2019 perceived personal growth in feedback literacy, especially in managing emotions and committing to the feedback process.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Findings showed that the application of confirmation, empathy, and reciprocity in the feedback intervention prompted the development of helping relationships that promoted personal growth and revealed participants\u2019 perceived personal growth in feedback literacy."
+            },
+            "score": 3
+        },
+        {
+            "id": "c889cdd52db3ec7a8f8270ce80e010d2725aede2",
+            "paperId": "c889cdd52db3ec7a8f8270ce80e010d2725aede2",
+            "title": "Educational Design Principles of Using AI Chatbot That Supports Self-Regulated Learning in Education: Goal Setting, Feedback, and Personalization",
+            "abstract": "The invention of ChatGPT and generative AI technologies presents educators with significant challenges, as concerns arise regarding students potentially exploiting these tools unethically, misrepresenting their work, or gaining academic merits without active participation in the learning process. To effectively navigate this shift, it is crucial to embrace AI as a contemporary educational trend and establish pedagogical principles for properly utilizing emerging technologies like ChatGPT to promote self-regulation. Rather than suppressing AI-driven tools, educators should foster collaborations among stakeholders, including educators, instructional designers, AI researchers, and developers. This paper proposes three key pedagogical principles for integrating AI chatbots in classrooms, informed by Zimmerman\u2019s Self-Regulated Learning (SRL) framework and Judgment of Learning (JOL). We argue that the current conceptualization of AI chatbots in education is inadequate, so we advocate for the incorporation of goal setting (prompting), self-assessment and feedback, and personalization as three essential educational principles. First, we propose that teaching prompting is important for developing students\u2019 SRL. Second, configuring reverse prompting in the AI chatbot\u2019s capability will help to guide students\u2019 SRL and monitoring for understanding. Third, developing a data-driven mechanism that enables an AI chatbot to provide learning analytics helps learners to reflect on learning and develop SRL strategies. By bringing in Zimmerman\u2019s SRL framework with JOL, we aim to provide educators with guidelines for implementing AI in teaching and learning contexts, with a focus on promoting students\u2019 self-regulation in higher education through AI-assisted pedagogy and instructional design.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes three key pedagogical principles for integrating AI chatbots in classrooms, informed by Zimmerman\u2019s Self-Regulated Learning (SRL) framework and Judgment of Learning (JOL), and advocates for the incorporation of goal setting, self-assessment and feedback, and personalization as three essential educational principles."
+            },
+            "score": 3
+        },
+        {
+            "id": "1d4cc479f1423dc30e80c077a4ac20673e64323a",
+            "paperId": "1d4cc479f1423dc30e80c077a4ac20673e64323a",
+            "title": "Leveraging Weakly Annotated Data for Hate Speech Detection in Code-Mixed Hinglish: A Feasibility-Driven Transfer Learning Approach with Large Language Models",
+            "abstract": "The advent of Large Language Models (LLMs) has advanced the benchmark in various Natural Language Processing (NLP) tasks. However, large amounts of labelled training data are required to train LLMs. Furthermore, data annotation and training are computationally expensive and time-consuming. Zero and few-shot learning have recently emerged as viable options for labelling data using large pre-trained models. Hate speech detection in mix-code low-resource languages is an active problem area where the use of LLMs has proven beneficial. In this study, we have compiled a dataset of 100 YouTube comments, and weakly labelled them for coarse and fine-grained misogyny classification in mix-code Hinglish. Weak annotation was applied due to the labor-intensive annotation process. Zero-shot learning, one-shot learning, and few-shot learning and prompting approaches have then been applied to assign labels to the comments and compare them to human-assigned labels. Out of all the approaches, zero-shot classification using the Bidirectional Auto-Regressive Transformers (BART) large model and few-shot prompting using Generative Pre-trained Transformer- 3 (ChatGPT-3) achieve the best results",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study has compiled a dataset of 100 YouTube comments, and weakly labelled them for coarse and fine-grained misogyny classification in mix-code Hinglish, and zero-shot learning, one-shot learning, and few-shot learning and prompting approaches have been applied to assign labels to the comments and compare them to human-assigned labels."
+            },
+            "score": 3
+        },
+        {
+            "id": "11cf91b5a3f39125cd2f6fd869e0dc2715a27bd4",
+            "paperId": "11cf91b5a3f39125cd2f6fd869e0dc2715a27bd4",
+            "title": "Feedback as a form of control in a technogenic educational environment",
+            "abstract": "The article is devoted to control and feedback in foreign language teaching in a technogenic environment. The educational process is transformed in terms of the implementation and active use of digital technologies. ICT-rich environment provides new models of interaction between the teacher, students and digital tools. It also enriches the diversity of tasks and expands the range of possible forms of control and feedback. According to the authors, automated evaluation takes place both in out-of-classroom activities and directly in the classroom using Bring Your Own Device technology (BYOD). Automated control contributes to the intensity of the educational process. It provides all the participants with an opportunity to choose a convenient mode of work and get instant feedback, thereby allowing self-assessment and self-reflection of their own actions. When teaching foreign languages, special attention should be paid to chatbot technology. Chatbots imitate human actions and are able to perform standard repetitive tasks. The growing popularity of bots is explained by a wide range of usage spheres and the ability to integrate chatbots into social networks and mobile technologies. In the technogenic educational environment, ICT can be the basis for interaction, co-editing and peer assessment in collaborative projects. In this case, students receive feedback not only from the teacher, but also from other students, which increases the motivation for independent learning. Thus, automated control, self-assessment and peer assessment can both identify problem areas for each student and design an individual learning path, which increases the effectiveness of learning a foreign language.",
+            "year": 2020,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Automated control, self-assessment and peer assessment can both identify problem areas for each student and design an individual learning path, which increases the effectiveness of learning a foreign language."
+            },
+            "score": 2
+        },
+        {
+            "id": "04fad23bbcafd647ead664cc2e112f033d52c2a0",
+            "paperId": "04fad23bbcafd647ead664cc2e112f033d52c2a0",
+            "title": "Generative Artificial Intelligence as a Tool for Teaching Communication in Nutrition and Dietetics Education\u2014A Novel Education Innovation",
+            "abstract": "Although effective communication is fundamental to nutrition and dietetics practice, providing novice practitioners with efficacious training remains a challenge. Traditionally, human simulated patients have been utilised in health professions training, however their use and development can be cost and time prohibitive. Presented here is a platform the authors have created that allows students to interact with virtual simulated patients to practise and develop their communication skills. Leveraging the structured incorporation of large language models, it is designed by pedagogical content experts and comprises individual cases based on curricula and student needs. It is targeted towards the practice of rapport building, asking of difficult questions, paraphrasing and mistake making, all of which are essential to learning. Students appreciate the individualised and immediate feedback based on validated communication tools that encourage self-reflection and improvement. Early trials have shown students are enthusiastic about this platform, however further investigations are required to determine its impact as an experiential communication skills tool. This platform harnesses the power of artificial intelligence to bridge the gap between theory and practice in communication skills training, requiring significantly reduced costs and resources than traditional simulated patient encounters.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This platform harnesses the power of artificial intelligence to bridge the gap between theory and practice in communication skills training, requiring significantly reduced costs and resources than traditional simulated patient encounters."
+            },
+            "score": 2
+        },
+        {
+            "id": "a7d81ee6c928e7c7c5f6fc816e8e8630038fa55d",
+            "paperId": "a7d81ee6c928e7c7c5f6fc816e8e8630038fa55d",
+            "title": "Evaluating the effectiveness of a preservice teacher technology training module incorporating SQD strategies",
+            "abstract": null,
+            "year": 2020,
+            "citationCount": 30,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Among the six training strategies, reflection and instructional design had the highest positive impacts on these preservice language teachers\u2019 self-reported knowledge about and attitudes towards using ICT."
+            },
+            "score": 2
+        },
+        {
+            "id": "3a733c27bff68259b17dc4f835b0d192ac8fab70",
+            "paperId": "3a733c27bff68259b17dc4f835b0d192ac8fab70",
+            "title": "ParaFuzz: An Interpretability-Driven Technique for Detecting Poisoned Samples in NLP",
+            "abstract": "Backdoor attacks have emerged as a prominent threat to natural language processing (NLP) models, where the presence of specific triggers in the input can lead poisoned models to misclassify these inputs to predetermined target classes. Current detection mechanisms are limited by their inability to address more covert backdoor strategies, such as style-based attacks. In this work, we propose an innovative test-time poisoned sample detection framework that hinges on the interpretability of model predictions, grounded in the semantic meaning of inputs. We contend that triggers (e.g., infrequent words) are not supposed to fundamentally alter the underlying semantic meanings of poisoned samples as they want to stay stealthy. Based on this observation, we hypothesize that while the model's predictions for paraphrased clean samples should remain stable, predictions for poisoned samples should revert to their true labels upon the mutations applied to triggers during the paraphrasing process. We employ ChatGPT, a state-of-the-art large language model, as our paraphraser and formulate the trigger-removal task as a prompt engineering problem. We adopt fuzzing, a technique commonly used for unearthing software vulnerabilities, to discover optimal paraphrase prompts that can effectively eliminate triggers while concurrently maintaining input semantics. Experiments on 4 types of backdoor attacks, including the subtle style backdoors, and 4 distinct datasets demonstrate that our approach surpasses baseline methods, including STRIP, RAP, and ONION, in precision and recall.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an innovative test-time poisoned sample detection framework that hinges on the interpretability of model predictions, grounded in the semantic meaning of inputs, and adopts fuzzing, a technique commonly used for unearthing software vulnerabilities, to discover optimal paraphrase prompts that can effectively eliminate triggers while concurrently maintaining input semantics."
+            },
+            "score": 2
+        },
+        {
+            "id": "d2d37e6716134ad1cbdf52d806e4f564a09f5379",
+            "paperId": "d2d37e6716134ad1cbdf52d806e4f564a09f5379",
+            "title": "Improving Behavioral-Based Safety Training in Using Verbal Commands Through a Theory-Driven and Feedback-Based Nonimmersive Virtual Reality Game: Development and Usability Study",
+            "abstract": "Background The construction, chemical, aviation, medical, and health care industries have used serious games for safety training. To our knowledge, serious games have not been developed focusing on behavioral change to improve safety through the use of verbal commands and instilling players with heightened awareness of their spatial proximity to other people in their surroundings. Objective We aimed to develop a theory-driven serious game for improving safety behavior using verbal commands and validate the implementation of the theoretical frameworks used for game development. The game developed, KitchenSpeak, was a first-person character (FPC) game where users respond to in-game prompts to use loud verbal commands when they are approaching another employee\u2019s blind spot. Methods In addition to using the SERES framework in guiding the general game design and development, and the Reflection, Engagement, Choice, Information, Play, Exposition (RECIPE) framework to inform the design of the game mechanics, we also applied gestalt laws of perception for graphic design to guide the design of the game\u2019s user interface. We conducted 2 evaluative tests (alpha and beta) to collect end user and stakeholder feedback on the implementation of the theoretical frameworks, as well as to collect relevant information for full-scale implementation and a future validation study. Results The alpha and beta tests had 8 and 40 participants, respectively. The alpha test results revealed that the theoretical frameworks were adequately applied; however, suggestions were also made to modify and improve the game. The beta test results suggested further improvements for the game design and found no differences in the perception of ease of play between participants with and without previous FPC gaming experience (P=.47; Kruskal-Wallis). Results suggested that the game met its design and theoretical requirements, and it would be easily playable by all players regardless of their previous experience in FPC games. Conclusions A theory-driven and evidence-based FPC game titled KitchenSpeak was developed to teach the use of kitchen-speak terms in commercial kitchens. Evaluative tests were conducted to validate the implementation of the theoretical frameworks. Our main contributions are creating and validating game-based training to improve behavioral-based safety in the workplace and the incorporation of gestalt laws of perception for graphic design in the game\u2019s user interface.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A theory-driven and evidence-based FPC game titled KitchenSpeak was developed to teach the use of kitchen-speak terms in commercial kitchens and the incorporation of gestalt laws of perception for graphic design in the game\u2019s user interface."
+            },
+            "score": 2
+        },
+        {
+            "id": "6c26e79f1890bfd27fde27c64c3d576d9282ddfb",
+            "paperId": "6c26e79f1890bfd27fde27c64c3d576d9282ddfb",
+            "title": "Pharmacy students\u2019 professionalism and perceptions in supporting the care of people living with experience of mental health challenges: A feedback-driven qualitative narrative",
+            "abstract": "Background: \nInternalised Stigma is considered to be the main barrier to people receiving effective treatment for mental health problems (Knaak et al, 2017). As healthcare students become more professionalised, they learn how to provide optimal quality care to all patients. Experiential models of learning complemented with feedback and debriefing are said to be one of the approaches to preparing healthcare professionals who are work ready (Tavares et al, 2019). \n \nMethod: \nWe collected feedback data from people living with mental health experiences following an experiential learning activity via interactive learning sessions (ILS) and focus group discussions (FGDs). We manually analysed the data for themes; after which, we used the data as a guide for a series of semi-structured in-depth interviews with MPharm students. \n \nResults: \nMain themes emerged from the FDGs were that people living mental health experiences want to be seen as a person, not a prescription. They also appreciated that there is no \u201cmagic bullet\u201d to solve all of the challenges. MPharm students felt that the environment for learning was enriching; however, they felt they needed more time to apply their knowledge and skills. When prompted that people with experiences of mental health would want to be looked at as a person and not a prescription; MPharm students appreciated the feedback. However, they felt they needed to also ensure that they are applying their pharmacotherapy knowledge. \n \nConclusion: \nILS with content-based learning improved students\u2019 perceptions of mental health issues. Moreover, the feedback-driven, real-world experiences and experiential learning in the education of pharmacy students, was well-received by MPharm students. \nNot only does this benefit students\u2019 education, it has also allowed for those with mental health experiences to communicate their concerns in education of future healthcare professionals, as well as enhance their abilities to \u2018tell their story\u2019 more effectively, without fear of stigma or judgement.",
+            "year": 2020,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 2
+        },
+        {
+            "id": "f747deecc5c5a1bb022a129a09fe5fbe29195b3b",
+            "paperId": "f747deecc5c5a1bb022a129a09fe5fbe29195b3b",
+            "title": "ASL Champ!: A Virtual Reality Game with Deep-Learning Driven Sign Recognition",
+            "abstract": "We developed an American Sign Language (ASL) learning platform in a Virtual Reality (VR) environment to facilitate immersive interaction and real-time feedback for ASL learners. We describe the first game to use an interactive teaching style in which users learn from a fluent signing avatar and the first implementation of ASL sign recognition using deep learning within the VR environment. Advanced motion-capture technology powers an expressive ASL teaching avatar within an immersive three-dimensional environment. The teacher demonstrates an ASL sign for an object, prompting the user to copy the sign. Upon the user's signing, a third-party plugin executes the sign recognition process alongside a deep learning model. Depending on the accuracy of a user's sign production, the avatar repeats the sign or introduces a new one. We gathered a 3D VR ASL dataset from fifteen diverse participants to power the sign recognition model. The proposed deep learning model's training, validation, and test accuracy are 90.12%, 89.37%, and 86.66%, respectively. The functional prototype can teach sign language vocabulary and be successfully adapted as an interactive ASL learning platform in VR.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The first game to use an interactive teaching style in which users learn from a fluent signing avatar and the first implementation of ASL sign recognition using deep learning within the VR environment are described."
+            },
+            "score": 2
+        },
+        {
+            "id": "bc465098d134791d124e0e305f17a333ad5b550d",
+            "paperId": "bc465098d134791d124e0e305f17a333ad5b550d",
+            "title": "Project EngiBot: Engineering Insights through NLP- driven Chatbot",
+            "abstract": "Abstract: A chatbot is an automated system designed to engage with users, offering human-like conversations and promptly responding to their queries based on the input provided. This technology creates a seamless illusion of interacting with a human interlocutor. This chatbot empowers students with the ability to access information about college activities from anywhere with an internet connection. Furthermore, it extends its capabilities to guide engineering students on various aspects, including identifying colleges with the highest salary packages, exploring trending domains within the field, and providing a roadmap for mastering these domains. The development of the college inquiry chatbot involved the utilization of a Natural Language Processing (NLP) system that assesses and understands user questions and messages. Understanding that people interact with varying emotional states and attitudes, chatbots adhere to defined rules, ensuring polite and accurate communication with customers, mirroring human interaction. Additionally, the chatbot offers invaluable insights on the technologies essential for achieving expertise in a specific engineering domain, serving as a comprehensive resource for students in their educational journey. They significantly reduce response times, allowing students to receive prompt and accurate answers.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The development of the college inquiry chatbot involved the utilization of a Natural Language Processing (NLP) system that assesses and understands user questions and messages, which significantly reduce response times, allowing students to receive prompt and accurate answers."
+            },
+            "score": 1
+        },
+        {
+            "id": "eab7e876257923cd84339b857902501eb81c0b91",
+            "paperId": "eab7e876257923cd84339b857902501eb81c0b91",
+            "title": "Innovative Personal Assistance: Speech Recognition and NLP-Driven Robot Prototype",
+            "abstract": "This paper presents the development and evaluation of a personal assistant robot prototype with advanced speech recognition and natural language processing (NLP) capabilities. Powered by a Raspberry Pi microprocessor, it is the core component of the robot's hardware. It is designed to receive commands and promptly respond by performing the requested actions, utilizing integrated speech recognition and NLP technologies. The prototype aims to enhance meeting efficiency and productivity through audio-to-text conversion and high-quality image capture. Results show excellent performance, with accuracy rates of 100% in Indonesian and 99% in English. The efficient processing speed, averaging 9.07 seconds per minute in Indonesian and 15.3 seconds per minute in English, further enhances the robot's functionality. Additionally, integrating a high-resolution webcam enables high-quality image capture at 1280 x 720 pixels. Real-time integration with Google Drive ensures secure storage and seamless data management. The findings highlight the prototype's effectiveness in facilitating smooth interactions and effective communication, leveraging NLP for intelligent language understanding. Integrating NLP-based speech recognition, visual documentation, and data transfer provides a comprehensive platform for managing audio, text, and image data. The personal assistant robot prototype presented in this research represents a significant advancement in human-robot interaction, particularly in meeting and collaborative work settings. Further refinements in NLP can enhance efficiency and foster seamless human-robot interaction experiences.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The personal assistant robot prototype presented in this research represents a significant advancement in human-robot interaction, particularly in meeting and collaborative work settings, as well as a comprehensive platform for managing audio, text, and image data."
+            },
+            "score": 1
+        },
+        {
+            "id": "9fc0b7908ca6fa06c35b6d7e93401cc75761dadc",
+            "paperId": "9fc0b7908ca6fa06c35b6d7e93401cc75761dadc",
+            "title": "Simulating galaxy formation with black hole driven thermal and kinetic feedback",
+            "abstract": "The inefficiency of star formation in massive elliptical galaxies is widely believed to be caused by the interactions of an active galactic nucleus (AGN) with the surrounding gas. Achieving a sufficiently rapid reddening of moderately massive galaxies without expelling too many baryons has however proven difficult for hydrodynamical simulations of galaxy formation, prompting us to explore a new model for the accretion and feedback effects of supermassive black holes. For high-accretion rates relative to the Eddington limit, we assume that a fraction of the accreted rest mass energy heats the surrounding gas thermally, similar to the \u2018quasar mode\u2019 in previous work. For low-accretion rates, we invoke a new, pure kinetic feedback model that imparts momentum to the surrounding gas in a stochastic manner. These two modes of feedback are motivated both by theoretical conjectures for the existence of different types of accretion flows as well as recent observational evidence for the importance of kinetic AGN winds in quenching galaxies. We find that a large fraction of the injected kinetic energy in this mode thermalizes via shocks in the surrounding gas, thereby providing a distributed heating channel. In cosmological simulations, the resulting model produces red, non-star-forming massive elliptical galaxies, and achieves realistic gas fractions, black hole growth histories and thermodynamic profiles in large haloes.",
+            "year": 2016,
+            "citationCount": 478,
+            "tldr": null,
+            "score": 1
+        }
+    ],
+    "novelty": "no"
 }

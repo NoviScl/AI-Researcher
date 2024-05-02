@@ -90,5 +90,968 @@
             }
         },
         "Fallback Plan": "If the proposed BCP method does not significantly improve the calibration of confidence scores or the interpretability of the generated responses, consider the following alternative approaches:\n1. Analyze the quality and relevance of the generated evidence statements to identify potential weaknesses in the evidence generation step. Experiment with alternative prompting techniques or incorporate external knowledge sources to improve the quality of the evidence.\n2. Investigate the impact of different likelihood estimation techniques on the confidence updates. Explore alternative methods for estimating the likelihoods, such as using a separate model trained on a labeled dataset of evidence-claim pairs.\n3. Examine the limitations of the Bayesian updating process and consider alternative confidence aggregation methods, such as Dempster-Shafer theory or fuzzy logic, which may better capture the uncertainty and conflicting evidence.\n4. Conduct a more extensive error analysis to identify common patterns or factors that contribute to the failure of the BCP method. Use these insights to refine the prompting techniques, evidence generation process, or confidence updating algorithm.\n5. If the BCP method fails to provide significant improvements, focus on analyzing the generated evidence statements and the model's reasoning process. Treat the project as an exploratory study on the limitations of LLMs in expressing uncertainty and updating their beliefs based on evidence. Provide insights into the challenges of confidence calibration in LLMs and propose potential directions for future research."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"bayesian confidence calibration language models\")",
+        "KeywordQuery(\"uncertainty quantification language models\")",
+        "KeywordQuery(\"evidence based confidence updating language models\")",
+        "KeywordQuery(\"Bayesian Confidence Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "27dd800cb087f1575a65fba06c95ec8fd83a0fb4",
+            "paperId": "27dd800cb087f1575a65fba06c95ec8fd83a0fb4",
+            "title": "Fact-and-Reflection (FaR) Improves Confidence Calibration of Large Language Models",
+            "abstract": "For a LLM to be trustworthy, its confidence level should be well-calibrated with its actual performance. While it is now common sense that LLM performances are greatly impacted by prompts, the confidence calibration in prompting LLMs has yet to be thoroughly explored. In this paper, we explore how different prompting strategies influence LLM confidence calibration and how it could be improved. We conduct extensive experiments on six prompting methods in the question-answering context and we observe that, while these methods help improve the expected LLM calibration, they also trigger LLMs to be over-confident when responding to some instances. Inspired by human cognition, we propose Fact-and-Reflection (FaR) prompting, which improves the LLM calibration in two steps. First, FaR elicits the known\"facts\"that are relevant to the input prompt from the LLM. And then it asks the model to\"reflect\"over them to generate the final answer. Experiments show that FaR prompting achieves significantly better calibration; it lowers the Expected Calibration Error by 23.5% on our multi-purpose QA tasks. Notably, FaR prompting even elicits the capability of verbally expressing concerns in less confident scenarios, which helps trigger retrieval augmentation for solving these harder instances.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Fact-and-Reflection prompting is proposed, which improves the LLM calibration in two steps, and even elicits the capability of verbally expressing concerns in less confident scenarios, which helps trigger retrieval augmentation for solving these harder instances."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving uncertainty quantification and confidence calibration in large language models, and the proposed approach is Bayesian Confidence Prompting, which elicits prior confidence, generates evidence, estimates likelihoods, and updates posterior confidence.\n\nThe research problem in the paper is also improving confidence calibration of large language models, but the proposed approach is Fact-and-Reflection (FaR) prompting, which elicits relevant facts and asks the model to reflect over them to generate the final answer.\n\nWhile both works aim to improve confidence calibration, they propose different methods: Bayesian Confidence Prompting vs. Fact-and-Reflection prompting.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "74c7343d91d5464c27ca407fd504b07e690363be",
+            "paperId": "74c7343d91d5464c27ca407fd504b07e690363be",
+            "title": "Combining Confidence Elicitation and Sample-based Methods for Uncertainty Quantification in Misinformation Mitigation",
+            "abstract": "Large Language Models have emerged as prime candidates to tackle misinformation mitigation. However, existing approaches struggle with hallucinations and overconfident predictions. We propose an uncertainty quantification framework that leverages both direct confidence elicitation and sampled-based consistency methods to provide better calibration for NLP misinformation mitigation solutions. We first investigate the calibration of sample-based consistency methods that exploit distinct features of consistency across sample sizes and stochastic levels. Next, we evaluate the performance and distributional shift of a robust numeric verbalization prompt across single vs. two-step confidence elicitation procedure. We also compare the performance of the same prompt with different versions of GPT and different numerical scales. Finally, we combine the sample-based consistency and verbalized methods to propose a hybrid framework that yields a better uncertainty estimation for GPT models. Overall, our work proposes novel uncertainty quantification methods that will improve the reliability of Large Language Models in misinformation mitigation applications.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an uncertainty quantification framework that leverages both direct confidence elicitation and sampled-based consistency methods to provide better calibration for NLP misinformation mitigation solutions to improve the reliability of Large Language Models in misinformation mitigation applications."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving uncertainty quantification and confidence calibration in large language models for more trustworthy and interpretable responses. The approach is a novel prompting method called Bayesian Confidence Prompting, which elicits the model's prior confidence, generates supporting evidence, estimates likelihoods, and updates the confidence using Bayes' theorem.\n\nThe research problem in the paper is also improving uncertainty quantification in large language models, specifically for misinformation mitigation. The approach combines direct confidence elicitation using numeric verbalization prompts and sample-based consistency methods.\n\nWhile both works aim to improve uncertainty quantification in large language models, the proposal focuses on a novel Bayesian prompting method for general question-answering tasks, while the paper combines existing confidence elicitation and sample-based methods for misinformation mitigation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "paperId": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "title": "Just Ask for Calibration: Strategies for Eliciting Calibrated Confidence Scores from Language Models Fine-Tuned with Human Feedback",
+            "abstract": "A trustworthy real-world prediction system should produce well-calibrated confidence scores; that is, its confidence in an answer should be indicative of the likelihood that the answer is correct, enabling deferral to an expert in cases of low-confidence predictions. Recent studies have shown that unsupervised pre-training produces large language models (LMs) whose conditional probabilities are remarkably well-calibrated. However, the most widely-used LMs are fine-tuned with reinforcement learning from human feedback (RLHF-LMs), and some studies have suggested that RLHF-LMs produce conditional probabilities that are very poorly calibrated. In light of this perceived weakness, we conduct a broad evaluation of methods for extracting confidence scores from RLHF-LMs. For RLHF-LMs such as ChatGPT, GPT-4, and Claude, we find that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%.",
+            "year": 2023,
+            "citationCount": 96,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "For RLHF-LMs such as ChatGPT, GPT-4, and Claude, it is found that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving uncertainty quantification and confidence calibration in large language models, while the approach is using a novel Bayesian prompting method to elicit the model's prior confidence, generate supporting evidence, estimate likelihoods, and update the confidence scores.\n\nThe research problem in the paper is also improving confidence calibration in language models, but the approach is using verbalized confidences emitted as output tokens from models fine-tuned with reinforcement learning from human feedback (RLHF-LMs).\n\nWhile both works aim to improve confidence calibration, the proposal focuses on a Bayesian prompting method for unsupervised large language models, while the paper studies verbalized confidences from RLHF-LMs. The approaches are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ad075acdd57625d72fac95b625c758ed8dadcf91",
+            "paperId": "ad075acdd57625d72fac95b625c758ed8dadcf91",
+            "title": "Bayesian Active Learning with Pretrained Language Models",
+            "abstract": "Active Learning (AL) is a method to iteratively select data for annotation from a pool of unlabeled data, aiming to achieve better model performance than random selection. Previous AL approaches in Natural Language Processing (NLP) have been limited to either task-speci\ufb01c models that are trained from scratch at each iteration using only the labeled data at hand or using off-the-shelf pretrained language models (LMs) that are not adapted effectively to the downstream task. In this paper, we address these limitations by introducing B ALM ; Bayesian Active Learning with pre-trained language Models. We \ufb01rst propose to adapt the pretrained LM to the downstream task by continuing training with all the available unlabeled data and then use it for AL. We also suggest a simple yet effective \ufb01ne-tuning method to ensure that the adapted LM is properly trained in both low and high resource scenarios during AL. We \ufb01nally apply Monte Carlo dropout to the downstream model to obtain well-calibrated con\ufb01dence scores for data selection with uncertainty sampling. Our experiments in \ufb01ve standard natural language understanding tasks demonstrate that B ALM provides substantial data ef\ufb01ciency improvements compared to various combinations of acquisition functions, models and \ufb01ne-tuning meth-ods proposed in recent AL literature.",
+            "year": 2021,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "B ALM is introduced ; Bayesian Active Learning with pre-trained language Models ; Monte Carlo dropout to the downstream model to obtain well-calibrated con\ufb01dence scores for data selection with uncertainty sampling and a simple yet effective tuning method to ensure that the adapted LM is properly trained in both low and high resource scenarios during AL."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the project proposal is improving uncertainty quantification and confidence calibration in large language models, while the approach is using a novel prompting method inspired by Bayesian inference.\n\nThe research problem in the paper is improving data efficiency in active learning for natural language processing tasks, while the approach is adapting pretrained language models to the downstream task and using Monte Carlo dropout for uncertainty estimation.\n\nThe project proposal focuses on improving confidence calibration in language model outputs, while the paper focuses on data-efficient active learning. The methods proposed in each are also different: Bayesian prompting vs. adapted pretrained models with Monte Carlo dropout.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ad934a9344f68fcc0b9aa704102aa48c39c5b591",
+            "paperId": "ad934a9344f68fcc0b9aa704102aa48c39c5b591",
+            "title": "Generating with Confidence: Uncertainty Quantification for Black-box Large Language Models",
+            "abstract": "Large language models (LLMs) specializing in natural language generation (NLG) have recently started exhibiting promising capabilities across a variety of domains. However, gauging the trustworthiness of responses generated by LLMs remains an open challenge, with limited research on uncertainty quantification (UQ) for NLG. Furthermore, existing literature typically assumes white-box access to language models, which is becoming unrealistic either due to the closed-source nature of the latest LLMs or computational constraints. In this work, we investigate UQ in NLG for black-box LLMs. We first differentiate uncertainty vs confidence: the former refers to the\"dispersion\"of the potential predictions for a fixed input, and the latter refers to the confidence on a particular prediction/generation. We then propose and compare several confidence/uncertainty metrics, applying them to selective NLG where unreliable results could either be ignored or yielded for further assessment. Experiments were carried out with several popular LLMs on question-answering datasets (for evaluation purposes). Results reveal that a simple metric for the semantic dispersion can be a reliable predictor of the quality of LLM responses, providing valuable insights for practitioners on uncertainty management when adopting LLMs. The code to replicate our experiments is available at https://github.com/zlin7/UQ-NLG.",
+            "year": 2023,
+            "citationCount": 37,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results reveal that a simple metric for the semantic dispersion can be a reliable predictor of the quality of LLM responses, providing valuable insights for practitioners on uncertainty management when adopting LLMs."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving uncertainty quantification and confidence calibration in large language models (LLMs) for more trustworthy and interpretable responses. The approach is a novel prompting method called Bayesian Confidence Prompting (BCP), which allows LLMs to express uncertainty and update their confidence based on generated evidence using Bayesian inference.\n\nThe research problem in the paper is also uncertainty quantification for LLMs in natural language generation (NLG) tasks, but the approach is different. The paper proposes and compares several confidence/uncertainty metrics for black-box LLMs, focusing on selective NLG where unreliable results can be ignored or yielded for further assessment.\n\nWhile both the proposal and the paper address uncertainty quantification in LLMs, the proposal focuses on a specific prompting method for confidence calibration, while the paper explores various metrics for uncertainty estimation in black-box settings. The approaches and the specific problems they aim to solve are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "8c5acaafe43e710d55b08c63d567550ad26ec437",
+            "paperId": "8c5acaafe43e710d55b08c63d567550ad26ec437",
+            "title": "Fact-Checking the Output of Large Language Models via Token-Level Uncertainty Quantification",
+            "abstract": "Large language models (LLMs) are notorious for hallucinating, i.e., producing erroneous claims in their output. Such hallucinations can be dangerous, as occasional factual inaccuracies in the generated text might be obscured by the rest of the output being generally factual, making it extremely hard for the users to spot them. Current services that leverage LLMs usually do not provide any means for detecting unreliable generations. Here, we aim to bridge this gap. In particular, we propose a novel fact-checking and hallucination detection pipeline based on token-level uncertainty quantification. Uncertainty scores leverage information encapsulated in the output of a neural network or its layers to detect unreliable predictions, and we show that they can be used to fact-check the atomic claims in the LLM output. Moreover, we present a novel token-level uncertainty quantification method that removes the impact of uncertainty about what claim to generate on the current step and what surface form to use. Our method Claim Conditioned Probability (CCP) measures only the uncertainty of particular claim value expressed by the model. Experiments on the task of biography generation demonstrate strong improvements for CCP compared to the baselines for six different LLMs and three languages. Human evaluation reveals that the fact-checking pipeline based on uncertainty quantification is competitive with a fact-checking tool that leverages external knowledge.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel fact-checking and hallucination detection pipeline based on token-level uncertainty quantification that is competitive with a fact-checking tool that leverages external knowledge is proposed."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving uncertainty quantification and confidence calibration in large language models, while the approach is using Bayesian confidence prompting. The research problem in the paper is detecting hallucinations in large language model outputs, and the approach is using token-level uncertainty quantification.\n\nThe proposal focuses on improving the language model's ability to express uncertainty and update its confidence based on evidence, while the paper aims to detect erroneous claims in the generated text using uncertainty scores. Although both deal with uncertainty quantification, the specific problems and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "be8c90bca14d59f180f40a41126b7cd8c29c5d4e",
+            "paperId": "be8c90bca14d59f180f40a41126b7cd8c29c5d4e",
+            "title": "Uncertainty Quantification for In-Context Learning of Large Language Models",
+            "abstract": "In-context learning has emerged as a groundbreaking ability of Large Language Models (LLMs) and revolutionized various fields by providing a few task-relevant demonstrations in the prompt. However, trustworthy issues with LLM's response, such as hallucination, have also been actively discussed. Existing works have been devoted to quantifying the uncertainty in LLM's response, but they often overlook the complex nature of LLMs and the uniqueness of in-context learning. In this work, we delve into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations (aleatoric uncertainty) and ambiguities tied to the model's configurations (epistemic uncertainty). We propose a novel formulation and corresponding estimation method to quantify both types of uncertainties. The proposed method offers an unsupervised way to understand the prediction of in-context learning in a plug-and-play fashion. Extensive experiments are conducted to demonstrate the effectiveness of the decomposition. The code and data are available at: https://github.com/lingchen0331/UQ_ICL.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work delve into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations and ambiguities tied to the model's configurations (epistemic uncertainty)."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve uncertainty quantification and confidence calibration in large language models using a novel Bayesian prompting method, while the paper focuses on quantifying aleatoric and epistemic uncertainties in the in-context learning of large language models.\n\nProject proposal: Improving uncertainty quantification and confidence calibration in LLMs using Bayesian Confidence Prompting.\nPaper: Quantifying aleatoric and epistemic uncertainties in the in-context learning of LLMs.\n\nThe project proposal and the paper address different aspects of uncertainty in LLMs, with the proposal focusing on improving confidence calibration and the paper on quantifying different types of uncertainties in in-context learning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7adb88771376c2a31688e3b0395b0550a35b824d",
+            "paperId": "7adb88771376c2a31688e3b0395b0550a35b824d",
+            "title": "Uncertainty Decomposition and Quantification for In-Context Learning of Large Language Models",
+            "abstract": "In-context learning has emerged as a ground-breaking ability of Large Language Models (LLMs) and revolutionized various fields by providing a few task-relevant demonstrations in the prompt. However, trustworthy issues with LLM\u2019s response, such as hallucination, have also been actively discussed. Existing works have been devoted to quantifying the uncertainty in LLM\u2019s response, but they often overlook the complex nature of LLMs and the uniqueness of in-context learning. In this work, we delve into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations (aleatoric uncertainty) and ambiguities tied to the model\u2019s configurations (epistemic uncertainty). We propose a novel formulation and corresponding estimation method to quantify both types of uncertainties. The proposed method offers an unsupervised way to understand the prediction of in-context learning in a plug-and-play fashion. Extensive experiments are conducted to demonstrate the effectiveness of the decomposition. The code and data are available at: https://github. com/lingchen0331/UQ_ICL .",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work dives into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations and ambiguities tied to the model\u2019s configurations (epistemic uncertainty)."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve uncertainty quantification and confidence calibration in large language models using a novel Bayesian prompting method, while the paper focuses on decomposing and quantifying the aleatoric and epistemic uncertainties associated with in-context learning in large language models.\n\nProject proposal: Improving uncertainty quantification and confidence calibration in LLMs using Bayesian Confidence Prompting.\nPaper: Decomposing and quantifying aleatoric and epistemic uncertainties in LLMs associated with in-context learning.\n\nAlthough both works address uncertainty quantification in LLMs, the project proposal focuses on improving confidence calibration using a Bayesian prompting method, while the paper decomposes uncertainties into aleatoric and epistemic types specific to in-context learning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ad402080a4aa66ef3c57a46ce4685a47a3cc0a61",
+            "paperId": "ad402080a4aa66ef3c57a46ce4685a47a3cc0a61",
+            "title": "Quantifying Uncertainty in Natural Language Explanations of Large Language Models",
+            "abstract": "Large Language Models (LLMs) are increasingly used as powerful tools for several high-stakes natural language processing (NLP) applications. Recent prompting works claim to elicit intermediate reasoning steps and key tokens that serve as proxy explanations for LLM predictions. However, there is no certainty whether these explanations are reliable and reflect the LLMs behavior. In this work, we make one of the first attempts at quantifying the uncertainty in explanations of LLMs. To this end, we propose two novel metrics -- $\\textit{Verbalized Uncertainty}$ and $\\textit{Probing Uncertainty}$ -- to quantify the uncertainty of generated explanations. While verbalized uncertainty involves prompting the LLM to express its confidence in its explanations, probing uncertainty leverages sample and model perturbations as a means to quantify the uncertainty. Our empirical analysis of benchmark datasets reveals that verbalized uncertainty is not a reliable estimate of explanation confidence. Further, we show that the probing uncertainty estimates are correlated with the faithfulness of an explanation, with lower uncertainty corresponding to explanations with higher faithfulness. Our study provides insights into the challenges and opportunities of quantifying uncertainty in LLM explanations, contributing to the broader discussion of the trustworthiness of foundation models.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes two novel metrics -- verbalized uncertainty and probing uncertainty -- to quantify the uncertainty of generated explanations of large Language Models, and shows that the probing uncertainty estimates are correlated with the faithfulness of an explanation, with lower uncertainty corresponding to explanations with higher faithfulness."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve uncertainty quantification and confidence calibration in large language models using a novel Bayesian prompting method, while the paper focuses on quantifying the uncertainty in natural language explanations generated by large language models using verbalized and probing uncertainty metrics.\n\nProject proposal: Improving uncertainty quantification and confidence calibration in LLMs using Bayesian prompting.\nPaper: Quantifying uncertainty in natural language explanations generated by LLMs using novel metrics.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "11efd94fb8d41f10ffcbc20ba488d88bb8dc317a",
+            "paperId": "11efd94fb8d41f10ffcbc20ba488d88bb8dc317a",
+            "title": "Calibration-Aware Bayesian Learning",
+            "abstract": "Deep learning models, including modern systems like large language models, are well known to offer unreliable estimates of the uncertainty of their decisions. In order to improve the quality of the confidence levels, also known as calibration, of a model, common approaches entail the addition of either data-dependent or data-independent regularization terms to the training loss. Data-dependent regularizers have been recently introduced in the context of conventional frequentist learning to penalize deviations between confidence and accuracy. In contrast, data-independent regularizers are at the core of Bayesian learning, enforcing adherence of the variational distribution in the model parameter space to a prior density. The former approach is unable to quantify epistemic uncertainty, while the latter is severely affected by model misspecification. In light of the limitations of both methods, this paper proposes an integrated framework, referred to as calibration-aware Bayesian neural networks (CA-BNNs), that applies both regularizers while optimizing over a variational distribution as in Bayesian learning. Numerical results validate the advantages of the proposed approach in terms of expected calibration error (ECE) and reliability diagrams.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An integrated framework, referred to as calibration-aware Bayesian neural networks (CA-BNNs), that applies both regularizers while optimizing over a variational distribution as in Bayesian learning is proposed."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve uncertainty quantification and confidence calibration in large language models using a novel prompting method inspired by Bayesian inference, called Bayesian Confidence Prompting (BCP). The paper proposes an integrated framework, calibration-aware Bayesian neural networks (CA-BNNs), that combines data-dependent and data-independent regularizers while optimizing over a variational distribution to improve the calibration of deep learning models.\n\nWhile both the project proposal and the paper address the issue of improving confidence calibration in deep learning models, their approaches differ. The project proposal focuses on a prompting-based method for large language models, while the paper proposes a regularization-based approach for Bayesian neural networks.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4feb412574eb5d0b187276069fe6024c22629c0e",
+            "paperId": "4feb412574eb5d0b187276069fe6024c22629c0e",
+            "title": "The Calibration Gap between Model and Human Confidence in Large Language Models",
+            "abstract": "For large language models (LLMs) to be trusted by humans they need to be well-calibrated in the sense that they can accurately assess and communicate how likely it is that their predictions are correct. Recent work has focused on the quality of internal LLM confidence assessments, but the question remains of how well LLMs can communicate this internal model confidence to human users. This paper explores the disparity between external human confidence in an LLM's responses and the internal confidence of the model. Through experiments involving multiple-choice questions, we systematically examine human users' ability to discern the reliability of LLM outputs. Our study focuses on two key areas: (1) assessing users' perception of true LLM confidence and (2) investigating the impact of tailored explanations on this perception. The research highlights that default explanations from LLMs often lead to user overestimation of both the model's confidence and its' accuracy. By modifying the explanations to more accurately reflect the LLM's internal confidence, we observe a significant shift in user perception, aligning it more closely with the model's actual confidence levels. This adjustment in explanatory approach demonstrates potential for enhancing user trust and accuracy in assessing LLM outputs. The findings underscore the importance of transparent communication of confidence levels in LLMs, particularly in high-stakes applications where understanding the reliability of AI-generated information is essential.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "By modifying the explanations of large language models to more accurately reflect the LLM's internal confidence, a significant shift in user perception is observed, aligning it more closely with the model's actual confidence levels."
+            },
+            "score": 6
+        },
+        {
+            "id": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "paperId": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "title": "Automatic Calibration and Error Correction for Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities out of box for a wide range of applications, yet accuracy still remains a major growth area, especially in mission-critical domains such as biomedicine. An effective method to calibrate the con\ufb01dence level on LLM responses is essential to automatically detect errors and facilitate human-in-the-loop veri\ufb01cation. An important source of calibration signals stems from expert-stipulated programmatic super-vision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align LLM output with other available supervision sources, which would assign higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction tasks in biomedical and general domains demonstrate the promise of this approach, with our proposed risk scores highly correlated with the real error rate of LLMs. For the most uncertain test instances, dynamic prompting based on our proposed risk scores results in signi\ufb01cant accuracy improvement for off-the-shelf LLMs, boosting GPT-3 results past state-of-the-art (SOTA) weak supervision and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts."
+            },
+            "score": 6
+        },
+        {
+            "id": "9a61d51212eb4ff677fe777a7ba9ddc4f675b387",
+            "paperId": "9a61d51212eb4ff677fe777a7ba9ddc4f675b387",
+            "title": "Automatic Calibration and Error Correction for Generative Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Generative Large language models (LLMs) have demonstrated remarkable capabilities for a wide range of applications, but reducing ungrounded or erroneous responses remains a major growth area. Unlike task-specific models, there lack an effective method to calibrate the confidence level of LLM responses to indicate potential errors and facilitate human-in-the-loop verification. An important source of calibration stems from expert-stipulated programmatic supervision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every LLM response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align with LLM output as well as other weak supervision sources. The model assigns higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction and classification tasks in biomedical and general domains demonstrate that the proposed risk score is highly correlated with the actual LLM error rate. By using a dynamic prompting strategy based on the risk score, we observed significant accuracy improvement for off-the-shelf LLMs, boosting GPT-3.5 results past state-of-the-art (SOTA) weak supervision model and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every LLM response, without any additional manual efforts."
+            },
+            "score": 6
+        },
+        {
+            "id": "67d0aa08d22feb0dbd36defece61256a4a1a0282",
+            "paperId": "67d0aa08d22feb0dbd36defece61256a4a1a0282",
+            "title": "Empirical evaluation of Uncertainty Quantification in Retrieval-Augmented Language Models for Science",
+            "abstract": "Large language models (LLMs) have shown remarkable achievements in natural language processing tasks, producing high-quality outputs. However, LLMs still exhibit limitations, including the generation of factually incorrect information. In safety-critical applications, it is important to assess the confidence of LLM-generated content to make informed decisions. Retrieval Augmented Language Models (RALMs) is relatively a new area of research in NLP. RALMs offer potential benefits for scientific NLP tasks, as retrieved documents, can serve as evidence to support model-generated content. This inclusion of evidence enhances trustworthiness, as users can verify and explore the retrieved documents to validate model outputs. Quantifying uncertainty in RALM generations further improves trustworthiness, with retrieved text and confidence scores contributing to a comprehensive and reliable model for scientific applications. However, there is limited to no research on UQ for RALMs, particularly in scientific contexts. This study aims to address this gap by conducting a comprehensive evaluation of UQ in RALMs, focusing on scientific tasks. This research investigates how uncertainty scores vary when scientific knowledge is incorporated as pretraining and retrieval data and explores the relationship between uncertainty scores and the accuracy of model-generated outputs. We observe that an existing RALM finetuned with scientific knowledge as the retrieval data tends to be more confident in generating predictions compared to the model pretrained only with scientific knowledge. We also found that RALMs are overconfident in their predictions, making inaccurate predictions more confidently than accurate ones. Scientific knowledge provided either as pretraining or retrieval corpus does not help alleviate this issue. We released our code, data and dashboards at https://github.com/pnnl/EXPERT2.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Investigating how uncertainty scores vary when scientific knowledge is incorporated as pretraining and retrieval data and explores the relationship between uncertainty scores and the accuracy of model-generated outputs finds that RALMs are overconfident in their predictions."
+            },
+            "score": 6
+        },
+        {
+            "id": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "paperId": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "title": "Uncertainty Quantification with Pre-trained Language Models: A Large-Scale Empirical Analysis",
+            "abstract": "Pre-trained language models (PLMs) have gained increasing popularity due to their compelling prediction performance in diverse natural language processing (NLP) tasks. When formulating a PLM-based prediction pipeline for NLP tasks, it is also crucial for the pipeline to minimize the calibration error, especially in safety-critical applications. That is, the pipeline should reliably indicate when we can trust its predictions. In particular, there are various considerations behind the pipeline: (1) the choice and (2) the size of PLM, (3) the choice of uncertainty quantifier, (4) the choice of fine-tuning loss, and many more. Although prior work has looked into some of these considerations, they usually draw conclusions based on a limited scope of empirical studies. There still lacks a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline. To fill this void, we compare a wide range of popular options for each consideration based on three prevalent NLP classification tasks and the setting of domain shift. In response, we recommend the following: (1) use ELECTRA for PLM encoding, (2) use larger PLMs if possible, (3) use Temp Scaling as the uncertainty quantifier, and (4) use Focal Loss for fine-tuning.",
+            "year": 2022,
+            "citationCount": 38,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A wide range of popular options for each consideration are compared based on three prevalent NLP classification tasks and the setting of domain shift to form a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline."
+            },
+            "score": 6
+        },
+        {
+            "id": "6d3ae6d6b312b659b3a14ae3f3e86a36db63200d",
+            "paperId": "6d3ae6d6b312b659b3a14ae3f3e86a36db63200d",
+            "title": "Efficient Non-Parametric Uncertainty Quantification for Black-Box Large Language Models and Decision Planning",
+            "abstract": "Step-by-step decision planning with large language models (LLMs) is gaining attention in AI agent development. This paper focuses on decision planning with uncertainty estimation to address the hallucination problem in language models. Existing approaches are either white-box or computationally demanding, limiting use of black-box proprietary LLMs within budgets. The paper's first contribution is a non-parametric uncertainty quantification method for LLMs, efficiently estimating point-wise dependencies between input-decision on the fly with a single inference, without access to token logits. This estimator informs the statistical interpretation of decision trustworthiness. The second contribution outlines a systematic design for a decision-making agent, generating actions like ``turn on the bathroom light'' based on user prompts such as ``take a bath''. Users will be asked to provide preferences when more than one action has high estimated point-wise dependencies. In conclusion, our uncertainty estimation and decision-making agent design offer a cost-efficient approach for AI agent development.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper focuses on decision planning with uncertainty estimation to address the hallucination problem in language models, and outlines a systematic design for a decision-making agent, offering a cost-efficient approach for AI agent development."
+            },
+            "score": 6
+        },
+        {
+            "id": "9f02a3fa885aebaf322ea8e4475939495dea70f7",
+            "paperId": "9f02a3fa885aebaf322ea8e4475939495dea70f7",
+            "title": "SPUQ: Perturbation-Based Uncertainty Quantification for Large Language Models",
+            "abstract": "In recent years, large language models (LLMs) have become increasingly prevalent, offering remarkable text generation capabilities. However, a pressing challenge is their tendency to make confidently wrong predictions, highlighting the critical need for uncertainty quantification (UQ) in LLMs. While previous works have mainly focused on addressing aleatoric uncertainty, the full spectrum of uncertainties, including epistemic, remains inadequately explored. Motivated by this gap, we introduce a novel UQ method, sampling with perturbation for UQ (SPUQ), designed to tackle both aleatoric and epistemic uncertainties. The method entails generating a set of perturbations for LLM inputs, sampling outputs for each perturbation, and incorporating an aggregation module that generalizes the sampling uncertainty approach for text generation tasks. Through extensive experiments on various datasets, we investigated different perturbation and aggregation techniques. Our findings show a substantial improvement in model uncertainty calibration, with a reduction in Expected Calibration Error (ECE) by 50% on average. Our findings suggest that our proposed UQ method offers promising steps toward enhancing the reliability and trustworthiness of LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel UQ method, sampling with perturbation for UQ (SPUQ), designed to tackle both aleatoric and epistemic uncertainties in large language models, and shows a substantial improvement in model uncertainty calibration."
+            },
+            "score": 6
+        },
+        {
+            "id": "5424e311319c58847b4c690d5c91090e3b6a4ac3",
+            "paperId": "5424e311319c58847b4c690d5c91090e3b6a4ac3",
+            "title": "Shifting Attention to Relevance: Towards the Uncertainty Estimation of Large Language Models",
+            "abstract": "While Large Language Models (LLMs) have demonstrated remarkable potential in natural language generation and instruction following, a persistent challenge lies in their susceptibility to\"hallucinations\", which erodes trust in their outputs. Although Uncertainty Quantification (UQ) presents a promising solution, its accurate implementation within the context of LLMs remains a significant hurdle. To address this critical roadblock, our research originates from a fundamental heuristic insight: tokens within auto-regressive LLM-generated text do not equally reflect the underlying meaning. Some tokens carry greater relevance and representativeness than others, owing to the phenomenon of\"linguistic redundancy\", wherein a select few keywords suffice to convey the essence of lengthy sentences. Regrettably, existing methodologies treat all tokens with equal importance when estimating uncertainty, disregarding these inherent generative inequalities. Our analysis reveals a significant issue with state-of-the-art: numerous tokens (and sentences) of limited semantic significance receive equal or even excessive weighting during uncertainty estimation. To rectify this bias, we propose to jointly Shifting Attention to more Relevant (SAR) components, at both the token- and the sentence-levels for accurate uncertainty estimation. We conduct extensive experiments involving a range of popular\"off-the-shelf\"LLMs, including instruction-tuned LLMs such as Vicuna, WizardLM, and LLaMA-2-chat, as well as pretrained LLMs like OPT and LLaMA, with model sizes extending up to 33B parameters. We carry out evaluation across various free-form question-answering tasks, encompassing domains such as reading comprehension, science Q&A, and medical Q&A. Our experimental results demonstrate the superior performance of SAR in addressing the challenges of uncertainty estimation within the realm of LLMs.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results demonstrate the superior performance of SAR in addressing the challenges of uncertainty estimation within the realm of LLMs, and propose to jointly Shifting Attention to more Relevant (SAR) components, at both the token- and the sentence-levels for accurate uncertainty estimation."
+            },
+            "score": 6
+        },
+        {
+            "id": "205c65fec719f923a6bfaddfffff365d3cbfd845",
+            "paperId": "205c65fec719f923a6bfaddfffff365d3cbfd845",
+            "title": "PAC Neural Prediction Set Learning to Quantify the Uncertainty of Generative Language Models",
+            "abstract": "Uncertainty learning and quantification of models are crucial tasks to enhance the trustworthiness of the models. Importantly, the recent surge of generative language models (GLMs) emphasizes the need for reliable uncertainty quantification due to the concerns on generating hallucinated facts. In this paper, we propose to learn neural prediction set models that comes with the probably approximately correct (PAC) guarantee for quantifying the uncertainty of GLMs. Unlike existing prediction set models, which are parameterized by a scalar value, we propose to parameterize prediction sets via neural networks, which achieves more precise uncertainty quantification but still satisfies the PAC guarantee. We demonstrate the efficacy of our method on four types of language datasets and six types of models by showing that our method improves the quantified uncertainty by $63\\%$ on average, compared to a standard baseline method.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes to parameterize prediction sets via neural networks, which achieves more precise uncertainty quantification but still satisfies the PAC guarantee, and demonstrates the efficacy of the method on four types of language datasets and six types of models."
+            },
+            "score": 6
+        },
+        {
+            "id": "e1bc150d5d9e745a4920881c414ac9df0ea024a3",
+            "paperId": "e1bc150d5d9e745a4920881c414ac9df0ea024a3",
+            "title": "ChatGPT Prompting Cannot Estimate Predictive Uncertainty in High-Resource Languages",
+            "abstract": "ChatGPT took the world by storm for its impressive abilities. Due to its release without documentation, scientists immediately attempted to identify its limits, mainly through its performance in natural language processing (NLP) tasks. This paper aims to join the growing literature regarding ChatGPT's abilities by focusing on its performance in high-resource languages and on its capacity to predict its answers' accuracy by giving a confidence level. The analysis of high-resource languages is of interest as studies have shown that low-resource languages perform worse than English in NLP tasks, but no study so far has analysed whether high-resource languages perform as well as English. The analysis of ChatGPT's confidence calibration has not been carried out before either and is critical to learn about ChatGPT's trustworthiness. In order to study these two aspects, five high-resource languages and two NLP tasks were chosen. ChatGPT was asked to perform both tasks in the five languages and to give a numerical confidence value for each answer. The results show that all the selected high-resource languages perform similarly and that ChatGPT does not have a good confidence calibration, often being overconfident and never giving low confidence values.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper aims to join the growing literature regarding ChatGPT's abilities by focusing on its performance in high-resource languages and on its capacity to predict its answers' accuracy by giving a confidence level."
+            },
+            "score": 6
+        },
+        {
+            "id": "0a0b121dcc127be734c5199d121946bbe8b1ae5d",
+            "paperId": "0a0b121dcc127be734c5199d121946bbe8b1ae5d",
+            "title": "Quantifying confidence shifts in a BERT-based question answering system evaluated on perturbed instances",
+            "abstract": "Recent work on transformer-based neural networks has led to impressive advances on multiple-choice natural language processing (NLP) problems, such as Question Answering (QA) and abductive reasoning. Despite these advances, there is limited work still on systematically evaluating such models in ambiguous situations where (for example) no correct answer exists for a given prompt among the provided set of choices. Such ambiguous situations are not infrequent in real world applications. We design and conduct an experimental study of this phenomenon using three probes that aim to \u2018confuse\u2019 the model by perturbing QA instances in a consistent and well-defined manner. Using a detailed set of results based on an established transformer-based multiple-choice QA system on two established benchmark datasets, we show that the model\u2019s confidence in its results is very different from that of an expected model that is \u2018agnostic\u2019 to all choices that are incorrect. Our results suggest that high performance on idealized QA instances should not be used to infer or extrapolate similarly high performance on more ambiguous instances. Auxiliary results suggest that the model may not be able to distinguish between these two situations with sufficient certainty. Stronger testing protocols and benchmarking may hence be necessary before such models are deployed in front-facing systems or ambiguous decision making with significant human impact.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is suggested that high performance on idealized QA instances should not be used to infer or extrapolate similarly high performance on more ambiguous instances, and that stronger testing protocols and benchmarking may be necessary before transformer-based multiple-choice NLP models are deployed in front-facing systems or ambiguous decision making with significant human impact."
+            },
+            "score": 6
+        },
+        {
+            "id": "19da40fd01c711fb2b3b0b19b3956b86b75f575d",
+            "paperId": "19da40fd01c711fb2b3b0b19b3956b86b75f575d",
+            "title": "CoNAL: Anticipating Outliers with Large Language Models",
+            "abstract": "In many task settings, text classification models are likely to encounter examples from novel classes on which they cannot predict correctly. Selective prediction, in which models abstain on low-confidence examples, provides a possible solution, but existing models are often overly confident on OOD examples. To remedy this overconfidence, we introduce Contrastive Novelty-Augmented Learning (CoNAL), a two-step method that generates OOD examples representative of novel classes, then trains to decrease confidence on them. First, we generate OOD examples by prompting a large language model twice: we prompt it to enumerate relevant novel labels, then generate examples from each novel class matching the task format. Second, we train our classifier with a novel contrastive objective that encourages lower confidence on generated OOD examples than training examples. When trained with CoNAL, classifiers improve in their ability to detect and abstain on OOD examples over prior methods by an average of 2.3% AUAC and 5.5% AUROC across 4 NLP datasets, with no cost to in-distribution accuracy.1",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Contrastive Novelty-Augmented Learning (CoNAL), a two-step method that generates OOD examples representative of novel classes, then trains to decrease confidence on them, which improves classifiers' ability to detect and abstain on OODExamples over prior methods."
+            },
+            "score": 6
+        },
+        {
+            "id": "56c40e03124d4288ad26c53cc417137c20eed62f",
+            "paperId": "56c40e03124d4288ad26c53cc417137c20eed62f",
+            "title": "Bayesian Confidence Calibration for Epistemic Uncertainty Modelling",
+            "abstract": "Modern neural networks have found to be miscalibrated in terms of confidence calibration, i.e., their predicted confidence scores do not reflect the observed accuracy or precision. Recent work has introduced methods for post-hoc confidence calibration for classification as well as for object detection to address this issue. Especially in safety critical applications, it is crucial to obtain a reliable self-assessment of a model. But what if the calibration method itself is uncertain, e.g., due to an insufficient knowledge base? We introduce Bayesian confidence calibration - a framework to obtain calibrated confidence estimates in conjunction with an uncertainty of the calibration method. Commonly, Bayesian neural networks (BNN) are used to indicate a network's uncertainty about a certain prediction. BNNs are interpreted as neural networks that use distributions instead of weights for inference. We transfer this idea of using distributions to confidence calibration. For this purpose, we use stochastic variational inference to build a calibration mapping that outputs a probability distribution rather than a single calibrated estimate. Using this approach, we achieve state-of-the-art calibration performance for object detection calibration. Finally, we show that this additional type of uncertainty can be used as a sufficient criterion for covariate shift detection. All code is open source and available at https://github.com/EFS-OpenSource/calibration-framework.",
+            "year": 2021,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces Bayesian confidence calibration - a framework to obtain calibrated confidence estimates in conjunction with an uncertainty of the calibration method, and shows that this additional type of uncertainty can be used as a sufficient criterion for covariate shift detection."
+            },
+            "score": 5
+        },
+        {
+            "id": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "paperId": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "title": "On the Calibration of Large Language Models and Alignment",
+            "abstract": "As large language models attract increasing attention and find widespread application, concurrent challenges of reliability also arise at the same time. Confidence calibration, an effective analysis method for gauging the reliability of deep models, serves as a crucial tool for assessing and improving their reliability. However, such investigation has been comparatively underexplored. In this work, we conduct a systematic examination of the calibration of aligned language models throughout the entire construction process, including pretraining and alignment training. At each stage, we investigate how different training settings, such as parameter scales and training data, affect model calibration. To thoroughly assess model calibration, we evaluate models on three most concerned aspects: generation, factuality and understanding. Our work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration, as well as how different training settings affect model calibration."
+            },
+            "score": 5
+        },
+        {
+            "id": "47eb0468ba7b6457d32b6aa0ee15ad269c04864d",
+            "paperId": "47eb0468ba7b6457d32b6aa0ee15ad269c04864d",
+            "title": "Confidently Wrong: Exploring the Calibration and Expression of (Un)Certainty of Large Language Models in a Multilingual Setting",
+            "abstract": "While the fluency and coherence of Large Language Models (LLMs) in text generation have seen significant improvements, their competency in generating appropriate expressions of uncertainty remains limited.Using a multilingual closed-book QA task and GPT-3.5, we explore how well LLMs are calibrated and express certainty across a diverse set of languages, including low-resource settings. Our results reveal strong performance in high-resource languages but a marked decline in performance in lower-resource languages. Across all, we observe an exaggerated expression of confidence in the model, which does not align with the correctness or likelihood of its responses. Our findings highlight the need for further research into accurate calibration of LLMs especially in a multilingual setting.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using a multilingual closed-book QA task and GPT-3.5, how well LLMs are calibrated and express certainty across a diverse set of languages, including low-resource settings is explored."
+            },
+            "score": 5
+        },
+        {
+            "id": "30669080bc6652f0466fba618b7c59317a346fb2",
+            "paperId": "30669080bc6652f0466fba618b7c59317a346fb2",
+            "title": "A Formalism and Approach for Improving Robustness of Large Language Models Using Risk-Adjusted Confidence Scores",
+            "abstract": "Large Language Models (LLMs), such as ChatGPT, have achieved impressive milestones in natural language processing (NLP). Despite their impressive performance, the models are known to pose important risks. As these models are deployed in real-world applications, a systematic understanding of different risks posed by these models on tasks such as natural language inference (NLI), is much needed. In this paper, we define and formalize two distinct types of risk: decision risk and composite risk. We also propose a risk-centric evaluation framework, and four novel metrics, for assessing LLMs on these risks in both in-domain and out-of-domain settings. Finally, we propose a risk-adjusted calibration method called DwD for helping LLMs minimize these risks in an overall NLI architecture. Detailed experiments, using four NLI benchmarks, three baselines and two LLMs, including ChatGPT, show both the practical utility of the evaluation framework, and the efficacy of DwD in reducing decision and composite risk. For instance, when using DwD, an underlying LLM is able to address an extra 20.1% of low-risk inference tasks (but which the LLM erroneously deems high-risk without risk adjustment) and skip a further 19.8% of high-risk tasks, which would have been answered incorrectly.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper defines and formalizes two distinct types of risk: decision risk and composite risk, and proposes a risk-centric evaluation framework, and four novel metrics, for assessing LLMs on these risks in both in-domain and out-of-domain settings."
+            },
+            "score": 5
+        },
+        {
+            "id": "6049f92e687e5db4ea509a83df4372099c516fd8",
+            "paperId": "6049f92e687e5db4ea509a83df4372099c516fd8",
+            "title": "Improving Open Information Extraction with Large Language Models: A Study on Demonstration Uncertainty",
+            "abstract": "Open Information Extraction (OIE) task aims at extracting structured facts from unstructured text, typically in the form of (subject, relation, object) triples. Despite the potential of large language models (LLMs) like ChatGPT as a general task solver, they lag behind state-of-the-art (supervised) methods in OIE tasks due to two key issues. First, LLMs struggle to distinguish irrelevant context from relevant relations and generate structured output due to the restrictions on fine-tuning the model. Second, LLMs generates responses autoregressively based on probability, which makes the predicted relations lack confidence. In this paper, we assess the capabilities of LLMs in improving the OIE task. Particularly, we propose various in-context learning strategies to enhance LLM's instruction-following ability and a demonstration uncertainty quantification module to enhance the confidence of the generated relations. Our experiments on three OIE benchmark datasets show that our approach holds its own against established supervised methods, both quantitatively and qualitatively.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Various in-context learning strategies to enhance LLM's instruction-following ability and a demonstration uncertainty quantification module to enhance the confidence of the generated relations are proposed."
+            },
+            "score": 5
+        },
+        {
+            "id": "3864b52902f8315f21385c4a6d3ce6c0193e1ab9",
+            "paperId": "3864b52902f8315f21385c4a6d3ce6c0193e1ab9",
+            "title": "Conformal Prediction with Large Language Models for Multi-Choice Question Answering",
+            "abstract": "As large language models continue to be widely developed, robust uncertainty quantification techniques will become crucial for their safe deployment in high-stakes scenarios. In this work, we explore how conformal prediction can be used to provide uncertainty quantification in language models for the specific task of multiple-choice question-answering. We find that the uncertainty estimates from conformal prediction are tightly correlated with prediction accuracy. This observation can be useful for downstream applications such as selective classification and filtering out low-quality predictions. We also investigate the exchangeability assumption required by conformal prediction to out-of-subject questions, which may be a more realistic scenario for many practical applications. Our work contributes towards more trustworthy and reliable usage of large language models in safety-critical situations, where robust guarantees of error rate are required.",
+            "year": 2023,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work explores how conformal prediction can be used to provide uncertainty quantification in language models for the specific task of multiple-choice question-answering and finds that the uncertainty estimates from conformal Prediction are tightly correlated with prediction accuracy."
+            },
+            "score": 5
+        },
+        {
+            "id": "875d71bae61a66f7e65a2b6d363b7a0a27a6ed25",
+            "paperId": "875d71bae61a66f7e65a2b6d363b7a0a27a6ed25",
+            "title": "Tree of Uncertain Thoughts Reasoning for Large Language Models",
+            "abstract": "While the recently introduced Tree of Thoughts (ToT) has heralded advancements in allowing Large Language Models (LLMs) to reason through foresight and backtracking for global decision-making, it has overlooked the inherent local uncertainties in intermediate decision points or\"thoughts\". These local uncertainties, intrinsic to LLMs given their potential for diverse responses, remain a significant concern in the reasoning process. Addressing this pivotal gap, we introduce the Tree of Uncertain Thoughts (TouT) - a reasoning framework tailored for LLMs. Our TouT effectively leverages Monte Carlo Dropout to quantify uncertainty scores associated with LLMs' diverse local responses at these intermediate steps. By marrying this local uncertainty quantification with global search algorithms, TouT enhances the model's precision in response generation. We substantiate our approach with rigorous experiments on two demanding planning tasks: Game of 24 and Mini Crosswords. The empirical evidence underscores TouT's superiority over both ToT and chain-of-thought prompting methods.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Tree of Uncertain Thoughts (TouT) is introduced - a reasoning framework tailored for LLMs that effectively leverages Monte Carlo Dropout to quantify uncertainty scores associated with LLMs' diverse local responses at these intermediate steps and enhances the model's precision in response generation."
+            },
+            "score": 5
+        },
+        {
+            "id": "c3ea8eb80bc8ca0b21efa273b9e4a9fd059c65be",
+            "paperId": "c3ea8eb80bc8ca0b21efa273b9e4a9fd059c65be",
+            "title": "A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification",
+            "abstract": "Black-box machine learning models are now routinely used in high-risk settings, like medical diagnostics, which demand uncertainty quantification to avoid consequential model failures. Conformal prediction is a user-friendly paradigm for creating statistically rigorous uncertainty sets/intervals for the predictions of such models. Critically, the sets are valid in a distribution-free sense: they possess explicit, non-asymptotic guarantees even without distributional assumptions or model assumptions. One can use conformal prediction with any pre-trained model, such as a neural network, to produce sets that are guaranteed to contain the ground truth with a user-specified probability, such as 90%. It is easy-to-understand, easy-to-use, and general, applying naturally to problems arising in the fields of computer vision, natural language processing, deep reinforcement learning, and so on. This hands-on introduction is aimed to provide the reader a working understanding of conformal prediction and related distribution-free uncertainty quantification techniques with one self-contained document. We lead the reader through practical theory for and examples of conformal prediction and describe its extensions to complex machine learning tasks involving structured outputs, distribution shift, time-series, outliers, models that abstain, and more. Throughout, there are many explanatory illustrations, examples, and code samples in Python. With each code sample comes a Jupyter notebook implementing the method on a real-data example; the notebooks can be accessed and easily run using our codebase.",
+            "year": 2021,
+            "citationCount": 328,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This hands-on introduction is aimed to provide the reader a working understanding of conformal prediction and related distribution-free uncertainty quantification techniques with one self-contained document."
+            },
+            "score": 5
+        },
+        {
+            "id": "669e78529bcf7ecd56852ff15d9a56647d93cde9",
+            "paperId": "669e78529bcf7ecd56852ff15d9a56647d93cde9",
+            "title": "An Empirical Evaluation of Out-of-Distribution Detection Using Pretrained Language Models",
+            "abstract": "In Natural Language Processing (NLP) tasks, detecting out-of-distribution (OOD) samples is essential to safely deploy a language model in real-world problems. Recently, several studies report that pre-trained language models (PLMs) accurately detect OOD data compared to LSTM, but we empirically find that PLMs show sub-par OOD detection performance when (1) OOD samples have similar semantic representation to in-distribution (IND) samples and (2) PLMs are finetuned under data scarcity settings. To alleviate above issues, state-of-the-art uncertainty quantification (UQ) methods can be used, but the comprehensive analysis of UQ methods with PLMs has received little consideration. In this work, we investigate seven UQ methods with PLMs and show their effectiveness in the text classification task.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Seven UQ methods with PLMs are investigated and shown their effectiveness in the text classification task and it is found that PLMs show sub-par OOD detection performance when (1) OOD samples have similar semantic representation to in-distribution (IND) samples and (2) PLMs are finetuned under data scarcity settings."
+            },
+            "score": 5
+        },
+        {
+            "id": "55b88be46c22232a5923ce20c745d99bb9562325",
+            "paperId": "55b88be46c22232a5923ce20c745d99bb9562325",
+            "title": "Bayesian Multi-Task Transfer Learning for Soft Prompt Tuning",
+            "abstract": "Prompt tuning, in which prompts are optimized to adapt large-scale pre-trained language models to downstream tasks instead of fine-tuning the full model parameters, has been shown to be particularly effective when the prompts are trained in a multi-task transfer learning setting. These methods generally involve individually training prompts for each source task and then aggregating them to provide the initialization of the prompt for the target task. However, this approach critically ignores the fact that some of the source tasks could be negatively or positively interfering with each other. We argue that when we extract knowledge from source tasks via training source prompts, we need to consider this correlation among source tasks for better transfer to target tasks. To this end, we propose a Bayesian approach where we work with the posterior distribution of prompts across source tasks. We obtain representative source prompts corresponding to the samples from the posterior utilizing Stein Variational Gradient Descent, which are then aggregated to constitute the initial target prompt. We show extensive experimental results on the standard benchmark NLP tasks, where our Bayesian multi-task transfer learning approach outperforms the state-of-the-art methods in many settings. Furthermore, our approach requires no auxiliary models other than the prompt itself, achieving a high degree of parameter efficiency.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Bayesian approach where the posterior distribution of prompts across source tasks is worked with, and obtains representative source prompts corresponding to the samples from the posterior utilizing Stein Variational Gradient Descent, which are then aggregated to constitute the initial target prompt."
+            },
+            "score": 5
+        },
+        {
+            "id": "8a7d7bded4478916180ae018c99d1f06d57228ef",
+            "paperId": "8a7d7bded4478916180ae018c99d1f06d57228ef",
+            "title": "On Performance and Calibration of Natural Gradient Langevin Dynamics",
+            "abstract": "Producing deep neural network (DNN) models with calibrated confidence is essential for applications in many fields, such as medical image analysis, natural language processing, and robotics. Modern neural networks have been reported to be poorly calibrated compared with those from a decade ago. The stochastic gradient Langevin dynamics (SGLD) algorithm offers a tractable approximate Bayesian inference applicable to DNN, providing a principled method for learning the uncertainty. A recent benchmark study showed that SGLD could produce a more robust model to covariate shifts than other competing methods. However, vanilla SGLD is also known to be slow, and preconditioning can improve SGLD efficacy. This paper proposes eigenvalue-corrected Kronecker factorization (EKFAC) preconditioned SGLD (EKSGLD), in which a novel second-order gradient approximation is employed as a preconditioner for the SGLD algorithm. This approach is expected to bring together the advantages of both second-order optimization and the approximate Bayesian method. Experiments were conducted to compare the performance of EKSGLD with existing preconditioning methods and showed that it could achieve higher predictive accuracy and better calibration on the validation set. EKSGLD improved the best accuracy by 3.06% on CIFAR-10 and 4.15% on MNIST, improved the best negative log-likelihood by 16.2% on CIFAR-10 and 11.4% on MNIST, and improved the best thresholded adaptive calibration error by 4.05% on CIFAR-10.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Eigenvalue-corrected Kronecker factorization (EKFAC) preconditioned SGLD (EKSGLD) is proposed, in which a novel second-order gradient approximation is employed as a preconditionser for the S GLD algorithm, to bring together the advantages of both second- order optimization and the approximate Bayesian method."
+            },
+            "score": 4
+        },
+        {
+            "id": "1882849855895456fe842203f245ffaf66b72eff",
+            "paperId": "1882849855895456fe842203f245ffaf66b72eff",
+            "title": "Bayesian low-rank adaptation for large language models",
+            "abstract": "Low-rank adaptation (LoRA) has emerged as a new paradigm for cost-efficient fine-tuning of large language models (LLMs). However, fine-tuned LLMs often become overconfident especially when fine-tuned on small datasets. Bayesian methods, with their inherent ability to estimate uncertainty, serve as potent tools to mitigate overconfidence and enhance calibration. In this work, we introduce Laplace-LoRA, which applies a Bayesian approach to the LoRA parameters. Specifically, Laplace-LoRA applies a Laplace approximation to the posterior over the LoRA parameters, considerably improving the calibration of fine-tuned LLMs.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Laplace-LoRA applies a Laplace approximation to the posterior over the LoRA parameters, considerably improving the calibration of fine-tuned LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "48fb667125298cf724f7b652d521686180412351",
+            "paperId": "48fb667125298cf724f7b652d521686180412351",
+            "title": "A Close Look into the Calibration of Pre-trained Language Models",
+            "abstract": "Pre-trained language models (PLMs) may fail in giving reliable estimates of their predictive uncertainty. We take a close look into this problem, aiming to answer two questions: (1) Do PLMs learn to become calibrated in the training process? (2) How effective are existing calibration methods? For the first question, we conduct fine-grained control experiments to study the dynamic change in PLMs\u2019 calibration performance in training. We consider six factors as control variables, including dataset difficulty, available training samples, training steps, the number of tunable parameters, model scale, and pretraining. We observe a consistent change in calibration performance across six factors. We find that PLMs don\u2019t learn to become calibrated in training, evidenced by the continual increase in confidence, no matter whether the predictions are correct or not. We highlight that our finding somewhat contradicts two established conclusions: (a) Larger PLMs are more calibrated; (b) Pretraining improves model calibration. Next, we study the effectiveness of existing calibration methods in mitigating the overconfidence issue. Besides unlearnable calibration methods (e.g., label smoothing), we adapt and extend two recently proposed learnable methods that directly collect data to train models to have reasonable confidence estimations. Experimental results show that learnable methods significantly reduce PLMs\u2019 confidence in wrong predictions.",
+            "year": 2022,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that pre-trained language models don\u2019t learn to become calibrated in training, evidenced by the continual increase in confidence, no matter whether the predictions are correct or not."
+            },
+            "score": 4
+        },
+        {
+            "id": "a2b89d2196b4cc88797d4907ce7458bb7584f6b6",
+            "paperId": "a2b89d2196b4cc88797d4907ce7458bb7584f6b6",
+            "title": "On the Calibration of Massively Multilingual Language Models",
+            "abstract": "Massively Multilingual Language Models (MMLMs) have recently gained popularity due to their surprising effectiveness in cross-lingual transfer. While there has been much work in evaluating these models for their performance on a variety of tasks and languages, little attention has been paid on how well calibrated these models are with respect to the confidence in their predictions. We first investigate the calibration of MMLMs in the zero-shot setting and observe a clear case of miscalibration in low-resource languages or those which are typologically diverse from English. Next, we empirically show that calibration methods like temperature scaling and label smoothing do reasonably well in improving calibration in the zero-shot scenario. We also find that few-shot examples in the language can further help reduce calibration errors, often substantially. Overall, our work contributes towards building more reliable multilingual models by highlighting the issue of their miscalibration, understanding what language and model-specific factors influence it, and pointing out the strategies to improve the same.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the calibration of MMLMs in the zero-shot setting and observes a clear case of miscalibration in low-resource languages or those which are typologically diverse from English, and empirically shows that calibration methods like temperature scaling and label smoothing do reasonably well in improving calibration in thezero-shot scenario."
+            },
+            "score": 4
+        },
+        {
+            "id": "16a5f80818a502a7ab4ec172b8c7225dd18e3b2e",
+            "paperId": "16a5f80818a502a7ab4ec172b8c7225dd18e3b2e",
+            "title": "Uncertainty Quantification for Rule-Based Models",
+            "abstract": "Rule-based classi\ufb01cation models described in the language of logic directly predict boolean values, rather than modeling a probability and translating it into a prediction as done in statistical models. The vast majority of existing uncertainty quanti\ufb01cation approaches rely on models providing continuous output not available to rule-based models. In this work, we propose an uncertainty quanti\ufb01cation framework in the form of a meta-model that takes any binary classi\ufb01er with binary output as a black box and estimates the prediction accuracy of that base model at a given input along with a level of con\ufb01dence on that estimation. The con\ufb01dence is based on how well that input region is explored and is designed to work in any OOD scenario. We demonstrate the usefulness of this uncertainty model by building an abstaining classi\ufb01er powered by it and observing its performance in various scenarios.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an uncertainty quanti\ufb01cation framework in the form of a meta-model that takes any binary classi\ufdc1er with binary output as a black box and estimates the prediction accuracy of that base model at a given input along with a level of con\ufb02dence on that estimation."
+            },
+            "score": 4
+        },
+        {
+            "id": "5e7274bcda47b704b6797bb14be8b7a61c047a61",
+            "paperId": "5e7274bcda47b704b6797bb14be8b7a61c047a61",
+            "title": "Uncertainty-Aware Evaluation for Vision-Language Models",
+            "abstract": "Vision-Language Models like GPT-4, LLaVA, and CogVLM have surged in popularity recently due to their impressive performance in several vision-language tasks. Current evaluation methods, however, overlook an essential component: uncertainty, which is crucial for a comprehensive assessment of VLMs. Addressing this oversight, we present a benchmark incorporating uncertainty quantification into evaluating VLMs. Our analysis spans 20+ VLMs, focusing on the multiple-choice Visual Question Answering (VQA) task. We examine models on 5 datasets that evaluate various vision-language capabilities. Using conformal prediction as an uncertainty estimation approach, we demonstrate that the models' uncertainty is not aligned with their accuracy. Specifically, we show that models with the highest accuracy may also have the highest uncertainty, which confirms the importance of measuring it for VLMs. Our empirical findings also reveal a correlation between model uncertainty and its language model part.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that models with the highest accuracy may also have the highest uncertainty, which confirms the importance of measuring it for VLMs, and a correlation between model uncertainty and its language model part is revealed."
+            },
+            "score": 4
+        },
+        {
+            "id": "04071b5817d84eacc5d56816c0158c1fbee0d286",
+            "paperId": "04071b5817d84eacc5d56816c0158c1fbee0d286",
+            "title": "Using Imperfect Surrogates for Downstream Inference: Design-based Supervised Learning for Social Science Applications of Large Language Models",
+            "abstract": "In computational social science (CSS), researchers analyze documents to explain social and political phenomena. In most scenarios, CSS researchers first obtain labels for documents and then explain labels using interpretable regression analyses in the second step. One increasingly common way to annotate documents cheaply at scale is through large language models (LLMs). However, like other scalable ways of producing annotations, such surrogate labels are often imperfect and biased. We present a new algorithm for using imperfect annotation surrogates for downstream statistical analyses while guaranteeing statistical properties -- like asymptotic unbiasedness and proper uncertainty quantification -- which are fundamental to CSS research. We show that direct use of surrogate labels in downstream statistical analyses leads to substantial bias and invalid confidence intervals, even with high surrogate accuracy of 80-90%. To address this, we build on debiased machine learning to propose the design-based supervised learning (DSL) estimator. DSL employs a doubly-robust procedure to combine surrogate labels with a smaller number of high-quality, gold-standard labels. Our approach guarantees valid inference for downstream statistical analyses, even when surrogates are arbitrarily biased and without requiring stringent assumptions, by controlling the probability of sampling documents for gold-standard labeling. Both our theoretical analysis and experimental results show that DSL provides valid statistical inference while achieving root mean squared errors comparable to existing alternatives that focus only on prediction without inferential guarantees.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The design-based supervised learning (DSL) estimator employs a doubly-robust procedure to combine surrogate labels with a smaller number of high-quality, gold-standard labels, and guarantees valid inference for downstream statistical analyses, even when surrogates are arbitrarily biased and without requiring stringent assumptions."
+            },
+            "score": 4
+        },
+        {
+            "id": "56e952fd463accff09cf2e35432aaabd7c7c57f3",
+            "paperId": "56e952fd463accff09cf2e35432aaabd7c7c57f3",
+            "title": "MQuAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions",
+            "abstract": "The information stored in large language models (LLMs) falls out of date quickly, and retraining from scratch is often not an option. This has recently given rise to a range of techniques for injecting new facts through updating model weights. Current evaluation paradigms are extremely limited, mainly validating the recall of edited facts, but changing one fact should cause rippling changes to the model's related beliefs. If we edit the UK Prime Minister to now be Rishi Sunak, then we should get a different answer to Who is married to the British Prime Minister? In this work, we present a benchmark, MQuAKE (Multi-hop Question Answering for Knowledge Editing), comprising multi-hop questions that assess whether edited models correctly answer questions where the answer should change as an entailed consequence of edited facts. While we find that current knowledge-editing approaches can recall edited facts accurately, they fail catastrophically on the constructed multi-hop questions. We thus propose a simple memory-based approach, MeLLo, which stores all edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts. While MQuAKE remains challenging, we show that MeLLo scales well with LLMs (up to 175B) and outperforms previous model editors by a large margin.",
+            "year": 2023,
+            "citationCount": 68,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a benchmark, MQuAKE (Multi-hop Question Answering for Knowledge Editing), comprising multi-hop questions that assess whether edited models correctly answer questions where the answer should change as an entailed consequence of edited facts, and proposes a simple memory-based approach, MeLLo."
+            },
+            "score": 4
+        },
+        {
+            "id": "a9004d016af02488df79284cdf28c7fd7af6e6fe",
+            "paperId": "a9004d016af02488df79284cdf28c7fd7af6e6fe",
+            "title": "Bayesian Learned Models Can Detect Adversarial Malware For Free",
+            "abstract": "The vulnerability of machine learning-based malware detectors to adversarial attacks has prompted the need for robust solutions. Adversarial training is an effective method but is computationally expensive to scale up to large datasets and comes at the cost of sacrificing model performance for robustness. We hypothesize that adversarial malware exploits the low-confidence regions of models and can be identified using epistemic uncertainty of ML approaches -- epistemic uncertainty in a machine learning-based malware detector is a result of a lack of similar training samples in regions of the problem space. In particular, a Bayesian formulation can capture the model parameters' distribution and quantify epistemic uncertainty without sacrificing model performance. To verify our hypothesis, we consider Bayesian learning approaches with a mutual information-based formulation to quantify uncertainty and detect adversarial malware in Android, Windows domains and PDF malware. We found, quantifying uncertainty through Bayesian learning methods can defend against adversarial malware. In particular, Bayesian models: (1) are generally capable of identifying adversarial malware in both feature and problem space, (2) can detect concept drift by measuring uncertainty, and (3) with a diversity-promoting approach (or better posterior approximations) lead to parameter instances from the posterior to significantly enhance a detectors' ability.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Bayesian models are found to be generally capable of identifying adversarial malware in both feature and problem space, and with a diversity-promoting approach, lead to parameter instances from the posterior to significantly enhance a detectors' ability."
+            },
+            "score": 4
+        },
+        {
+            "id": "230137d02910e43a9d161e21af24b80fd94d351e",
+            "paperId": "230137d02910e43a9d161e21af24b80fd94d351e",
+            "title": "Feature Normalization and Cartography-Based Demonstrations for Prompt-Based Fine-Tuning on Emotion-Related Tasks",
+            "abstract": "To train a model in a traditional supervised learning classification system for natural language processing (NLP) tasks, it is essential to have labeled data, which is not present in large amounts for many tasks. Prompt-based learning methods attempt to combat the supervised learning need for labeled data by directly adapting pre-trained language models and modeling the probability of text itself. In this paper, we propose a novel data-agnostic strategy for prompt-based fine-tuning that leverages feature moments (a.k.a., mean and standard deviation) as a data augmentation technique and employs training dynamics (i.e., confidence and variability) to allow more informative samples to be concatenated for generating demonstrations as input context. Our approach is a strong method for few-shot learning that forces the language model to pay special attention to the feature moments and allows more informative samples to be concatenated for generating demonstrations as input context by selecting high confidence and low variance samples. To demonstrate its effectiveness given limited training data, we conduct extensive experiments in different few-shot settings on three empathy and emotion classification datasets (from various domains). We further evaluate our method's robustness by introducing noise to our few-shot input data and labels and show that exchanging moments between samples and incorporating cartography-based demonstrations are beneficial when the available data is limited and noisy.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel data-agnostic strategy for prompt-based fine-tuning that leverages feature moments (a.k.a., mean and standard deviation) as a data augmentation technique and employs training dynamics to allow more informative samples to be concatenated for generating demonstrations as input context."
+            },
+            "score": 4
+        },
+        {
+            "id": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "paperId": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "title": "On the Calibration of Pre-trained Language Models using Mixup Guided by Area Under the Margin and Saliency",
+            "abstract": "A well-calibrated neural model produces confidence (probability outputs) closely approximated by the expected accuracy. While prior studies have shown that mixup training as a data augmentation technique can improve model calibration on image classification tasks, little is known about using mixup for model calibration on natural language understanding (NLU) tasks. In this paper, we explore mixup for model calibration on several NLU tasks and propose a novel mixup strategy for pre-trained language models that improves model calibration further. Our proposed mixup is guided by both the Area Under the Margin (AUM) statistic (Pleiss et al., 2020) and the saliency map of each sample (Simonyan et al., 2013). Moreover, we combine our mixup strategy with model miscalibration correction techniques (i.e., label smoothing and temperature scaling) and provide detailed analyses of their impact on our proposed mixup. We focus on systematically designing experiments on three NLU tasks: natural language inference, paraphrase detection, and commonsense reasoning. Our method achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy.",
+            "year": 2022,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper systematically designs experiments on three NLU tasks and proposes a novel mixup strategy for pre-trained language models that improves model calibration further and achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy."
+            },
+            "score": 3
+        },
+        {
+            "id": "6174c515e9fde7fab7e136f2943f770a42f88fdb",
+            "paperId": "6174c515e9fde7fab7e136f2943f770a42f88fdb",
+            "title": "Deep learning models and algorithms for sequential data problems: applications to language modelling and uncertainty quantification. (Mod\u00e8les et algorithmes d'apprentissage profond pour de la donn\u00e9e s\u00e9quentielle: applications aux mod\u00e8les de langage et \u00e0 la quantification d'incertitude)",
+            "abstract": null,
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 3
+        },
+        {
+            "id": "d86ca0894cb4d165eb5ef45b73526ca8b4cdd725",
+            "paperId": "d86ca0894cb4d165eb5ef45b73526ca8b4cdd725",
+            "title": "Why Can GPT Learn In-Context? Language Models Secretly Perform Gradient Descent as Meta-Optimizers",
+            "abstract": "Large pretrained language models have shown surprising In-Context Learning (ICL) ability. With a few demonstration input-label pairs, they can predict the label for an unseen input without additional parameter updates. Despite the great success in performance, the working mechanism of ICL still remains an open problem. In order to better understand how ICL works, this paper explains language models as meta-optimizers and understands ICL as a kind of implicit \ufb01netuning. Theoretically, we \ufb01gure out that the Transformer attention has a dual form of gradient descent based optimization. On top of it, we understand ICL as follows: GPT \ufb01rst produces meta-gradients according to the demonstration examples, and then these meta-gradients are applied to the original GPT to build an ICL model. Experimentally, we comprehensively compare the behavior of ICL and explicit \ufb01netuning based on real tasks to provide empirical evidence that supports our understanding. The results prove that ICL behaves similarly to explicit \ufb01netuning at the prediction level, the representation level, and the attention behavior level. Further, inspired by our understanding of meta-optimization, we design a momentum-based attention by analogy with the momentum-based gradient descent algorithm. Its consistently better performance over vanilla attention supports our understanding again from another aspect, and more impor-tantly, it shows the potential to utilize our understanding for future model designing.",
+            "year": 2023,
+            "citationCount": 164,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Inspired by the understanding of meta-optimization, a momentum-based attention is designed by analogy with the momentum- based gradient descent algorithm and its consistently better performance over vanilla attention supports the understanding from another aspect."
+            },
+            "score": 3
+        },
+        {
+            "id": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+            "paperId": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+            "title": "Text Classification via Large Language Models",
+            "abstract": "Despite the remarkable success of large-scale Language Models (LLMs) such as GPT-3, their performances still significantly underperform fine-tuned models in the task of text classification. This is due to (1) the lack of reasoning ability in addressing complex linguistic phenomena (e.g., intensification, contrast, irony etc); (2) limited number of tokens allowed in in-context learning. In this paper, we introduce Clue And Reasoning Prompting (CARP). CARP adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification: CARP first prompts LLMs to find superficial clues (e.g., keywords, tones, semantic relations, references, etc), based on which a diagnostic reasoning process is induced for final decisions. To further address the limited-token issue, CARP uses a fine-tuned model on the supervised dataset for $k$NN demonstration search in the in-context learning, allowing the model to take the advantage of both LLM's generalization ability and the task-specific evidence provided by the full labeled dataset. Remarkably, CARP yields new SOTA performances on 4 out of 5 widely-used text-classification benchmarks, 97.39 (+1.24) on SST-2, 96.40 (+0.72) on AGNews, 98.78 (+0.25) on R8 and 96.95 (+0.6) on R52, and a performance comparable to SOTA on MR (92.39 v.s. 93.3). More importantly, we find that CARP delivers impressive abilities on low-resource and domain-adaptation setups. Specifically, using 16 examples per class, CARP achieves comparable performances to supervised models with 1,024 examples per class.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Clue And Reasoning Prompting (CARP) adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification, and achieves comparable performances to supervised models with 1,024 examples per class."
+            },
+            "score": 3
+        },
+        {
+            "id": "23bbd94f93e360f373f78ce20f61ec3486b1923d",
+            "paperId": "23bbd94f93e360f373f78ce20f61ec3486b1923d",
+            "title": "Exploring Large Language Models for Multi-Modal Out-of-Distribution Detection",
+            "abstract": "Out-of-distribution (OOD) detection is essential for reliable and trustworthy machine learning. Recent multi-modal OOD detection leverages textual information from in-distribution (ID) class names for visual OOD detection, yet it currently neglects the rich contextual information of ID classes. Large language models (LLMs) encode a wealth of world knowledge and can be prompted to generate descriptive features for each class. Indiscriminately using such knowledge causes catastrophic damage to OOD detection due to LLMs' hallucinations, as is observed by our analysis. In this paper, we propose to apply world knowledge to enhance OOD detection performance through selective generation from LLMs. Specifically, we introduce a consistency-based uncertainty calibration method to estimate the confidence score of each generation. We further extract visual objects from each image to fully capitalize on the aforementioned world knowledge. Extensive experiments demonstrate that our method consistently outperforms the state-of-the-art.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a consistency-based uncertainty calibration method to estimate the confidence score of each generation of large language models and extracts visual objects from each image to fully capitalize on the aforementioned world knowledge."
+            },
+            "score": 3
+        },
+        {
+            "id": "c1b296b55efe380c8d47a5ad66e1fb04c34e693b",
+            "paperId": "c1b296b55efe380c8d47a5ad66e1fb04c34e693b",
+            "title": "Long-Term Memory for Large Language Models Through Topic-Based Vector Database",
+            "abstract": "Large language models (LLMs) have garnered sub-stantial attention and significantly transformed the landscape of artificial intelligence, due to their human-like understanding and generation capabilities. However, despite their excellent capabilities, LLMs lack the latest information and are constrained by limited context memory, which limits their effectiveness in many real-time applications that require up-to-date information, such as personal AI assistants. Inspired by the recent study on enhancing LLMs with infinite external memory using vector database, this paper proposes a topic-based vector database to enable LLMs to achieve long-term personalized memory. By leveraging prompt engineering to fully utilize the semantic understanding capabilities of LLMs, an efficient topic-based per-sonalized memory management system is designed to store and update user's preferences and characteristics. This system can be applied in various AI assistant domains, such as companion robots, to efficiently store personal memories of users through conversations, ultimately fulfilling their needs in a personalized manner.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A topic-based vector database is proposed to enable LLMs to achieve long-term personalized memory by leveraging prompt engineering to fully utilize the semantic understanding capabilities of LLMs and can be applied in various AI assistant domains to efficiently store personal memories of users through conversations, ultimately fulfilling their needs in a personalized manner."
+            },
+            "score": 3
+        },
+        {
+            "id": "0f42f06497ea0f6affd7bac704871e4811a2b782",
+            "paperId": "0f42f06497ea0f6affd7bac704871e4811a2b782",
+            "title": "Alarm Event Prediction From Historical Alarm Flood Sequences Based on Bayesian Estimators",
+            "abstract": "A new method is proposed to predict upcoming alarm events for a current alarm sequence by exploiting similar historical alarm flood sequences. The proposed method is composed of two main steps. The first step sorts the historical alarm flood sequences in the descending order of similarity scores with respect to the current alarm sequence. The second step chooses some subsequence of recent alarm events in the current alarm sequence and predicts an upcoming alarm event based on these similar historical alarm flood sequences having the same subsequence. A Bayesian estimator is exploited to calculate the posterior probabilities and their confidence intervals for all the candidates of predicted alarm events. The optimal predicted alarm event is the one with the largest lower bound of posterior probability as a quantitative measurement of prediction reliabilities. The proposed method resolves a dilemma between a long (short) subsequence of the current alarm sequence and a small (large) number of the same subsequences in the historical alarm flood sequences. Numerical examples are provided to support the proposed method. Note to Practitioners\u2014Alarm floods are referred to as the phenomena that there are too many alarm events occurring in a short time period such that industrial plant operators cannot promptly handle the overwhelming alarm events. An alarm flood usually means the occurrence of some abnormalities causing negative effects on industrial plants. Hence, it is desirable to predict the upcoming alarm event when several alarm events occur, in order to take proactive actions to prevent a further deterioration or propagation of occurring abnormalities. This article proposes a new method to predict upcoming alarm events for a current alarm sequence based on the Bayesian estimators, by exploiting similar historical alarm flood sequences in the prediction.",
+            "year": 2020,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new method to predict upcoming alarm events for a current alarm sequence based on the Bayesian estimators, by exploiting similar historical alarm flood sequences in the prediction."
+            },
+            "score": 3
+        },
+        {
+            "id": "fc33c1729ac169f4a83306416c8ce2b8eeb31100",
+            "paperId": "fc33c1729ac169f4a83306416c8ce2b8eeb31100",
+            "title": "Variation Source Identification in Manufacturing Processes Using Bayesian Approach With Sparse Variance Components Prior",
+            "abstract": "We present a Bayesian linear random effects\u2019 model for variation source identification in multistage manufacturing processes with a prior for sparse variance components. A modified horseshoe+ (HS+) prior is used to tackle high-dimensional problems with low sample size and sparse variation sources. Furthermore, we introduce the informed HS+ (IHS+) prior that incorporates the likelihood information of possible variation sources. To estimate the variations from the IHS+ prior, a specially designed Gibbs sampler is established. Through a series of numerical experiments and case study, we showed that the proposed IHS+ outperforms the existing prior distributions when variation sources are sparse. Note to Practitioners\u2014Economic globalization brings intense competition among manufacturing enterprises. The key to success in this competitive climate is a prompt response to rapidly changing market demands with high-quality products. Variation reduction is essential for improving process efficiency and product quality. Existing variation source identification approaches generally assume that the amount of measurement data is larger than that of the possible variation sources. We propose a method to identify the process variation sources with limited measurement capability. Moreover, we provide a tool to apply the domain knowledge on the possible variations in the manufacturing processes. The proposed method is flexible and can be adjusted according to the confidence level of the practitioners\u2019 empirical knowledge. The experiments have shown that our method possesses advantageous features in detecting variation sources and estimating the size of variations.",
+            "year": 2020,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Bayesian linear random effects\u2019 model for variation source identification in multistage manufacturing processes with a prior for sparse variance components and the informed HS+ (IHS+) prior that incorporates the likelihood information of possible variation sources is presented."
+            },
+            "score": 3
+        },
+        {
+            "id": "2027071d837f653640ad8603d5d6975969b6c21e",
+            "paperId": "2027071d837f653640ad8603d5d6975969b6c21e",
+            "title": "Effectiveness of Life Goal Framing to Motivate Medical Students During Online Learning: A Randomized Controlled Trial",
+            "abstract": "Introduction: Educators need design strategies to support medical students\u2019 motivation in online environments. Prompting students to frame a learning activity as preparing them to attain their life goals (e.g., helping others) via their clinical practice, a strategy called \u2018life goal framing\u2019, may enhance their autonomous motivation, learning strategy use, and knowledge retention. However, for students with low perceived competence for learning (PCL), life goal framing may have an adverse effect. A randomized controlled trial was conducted to test the effectiveness of life goal framing and the moderating effect of students\u2019 PCL. Methods: First- and second-year medical students across four Canadian universities (n = 128) were randomized to receive a version of an online module with an embedded prompt for life goal framing, or one without. Students\u2019 motivation, learning strategy use, and knowledge retention were assessed. Differences between conditions on each outcome were estimated using Bayesian regression. Results: Students\u2019 PCL was a moderator for autonomous motivation but no other outcomes. The prompt did not have a statistically significant effect on any outcome, even for learners with high PCL, except for a small effect on link-clicking behaviour. Discussion: The results of this study suggest that learners\u2019 autonomous motivation is influenced by how they make meaning of instruction in terms of their future life goals and their present confidence. We cannot recommend life goal framing as an effective design strategy at this point, but we point to future work to increase the benefit of life goal framing for learners with high confidence.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is suggested that learners\u2019 autonomous motivation is influenced by how they make meaning of instruction in terms of their future life goals and their present confidence, which cannot recommend life goal framing as an effective design strategy."
+            },
+            "score": 3
+        },
+        {
+            "id": "bbe5ea6dc1470b33f3396a417bd546638948f535",
+            "paperId": "bbe5ea6dc1470b33f3396a417bd546638948f535",
+            "title": "Self-Training With Double Selectors for Low-Resource Named Entity Recognition",
+            "abstract": "Named Entity Recognition (NER) is fundamental to multiple downstream natural language processing (NLP) tasks, but most advanced NER methods heavily rely on massive labeled data with high cost. In this paper, we explore the effectiveness of self-training for low-resource NER. It is one of the semi-supervised approaches to reduce the reliance on manual annotation. However, random pseudo sample selection in standard self-training framework may cause serious error propagation, especially for token-level tasks. To that end, this paper focuses on pseudo sample selection and proposes a new self-training framework with double selectors, namely auxiliary judge task and entropy-based confidence measurement. Specifically, the auxiliary judge task is proposed to filter out the pseudo samples with wrong predictions. The entropy-based confidence measurement is introduced to select pseudo samples with high quality. In addition, to make full use of all pseudo samples, we propose a cumulative function based on the idea of curriculum learning to prompt the model to learn from easy samples to hard ones. Samples with low quality are filtered out through the double selectors, which is more conducive to the training of student models. Experimental results on five NER benchmark datasets from different languages indicate the effectiveness of the proposed framework over several advanced baselines.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new self-training framework with double selectors, namely auxiliary judge task and entropy-based confidence measurement, and proposes a cumulative function based on the idea of curriculum learning to prompt the model to learn from easy samples to hard ones."
+            },
+            "score": 3
+        },
+        {
+            "id": "a26c46c38b86468a983e47817c0040fd330b57d2",
+            "paperId": "a26c46c38b86468a983e47817c0040fd330b57d2",
+            "title": "Emulator-based Bayesian calibration of the CISNET colorectal cancer models",
+            "abstract": "Purpose: To calibrate Cancer Intervention and Surveillance Modeling Network (CISNET) 's SimCRC, MISCAN-Colon, and CRC-SPIN simulation models of the natural history colorectal cancer (CRC) with an emulator-based Bayesian algorithm and internally validate the model-predicted outcomes to calibration targets. Methods: We used Latin hypercube sampling to sample up to 50,000 parameter sets for each CISNET-CRC model and generated the corresponding outputs. We trained multilayer perceptron artificial neural networks (ANN) as emulators using the input and output samples for each CISNET-CRC model. We selected ANN structures with corresponding hyperparameters (i.e., number of hidden layers, nodes, activation functions, epochs, and optimizer) that minimize the predicted mean square error on the validation sample. We implemented the ANN emulators in a probabilistic programming language and calibrated the input parameters with Hamiltonian Monte Carlo-based algorithms to obtain the joint posterior distributions of the CISNET-CRC models' parameters. We internally validated each calibrated emulator by comparing the model-predicted posterior outputs against the calibration targets. Results: The optimal ANN for SimCRC had four hidden layers and 360 hidden nodes, MISCAN-Colon had 4 hidden layers and 114 hidden nodes, and CRC-SPIN had one hidden layer and 140 hidden nodes. The total time for training and calibrating the emulators was 7.3, 4.0, and 0.66 hours for SimCRC, MISCAN-Colon, and CRC-SPIN, respectively. The mean of the model-predicted outputs fell within the 95% confidence intervals of the calibration targets in 98 of 110 for SimCRC, 65 of 93 for MISCAN, and 31 of 41 targets for CRC-SPIN. Conclusions: Using ANN emulators is a practical solution to reduce the computational burden and complexity for Bayesian calibration of individual-level simulation models used for policy analysis, like the CISNET CRC models.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using ANN emulators is a practical solution to reduce the computational burden and complexity for Bayesian calibration of individual-level simulation models used for policy analysis, like the CISNET CRC models."
+            },
+            "score": 2
+        },
+        {
+            "id": "e564a5067b89111f3e35a09f90a114807e3608de",
+            "paperId": "e564a5067b89111f3e35a09f90a114807e3608de",
+            "title": "Improved calibration of building models using approximate Bayesian calibration and neural networks",
+            "abstract": "Deep energy retrofits of buildings are crucial to meeting climate targets and depend on calibrated energy models for investor confidence. Bayesian inference can improve the rigour in standard practice and improve confidence in calibrated energy models. Approximate Bayesian computation (ABC) methods using neural networks present an opportunity to calibrate energy models while inherently accounting for parameter uncertainty, and face less computational burden than the current standard process for Bayesian calibration. A case study for a large, complex building is presented to demonstrate the applicability of ABC and parameter sensitivity screening is found to result in over-confidence in the resulting inference by between 14% and 85%. Finally, the presentation of posterior distributions as independent distributions may be misleading, which can misattribute the true likelihood of parameters. Highlights Implementation of an Approximate Bayesian Computation method incorporating the Sequential Monte Carlo algorithm with a neural network surrogate model. A comparison of Bayesian inference with standard practice. An investigation of sensitivity screening for parameter selection on the inference results. Application to a complex multi-zone dynamic energy model of a large retail building.",
+            "year": 2022,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A case study for a large, complex building is presented to demonstrate the applicability of ABC and parameter sensitivity screening is found to result in over-confidence in the resulting inference, and the presentation of posterior distributions as independent distributions may be misleading, which can misattribute the true likelihood of parameters."
+            },
+            "score": 2
+        },
+        {
+            "id": "1919a516492a3cab96cac6b288ff4550269824d4",
+            "paperId": "1919a516492a3cab96cac6b288ff4550269824d4",
+            "title": "Automatic model calibration of combined hydrologic, hydraulic and stormwater quality models using approximate Bayesian computation.",
+            "abstract": "A range of automatic model calibration techniques are used in water engineering practice. However, use of these techniques can be problematic due to the requirement of evaluating the likelihood function. This paper presents an innovative approach for overcoming this issue using a calibration framework developed based on Approximate Bayesian Computation (ABC) technique. Use of ABC in automatic model calibration was undertaken for a combined urban hydrologic, hydraulic and stormwater quality model. The simulated runoff hydrograph and total suspended solid (TSS) pollutograph were compared with observed data for multiple events from three different catchments, and found to be within 95% confidence intervals of the simulated results. The R programmed model was validated by comparing simulated flow with similar commercially available modeling software, MIKE URBAN output determined using mean value of parameters obtained from the calibration exercise, and performed well by satisfying statistical criteria's such as coefficient of determination (CD), root mean square error (RMSE) and maximum error (ME). The developed framework is useful for automatic calibration and uncertainty estimation using ABC approach in complex hydrologic, hydraulic and stormwater quality models with multi-input-output systems.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "564855d475ed9197dd7516594557ff886ff623e5",
+            "paperId": "564855d475ed9197dd7516594557ff886ff623e5",
+            "title": "Fast and Robust Early-Exiting Framework for Autoregressive Language Models with Synchronized Parallel Decoding",
+            "abstract": "To tackle the high inference latency exhibited by autoregressive language models, previous studies have proposed an early-exiting framework that allocates adaptive computation paths for each token based on the complexity of generating the subsequent token. However, we observed several shortcomings, including performance degradation caused by a state copying mechanism or numerous exit paths, and sensitivity to exit confidence thresholds. Consequently, we propose a Fast and Robust Early-Exiting (FREE) framework, which incorporates a shallow-deep module and a synchronized parallel decoding. Our framework enables faster inference by synchronizing the decoding process of the current token with previously stacked early-exited tokens. Furthermore, as parallel decoding allows us to observe predictions from both shallow and deep models, we present a novel adaptive threshold estimator that exploits a Beta mixture model to determine suitable confidence thresholds. We empirically demonstrated the superiority of our proposed framework on extensive generation tasks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Fast and Robust Early-Exiting (FREE) framework, which incorporates a shallow-deep module and a synchronized parallel decoding that enables faster inference by synchronizing the decoding process of the current token with previously stacked early-exited tokens."
+            },
+            "score": 2
+        },
+        {
+            "id": "6a7aa40ad830b043f2600d4b3431468ced008337",
+            "paperId": "6a7aa40ad830b043f2600d4b3431468ced008337",
+            "title": "MoPe: Model Perturbation-based Privacy Attacks on Language Models",
+            "abstract": "Recent work has shown that Large Language Models (LLMs) can unintentionally leak sensitive information present in their training data. In this paper, we present Model Perturbations (MoPe), a new method to identify with high confidence if a given text is in the training data of a pre-trained language model, given white-box access to the models parameters. MoPe adds noise to the model in parameter space and measures the drop in log-likelihood at a given point $x$, a statistic we show approximates the trace of the Hessian matrix with respect to model parameters. Across language models ranging from $70$M to $12$B parameters, we show that MoPe is more effective than existing loss-based attacks and recently proposed perturbation-based methods. We also examine the role of training point order and model size in attack success, and empirically demonstrate that MoPe accurately approximate the trace of the Hessian in practice. Our results show that the loss of a point alone is insufficient to determine extractability -- there are training points we can recover using our method that have average loss. This casts some doubt on prior works that use the loss of a point as evidence of memorization or unlearning.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "MoPe is a new method to identify with high confidence if a given text is in the training data of a pre-trained language model, given white-box access to the models parameters, and empirically demonstrate that MoPe accurately approximate the trace of the Hessian in practice."
+            },
+            "score": 2
+        },
+        {
+            "id": "e17c58d7a48b6b811df023484161a3b9c03e0d6b",
+            "paperId": "e17c58d7a48b6b811df023484161a3b9c03e0d6b",
+            "title": "Theory of Mind for Multi-Agent Collaboration via Large Language Models",
+            "abstract": "While Large Language Models (LLMs) have demonstrated impressive accomplishments in both reasoning and planning, their abilities in multi-agent collaborations remains largely unexplored. This study evaluates LLM-based agents in a multi-agent cooperative text game with Theory of Mind (ToM) inference tasks, comparing their performance with Multi-Agent Reinforcement Learning (MARL) and planning-based baselines. We observed evidence of emergent collaborative behaviors and high-order Theory of Mind capabilities among LLM-based agents. Our results reveal limitations in LLM-based agents' planning optimization due to systematic failures in managing long-horizon contexts and hallucination about the task state. We explore the use of explicit belief state representations to mitigate these issues, finding that it enhances task performance and the accuracy of ToM inferences for LLM-based agents.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study evaluates LLM-based agents in a multi-agent cooperative text game with Theory of Mind inference tasks, comparing their performance with Multi-Agent Reinforcement Learning (MARL) and planning-based baselines and finds that the use of explicit belief state representations enhances task performance and the accuracy of ToM inferences for LLM -based agents."
+            },
+            "score": 2
+        },
+        {
+            "id": "828dbdab5791d8539a7f90063d168b9258083326",
+            "paperId": "828dbdab5791d8539a7f90063d168b9258083326",
+            "title": "Zero-Shot Information Extraction for Clinical Meta-Analysis using Large Language Models",
+            "abstract": "Meta-analysis of randomized clinical trials (RCTs) plays a crucial role in evidence-based medicine but can be labor-intensive and error-prone. This study explores the use of large language models to enhance the efficiency of aggregating results from randomized clinical trials (RCTs) at scale. We perform a detailed comparison of the performance of these models in zero-shot prompt-based information extraction from a diverse set of RCTs to traditional manual annotation methods. We analyze the results for two different meta-analyses aimed at drug repurposing in cancer therapy pharmacovigilience in chronic myeloid leukemia. Our findings reveal that the best model for the two demonstrated tasks, ChatGPT can generally extract correct information and identify when the desired information is missing from an article. We additionally conduct a systematic error analysis, documenting the prevalence of diverse error types encountered during the process of prompt-based information extraction.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The use of large language models to enhance the efficiency of aggregating results from randomized clinical trials (RCTs) at scale is explored and the best model, ChatGPT, is revealed to be the best for the two demonstrated tasks."
+            },
+            "score": 2
+        },
+        {
+            "id": "e4e744cc96da7987a072571fc3817f040d456566",
+            "paperId": "e4e744cc96da7987a072571fc3817f040d456566",
+            "title": "Large Language Models Know Your Contextual Search Intent: A Prompting Framework for Conversational Search",
+            "abstract": "Precisely understanding users' contextual search intent has been an important challenge for conversational search. As conversational search sessions are much more diverse and long-tailed, existing methods trained on limited data still show unsatisfactory effectiveness and robustness to handle real conversational search scenarios. Recently, large language models (LLMs) have demonstrated amazing capabilities for text generation and conversation understanding. In this work, we present a simple yet effective prompting framework, called LLM4CS, to leverage LLMs as a text-based search intent interpreter to help conversational search. Under this framework, we explore three prompting methods to generate multiple query rewrites and hypothetical responses, and propose to aggregate them into an integrated representation that can robustly represent the user's real contextual search intent. Extensive automatic evaluations and human evaluations on three widely used conversational search benchmarks, including CAsT-19, CAsT-20, and CAsT-21, demonstrate the remarkable performance of our simple LLM4CS framework compared with existing methods and even using human rewrites. Our findings provide important evidence to better understand and leverage LLMs for conversational search.",
+            "year": 2023,
+            "citationCount": 26,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a simple yet effective prompting framework, called LLM4CS, to leverage LLMs as a text-based search intent interpreter to help conversational search."
+            },
+            "score": 2
+        },
+        {
+            "id": "66d98dc2aad17c03532dbae21d05f098257cc2e2",
+            "paperId": "66d98dc2aad17c03532dbae21d05f098257cc2e2",
+            "title": "LINC: A Neurosymbolic Approach for Logical Reasoning by Combining Language Models with First-Order Logic Provers",
+            "abstract": "Logical reasoning, i.e., deductively inferring the truth value of a conclusion from a set of premises, is an important task for artificial intelligence with wide potential impacts on science, mathematics, and society. While many prompting-based strategies have been proposed to enable Large Language Models (LLMs) to do such reasoning more effectively, they still appear unsatisfactory, often failing in subtle and unpredictable ways. In this work, we investigate the validity of instead reformulating such tasks as modular neurosymbolic programming, which we call LINC: Logical Inference via Neurosymbolic Computation. In LINC, the LLM acts as a semantic parser, translating premises and conclusions from natural language to expressions in first-order logic. These expressions are then offloaded to an external theorem prover, which symbolically performs deductive inference. Leveraging this approach, we observe significant performance gains on FOLIO and a balanced subset of ProofWriter for three different models in nearly all experimental conditions we evaluate. On ProofWriter, augmenting the comparatively small open-source StarCoder+ (15.5B parameters) with LINC even outperforms GPT-3.5 and GPT-4 with Chain-of-Thought (CoT) prompting by an absolute 38% and 10%, respectively. When used with GPT-4, LINC scores 26% higher than CoT on ProofWriter while performing comparatively on FOLIO. Further analysis reveals that although both methods on average succeed roughly equally often on this dataset, they exhibit distinct and complementary failure modes. We thus provide promising evidence for how logical reasoning over natural language can be tackled through jointly leveraging LLMs alongside symbolic provers. All corresponding code is publicly available at https://github.com/benlipkin/linc",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Analysis reveals that although both methods on average succeed roughly equally often on this dataset, they exhibit distinct and complementary failure modes, which provides promising evidence for how logical reasoning over natural language can be tackled through jointly leveraging LLMs alongside symbolic provers."
+            },
+            "score": 2
+        },
+        {
+            "id": "e6ecbf7b24fd10406416cd5e4e6c2839277f03a2",
+            "paperId": "e6ecbf7b24fd10406416cd5e4e6c2839277f03a2",
+            "title": "LM-Debugger: An Interactive Tool for Inspection and Intervention in Transformer-Based Language Models",
+            "abstract": "The opaque nature and unexplained behavior of transformer-based language models (LMs) have spurred a wide interest in interpreting their predictions. However, current interpretation methods mostly focus on probing models from outside, executing behavioral tests, and analyzing salience input features, while the internal prediction construction process is largely not understood. In this work, we introduce LM-Debugger, an interactive debugger tool for transformer-based LMs, which provides a fine-grained interpretation of the model's internal prediction process, as well as a powerful framework for intervening in LM behavior. For its backbone, LM-Debugger relies on a recent method that interprets the inner token representations and their updates by the feed-forward layers in the vocabulary space. We demonstrate the utility of LM-Debugger for single-prediction debugging, by inspecting the internal disambiguation process done by GPT2. Moreover, we show how easily LM-Debugger allows to shift model behavior in a direction of the user's choice, by identifying a few vectors in the network and inducing effective interventions to the prediction process. We release LM-Debugger as an open-source tool and a demo over GPT2 models.",
+            "year": 2022,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LM-Debugger is introduced, an interactive debugger tool for transformer-based LMs, which provides a fine-grained interpretation of the model's internal prediction process, as well as a powerful framework for intervening in LM behavior."
+            },
+            "score": 2
+        },
+        {
+            "id": "f206e2997936f3dc0e30c0e832ae06b6a0a5ed72",
+            "paperId": "f206e2997936f3dc0e30c0e832ae06b6a0a5ed72",
+            "title": "Bayesian Calibration of Kinetic Parameters in the CH Chemistry Towards Accurate Prompt-NO Modelling",
+            "abstract": "\n To meet and surpass the increasingly stringent regulations, accurate and robust thermochemical mechanisms are needed to help design future sub-10ppm combustion systems. Uncertainty in kinetic modelling, however, can result in large prediction uncertainty and significant discrepancy between models that hinder the identification of promising combustors with confidence. Direct reaction rate measurements are seldom available for some reactions, especially when involving short-lived radicals like methylidyne, CH. As the main precursor to the prompt-NO formation pathway, its large parametric uncertainty directly propagates through the nitrogen chemistry preventing accurate and precise emissions predictions. Recent independent CH concentration measurements obtained at various operating conditions are used as indirect rate measurements to perform statistical, or Bayesian, calibration for a subset of important reactions in the CH chemistry. Spectral expansion provides the surrogate model used in the Markov-Chain Monte Carlo method to evaluate the posterior kinetic distribution. The resulting constrained CH-chemistry better captures experimental measurements while providing smaller prediction uncertainty of a similar order as the uncertainty of the measurements. For the quasi-steady state species CH, fuel decomposition reactions leading to CH production are constrained while little impact is observed for intermediate reactions within the CH-chemistry. The reduction in prediction uncertainty results mainly from the constrained correlations between parameters which greatly limit the set of feasible reaction rate combinations. Additional measurements would be necessary to further constrain rate parameters in the CH chemistry, but this calibration demonstrates that predictions of radical species can be improved by assimilating enough data.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "58f54c169468db50328f2b3607d91afbfe1eee6e",
+            "paperId": "58f54c169468db50328f2b3607d91afbfe1eee6e",
+            "title": "Systematic review estimating the burden of dementia in the WHO Southeast Asia Region using Bayesian and frequentist approaches",
+            "abstract": "Background Rapid increase in life expectancy in low- and middle-income countries including the World Health Organization\u2019s Southeast Asia Region (SEAR) has resulted in an increase in the global burden of dementia, which is expected to become a leading cause of morbidity. Accurate burden estimates are key for informing policy and planning. Given the paucity of data, estimates were developed using both a Bayesian methodology and as well as a traditional frequentist approach to gain better insights into methodological approaches for disease burden estimates. Methods Seven databases were searched for studies published between 2010-2018 regarding dementia prevalence in SEAR, generating 8 relevant articles. A random-effects model (REM) and a Bayesian normal-normal hierarchical model (NNHM) were used to obtain the pooled prevalence estimate of dementia for people aged 60 and above in SEAR. The latter model was also developed to estimate age-specific dementia prevalence. Using UN population estimates for SEAR, total and age-specific projections of the burden of dementia in 2015, 2020 and 2030 were calculated. Results The prevalence of dementia in SEAR was found to be 3% (95% confidence interval (CI)\u2009=\u20092-6%) in those above age 60 based on REM, and 3.1% (95% credible interval\u2009=\u20091.5-5.0%) based on the NNHM. The estimated prevalence varies with age, increasing from 1.6% (95% credible interval\u2009=\u20090.8-2.5%) in people aged 60-69 to 12.4% (95% credible interval\u2009=\u20095.6-20%) in people above the age of 80. The risk of developing dementia increased exponentially with age. The number of people living with dementia in SEAR in 2015 was estimated at 5.51 million (95% credible interval\u2009=\u20092.66-8.82), with projections of 6.66 million (95% credible interval\u2009=\u20093.21-10.7) in 2020 and 9.6 million (95% credible interval\u2009=\u20094.62-15.36) in 2030. Conclusion The burden of dementia in SEAR is substantial and will continue to increase rapidly by 2030. The lack of research focusing on dementia in SEAR points to a significant under-recognition of this disease. The projected rise in dementia cases in the future should prompt urgent governmental response to address this growing public health issue. We also argue that given the overall paucity of data for the region, the Bayesian approach offers a promising methodology for improved estimates of disease prevalence and burden and should continue to be explored.",
+            "year": 2020,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The burden of dementia in SEAR is substantial and will continue to increase rapidly by 2030, and the Bayesian approach offers a promising methodology for improved estimates of disease prevalence and burden and should be explored."
+            },
+            "score": 2
+        },
+        {
+            "id": "3ba1b890a039f9d040098cda2ffd01c0a77a9ae2",
+            "paperId": "3ba1b890a039f9d040098cda2ffd01c0a77a9ae2",
+            "title": "On the association of GW190425 with its potential electromagnetic counterpart FRB 20190425A",
+            "abstract": "Recent work by Moroianu et al. (2022) has suggested that the binary neutron star (BNS) merger GW190425 might have a potential fast radio burst (FRB) counterpart association, FRB 20190425A, at the 2.8$\\sigma$ level of confidence with a likely host galaxy association, namely UGC10667. The authors argue that the observations are consistent with a long-lived hypermassive neutron star (HMNS) that formed promptly after the BNS merger and was stable for approximately 2.5 hours before promptly collapsing into a black hole. Recently, Bhardwaj et al. (2023) conclusively associated FRB 20190425A with UGC10667, potentially providing a direct host galaxy candidate for GW190425. In this work, we examine the multi-messenger association based on the space-time localization overlaps between GW190425 and the FRB host galaxy UGC10667 and find that the odds for a coincident association are $\\mathcal{O}(5)$. We validate this estimate by using a Gaussian Process (GP) density estimator. Assuming that the association is indeed real, we then perform Bayesian parameter estimation on GW190425 assuming that the BNS event took place in UGC10667. We find that the viewing angle of GW190425 excludes an on-axis system at $p(\\theta_v>30^o)\\approx99.99$\\%, highly favouring an off-axis system similar to GRB 170817A. We also find a slightly higher source frame total mass for the binary, namely, $m_{\\rm{total}} = 3.42^{+0.34}_{-0.11} M_{\\odot}$, leading to an increase on the probability of prompt collapse into a black hole and therefore disfavors the long-lived HMNS formation scenario. Given our findings, we conclude that the association between GW190425 and FRB 20190425A is disfavoured by current state-of-the-art gravitational-wave analyses.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "635ad43b9a24cdaeb5ecb06fcc51f79016b5ec12",
+            "paperId": "635ad43b9a24cdaeb5ecb06fcc51f79016b5ec12",
+            "title": "A Multilevel Empirical Bayesian Approach to Estimating the Unknown Redshifts of 1366 BATSE Catalog Long-duration Gamma-Ray Bursts",
+            "abstract": "We present a catalog of probabilistic redshift estimates for 1366 individual Long-duration Gamma-ray Bursts (LGRBs) detected by the Burst And Transient Source Experiment (BATSE). This result is based on a careful selection and modeling of the population distribution of 1366 BATSE LGRBs in the five-dimensional space of redshift and the four intrinsic prompt gamma-ray emission properties: the isotropic 1024 ms peak luminosity ( ), the total isotropic emission ( ), the spectral peak energy ( ), as well as the intrinsic duration ( ), while carefully taking into account the effects of sample incompleteness and the LGRB-detection mechanism of BATSE. Two fundamental plausible assumptions underlie our purely probabilistic approach: (1) LGRBs trace, either exactly or closely, the cosmic star formation rate, with a possibility of the excess rates of LGRBs in the nearby universe, and (2) the joint four-dimensional distribution of the aforementioned prompt gamma-ray emission properties is well described by a multivariate log-normal distribution. Our modeling approach enables us to constrain the redshifts of individual BATSE LGRBs to within 0.36 and 0.96 average uncertainty ranges at 50% and 90% confidence levels, respectively. Our redshift predictions are completely at odds with the previous redshift estimates of BATSE LGRBs that were computed via the proposed phenomenological high-energy relations, specifically, the apparently strong correlation of LGRBs\u2019 peak luminosity with the spectral peak energy, lightcurve variability, and spectral lag. The observed discrepancies between our predictions and the previous works can be explained by the strong influence of detector threshold and sample incompleteness in shaping these phenomenologically proposed high-energy correlations in the literature. Finally, we also discuss the potential effects of an excess cosmic rate of LGRBs at low redshifts and the possibility of a luminosity evolution of LGRBs on our results.",
+            "year": 2020,
+            "citationCount": 11,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "17fbffb05fa14e21d1c506fd5f0f568b955fe983",
+            "paperId": "17fbffb05fa14e21d1c506fd5f0f568b955fe983",
+            "title": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models",
+            "abstract": "Language models have graduated from being research prototypes to commercialized products offered as web APIs, and recent works have highlighted the multilingual capabilities of these products. The API vendors charge their users based on usage, more specifically on the number of ``tokens'' processed or generated by the underlying language models. What constitutes a token, however, is training data and model dependent with a large variance in the number of tokens required to convey the same information in different languages. In this work, we analyze the effect of this non-uniformity on the fairness of an API's pricing policy across languages. We conduct a systematic analysis of the cost and utility of OpenAI's language model API on multilingual benchmarks in 22 typologically diverse languages. We show evidence that speakers of a large number of the supported languages are overcharged while obtaining poorer results. These speakers tend to also come from regions where the APIs are less affordable to begin with. Through these analyses, we aim to increase transparency around language model APIs' pricing policies and encourage the vendors to make them more equitable.",
+            "year": 2023,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work conducts a systematic analysis of the cost and utility of OpenAI's language model API on multilingual benchmarks in 22 typologically diverse languages and shows evidence that speakers of a large number of the supported languages are overcharged while obtaining poorer results."
+            },
+            "score": 1
+        },
+        {
+            "id": "e391d266b0d43475567f59efeaeabc884a48abd0",
+            "paperId": "e391d266b0d43475567f59efeaeabc884a48abd0",
+            "title": "ReLM: Leveraging Language Models for Enhanced Chemical Reaction Prediction",
+            "abstract": "Predicting chemical reactions, a fundamental challenge in chemistry, involves forecasting the resulting products from a given reaction process. Conventional techniques, notably those employing Graph Neural Networks (GNNs), are often limited by insufficient training data and their inability to utilize textual information, undermining their applicability in real-world applications. In this work, we propose ReLM, a novel framework that leverages the chemical knowledge encoded in language models (LMs) to assist GNNs, thereby enhancing the accuracy of real-world chemical reaction predictions. To further enhance the model's robustness and interpretability, we incorporate the confidence score strategy, enabling the LMs to self-assess the reliability of their predictions. Our experimental results demonstrate that ReLM improves the performance of state-of-the-art GNN-based methods across various chemical reaction datasets, especially in out-of-distribution settings. Codes are available at https://github.com/syr-cn/ReLM.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ReLM, a novel framework that leverages the chemical knowledge encoded in language models (LMs) to assist GNNs, thereby enhancing the accuracy of real-world chemical reaction predictions and incorporating the confidence score strategy, enabling the LMs to self-assess the reliability of their predictions."
+            },
+            "score": 1
+        },
+        {
+            "id": "27a56b2ad7c2bf3973a75b9ab7d69caa3d2af6fa",
+            "paperId": "27a56b2ad7c2bf3973a75b9ab7d69caa3d2af6fa",
+            "title": "Handling Variance of Pretrained Language Models in Grading Evidence in the Medical Literature",
+            "abstract": "In this paper, we investigate the utility of modern pretrained language models for the evidence grading system in the medical literature based on the ALTA 2021 shared task. We benchmark 1) domain-specific models that are optimized for medical literature and 2) domain-generic models with rich latent discourse representation (i.e. ELECTRA, RoBERTa). Our empirical experiments reveal that these modern pretrained language models suffer from high variance, and the ensemble method can improve the model performance. We found that ELECTRA performs best with an accuracy of 53.6% on the test set, outperforming domain-specific models.1",
+            "year": 2021,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that ELECTRA performs best with an accuracy of 53.6% on the test set, outperforming domain-specific models and the ensemble method can improve the model performance."
+            },
+            "score": 1
+        },
+        {
+            "id": "c23226f8339da1a1381d41f3ad98dbfbba3c8225",
+            "paperId": "c23226f8339da1a1381d41f3ad98dbfbba3c8225",
+            "title": "Implementation Science: Application of Evidence-Based Practice Models to Improve Healthcare Quality.",
+            "abstract": "BACKGROUND\nTranslating research into practice is complex for clinicians, yet essential for high quality patient care. The field of implementation science evolved to address this gap by developing theoretical approaches to guide adoption and sustained implementation of practice changes. Clinicians commonly lack knowledge, time, and resources of how evidence-based practice (EBP) models can guide implementation, contributing to the knowledge-to-practice gap.\n\n\nAIM\nThis paper aimed to equip clinicians and other healthcare professionals with implementation science knowledge, confidence, and models to facilitate EBP change in their local setting and ultimately improve healthcare quality, safety, and population health outcomes.\n\n\nMETHODS\nThe field of implementation science is introduced, followed by application of three select models. Models are applied to a clinical scenario to emphasize contextual factors, process, implementation strategies, and outcome evaluation. Key attributes, strengths, opportunities, and utilities of each model are presented, along with general resources for selecting and using published criteria to best fit clinical needs. Partnerships between implementation scientists and clinicians are highlighted to facilitate the uptake of evidence into practice.\n\n\nLINKING EVIDENCE TO ACTION\nKnowledge of implementation science can help clinicians adopt high-quality evidence into their practices. Application-oriented approaches can guide clinicians through the EBP processes. Clinicians can partner with researchers in advancing implementation science to continue to accelerate the adoption of evidence and reduce the knowledge-to-action gap.",
+            "year": 2021,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper aimed to equip clinicians and other healthcare professionals with implementation science knowledge, confidence, and models to facilitate EBP change in their local setting and ultimately improve healthcare quality, safety, and population health outcomes."
+            },
+            "score": 1
+        },
+        {
+            "id": "e886fe33b9cda6e0b0f523d5fbbb7287c23aba2b",
+            "paperId": "e886fe33b9cda6e0b0f523d5fbbb7287c23aba2b",
+            "title": "Causal Analysis of Syntactic Agreement Neurons in Multilingual Language Models",
+            "abstract": "Structural probing work has found evidence for latent syntactic information in pre-trained language models. However, much of this analysis has focused on monolingual models, and analyses of multilingual models have employed correlational methods that are confounded by the choice of probing tasks. In this study, we causally probe multilingual language models (XGLM and multilingual BERT) as well as monolingual BERT-based models across various languages; we do this by performing counterfactual perturbations on neuron activations and observing the effect on models\u2019 subject-verb agreement probabilities. We observe where in the model and to what extent syntactic agreement is encoded in each language. We find significant neuron overlap across languages in autoregressive multilingual language models, but not masked language models. We also find two distinct layer-wise effect patterns and two distinct sets of neurons used for syntactic agreement, depending on whether the subject and verb are separated by other tokens. Finally, we find that behavioral analyses of language models are likely underestimating how sensitive masked language models are to syntactic information.",
+            "year": 2022,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study causally probe multilingual language models as well as monolingual BERT-based models across various languages by performing counterfactual perturbations on neuron activations and observing the effect on models\u2019 subject-verb agreement probabilities, finding significant neuron overlap across languages in autoregressive mult bilingual language models, but not masked language models."
+            },
+            "score": 1
+        },
+        {
+            "id": "6be6fe206f8ca735f8df26758bf877572abb10d3",
+            "paperId": "6be6fe206f8ca735f8df26758bf877572abb10d3",
+            "title": "Reranking for Natural Language Generation from Logical Forms: A Study based on Large Language Models",
+            "abstract": "Large language models (LLMs) have demonstrated impressive capabilities in natural language generation. However, their output quality can be inconsistent, posing challenges for generating natural language from logical forms (LFs). This task requires the generated outputs to embody the exact semantics of LFs, without missing any LF semantics or creating any hallucinations. In this work, we tackle this issue by proposing a novel generate-and-rerank approach. Our approach involves initially generating a set of candidate outputs by prompting an LLM and subsequently reranking them using a task-specific reranker model. In addition, we curate a manually collected dataset to evaluate the alignment between different ranking metrics and human judgements. The chosen ranking metrics are utilized to enhance the training and evaluation of the reranker model. By conducting extensive experiments on three diverse datasets, we demonstrate that the candidates selected by our reranker outperform those selected by baseline methods in terms of semantic consistency and fluency, as measured by three comprehensive metrics. Our findings provide strong evidence for the effectiveness of our approach in improving the quality of generated outputs.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel generate-and-rerank approach that involves initially generating a set of candidate outputs by prompting an LLM and subsequently reranking them using a task-specific reranker model, and demonstrates that the candidates selected by the reRanker outperform those selected by baseline methods in terms of semantic consistency and fluency."
+            },
+            "score": 1
+        },
+        {
+            "id": "d0671f33ce64f4422d6380bf3bec82686fb45451",
+            "paperId": "d0671f33ce64f4422d6380bf3bec82686fb45451",
+            "title": "Context-Aware Sentence Classification in Evidence-Based Medicine",
+            "abstract": "In this paper, we show the effectiveness of before\u2013 and after\u2013sentences as additional context for sentence classification in evidence-based medicine. Although pre-trained language models encode contextualized representation, we found that the additional contexts improve sentence classification in terms of ROC (micro) score in the ALTA 2022 shared task. Additionally, averaging the probability of top model predictions boosts the performance, and our results for both public and private test sets officially claim the first rank of the ALTA 2022 shared task.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Although pre-trained language models encode contextualized representation, it is found that the additional contexts improve sentence classification in terms of ROC (micro) score in the ALTA 2022 shared task."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

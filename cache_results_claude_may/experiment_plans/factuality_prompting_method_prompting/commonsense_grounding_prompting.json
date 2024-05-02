@@ -32,5 +32,944 @@
             "Explanation": "The proposed commonsense grounding prompting encourages the model to generate sentences that are consistent with commonsense knowledge, by first explicitly stating a relevant commonsense fact. This can potentially reduce hallucination and improve factuality compared to the baseline prompting."
         },
         "Fallback Plan": "If the proposed commonsense grounding prompts do not significantly outperform the baselines, we can analyze the generated commonsense facts to see if they are indeed relevant and factual. If the generated facts are not of high quality, we can try alternative prompts to elicit better commonsense facts from the model. We can also conduct human evaluation to assess the factuality and commonsense consistency of the generated sentences, in addition to the automatic metrics. If the grounding still does not help, we can turn the project into an analysis to gain insights into the limitations of using prompting to extract and utilize the commonsense knowledge in LLMs for guided generation."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"commonsense grounding language models\")",
+        "KeywordQuery(\"language models hallucination factuality\")",
+        "KeywordQuery(\"prompting commonsense reasoning language models\")",
+        "KeywordQuery(\"Commonsense Grounding Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "0f5c46ab89eee1873908c29c6f0a8bc8ff8879ea",
+            "paperId": "0f5c46ab89eee1873908c29c6f0a8bc8ff8879ea",
+            "title": "Dimension-Prompts Boost Commonsense Consolidation",
+            "abstract": "Neural knowledge models emerged and advanced common-sense-centric knowledge grounding. They parameterize a small seed curated commonsense knowledge graph (CS-KG) in a language model to generalize more. A current trend is to scale the seed up by directly mixing multiple sources of CS-KG (e.g., ATOMIC, ConceptNet) into one model. But, such brute-force mixing inevitably hinders effective knowledge consolidation due to i) ambiguous, polysemic, and/or inconsistent relations across sources and ii) knowledge learned in an entangled manner despite distinct types (e.g., causal, temporal). To mitigate this, we adopt a concept of commonsense knowledge dimension and propose a brand-new dimension-disentangled knowledge model (D2KM) learning paradigm with multiple sources. That is, a generative language model with dimension-specific soft prompts is trained to disentangle knowledge acquisitions along with different dimensions and facilitate potential intra-dimension consolidation across CS-KG sources. Experiments show our knowledge model outperforms its baselines in both standard and zero-shot scenarios.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A brand-new dimension-disentangled knowledge model (D2KM) learning paradigm with multiple sources is proposed that is, a generative language model with dimension-specific soft prompts is trained to disentangle knowledge acquisitions along with different dimensions and facilitate potential intra-dimension consolidation across CS-KG sources."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factuality of language model outputs by prompting the model to generate relevant commonsense facts before each sentence generation. The paper focuses on consolidating commonsense knowledge from multiple sources in language models using dimension-specific prompts to disentangle knowledge acquisition.\n\nThe project uses prompting to ground each generated sentence in commonsense, while the paper uses prompting to disentangle the learning of different dimensions of commonsense knowledge. The goals and methods are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "12a763cb52f650710900790ca0bc43e5d5b88be6",
+            "paperId": "12a763cb52f650710900790ca0bc43e5d5b88be6",
+            "title": "Generated Knowledge Prompting for Commonsense Reasoning",
+            "abstract": "It remains an open question whether incorporating external knowledge benefits commonsense reasoning while maintaining the flexibility of pretrained sequence models. To investigate this question, we develop generated knowledge prompting, which consists of generating knowledge from a language model, then providing the knowledge as additional input when answering a question. Our method does not require task-specific supervision for knowledge integration, or access to a structured knowledge base, yet it improves performance of large-scale, state-of-the-art models on four commonsense reasoning tasks, achieving state-of-the-art results on numerical commonsense (NumerSense), general commonsense (CommonsenseQA 2.0), and scientific commonsense (QASC) benchmarks. Generated knowledge prompting highlights large-scale language models as flexible sources of external knowledge for improving commonsense reasoning.Our code is available at github.com/liujch1998/GKP",
+            "year": 2021,
+            "citationCount": 191,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Generated knowledge prompting develops generated knowledge prompting, which consists of generating knowledge from a language model, then providing the knowledge as additional input when answering a question, and improves performance of large-scale, state-of-the-art models on four commonsense reasoning tasks."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs by grounding generation in commonsense knowledge. The proposed approach is to prompt the language model to generate relevant commonsense facts before each sentence generation.\n\nThe research problem in the paper is improving commonsense reasoning in language models. The proposed approach is to generate relevant knowledge from the language model and provide it as additional input when answering a question.\n\nWhile both works aim to improve commonsense reasoning in language models, the proposal focuses on factuality in open-ended generation, while the paper focuses on question answering. The methods are also different: the proposal uses commonsense facts to ground generation, while the paper uses generated knowledge as additional input for question answering.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4d7571441f507f39133209e8afa7ad088da2199c",
+            "paperId": "4d7571441f507f39133209e8afa7ad088da2199c",
+            "title": "ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models",
+            "abstract": "Large language models (LLMs) have made significant progress in NLP. However, their ability to memorize, represent, and leverage commonsense knowledge has been a well-known pain point. In this paper, we specifically focus on ChatGPT, a widely used and easily accessible LLM, and ask the following questions: (1) Can ChatGPT effectively answer commonsense questions? (2) Is ChatGPT aware of the underlying commonsense knowledge for answering a specific question? (3) Is ChatGPT knowledgeable in commonsense? (4) Can ChatGPT effectively leverage commonsense for answering questions? We conduct a series of experiments on 11 datasets to evaluate ChatGPT's commonsense abilities, including answering commonsense questions, identifying necessary knowledge, generating knowledge descriptions, and using knowledge descriptions to answer questions again. Experimental results show that: (1) ChatGPT can achieve good QA accuracies in commonsense tasks, while still struggling with certain domains of datasets. (2) ChatGPT is knowledgeable, and can accurately generate most of the commonsense knowledge using knowledge prompts. (3) Despite its knowledge, ChatGPT is an inexperienced commonsense problem solver, which cannot precisely identify the needed commonsense for answering a specific question. These findings raise the need to explore improved mechanisms for effectively incorporating commonsense into LLMs like ChatGPT, such as better instruction following and commonsense guidance.",
+            "year": 2023,
+            "citationCount": 55,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The need to explore improved mechanisms for effectively incorporating commonsense into LLMs like ChatGPT, such as better instruction following and commonsense guidance is raised."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factuality of language model outputs by prompting the model to generate relevant commonsense facts before each sentence generation. The paper investigates ChatGPT's commonsense reasoning abilities and finds that while ChatGPT is knowledgeable, it struggles to identify and apply the necessary commonsense knowledge for answering questions.\n\nThe project focuses on using commonsense grounding prompts to guide language models during generation, while the paper analyzes ChatGPT's performance on commonsense question-answering tasks and its ability to generate and utilize commonsense knowledge. Although both involve commonsense reasoning in language models, the project and the paper have different research problems and approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0289c15ca813f13491ad1e1fb0036b103f0eb9fb",
+            "paperId": "0289c15ca813f13491ad1e1fb0036b103f0eb9fb",
+            "title": "Large Language Models Are Also Good Prototypical Commonsense Reasoners",
+            "abstract": "Commonsense reasoning is a pivotal skill for large language models, yet it presents persistent challenges in specific tasks requiring this competence. Traditional fine-tuning approaches can be resource-intensive and potentially compromise a model's generalization capacity. Furthermore, state-of-the-art language models like GPT-3.5 and Claude are primarily accessible through API calls, which makes fine-tuning models challenging. To address these challenges, we draw inspiration from the outputs of large models for tailored tasks and semi-automatically developed a set of novel prompts from several perspectives, including task-relevance, supportive evidence generation (e.g. chain-of-thought and knowledge), diverse path decoding to aid the model. Experimental results on ProtoQA dataset demonstrate that with better designed prompts we can achieve the new state-of-art(SOTA) on the ProtoQA leaderboard, improving the Max Answer@1 score by 8%, Max Incorrect@1 score by 4% (breakthrough 50% for the first time) compared to the previous SOTA model and achieved an improvement on StrategyQA and CommonsenseQA2.0 (3% and 1%, respectively). Furthermore, with the generated Chain-of-Thought and knowledge, we can improve the interpretability of the model while also surpassing the previous SOTA models. We hope that our work can provide insight for the NLP community to develop better prompts and explore the potential of large language models for more complex reasoning tasks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work semi-automatically developed a set of novel prompts from several perspectives, including task-relevance, supportive evidence generation, and diverse path decoding to aid the model, and can improve the interpretability of the model while also surpassing the previous SOTA models."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs by grounding each generated sentence in commonsense knowledge. The proposed approach is to prompt the language model to state a relevant commonsense fact before generating each sentence.\n\nThe research problem in the paper is improving the commonsense reasoning ability of large language models on specific tasks. The proposed approach is to design better prompts from several perspectives, such as task-relevance, supportive evidence generation, and diverse path decoding.\n\nWhile both works aim to improve the commonsense reasoning ability of language models, the proposal focuses on factuality during open-ended generation, while the paper focuses on performance on specific commonsense reasoning tasks. The methods are also different, with the proposal using commonsense grounding prompts and the paper using various prompt engineering techniques.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "5041d17836942757be4ce2c66152123742f4227a",
+            "paperId": "5041d17836942757be4ce2c66152123742f4227a",
+            "title": "BOOST: Harnessing Black-Box Control to Boost Commonsense in LMs' Generation",
+            "abstract": "Large language models (LLMs) such as GPT-3 have demonstrated a strong capability to generate coherent and contextually relevant text. However, amidst their successes, a crucial issue persists: their generated outputs still lack commonsense at times. Moreover, fine-tuning the entire LLM towards more commonsensical outputs is computationally expensive if not infeasible. In this paper, we present a computation-efficient framework that steers a frozen Pre-Trained Language Model (PTLM) towards more commonsensical generation (i.e., producing a plausible output that incorporates a list of concepts in a meaningful way). Specifically, we first construct a reference-free evaluator that assigns a sentence with a commonsensical score by grounding the sentence to a dynamic commonsense knowledge base from four different relational aspects. We then use the scorer as the oracle for commonsense knowledge, and extend the controllable generation method called NADO to train an auxiliary head that guides a fixed PTLM to better satisfy the oracle. We test our framework on a series of GPT-2-, Flan-T5-, and Alpaca-based language models (LMs) on two constrained concept-to-sentence benchmarks. Human evaluation results demonstrate that our method consistently leads to the most commonsensical outputs.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A computation-efficient framework that steers a frozen Pre-Trained Language Model (PTLM) towards more commonsensical generation (i.e., producing a plausible output that incorporates a list of concepts in a meaningful way) and human evaluation results demonstrate that this method consistently leads to the most commonsensical outputs."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factual correctness of text generated by large language models by grounding the generation process in commonsense knowledge. The proposed approach is to prompt the model to generate a relevant commonsense fact before each sentence generation.\n\nThe research problem in the paper is also improving the commonsense reasoning of language models in text generation. However, the proposed approach is different. The paper trains an auxiliary model that guides a frozen pre-trained language model to generate more commonsensical outputs, using a commonsense knowledge base and a reference-free evaluator.\n\nIn summary, while both works aim to improve commonsense reasoning in language model generation, the proposal focuses on prompting strategies to ground generation in commonsense facts, while the paper trains an auxiliary model to guide generation towards satisfying a commonsense evaluator. The core approaches are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "paperId": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+            "abstract": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+            "year": 2022,
+            "citationCount": 3517,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs by grounding generation in commonsense knowledge, while the paper focuses on improving the reasoning abilities of language models through chain of thought prompting.\n\nThe approach in the proposal is to prompt the language model to generate relevant commonsense facts before each sentence generation, while the paper's approach is to provide chain of thought demonstrations as exemplars in the prompts.\n\nThe proposal aims to use commonsense grounding to reduce hallucination and improve factuality, while the paper aims to elicit complex reasoning abilities through intermediate reasoning steps.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "paperId": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+            "abstract": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Self-consistency leverages the intuition that a complex reasoning problem typically admits multiple different ways of thinking leading to its unique correct answer. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+            "year": 2022,
+            "citationCount": 1396,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting that first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve the factuality of language model outputs by prompting the model to generate relevant commonsense facts before each sentence generation. The paper focuses on improving the reasoning ability of language models in complex tasks by using a self-consistency decoding strategy to sample multiple reasoning paths and select the most consistent answer.\n\nProject proposal: Improving factuality of language model outputs by commonsense grounding prompting.\nPaper: Improving chain-of-thought reasoning in language models via self-consistency decoding strategy.\n\nWhile both works aim to enhance certain aspects of language model performance, the specific research problems and approaches are different. The project targets factuality and hallucination issues using commonsense grounding, while the paper addresses complex reasoning tasks using a self-consistency decoding method.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3fc3460c4554a28e489a0ea6ef067b79b7d301d9",
+            "paperId": "3fc3460c4554a28e489a0ea6ef067b79b7d301d9",
+            "title": "Active Prompting with Chain-of-Thought for Large Language Models",
+            "abstract": "The increasing scale of large language models (LLMs) brings emergent abilities to various complex tasks requiring reasoning, such as arithmetic and commonsense reasoning. It is known that the effective design of task-specific prompts is critical for LLMs' ability to produce high-quality answers. In particular, an effective approach for complex question-and-answer tasks is example-based prompting with chain-of-thought (CoT) reasoning, which significantly improves the performance of LLMs. However, current CoT methods rely on a fixed set of human-annotated exemplars, which are not necessarily the most effective examples for different tasks. This paper proposes a new method, Active-Prompt, to adapt LLMs to different tasks with task-specific example prompts (annotated with human-designed CoT reasoning). For this purpose, we propose a solution to the key problem of determining which questions are the most important and helpful ones to annotate from a pool of task-specific queries. By borrowing ideas from the related problem of uncertainty-based active learning, we introduce several metrics to characterize the uncertainty so as to select the most uncertain questions for annotation. Experimental results demonstrate the superiority of our proposed method, achieving state-of-the-art on eight complex reasoning tasks. Further analyses of different uncertainty metrics, pool sizes, zero-shot learning, and accuracy-uncertainty relationship demonstrate the effectiveness of our method. Our code will be available at https://github.com/shizhediao/active-prompt.",
+            "year": 2023,
+            "citationCount": 58,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new method to adapt LLMs to different tasks with task-specific example prompts (annotated with human-designed CoT reasoning), and introduces several metrics to characterize the uncertainty so as to select the most uncertain questions for annotation."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs by grounding each generated sentence in commonsense knowledge. The proposed approach is to prompt the language model to state a relevant commonsense fact before each sentence generation.\n\nThe research problem in the paper is adapting language models to different tasks with task-specific example prompts. The proposed approach is to select the most uncertain questions from a pool of task-specific queries for annotation, borrowing ideas from uncertainty-based active learning.\n\nThe two works have different research problems and approaches. The proposal focuses on improving factuality by utilizing commonsense knowledge, while the paper focuses on adapting models to different tasks using task-specific example prompts and active learning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0aaf7a76507248d80f65b6a49e200d2370bcb2c9",
+            "paperId": "0aaf7a76507248d80f65b6a49e200d2370bcb2c9",
+            "title": "Self-prompted Chain-of-Thought on Large Language Models for Open-domain Multi-hop Reasoning",
+            "abstract": "In open-domain question-answering (ODQA), most existing questions require single-hop reasoning on commonsense. To further extend this task, we officially introduce open-domain multi-hop reasoning (ODMR) by answering multi-hop questions with explicit reasoning steps in open-domain setting. Recently, large language models (LLMs) have found significant utility in facilitating ODQA without external corpus. Furthermore, chain-of-thought (CoT) prompting boosts the reasoning capability of LLMs to a greater extent with manual or automated paradigms. However, existing automated methods lack of quality assurance, while manual approaches suffer from limited scalability and poor diversity, hindering the capabilities of LLMs. In this paper, we propose Self-prompted Chain-of-Thought (SP-CoT), an automated framework to mass-produce high quality CoTs of LLMs, by LLMs and for LLMs. SP-CoT introduces an automated generation pipeline of high quality ODMR datasets, an adaptive sampler for in-context CoT selection and self-prompted inference via in-context learning. Extensive experiments on four multi-hop question-answering benchmarks show that our proposed SP-CoT not only significantly surpasses the previous SOTA methods on large-scale (175B) LLMs, but also nearly doubles the zero-shot performance of small-scale (13B) LLMs. Further analysis reveals the remarkable capability of SP-CoT to elicit direct and concise intermediate reasoning steps by recalling $\\sim$50\\% of intermediate answers on MuSiQue-Ans dataset.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-prompted Chain-of-Thought (SP-CoT), an automated framework to mass-produce high quality CoTs of LLMs, by LLMs and forLLMs, introduces an automated generation pipeline of high quality ODMR datasets, an adaptive sampler for in-context CoT selection and self-Prompted inference via in- context learning."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs by grounding each generated sentence in a relevant commonsense fact. The approach is to prompt the language model to state a commonsense fact before each sentence generation.\n\nThe research problem in the paper is answering open-domain multi-hop reasoning questions with explicit reasoning steps. The approach is an automated framework called Self-prompted Chain-of-Thought (SP-CoT) to generate high-quality chains of thought for in-context learning.\n\nThe proposal focuses on improving factuality in general language model generation, while the paper specifically tackles multi-hop question answering. The methods are also different, with the proposal using commonsense grounding prompts and the paper using self-prompted chains of thought.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "eed2a631d672a4130407f8d69a0ad9118a1e6e7d",
+            "paperId": "eed2a631d672a4130407f8d69a0ad9118a1e6e7d",
+            "title": "Enhancing Zero-Shot Chain-of-Thought Reasoning in Large Language Models through Logic",
+            "abstract": "Recent advancements in large language models have showcased their remarkable generalizability across various domains. However, their reasoning abilities still have significant room for improvement, especially when confronted with scenarios requiring multi-step reasoning. Although large language models possess extensive knowledge, their reasoning often fails to effectively utilize this knowledge to establish a coherent thinking paradigm. These models sometimes show hallucinations as their reasoning procedures are unconstrained by logical principles. Aiming at improving the zero-shot chain-of-thought reasoning ability of large language models, we propose LoT (Logical Thoughts), a self-improvement prompting framework that leverages principles rooted in symbolic logic, particularly Reductio ad Absurdum, to systematically verify and rectify the reasoning processes step by step. Experimental evaluations conducted on language tasks in diverse domains, including arithmetic, commonsense, symbolic, causal inference, and social problems, demonstrate the efficacy of enhanced reasoning by logic. The implementation code for LoT can be accessed at: https://github.com/xf-zhao/LoT.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Aiming at improving the zero-shot chain-of-thought reasoning ability of large language models, LoT (Logical Thoughts), a self-improvement prompting framework that leverages principles rooted in symbolic logic, particularly Reductio ad Absurdum to systematically verify and rectify the reasoning processes step by step is proposed."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs by grounding generation in commonsense knowledge, while the paper aims to enhance the multi-step reasoning ability of language models using logical principles. The approach in the proposal is to prompt the model to state relevant commonsense facts before each sentence generation, whereas the paper proposes a self-improvement framework that uses symbolic logic to verify and rectify the model's reasoning process.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "71fd336f1ca337a638dffb236b432c29cdd19f3d",
+            "paperId": "71fd336f1ca337a638dffb236b432c29cdd19f3d",
+            "title": "Neuro-Symbolic Causal Language Planning with Commonsense Prompting",
+            "abstract": "Language planning aims to implement complex high-level goals by decomposition into sequential simpler low-level steps. Such procedural reasoning ability is essential for applications such as household robots and virtual assistants. Although language planning is a basic skill set for humans in daily life, it remains a challenge for large language models (LLMs) that lack deep-level commonsense knowledge in the real world. Previous methods require either manual exemplars or annotated programs to acquire such ability from LLMs. In contrast, this paper proposes Neuro-Symbolic C ausal LA nguage P lanner (CLAP) that elicits procedural knowledge from the LLMs with commonsense-infused prompting. Pre-trained knowledge in LLMs is essentially an unobserved confounder that causes spurious correlations between tasks and action plans. Through the lens of a Structural Causal Model (SCM), we propose an effective strategy in CLAP to construct prompts as a causal intervention toward our SCM. Using graph sampling techniques and symbolic program executors, our strategy formalizes the structured causal prompts from commonsense knowledge bases. CLAP obtains state-of-the-art performance on WikiHow and RobotHow, achieving a relative improvement of 5 . 28% in human evaluations under the counterfactual setting. This indicates the superiority of CLAP in causal language planning semantically and sequentially.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes Neuro-Symbolic CLAP that elicits procedural knowledge from the LLMs with commonsense-infused prompting that indicates the superiority of CLAP in causal language planning semantically and sequentially."
+            },
+            "score": 6
+        },
+        {
+            "id": "7747ecbc26b1688e6cad1a6ce83914efa2a3c04c",
+            "paperId": "7747ecbc26b1688e6cad1a6ce83914efa2a3c04c",
+            "title": "Prompting Contrastive Explanations for Commonsense Reasoning Tasks",
+            "abstract": "Many commonsense reasoning NLP tasks involve choosing between one or more possible answers to a question or prompt based on knowledge that is often implicit. Large pretrained language models (PLMs) can achieve near-human performance on such tasks, while providing little human-interpretable evidence of the underlying reasoning they use. In this work, we show how to use these same models to generate such evidence: inspired by the contrastive nature of human explanations, we use PLMs to complete explanation prompts which contrast alternatives according to the key attribute(s) required to justify the correct answer (for example, peanuts are usually salty while raisins are sweet). Conditioning model decisions on these explanations improves performance on two commonsense reasoning benchmarks, as compared to previous non-contrastive alternatives. These explanations are also judged by humans to be more relevant for solving the task, and facilitate a novel method to evaluate explanation faithfulfness.",
+            "year": 2021,
+            "citationCount": 48,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Inspired by the contrastive nature of human explanations, this work uses PLMs to complete explanation prompts which contrast alternatives according to the key attribute(s) required to justify the correct answer (for example, peanuts are usually salty while raisins are sweet)."
+            },
+            "score": 6
+        },
+        {
+            "id": "f7d4e2994c2d58f218e20d4d8908c19018d499e1",
+            "paperId": "f7d4e2994c2d58f218e20d4d8908c19018d499e1",
+            "title": "uTeBC-NLP at SemEval-2024 Task 9: Can LLMs be Lateral Thinkers?",
+            "abstract": "Inspired by human cognition, Jiang et al.(2023c) create a benchmark for assessing LLMs' lateral thinking-thinking outside the box. Building upon this benchmark, we investigate how different prompting methods enhance LLMs' performance on this task to reveal their inherent power for outside-the-box thinking ability. Through participating in SemEval-2024, task 9, Sentence Puzzle sub-task, we explore prompt engineering methods: chain of thoughts (CoT) and direct prompting, enhancing with informative descriptions, and employing contextualizing prompts using a retrieval augmented generation (RAG) pipeline. Our experiments involve three LLMs including GPT-3.5, GPT-4, and Zephyr-7B-beta. We generate a dataset of thinking paths between riddles and options using GPT-4, validated by humans for quality. Findings indicate that compressed informative prompts enhance performance. Dynamic in-context learning enhances model performance significantly. Furthermore, fine-tuning Zephyr on our dataset enhances performance across other commonsense datasets, underscoring the value of innovative thinking.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates how different prompting methods enhance LLMs' performance on SemEval-2024 to reveal their inherent power for outside-the-box thinking ability and indicates that compressed informative prompts enhance performance."
+            },
+            "score": 6
+        },
+        {
+            "id": "15b208af9bcd1e92a59643572babb37636b43fb2",
+            "paperId": "15b208af9bcd1e92a59643572babb37636b43fb2",
+            "title": "Injecting Commonsense Knowledge into Prompt Learning for Zero-Shot Text Classification",
+            "abstract": "The combination of pre-training and fine-tuning has become a default solution to Natural Language Processing (NLP) tasks. The emergence of prompt learning breaks such routine, especially in the scenarios of low data resources. Insufficient labelled data or even unseen classes are frequent problems in text classification, equipping Pre-trained Language Models (PLMs) with task-specific prompts helps get rid of the dilemma. However, general PLMs are barely provided with commonsense knowledge. In this work, we propose a KG-driven verbalizer that leverages commonsense Knowledge Graph (KG) to map label words with predefined classes. Specifically, we transform the mapping relationships into semantic relevance in the commonsense-injected embedding space. For zero-shot text classification task, experimental results exhibit the effectiveness of our KG-driven verbalizer on a Twitter dataset for natural disasters (i.e. HumAID) compared with other baselines.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a KG-driven verbalizer that leverages commonsense Knowledge Graph (KG) to map label words with predefined classes and transforms the mapping relationships into semantic relevance in the commonsense-injected embedding space."
+            },
+            "score": 6
+        },
+        {
+            "id": "7011bf9aa7e68fabaa1df498da6d2dd8a950f037",
+            "paperId": "7011bf9aa7e68fabaa1df498da6d2dd8a950f037",
+            "title": "Pushing the Limits of ChatGPT on NLP Tasks",
+            "abstract": "Despite the success of ChatGPT, its performances on most NLP tasks are still well below the supervised baselines. In this work, we looked into the causes, and discovered that its subpar performance was caused by the following factors: (1) token limit in the prompt does not allow for the full utilization of the supervised datasets; (2) mismatch between the generation nature of ChatGPT and NLP tasks; (3) intrinsic pitfalls of LLMs models, e.g., hallucination, overly focus on certain keywords, etc. In this work, we propose a collection of general modules to address these issues, in an attempt to push the limits of ChatGPT on NLP tasks. Our proposed modules include (1) a one-input-multiple-prompts strategy that employs multiple prompts for one input to accommodate more demonstrations; (2) using fine-tuned models for better demonstration retrieval; (3) transforming tasks to formats that are more tailored to the generation nature; (4) employing reasoning strategies that are tailored to addressing the task-specific complexity; (5) the self-verification strategy to address the hallucination issue of LLMs; (6) the paraphrase strategy to improve the robustness of model predictions. We conduct experiments on 21 datasets of 10 representative NLP tasks, including question answering, commonsense reasoning, natural language inference, sentiment analysis, named entity recognition, entity-relation extraction, event extraction, dependency parsing, semantic role labeling, and part-of-speech tagging. Using the proposed assemble of techniques, we are able to significantly boost the performance of ChatGPT on the selected NLP tasks, achieving performances comparable to or better than supervised baselines, or even existing SOTA performances.",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using the proposed assemble of techniques, this work is able to significantly boost the performance of ChatGPT on the selected NLP tasks, achieving performances comparable to or better than supervised baselines, or even existing SOTA performances."
+            },
+            "score": 6
+        },
+        {
+            "id": "7198c33fcbd3561f9491c73529eb19a45ac298cc",
+            "paperId": "7198c33fcbd3561f9491c73529eb19a45ac298cc",
+            "title": "Visual Grounding Strategies for Text-Only Natural Language Processing",
+            "abstract": "Visual grounding is a promising path toward more robust and accurate Natural Language Processing (NLP) models. Many multimodal extensions of BERT (e.g., VideoBERT, LXMERT, VL-BERT) allow a joint modeling of texts and images that lead to state-of-the-art results on multimodal tasks such as Visual Question Answering. Here, we leverage multimodal modeling for purely textual tasks (language modeling and classification) with the expectation that the multimodal pretraining provides a grounding that can improve text processing accuracy. We propose possible strategies in this respect. A first type of strategy, referred to as transferred grounding consists in applying multimodal models to text-only tasks using a placeholder to replace image input. The second one, which we call associative grounding, harnesses image retrieval to match texts with related images during both pretraining and text-only downstream tasks. We draw further distinctions into both strategies and then compare them according to their impact on language modeling and commonsense-related downstream tasks, showing improvement over text-only baselines.",
+            "year": 2021,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes two strategies for applying multimodal models to text-only tasks using a placeholder to replace image input and harnesses image retrieval to match texts with related images during both pretraining and text- only downstream tasks."
+            },
+            "score": 6
+        },
+        {
+            "id": "94db2ba208a3ab2e469a5a65d6192f4dd04ef0bf",
+            "paperId": "94db2ba208a3ab2e469a5a65d6192f4dd04ef0bf",
+            "title": "IIE-NLP-NUT at SemEval-2020 Task 4: Guiding PLM with Prompt Template Reconstruction Strategy for ComVE",
+            "abstract": "This paper introduces our systems for the first two subtasks of SemEval Task4: Commonsense Validation and Explanation. To clarify the intention for judgment and inject contrastive information for selection, we propose the input reconstruction strategy with prompt templates. Specifically, we formalize the subtasks into the multiple-choice question answering format and construct the input with the prompt templates, then, the final prediction of question answering is considered as the result of subtasks. Experimental results show that our approaches achieve significant performance compared with the baseline systems. Our approaches secure the third rank on both official test sets of the first two subtasks with an accuracy of 96.4 and an accuracy of 94.3 respectively.",
+            "year": 2020,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces the systems for the first two subtasks of SemEval Task4: Commonsense Validation and Explanation and proposes the input reconstruction strategy with prompt templates, which formalizes the subtasks into the multiple-choice question answering format and construct the input with the prompt templates."
+            },
+            "score": 6
+        },
+        {
+            "id": "490d8006851b1562cfd9ec1f057471f2868289d1",
+            "paperId": "490d8006851b1562cfd9ec1f057471f2868289d1",
+            "title": "Rethinking with Retrieval: Faithful Large Language Model Inference",
+            "abstract": "Despite the success of large language models (LLMs) in various natural language processing (NLP) tasks, the stored knowledge in these models may inevitably be incomplete, out-of-date, or incorrect. This motivates the need to utilize external knowledge to assist LLMs. Unfortunately, current methods for incorporating external knowledge often require additional training or fine-tuning, which can be costly and may not be feasible for LLMs. To address this issue, we propose a novel post-processing approach, rethinking with retrieval (RR), which retrieves relevant external knowledge based on the decomposed reasoning steps obtained from the chain-of-thought (CoT) prompting. This lightweight approach does not require additional training or fine-tuning and is not limited by the input length of LLMs. We evaluate the effectiveness of RR through extensive experiments with GPT-3 on three complex reasoning tasks: commonsense reasoning, temporal reasoning, and tabular reasoning. Our results show that RR can produce more faithful explanations and improve the performance of LLMs.",
+            "year": 2022,
+            "citationCount": 101,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel post-processing approach, rethinking with retrieval (RR), which retrieves relevant external knowledge based on the decomposed reasoning steps obtained from the chain-of-thought (CoT) prompting, which can produce more faithful explanations and improve the performance of LLMs."
+            },
+            "score": 6
+        },
+        {
+            "id": "8e88cd6a52fb51a46ca5d80b75cc22ad959f0321",
+            "paperId": "8e88cd6a52fb51a46ca5d80b75cc22ad959f0321",
+            "title": "Does Vision-and-Language Pretraining Improve Lexical Grounding?",
+            "abstract": "Linguistic representations derived from text alone have been criticized for their lack of grounding, i.e., connecting words to their meanings in the physical world. Vision-and-Language (VL) models, trained jointly on text and image or video data, have been offered as a response to such criticisms. However, while VL pretraining has shown success on multimodal tasks such as visual question answering, it is not yet known how the internal linguistic representations themselves compare to their text-only counterparts. This paper compares the semantic representations learned via VL vs. text-only pretraining for two recent VL models using a suite of analyses (clustering, probing, and performance on a commonsense question answering task) in a language-only setting. We find that the multimodal models fail to significantly outperform the text-only variants, suggesting that future work is required if multimodal pretraining is to be pursued as a means of improving NLP in general.",
+            "year": 2021,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper compares the semantic representations learned via VL vs. text-only pretraining for two recent VL models using a suite of analyses (clustering, probing, and performance on a commonsense question answering task) in a language-only setting and finds that the multimodal models fail to significantly outperform the text- only variants."
+            },
+            "score": 5
+        },
+        {
+            "id": "06396c7cd5d223a1776abf8811359ec7bc05d420",
+            "paperId": "06396c7cd5d223a1776abf8811359ec7bc05d420",
+            "title": "Knowledge-Augmented Methods for Natural Language Processing",
+            "abstract": "Knowledge in natural language processing (NLP) has been a rising trend especially after the advent of large scale pre-trained models. NLP models with attention to knowledge can i) access unlimited amount of external information; ii) delegate the task of storing knowledge from its parameter space to knowledge sources; iii) obtain up-to-date information; iv) make prediction results more explainable via selected knowledge. In this tutorial, we will introduce the key steps in integrating knowledge into NLP, including knowledge grounding from text, knowledge representation and fusing. In addition, we will introduce recent state-of-the-art applications in fusing knowledge into language understanding, language generation and commonsense reasoning.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This tutorial introduces the key steps in integrating knowledge into NLP, including knowledge grounding from text, knowledge representation and fusing, and introduces recent state-of-the-art applications in fusing knowledge into language understanding, language generation and commonsense reasoning."
+            },
+            "score": 5
+        },
+        {
+            "id": "2797f8c0398af676612698f2ccc1723a8692f271",
+            "paperId": "2797f8c0398af676612698f2ccc1723a8692f271",
+            "title": "Like Hiking? You Probably Enjoy Nature: Persona-grounded Dialog with Commonsense Expansions",
+            "abstract": "Existing persona-grounded dialog models often fail to capture simple implications of given persona descriptions, something which humans are able to do seamlessly. For example, state-of-the-art models cannot infer that interest in hiking might imply love for nature or longing for a break. In this paper, we propose to expand available persona sentences using existing commonsense knowledge bases and paraphrasing resources to imbue dialog models with access to an expanded and richer set of persona descriptions. Additionally, we introduce fine-grained grounding on personas by encouraging the model to make a discrete choice among persona sentences while synthesizing a dialog response. Since such a choice is not observed in the data, we model it using a discrete latent random variable and use variational learning to sample from hundreds of persona expansions. Our model outperforms competitive baselines on the PersonaChat dataset in terms of dialog quality and diversity while achieving persona-consistent and controllable dialog generation.",
+            "year": 2020,
+            "citationCount": 76,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes to expand available persona sentences using existing commonsense knowledge bases and paraphrasing resources to imbue dialog models with access to an expanded and richer set of persona descriptions, and introduces fine-grained grounding on personas by encouraging the model to make a discrete choice among persona sentences while synthesizing a dialog response."
+            },
+            "score": 5
+        },
+        {
+            "id": "a5869e97109e79f216746f55f222c5cd649bef32",
+            "paperId": "a5869e97109e79f216746f55f222c5cd649bef32",
+            "title": "ExBERT: An External Knowledge Enhanced BERT for Natural Language Inference",
+            "abstract": null,
+            "year": 2021,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new model for NLI called External Knowledge Enhanced BERT (ExBERT) is introduced, to enrich the contextual representation with real-world commonsense knowledge from external knowledge sources and enhance BERT's language understanding and reasoning capabilities."
+            },
+            "score": 5
+        },
+        {
+            "id": "4648815cae1bb62a35bf2d116f4dd8547cfb9ab4",
+            "paperId": "4648815cae1bb62a35bf2d116f4dd8547cfb9ab4",
+            "title": "GrounDial: Human-norm Grounded Safe Dialog Response Generation",
+            "abstract": "Current conversational AI systems based on large language models (LLMs) are known to generate unsafe responses agreeing to offensive user input or including toxic content. Previous research aimed to alleviate the toxicity by fine-tuning LLM with manually annotated safe dialogue histories. However, the dependency on additional tuning requires substantial costs. To remove the dependency, we propose GrounDial, where response safety is achieved by grounding responses to commonsense social rules without requiring fine-tuning. A hybrid approach of in-context learning and human-norm-guided decoding of GrounDial enables the response to be quantitatively and qualitatively safer even without additional data or tuning.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A hybrid approach of in-context learning and human-norm-guided decoding of GrounDial enables the response to be quantitatively and qualitatively safer even without additional data or tuning."
+            },
+            "score": 5
+        },
+        {
+            "id": "cd2e04598909158494e556823d9de8baa692cee2",
+            "paperId": "cd2e04598909158494e556823d9de8baa692cee2",
+            "title": "Towards Mitigating Hallucination in Large Language Models via Self-Reflection",
+            "abstract": "Large language models (LLMs) have shown promise for generative and knowledge-intensive tasks including question-answering (QA) tasks. However, the practical deployment still faces challenges, notably the issue of\"hallucination\", where models generate plausible-sounding but unfaithful or nonsensical information. This issue becomes particularly critical in the medical domain due to the uncommon professional concepts and potential social risks involved. This paper analyses the phenomenon of hallucination in medical generative QA systems using widely adopted LLMs and datasets. Our investigation centers on the identification and comprehension of common problematic answers, with a specific emphasis on hallucination. To tackle this challenge, we present an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation. Through this feedback process, our approach steadily enhances the factuality, consistency, and entailment of the generated answers. Consequently, we harness the interactivity and multitasking ability of LLMs and produce progressively more precise and accurate answers. Experimental results on both automatic and human evaluation demonstrate the superiority of our approach in hallucination reduction compared to baselines.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper analyses the phenomenon of hallucination in medical generative QA systems using widely adopted LLMs and datasets and presents an interactive self-reflection methodology that incorporates knowledge acquisition and answer generation that steadily enhances the factuality, consistency, and entailment of the generated answers."
+            },
+            "score": 5
+        },
+        {
+            "id": "e670b3a7e4e8af79b8cd69a0b303d89917750765",
+            "paperId": "e670b3a7e4e8af79b8cd69a0b303d89917750765",
+            "title": "How Interpretable are Reasoning Explanations from Prompting Large Language Models?",
+            "abstract": "Prompt Engineering has garnered significant attention for enhancing the performance of large language models across a multitude of tasks. Techniques such as the Chain-of-Thought not only bolster task performance but also delineate a clear trajectory of reasoning steps, offering a tangible form of explanation for the audience. Prior works on interpretability assess the reasoning chains yielded by Chain-of-Thought solely along a singular axis, namely faithfulness. We present a comprehensive and multifaceted evaluation of interpretability, examining not only faithfulness but also robustness and utility across multiple commonsense reasoning benchmarks. Likewise, our investigation is not confined to a single prompting technique; it expansively covers a multitude of prevalent prompting techniques employed in large language models, thereby ensuring a wide-ranging and exhaustive evaluation. In addition, we introduce a simple interpretability alignment technique, termed Self-Entailment-Alignment Chain-of-thought, that yields more than 70\\% improvements across multiple dimensions of interpretability. Code is available at https://github.com/SenticNet/CoT_interpretability",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A simple interpretability alignment technique is introduced, termed Self-Entailment-Alignment Chain-of-thought, that yields more than 70\\% improvements across multiple dimensions of interpretability."
+            },
+            "score": 5
+        },
+        {
+            "id": "99da2f941c0a606278463f1e5e60a2bdbaf8eb99",
+            "paperId": "99da2f941c0a606278463f1e5e60a2bdbaf8eb99",
+            "title": "Enabling Synergistic Knowledge Sharing and Reasoning in Large Language Models with Collaborative Multi-Agents",
+            "abstract": "Despite the significant advancements in the field of Natural Language Processing (NLP), Large Language Models (LLMs) have shown limitations in performing complex tasks that require arithmetic, commonsense, and symbolic reasoning. Reasoning frameworks like ReAct, Chain-of-thought (CoT), Tree-of-thoughts (ToT), etc. have shown success but with limitations in solving long-form complex tasks. To address this, we pro-pose a knowledge-sharing and collaborative multi-agent assisted framework on LLMs that leverages the capabilities of existing reasoning frameworks and the collaborative skills of multi-agent systems (MASs). The objectives of the proposed framework are to overcome the limitations of LLMs, enhance their reasoning capabilities, and improve their performance in complex tasks. It involves generating natural language rationales and in-context few-shot learning via prompting, and integrates the reasoning techniques with efficient knowledge-sharing and communication-driven agent networks. The potential benefits of the proposed framework include saving time and money, improved efficiency for computationally intensive reasoning, and the ability to incor-porate multiple collaboration strategies for dynamically changing environments.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A knowledge-sharing and collaborative multi-agent assisted framework that leverages the capabilities of existing reasoning frameworks and the collaborative skills of multi-agent systems (MASs) to overcome the limitations of LLMs, enhance their reasoning capabilities, and improve their performance in complex tasks."
+            },
+            "score": 5
+        },
+        {
+            "id": "62f0db3a5ad5c795ec18fc7a6e7b01836809df57",
+            "paperId": "62f0db3a5ad5c795ec18fc7a6e7b01836809df57",
+            "title": "Language Models are Multilingual Chain-of-Thought Reasoners",
+            "abstract": "We evaluate the reasoning abilities of large language models in multilingual settings. We introduce the Multilingual Grade School Math (MGSM) benchmark, by manually translating 250 grade-school math problems from the GSM8K dataset (Cobbe et al., 2021) into ten typologically diverse languages. We find that the ability to solve MGSM problems via chain-of-thought prompting emerges with increasing model scale, and that models have strikingly strong multilingual reasoning abilities, even in underrepresented languages such as Bengali and Swahili. Finally, we show that the multilingual reasoning abilities of language models extend to other tasks such as commonsense reasoning and word-in-context semantic judgment. The MGSM benchmark is publicly available at https://github.com/google-research/url-nlp.",
+            "year": 2022,
+            "citationCount": 152,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the ability to solve MGSM problems via chain-of-thought prompting emerges with increasing model scale, and that models have strikingly strong multilingual reasoning abilities, even in underrepresented languages such as Bengali and Swahili."
+            },
+            "score": 5
+        },
+        {
+            "id": "ad27059af0c92da5deb854874f7c9e89214b992a",
+            "paperId": "ad27059af0c92da5deb854874f7c9e89214b992a",
+            "title": "PHALM: Building a Knowledge Graph from Scratch by Prompting Humans and a Language Model",
+            "abstract": "Despite the remarkable progress in natural language understanding with pretrained Transformers, neural language models often do not handle commonsense knowledge well. Toward commonsense-aware models, there have been attempts to obtain knowledge, ranging from automatic acquisition to crowdsourcing. However, it is difficult to obtain a high-quality knowledge base at a low cost, especially from scratch. In this paper, we propose PHALM, a method of building a knowledge graph from scratch, by prompting both crowdworkers and a large language model (LLM). We used this method to build a Japanese event knowledge graph and trained Japanese commonsense generation models. Experimental results revealed the acceptability of the built graph and inferences generated by the trained models. We also report the difference in prompting humans and an LLM. Our code, data, and models are available at github.com/nlp-waseda/comet-atomic-ja.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes PHALM, a method of building a knowledge graph from scratch, by prompting both crowdworkers and a large language model (LLM), and used this method to build a Japanese event knowledge graph and trained Japanese commonsense generation models."
+            },
+            "score": 5
+        },
+        {
+            "id": "8e0e0c41b50755e071fe975aad9e4eb60a462d37",
+            "paperId": "8e0e0c41b50755e071fe975aad9e4eb60a462d37",
+            "title": "Commonsense and Named Entity Aware Knowledge Grounded Dialogue Generation",
+            "abstract": "Grounding dialogue on external knowledge and interpreting linguistic patterns in dialogue history context, such as ellipsis, anaphora, and co-reference is critical for dialogue comprehension and generation. In this paper, we present a novel open-domain dialogue generation model which effectively utilizes the large-scale commonsense and named entity based knowledge in addition to the unstructured topic-specific knowledge associated with each utterance. We enhance the commonsense knowledge with named entity-aware structures using co-references. Our proposed model utilizes a multi-hop attention layer to preserve the most accurate and critical parts of the dialogue history and the associated knowledge. In addition, we employ a Commonsense and Named Entity Enhanced Attention Module, which starts with the extracted triples from various sources and gradually finds the relevant supporting set of triples using multi-hop attention with the query vector obtained from the interactive dialogue-knowledge module. Empirical results on two benchmark datasets demonstrate that our model significantly outperforms the state-of-the-art methods in terms of both automatic evaluation metrics and human judgment. Our code is publicly available at https://github.com/deekshaVarshney/CNTF; https://www.iitp.ac.in/-ai-nlp-ml/resources/codes/CNTF.zip.",
+            "year": 2022,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel open-domain dialogue generation model which effectively utilizes the large-scale commonsense and named entity based knowledge in addition to the unstructured topic-specific knowledge associated with each utterance, and enhances the commonsense knowledge with named entity-aware structures using co-references."
+            },
+            "score": 5
+        },
+        {
+            "id": "50ce6a9af5375b8347b4bc8704863a353e2d6ebc",
+            "paperId": "50ce6a9af5375b8347b4bc8704863a353e2d6ebc",
+            "title": "COMMONSENSE MORAL MACHINES FOR ETHICAL JUDGMENTS ON EVERYDAY SITUATIONS",
+            "abstract": "Failing to account for moral norms could notably hinder AI systems\u2019 ability to interact with people. AI systems empirically require social, cultural, and ethical norms to make moral judgments. However, open-world situations with different groundings may shift moral implications significantly. For example, while \u201cdriving my friend to the airport\u201d is \u201cgood\u201d, \u201cdriving my friend to the airport with a car I stole\u201d is \u201cnot okay.\u201d In natural language processing, machine moral reasoning is still in a preliminary stage, illuminating the importance of research on steering machines to making ethical judgments. Inspired by descriptive ethics, a line of research on morality focusing on people\u2019s moral judgments relevant to everyday situations, we conduct the first major attempt to computationally explore the vast space of moral implications in real-world settings. We introduce COMMONSENSE NORM BANK, a semiautomatically constructed dataset from several sources (e.g., SOCIAL CHEMISTRY) with 1.7M instances of descriptive ethics, covering a wide spectrum of everyday situations in contextualized, narrative, and sociallyor demographicallybiased settings. We present Delphi, a unified model of descriptive ethics empowered by diverse data of people\u2019s moral judgment from COMMONSENSE NORM BANK. Delphi is robust to generate categorical and/or open-text moral judgments (e.g., \u201cit\u2019s dangerous\u201d) for complex real-life situations (e.g., \u201cdriving my friend to the airport early in the morning when I was drunk last night\u201d). Delphi demonstrates highly promising empirical results, with 92.1% accuracy, which outperforms the out-ofthe-box GPT-3 model with extensive prompting by a significant margin (83.9%) . We also provide careful study of Delphi\u2019s limitations, particularly with respect to undesirable biases against underrepresented population, opening doors to further investigation in future research in computational moral reasoning. Closing the gap between machines and people\u2019s moral reasoning is a prerequisite for trustworthy open-world AI deployments. Moral judgment is never simplistic as there can be clash of different ethical/cultural values at play. Thus, developing high-quality corpus of people\u2019s ethical judgment over diverse scenarios is needed to teach machines to make moral judgment. With optimistic promises demonstrated by Delphi, we inspire significant future research in this next frontier of AI, to facilitate reliable, socially aware, and ethically-informed future AI practices.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The first major attempt to computationally explore the vast space of moral implications in real-world settings is conducted, with Delphi, a unified model of descriptive ethics empowered by diverse data of people\u2019s moral judgment from COMMONSENSE NORM BANK."
+            },
+            "score": 5
+        },
+        {
+            "id": "7637ed79d30d0139901175ae4abedd822c217ab4",
+            "paperId": "7637ed79d30d0139901175ae4abedd822c217ab4",
+            "title": "3D-LLM: Injecting the 3D World into Large Language Models",
+            "abstract": "Large language models (LLMs) and Vision-Language Models (VLMs) have been proven to excel at multiple tasks, such as commonsense reasoning. Powerful as these models can be, they are not grounded in the 3D physical world, which involves richer concepts such as spatial relationships, affordances, physics, layout, and so on. In this work, we propose to inject the 3D world into large language models and introduce a whole new family of 3D-LLMs. Speci\ufb01cally, 3D-LLMs can take 3D point clouds and their features as input and perform a diverse set of 3D-related tasks, including captioning, dense captioning, 3D question answering, task decomposition, 3D grounding, 3D-assisted dialog, navigation, and so on. Using three types of prompting mechanisms that we design, we are able to collect over 300k 3D-language data covering these tasks. To ef\ufb01ciently train 3D-LLMs, we \ufb01rst utilize a 3D feature extractor that obtains 3D features from rendered multi-view images. Then, we use 2D VLMs as our backbones to train our 3D-LLMs. By introducing a 3D localization mechanism, 3D-LLMs can better capture 3D spatial information. Experiments on ScanQA show that our model outperforms state-of-the-art baselines by a large margin ( e.g. , the BLEU-1 score surpasses state-of-the-art score by 9%). Furthermore, experiments on our held-in datasets for 3D captioning, task composition, and 3D-assisted dialogue show that our model outperforms 2D VLMs. Qualitative examples also show that our model could perform more tasks beyond the scope of existing LLMs and VLMs. Project Page: : https:",
+            "year": 2023,
+            "citationCount": 70,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes to inject the 3D world into large language models and introduce a whole new family of 3D-LLMs, and introduces a 3D localization mechanism, which can better capture 3D spatial information."
+            },
+            "score": 4
+        },
+        {
+            "id": "c0dde1be7839afdcf8b89674c4902fc3012f883d",
+            "paperId": "c0dde1be7839afdcf8b89674c4902fc3012f883d",
+            "title": "On the Effects of Video Grounding on Language Models",
+            "abstract": "Transformer-based models trained on text and vision modalities try to improve the performance on multimodal downstream tasks or tackle the problem Transformer-based models trained on text and vision modalities try to improve the performance on multimodal downstream tasks or tackle the problem of lack of grounding, e.g., addressing issues like models\u2019 insufficient commonsense knowledge. While it is more straightforward to evaluate the effects of such models on multimodal tasks, such as visual question answering or image captioning, it is not as well-understood how these tasks affect the model itself, and its internal linguistic representations. In this work, we experiment with language models grounded in videos and measure the models\u2019 performance on predicting masked words chosen based on their imageability. The results show that the smaller model benefits from video grounding in predicting highly imageable words, while the results for the larger model seem harder to interpret.of lack of grounding, e.g., addressing issues like models\u2019 insufficient commonsense knowledge. While it is more straightforward to evaluate the effects of such models on multimodal tasks, such as visual question answering or image captioning, it is not as well-understood how these tasks affect the model itself, and its internal linguistic representations. In this work, we experiment with language models grounded in videos and measure the models\u2019 performance on predicting masked words chosen based on their imageability. The results show that the smaller model benefits from video grounding in predicting highly imageable words, while the results for the larger model seem harder to interpret.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work experiments with language models grounded in videos and measures the models\u2019 performance on predicting masked words chosen based on their imageability, showing that the smaller model benefits from video grounding in predicting highly imageable words, while the results for the larger model seem harder to interpret."
+            },
+            "score": 4
+        },
+        {
+            "id": "c1aa4b54b9f6a8d4fe6169257c208998d3d7f54c",
+            "paperId": "c1aa4b54b9f6a8d4fe6169257c208998d3d7f54c",
+            "title": "Examining Consistency of Visual Commonsense Reasoning based on Person Grounding",
+            "abstract": "Given an image depicting multiple individuals, humans are capable of inferring each individual\u2019s emotions, intentions, and social norms based on commonsense understanding. However, a machine\u2019s ability of commonsense reasoning about distinct individuals in images remains underexplored. In this study, we examine the consistency of visual commonsense reasoning based on person grounding. We introduce a novel test dataset called V isual C ommonsense R easoning-C ontrast S ets (VCR-CS) to evaluate whether models can reason about individual people in an image by changing the person tags in the questions and answers. We benchmark various vision-language models on VCR-CS and observe that they fail in consistent common-sense reasoning about different people in one image, showing a performance decrease of up to 31.5%. To mitigate such failures, we propose a multi-task learning framework called P erson-centric ground I ng e N hanced T uning (PINT). Our framework enhances a model\u2019s ability to perform person-grounded commonsense reasoning by leveraging two novel person-centric pretraining tasks: Image Person-based Text Matching and Person-Masked Language Modeling. The experimental results revealed the effectiveness of PINT by showing the lowest performance degradation on VCR-CS and the improvements in consistency and sensitivity metrics. Our dataset and code are publicly available 1 .",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A multi-task learning framework enhances a model\u2019s ability to perform person-grounded commonsense reasoning by leveraging two novel person-centric pretraining tasks: Image Person-based Text Matching and Person-Masked Language Modeling."
+            },
+            "score": 4
+        },
+        {
+            "id": "842317cafa296629f09f4afc2725405ae239e871",
+            "paperId": "842317cafa296629f09f4afc2725405ae239e871",
+            "title": "Find Someone Who: Visual Commonsense Understanding in Human-Centric Grounding",
+            "abstract": "From a visual scene containing multiple people, human is able to distinguish each individual given the context descriptions about what happened before, their mental/physical states or intentions, etc. Above ability heavily relies on human-centric commonsense knowledge and reasoning. For example, if asked to identify the\"person who needs healing\"in an image, we need to first know that they usually have injuries or suffering expressions, then find the corresponding visual clues before finally grounding the person. We present a new commonsense task, Human-centric Commonsense Grounding, that tests the models' ability to ground individuals given the context descriptions about what happened before, and their mental/physical states or intentions. We further create a benchmark, HumanCog, a dataset with 130k grounded commonsensical descriptions annotated on 67k images, covering diverse types of commonsense and visual scenes. We set up a context-object-aware method as a strong baseline that outperforms previous pre-trained and non-pretrained models. Further analysis demonstrates that rich visual commonsense and powerful integration of multi-modal commonsense are essential, which sheds light on future works. Data and code will be available https://github.com/Hxyou/HumanCog.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new commonsense task, Human-centric Commonsense Grounding, that tests the models' ability to ground individuals given the context descriptions about what happened before, and their mental/physical states or intentions and demonstrates that rich visual commonsense and powerful integration of multi-modal commonsense are essential."
+            },
+            "score": 4
+        },
+        {
+            "id": "6710e66648fe6846397ccecf72478effb44d7bc1",
+            "paperId": "6710e66648fe6846397ccecf72478effb44d7bc1",
+            "title": "ESC: Exploration with Soft Commonsense Constraints for Zero-shot Object Navigation",
+            "abstract": "The ability to accurately locate and navigate to a specific object is a crucial capability for embodied agents that operate in the real world and interact with objects to complete tasks. Such object navigation tasks usually require large-scale training in visual environments with labeled objects, which generalizes poorly to novel objects in unknown environments. In this work, we present a novel zero-shot object navigation method, Exploration with Soft Commonsense constraints (ESC), that transfers commonsense knowledge in pre-trained models to open-world object navigation without any navigation experience nor any other training on the visual environments. First, ESC leverages a pre-trained vision and language model for open-world prompt-based grounding and a pre-trained commonsense language model for room and object reasoning. Then ESC converts commonsense knowledge into navigation actions by modeling it as soft logic predicates for efficient exploration. Extensive experiments on MP3D, HM3D, and RoboTHOR benchmarks show that our ESC method improves significantly over baselines, and achieves new state-of-the-art results for zero-shot object navigation (e.g., 288% relative Success Rate improvement than CoW on MP3D).",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel zero-shot object navigation method, Exploration with Soft Commonsense constraints (ESC), that transfers commonsense knowledge in pre-trained models to open-world object navigation without any navigation experience nor any other training on the visual environments is presented."
+            },
+            "score": 4
+        },
+        {
+            "id": "c03313fe8a59a2b8a9871b5226fc971fccbc2ba9",
+            "paperId": "c03313fe8a59a2b8a9871b5226fc971fccbc2ba9",
+            "title": "Toward Grounded Commonsense Reasoning",
+            "abstract": "Consider a robot tasked with tidying a desk with a meticulously constructed Lego sports car. A human may recognize that it is not appropriate to disassemble the sports car and put it away as part of the\"tidying.\"How can a robot reach that conclusion? Although large language models (LLMs) have recently been used to enable commonsense reasoning, grounding this reasoning in the real world has been challenging. To reason in the real world, robots must go beyond passively querying LLMs and actively gather information from the environment that is required to make the right decision. For instance, after detecting that there is an occluded car, the robot may need to actively perceive the car to know whether it is an advanced model car made out of Legos or a toy car built by a toddler. We propose an approach that leverages an LLM and vision language model (VLM) to help a robot actively perceive its environment to perform grounded commonsense reasoning. To evaluate our framework at scale, we release the MessySurfaces dataset which contains images of 70 real-world surfaces that need to be cleaned. We additionally illustrate our approach with a robot on 2 carefully designed surfaces. We find an average 12.9% improvement on the MessySurfaces benchmark and an average 15% improvement on the robot experiments over baselines that do not use active perception. The dataset, code, and videos of our approach can be found at https://minaek.github.io/grounded_commonsense_reasoning.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an approach that leverages an LLM and vision language model (VLM) to help a robot actively perceive its environment to perform grounded commonsense reasoning and finds an average 12.9% improvement on the MessySurfaces benchmark and an average 15% improvement on the robot experiments over baselines that do not use active perception."
+            },
+            "score": 4
+        },
+        {
+            "id": "65a9c7b0800c86a196bc14e7621ff895cc6ab287",
+            "paperId": "65a9c7b0800c86a196bc14e7621ff895cc6ab287",
+            "title": "ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks",
+            "abstract": "We present ViLBERT (short for Vision-and-Language BERT), a model for learning task-agnostic joint representations of image content and natural language. We extend the popular BERT architecture to a multi-modal two-stream model, pro-cessing both visual and textual inputs in separate streams that interact through co-attentional transformer layers. We pretrain our model through two proxy tasks on the large, automatically collected Conceptual Captions dataset and then transfer it to multiple established vision-and-language tasks -- visual question answering, visual commonsense reasoning, referring expressions, and caption-based image retrieval -- by making only minor additions to the base architecture. We observe significant improvements across tasks compared to existing task-specific models -- achieving state-of-the-art on all four tasks. Our work represents a shift away from learning groundings between vision and language only as part of task training and towards treating visual grounding as a pretrainable and transferable capability.",
+            "year": 2019,
+            "citationCount": 2900,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "ViLBERT (short for Vision-and-Language BERT), a model for learning task-agnostic joint representations of image content and natural language, is presented, extending the popular BERT architecture to a multi-modal two-stream model, pro-cessing both visual and textual inputs in separate streams that interact through co-attentional transformer layers."
+            },
+            "score": 4
+        },
+        {
+            "id": "498decc50ccea9293f63a98c30d7c3439be074b7",
+            "paperId": "498decc50ccea9293f63a98c30d7c3439be074b7",
+            "title": "Look Before You Leap: Unveiling the Power of GPT-4V in Robotic Vision-Language Planning",
+            "abstract": "In this study, we are interested in imbuing robots with the capability of physically-grounded task planning. Recent advancements have shown that large language models (LLMs) possess extensive knowledge useful in robotic tasks, especially in reasoning and planning. However, LLMs are constrained by their lack of world grounding and dependence on external affordance models to perceive environmental information, which cannot jointly reason with LLMs. We argue that a task planner should be an inherently grounded, unified multimodal system. To this end, we introduce Robotic Vision-Language Planning (ViLa), a novel approach for long-horizon robotic planning that leverages vision-language models (VLMs) to generate a sequence of actionable steps. ViLa directly integrates perceptual data into its reasoning and planning process, enabling a profound understanding of commonsense knowledge in the visual world, including spatial layouts and object attributes. It also supports flexible multimodal goal specification and naturally incorporates visual feedback. Our extensive evaluation, conducted in both real-robot and simulated environments, demonstrates ViLa's superiority over existing LLM-based planners, highlighting its effectiveness in a wide array of open-world manipulation tasks.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces Robotic Vision-Language Planning (ViLa), a novel approach for long-horizon robotic planning that leverages vision-language models (VLMs) to generate a sequence of actionable steps that demonstrates ViLa's superiority over existing LLM-based planners, highlighting its effectiveness in a wide array of open-world manipulation tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "9dd8d84874b691c0c44fa32873628b6f729520d9",
+            "paperId": "9dd8d84874b691c0c44fa32873628b6f729520d9",
+            "title": "GRILL: Grounded Vision-language Pre-training via Aligning Text and Image Regions",
+            "abstract": "Generalization to unseen tasks is an important ability for few-shot learners to achieve better zero-/few-shot performance on diverse tasks. However, such generalization to vision-language tasks including grounding and generation tasks has been under-explored; existing few-shot VL models struggle to handle tasks that involve object grounding and multiple images such as visual commonsense reasoning or NLVR2. In this paper, we introduce GRILL, GRounded vIsion Language aLigning, a novel VL model that can be generalized to diverse tasks including visual question answering, captioning, and grounding tasks with no or very few training instances. Specifically, GRILL learns object grounding and localization by exploiting object-text alignments, which enables it to transfer to grounding tasks in a zero-/few-shot fashion. We evaluate our model on various zero-/few-shot VL tasks and show that it consistently surpasses the state-of-the-art few-shot methods.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "GRILL, GRounded vIsion Language aLigning is introduced, a novel VL model that can be generalized to diverse tasks including visual question answering, captioning, and grounding tasks with no or very few training instances and consistently surpasses the state-of-the-art few-shot methods."
+            },
+            "score": 4
+        },
+        {
+            "id": "32524aa3ae8522542753ed7e6f4cca3970e4acab",
+            "paperId": "32524aa3ae8522542753ed7e6f4cca3970e4acab",
+            "title": "Can an Embodied Agent Find Your \u201cCat-shaped Mug\u201d? LLM-Based Zero-Shot Object Navigation",
+            "abstract": "We present language-guided exploration (LGX), a novel algorithm for Language-Driven Zero-Shot Object Goal Navigation (L-ZSON), where an embodied agent navigates to an uniquely described target object in a previously unseen environment. Our approach makes use of large language models (LLMs) for this task by leveraging the LLM's commonsense-reasoning capabilities for making sequential navigational decisions. Simultaneously, we perform generalized target object detection using a pre-trained Vision-Language grounding model. We achieve state-of-the-art zero-shot object navigation results on RoboTHOR with a success rate (SR) improvement of over 27% over the current baseline of the OWL-ViT CLIP on Wheels (OWL CoW). Furthermore, we study the usage of LLMs for robot navigation and present an analysis of various prompting strategies affecting the model output. Finally, we showcase the benefits of our approach via real-world experiments that indicate the superior performance of LGX in detecting and navigating to visually unique objects.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LGX is presented, a novel algorithm for Language-Driven Zero-Shot Object Goal Navigation (L-ZSON), where an embodied agent navigates to an uniquely described target object in a previously unseen environment by leveraging the LLM's commonsense-reasoning capabilities for making sequential navigational decisions."
+            },
+            "score": 4
+        },
+        {
+            "id": "1b387e3fbec0447c8bf2dcee21f6db59cdddf698",
+            "paperId": "1b387e3fbec0447c8bf2dcee21f6db59cdddf698",
+            "title": "The Dawn After the Dark: An Empirical Study on Factuality Hallucination in Large Language Models",
+            "abstract": "In the era of large language models (LLMs), hallucination (i.e., the tendency to generate factually incorrect content) poses great challenge to trustworthy and reliable deployment of LLMs in real-world applications. To tackle the LLM hallucination, three key questions should be well studied: how to detect hallucinations (detection), why do LLMs hallucinate (source), and what can be done to mitigate them (mitigation). To address these challenges, this work presents a systematic empirical study on LLM hallucination, focused on the the three aspects of hallucination detection, source and mitigation. Specially, we construct a new hallucination benchmark HaluEval 2.0, and designs a simple yet effective detection method for LLM hallucination. Furthermore, we zoom into the different training or utilization stages of LLMs and extensively analyze the potential factors that lead to the LLM hallucination. Finally, we implement and examine a series of widely used techniques to mitigate the hallucinations in LLMs. Our work has led to several important findings to understand the hallucination origin and mitigate the hallucinations in LLMs. Our code and data can be accessed at https://github.com/RUCAIBox/HaluEval-2.0.",
+            "year": 2024,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work constructs a new hallucination benchmark HaluEval 2.0, designs a simple yet effective detection method for LLM hallucination, and implements and examines a series of widely used techniques to mitigate the hallucinations in LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "be177300487b6d0f25e6cade9a31900454b13281",
+            "paperId": "be177300487b6d0f25e6cade9a31900454b13281",
+            "title": "FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation",
+            "abstract": "Most large language models (LLMs) are trained once and never updated; thus, they lack the ability to dynamically adapt to our ever-changing world. In this work, we perform a detailed study of the factuality of LLM-generated text in the context of answering questions that test current world knowledge. Specifically, we introduce FreshQA, a novel dynamic QA benchmark encompassing a diverse range of question and answer types, including questions that require fast-changing world knowledge as well as questions with false premises that need to be debunked. We benchmark a diverse array of both closed and open-source LLMs under a two-mode evaluation procedure that allows us to measure both correctness and hallucination. Through human evaluations involving more than 50K judgments, we shed light on limitations of these models and demonstrate significant room for improvement: for instance, all models (regardless of model size) struggle on questions that involve fast-changing knowledge and false premises. Motivated by these results, we present FreshPrompt, a simple few-shot prompting method that substantially boosts the performance of an LLM on FreshQA by incorporating relevant and up-to-date information retrieved from a search engine into the prompt. Our experiments show that FreshPrompt outperforms both competing search engine-augmented prompting methods such as Self-Ask (Press et al., 2022) as well as commercial systems such as Perplexity.AI. Further analysis of FreshPrompt reveals that both the number of retrieved evidences and their order play a key role in influencing the correctness of LLM-generated answers. Additionally, instructing the LLM to generate concise and direct answers helps reduce hallucination compared to encouraging more verbose answers. To facilitate future work, we release FreshQA at github.com/freshllms/freshqa and commit to updating it at regular intervals.",
+            "year": 2023,
+            "citationCount": 51,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A detailed study of the factuality of LLM-generated text in the context of answering questions that test current world knowledge and introduces FreshQA, a novel dynamic QA benchmark encompassing a diverse range of question and answer types, including questions that require fast-changing world knowledge as well as questions with false premises that need to be debunked."
+            },
+            "score": 4
+        },
+        {
+            "id": "028d75496e51943f52c7b2177344a3c089c18058",
+            "paperId": "028d75496e51943f52c7b2177344a3c089c18058",
+            "title": "Fine-grained Hallucination Detection and Editing for Language Models",
+            "abstract": "Large language models (LMs) are prone to generate factual errors, which are often called hallucinations. In this paper, we introduce a comprehensive taxonomy of hallucinations and argue that hallucinations manifest in diverse forms, each requiring varying degrees of careful assessments to verify factuality. We propose a novel task of automatic fine-grained hallucination detection and construct a new evaluation benchmark, FavaBench, that includes about one thousand fine-grained human judgments on three LM outputs across various domains. Our analysis reveals that ChatGPT and Llama2-Chat (70B, 7B) exhibit diverse types of hallucinations in the majority of their outputs in information-seeking scenarios. We train FAVA, a retrieval-augmented LM by carefully creating synthetic data to detect and correct fine-grained hallucinations. On our benchmark, our automatic and human evaluations show that FAVA significantly outperforms ChatGPT and GPT-4 on fine-grained hallucination detection, and edits suggested by FAVA improve the factuality of LM-generated text.",
+            "year": 2024,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel task of automatic fine-grained hallucination detection and constructs a new evaluation benchmark, FavaBench, that includes about one thousand fine-grained human judgments on three LM outputs across various domains."
+            },
+            "score": 4
+        },
+        {
+            "id": "d38af39275524068e7aab12fa8d54d342eff7dfe",
+            "paperId": "d38af39275524068e7aab12fa8d54d342eff7dfe",
+            "title": "UFO: a Unified and Flexible Framework for Evaluating Factuality of Large Language Models",
+            "abstract": "Large language models (LLMs) may generate text that lacks consistency with human knowledge, leading to factual inaccuracies or \\textit{hallucination}. Existing research for evaluating the factuality of LLMs involves extracting fact claims using an LLM and verifying them against a predefined fact source. However, these evaluation metrics are task-specific, and not scalable, and the substitutability of fact sources in different tasks is under-explored. To address these challenges, we categorize four available fact sources: human-written evidence, reference documents, search engine results, and LLM knowledge, along with five text generation tasks containing six representative datasets. Then, we propose \\texttt{UFO}, an LLM-based unified and flexible evaluation framework to verify facts against plug-and-play fact sources. We implement five evaluation scenarios based on this framework. Experimental results show that for most QA tasks, human-written evidence and reference documents are crucial, and they can substitute for each other in retrieval-augmented QA tasks. In news fact generation tasks, search engine results and LLM knowledge are essential. Our dataset and code are available at \\url{https://github.com/WaldenRUC/UFO}.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes \\texttt{UFO}, an LLM-based unified and flexible evaluation framework to verify facts against plug-and-play fact sources, and implements five evaluation scenarios based on this framework."
+            },
+            "score": 4
+        },
+        {
+            "id": "f05e64c2a096e3762939dfdb7f475724c04a46bd",
+            "paperId": "f05e64c2a096e3762939dfdb7f475724c04a46bd",
+            "title": "Collaborative decoding of critical tokens for boosting factuality of large language models",
+            "abstract": "The most common training pipeline for large language models includes pretraining, finetuning and aligning phases, with their respective resulting models, such as the pretrained model and the finetuned model. Finetuned and aligned models show improved abilities of instruction following and safe generation, however their abilities to stay factual about the world are impacted by the finetuning process. Furthermore, the common practice of using sampling during generation also increases chances of hallucination. In this work, we introduce a collaborative decoding framework to harness the high factuality within pretrained models through the concept of critical tokens. We first design a critical token classifier to decide which model to use for the next token, and subsequently generates the next token using different decoding strategies. Experiments with different models and datasets show that our decoding framework is able to reduce model hallucination significantly, showcasing the importance of the collaborative decoding framework.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a collaborative decoding framework to harness the high factuality within pretrained models through the concept of critical tokens, and designs a critical token classifier to decide which model to use for the next token, and subsequently generates the next token using different decoding strategies."
+            },
+            "score": 4
+        },
+        {
+            "id": "6073b9a4856d726c270f03ebee54ea7658f16ec1",
+            "paperId": "6073b9a4856d726c270f03ebee54ea7658f16ec1",
+            "title": "Entropy Guided Extrapolative Decoding to Improve Factuality in Large Language Models",
+            "abstract": "Large language models (LLMs) exhibit impressive natural language capabilities but suffer from hallucination -- generating content ungrounded in the realities of training data. Recent work has focused on decoding techniques to improve factuality during inference by leveraging LLMs' hierarchical representation of factual knowledge, manipulating the predicted distributions at inference time. Current state-of-the-art approaches refine decoding by contrasting early-exit distributions from a lower layer with the final layer to exploit information related to factuality within the model forward procedure. However, such methods often assume the final layer is the most reliable and the lower layer selection process depends on it. In this work, we first propose extrapolation of critical token probabilities beyond the last layer for more accurate contrasting. We additionally employ layer-wise entropy-guided lower layer selection, decoupling the selection process from the final layer. Experiments demonstrate strong performance - surpassing state-of-the-art on multiple different datasets by large margins. Analyses show different kinds of prompts respond to different selection strategies.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work first proposes extrapolation of critical token probabilities beyond the last layer for more accurate contrasting, and additionally employs layer-wise entropy-guided lower layer selection, decoupling the selection process from the final layer."
+            },
+            "score": 4
+        },
+        {
+            "id": "3f915aab835cbfe69e7b2ea1c73b74ac8a2d384e",
+            "paperId": "3f915aab835cbfe69e7b2ea1c73b74ac8a2d384e",
+            "title": "Alleviating Hallucinations of Large Language Models through Induced Hallucinations",
+            "abstract": "Despite their impressive capabilities, large language models (LLMs) have been observed to generate responses that include inaccurate or fabricated information, a phenomenon commonly known as ``hallucination''. In this work, we propose a simple \\textit{Induce-then-Contrast} Decoding (ICD) strategy to alleviate hallucinations. We first construct a factually weak LLM by inducing hallucinations from the original LLMs. Then, we penalize these induced hallucinations during decoding to enhance the factuality of the generated content. Concretely, we determine the final next-token predictions by amplifying the predictions from the original model and downplaying the induced untruthful predictions via contrastive decoding. Experimental results on both discrimination-based and generation-based hallucination evaluation benchmarks, such as TruthfulQA and \\textsc{FActScore}, demonstrate that our proposed ICD methods can effectively enhance the factuality of LLMs across various model sizes and families. For example, when equipped with ICD, Llama2-7B-Chat and Mistral-7B-Instruct achieve performance comparable to ChatGPT and GPT4 on TruthfulQA, respectively.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results on both discrimination-based and generation-based hallucination evaluation benchmarks, such as TruthfulQA and \\textsc{FActScore}, demonstrate that the proposed ICD methods can effectively enhance the factuality of LLMs across various model sizes and families."
+            },
+            "score": 4
+        },
+        {
+            "id": "d7ea898cc97754e06d209df0fd55ab60250601f2",
+            "paperId": "d7ea898cc97754e06d209df0fd55ab60250601f2",
+            "title": "Contrastive Learning Reduces Hallucination in Conversations",
+            "abstract": "Pre-trained language models (LMs) store knowledge in their parameters and can generate informative responses when used in conversational systems. However, LMs suffer from the problem of \u201challucination:\u201d they may generate plausible-looking statements that are irrelevant or factually incorrect. To address this problem, we propose a contrastive learning scheme, named MixCL. A novel mixed contrastive objective is proposed to explicitly optimize the implicit knowledge elicitation process of LMs, and thus reduce their hallucination in conversations. We also examine negative sampling strategies of retrieved hard negatives and model-generated negatives. We conduct experiments on Wizard-of-Wikipedia, a public, open-domain knowledge-grounded dialogue benchmark, and assess the effectiveness of MixCL. MixCL effectively reduces the hallucination of LMs in conversations and achieves the highest performance among LM-based dialogue agents in terms of relevancy and factuality. We show that MixCL achieves comparable performance to state-of-the-art KB-based approaches while enjoying notable advantages in terms of efficiency and scalability.",
+            "year": 2022,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel mixed contrastive objective is proposed to explicitly optimize the implicit knowledge elicitation process of LMs, and thus reduce their hallucination in conversations, and it is shown that MixCL achieves comparable performance to state-of-the-art KB-based approaches while enjoying notable advantages in terms of efficiency and scalability."
+            },
+            "score": 4
+        },
+        {
+            "id": "2fae69cea48d332c5788537a0b5e9e76c10e3baf",
+            "paperId": "2fae69cea48d332c5788537a0b5e9e76c10e3baf",
+            "title": "Enhancing Uncertainty-Based Hallucination Detection with Stronger Focus",
+            "abstract": "Large Language Models (LLMs) have gained significant popularity for their impressive performance across diverse fields. However, LLMs are prone to hallucinate untruthful or nonsensical outputs that fail to meet user expectations in many real-world applications. Existing works for detecting hallucinations in LLMs either rely on external knowledge for reference retrieval or require sampling multiple responses from the LLM for consistency verification, making these methods costly and inefficient. In this paper, we propose a novel reference-free, uncertainty-based method for detecting hallucinations in LLMs. Our approach imitates human focus in factuality checking from three aspects: 1) focus on the most informative and important keywords in the given text; 2) focus on the unreliable tokens in historical context which may lead to a cascade of hallucinations; and 3) focus on the token properties such as token type and token frequency. Experimental results on relevant datasets demonstrate the effectiveness of our proposed method, which achieves state-of-the-art performance across all the evaluation metrics and eliminates the need for additional information.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel reference-free, uncertainty-based method for detecting hallucinations in LLMs that achieves state-of-the-art performance across all the evaluation metrics and eliminates the need for additional information."
+            },
+            "score": 4
+        },
+        {
+            "id": "2751de08d6dbec07f53808231c016e96b075b06c",
+            "paperId": "2751de08d6dbec07f53808231c016e96b075b06c",
+            "title": "Learning to Trust Your Feelings: Leveraging Self-awareness in LLMs for Hallucination Mitigation",
+            "abstract": "We evaluate the ability of Large Language Models (LLMs) to discern and express their internal knowledge state, a key factor in countering factual hallucination and ensuring reliable application of LLMs. We observe a robust self-awareness of internal knowledge state in LLMs, evidenced by over 85% accuracy in knowledge probing. However, LLMs often fail to express their internal knowledge during generation, leading to factual hallucinations. We develop an automated hallucination annotation tool, Dreamcatcher, which merges knowledge probing and consistency checking methods to rank factual preference data. Using knowledge preference as reward, We propose a Reinforcement Learning from Knowledge Feedback (RLKF) training framework, leveraging reinforcement learning to enhance the factuality and honesty of LLMs. Our experiments across multiple models show that RLKF training effectively enhances the ability of models to utilize their internal knowledge state, boosting performance in a variety of knowledge-based and honesty-related tasks.",
+            "year": 2024,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Reinforcement Learning from Knowledge Feedback (RLKF) training framework is proposed, leveraging reinforcement learning to enhance the factuality and honesty of LLMs and shows that RLKF training effectively enhances the ability of models to utilize their internal knowledge state, boosting performance in a variety of knowledge-based and honesty-related tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "22fd8b1c45c43cb5c6d076b16e7de0dd557ef790",
+            "paperId": "22fd8b1c45c43cb5c6d076b16e7de0dd557ef790",
+            "title": "In-Context Learning for Scalable and Online Hallucination Detection in RAGS",
+            "abstract": "Ensuring fidelity to source documents is crucial for the responsible use of Large Language Models (LLMs) in Retrieval Augmented Generation (RAG) systems. We propose a lightweight method for real-time hallucination detection, with potential to be deployed as a model-agnostic microservice to bolster reliability. Using in-context learning, our approach evaluates response factuality at the sentence level without annotated data, promoting transparency and user trust. Compared to other prompt-based and semantic similarity baselines from recent literature, our method improves hallucination detection F1 scores by at least 11%, with consistent performance across different models. This research offers a practical solution for real-time validation of response accuracy in RAG systems, fostering responsible adoption, especially in critical domains where document fidelity is paramount.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research offers a practical solution for real-time validation of response accuracy in RAG systems, fostering responsible adoption, especially in critical domains where document fidelity is paramount."
+            },
+            "score": 4
+        },
+        {
+            "id": "8936192d69bb78afd09d83f3ceafd18dea32a8fd",
+            "paperId": "8936192d69bb78afd09d83f3ceafd18dea32a8fd",
+            "title": "Self-Consistent Decoding for More Factual Open Responses",
+            "abstract": "Self-consistency has emerged as a powerful method for improving the accuracy of short answers generated by large language models. As previously defined, it only concerns the accuracy of a final answer parsed from generated text. In this work, we extend the idea to open response generation, by integrating voting into the decoding method. Each output sentence is selected from among multiple samples, conditioning on the previous selections, based on a simple token overlap score. We compare this\"Sample&Select\"method to greedy decoding, beam search, nucleus sampling, and the recently introduced hallucination avoiding decoders of DoLA, P-CRR, and S-CRR. We show that Sample&Select improves factuality by a 30% relative margin against these decoders in NLI-based evaluation on the subsets of CNN/DM and XSum used in the FRANK benchmark, while maintaining comparable ROUGE-1 F1 scores against reference summaries. We collect human verifications of the generated summaries, confirming the factual superiority of our method.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work extends the idea of self-consistency to open response generation, by integrating voting into the decoding method, and shows that Sample&Select improves factuality by a 30% relative margin against these decoders in NLI-based evaluation on the subsets of CNN/DM and XSum used in the FRANK benchmark."
+            },
+            "score": 4
+        },
+        {
+            "id": "6ac627f57b26354ab537734d820da4a6a7dde2c6",
+            "paperId": "6ac627f57b26354ab537734d820da4a6a7dde2c6",
+            "title": "CLadder: Assessing Causal Reasoning in Language Models",
+            "abstract": "The ability to perform causal reasoning is widely considered a core feature of intelligence. In this work, we investigate whether large language models (LLMs) can coherently reason about causality. Much of the existing work in natural language processing (NLP) focuses on evaluating commonsense causal reasoning in LLMs, thus failing to assess whether a model can perform causal inference in accordance with a set of well-defined formal rules. To address this, we propose a new NLP task, causal inference in natural language, inspired by the\"causal inference engine\"postulated by Judea Pearl et al. We compose a large dataset, CLadder, with 10K samples: based on a collection of causal graphs and queries (associational, interventional, and counterfactual), we obtain symbolic questions and ground-truth answers, through an oracle causal inference engine. These are then translated into natural language. We evaluate multiple LLMs on our dataset, and we introduce and evaluate a bespoke chain-of-thought prompting strategy, CausalCoT. We show that our task is highly challenging for LLMs, and we conduct an in-depth analysis to gain deeper insights into the causal reasoning abilities of LLMs. Our data is open-sourced at https://huggingface.co/datasets/causalNLP/cladder, and our code can be found at https://github.com/causalNLP/cladder.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates whether large language models (LLMs) can coherently reason about causality, and proposes a new NLP task, causal inference in natural language, inspired by the \"causal inference engine\" proposed by Judea Pearl et al."
+            },
+            "score": 4
+        },
+        {
+            "id": "f30b720e34d405f200270a6ef2d09e98585fb4d1",
+            "paperId": "f30b720e34d405f200270a6ef2d09e98585fb4d1",
+            "title": "CLadder: A Benchmark to Assess Causal Reasoning Capabilities of Language Models",
+            "abstract": "The ability to perform causal reasoning is widely considered a core feature of intelligence. In this work, we investigate whether large language models (LLMs) can coherently reason about causality. Much of the existing work in natural language processing (NLP) focuses on evaluating commonsense causal reasoning in LLMs, thus failing to assess whether a model can perform causal inference in accordance with a set of well-defined formal rules . To address this, we propose a new NLP task, causal inference in natural language , inspired by the \u201ccausal inference engine\u201d postulated by Judea Pearl et al. We compose a large dataset, CL ADDER , with 10K samples: based on a collection of causal graphs and queries (associational, interventional, and counterfactual), we obtain symbolic questions and ground-truth answers, through an oracle causal inference engine. These are then translated into natural language. We evaluate multiple LLMs on our dataset, and we introduce and evaluate a bespoke chain-of-thought prompting strategy, C AUSAL C O T. We show that our task is highly challenging for LLMs, and we conduct an in-depth analysis to gain deeper insight into the causal reasoning abilities of LLMs. 1",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates whether large language models (LLMs) can coherently reason about causality, and proposes a new NLP task, causal inference in natural language, inspired by the \u201ccausal inference engine\u201d postulated by Judea Pearl et al."
+            },
+            "score": 4
+        },
+        {
+            "id": "57e85f4f0df264fa813714d7f12dc13aa2c422a5",
+            "paperId": "57e85f4f0df264fa813714d7f12dc13aa2c422a5",
+            "title": "LLM-Rec: Personalized Recommendation via Prompting Large Language Models",
+            "abstract": "Text-based recommendation holds a wide range of practical applications due to its versatility, as textual descriptions can represent nearly any type of item. However, directly employing the original item descriptions may not yield optimal recommendation performance due to the lack of comprehensive information to align with user preferences. Recent advances in large language models (LLMs) have showcased their remarkable ability to harness commonsense knowledge and reasoning. In this study, we introduce a novel approach, coined LLM-Rec, which incorporates four distinct prompting strategies of text enrichment for improving personalized text-based recommendations. Our empirical experiments reveal that using LLM-augmented text significantly enhances recommendation quality. Even basic MLP (Multi-Layer Perceptron) models achieve comparable or even better results than complex content-based methods. Notably, the success of LLM-Rec lies in its prompting strategies, which effectively tap into the language model's comprehension of both general and specific item characteristics. This highlights the importance of employing diverse prompts and input augmentation techniques to boost the recommendation effectiveness of LLMs.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces a novel approach, coined LLM-Rec, which incorporates four distinct prompting strategies of text enrichment for improving personalized text-based recommendations, and empirical experiments reveal that using LLM-augmented text significantly enhances recommendation quality."
+            },
+            "score": 4
+        },
+        {
+            "id": "7d305b87b37487136f0f96f451f9e95e09b12b46",
+            "paperId": "7d305b87b37487136f0f96f451f9e95e09b12b46",
+            "title": "It's Not Easy Being Wrong: Evaluating Process of Elimination Reasoning in Large Language Models",
+            "abstract": "Chain-of-thought (COT) prompting can help large language models (LLMs) reason toward correct answers, but its efficacy in reasoning toward incorrect answers is unexplored. This strategy of process of elimination (PoE), when used with COT, has the potential to enhance interpretability in tasks like medical diagnoses of exclusion. Thus, we propose PoE with COT, a new task where LLMs must reason toward incorrect options on multiple-choice questions. We evaluate the ability of GPT-3.5, LLaMA-2, and Falcon to perform PoE with COT on 2-choice commonsense and scientific reasoning datasets. We show that PoE consistently underperforms directly choosing the correct answer. The agreement of these strategies is also lower than the self-consistency of each strategy. To study these issues further, we conduct an error analysis and give suggestions for future work.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes PoE with COT, a new task where LLMs must reason toward incorrect options on multiple-choice questions, and shows that PoE consistently underperforms directly choosing the correct answer."
+            },
+            "score": 4
+        },
+        {
+            "id": "cd9f3efbe5995855e646ea1cfd368a3ed067d1a3",
+            "paperId": "cd9f3efbe5995855e646ea1cfd368a3ed067d1a3",
+            "title": "It's Not Easy Being Wrong: Large Language Models Struggle with Process of Elimination Reasoning",
+            "abstract": "Chain-of-thought (COT) prompting can help large language models (LLMs) reason toward correct answers, but its efficacy in reasoning toward incorrect answers is unexplored. This process of elimination (PoE), when used with COT, can enhance self-consistency, interpretability, and tasks such as medical diagnoses of exclusion. Thus, we propose PoE with COT, where LLMs must reason toward incorrect options on multiple-choice questions. We evaluate the ability of GPT-3.5, LLaMA-2, and Falcon to perform PoE with COT on a total of four commonsense and scientific reasoning datasets. We find that the strategy of PoE always underperforms the strategy of choosing the correct answer. The agreement of these strategies is also lower than the self-consistency of each strategy. To study these issues further, we conduct error analyses and give suggestions for future work.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the strategy of PoE always underperforms the strategy of choosing the correct answer, and the agreement of these strategies is also lower than the self-consistency of each strategy."
+            },
+            "score": 4
+        },
+        {
+            "id": "ada81a4de88a6ce474df2e2446ad11fea480616e",
+            "paperId": "ada81a4de88a6ce474df2e2446ad11fea480616e",
+            "title": "Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language",
+            "abstract": "Large pretrained (e.g.,\"foundation\") models exhibit distinct capabilities depending on the domain of data they are trained on. While these domains are generic, they may only barely overlap. For example, visual-language models (VLMs) are trained on Internet-scale image captions, but large language models (LMs) are further trained on Internet-scale text with no images (e.g., spreadsheets, SAT questions, code). As a result, these models store different forms of commonsense knowledge across different domains. In this work, we show that this diversity is symbiotic, and can be leveraged through Socratic Models (SMs): a modular framework in which multiple pretrained models may be composed zero-shot i.e., via multimodal-informed prompting, to exchange information with each other and capture new multimodal capabilities, without requiring finetuning. With minimal engineering, SMs are not only competitive with state-of-the-art zero-shot image captioning and video-to-text retrieval, but also enable new applications such as (i) answering free-form questions about egocentric video, (ii) engaging in multimodal assistive dialogue with people (e.g., for cooking recipes) by interfacing with external APIs and databases (e.g., web search), and (iii) robot perception and planning.",
+            "year": 2022,
+            "citationCount": 380,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Socratic Models (SMs) are shown to be competitive with state-of-the-art zero-shot image captioning and video-to-text retrieval, and enable new applications such as answering free-form questions about egocentric video, and engaging in multimodal assistive dialogue with people."
+            },
+            "score": 4
+        },
+        {
+            "id": "bc0cb4c753ab2ea51313355af848fc7a5c0d378d",
+            "paperId": "bc0cb4c753ab2ea51313355af848fc7a5c0d378d",
+            "title": "A-C AP : Anticipation Captioning with Commonsense Knowledge",
+            "abstract": "The prompt learning was developed by NLP research [41, 42, 43]. It considers pre-trained language models such as BERT [10], as knowledge-based sources of useful information for downstream tasks. The key idea is to create a prompt (template) that can guide the pre-trained model through the adaptation process to a new task. It should be noted that the prompt format should be the same as the input format learned by the pre-trained model. Furthermore, the parameters of the pre-trained model are not updated during the training process; instead, we train the layers to learn prompt embeddings. The concept of prompt learning has recently been explored in computer vision [39, 40], where the context-word-generated prompt is converted into a set of learnable vectors and fed into a pre-trained vision-language model to solve downstream tasks. In our method, we use prompt learning in the same way as recent methods [39, 40]. We see that the key idea of VinVL [38] is the usage of concepts (object names), which allows better alignment between vision and language spaces, leading to the appearance of concepts in the caption. If we add forecasted concepts to the model, the model will be able to generate the caption based on the forecasted concepts. In our method, we combine detected and forecasted concepts to create the prompt. To this end, we change the VinVL\u2019s input to words\u2013(detected, forecasted)concepts\u2013 ROIs because the format of the prompt should be familiar to the pre-trained model (i.e., sequence of words\u2013concepts\u2013 ROIs). During the training time, by using cross-entropy loss, we update the graph neural network to learn the embeddings for the concepts to ensure that the pre-trained model can understand the prompt embeddings. After training, the pre-trained model can easily generate the desired captions from the input.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "In this method, the VinVL\u2019s input is changed to words\u2013(detected, forecasted)concepts\u2013 ROIs because the format of the prompt should be familiar to the pre-trained model (i.e., sequence of words\u2013concepts- ROIs), and the graph neural network is updated to learn the embeddings for the concepts to ensure that thePre- trained model can understand the prompt embeddINGS."
+            },
+            "score": 4
+        },
+        {
+            "id": "066ad67338f45d77f4cafbe56fd8969575a19690",
+            "paperId": "066ad67338f45d77f4cafbe56fd8969575a19690",
+            "title": "Commonsense for Zero-Shot Natural Language Video Localization",
+            "abstract": "Zero-shot Natural Language-Video Localization (NLVL) methods have exhibited promising results in training NLVL models exclusively with raw video data by dynamically generating video segments and pseudo-query annotations. However, existing pseudo-queries often lack grounding in the source video, resulting in unstructured and disjointed content. In this paper, we investigate the effectiveness of commonsense reasoning in zero-shot NLVL. Specifically, we present CORONET, a zero-shot NLVL framework that leverages commonsense to bridge the gap between videos and generated pseudo-queries via a commonsense enhancement module. CORONET employs Graph Convolution Networks (GCN) to encode commonsense information extracted from a knowledge graph, conditioned on the video, and cross-attention mechanisms to enhance the encoded video and pseudo-query representations prior to localization. Through empirical evaluations on two benchmark datasets, we demonstrate that CORONET surpasses both zero-shot and weakly supervised baselines, achieving improvements up to 32.13% across various recall thresholds and up to 6.33% in mIoU. These results underscore the significance of leveraging commonsense reasoning for zero-shot NLVL.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents CORONET, a zero-shot NLVL framework that leverages commonsense to bridge the gap between videos and generated pseudo-queries via a commonsense enhancement module, and demonstrates that CORONET surpasses both zero-shot and weakly supervised baselines."
+            },
+            "score": 3
+        },
+        {
+            "id": "f543f1d36e4556b50b160c68fd18da3d7db40867",
+            "paperId": "f543f1d36e4556b50b160c68fd18da3d7db40867",
+            "title": "Hallucination Augmented Recitations for Language Models",
+            "abstract": "Attribution is a key concept in large language models (LLMs) as it enables control over information sources and enhances the factuality of LLMs. While existing approaches utilize open book question answering to improve attribution, factual datasets may reward language models to recall facts that they already know from their pretraining data, not attribution. In contrast, counterfactual open book QA datasets would further improve attribution because the answer could only be grounded in the given text. We propose Hallucination Augmented Recitations (HAR) for creating counterfactual datasets by utilizing hallucination in LLMs to improve attribution. For open book QA as a case study, we demonstrate that models finetuned with our counterfactual datasets improve text grounding, leading to better open book QA performance, with up to an 8.0% increase in F1 score. Our counterfactual dataset leads to significantly better performance than using humanannotated factual datasets, even with 4x smaller datasets and 4x smaller models. We observe that improvements are consistent across various model sizes and datasets, including multi-hop, biomedical, and adversarial QA datasets.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Hallucination Augmented Recitations (HAR) for creating counterfactual datasets by utilizing hallucination in LLMs to improve attribution and demonstrates that improvements are consistent across various model sizes and datasets, including multi-hop, biomedical, and adversarial QA datasets."
+            },
+            "score": 3
+        },
+        {
+            "id": "83d81e31f5c32f6989d98be1133adfc08db094ce",
+            "paperId": "83d81e31f5c32f6989d98be1133adfc08db094ce",
+            "title": "DiaHalu: A Dialogue-level Hallucination Evaluation Benchmark for Large Language Models",
+            "abstract": "Since large language models (LLMs) achieve significant success in recent years, the hallucination issue remains a challenge, numerous benchmarks are proposed to detect the hallucination. Nevertheless, some of these benchmarks are not naturally generated by LLMs but are intentionally induced. Also, many merely focus on the factuality hallucination while ignoring the faithfulness hallucination. Additionally, although dialogue pattern is more widely utilized in the era of LLMs, current benchmarks only concentrate on sentence-level and passage-level hallucination. In this study, we propose DiaHalu, the first dialogue-level hallucination evaluation benchmark to our knowledge. Initially, we integrate the collected topics into system prompts and facilitate a dialogue between two ChatGPT3.5. Subsequently, we manually modify the contents that do not adhere to human language conventions and then have LLMs re-generate, simulating authentic human-machine interaction scenarios. Finally, professional scholars annotate all the samples in the dataset. DiaHalu covers four common multi-turn dialogue domains and five hallucination subtypes, extended from factuality and faithfulness hallucination. Experiments through some well-known LLMs and detection methods on the dataset show that DiaHalu is a challenging benchmark, holding significant value for further research.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DiaHalu is proposed, the first dialogue-level hallucination evaluation benchmark, holding significant value for further research and experiments through some well-known LLMs and detection methods on the dataset show that DiaHalu is a challenging benchmark."
+            },
+            "score": 3
+        },
+        {
+            "id": "51205d5ab42c98ba286ee88147c6e17c6074995a",
+            "paperId": "51205d5ab42c98ba286ee88147c6e17c6074995a",
+            "title": "Benchmarking Llama2, Mistral, Gemma and GPT for Factuality, Toxicity, Bias and Propensity for Hallucinations",
+            "abstract": "This paper introduces fourteen novel datasets for the evaluation of Large Language Models' safety in the context of enterprise tasks. A method was devised to evaluate a model's safety, as determined by its ability to follow instructions and output factual, unbiased, grounded, and appropriate content. In this research, we used OpenAI GPT as point of comparison since it excels at all levels of safety. On the open-source side, for smaller models, Meta Llama2 performs well at factuality and toxicity but has the highest propensity for hallucination. Mistral hallucinates the least but cannot handle toxicity well. It performs well in a dataset mixing several tasks and safety vectors in a narrow vertical domain. Gemma, the newly introduced open-source model based on Google Gemini, is generally balanced but trailing behind. When engaging in back-and-forth conversation (multi-turn prompts), we find that the safety of open-source models degrades significantly. Aside from OpenAI's GPT, Mistral is the only model that still performed well in multi-turn tests.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 3
+        },
+        {
+            "id": "86f22c32e6ea59659732b33aba1a786125e6f585",
+            "paperId": "86f22c32e6ea59659732b33aba1a786125e6f585",
+            "title": "Inspecting the Factuality of Hallucinated Entities in Abstractive Summarization",
+            "abstract": "State-of-the-art abstractive summarization systems often generate hallucinations ; i.e., content that is not directly inferable from the source text. Despite being assumed incorrect, many of the hallucinated contents are consistent with world knowledge (factual hallucinations). Including these factual hallucinations into a summary can be bene\ufb01cial in providing additional background information. In this work, we propose a novel detection approach that separates factual from non-factual hallucinations of entities. Our method is based on an entity\u2019s prior and posterior probabilities according to pre-trained and \ufb01netuned masked language models, respectively. Empirical re-sults suggest that our method vastly outperforms three strong baselines in both accuracy and F1 scores and has a strong correlation with human judgements on factuality classi\ufb01cation tasks. Furthermore, our approach can provide insight into whether a particular hallucination is caused by the summarizer\u2019s pre-training or \ufb01ne-tuning step. 1",
+            "year": 2021,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel detection approach that separates factual from non-factual hallucinations of entities and can provide insight into whether a particular hallucination is caused by the summarizer\u2019s pre-training or tuning step."
+            },
+            "score": 3
+        },
+        {
+            "id": "a7d047dd9f41d5f3e7eaa39e5ba8c97cccc7276d",
+            "paperId": "a7d047dd9f41d5f3e7eaa39e5ba8c97cccc7276d",
+            "title": "Reformatted Alignment",
+            "abstract": "The quality of finetuning data is crucial for aligning large language models (LLMs) with human values. Current methods to improve data quality are either labor-intensive or prone to factual errors caused by LLM hallucinations. This paper explores elevating the quality of existing instruction data to better align with human values, introducing a simple and effective approach named ReAlign, which reformats the responses of instruction data into a format that better aligns with pre-established criteria and the collated evidence. This approach minimizes human annotation, hallucination, and the difficulty in scaling, remaining orthogonal to existing alignment techniques. Experimentally, ReAlign significantly boosts the general alignment ability, math reasoning, factuality, and readability of the LLMs. Encouragingly, without introducing any additional data or advanced training techniques, and merely by reformatting the response, LLaMA-2-13B's mathematical reasoning ability on GSM8K can be improved from 46.77% to 56.63% in accuracy. Additionally, a mere 5% of ReAlign data yields a 67% boost in general alignment ability measured by the Alpaca dataset. This work highlights the need for further research into the science and mechanistic interpretability of LLMs. We have made the associated code and data publicly accessible to support future studies at https://github.com/GAIR-NLP/ReAlign.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A simple and effective approach named ReAlign is introduced, which reformats the responses of instruction data into a format that better aligns with pre-established criteria and the collated evidence, and significantly boosts the general alignment ability, math reasoning, factuality, and readability of the LLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "cc72e18fa40327fa616fd348b87592bf9cc60e5b",
+            "paperId": "cc72e18fa40327fa616fd348b87592bf9cc60e5b",
+            "title": "Multi-FAct: Assessing Multilingual LLMs' Multi-Regional Knowledge using FActScore",
+            "abstract": "Large Language Models (LLMs) are prone to factuality hallucination, generating text that contradicts established knowledge. While extensive research has addressed this in English, little is known about multilingual LLMs. This paper systematically evaluates multilingual LLMs' factual accuracy across languages and geographic regions. We introduce a novel pipeline for multilingual factuality evaluation, adapting FActScore(Min et al., 2023) for diverse languages. Our analysis across nine languages reveals that English consistently outperforms others in factual accuracy and quantity of generated facts. Furthermore, multilingual models demonstrate a bias towards factual information from Western continents. These findings highlight the need for improved multilingual factuality assessment and underscore geographical biases in LLMs' fact generation.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is revealed that English consistently outperforms others in factual accuracy and quantity of generated facts and multilingual models demonstrate a bias towards factual information from Western continents."
+            },
+            "score": 3
+        },
+        {
+            "id": "02fc3ba0c7f8ea63aa750a971613bdeae8fd5101",
+            "paperId": "02fc3ba0c7f8ea63aa750a971613bdeae8fd5101",
+            "title": "KNVQA: A Benchmark for evaluation knowledge-based VQA",
+            "abstract": "Within the multimodal field, large vision-language models (LVLMs) have made significant progress due to their strong perception and reasoning capabilities in the visual and language systems. However, LVLMs are still plagued by the two critical issues of object hallucination and factual accuracy, which limit the practicality of LVLMs in different scenarios. Furthermore, previous evaluation methods focus more on the comprehension and reasoning of language content but lack a comprehensive evaluation of multimodal interactions, thereby resulting in potential limitations. To this end, we propose a novel KNVQA-Eval, which is devoted to knowledge-based VQA task evaluation to reflect the factuality of multimodal LVLMs. To ensure the robustness and scalability of the evaluation, we develop a new KNVQA dataset by incorporating human judgment and perception, aiming to evaluate the accuracy of standard answers relative to AI-generated answers in knowledge-based VQA. This work not only comprehensively evaluates the contextual information of LVLMs using reliable human annotations, but also further analyzes the fine-grained capabilities of current methods to reveal potential avenues for subsequent optimization of LVLMs-based estimators. Our proposed VQA-Eval and corresponding dataset KNVQA will facilitate the development of automatic evaluation tools with the advantages of low cost, privacy protection, and reproducibility. Our code will be released upon publication.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel KNVQA-Eval is proposed, which is devoted to knowledge-based VQA task evaluation to reflect the factuality of multimodal LVLMs, and a new KNVZA dataset is developed by incorporating human judgment and perception, aiming to evaluate the accuracy of standard answers relative to AI-generated answers in knowledge- based V QA."
+            },
+            "score": 3
+        },
+        {
+            "id": "4ebf49a7c053bf1d22fcce17bc8c80db827e8f99",
+            "paperId": "4ebf49a7c053bf1d22fcce17bc8c80db827e8f99",
+            "title": "Leveraging Commonsense Knowledge from Large Language Models for Task and Motion Planning",
+            "abstract": "\u2014Multi-object rearrangement is a crucial skill for service robots, and commonsense reasoning is frequently needed in this process. However, achieving commonsense arrangements requires knowledge about objects, which is hard to transfer to robots. Large language models (LLMs) are one potential source of this knowledge, but they do not naively capture information about plausible physical arrangements of the world. We propose LLM-GROP, which uses prompting to extract commonsense knowledge about semantically valid object configurations from an LLM and instantiates them with a task and motion planner in order to generalize to varying scene geometry. LLM-GROP allows us to go from natural-language commands to human-aligned object rearrangement in varied environments. Based on human evaluations, our approach achieves the highest rating while outperforming competitive baselines in terms of success rate while maintaining comparable cumulative action costs. Finally, we demonstrate a practical implementation of LLM-GROP on a mobile manipulator in real-world scenarios. Supplementary materials are available at: https://sites.google.com/view/llm-grop",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLM-GROP is proposed, which uses prompting to extract commonsense knowledge about semantically valid object configurations from an LLM and instantiates them with a task and motion planner in order to generalize to varying scene geometry."
+            },
+            "score": 3
+        },
+        {
+            "id": "df2beaae63e4d68ef8e762bcd4704c9f11f856d9",
+            "paperId": "df2beaae63e4d68ef8e762bcd4704c9f11f856d9",
+            "title": "Can Language Models Solve Graph Problems in Natural Language?",
+            "abstract": "Large language models (LLMs) are increasingly adopted for a variety of tasks with implicit graphical structures, such as planning in robotics, multi-hop question answering or knowledge probing, structured commonsense reasoning, and more. While LLMs have advanced the state-of-the-art on these tasks with structure implications, whether LLMs could explicitly process textual descriptions of graphs and structures, map them to grounded conceptual spaces, and perform structured operations remains underexplored. To this end, we propose NLGraph (Natural Language Graph), a comprehensive benchmark of graph-based problem solving designed in natural language. NLGraph contains 29,370 problems, covering eight graph reasoning tasks with varying complexity from simple tasks such as connectivity and shortest path up to complex problems such as maximum flow and simulating graph neural networks. We evaluate LLMs (GPT-3/4) with various prompting approaches on the NLGraph benchmark and find that 1) language models do demonstrate preliminary graph reasoning abilities, 2) the benefit of advanced prompting and in-context learning diminishes on more complex graph problems, while 3) LLMs are also (un)surprisingly brittle in the face of spurious correlations in graph and problem settings. We then propose Build-a-Graph Prompting and Algorithmic Prompting, two instruction-based approaches to enhance LLMs in solving natural language graph problems. Build-a-Graph and Algorithmic prompting improve the performance of LLMs on NLGraph by 3.07% to 16.85% across multiple tasks and settings, while how to solve the most complicated graph reasoning tasks in our setup with language models remains an open research question. The NLGraph benchmark and evaluation code are available at https://github.com/Arthur-Heng/NLGraph.",
+            "year": 2023,
+            "citationCount": 56,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work evaluates LLMs (GPT-3/4) with various prompting approaches on the NLGraph benchmark and finds that language models do demonstrate preliminary graph reasoning abilities, but the benefit of advanced prompting and in-context learning diminishes on more complex graph problems, while LLMs are also (un)surprisingly brittle in the face of spurious correlations in graph and problem settings."
+            },
+            "score": 3
+        },
+        {
+            "id": "e4be613cc875e61b8c1c6c60d958f1c20d12d6c0",
+            "paperId": "e4be613cc875e61b8c1c6c60d958f1c20d12d6c0",
+            "title": "Task and Motion Planning with Large Language Models for Object Rearrangement",
+            "abstract": "Multi-object rearrangement is a crucial skill for service robots, and commonsense reasoning is frequently needed in this process. However, achieving commonsense arrangements requires knowledge about objects, which is hard to transfer to robots. Large language models (LLMs) are one potential source of this knowledge, but they do not naively capture information about plausible physical arrangements of the world. We propose LLM-GROP, which uses prompting to extract commonsense knowledge about semantically valid object configurations from an LLM and instantiates them with a task and motion planner in order to generalize to varying scene geometry. LLM-GROP allows us to go from natural-language commands to human-aligned object rearrangement in varied environments. Based on human evaluations, our approach achieves the highest rating while outperforming competitive baselines in terms of success rate while maintaining comparable cumulative action costs. Finally, we demonstrate a practical implementation of LLM-GROP on a mobile manipulator in real-world scenarios. Supplementary materials are available at: https://sites.google.com/view/llm-grop",
+            "year": 2023,
+            "citationCount": 80,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLM-GROP is proposed, which uses prompting to extract commonsense knowledge about semantically valid object configurations from an LLM and instantiates them with a task and motion planner in order to generalize to varying scene geometry."
+            },
+            "score": 3
+        }
+    ],
+    "novelty": "yes"
 }

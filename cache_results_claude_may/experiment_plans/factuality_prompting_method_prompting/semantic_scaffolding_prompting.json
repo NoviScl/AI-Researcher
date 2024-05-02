@@ -31,5 +31,1006 @@
             "Explanation": "The SSP output is more coherent and well-structured than the baseline output. By first generating a semantic scaffold that outlines the main points and their relationships, the model is able to create a clear and logical structure for the essay. The final output elaborates on each point in the scaffold, while maintaining a smooth flow between ideas. In contrast, the baseline output, while covering similar points, lacks a clear structure and transitions between ideas, making it harder to follow the overall argument."
         },
         "Fallback Plan": "If the proposed SSP method does not yield significant improvements over the baselines, we can explore several alternative approaches:\n\n1. Analyze the generated semantic scaffolds to determine if they are sufficiently detailed and relevant to the writing task. If the scaffolds are too high-level or generic, we can experiment with more specific prompts or templates to guide the scaffold generation process.\n\n2. Investigate alternative methods for incorporating the semantic scaffold into the text generation process. For example, instead of using the scaffold to guide the generation of each section sequentially, we could experiment with using the scaffold to conditionally generate different parts of the text in parallel, and then combine them into a coherent whole.\n\n3. Explore the use of additional prompts or constraints to encourage the model to maintain coherence and logical structure throughout the generation process. For example, we could provide prompts that encourage the model to use explicit discourse markers (e.g., \"first\", \"next\", \"in conclusion\") to signal the relationships between ideas.\n\n4. Conduct a more in-depth error analysis of the generated texts to identify specific types of coherence or structural issues that the model struggles with. This could inform the development of targeted prompts or post-processing techniques to address these issues.\n\n5. If the SSP method does not yield any meaningful improvements, we could pivot the project to focus on analyzing the limitations of current language models in generating coherent and well-structured text. This could involve conducting a systematic comparison of different models and prompting strategies, and identifying the key factors that contribute to coherence and logical structure in human-written texts. The insights from this analysis could inform the development of new architectures, training methods, or evaluation metrics for language models that prioritize coherence and structure."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"semantic scaffolding language models\")",
+        "KeywordQuery(\"coherence logical structure language models\")",
+        "KeywordQuery(\"prompting strategies coherence language models\")",
+        "KeywordQuery(\"Semantic Scaffolding Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "paperId": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "title": "Context-faithful Prompting for Large Language Models",
+            "abstract": "Large language models (LLMs) encode parametric knowledge about world facts and have shown remarkable performance in knowledge-driven NLP tasks. However, their reliance on parametric knowledge may cause them to overlook contextual cues, leading to incorrect predictions in context-sensitive NLP tasks (e.g., knowledge acquisition tasks). In this paper, we seek to assess and enhance LLMs' contextual faithfulness in two aspects: knowledge conflict and prediction with abstention. We demonstrate that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies. In particular, we identify opinion-based prompts and counterfactual demonstrations as the most effective methods. Opinion-based prompts reframe the context as a narrator's statement and inquire about the narrator's opinions, while counterfactual demonstrations use instances containing false facts to improve faithfulness in knowledge conflict situations. Neither technique requires additional training. We conduct experiments on three datasets of two standard NLP tasks, machine reading comprehension and relation extraction, and the results demonstrate significant improvement in faithfulness to contexts. Code and data are released at https://github.com/wzhouad/context-faithful-llm.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies, and opinion-based prompts and counterfactual demonstrations are identified as the most effective methods."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the paper is improving large language models' faithfulness to context in knowledge-driven tasks, while the problem in the proposal is improving semantic coherence and logical structure in text generation. The approach in the paper is using prompting strategies like opinion-based prompts and counterfactual demonstrations, while the approach in the proposal is using semantic scaffolding to guide the generation process.\n\nThe paper focuses on making LLMs more faithful to the given context and avoid overlooking contextual cues, while the proposal focuses on improving the coherence and structure of the generated text itself. The methods used are also different, with the paper using prompting strategies and the proposal using semantic scaffolds.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "6af460d34bfc8e955e43fbe15cedcf329b48bc19",
+            "paperId": "6af460d34bfc8e955e43fbe15cedcf329b48bc19",
+            "title": "SAC3: Reliable Hallucination Detection in Black-Box Language Models via Semantic-aware Cross-check Consistency",
+            "abstract": "Hallucination detection is a critical step toward understanding the trustworthiness of modern language models (LMs). To achieve this goal, we re-examine existing detection approaches based on the self-consistency of LMs and uncover two types of hallucinations resulting from 1) question-level and 2) model-level, which cannot be effectively identified through self-consistency check alone. Building upon this discovery, we propose a novel sampling-based method, i.e., semantic-aware cross-check consistency (SAC3) that expands on the principle of self-consistency checking. Our SAC3 approach incorporates additional mechanisms to detect both question-level and model-level hallucinations by leveraging advances including semantically equivalent question perturbation and cross-model response consistency checking. Through extensive and systematic empirical analysis, we demonstrate that SAC3 outperforms the state of the art in detecting both non-factual and factual statements across multiple question-answering and open-domain generation benchmarks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel sampling-based method, i.e., semantic-aware cross-check consistency (SAC3) that expands on the principle of self-consistency checking and demonstrates that SAC3 outperforms the state of the art in detecting both non-factual and factual statements across multiple question-answering and open-domain generation benchmarks."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by language models, and the proposed approach is using semantic scaffolding prompts to guide the generation process.\n\nThe research problem in the paper is detecting hallucinations in language model outputs, and the proposed approach is using semantic-aware cross-check consistency to identify both question-level and model-level hallucinations.\n\nThe two works have different research problems (improving text coherence vs. detecting hallucinations) and different approaches (semantic scaffolding vs. cross-check consistency). Therefore, they are not directly relevant.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "f0a0e8b6e84207f50db4d24cc4016e40601214ef",
+            "paperId": "f0a0e8b6e84207f50db4d24cc4016e40601214ef",
+            "title": "Faithful Reasoning Using Large Language Models",
+            "abstract": "Although contemporary large language models (LMs) demonstrate impressive question-answering capabilities, their answers are typically the product of a single call to the model. This entails an unwelcome degree of opacity and compromises performance, especially on problems that are inherently multi-step. To address these limitations, we show how LMs can be made to perform faithful multi-step reasoning via a process whose causal structure mirrors the underlying logical structure of the problem. Our approach works by chaining together reasoning steps, where each step results from calls to two fine-tuned LMs, one for selection and one for inference, to produce a valid reasoning trace. Our method carries out a beam search through the space of reasoning traces to improve reasoning quality. We demonstrate the effectiveness of our model on multi-step logical deduction and scientific question-answering, showing that it outperforms baselines on final answer accuracy, and generates humanly interpretable reasoning traces whose validity can be checked by the user.",
+            "year": 2022,
+            "citationCount": 87,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The method carries out a beam search through the space of reasoning traces to improve reasoning quality, and generates humanly interpretable reasoning traces whose validity can be checked by the user."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by large language models, and the proposed approach is to provide the model with a semantic scaffold to guide the generation process.\n\nThe research problem in the paper is making large language models perform faithful multi-step reasoning, and the proposed approach is to chain together reasoning steps using fine-tuned models for selection and inference.\n\nThe two works have different research problems (improving text coherence vs. faithful multi-step reasoning) and different approaches (semantic scaffolding vs. chaining reasoning steps). Therefore, they are not directly relevant.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "d5a6fc6aa139066e3b66ba63002e7d84c109aebc",
+            "paperId": "d5a6fc6aa139066e3b66ba63002e7d84c109aebc",
+            "title": "An Empirical Evaluation of Prompting Strategies for Large Language Models in Zero-Shot Clinical Natural Language Processing",
+            "abstract": "Large language models (LLMs) have shown remarkable capabilities in Natural Language Processing (NLP), especially in domains where labeled data is scarce or expensive, such as clinical domain. However, to unlock the clinical knowledge hidden in these LLMs, we need to design effective prompts that can guide them to perform specific clinical NLP tasks without any task-specific training data. This is known as in-context learning, which is an art and science that requires understanding the strengths and weaknesses of different LLMs and prompt engineering approaches. In this paper, we present a comprehensive and systematic experimental study on prompt engineering for five clinical NLP tasks: Clinical Sense Disambiguation, Biomedical Evidence Extraction, Coreference Resolution, Medication Status Extraction, and Medication Attribute Extraction. We assessed the prompts proposed in recent literature, including simple prefix, simple cloze, chain of thought, and anticipatory prompts, and introduced two new types of prompts, namely heuristic prompting and ensemble prompting. We evaluated the performance of these prompts on three state-of-the-art LLMs: GPT-3.5, BARD, and LLAMA2. We also contrasted zero-shot prompting with few-shot prompting, and provide novel insights and guidelines for prompt engineering for LLMs in clinical NLP. To the best of our knowledge, this is one of the first works on the empirical evaluation of different prompt engineering approaches for clinical NLP in this era of generative AI, and we hope that it will inspire and inform future research in this area.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a comprehensive and systematic experimental study on prompt engineering for five clinical NLP tasks: Clinical Sense Disambiguation, Biomedical Evidence Extraction, Coreference Resolution, Medication Status Ext extraction, and Medication Attribute Extraction."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving semantic coherence and logical structure in text generation using large language models, and the proposed approach is Semantic Scaffolding Prompting (SSP), which provides the model with a high-level semantic scaffold to guide the generation process.\n\nThe research problem in the paper is evaluating prompting strategies for large language models in zero-shot clinical natural language processing tasks, and the approach is assessing various prompts from recent literature and introducing new types of prompts.\n\nThe proposal focuses on improving text generation coherence and structure, while the paper focuses on evaluating prompting strategies for specific clinical NLP tasks. The methods proposed in each work are also different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "d33a14592d68da068953cdf37f8bf562740c0085",
+            "paperId": "d33a14592d68da068953cdf37f8bf562740c0085",
+            "title": "An Empirical Evaluation of Prompting Strategies for Large Language Models in Zero-Shot Clinical Natural Language Processing: Algorithm Development and Validation Study",
+            "abstract": "Background Large language models (LLMs) have shown remarkable capabilities in natural language processing (NLP), especially in domains where labeled data are scarce or expensive, such as the clinical domain. However, to unlock the clinical knowledge hidden in these LLMs, we need to design effective prompts that can guide them to perform specific clinical NLP tasks without any task-specific training data. This is known as in-context learning, which is an art and science that requires understanding the strengths and weaknesses of different LLMs and prompt engineering approaches. Objective The objective of this study is to assess the effectiveness of various prompt engineering techniques, including 2 newly introduced types\u2014heuristic and ensemble prompts, for zero-shot and few-shot clinical information extraction using pretrained language models. Methods This comprehensive experimental study evaluated different prompt types (simple prefix, simple cloze, chain of thought, anticipatory, heuristic, and ensemble) across 5 clinical NLP tasks: clinical sense disambiguation, biomedical evidence extraction, coreference resolution, medication status extraction, and medication attribute extraction. The performance of these prompts was assessed using 3 state-of-the-art language models: GPT-3.5 (OpenAI), Gemini (Google), and LLaMA-2 (Meta). The study contrasted zero-shot with few-shot prompting and explored the effectiveness of ensemble approaches. Results The study revealed that task-specific prompt tailoring is vital for the high performance of LLMs for zero-shot clinical NLP. In clinical sense disambiguation, GPT-3.5 achieved an accuracy of 0.96 with heuristic prompts and 0.94 in biomedical evidence extraction. Heuristic prompts, alongside chain of thought prompts, were highly effective across tasks. Few-shot prompting improved performance in complex scenarios, and ensemble approaches capitalized on multiple prompt strengths. GPT-3.5 consistently outperformed Gemini and LLaMA-2 across tasks and prompt types. Conclusions This study provides a rigorous evaluation of prompt engineering methodologies and introduces innovative techniques for clinical information extraction, demonstrating the potential of in-context learning in the clinical domain. These findings offer clear guidelines for future prompt-based clinical NLP research, facilitating engagement by non-NLP experts in clinical NLP advancements. To the best of our knowledge, this is one of the first works on the empirical evaluation of different prompt engineering approaches for clinical NLP in this era of generative artificial intelligence, and we hope that it will inspire and inform future research in this area.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study revealed that task-specific prompt tailoring is vital for the high performance of LLMs for zero-shot clinical NLP, and introduces innovative techniques for clinical information extraction, demonstrating the potential of in-context learning in the clinical domain."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by large language models, and the proposed approach is Semantic Scaffolding Prompting (SSP), which provides the model with a high-level semantic scaffold to guide the generation process.\n\nThe research problem in the paper is evaluating the effectiveness of various prompt engineering techniques for zero-shot and few-shot clinical information extraction using pretrained language models, and the approach is assessing different prompt types across clinical NLP tasks using state-of-the-art language models.\n\nThe proposal focuses on improving text generation coherence and structure, while the paper focuses on evaluating prompting strategies for clinical information extraction. The methods and application domains are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4ee96f0757e517928590a2300af5d40ba768a5a7",
+            "paperId": "4ee96f0757e517928590a2300af5d40ba768a5a7",
+            "title": "PEARL: Prompting Large Language Models to Plan and Execute Actions Over Long Documents",
+            "abstract": "Strategies such as chain-of-thought prompting improve the performance of large language models (LLMs) on complex reasoning tasks by decomposing input examples into intermediate steps. However, it remains unclear how to apply such methods to reason over long input documents, in which both the decomposition and the output of each intermediate step are non-trivial to obtain. In this work, we propose PEARL, a prompting framework to improve reasoning over long documents, which consists of three stages: action mining, plan formulation, and plan execution. More specifically, given a question about a long document, PEARL decomposes the question into a sequence of actions (e.g., SUMMARIZE, FIND_EVENT, FIND_RELATION) and then executes them over the document to obtain the answer. Each stage of PEARL is implemented via zero-shot or few-shot prompting of LLMs (in our work, GPT-4) with minimal human input. We evaluate PEARL on a challenging subset of the QuALITY dataset, which contains questions that require complex reasoning over long narrative texts. PEARL outperforms zero-shot and chain-of-thought prompting on this dataset, and ablation experiments show that each stage of PEARL is critical to its performance. Overall, PEARL is a first step towards leveraging LLMs to reason over long documents.",
+            "year": 2023,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes PEARL, a prompting framework to improve reasoning over long documents, which consists of three stages: action mining, plan formulation, and plan execution, which outperforms zero-shot and chain-of-thought prompting on a challenging subset of the QuALITY dataset."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by large language models, and the proposed approach is Semantic Scaffolding Prompting (SSP), which provides the model with a high-level semantic scaffold to guide the generation process.\n\nThe research problem in the paper is improving the performance of large language models on complex reasoning tasks over long input documents, and the proposed approach is PEARL, a prompting framework that consists of three stages: action mining, plan formulation, and plan execution.\n\nWhile both works aim to improve the performance of large language models, the specific research problems and approaches are different. The proposal focuses on improving text generation coherence and structure, while the paper focuses on complex reasoning over long documents. The methods proposed in each work (SSP and PEARL) are also distinct.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "62176de125738e3b95850d1227bac81fd646b78e",
+            "paperId": "62176de125738e3b95850d1227bac81fd646b78e",
+            "title": "Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models",
+            "abstract": "Large language models (LLMs) have recently been shown to deliver impressive performance in various NLP tasks. To tackle multi-step reasoning tasks, Few-shot chain-of-thought (CoT) prompting includes a few manually crafted step-by-step reasoning demonstrations which enable LLMs to explicitly generate reasoning steps and improve their reasoning task accuracy. To eliminate the manual efforts, Zero-shot-CoT concatenates the target problem statement with \u201cLet\u2019s think step by step\u201d as an input prompt to LLMs. Despite the success of Zero-shot-CoT, it still suffers from three pitfalls: calculation errors, missing-step errors, and semantic misunderstanding errors. To address the missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists of two components: first, devising a plan to divide the entire task into smaller subtasks, and then carrying out the subtasks according to the plan. To address the calculation errors and improve the quality of generated reasoning steps, we extend PS prompting with more detailed instructions and derive PS+ prompting. We evaluate our proposed prompting strategy on ten datasets across three reasoning problems. The experimental results over GPT-3 show that our proposed zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem. The code can be found at https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting.",
+            "year": 2023,
+            "citationCount": 115,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results over GPT-3 show that the proposed zero-shot prompting consistently outperforms Zero- shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the project proposal is improving the semantic coherence and logical structure of text generated by large language models, and the proposed approach is Semantic Scaffolding Prompting (SSP), which provides the model with a high-level semantic scaffold to guide the generation process.\n\nThe research problem in the paper is improving the accuracy of large language models on multi-step reasoning tasks, and the proposed approach is Plan-and-Solve (PS) Prompting, which consists of devising a plan to divide the entire task into smaller subtasks and then carrying out the subtasks according to the plan.\n\nWhile both the project proposal and the paper aim to improve the performance of large language models, they focus on different aspects: the project proposal targets semantic coherence and logical structure in text generation, while the paper addresses accuracy in multi-step reasoning tasks. Additionally, the proposed approaches, SSP and PS Prompting, are distinct methods.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "79729ed54ad03fd403d88f8d1543b49c7a58b973",
+            "paperId": "79729ed54ad03fd403d88f8d1543b49c7a58b973",
+            "title": "The language of prompting: What linguistic properties make a prompt successful?",
+            "abstract": "The latest generation of LLMs can be prompted to achieve impressive zero-shot or few-shot performance in many NLP tasks. However, since performance is highly sensitive to the choice of prompts, considerable effort has been devoted to crowd-sourcing prompts or designing methods for prompt optimisation. Yet, we still lack a systematic understanding of how linguistic properties of prompts correlate with task performance. In this work, we investigate how LLMs of different sizes, pre-trained and instruction-tuned, perform on prompts that are semantically equivalent, but vary in linguistic structure. We investigate both grammatical properties such as mood, tense, aspect and modality, as well as lexico-semantic variation through the use of synonyms. Our findings contradict the common assumption that LLMs achieve optimal performance on lower perplexity prompts that reflect language use in pretraining or instruction-tuning data. Prompts transfer poorly between datasets or models, and performance cannot generally be explained by perplexity, word frequency, ambiguity or prompt length. Based on our results, we put forward a proposal for a more robust and comprehensive evaluation standard for prompting research.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates how LLMs of different sizes, pre-trained and instruction-tuned, perform on prompts that are semantically equivalent, but vary in linguistic structure, and puts forward a proposal for a more robust and comprehensive evaluation standard for prompting research."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by language models, and the proposed approach is using semantic scaffolding prompts to guide the generation process.\n\nThe research problem in the paper is understanding how linguistic properties of prompts correlate with task performance in language models, and the approach is investigating the effect of grammatical and lexico-semantic variations in prompts.\n\nThe two works have different research problems and approaches. The proposal focuses on improving text generation quality, while the paper focuses on analyzing prompt properties and their impact on performance. The proposal suggests a new prompting method, while the paper conducts an empirical study of existing prompts.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+            "paperId": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+            "title": "Text Classification via Large Language Models",
+            "abstract": "Despite the remarkable success of large-scale Language Models (LLMs) such as GPT-3, their performances still significantly underperform fine-tuned models in the task of text classification. This is due to (1) the lack of reasoning ability in addressing complex linguistic phenomena (e.g., intensification, contrast, irony etc); (2) limited number of tokens allowed in in-context learning. In this paper, we introduce Clue And Reasoning Prompting (CARP). CARP adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification: CARP first prompts LLMs to find superficial clues (e.g., keywords, tones, semantic relations, references, etc), based on which a diagnostic reasoning process is induced for final decisions. To further address the limited-token issue, CARP uses a fine-tuned model on the supervised dataset for $k$NN demonstration search in the in-context learning, allowing the model to take the advantage of both LLM's generalization ability and the task-specific evidence provided by the full labeled dataset. Remarkably, CARP yields new SOTA performances on 4 out of 5 widely-used text-classification benchmarks, 97.39 (+1.24) on SST-2, 96.40 (+0.72) on AGNews, 98.78 (+0.25) on R8 and 96.95 (+0.6) on R52, and a performance comparable to SOTA on MR (92.39 v.s. 93.3). More importantly, we find that CARP delivers impressive abilities on low-resource and domain-adaptation setups. Specifically, using 16 examples per class, CARP achieves comparable performances to supervised models with 1,024 examples per class.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Clue And Reasoning Prompting (CARP) adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification, and achieves comparable performances to supervised models with 1,024 examples per class."
+            },
+            "score": 5,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by large language models, and the proposed approach is Semantic Scaffolding Prompting (SSP), which provides the model with a high-level semantic scaffold to guide the generation process.\n\nThe research problem in the paper is improving the performance of large language models on text classification tasks, and the proposed approach is Clue And Reasoning Prompting (CARP), which adopts a progressive reasoning strategy to address complex linguistic phenomena and uses a fine-tuned model for k-NN demonstration search in the in-context learning.\n\nThe two works have different research problems (text generation coherence vs. text classification performance) and different approaches (semantic scaffolding vs. progressive reasoning and k-NN demonstration search).\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "54c9a97637822c9e1956b1ec70b0c9a0f2338d2c",
+            "paperId": "54c9a97637822c9e1956b1ec70b0c9a0f2338d2c",
+            "title": "Cognitive Overload: Jailbreaking Large Language Models with Overloaded Logical Thinking",
+            "abstract": "While large language models (LLMs) have demonstrated increasing power, they have also given rise to a wide range of harmful behaviors. As representatives, jailbreak attacks can provoke harmful or unethical responses from LLMs, even after safety alignment. In this paper, we investigate a novel category of jailbreak attacks specifically designed to target the cognitive structure and processes of LLMs. Specifically, we analyze the safety vulnerability of LLMs in the face of (1) multilingual cognitive overload, (2) veiled expression, and (3) effect-to-cause reasoning. Different from previous jailbreak attacks, our proposed cognitive overload is a black-box attack with no need for knowledge of model architecture or access to model weights. Experiments conducted on AdvBench and MasterKey reveal that various LLMs, including both popular open-source model Llama 2 and the proprietary model ChatGPT, can be compromised through cognitive overload. Motivated by cognitive psychology work on managing cognitive load, we further investigate defending cognitive overload attack from two perspectives. Empirical studies show that our cognitive overload from three perspectives can jailbreak all studied LLMs successfully, while existing defense strategies can hardly mitigate the caused malicious uses effectively.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates a novel category of jailbreak attacks specifically designed to target the cognitive structure and processes of LLMs, and proposes a black-box attack with no need for knowledge of model architecture or access to model weights."
+            },
+            "score": 5,
+            "novelty_score": "The research problem in the proposal is improving the semantic coherence and logical structure of text generated by large language models, and the proposed approach is Semantic Scaffolding Prompting (SSP), which provides the model with a high-level semantic scaffold to guide the generation process.\n\nThe research problem in the paper is investigating a novel category of jailbreak attacks designed to target the cognitive structure and processes of large language models, and the paper analyzes the safety vulnerability of LLMs in the face of multilingual cognitive overload, veiled expression, and effect-to-cause reasoning.\n\nThe proposal focuses on improving text generation quality, while the paper focuses on analyzing the safety vulnerabilities of LLMs. The approaches are also different: the proposal uses semantic scaffolding prompting, while the paper investigates cognitive overload attacks.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "paperId": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "title": "Enabling Large Language Models to Generate Text with Citations",
+            "abstract": "Large language models (LLMs) have emerged as a widely-used tool for information seeking, but their generated outputs are prone to hallucination. In this work, our aim is to allow LLMs to generate text with citations, improving their factual correctness and verifiability. Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches. We propose ALCE, the first benchmark for Automatic LLMs' Citation Evaluation. ALCE collects a diverse set of questions and retrieval corpora and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. We develop automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrate their strong correlation with human judgements. Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement -- For example, on the ELI5 dataset, even the best models lack complete citation support 50% of the time. Our analyses further highlight promising future directions, including developing better retrievers, advancing long-context LLMs, and improving the ability to synthesize information from multiple sources.",
+            "year": 2023,
+            "citationCount": 102,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ALCE, the first benchmark for Automatic LLMs' Citation Evaluation, and develops automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrates their strong correlation with human judgements."
+            },
+            "score": 5
+        },
+        {
+            "id": "6f75404b0d01f9a09afe428f9efd5cbcd7825469",
+            "paperId": "6f75404b0d01f9a09afe428f9efd5cbcd7825469",
+            "title": "Dynamic Prompting: A Unified Framework for Prompt Tuning",
+            "abstract": "It has been demonstrated that the art of prompt tuning is highly effective in efficiently extracting knowledge from pretrained foundation models, encompassing pretrained language models (PLMs), vision pretrained models, and vision-language (V-L) models. However, the efficacy of employing fixed soft prompts with a predetermined position for concatenation with inputs for all instances, irrespective of their inherent disparities, remains uncertain. Variables such as the position, length, and representations of prompts across diverse instances and tasks can substantially influence the performance of prompt tuning. In this context, we provide a theoretical analysis, which reveals that optimizing the position of the prompt to encompass the input can capture additional semantic information that traditional prefix or postfix prompt tuning methods fail to capture. Building upon our analysis, we present a unified dynamic prompt (DP) tuning strategy that dynamically determines different factors of prompts based on specific tasks and instances. To accomplish this, we employ a lightweight learning network with Gumble-Softmax, allowing us to learn instance-dependent guidance. Experimental results underscore the significant performance improvement achieved by dynamic prompt tuning across a wide range of tasks, including NLP tasks, vision recognition tasks, and vision-language tasks. Furthermore, we establish the universal applicability of our approach under full-data, few-shot, and multitask scenarios. Codes are available at https://github.com/Xianjun-Yang/DPT.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A theoretical analysis is provided, which reveals that optimizing the position of the prompt to encompass the input can capture additional semantic information that traditional prefix or postfix prompt tuning methods fail to capture."
+            },
+            "score": 5
+        },
+        {
+            "id": "b8d06dd769f89d08bdd9997d7bd363c89ede845b",
+            "paperId": "b8d06dd769f89d08bdd9997d7bd363c89ede845b",
+            "title": "ZEROTOP: Zero-Shot Task-Oriented Semantic Parsing using Large Language Models",
+            "abstract": "We explore the use of large language models (LLMs) for zero-shot semantic parsing. Semantic parsing involves mapping natural language utterances to task-specific meaning representations. Language models are generally trained on the publicly available text and code and cannot be expected to directly generalize to domain-specific parsing tasks in a zero-shot setting. In this work, we propose ZEROTOP, a zero-shot task-oriented parsing method that decomposes a semantic parsing problem into a set of abstractive and extractive question-answering (QA) problems, enabling us to leverage the ability of LLMs to zero-shot answer reading comprehension questions. For each utterance, we prompt the LLM with questions corresponding to its top-level intent and a set of slots and use the LLM generations to construct the target meaning representation. We observe that current LLMs fail to detect unanswerable questions; and as a result, cannot handle questions corresponding to missing slots. To address this problem, we fine-tune a language model on public QA datasets using synthetic negative samples. Experimental results show that our QA-based decomposition paired with the fine-tuned LLM can correctly parse ~16% of utterances in the MTOP dataset without requiring any annotated data.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ZEROTOP, a zero-shot task-oriented parsing method that decomposes a semantic parsing problem into a set of abstractive and extractive question-answering (QA) problems, enabling us to leverage the ability of LLMs to zero- shot answer reading comprehension questions."
+            },
+            "score": 4
+        },
+        {
+            "id": "95e2f656017f9ec5d9cd411b1f744b278131ce6c",
+            "paperId": "95e2f656017f9ec5d9cd411b1f744b278131ce6c",
+            "title": "BenchCLAMP: A Benchmark for Evaluating Language Models on Syntactic and Semantic Parsing",
+            "abstract": "Recent work has shown that generation from a prompted or fine-tuned language model can perform well at semantic parsing when the output is constrained to be a valid semantic representation. We introduce BenchCLAMP, a Benchmark to evaluate Constrained LAnguage Model Parsing, that includes context-free grammars for seven semantic parsing datasets and two syntactic parsing datasets with varied output representations, as well as a constrained decoding interface to generate only valid outputs covered by these grammars. We provide low, medium, and high resource splits for each dataset, allowing accurate comparison of various language models under different data regimes. Our benchmark supports evaluation of language models using prompt-based learning as well as fine-tuning. We benchmark eight language models, including two GPT-3 variants available only through an API. Our experiments show that encoder-decoder pretrained language models can achieve similar performance or surpass state-of-the-art methods for syntactic and semantic parsing when the model output is constrained to be valid.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "BenchCLAMP is introduced, a Benchmark to evaluate Constrained LAnguage Model Parsing, that includes context-free grammars for seven semantic parsing datasets and two syntactic parsing datasets with varied output representations, as well as a constrained decoding interface to generate only valid outputs covered by these grammars."
+            },
+            "score": 4
+        },
+        {
+            "id": "64a1dbdd7653eaca25c78e87335ee156b6f6959e",
+            "paperId": "64a1dbdd7653eaca25c78e87335ee156b6f6959e",
+            "title": "Constrained Language Models Yield Few-Shot Semantic Parsers",
+            "abstract": "We explore the use of large pretrained language models as few-shot semantic parsers. The goal in semantic parsing is to generate a structured meaning representation given a natural language input. However, language models are trained to generate natural language. To bridge the gap, we use language models to paraphrase inputs into a controlled sublanguage resembling English that can be automatically mapped to a target meaning representation. Our results demonstrate that with only a small amount of data and very little code to convert into English-like representations, our blueprint for rapidly bootstrapping semantic parsers leads to surprisingly effective performance on multiple community tasks, greatly exceeding baseline methods also trained on the same limited data.",
+            "year": 2021,
+            "citationCount": 156,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results demonstrate that with only a small amount of data and very little code to convert into English-like representations, the blueprint for rapidly bootstrapping semantic parsers leads to surprisingly effective performance on multiple community tasks, greatly exceeding baseline methods also trained on the same limited data."
+            },
+            "score": 4
+        },
+        {
+            "id": "2379d69c98548d8c291a53a9a932b5ea7911fbe5",
+            "paperId": "2379d69c98548d8c291a53a9a932b5ea7911fbe5",
+            "title": "Probabilistic coherence, logical consistency, and Bayesian learning: Neural language models as epistemic agents",
+            "abstract": "It is argued that suitably trained neural language models exhibit key properties of epistemic agency: they hold probabilistically coherent and logically consistent degrees of belief, which they can rationally revise in the face of novel evidence. To this purpose, we conduct computational experiments with rankers: T5 models [Raffel et al. 2020] that are pretrained on carefully designed synthetic corpora. Moreover, we introduce a procedure for eliciting a model\u2019s degrees of belief, and define numerical metrics that measure the extent to which given degrees of belief violate (probabilistic, logical, and Bayesian) rationality constraints. While pretrained rankers are found to suffer from global inconsistency (in agreement with, e.g., [Jang et al. 2021]), we observe that subsequent self-training on auto-generated texts allows rankers to gradually obtain a probabilistically coherent belief system that is aligned with logical constraints. In addition, such self-training is found to have a pivotal role in rational evidential learning, too, for it seems to enable rankers to propagate a novel evidence item through their belief systems, successively re-adjusting individual degrees of belief. All this, we conclude, confirms the Rationality Hypothesis, i.e., the claim that suitable trained NLMs may exhibit advanced rational skills. We suggest that this hypothesis has empirical, yet also normative and conceptual ramifications far beyond the practical linguistic problems NLMs have originally been designed to solve.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Rationality Hypothesis, i.e., the claim that suitable trained NLMs may exhibit advanced rational skills, is suggested that this hypothesis has empirical, yet also normative and conceptual ramifications far beyond the practical linguistic problems NLMs have originally been designed to solve."
+            },
+            "score": 4
+        },
+        {
+            "id": "6e5daccbab84481909578ae070507f4887b9808e",
+            "paperId": "6e5daccbab84481909578ae070507f4887b9808e",
+            "title": "Assessing and Enhancing the Robustness of Large Language Models with Task Structure Variations for Logical Reasoning",
+            "abstract": "Large language models (LLMs), such as LLaMA, Alpaca, Vicuna, GPT-3.5 and GPT-4, have advanced the performance of AI systems on various natural language processing tasks to human-like levels. However, their generalisation and robustness when performing logical reasoning has not been sufficiently assessed. To comprehensively evaluate this ability, we develop three new logical reasoning datasets named\"ReClor-plus\",\"LogiQA-plus\"and\"LogiQAv2-plus\"that extend standard logical reasoning datasets to evaluate the robustness of the LLM's reasoning. For each, we create three subsets: the first with randomly shuffled options, the second with the correct choices replaced by\"none of the other options is correct\", and the third with a combination of shuffling and substitution. Experiments on these datasets show that these simple augmentations greatly hinder the models' performance. Despite their high performance on the original publicly available datasets, we find that all models perform poorly on these newly constructed datasets. We also demonstrate that introducing task variations into the training set can markedly improve the model's performance on both the original and our developed datasets. Finally, we show that applying logic-driven data augmentation for fine-tuning and prompting can enhance generalisation in both discriminative and generative models, offering a path to improving their robustness for tasks involving logical reasoning. Source code and data are made publicly available at https://github.com/Strong-AI-Lab/Logical-and-abstract-reasoning.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that applying logic-driven data augmentation for fine-tuning and prompting can enhance generalisation in both discriminative and generative models, offering a path to improving their robustness for tasks involving logical reasoning."
+            },
+            "score": 4
+        },
+        {
+            "id": "31c782e852e134025864394a69dbd618ed59d6dd",
+            "paperId": "31c782e852e134025864394a69dbd618ed59d6dd",
+            "title": "Case-Based Reasoning with Language Models for Classification of Logical Fallacies",
+            "abstract": "The ease and speed of spreading misinformation and propaganda on the Web motivate the need to develop trustworthy technology for detecting fallacies in natural language arguments. However, state-of-the-art language modeling methods exhibit a lack of robustness on tasks like logical fallacy classification that require complex reasoning. In this paper, we propose a Case-Based Reasoning method that classifies new cases of logical fallacy by language-modeling-driven retrieval and adaptation of historical cases. We design four complementary strategies to enrich input representation for our model, based on external information about goals, explanations, counterarguments, and argument structure. Our experiments in in-domain and out-of-domain settings indicate that Case-Based Reasoning improves the accuracy and generalizability of language models. Our ablation studies suggest that representations of similar cases have a strong impact on the model performance, that models perform well with fewer retrieved cases, and that the size of the case database has a negligible effect on the performance. Finally, we dive deeper into the relationship between the properties of the retrieved cases and the model performance.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Case-Based Reasoning method that classifies new cases of logical fallacy by language-modeling-driven retrieval and adaptation of historical cases, and designs four complementary strategies to enrich input representation for this model, based on external information about goals, explanations, counterarguments, and argument structure."
+            },
+            "score": 4
+        },
+        {
+            "id": "a6a0963fcf21ed47a2616ca3980f8f4f21e6d5ad",
+            "paperId": "a6a0963fcf21ed47a2616ca3980f8f4f21e6d5ad",
+            "title": "Large language models as tax attorneys: a case study in legal capabilities emergence",
+            "abstract": "Better understanding of Large Language Models' (LLMs) legal analysis abilities can contribute to improving the efficiency of legal services, governing artificial intelligence and leveraging LLMs to identify inconsistencies in law. This paper explores LLM capabilities in applying tax law. We choose this area of law because it has a structure that allows us to set up automated validation pipelines across thousands of examples, requires logical reasoning and maths skills, and enables us to test LLM capabilities in a manner relevant to real-world economic lives of citizens and companies. Our experiments demonstrate emerging legal understanding capabilities, with improved performance in each subsequent OpenAI model release. We experiment with retrieving and using the relevant legal authority to assess the impact of providing additional legal context to LLMs. Few-shot prompting, presenting examples of question\u2013answer pairs, is also found to significantly enhance the performance of the most advanced model, GPT-4. The findings indicate that LLMs, particularly when combined with prompting enhancements and the correct legal texts, can perform at high levels of accuracy but not yet at expert tax lawyer levels. As LLMs continue to advance, their ability to reason about law autonomously could have significant implications for the legal profession and AI governance. This article is part of the theme issue \u2018A complexity science approach to law and governance\u2019.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The findings indicate that LLMs, particularly when combined with prompting enhancements and the correct legal texts, can perform at high levels of accuracy but not yet at expert tax lawyer levels."
+            },
+            "score": 4
+        },
+        {
+            "id": "0b395ed1c8b284e551172b728e83cf257e33729a",
+            "paperId": "0b395ed1c8b284e551172b728e83cf257e33729a",
+            "title": "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination and Visual Illusion in Large Vision-Language Models",
+            "abstract": "We introduce HallusionBench, a comprehensive benchmark designed for the evaluation of image-context reasoning. This benchmark presents significant challenges to advanced large visual-language models (LVLMs), such as GPT-4V(Vision), Gemini Pro Vision, Claude 3, and LLaVA-1.5, by emphasizing nuanced understanding and interpretation of visual data. The benchmark comprises 346 images paired with 1129 questions, all meticulously crafted by human experts. We introduce a novel structure for these visual questions designed to establish control groups. This structure enables us to conduct a quantitative analysis of the models' response tendencies, logical consistency, and various failure modes. In our evaluation on HallusionBench, we benchmarked 15 different models, highlighting a 31.42% question-pair accuracy achieved by the state-of-the-art GPT-4V. Notably, all other evaluated models achieve accuracy below 16%. Moreover, our analysis not only highlights the observed failure modes, including language hallucination and visual illusion, but also deepens an understanding of these pitfalls. Our comprehensive case studies within HallusionBench shed light on the challenges of hallucination and illusion in LVLMs. Based on these insights, we suggest potential pathways for their future improvement. The benchmark and codebase can be accessed at https://github.com/tianyi-lab/HallusionBench.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This benchmark presents significant challenges to advanced large visual-language models (LVLMs), such as GPT-4V(Vision), Gemini Pro Vision, Claude 3, and LLaVA-1.5, by emphasizing nuanced understanding and interpretation of visual data."
+            },
+            "score": 4
+        },
+        {
+            "id": "4d1e6c441a0b6aa2b9ec500a5064dc307d797b0c",
+            "paperId": "4d1e6c441a0b6aa2b9ec500a5064dc307d797b0c",
+            "title": "Relational Memory-Augmented Language Models",
+            "abstract": "We present a memory-augmented approach to condition an autoregressive language model on a knowledge graph. We represent the graph as a collection of relation triples and retrieve relevant relations for a given context to improve text generation. Experiments on WikiText-103, WMT19, and enwik8 English datasets demonstrate that our approach produces a better language model in terms of perplexity and bits per character. We also show that relational memory improves coherence, is complementary to token-based memory, and enables causal interventions. Our model provides a simple yet effective way to combine an autoregressive language model and a knowledge graph for more coherent and logical generation.",
+            "year": 2022,
+            "citationCount": 26,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A memory-augmented approach to condition an autoregressive language model on a knowledge graph that represents the graph as a collection of relation triples and retrieve relevant relations for a given context to improve text generation."
+            },
+            "score": 4
+        },
+        {
+            "id": "9b8652c6e276d33f8ce5ed01102a8642ec548b57",
+            "paperId": "9b8652c6e276d33f8ce5ed01102a8642ec548b57",
+            "title": "Logical Transformers: Infusing Logical Structures into Pre-Trained Language Models",
+            "abstract": "Natural language contains rich logical struc001 tures and logical information, and correctly 002 detecting and accurately understanding these 003 logical structures and information underlying 004 natural language texts is very crucial for NLP 005 models\u2019 performance on many important NLU 006 and NLG tasks. Existing pre-trained language 007 models based on the transformer architecture 008 mostly adopt a classical design for constructing 009 their input embeddings that ignores the logical 010 structures underlying natural language texts, 011 thus limiting their ability to better capture and 012 encode key logical information in the input se013 quences. To overcome such limitations, in this 014 paper we first propose a novel approach to con015 struct logic-aware input embeddings for trans016 former language models through a combination 017 of logic detection, logic mapping and hierarchi018 cal logical projections, and then develop a cor019 responding new modeling paradigm that can up020 grade all existing transformer language models 021 into logical transformers to consistently boost 022 their performance on different NLU and NLG 023 tasks. Our empirical experiments on seven im024 portant and challenging NLU and NLG tasks 025 demonstrate that our proposed logical trans026 former language models consistently achieve 027 superior performance over their baseline trans028 former models through a deeper understanding 029 of the logical structures of texts. 030",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel approach to con015 struct logic-aware input embeddings for trans016 former language models through a combination of logic detection, logic mapping and hierarchi018 cal logical projections is proposed, and a cor019 responding new modeling paradigm is developed."
+            },
+            "score": 4
+        },
+        {
+            "id": "cc1db851e3881be28564aca2ef0fecae133c45a1",
+            "paperId": "cc1db851e3881be28564aca2ef0fecae133c45a1",
+            "title": "Boosting coherence of language models",
+            "abstract": "Naturality of long-term information structure \u2013 coherence \u2013 remains a challenge in language generation. Large language models have insuf-\ufb01ciently learned such structure, as their long-form generations differ from natural text in measures of coherence. To alleviate this divergence, we propose coherence boosting , an inference procedure that increases the effect of distant context on next-token prediction. We show the bene\ufb01ts of coherence boosting with pretrained models by distributional analyses of generated ordinary text and dialog responses. We also \ufb01nd that coherence boosting with state-of-the-art models for various zero-shot NLP tasks yields performance gains with no additional training.",
+            "year": 2021,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that coherence boosting with state-of-the-art models for various zero-shot NLP tasks yields performance gains with no additional training."
+            },
+            "score": 4
+        },
+        {
+            "id": "327e0290fd71609bfc1a30478a95f690668fe622",
+            "paperId": "327e0290fd71609bfc1a30478a95f690668fe622",
+            "title": "Enhancing Few-shot Text-to-SQL Capabilities of Large Language Models: A Study on Prompt Design Strategies",
+            "abstract": "In-context learning (ICL) has emerged as a new approach to various natural language processing tasks, utilizing large language models (LLMs) to make predictions based on context that has been supplemented with a few examples or task-specific instructions. In this paper, we aim to extend this method to question answering tasks that utilize structured knowledge sources, and improve Text-to-SQL systems by exploring various prompt design strategies for employing LLMs. We conduct a systematic investigation into different demonstration selection methods and optimal instruction formats for prompting LLMs in the Text-to-SQL task. Our approach involves leveraging the syntactic structure of an example's SQL query to retrieve demonstrations, and we demonstrate that pursuing both diversity and similarity in demonstration selection leads to enhanced performance. Furthermore, we show that LLMs benefit from database-related knowledge augmentations. Our most effective strategy outperforms the state-of-the-art system by 2.5 points (Execution Accuracy) and the best fine-tuned system by 5.1 points on the Spider dataset. These results highlight the effectiveness of our approach in adapting LLMs to the Text-to-SQL task, and we present an analysis of the factors contributing to the success of our strategy.",
+            "year": 2023,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper conducts a systematic investigation into different demonstration selection methods and optimal instruction formats for prompting LLMs in the Text-to-SQL task, and presents an analysis of the factors contributing to the success of this strategy."
+            },
+            "score": 4
+        },
+        {
+            "id": "7ed0faa6720cd176d57badbc0455af31a03f080c",
+            "paperId": "7ed0faa6720cd176d57badbc0455af31a03f080c",
+            "title": "Towards Expert-Level Medical Question Answering with Large Language Models",
+            "abstract": "Recent artificial intelligence (AI) systems have reached milestones in\"grand challenges\"ranging from Go to protein-folding. The capability to retrieve medical knowledge, reason over it, and answer medical questions comparably to physicians has long been viewed as one such grand challenge. Large language models (LLMs) have catalyzed significant progress in medical question answering; Med-PaLM was the first model to exceed a\"passing\"score in US Medical Licensing Examination (USMLE) style questions with a score of 67.2% on the MedQA dataset. However, this and other prior work suggested significant room for improvement, especially when models' answers were compared to clinicians' answers. Here we present Med-PaLM 2, which bridges these gaps by leveraging a combination of base LLM improvements (PaLM 2), medical domain finetuning, and prompting strategies including a novel ensemble refinement approach. Med-PaLM 2 scored up to 86.5% on the MedQA dataset, improving upon Med-PaLM by over 19% and setting a new state-of-the-art. We also observed performance approaching or exceeding state-of-the-art across MedMCQA, PubMedQA, and MMLU clinical topics datasets. We performed detailed human evaluations on long-form questions along multiple axes relevant to clinical applications. In pairwise comparative ranking of 1066 consumer medical questions, physicians preferred Med-PaLM 2 answers to those produced by physicians on eight of nine axes pertaining to clinical utility (p<0.001). We also observed significant improvements compared to Med-PaLM on every evaluation axis (p<0.001) on newly introduced datasets of 240 long-form\"adversarial\"questions to probe LLM limitations. While further studies are necessary to validate the efficacy of these models in real-world settings, these results highlight rapid progress towards physician-level performance in medical question answering.",
+            "year": 2023,
+            "citationCount": 233,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results highlight rapid progress towards physician-level performance in medical question answering by leveraging a combination of base LLM improvements (PaLM 2), medical domain finetuning, and prompting strategies including a novel ensemble refinement approach."
+            },
+            "score": 4
+        },
+        {
+            "id": "d96e228ce2e10d2215fa1d9833238bb1f2157656",
+            "paperId": "d96e228ce2e10d2215fa1d9833238bb1f2157656",
+            "title": "The Eval4NLP 2023 Shared Task on Prompting Large Language Models as Explainable Metrics",
+            "abstract": "Generative large language models (LLMs) have seen many breakthroughs over the last year. With an increasing number of parameters and pre-training data, they have shown remarkable capabilities to solve tasks with minimal or no task-related examples. Notably, LLMs have been successfully employed as evaluation metrics in text generation tasks. Strategies employed in this context differ in the choice of input prompts, the selection of samples for demonstration, and the methodology used to construct scores grading the generations. Approaches often differ in the input prompts, the samples that are selected for demonstration and the construction process of scores from the output. Within this context, we introduce the Eval4NLP 2023 shared task that asks participants to explore such approaches for machine translation evaluation and summarization eval- uation. Specifically, we select a list of allowed LLMs and disallow fine-tuning to ensure a focus on prompting. We test the approaches of the participants on a new reference-free test-set spanning 3 language pairs for machine transla- tion as well as a summarization dataset. Further, we present an overview of the approaches taken by the participants, present their results on the test set and analyze paths for future work. Fi- nally, as a separate track, we perform a human evaluation of the plausibility of explanations given by the LLMs and its effect on model performance. We make parts of our code and datasets available.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A human evaluation of the plausibility of explanations given by the LLMs and its effect on model performance is performed and parts of the code and datasets are made available."
+            },
+            "score": 4
+        },
+        {
+            "id": "15253ed1b40ad305745306d9bff186db245c1eaa",
+            "paperId": "15253ed1b40ad305745306d9bff186db245c1eaa",
+            "title": "Evaluation is all you need. Prompting Generative Large Language Models for Annotation Tasks in the Social Sciences. A Primer using Open Models",
+            "abstract": "This paper explores the use of open generative Large Language Models (LLMs) for annotation tasks in the social sciences. The study highlights the challenges associated with proprietary models, such as limited reproducibility and privacy concerns, and advocates for the adoption of open (source) models that can be operated on independent devices. Two examples of annotation tasks, sentiment analysis in tweets and identification of leisure activities in childhood aspirational essays are provided. The study evaluates the performance of different prompting strategies and models (neural-chat-7b-v3-2, Starling-LM-7B-alpha, openchat_3.5, zephyr-7b-alpha and zephyr-7b-beta). The results indicate the need for careful validation and tailored prompt engineering. The study highlights the advantages of open models for data privacy and reproducibility.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The study evaluates the performance of different prompting strategies and models and indicates the need for careful validation and tailored prompt engineering in the use of open generative Large Language Models for annotation tasks in the social sciences."
+            },
+            "score": 4
+        },
+        {
+            "id": "19183686d59d55d4c31f322b202bae2f6aec7e0c",
+            "paperId": "19183686d59d55d4c31f322b202bae2f6aec7e0c",
+            "title": "LTRC_IIITH\u2019s 2023 Submission for Prompting Large Language Models as Explainable Metrics Task",
+            "abstract": "In this report, we share our contribution to the Eval4NLP Shared Task titled \u201cPrompting Large Language Models as Explainable Metrics.\u201d We build our prompts with a primary focus on effective prompting strategies, score-aggregation, and explainability for LLM-based metrics. We participated in the track for smaller models by submitting the scores along with their explanations. According to the Kendall correlation scores on the leaderboard, our MT evaluation submission ranks second-best, while our summarization evaluation submission ranks fourth, with only a 0.06 difference from the leading submission.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This report builds its prompts with a primary focus on effective prompting strategies, score-aggregation, and explainability for LLM-based metrics with a primary focus on effective prompting strategies, score-aggregation, and explainability for LLM-based metrics."
+            },
+            "score": 4
+        },
+        {
+            "id": "5c5ab276b00c1f19fbb0a3d2c38d532becac9442",
+            "paperId": "5c5ab276b00c1f19fbb0a3d2c38d532becac9442",
+            "title": "A Brief History of Prompt: Leveraging Language Models. (Through Advanced Prompting)",
+            "abstract": "This paper presents a comprehensive exploration of the evolution of prompt engineering and generation in the field of natural language processing (NLP). Starting from the early language models and information retrieval systems, we trace the key developments that have shaped prompt engineering over the years. The introduction of attention mechanisms in 2015 revolutionized language understanding, leading to advancements in controllability and context-awareness. Subsequent breakthroughs in reinforcement learning techniques further enhanced prompt engineering, addressing issues like exposure bias and biases in generated text. We examine the significant contributions in 2018 and 2019, focusing on fine-tuning strategies, control codes, and template-based generation. The paper also discusses the growing importance of fairness, human-AI collaboration, and low-resource adaptation. In 2020 and 2021, contextual prompting and transfer learning gained prominence, while 2022 and 2023 witnessed the emergence of advanced techniques like unsupervised pre-training and novel reward shaping. Throughout the paper, we reference specific research studies that exemplify the impact of various developments on prompt engineering. The journey of prompt engineering continues, with ethical considerations being paramount for the responsible and inclusive future of AI systems.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The journey of prompt engineering continues, with ethical considerations being paramount for the responsible and inclusive future of AI systems."
+            },
+            "score": 4
+        },
+        {
+            "id": "aace515abd7c6d1b0a6c98a0e321800c71561bae",
+            "paperId": "aace515abd7c6d1b0a6c98a0e321800c71561bae",
+            "title": "Prompting and Fine-tuning Pre-trained Generative Language Models",
+            "abstract": "There has been an explosion of available pre-trained and fine-tuned Generative Language Models (LM). They vary in the number of parameters, architecture, training strategy, and training set size. Aligned with it, alternative strategies exist to exploit these models, such as Fine-tuning and Prompt Engineering. However, many questions may arise throughout this process: Which model to apply for a given task? Which strategies to use? Will Prompt Engineering solve all tasks? What are the computational and financial costs involved? This tutorial will introduce and explore typical modern LM architectures with a hands-on approach to the available strategies.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This tutorial will introduce and explore typical modern LM architectures with a hands-on approach to the available strategies."
+            },
+            "score": 4
+        },
+        {
+            "id": "204f1c3490498eecb92bda6b4f8d664470ee90ab",
+            "paperId": "204f1c3490498eecb92bda6b4f8d664470ee90ab",
+            "title": "Template-Free Prompting for Few-Shot Named Entity Recognition via Semantic-Enhanced Contrastive Learning.",
+            "abstract": "Prompt tuning has achieved great success in various sentence-level classification tasks by using elaborated label word mappings and prompt templates. However, for solving token-level classification tasks, e.g., named entity recognition (NER), previous research, which utilizes N-gram traversal for prompting all spans with all possible entity types, is time-consuming. To this end, we propose a novel prompt-based contrastive learning method for few-shot NER without template construction and label word mappings. First, we leverage external knowledge to initialize semantic anchors for each entity type. These anchors are simply appended with input sentence embeddings as template-free prompts (TFPs). Then, the prompts and sentence embeddings are in-context optimized with our proposed semantic-enhanced contrastive loss. Our proposed loss function enables contrastive learning in few-shot scenarios without requiring a significant number of negative samples. Moreover, it effectively addresses the issue of conventional contrastive learning, where negative instances with similar semantics are erroneously pushed apart in natural language processing (NLP)-related tasks. We examine our method in label extension (LE), domain-adaption (DA), and low-resource generalization evaluation tasks with six public datasets and different settings, achieving state-of-the-art (SOTA) results in most cases.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel prompt-based contrastive learning method for few-shot NER without template construction and label word mappings, and effectively addresses the issue of conventional Contrastive learning, where negative instances with similar semantics are erroneously pushed apart in natural language processing (NLP)-related tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "3a733c27bff68259b17dc4f835b0d192ac8fab70",
+            "paperId": "3a733c27bff68259b17dc4f835b0d192ac8fab70",
+            "title": "ParaFuzz: An Interpretability-Driven Technique for Detecting Poisoned Samples in NLP",
+            "abstract": "Backdoor attacks have emerged as a prominent threat to natural language processing (NLP) models, where the presence of specific triggers in the input can lead poisoned models to misclassify these inputs to predetermined target classes. Current detection mechanisms are limited by their inability to address more covert backdoor strategies, such as style-based attacks. In this work, we propose an innovative test-time poisoned sample detection framework that hinges on the interpretability of model predictions, grounded in the semantic meaning of inputs. We contend that triggers (e.g., infrequent words) are not supposed to fundamentally alter the underlying semantic meanings of poisoned samples as they want to stay stealthy. Based on this observation, we hypothesize that while the model's predictions for paraphrased clean samples should remain stable, predictions for poisoned samples should revert to their true labels upon the mutations applied to triggers during the paraphrasing process. We employ ChatGPT, a state-of-the-art large language model, as our paraphraser and formulate the trigger-removal task as a prompt engineering problem. We adopt fuzzing, a technique commonly used for unearthing software vulnerabilities, to discover optimal paraphrase prompts that can effectively eliminate triggers while concurrently maintaining input semantics. Experiments on 4 types of backdoor attacks, including the subtle style backdoors, and 4 distinct datasets demonstrate that our approach surpasses baseline methods, including STRIP, RAP, and ONION, in precision and recall.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an innovative test-time poisoned sample detection framework that hinges on the interpretability of model predictions, grounded in the semantic meaning of inputs, and adopts fuzzing, a technique commonly used for unearthing software vulnerabilities, to discover optimal paraphrase prompts that can effectively eliminate triggers while concurrently maintaining input semantics."
+            },
+            "score": 4
+        },
+        {
+            "id": "4ab9f5c94ad003e774c0994011214a5721461cbe",
+            "paperId": "4ab9f5c94ad003e774c0994011214a5721461cbe",
+            "title": "Analyzing BERT\u2019s Knowledge of Hypernymy via Prompting",
+            "abstract": "The high performance of large pretrained language models (LLMs) such as BERT on NLP tasks has prompted questions about BERT\u2019s linguistic capabilities, and how they differ from humans\u2019. In this paper, we approach this question by examining BERT\u2019s knowledge of lexical semantic relations. We focus on hypernymy, the \u201cis-a\u201d relation that relates a word to a superordinate category. We use a prompting methodology to simply ask BERT what the hypernym of a given word is. We find that, in a setting where all hypernyms are guessable via prompting, BERT knows hypernyms with up to 57% accuracy. Moreover, BERT with prompting outperforms other unsupervised models for hypernym discovery even in an unconstrained scenario. However, BERT\u2019s predictions and performance on a dataset containing uncommon hyponyms and hypernyms indicate that its knowledge of hypernymy is still limited.",
+            "year": 2021,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper examines BERT\u2019s knowledge of lexical semantic relations, focusing on hypernymy, the \u201cis-a\u201d relation that relates a word to a superordinate category, and finds that, in a setting where all hypernyms are guessable via prompting, BERT knows hypernym with up to 57% accuracy."
+            },
+            "score": 4
+        },
+        {
+            "id": "7011bf9aa7e68fabaa1df498da6d2dd8a950f037",
+            "paperId": "7011bf9aa7e68fabaa1df498da6d2dd8a950f037",
+            "title": "Pushing the Limits of ChatGPT on NLP Tasks",
+            "abstract": "Despite the success of ChatGPT, its performances on most NLP tasks are still well below the supervised baselines. In this work, we looked into the causes, and discovered that its subpar performance was caused by the following factors: (1) token limit in the prompt does not allow for the full utilization of the supervised datasets; (2) mismatch between the generation nature of ChatGPT and NLP tasks; (3) intrinsic pitfalls of LLMs models, e.g., hallucination, overly focus on certain keywords, etc. In this work, we propose a collection of general modules to address these issues, in an attempt to push the limits of ChatGPT on NLP tasks. Our proposed modules include (1) a one-input-multiple-prompts strategy that employs multiple prompts for one input to accommodate more demonstrations; (2) using fine-tuned models for better demonstration retrieval; (3) transforming tasks to formats that are more tailored to the generation nature; (4) employing reasoning strategies that are tailored to addressing the task-specific complexity; (5) the self-verification strategy to address the hallucination issue of LLMs; (6) the paraphrase strategy to improve the robustness of model predictions. We conduct experiments on 21 datasets of 10 representative NLP tasks, including question answering, commonsense reasoning, natural language inference, sentiment analysis, named entity recognition, entity-relation extraction, event extraction, dependency parsing, semantic role labeling, and part-of-speech tagging. Using the proposed assemble of techniques, we are able to significantly boost the performance of ChatGPT on the selected NLP tasks, achieving performances comparable to or better than supervised baselines, or even existing SOTA performances.",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using the proposed assemble of techniques, this work is able to significantly boost the performance of ChatGPT on the selected NLP tasks, achieving performances comparable to or better than supervised baselines, or even existing SOTA performances."
+            },
+            "score": 4
+        },
+        {
+            "id": "690cab1354a26f018c63a1c5e9eca05b32db41a7",
+            "paperId": "690cab1354a26f018c63a1c5e9eca05b32db41a7",
+            "title": "A scaffolding approach to coreference resolution integrating statistical and rule-based models",
+            "abstract": "Abstract We describe a scaffolding approach to the task of coreference resolution that incrementally combines statistical classifiers, each designed for a particular mention type, with rule-based models (for sub-tasks well-matched to determinism). We motivate our design by an oracle-based analysis of errors in a rule-based coreference resolution system, showing that rule-based approaches are poorly suited to tasks that require a large lexical feature space, such as resolving pronominal and common-noun mentions. Our approach combines many advantages: it incrementally builds clusters integrating joint information about entities, uses rules for deterministic phenomena, and integrates rich lexical, syntactic, and semantic features with random forest classifiers well-suited to modeling the complex feature interactions that are known to characterize the coreference task. We demonstrate that all these decisions are important. The resulting system achieves 63.2 F1 on the CoNLL-2012 shared task dataset, outperforming the rule-based starting point by over seven F1 points. Similarly, our system outperforms an equivalent sieve-based approach that relies on logistic regression classifiers instead of random forests by over four F1 points. Lastly, we show that by changing the coreference resolution system from relying on constituent-based syntax to using dependency syntax, which can be generated in linear time, we achieve a runtime speedup of 550 per cent without considerable loss of accuracy.",
+            "year": 2017,
+            "citationCount": 32,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A scaffolding approach to the task of coreference resolution that incrementally combines statistical classifiers, each designed for a particular mention type, with rule-based models (for sub-tasks well-matched to determinism) and achieves a runtime speedup of 550 per cent without considerable loss of accuracy."
+            },
+            "score": 3
+        },
+        {
+            "id": "6a5e1fb8a55cf17cb3142b8829b11e4b3f722157",
+            "paperId": "6a5e1fb8a55cf17cb3142b8829b11e4b3f722157",
+            "title": "Improving Temporal Generalization of Pre-trained Language Models with Lexical Semantic Change",
+            "abstract": "Recent research has revealed that neural language models at scale suffer from poor temporal generalization capability, i.e., language model pre-trained on static data from past years performs worse over time on emerging data. Existing methods mainly perform continual training to mitigate such a misalignment. While effective to some extent but is far from being addressed on both the language modeling and downstream tasks. In this paper, we empirically observe that temporal generalization is closely affiliated with lexical semantic change, which is one of the essential phenomena of natural languages. Based on this observation, we propose a simple yet effective lexical-level masking strategy to post-train a converged language model. Experiments on two pre-trained language models, two different classification tasks, and four benchmark datasets demonstrate the effectiveness of our proposed method over existing temporal adaptation methods, i.e., continual training with new data. Our code is available at https://github.com/zhaochen0110/LMLM.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper empirically observe that temporal generalization is closely affiliated with lexical semantic change, which is one of the essential phenomena of natural languages, and proposes a simple yet effective lexical-level masking strategy to post-train a converged language model."
+            },
+            "score": 3
+        },
+        {
+            "id": "66d98dc2aad17c03532dbae21d05f098257cc2e2",
+            "paperId": "66d98dc2aad17c03532dbae21d05f098257cc2e2",
+            "title": "LINC: A Neurosymbolic Approach for Logical Reasoning by Combining Language Models with First-Order Logic Provers",
+            "abstract": "Logical reasoning, i.e., deductively inferring the truth value of a conclusion from a set of premises, is an important task for artificial intelligence with wide potential impacts on science, mathematics, and society. While many prompting-based strategies have been proposed to enable Large Language Models (LLMs) to do such reasoning more effectively, they still appear unsatisfactory, often failing in subtle and unpredictable ways. In this work, we investigate the validity of instead reformulating such tasks as modular neurosymbolic programming, which we call LINC: Logical Inference via Neurosymbolic Computation. In LINC, the LLM acts as a semantic parser, translating premises and conclusions from natural language to expressions in first-order logic. These expressions are then offloaded to an external theorem prover, which symbolically performs deductive inference. Leveraging this approach, we observe significant performance gains on FOLIO and a balanced subset of ProofWriter for three different models in nearly all experimental conditions we evaluate. On ProofWriter, augmenting the comparatively small open-source StarCoder+ (15.5B parameters) with LINC even outperforms GPT-3.5 and GPT-4 with Chain-of-Thought (CoT) prompting by an absolute 38% and 10%, respectively. When used with GPT-4, LINC scores 26% higher than CoT on ProofWriter while performing comparatively on FOLIO. Further analysis reveals that although both methods on average succeed roughly equally often on this dataset, they exhibit distinct and complementary failure modes. We thus provide promising evidence for how logical reasoning over natural language can be tackled through jointly leveraging LLMs alongside symbolic provers. All corresponding code is publicly available at https://github.com/benlipkin/linc",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Analysis reveals that although both methods on average succeed roughly equally often on this dataset, they exhibit distinct and complementary failure modes, which provides promising evidence for how logical reasoning over natural language can be tackled through jointly leveraging LLMs alongside symbolic provers."
+            },
+            "score": 3
+        },
+        {
+            "id": "6cae6fb9ae36f0a0bfe6ab9634bd0dd409711654",
+            "paperId": "6cae6fb9ae36f0a0bfe6ab9634bd0dd409711654",
+            "title": "Improving Long Document Topic Segmentation Models With Enhanced Coherence Modeling",
+            "abstract": "Topic segmentation is critical for obtaining structured documents and improving downstream tasks such as information retrieval. Due to its ability of automatically exploring clues of topic shift from abundant labeled data, recent supervised neural models have greatly promoted the development of long document topic segmentation, but leaving the deeper relationship between coherence and topic segmentation underexplored. Therefore, this paper enhances the ability of supervised models to capture coherence from both logical structure and semantic similarity perspectives to further improve the topic segmentation performance, proposing Topic-aware Sentence Structure Prediction (TSSP) and Contrastive Semantic Similarity Learning (CSSL). Specifically, the TSSP task is proposed to force the model to comprehend structural information by learning the original relations between adjacent sentences in a disarrayed document, which is constructed by jointly disrupting the original document at topic and sentence levels. Moreover, we utilize inter- and intra-topic information to construct contrastive samples and design the CSSL objective to ensure that the sentences representations in the same topic have higher similarity, while those in different topics are less similar. Extensive experiments show that the Longformer with our approach significantly outperforms old state-of-the-art (SOTA) methods. Our approach improve $F_1$ of old SOTA by 3.42 (73.74 ->77.16) and reduces $P_k$ by 1.11 points (15.0 ->13.89) on WIKI-727K and achieves an average relative reduction of 4.3% on $P_k$ on WikiSection. The average relative $P_k$ drop of 8.38% on two out-of-domain datasets also demonstrates the robustness of our approach.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper enhances the ability of supervised models to capture coherence from both logical structure and semantic similarity perspectives to further improve the topic segmentation performance, proposing Topic-aware Sentence Structure Prediction (TSSP) and Contrastive Semantic Similarity Learning (CSSL)."
+            },
+            "score": 3
+        },
+        {
+            "id": "fada6d22ffd3b2791d8708b2376c67f748d72341",
+            "paperId": "fada6d22ffd3b2791d8708b2376c67f748d72341",
+            "title": "Logical Structure-based Pretrained Models for Legal Text Processing",
+            "abstract": "In recent years, we have witnessed breakthroughs in natural language processing coming from pretrained models based on the Transformer architecture. In the field of legal text processing, a special sub-domain of NLP, pretrained models also show promising results. For a legal sentence, although the natural language is used for expression, the real meaning lies in its logical structure. From that observation, we have a hypothesis that the knowledge of recognizing logical structures can support deep learning models to understand the legal text better and achieve a higher performance in the related tasks. To verify our assumption, we design a novel framework to inject the knowledge about recognizing the requisite and effectuation part of a law sentence into Transformer models. Our proposed method is effective and general. By our experiments, we provide informative results about our approach and its performance compared with the baselines.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework is designed to inject the knowledge about recognizing the requisite and effectuation part of a law sentence into Transformer models to support deep learning models to understand the legal text better and achieve a higher performance in the related tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "f6e28a79e90e517c6839d5d52a189bba9f54e13c",
+            "paperId": "f6e28a79e90e517c6839d5d52a189bba9f54e13c",
+            "title": "Is Incoherence Surprising? Targeted Evaluation of Coherence Prediction from Language Models",
+            "abstract": "Coherent discourse is distinguished from a mere collection of utterances by the satisfaction of a diverse set of constraints, for example choice of expression, logical relation between denoted events, and implicit compatibility with world-knowledge. Do neural language models encode such constraints? We design an extendable set of test suites addressing different aspects of discourse and dialogue coherence. Unlike most previous coherence evaluation studies, we address specific linguistic devices beyond sentence order perturbations, which allow for a more fine-grained analysis of what constitutes coherence and what neural models trained on a language modelling objective are capable of encoding. Extending the targeted evaluation paradigm for neural language models (Marvin and Linzen, 2018) to phenomena beyond syntax, we show that this paradigm is equally suited to evaluate linguistic qualities that contribute to the notion of coherence.",
+            "year": 2021,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work addresses specific linguistic devices beyond sentence order perturbations, which allow for a more fine-grained analysis of what constitutes coherence and what neural models trained on a language modelling objective are capable of encoding."
+            },
+            "score": 3
+        },
+        {
+            "id": "b249d8c7a59a4ae62fbff2b77fa4ed313e59e08f",
+            "paperId": "b249d8c7a59a4ae62fbff2b77fa4ed313e59e08f",
+            "title": "Large Language Models and Logical Reasoning",
+            "abstract": "In deep learning, large language models are typically trained on data from a corpus as representative of current knowledge. However, natural language is not an ideal form for the reliable communication of concepts. Instead, formal logical statements are preferable since they are subject to verifiability, reliability, and applicability. Another reason for this preference is that natural language is not designed for an efficient and reliable flow of information and knowledge, but is instead designed as an evolutionary adaptation as formed from a prior set of natural constraints. As a formally structured language, logical statements are also more interpretable. They may be informally constructed in the form of a natural language statement, but a formalized logical statement is expected to follow a stricter set of rules, such as with the use of symbols for representing the logic-based operators that connect multiple simple statements and form verifiable propositions.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "In deep learning, large language models are typically trained on data from a corpus as representative of current knowledge because natural language is not an ideal form for the reliable communication of concepts, and formal logical statements are preferable since they are subject to verifiability, reliability, and applicability."
+            },
+            "score": 3
+        },
+        {
+            "id": "f3c3c22716629df9f5353956461222ffc8e5e802",
+            "paperId": "f3c3c22716629df9f5353956461222ffc8e5e802",
+            "title": "Plot Writing From Pre-Trained Language Models",
+            "abstract": "Pre-trained language models (PLMs) fail to generate long-form narrative text because they do not consider global structure. As a result, the generated texts are often incohesive, repetitive, or lack content. Recent work in story generation reintroduced explicit content planning in the form of prompts, keywords, or semantic frames. Trained on large parallel corpora, these models can generate more logical event sequences and thus more contentful stories. However, these intermediate representations are often not in natural language and cannot be utilized by PLMs without fine-tuning. We propose generating story plots using off-the-shelf PLMs while maintaining the benefit of content planning to generate cohesive and contentful stories. Our proposed method, ScratchPlot, first prompts a PLM to compose a content plan. Then, we generate the story's body and ending conditioned on the content plan. Furthermore, we take a generate-and-rank approach by using additional PLMs to rank the generated (story, ending) pairs. We benchmark our method with various baselines and achieved superior results in both human and automatic evaluation.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes generating story plots using off-the-shelf PLMs while maintaining the benefit of content planning to generate cohesive and contentful stories and takes a generate-and-rank approach by using additional PLMs to rank the generated pairs."
+            },
+            "score": 3
+        },
+        {
+            "id": "038ed1e52bdf92a4db0c91d31d1db28b2c5051fb",
+            "paperId": "038ed1e52bdf92a4db0c91d31d1db28b2c5051fb",
+            "title": "Exploring the Deceptive Power of LLM-Generated Fake News: A Study of Real-World Detection Challenges",
+            "abstract": "Recent advancements in Large Language Models (LLMs) have enabled the creation of fake news, particularly in complex fields like healthcare. Studies highlight the gap in the deceptive power of LLM-generated fake news with and without human assistance, yet the potential of prompting techniques has not been fully explored. Thus, this work aims to determine whether prompting strategies can effectively narrow this gap. Current LLM-based fake news attacks require human intervention for information gathering and often miss details and fail to maintain context consistency. Therefore, to better understand threat tactics, we propose a strong fake news attack method called conditional Variational-autoencoder-Like Prompt (VLPrompt). Unlike current methods, VLPrompt eliminates the need for additional data collection while maintaining contextual coherence and preserving the intricacies of the original text. To propel future research on detecting VLPrompt attacks, we created a new dataset named VLPrompt fake news (VLPFN) containing real and fake texts. Our experiments, including various detection methods and novel human study metrics, were conducted to assess their performance on our dataset, yielding numerous findings.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a strong fake news attack method called conditional Variational-autoencoder-Like Prompt (VLPrompt), which eliminates the need for additional data collection while maintaining contextual coherence and preserving the intricacies of the original text."
+            },
+            "score": 3
+        },
+        {
+            "id": "006aa1580fae5968417538c7acb4662c7b58088f",
+            "paperId": "006aa1580fae5968417538c7acb4662c7b58088f",
+            "title": "LLM-Rec: Personalized Recommendation via Prompting Large Language Models",
+            "abstract": "We investigate various prompting strategies for enhancing personalized content recommendation performance with large language models (LLMs) through input augmentation . Our proposed approach, termed LLM-Rec , encompasses four distinct prompting strategies: (1) basic prompting, (2) recommendation-driven prompting, (3) engagement-guided prompting",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed approach, termed LLM-Rec, encompasses four distinct prompting strategies: (1) basic prompting, (2) recommendation-driven prompting, (3) engagement-guided prompting, and (4) engagement-guided prompting."
+            },
+            "score": 3
+        },
+        {
+            "id": "f4e723958a93762befb4d4a039b44a7d752f9917",
+            "paperId": "f4e723958a93762befb4d4a039b44a7d752f9917",
+            "title": "Large Language Models are Zero-Shot Rankers for Recommender Systems",
+            "abstract": "Recently, large language models (LLMs) (e.g., GPT-4) have demonstrated impressive general-purpose task-solving abilities, including the potential to approach recommendation tasks. Along this line of research, this work aims to investigate the capacity of LLMs that act as the ranking model for recommender systems. We first formalize the recommendation problem as a conditional ranking task, considering sequential interaction histories as conditions and the items retrieved by other candidate generation models as candidates. To solve the ranking task by LLMs, we carefully design the prompting template and conduct extensive experiments on two widely-used datasets. We show that LLMs have promising zero-shot ranking abilities but (1) struggle to perceive the order of historical interactions, and (2) can be biased by popularity or item positions in the prompts. We demonstrate that these issues can be alleviated using specially designed prompting and bootstrapping strategies. Equipped with these insights, zero-shot LLMs can even challenge conventional recommendation models when ranking candidates are retrieved by multiple candidate generators. The code and processed datasets are available at https://github.com/RUCAIBox/LLMRank.",
+            "year": 2023,
+            "citationCount": 110,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the capacity of LLMs that act as the ranking model for recommender systems, and shows that LLMs have promising zero-shot ranking abilities but struggle to perceive the order of historical interactions, and can be biased by popularity or item positions in the prompts."
+            },
+            "score": 3
+        },
+        {
+            "id": "995b2f650f55de6077b87db6dadb01cecd86dbd7",
+            "paperId": "995b2f650f55de6077b87db6dadb01cecd86dbd7",
+            "title": "Advanced prompting as a catalyst: Empowering large language models in the management of gastrointestinal cancers",
+            "abstract": "Large Language Models' (LLMs) performance in healthcare can be significantly impacted by prompt engineering. However, the area of study remains relatively uncharted in gastrointestinal oncology until now. Our research delves into this unexplored territory, investigating the efficacy of varied prompting strategies, including simple prompts, templated prompts, in-context learning (ICL), and multi-round iterative questioning, for optimizing the performance of LLMs within a medical setting. We develop a comprehensive evaluation system to assess the performance of LLMs across multiple dimensions. This robust evaluation system ensures a thorough assessment of the LLMs' capabilities in the field of medicine. Our findings suggest a positive relationship between the comprehensiveness of the prompts and the LLMs' performance. Notably, the multi-round strategy, which is characterized by iterative question-and-answer rounds, consistently yields the best results. ICL, a strategy that capitalizes on interrelated contextual learning, also displays significant promise, surpassing the outcomes achieved with simpler prompts. The research underscores the potential of advanced prompt engineering and iterative learning approaches for boosting the applicability of LLMs in healthcare. We recommend that additional research be conducted to refine these strategies and investigate their potential integration, to truly harness the full potential of LLMs in medical applications.\n",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The research investigates the efficacy of varied prompting strategies, including simple prompts, templated prompts, in-context learning (ICL), and multi-round iterative questioning, for optimizing the performance of LLMs within a medical setting, and develops a comprehensive evaluation system."
+            },
+            "score": 3
+        },
+        {
+            "id": "1da2a9a8f03712cee964e2c8abd98f829194dd5f",
+            "paperId": "1da2a9a8f03712cee964e2c8abd98f829194dd5f",
+            "title": "Tutorials on Stance Detection using Pre-trained Language Models: Fine-tuning BERT and Prompting Large Language Models",
+            "abstract": "This paper presents two self-contained tutorials on stance detection in Twitter data using BERT fine-tuning and prompting large language models (LLMs). The first tutorial explains BERT architecture and tokenization, guiding users through training, tuning, and evaluating standard and domain-specific BERT models with HuggingFace transformers. The second focuses on constructing prompts and few-shot examples to elicit stances from ChatGPT and open-source FLAN-T5 without fine-tuning. Various prompting strategies are implemented and evaluated using confusion matrices and macro F1 scores. The tutorials provide code, visualizations, and insights revealing the strengths of few-shot ChatGPT and FLAN-T5 which outperform fine-tuned BERTs. By covering both model fine-tuning and prompting-based techniques in an accessible, hands-on manner, these tutorials enable learners to gain applied experience with cutting-edge methods for stance detection.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Two self-contained tutorials on stance detection in Twitter data using BERT fine-tuning and prompting large language models (LLMs) are presented, revealing the strengths of few-shot ChatGPT and FLAN-T5 which outperform fine- Tuned BERTs."
+            },
+            "score": 3
+        },
+        {
+            "id": "a49e936075970e8ee574dfe73b9679b34354245e",
+            "paperId": "a49e936075970e8ee574dfe73b9679b34354245e",
+            "title": "TextGraphs-16 Natural Language Premise Selection Task: Zero-Shot Premise Selection with Prompting Generative Language Models",
+            "abstract": "Automated theorem proving can benefit a lot from methods employed in natural language processing, knowledge graphs and information retrieval: this non-trivial task combines formal languages understanding, reasoning, similarity search. We tackle this task by enhancing semantic similarity ranking with prompt engineering, which has become a new paradigm in natural language understanding. None of our approaches requires additional training. Despite encouraging results reported by prompt engineering approaches for a range of NLP tasks, for the premise selection task vanilla re-ranking by prompting GPT-3 doesn\u2019t outperform semantic similarity ranking with SBERT, but merging of the both rankings shows better results.",
+            "year": 2022,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work focuses on enhancing semantic similarity ranking with prompt engineering, which has become a new paradigm in natural language understanding, and introduces a new approach to premise selection task."
+            },
+            "score": 3
+        },
+        {
+            "id": "6e10343767ab09dde83cf99ea3442907402a9810",
+            "paperId": "6e10343767ab09dde83cf99ea3442907402a9810",
+            "title": "Evaluating the Impact of Model Scale for Compositional Generalization in Semantic Parsing",
+            "abstract": "Despite their strong performance on many tasks, pre-trained language models have been shown to struggle on out-of-distribution compositional generalization. Meanwhile, recent work has shown considerable improvements on many NLP tasks from model scaling. Can scaling up model size also improve compositional generalization in semantic parsing? We evaluate encoder-decoder models up to 11B parameters and decoder-only models up to 540B parameters, and compare model scaling curves for three different methods for applying a pre-trained language model to a new task: fine-tuning all parameters, prompt tuning, and in-context learning. We observe that fine-tuning generally has flat or negative scaling curves on out-of-distribution compositional generalization in semantic parsing evaluations. In-context learning has positive scaling curves, but is generally outperformed by much smaller fine-tuned models. Prompt-tuning can outperform fine-tuning, suggesting further potential improvements from scaling as it exhibits a more positive scaling curve. Additionally, we identify several error trends that vary with model scale. For example, larger models are generally better at modeling the syntax of the output space, but are also more prone to certain types of overfitting. Overall, our study highlights limitations of current techniques for effectively leveraging model scale for compositional generalization, while our analysis also suggests promising directions for future work.",
+            "year": 2022,
+            "citationCount": 41,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Limits of current techniques for effectively leveraging model scale for compositional generalization are highlighted, while the analysis also suggests promising directions for future work."
+            },
+            "score": 3
+        },
+        {
+            "id": "914a0f5e7eb98842f220a5082dba4f9382086f27",
+            "paperId": "914a0f5e7eb98842f220a5082dba4f9382086f27",
+            "title": "Language-Oriented Communication with Semantic Coding and Knowledge Distillation for Text-to-Image Generation",
+            "abstract": "By integrating recent advances in large language models (LLMs) and generative models into the emerging semantic communication (SC) paradigm, in this article we put forward to a novel framework of language-oriented semantic communication (LSC). In LSC, machines communicate using human language messages that can be interpreted and manipulated via natural language processing (NLP) techniques for SC efficiency. To demonstrate LSC's potential, we introduce three innovative algorithms: 1) semantic source coding (SSC) which compresses a text prompt into its key head words capturing the prompt's syntactic essence while maintaining their appearance order to keep the prompt's context; 2) semantic channel coding (SCC) that improves robustness against errors by substituting head words with their lenghthier synonyms; and 3) semantic knowledge distillation (SKD) that produces listener-customized prompts via in-context learning the listener's language style. In a communication task for progressive text-to-image generation, the proposed methods achieve higher perceptual similarities with fewer transmissions while enhancing robustness in noisy communication channels.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Three innovative algorithms are introduced that achieve higher perceptual similarities with fewer transmissions while enhancing robustness in noisy communication channels and produces listener-customized prompts via in-context learning the listener's language style."
+            },
+            "score": 3
+        },
+        {
+            "id": "3e339698ea21a9010401c197a63d604d0b58f959",
+            "paperId": "3e339698ea21a9010401c197a63d604d0b58f959",
+            "title": "Dual Semantic Enhanced Event Causality Identification with Derivative Temporal Prompt",
+            "abstract": "Event causality identification (ECI) is a crucial task in natural language processing (NLP) that aims to identify the causal relation between a pair of events in a sentence. However, the existing methods still face two main challenges: a deficiency in causal reasoning capabilities, particularly in detecting implicit causality, and a scarcity of adequately annotated data for training causal relation patterns. In this paper, we propose an innovative approach to address these challenges. On the one hand, we introduce a derivative temporal relation identification task to enhance the model's capability to capture temporal information, which can be utilized to improve the identification of implicit causality. On the other hand, our method incorporates dual semantic information to enhance the representation of events. Firstly, we leverage semantic knowledge relevant to event pairs from external knowledge bases. Secondly, we utilize a dependency-based semantic enhancement module to extract comprehensive semantic information from events within the sentence. We evaluate our method on two benchmark datasets, and the results demonstrate its superior performance compared to previous state-of-the-art methods.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a derivative temporal relation identification task to enhance the model's capability to capture temporal information, which can be utilized to improve the identification of implicit causality and incorporates dual semantic information to enhanced the representation of events."
+            },
+            "score": 3
+        },
+        {
+            "id": "1f9f25aad947030fe3206114fa2ac75e8b590515",
+            "paperId": "1f9f25aad947030fe3206114fa2ac75e8b590515",
+            "title": "Defending Large Language Models against Jailbreak Attacks via Semantic Smoothing",
+            "abstract": "Aligned large language models (LLMs) are vulnerable to jailbreaking attacks, which bypass the safeguards of targeted LLMs and fool them into generating objectionable content. While initial defenses show promise against token-based threat models, there do not exist defenses that provide robustness against semantic attacks and avoid unfavorable trade-offs between robustness and nominal performance. To meet this need, we propose SEMANTICSMOOTH, a smoothing-based defense that aggregates the predictions of multiple semantically transformed copies of a given input prompt. Experimental results demonstrate that SEMANTICSMOOTH achieves state-of-the-art robustness against GCG, PAIR, and AutoDAN attacks while maintaining strong nominal performance on instruction following benchmarks such as InstructionFollowing and AlpacaEval. The codes will be publicly available at https://github.com/UCSB-NLP-Chang/SemanticSmooth.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results demonstrate that SEMANTICSMOOTH achieves state-of-the-art robustness against GCG, PAIR, and AutoDAN attacks while maintaining strong nominal performance on instruction following benchmarks such as InstructionFollowing and AlpacaEval."
+            },
+            "score": 3
+        },
+        {
+            "id": "b742233b83405d303f61b3378f70475e4efdf75b",
+            "paperId": "b742233b83405d303f61b3378f70475e4efdf75b",
+            "title": "Analyzing Semantic Faithfulness of Language Models via Input Intervention on Conversational Question Answering",
+            "abstract": "Transformer-based language models have been shown to be highly effective for several NLP tasks. In this paper, we consider three transformer models, BERT, RoBERTa, and XLNet, in both small and large version, and investigate how faithful their representations are with respect to the semantic content of texts. We formalize a notion of semantic faithfulness, in which the semantic content of a text should causally \ufb01gure in a model\u2019s inferences in question answering. We then test this notion by observing a model\u2019s behavior on answering questions about a story after performing two novel semantic interventions\u2014deletion intervention and negation intervention. While transformer models achieve high performance on standard question answering tasks, we show that they fail to be semantically faithful once we perform these interventions for a signi\ufb01cant number of cases ( \u223c 50% for deletion intervention, and \u223c 20% drop in accuracy for negation intervention). We then propose an intervention-based training regime that can mitigate the undesirable effects for deletion intervention by a signi\ufb01cant margin (from \u223c 50% to \u223c 6% ). We analyze the inner-workings of the models to better understand the effectiveness of intervention-based training for deletion intervention. But we show that this training does not attenuate other aspects of semantic unfaithfulness such as the models\u2019 inability to deal with negation intervention or to capture the predicate-argument structure of texts. We also test InstructGPT, via prompting, for its ability to handle the two interventions and to capture predicate-argument structure. While InstructGPT models do achieve very high performance on predicate-argument structure task, they fail to respond adequately to our deletion and negation interventions.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper considers three transformer models, BERT, RoBERTa, and XLNet, in both small and large version, and investigates how faithful their representations are with respect to the semantic content of texts, and proposes an intervention-based training regime that can mitigate the undesirable effects for deletion intervention."
+            },
+            "score": 3
+        },
+        {
+            "id": "5bc43db8a438af826ddff02024ab9c036ab6f11c",
+            "paperId": "5bc43db8a438af826ddff02024ab9c036ab6f11c",
+            "title": "Analyzing Semantic Faithfulness of Language Models via Input Intervention on Question Answering",
+            "abstract": "Abstract Transformer-based language models have been shown to be highly effective for several NLP tasks. In this article, we consider three transformer models, BERT, RoBERTa, and XLNet, in both small and large versions, and investigate how faithful their representations are with respect to the semantic content of texts. We formalize a notion of semantic faithfulness, in which the semantic content of a text should causally figure in a model\u2019s inferences in question answering. We then test this notion by observing a model\u2019s behavior on answering questions about a story after performing two novel semantic interventions\u2014deletion intervention and negation intervention. While transformer models achieve high performance on standard question answering tasks, we show that they fail to be semantically faithful once we perform these interventions for a significant number of cases (\u223c 50% for deletion intervention, and \u223c 20% drop in accuracy for negation intervention). We then propose an intervention-based training regime that can mitigate the undesirable effects for deletion intervention by a significant margin (from \u223c 50% to \u223c 6%). We analyze the inner-workings of the models to better understand the effectiveness of intervention-based training for deletion intervention. But we show that this training does not attenuate other aspects of semantic unfaithfulness such as the models\u2019 inability to deal with negation intervention or to capture the predicate\u2013argument structure of texts. We also test InstructGPT, via prompting, for its ability to handle the two interventions and to capture predicate\u2013argument structure. While InstructGPT models do achieve very high performance on predicate\u2013argument structure task, they fail to respond adequately to our deletion and negation interventions.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This article considers three transformer models, BERT, RoBERTa, and XLNet, in both small and large versions, and investigates how faithful their representations are with respect to the semantic content of texts, and proposes an intervention-based training regime that can mitigate the undesirable effects for deletion intervention."
+            },
+            "score": 3
+        },
+        {
+            "id": "19d0803894b8139c80a4d7a05a264ca7bec91a19",
+            "paperId": "19d0803894b8139c80a4d7a05a264ca7bec91a19",
+            "title": "BISCUIT: Scaffolding LLM-Generated Code with Ephemeral UIs in Computational Notebooks",
+            "abstract": "Novices frequently engage with machine learning tutorials in computational notebooks and have been adopting code generation technologies based on large language models (LLMs). However, they encounter difficulties in understanding and working with code produced by LLMs. To mitigate these challenges, we introduce a novel workflow into computational notebooks that augments LLM-based code generation with an additional ephemeral UI step, offering users UI-based scaffolds as an intermediate stage between user prompts and code generation. We present this workflow in BISCUIT, an extension for JupyterLab that provides users with ephemeral UIs generated by LLMs based on the context of their code and intentions, scaffolding users to understand, guide, and explore with LLM-generated code. Through a user study where 10 novices used BISCUIT for machine learning tutorials, we discover that BISCUIT offers user semantic representation of code to aid their understanding, reduces the complexity of prompt engineering, and creates a playground for users to explore different variables and iterate on their ideas. We discuss the implications of our findings for UI-centric interactive paradigm in code generation LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Through a user study, it is discovered that BISCUIT offers user semantic representation of code to aid their understanding, reduces the complexity of prompt engineering, and creates a playground for users to explore different variables and iterate on their ideas."
+            },
+            "score": 2
+        },
+        {
+            "id": "ed7172b60ad1dc21d27243d99692198c261c3047",
+            "paperId": "ed7172b60ad1dc21d27243d99692198c261c3047",
+            "title": "Probing the Creativity of Large Language Models: Can models produce divergent semantic association?",
+            "abstract": "Large language models possess remarkable capacity for processing language, but it remains unclear whether these models can further generate creative content. The present study aims to investigate the creative thinking of large language models through a cognitive perspective. We utilize the divergent association task (DAT), an objective measurement of creativity that asks models to generate unrelated words and calculates the semantic distance between them. We compare the results across different models and decoding strategies. Our findings indicate that: (1) When using the greedy search strategy, GPT-4 outperforms 96% of humans, while GPT-3.5-turbo exceeds the average human level. (2) Stochastic sampling and temperature scaling are effective to obtain higher DAT scores for models except GPT-4, but face a trade-off between creativity and stability. These results imply that advanced large language models have divergent semantic associations, which is a fundamental process underlying creativity.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The divergent association task (DAT), an objective measurement of creativity that asks models to generate unrelated words and calculates the semantic distance between them, implies that advanced large language models have divergent semantic associations, which is a fundamental process underlying creativity."
+            },
+            "score": 2
+        },
+        {
+            "id": "175f594b1f9884a14f74c3d0c580bab20bd4c68c",
+            "paperId": "175f594b1f9884a14f74c3d0c580bab20bd4c68c",
+            "title": "Do Not Fire the Linguist: Grammatical Profiles Help Language Models Detect Semantic Change",
+            "abstract": "Morphological and syntactic changes in word usage \u2014 as captured, e.g., by grammatical profiles \u2014 have been shown to be good predictors of a word\u2019s meaning change. In this work, we explore whether large pre-trained contextualised language models, a common tool for lexical semantic change detection, are sensitive to such morphosyntactic changes. To this end, we first compare the performance of grammatical profiles against that of a multilingual neural language model (XLM-R) on 10 datasets, covering 7 languages, and then combine the two approaches in ensembles to assess their complementarity. Our results show that ensembling grammatical profiles with XLM-R improves semantic change detection performance for most datasets and languages. This indicates that language models do not fully cover the fine-grained morphological and syntactic signals that are explicitly represented in grammatical profiles. An interesting exception are the test sets where the time spans under analysis are much longer than the time gap between them (for example, century-long spans with a one-year gap between them). Morphosyntactic change is slow so grammatical profiles do not detect in such cases. In contrast, language models, thanks to their access to lexical information, are able to detect fast topical changes.",
+            "year": 2022,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work compares the performance of grammatical profiles against that of a multilingual neural language model (XLM-R) on 10 datasets, covering 7 languages, and then combines the two approaches in ensembles to assess their complementarity, showing that ensembling Grammatical profiles with XLM-R improves semantic change detection performance."
+            },
+            "score": 2
+        },
+        {
+            "id": "2392b6d3a5cad9e5cf349169eaeee848266adf6a",
+            "paperId": "2392b6d3a5cad9e5cf349169eaeee848266adf6a",
+            "title": "LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models",
+            "abstract": "Large language models (LLMs) have been applied in various applications due to their astonishing capabilities. With advancements in technologies such as chain-of-thought (CoT) prompting and in-context learning (ICL), the prompts fed to LLMs are becoming increasingly lengthy, even exceeding tens of thousands of tokens. To accelerate model inference and reduce cost, this paper presents LLMLingua, a coarse-to-fine prompt compression method that involves a budget controller to maintain semantic integrity under high compression ratios, a token-level iterative compression algorithm to better model the interdependence between compressed contents, and an instruction tuning based method for distribution alignment between language models. We conduct experiments and analysis over four datasets from different scenarios, i.e., GSM8K, BBH, ShareGPT, and Arxiv-March23; showing that the proposed approach yields state-of-the-art performance and allows for up to 20x compression with little performance loss. Our code is available at https://aka.ms/LLMLingua.",
+            "year": 2023,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A coarse-to-fine prompt compression method that involves a budget controller to maintain semantic integrity under high compression ratios, a token-level iterative compression algorithm to better model the interdependence between compressed contents, and an instruction tuning based method for distribution alignment between language models."
+            },
+            "score": 2
+        },
+        {
+            "id": "593284010379e02f6ab57e7208b5511185ce8c0e",
+            "paperId": "593284010379e02f6ab57e7208b5511185ce8c0e",
+            "title": "Probing Pre-trained Language Models for Semantic Attributes and their Values",
+            "abstract": "Pretrained Language Models (PTLMs) yield state-of-the-art performance on many Natural Language Processing tasks, including syntax, semantics and commonsense reasoning. In this paper, we focus on identifying to what extent do PTLMs capture semantic attributes and their values, e.g. the relation between rich and high net worth. We use PTLMs to predict masked tokens using patterns and lists of items from Wikidata in order to verify how likely PTLMs encode semantic attributes along with their values. Such inferences based on semantics are intuitive for us humans as part of our language understanding. Since PTLMs are trained on large amount of Wikipedia data, we would assume that they can generate similar predictions. However, our \ufb01ndings reveal that PTLMs perform still much worse than humans on this task. We show an analysis which explains how to exploit our methodology to integrate better context and semantics into PTLMs using knowledge bases.",
+            "year": 2021,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper uses PTLMs to predict masked tokens using patterns and lists of items from Wikidata in order to verify how likely PTLs encode semantic attributes along with their values, e.g. the relation between rich and high net worth."
+            },
+            "score": 2
+        },
+        {
+            "id": "53c0abe83fe9b4fdaf2208295d8504fcf5241694",
+            "paperId": "53c0abe83fe9b4fdaf2208295d8504fcf5241694",
+            "title": "UnifiedSKG: Unifying and Multi-Tasking Structured Knowledge Grounding with Text-to-Text Language Models",
+            "abstract": "Structured knowledge grounding (SKG) leverages structured knowledge to complete user requests, such as semantic parsing over databases and question answering over knowledge bases. Since the inputs and outputs of SKG tasks are heterogeneous, they have been studied separately by different communities, which limits systematic and compatible research on SKG. In this paper, we overcome this limitation by proposing the UnifiedSKG framework, which unifies 21 SKG tasks into a text-to-text format, aiming to promote systematic SKG research, instead of being exclusive to a single task, domain, or dataset. We use UnifiedSKG to benchmark T5 with different sizes and show that T5, with simple modifications when necessary, achieves state-of-the-art performance on almost all of the 21 tasks. We further demonstrate that multi-task prefix-tuning improves the performance on most tasks, largely improving the overall performance. UnifiedSKG also facilitates the investigation of zero-shot and few-shot learning, and we show that T0, GPT-3, and Codex struggle in zero-shot and few-shot learning for SKG. We also use UnifiedSKG to conduct a series of controlled experiments on structured knowledge encoding variants across SKG tasks. UnifiedSKG is easily extensible to more tasks, and it is open-sourced at https://github.com/hkunlp/unifiedskg.",
+            "year": 2022,
+            "citationCount": 232,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The UnifiedSKG framework is proposed, which unifies 21 SKG tasks into a text-to-text format, aiming to promote systematic SKG research, instead of being exclusive to a single task, domain, or dataset."
+            },
+            "score": 2
+        },
+        {
+            "id": "5d2b77ae8508e277fe9b840a471b7dfb00e806ff",
+            "paperId": "5d2b77ae8508e277fe9b840a471b7dfb00e806ff",
+            "title": "Large Language Models are Complex Table Parsers",
+            "abstract": "With the Generative Pre-trained Transformer 3.5 (GPT-3.5) exhibiting remarkable reasoning and comprehension abilities in Natural Language Processing (NLP), most Question Answering (QA) research has primarily centered around general QA tasks based on GPT, neglecting the specific challenges posed by Complex Table QA. In this paper, we propose to incorporate GPT-3.5 to address such challenges, in which complex tables are reconstructed into tuples and specific prompt designs are employed for dialogues. Specifically, we encode each cell's hierarchical structure, position information, and content as a tuple. By enhancing the prompt template with an explanatory description of the meaning of each tuple and the logical reasoning process of the task, we effectively improve the hierarchical structure awareness capability of GPT-3.5 to better parse the complex tables. Extensive experiments and results on Complex Table QA datasets, i.e., the open-domain dataset HiTAB and the aviation domain dataset AIT-QA show that our approach significantly outperforms previous work on both datasets, leading to state-of-the-art (SOTA) performance.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper enhances the prompt template with an explanatory description of the meaning of each tuple and the logical reasoning process of the task, which effectively improves the hierarchical structure awareness capability of GPT-3.5 to better parse the complex tables."
+            },
+            "score": 2
+        },
+        {
+            "id": "72a2cff51bb9a87bbe4fc41325f5a4afc82a0366",
+            "paperId": "72a2cff51bb9a87bbe4fc41325f5a4afc82a0366",
+            "title": "NL2TL: Transforming Natural Languages to Temporal Logics using Large Language Models",
+            "abstract": "Temporal Logic (TL) can be used to rigorously specify complex high-level specification for systems in many engineering applications. The translation between natural language (NL) and TL has been under-explored due to the lack of dataset and generalizable model across different application domains. In this paper, we propose an accurate and generalizable transformation framework of English instructions from NL to TL, exploring the use of Large Language Models (LLMs) at multiple stages. Our contributions are twofold. First, we develop a framework to create a dataset of NL-TL pairs combining LLMs and human annotation. We publish a dataset with 28K NL-TL pairs. Then, we finetune T5 models on the lifted versions (i.e., the specific Atomic Propositions (AP) are hidden) of the NL and TL. The enhanced generalizability originates from two aspects: 1) Usage of lifted NL-TL characterizes common logical structures, without constraints of specific domains. 2) Application of LLMs in dataset creation largely enhances corpus richness. We test the generalization of trained models on five varied domains. To achieve full NL-TL transformation, we either combine the lifted model with AP recognition task or do the further finetuning on each specific domain. During the further finetuning, our model achieves higher accuracy (>95%) using only<10% training data, compared with the baseline sequence to sequence (Seq2Seq) model.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes an accurate and generalizable transformation framework of English instructions from NL to TL, exploring the use of Large Language Models (LLMs) at multiple stages, and develops a framework to create a dataset of NL-TL pairs combining LLMs and human annotation."
+            },
+            "score": 2
+        },
+        {
+            "id": "4d21debb0f5fec315181e0912b5105c6ce4fc67f",
+            "paperId": "4d21debb0f5fec315181e0912b5105c6ce4fc67f",
+            "title": "Backdoor Attacks for In-Context Learning with Language Models",
+            "abstract": "Because state-of-the-art language models are expensive to train, most practitioners must make use of one of the few publicly available language models or language model APIs. This consolidation of trust increases the potency of backdoor attacks, where an adversary tampers with a machine learning model in order to make it perform some malicious behavior on inputs that contain a predefined backdoor trigger. We show that the in-context learning ability of large language models significantly complicates the question of developing backdoor attacks, as a successful backdoor must work against various prompting strategies and should not affect the model's general purpose capabilities. We design a new attack for eliciting targeted misclassification when language models are prompted to perform a particular target task and demonstrate the feasibility of this attack by backdooring multiple large language models ranging in size from 1.3 billion to 6 billion parameters. Finally we study defenses to mitigate the potential harms of our attack: for example, while in the white-box setting we show that fine-tuning models for as few as 500 steps suffices to remove the backdoor behavior, in the black-box setting we are unable to develop a successful defense that relies on prompt engineering alone.",
+            "year": 2023,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that the in-context learning ability of large language models significantly complicates the question of developing backdoor attacks, as a successful backdoor must work against various prompting strategies and should not affect the model's general purpose capabilities."
+            },
+            "score": 2
+        },
+        {
+            "id": "b44fe44e27c9d0880faa698e3b2d98b50f762422",
+            "paperId": "b44fe44e27c9d0880faa698e3b2d98b50f762422",
+            "title": "Quranic Conversations: Developing a Semantic Search tool for the Quran using Arabic NLP Techniques",
+            "abstract": "The Holy Book of Quran is believed to be the literal word of God (Allah) as revealed to the Prophet Muhammad (PBUH) over a period of approximately 23 years. It is the book where God provides guidance on how to live a righteous and just life, emphasizing principles like honesty, compassion, charity and justice, as well as providing rules for personal conduct, family matters, business ethics and much more. However, due to constraints related to the language and the Quran organization, it is challenging for Muslims to get all relevant ayahs (verses) pertaining to a matter or inquiry of interest. Hence, we developed a Quran semantic search tool which finds the verses pertaining to the user inquiry or prompt. To achieve this, we trained several models on a large dataset of over 30 tafsirs, where typically each tafsir corresponds to one verse in the Quran and, using cosine similarity, obtained the tafsir tensor which is most similar to the prompt tensor of interest, which was then used to index for the corresponding ayah in the Quran. Using the SNxLM model, we were able to achieve a cosine similarity score as high as 0.97 which corresponds to the abdu tafsir for a verse relating to financial matters.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Quran semantic search tool which finds the verses pertaining to the user inquiry or prompt through cosine similarity, which was developed on a large dataset of over 30 tafsirs."
+            },
+            "score": 2
+        },
+        {
+            "id": "090ae09a8c96f0479bdb8d24681b0bbeb4f3aba2",
+            "paperId": "090ae09a8c96f0479bdb8d24681b0bbeb4f3aba2",
+            "title": "Research on NLP Based Automatic Summarization Generation Method for Medical Texts",
+            "abstract": ": The fundamental concept underpinning text summarization technology revolves around the capacity to encapsulate the original information into a succinct form, thus equipping individuals to promptly extract essential content from vast data repositories and liberating users from the cumbersome task of processing extensive textual material. In recent years, the exponential proliferation of data in biomedical literature, patient case records, and healthcare documentation, has presented a pressing challenge. This research undertakes the integration of Natural Language Processing (NLP)-related technologies into the domain of medical text summarization. It puts forth a novel solution for generative automatic summarization, with a specific focus on enhancing the model's proficiency in assimilating the semantic nuances inherent in biomedical texts. The methodology incorporates within existing text summarization frameworks to optimize the model's efficacy in handling biomedical data. The empirical findings presented in this study attest to the remarkable precision of the sentence similarity calculation method introduced herein. In a comparative analysis against four alternative methodologies, this approach achieves a high accuracy rate of 90.6%. This outcome highlights the superior predictive performance of the sentence integration similarity calculation method proposed in this research.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research undertakes the integration of Natural Language Processing (NLP)-related technologies into the domain of medical text summarization with a specific focus on enhancing the model's proficiency in assimilating the semantic nuances inherent in biomedical texts."
+            },
+            "score": 2
+        },
+        {
+            "id": "43fcc748bbb98c3785e30c9b335c582699651fce",
+            "paperId": "43fcc748bbb98c3785e30c9b335c582699651fce",
+            "title": "A Case Report On The \"A.I. Locked-In Problem\": social concerns with modern NLP",
+            "abstract": "Modern NLP models are becoming better conversational agents than their predecessors. Recurrent Neural Networks (RNNs) and especially Long-Short Term Memory (LSTM) features allow the agent to better store and use information about semantic content, a trend that has become even more pronounced with the Transformer Models. Large Language Models (LLMs) such as GPT-3 by OpenAI have become known to be able to construct and follow a narrative, which enables the system to adopt personas on the go, adapt them and play along in conversational stories. However, practical experimentation with GPT-3 shows that there is a recurring problem with these modern NLP systems, namely that they can \u201cget stuck\u201d in the narrative so that further conversations, prompt executions or commands become futile. This is here referred to as the \u201cLocked-In Problem\u201d and is exemplified with an experimental case report, followed by practical and social concerns that are accompanied with this problem.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Practical experimentation with GPT-3 shows that there is a recurring problem with these modern NLP systems, namely that they can \u201cget stuck\u201d in the narrative so that further conversations, prompt executions or commands become futile."
+            },
+            "score": 2
+        },
+        {
+            "id": "650ef9cf38313be0bb4e8b34d97861d5717d26f4",
+            "paperId": "650ef9cf38313be0bb4e8b34d97861d5717d26f4",
+            "title": "Natural Numbers, Natural Language: Architecting the Semantic Web",
+            "abstract": "Two disparate themes are brought together, to underwrite semantic Web architecture. A bit-string-(as opposed to quantity-) based number theory gives body to the study of zero-divisors (ZDs) in infinite-dimensional extensions of hypercomplex numbers, via the Cayley-Dickson process (CDP). Their Cayley-Table-like Emanation Tables (ETs) of ZD products - representable as infinitely extensible spreadsheets - have patterns of empty cells defining fractals ... and \"fractality\" is, per Sir Tim Berners-Lee, the fundamental feature of World Wide Web geometry. But ETs themselves decompose into integral numbers of ZD \"atoms\" called Box-Kites, octahedral wire-frame figures whose 6 vertices represent planes whose diagonals are saturated with all and only \"primitive\" ZDs. Their basic circuits and scaffolding provide a \"representation theory\" unifying two distinct semantic models, derived by Jean Petitot from Singularity Theory mathematics, and applied to the semiotics of literary and mythological structures, of Algirdas Greimas and Claude Levi-Strauss respectively.",
+            "year": 2008,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A bit-string-(as opposed to quantity-) based number theory gives body to the study of zero-divisors (ZDs) in infinite-dimensional extensions of hypercomplex numbers, via the Cayley-Dickson process (CDP)."
+            },
+            "score": 1
+        },
+        {
+            "id": "c63c989dd68107383d5463152dc91bbc6c48be2a",
+            "paperId": "c63c989dd68107383d5463152dc91bbc6c48be2a",
+            "title": "Left Frontal White Matter Links to Rhythm Processing Relevant to Speech Production in Apraxia of Speech",
+            "abstract": "Abstract Recent mechanistic models argue for a key role of rhythm processing in both speech production and speech perception. Patients with the non-fluent variant (NFV) of primary progressive aphasia (PPA) with apraxia of speech (AOS) represent a specific study population in which this link can be examined. Previously, we observed impaired rhythm processing in NFV with AOS. We hypothesized that a shared neurocomputational mechanism structures auditory input (sound and speech) and output (speech production) in time, a \u201ctemporal scaffolding\u201d mechanism. Since considerable white matter damage is observed in NFV, we test here whether white matter changes are related to impaired rhythm processing. Forty-seven participants performed a psychoacoustic test battery: 12 patients with NFV and AOS, 11 patients with the semantic variant of PPA, and 24 cognitively intact age- and education-matched controls. Deformation-based morphometry was used to test whether white matter volume correlated to rhythmic abilities. In 34 participants, we also obtained tract-based metrics of the left Aslant tract, which is typically damaged in patients with NFV. Nine out of 12 patients with NFV displayed impaired rhythmic processing. Left frontal white matter atrophy adjacent to the supplementary motor area (SMA) correlated with poorer rhythmic abilities. The structural integrity of the left Aslant tract also correlated with rhythmic abilities. A colocalized and perhaps shared white matter substrate adjacent to the SMA is associated with impaired rhythmic processing and motor speech impairment. Our results support the existence of a temporal scaffolding mechanism structuring perceptual input and speech output.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results support the existence of a temporal scaffolding mechanism structuring perceptual input and speech output, which is associated with impaired rhythmic processing and motor speech impairment in patients with the non-fluent variant of primary progressive aphasia with apraxia of speech."
+            },
+            "score": 1
+        },
+        {
+            "id": "2f9ffafcba199709c6c22fe1ebe54ae927128e1c",
+            "paperId": "2f9ffafcba199709c6c22fe1ebe54ae927128e1c",
+            "title": "Conceptual Change in Language Teaching and Learning: Why and How Lexical Concepts Drive Meaning Construction Differently across Languages",
+            "abstract": "Teaching and learning based on conceptual change, henceforth TaLCC, have increasingly gained momentum in education. This development stems from recent findings that TaLCC facilitate learner's deep reasoning and profound understanding of complex problems. One explanation for this is TaLCC's scaffolding of self-regulated learning, which, as argued by Self-Determination Theory (e.g. Deci and Ryan 1985), facilitates learner motivation and learning performance. In this paper I adapt the basic assumptions of TaLCC to language teaching and learning. The focus of this paper is on word meaning and vocabulary learning. On the basis of Evans' (e.g. 2006) Lexical Concepts and Cognitive Models Theory I explicate word meaning via so-called cognitive model profiles. I outline a method for language learners to construct cognitive model profiles from a word's co-textual environment explicating and contrasting lexico-semantic regularities and idiosyncrasies of translation equivalents in the learner's L1 and the target language.",
+            "year": 2013,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper outlines a method for language learners to construct cognitive model profiles from a word's co-textual environment explicating and contrasting lexico-semantic regularities and idiosyncrasies of translation equivalents in the learner's L1 and the target language."
+            },
+            "score": 1
+        },
+        {
+            "id": "2cff60371c9563a7423b487f43914e3eaffc1f7b",
+            "paperId": "2cff60371c9563a7423b487f43914e3eaffc1f7b",
+            "title": "Exploring Patterns of Stability and Change in Caregivers' Word Usage Across Early Childhood",
+            "abstract": "The linguistic input children receive across early childhood plays a crucial role in shaping their knowledge about the world. To study this input, researchers have begun applying distributional semantic models to large corpora of child-directed speech, extracting various patterns of word use/co-occurrence. Previous work using these models has not measured how these patterns may change throughout development, however. In this work, we leverage natural language processing methods-originally developed to study historical language change-to compare caregivers' use of words when talking to younger versus older children. Some words' usage changed more than others; this variability could be predicted based on the word's properties at both the individual and category levels. These findings suggest that caregivers' changing patterns of word use may play a role in scaffolding children's acquisition of conceptual structure in early\u00a0development.",
+            "year": 2020,
+            "citationCount": 2,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "paperId": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "title": "Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models",
+            "abstract": "Inspired by recent advances in multimodal learning and machine translation, we introduce an encoder-decoder pipeline that learns (a): a multimodal joint embedding space with images and text and (b): a novel language model for decoding distributed representations from our space. Our pipeline effectively unifies joint image-text embedding models with multimodal neural language models. We introduce the structure-content neural language model that disentangles the structure of a sentence to its content, conditioned on representations produced by the encoder. The encoder allows one to rank images and sentences while the decoder can generate novel descriptions from scratch. Using LSTM to encode sentences, we match the state-of-the-art performance on Flickr8K and Flickr30K without using object detections. We also set new best results when using the 19-layer Oxford convolutional network. Furthermore we show that with linear encoders, the learned embedding space captures multimodal regularities in terms of vector space arithmetic e.g. *image of a blue car* - \"blue\" + \"red\" is near images of red cars. Sample captions generated for 800 images are made available for comparison.",
+            "year": 2014,
+            "citationCount": 1324,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces the structure-content neural language model that disentangles the structure of a sentence to its content, conditioned on representations produced by the encoder, and shows that with linear encoders, the learned embedding space captures multimodal regularities in terms of vector space arithmetic."
+            },
+            "score": 1
+        },
+        {
+            "id": "7b02717be469cfe9f7d150fbefe8fbe7513b6f1b",
+            "paperId": "7b02717be469cfe9f7d150fbefe8fbe7513b6f1b",
+            "title": "Advances in Petri Nets 1987",
+            "abstract": null,
+            "year": 1986,
+            "citationCount": 53,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The GAMERU model, a language for the analysis and design of human communication pragmatics within organizational systems, and parallel systems specifications with coloured Petri nets and algebraic specifications are presented."
+            },
+            "score": 1
+        },
+        {
+            "id": "45bc443d5f1a72e10591c1f0b1670d769ff97b46",
+            "paperId": "45bc443d5f1a72e10591c1f0b1670d769ff97b46",
+            "title": "CAAP '90 : 15th Colloquium on Trees in Algebra and Programming, Copenhagen, Denmark, May 15-18, 1990, proceedings",
+            "abstract": "On the power of bounded concurrency II: The pushdown automata level.- Trees everywhere.- Combinatory forms for equational programming: Instances, unification and narrowing.- Graphical versus logical specifications.- More efficient bottom-up tree pattern matching.- On the regular structure of prefix rewriting.- A unified approach for showing language containment and equivalence between various types of ?-automata.- Unitary monoid with two generators: An algorithmic point of view.- Coherence of subsumption.- Petri nets as models of linear logic.- Towards the unification of models for concurrency.- A markovian concurrency measure.- Graph matching in operational semantics and typing.- ML typability is dexptime-complete.- Testing for inductiue (co)-reducibility.- Probabilistic analysis of some distributed algorithms.- Infinite values in hierarchical imperative types.- Equivalence of finite-valued bottom-up finite state tree transducers is decidable.",
+            "year": 1990,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Equivalence of finite-valued bottom-up finite state tree transducers is decidable and graph matching in operational semantics and typing is improved."
+            },
+            "score": 1
+        },
+        {
+            "id": "2d14fb56f52d14a237e3a2faa12f3772b046a46d",
+            "paperId": "2d14fb56f52d14a237e3a2faa12f3772b046a46d",
+            "title": "Do not Trust the Experts: How the Lack of Standard Complicates NLP for Historical Irish",
+            "abstract": "In this paper, we describe how we unearthed some fundamental problems while building an analogy dataset modelled on BATS (Gladkova et al., 2016) to evaluate historical Irish embeddings on their ability to detect orthographic, morphological and semantic similarity.The performance of our models in the analogy task was extremely poor regardless of the architecture, hyperparameters and evaluation metrics, while the qualitative evaluation revealed positive tendencies. We argue that low agreement between field experts on fundamental lexical and orthographic issues, and the lack of a unified editorial standard in available resources make it impossible to build reliable evaluation datasets for computational models and obtain interpretable results. We emphasise the need for such a standard, particularly for NLP applications, and prompt Celticists and historical linguists to engage in further discussion. We would also like to draw NLP scholars\u2019 attention to the role of data and its (extra)linguistic properties in testing new models, technologies and evaluation scenarios.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is argued that low agreement between field experts on fundamental lexical and orthographic issues, and the lack of a unified editorial standard in available resources make it impossible to build reliable evaluation datasets for computational models and obtain interpretable results."
+            },
+            "score": 1
+        },
+        {
+            "id": "947bc6a61287e015c3f7237153bd56482da20037",
+            "paperId": "947bc6a61287e015c3f7237153bd56482da20037",
+            "title": "Spatial, Temporal, and Semantic Crime Analysis Using Information Extraction From Online News",
+            "abstract": "Crime is a behavioral disorder with various scales that are intimately linked to a variety of circumstances such as spatial, temporal, sociological, and ecological aspects. The massive amounts of crime-related data, which is being published and grows with each passing day, in the form of online news reports have prompted researchers to pursue studies in the field of violence and criminal investigations. In this work, we developed a semantic approach to extract spatiotemporal and crime-related information from news reports to detect crime spatial distribution. The proposed method, in particular, aims to extract geographical and temporal information to detect regions with a high number of criminal cases, as well as to represent semantic knowledge of criminal incidents by annotating spatiotemporal information from their web domains. This approach incorporates the use of Natural Language Processing (NLP) techniques and a crime domain ontology into the information extraction process to automatically retrieve spatial, temporal, and other relevant information about criminal behavior from news reports. Our proposal consists of a comprehensive solution built on a fully functional architecture that has been tested in a use case scenario for the crime news reported in London, United Kingdom.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This approach incorporates the use of Natural Language Processing (NLP) techniques and a crime domain ontology into the information extraction process to automatically retrieve spatial, temporal, and other relevant information about criminal behavior from news reports."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

@@ -42,5 +42,902 @@
             }
         },
         "Fallback Plan": "If the proposed RL-based adversarial prompt reformulation method does not achieve satisfactory results, consider the following alternative approaches:\n1. Analyze the reward function components to identify potential weaknesses or imbalances. Experiment with different reward weights or explore alternative reward functions that better capture the desired behavior.\n2. Investigate the use of different RL algorithms or architectures, such as Actor-Critic methods or Hierarchical RL, which may be better suited for the task of prompt reformulation.\n3. Collect more diverse and representative adversarial prompt data to improve the generalization capabilities of the RL agent. Consider using data augmentation techniques or collaborating with domain experts to create a more comprehensive dataset.\n4. Explore the use of transfer learning or multi-task learning approaches, where the RL agent is pre-trained on related tasks or datasets before fine-tuning on the adversarial prompt reformulation task. This can help improve the agent's performance and generalization abilities.\n5. Conduct a thorough error analysis to identify common failure modes or patterns in the reformulated prompts. Use these insights to refine the RL agent's architecture, reward function, or training process.\n6. Consider combining the RL-based approach with other methods, such as adversarial training or prompt filtering, to create a more robust and effective system for mitigating adversarial prompts.\n7. If the RL-based method proves to be ineffective or impractical, pivot the project towards a more in-depth analysis of adversarial prompts and their impact on language models. Conduct a comprehensive study on the characteristics of adversarial prompts, their effectiveness in manipulating model outputs, and potential countermeasures. This analysis can provide valuable insights for future research on adversarial prompt detection and mitigation."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"reinforcement learning adversarial prompt reformulation language models\")",
+        "KeywordQuery(\"adversarial prompt detection mitigation language models\")",
+        "KeywordQuery(\"rl prompt reformulation language models safety\")",
+        "KeywordQuery(\"Adversarial Prompt Reformulation via Reinforcement Learning NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "f4cd7b7ffb0ab5ccef7cca23eeb436a933f7c776",
+            "paperId": "f4cd7b7ffb0ab5ccef7cca23eeb436a933f7c776",
+            "title": "Frontier Language Models are not Robust to Adversarial Arithmetic, or \"What do I need to say so you agree 2+2=5?",
+            "abstract": "We introduce and study the problem of adversarial arithmetic, which provides a simple yet challenging testbed for language model alignment. This problem is comprised of arithmetic questions posed in natural language, with an arbitrary adversarial string inserted before the question is complete. Even in the simple setting of 1-digit addition problems, it is easy to find adversarial prompts that make all tested models (including PaLM2, GPT4, Claude2) misbehave, and even to steer models to a particular wrong answer. We additionally provide a simple algorithm for finding successful attacks by querying those same models, which we name\"prompt inversion rejection sampling\"(PIRS). We finally show that models can be partially hardened against these attacks via reinforcement learning and via agentic constitutional loops. However, we were not able to make a language model fully robust against adversarial arithmetic attacks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that models can be partially hardened against these attacks via reinforcement learning and via agentic constitutional loops, however, they were not able to make a language model fully robust against adversarial arithmetic attacks."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is adversarial prompts manipulating large language models to generate harmful outputs, and the proposed approach is to use reinforcement learning to reformulate adversarial prompts into benign ones.\n\nThe research problem in the paper is adversarial arithmetic questions that make language models misbehave, and the approaches explored are reinforcement learning and agentic constitutional loops to harden models against these attacks.\n\nWhile both the proposal and the paper deal with adversarial attacks on language models and explore reinforcement learning as a potential solution, the specific focus of the problems (adversarial prompts vs. adversarial arithmetic) and the additional approaches mentioned in the paper (agentic constitutional loops) make them not directly comparable.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "paperId": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+            "abstract": "Because\"out-of-the-box\"large language models are capable of generating a great deal of objectionable content, recent work has focused on aligning these models in an attempt to prevent undesirable generation. While there has been some success at circumventing these measures -- so-called\"jailbreaks\"against LLMs -- these attacks have required significant human ingenuity and are brittle in practice. In this paper, we propose a simple and effective attack method that causes aligned language models to generate objectionable behaviors. Specifically, our approach finds a suffix that, when attached to a wide range of queries for an LLM to produce objectionable content, aims to maximize the probability that the model produces an affirmative response (rather than refusing to answer). However, instead of relying on manual engineering, our approach automatically produces these adversarial suffixes by a combination of greedy and gradient-based search techniques, and also improves over past automatic prompt generation methods. Surprisingly, we find that the adversarial prompts generated by our approach are quite transferable, including to black-box, publicly released LLMs. Specifically, we train an adversarial attack suffix on multiple prompts (i.e., queries asking for many different types of objectionable content), as well as multiple models (in our case, Vicuna-7B and 13B). When doing so, the resulting attack suffix is able to induce objectionable content in the public interfaces to ChatGPT, Bard, and Claude, as well as open source LLMs such as LLaMA-2-Chat, Pythia, Falcon, and others. In total, this work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information. Code is available at github.com/llm-attacks/llm-attacks.",
+            "year": 2023,
+            "citationCount": 386,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is to develop a reinforcement learning-based approach for adversarial prompt reformulation to mitigate the generation of harmful, biased, or misleading outputs from large language models. The proposed approach involves training an RL agent to rewrite adversarial prompts into benign ones through interaction with a reward function.\n\nThe research problem in the paper is to propose a simple and effective attack method that causes aligned language models to generate objectionable behaviors by finding a transferable adversarial suffix that maximizes the probability of the model producing an affirmative response to objectionable content.\n\nWhile both the proposal and the paper deal with adversarial attacks on language models, their objectives and approaches differ. The proposal aims to mitigate adversarial prompts using reinforcement learning, while the paper focuses on creating transferable adversarial attacks to induce objectionable content generation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "9a0f53a0ff25d1a5fb016aaa22185c4d6b5a2ac8",
+            "paperId": "9a0f53a0ff25d1a5fb016aaa22185c4d6b5a2ac8",
+            "title": "LinkPrompt: Natural and Universal Adversarial Attacks on Prompt-based Language Models",
+            "abstract": "Prompt-based learning is a new language model training paradigm that adapts the Pre-trained Language Models (PLMs) to downstream tasks, which revitalizes the performance benchmarks across various natural language processing (NLP) tasks. Instead of using a fixed prompt template to fine-tune the model, some research demonstrates the effectiveness of searching for the prompt via optimization. Such prompt optimization process of prompt-based learning on PLMs also gives insight into generating adversarial prompts to mislead the model, raising concerns about the adversarial vulnerability of this paradigm. Recent studies have shown that universal adversarial triggers (UATs) can be generated to alter not only the predictions of the target PLMs but also the prediction of corresponding Prompt-based Fine-tuning Models (PFMs) under the prompt-based learning paradigm. However, UATs found in previous works are often unreadable tokens or characters and can be easily distinguished from natural texts with adaptive defenses. In this work, we consider the naturalness of the UATs and develop $\\textit{LinkPrompt}$, an adversarial attack algorithm to generate UATs by a gradient-based beam search algorithm that not only effectively attacks the target PLMs and PFMs but also maintains the naturalness among the trigger tokens. Extensive results demonstrate the effectiveness of $\\textit{LinkPrompt}$, as well as the transferability of UATs generated by $\\textit{LinkPrompt}$ to open-sourced Large Language Model (LLM) Llama2 and API-accessed LLM GPT-3.5-turbo. The resource is available at $\\href{https://github.com/SavannahXu79/LinkPrompt}{https://github.com/SavannahXu79/LinkPrompt}$.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An adversarial attack algorithm to generate UATs by a gradient-based beam search algorithm that not only effectively attacks the target PLMs and PFMs but also maintains the naturalness among the trigger tokens is developed."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to develop a reinforcement learning-based approach for adversarial prompt reformulation to mitigate the harmful effects of adversarial prompts on large language models. The paper, on the other hand, proposes LinkPrompt, an adversarial attack algorithm that generates natural and universal adversarial triggers to mislead prompt-based language models and their fine-tuned versions.\n\nThe project focuses on defending against adversarial prompts, while the paper focuses on creating effective adversarial attacks that maintain naturalness. Although both deal with adversarial prompts, their objectives and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "b5a624da64475d735f0e298dc6f2f6669b5bb697",
+            "paperId": "b5a624da64475d735f0e298dc6f2f6669b5bb697",
+            "title": "Robust Safety Classifier for Large Language Models: Adversarial Prompt Shield",
+            "abstract": "Large Language Models' safety remains a critical concern due to their vulnerability to adversarial attacks, which can prompt these systems to produce harmful responses. In the heart of these systems lies a safety classifier, a computational model trained to discern and mitigate potentially harmful, offensive, or unethical outputs. However, contemporary safety classifiers, despite their potential, often fail when exposed to inputs infused with adversarial noise. In response, our study introduces the Adversarial Prompt Shield (APS), a lightweight model that excels in detection accuracy and demonstrates resilience against adversarial prompts. Additionally, we propose novel strategies for autonomously generating adversarial training datasets, named Bot Adversarial Noisy Dialogue (BAND) datasets. These datasets are designed to fortify the safety classifier's robustness, and we investigate the consequences of incorporating adversarial examples into the training process. Through evaluations involving Large Language Models, we demonstrate that our classifier has the potential to decrease the attack success rate resulting from adversarial attacks by up to 60%. This advancement paves the way for the next generation of more reliable and resilient conversational agents.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces the Adversarial Prompt Shield (APS), a lightweight model that excels in detection accuracy and demonstrates resilience against adversarial prompts, and proposes novel strategies for autonomously generating adversarial training datasets, designed to fortify the safety classifier's robustness."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to develop a reinforcement learning-based approach for adversarial prompt reformulation in large language models to improve their robustness and safety. The paper, on the other hand, proposes an adversarial prompt shield classifier to detect and mitigate adversarial prompts, along with strategies for generating adversarial training datasets.\n\nWhile both the project proposal and the paper address the issue of adversarial prompts in large language models, their approaches differ. The project proposal focuses on reformulating adversarial prompts using reinforcement learning, while the paper proposes a classifier to detect and filter out adversarial prompts.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "c1d1842e08716cbf7250167969522a1705d8bcd3",
+            "paperId": "c1d1842e08716cbf7250167969522a1705d8bcd3",
+            "title": "Token-Level Adversarial Prompt Detection Based on Perplexity Measures and Contextual Information",
+            "abstract": "In recent years, Large Language Models (LLM) have emerged as pivotal tools in various applications. However, these models are susceptible to adversarial prompt attacks, where attackers can carefully curate input strings that mislead LLMs into generating incorrect or undesired outputs. Previous work has revealed that with relatively simple yet effective attacks based on discrete optimization, it is possible to generate adversarial prompts that bypass moderation and alignment of the models. This vulnerability to adversarial prompts underscores a significant concern regarding the robustness and reliability of LLMs. Our work aims to address this concern by introducing a novel approach to detecting adversarial prompts at a token level, leveraging the LLM's capability to predict the next token's probability. We measure the degree of the model's perplexity, where tokens predicted with high probability are considered normal, and those exhibiting high perplexity are flagged as adversarial. Additionaly, our method also integrates context understanding by incorporating neighboring token information to encourage the detection of contiguous adversarial prompt sequences. To this end, we design two algorithms for adversarial prompt detection: one based on optimization techniques and another on Probabilistic Graphical Models (PGM). Both methods are equipped with efficient solving methods, ensuring efficient adversarial prompt detection. Our token-level detection result can be visualized as heatmap overlays on the text sequence, allowing for a clearer and more intuitive representation of which part of the text may contain adversarial prompts.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel approach to detecting adversarial prompts at a token level, leveraging the LLM's capability to predict the next token's probability, and designs two algorithms for adversarial prompt detection, one based on optimization techniques and another on Probabilistic Graphical Models."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is adversarial prompt reformulation using reinforcement learning to improve the robustness and generalization capabilities of large language models. The approach involves training an RL agent to rewrite adversarial prompts into benign ones through interaction with a reward function.\n\nThe research problem in the paper is adversarial prompt detection at the token level using perplexity measures and contextual information. The approach involves measuring the degree of the model's perplexity to flag adversarial tokens and incorporating neighboring token information to detect contiguous adversarial prompt sequences.\n\nWhile both the proposal and the paper address the issue of adversarial prompts in large language models, their research problems and approaches differ. The proposal focuses on reformulating adversarial prompts using reinforcement learning, while the paper focuses on detecting adversarial prompts at the token level using perplexity measures and contextual information.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "8cf9b49698fdb1b754df2556576412a7b44929f6",
+            "paperId": "8cf9b49698fdb1b754df2556576412a7b44929f6",
+            "title": "SmoothLLM: Defending Large Language Models Against Jailbreaking Attacks",
+            "abstract": "Despite efforts to align large language models (LLMs) with human values, widely-used LLMs such as GPT, Llama, Claude, and PaLM are susceptible to jailbreaking attacks, wherein an adversary fools a targeted LLM into generating objectionable content. To address this vulnerability, we propose SmoothLLM, the first algorithm designed to mitigate jailbreaking attacks on LLMs. Based on our finding that adversarially-generated prompts are brittle to character-level changes, our defense first randomly perturbs multiple copies of a given input prompt, and then aggregates the corresponding predictions to detect adversarial inputs. SmoothLLM reduces the attack success rate on numerous popular LLMs to below one percentage point, avoids unnecessary conservatism, and admits provable guarantees on attack mitigation. Moreover, our defense uses exponentially fewer queries than existing attacks and is compatible with any LLM. Our code is publicly available at the following link: https://github.com/arobey1/smooth-llm.",
+            "year": 2023,
+            "citationCount": 59,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes SmoothLLM, the first algorithm designed to mitigate jailbreaking attacks on LLMs, which first randomly perturbs multiple copies of a given input prompt, and then aggregates the corresponding predictions to detect adversarial inputs."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to develop a reinforcement learning-based approach for adversarial prompt reformulation to mitigate the harmful effects of adversarial prompts on large language models. The paper, on the other hand, proposes SmoothLLM, a defense algorithm that perturbs input prompts and aggregates predictions to detect and mitigate jailbreaking attacks on LLMs.\n\nWhile both the project proposal and the paper address the issue of adversarial attacks on LLMs, their approaches differ significantly. The project proposal focuses on reformulating adversarial prompts using reinforcement learning, while the paper proposes a defense algorithm that perturbs prompts and aggregates predictions to detect adversarial inputs.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "paperId": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "title": "Baseline Defenses for Adversarial Attacks Against Aligned Language Models",
+            "abstract": "As Large Language Models quickly become ubiquitous, it becomes critical to understand their security vulnerabilities. Recent work shows that text optimizers can produce jailbreaking prompts that bypass moderation and alignment. Drawing from the rich body of work on adversarial machine learning, we approach these attacks with three questions: What threat models are practically useful in this domain? How do baseline defense techniques perform in this new domain? How does LLM security differ from computer vision? We evaluate several baseline defense strategies against leading adversarial attacks on LLMs, discussing the various settings in which each is feasible and effective. Particularly, we look at three types of defenses: detection (perplexity based), input preprocessing (paraphrase and retokenization), and adversarial training. We discuss white-box and gray-box settings and discuss the robustness-performance trade-off for each of the defenses considered. We find that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs. Future research will be needed to uncover whether more powerful optimizers can be developed, or whether the strength of filtering and preprocessing defenses is greater in the LLMs domain than it has been in computer vision.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to develop a reinforcement learning-based approach for adversarial prompt reformulation in large language models to mitigate harmful, biased, or misleading outputs. The paper, on the other hand, evaluates baseline defense strategies against adversarial attacks on language models, such as detection, input preprocessing, and adversarial training.\n\nWhile both the project proposal and the paper address the issue of adversarial attacks on language models, their focus and approaches differ. The project proposal seeks to reformulate adversarial prompts using reinforcement learning, whereas the paper investigates various defense techniques and their effectiveness in the language model domain.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3c784cd3150a359e269c70cfbadd18774d66055d",
+            "paperId": "3c784cd3150a359e269c70cfbadd18774d66055d",
+            "title": "FuzzLLM: A Novel and Universal Fuzzing Framework for Proactively Discovering Jailbreak Vulnerabilities in Large Language Models",
+            "abstract": "Jailbreak vulnerabilities in Large Language Models (LLMs), which exploit meticulously crafted prompts to elicit content that violates service guidelines, have captured the attention of research communities. While model owners can defend against individual jailbreak prompts through safety training strategies, this relatively passive approach struggles to handle the broader category of similar jailbreaks. To tackle this issue, we introduce FuzzLLM, an automated fuzzing framework designed to proactively test and discover jailbreak vulnerabilities in LLMs. We utilize templates to capture the structural integrity of a prompt and isolate key features of a jailbreak class as constraints. By integrating different base classes into powerful combo attacks and varying the elements of constraints and prohibited questions, FuzzLLM enables efficient testing with reduced manual effort. Extensive experiments demonstrate FuzzLLM's effectiveness and comprehensiveness in vulnerability discovery across various LLMs.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "FuzzLLM is introduced, an automated fuzzing framework designed to proactively test and discover jailbreak vulnerabilities in LLMs and utilizes templates to capture the structural integrity of a prompt and isolate key features of a jailbreak class as constraints."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is to mitigate adversarial prompts that manipulate large language models to generate harmful outputs, and the proposed approach is to use reinforcement learning to reformulate adversarial prompts into benign ones.\n\nThe research problem in the paper is to proactively discover jailbreak vulnerabilities in large language models, and the proposed approach is to use an automated fuzzing framework with templates and constraints to efficiently test for vulnerabilities.\n\nWhile both works aim to address the issue of adversarial or jailbreak prompts in large language models, the proposal focuses on mitigating the prompts by reformulating them, while the paper focuses on discovering the vulnerabilities through proactive testing. The approaches are different: reinforcement learning for reformulation versus fuzzing for vulnerability discovery.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e314d182fd9d35a05870b38a56ee38eb3149b47d",
+            "paperId": "e314d182fd9d35a05870b38a56ee38eb3149b47d",
+            "title": "Attack Prompt Generation for Red Teaming and Defending Large Language Models",
+            "abstract": "Large language models (LLMs) are susceptible to red teaming attacks, which can induce LLMs to generate harmful content. Previous research constructs attack prompts via manual or automatic methods, which have their own limitations on construction cost and quality. To address these issues, we propose an integrated approach that combines manual and automatic methods to economically generate high-quality attack prompts. Specifically, considering the impressive capabilities of newly emerged LLMs, we propose an attack framework to instruct LLMs to mimic human-generated prompts through in-context learning. Furthermore, we propose a defense framework that fine-tunes victim LLMs through iterative interactions with the attack framework to enhance their safety against red teaming attacks. Extensive experiments on different LLMs validate the effectiveness of our proposed attack and defense frameworks. Additionally, we release a series of attack prompts datasets named SAP with varying sizes, facilitating the safety evaluation and enhancement of more LLMs. Our code and dataset is available on https://github.com/Aatrox103/SAP .",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an attack framework to instruct LLMs to mimic human-generated prompts through in-context learning to enhance their safety against red teaming attacks, and proposes a defense framework that fine-tunes victim LLMs through iterative interactions with the attack framework."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is to mitigate adversarial prompts that manipulate large language models to generate harmful outputs, and the proposed approach is to use reinforcement learning to train an agent to reformulate adversarial prompts into benign ones.\n\nThe research problem in the paper is to generate high-quality attack prompts for red teaming attacks on large language models, and the proposed approach is to combine manual and automatic methods, using LLMs to mimic human-generated prompts through in-context learning.\n\nWhile both works focus on adversarial prompts and large language models, the proposal aims to defend against such prompts using RL-based reformulation, while the paper focuses on generating effective attack prompts using LLMs. The research problems and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "da5fcb26c830663b79c9aa1c550ae62e7725fcad",
+            "paperId": "da5fcb26c830663b79c9aa1c550ae62e7725fcad",
+            "title": "Systematic Rectification of Language Models via Dead-end Analysis",
+            "abstract": "With adversarial or otherwise normal prompts, existing large language models (LLM) can be pushed to generate toxic discourses. One way to reduce the risk of LLMs generating undesired discourses is to alter the training of the LLM. This can be very restrictive due to demanding computation requirements. Other methods rely on rule-based or prompt-based token elimination, which are limited as they dismiss future tokens and the overall meaning of the complete discourse. Here, we center detoxification on the probability that the finished discourse is ultimately considered toxic. That is, at each point, we advise against token selections proportional to how likely a finished text from this point will be toxic. To this end, we formally extend the dead-end theory from the recent reinforcement learning (RL) literature to also cover uncertain outcomes. Our approach, called rectification, utilizes a separate but significantly smaller model for detoxification, which can be applied to diverse LLMs as long as they share the same vocabulary. Importantly, our method does not require access to the internal representations of the LLM, but only the token probability distribution at each decoding step. This is crucial as many LLMs today are hosted in servers and only accessible through APIs. When applied to various LLMs, including GPT-3, our approach significantly improves the generated discourse compared to the base LLMs and other techniques in terms of both the overall language and detoxification performance.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The dead-end theory from the recent reinforcement learning (RL) literature is formally extended to also cover uncertain outcomes and the approach, called rectification, utilizes a separate but significantly smaller model for detoxification, which can be applied to diverse LLMs as long as they share the same vocabulary."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is to detect and mitigate adversarial prompts that can manipulate large language models to generate harmful, biased, or misleading outputs. The proposed approach is to use reinforcement learning to train an agent to reformulate adversarial prompts into benign ones.\n\nThe research problem in the paper is to reduce the risk of large language models generating toxic discourses when given adversarial or normal prompts. The proposed approach, called rectification, utilizes a separate but significantly smaller model for detoxification, which advises against token selections proportional to how likely a finished text from a certain point will be toxic.\n\nWhile both the proposal and the paper aim to address the issue of large language models generating undesired outputs, their specific focus and proposed methods differ. The proposal focuses on adversarial prompt reformulation using reinforcement learning, while the paper focuses on detoxification by advising against token selections based on the likelihood of a finished text being toxic.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3cb87663ef80d6c187bfaa415c93327f9bf21724",
+            "paperId": "3cb87663ef80d6c187bfaa415c93327f9bf21724",
+            "title": "Finding a Needle in the Adversarial Haystack: A Targeted Paraphrasing Approach For Uncovering Edge Cases with Minimal Distribution Distortion",
+            "abstract": "Adversarial attacks against Language models (LMs) are a significant concern. In particular, adversarial samples exploit the model\u2019s sensitivity to small input changes. While these changes appear insignificant on the semantics of the input sample, they result in significant decay in model performance. In this paper, we propose Targeted Paraphrasing via RL (TPRL), an approach to automatically learn a policy to generate challenging samples that improve the model\u2019s performance. TPRL leverages FLAN-T5, a language model, as a generator and employs a self-learned policy using a proximal policy optimization to generate the adversarial examples automatically. TPRL\u2019s reward is based on the confusion induced in the classifier, preserving the original text meaning through a Mutual Implication score. We demonstrate & evaluate TPRL\u2019s effectiveness in discovering natural adversarial attacks and improving model performance through extensive experiments on four diverse NLP classification tasks via Automatic & Human evaluation. TPRL outperforms strong baselines, exhibits generalizability across classifiers and datasets, and combines the strengths of language modeling and reinforcement learning to generate diverse and influential adversarial examples.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Targeted Paraphrasing via RL (TPRL), an approach to automatically learn a policy to automatically learn a policy to generate challenging samples that improve the model\u2019s performance, is proposed."
+            },
+            "score": 6
+        },
+        {
+            "id": "e2302eda403de7000669813cf23bc0c0c08f3e93",
+            "paperId": "e2302eda403de7000669813cf23bc0c0c08f3e93",
+            "title": "COVER: A Heuristic Greedy Adversarial Attack on Prompt-based Learning in Language Models",
+            "abstract": "Prompt-based learning has been proved to be an effective way in pre-trained language models (PLMs), especially in low-resource scenarios like few-shot settings. However, the trustworthiness of PLMs is of paramount significance and potential vulnerabilities have been shown in prompt-based templates that could mislead the predictions of language models, causing serious security concerns. In this paper, we will shed light on some vulnerabilities of PLMs, by proposing a prompt-based adversarial attack on manual templates in black box scenarios. First of all, we design character-level and word-level heuristic approaches to break manual templates separately. Then we present a greedy algorithm for the attack based on the above heuristic destructive approaches. Finally, we evaluate our approach with the classification tasks on three variants of BERT series models and eight datasets. And comprehensive experimental results justify the effectiveness of our approach in terms of attack success rate and attack speed.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a prompt-based adversarial attack on manual templates in black box scenarios by designing character-level and word-level heuristic approaches to break manual templates separately and presents a greedy algorithm for the attack based on the above heuristic destructive approaches."
+            },
+            "score": 5
+        },
+        {
+            "id": "07cfaf543b2bd991406be1d72a52d784cc9c62fb",
+            "paperId": "07cfaf543b2bd991406be1d72a52d784cc9c62fb",
+            "title": "Prompt Makes mask Language Models Better Adversarial Attackers",
+            "abstract": "Generating high-quality synonymous perturbations is a core challenge for textual adversarial tasks. However, candidates generated from the masked language model often contain many words that are antonyms or irrelevant to the original words, which limit the perturbation space and affect the attack\u2019s effectiveness. We present ProAttacker1 which uses Prompt to make the mask language models better adversarial Attackers. ProAttacker inverts the prompt paradigm by leveraging the prompt with the class label to guide the language model to generate more semantically-consistent perturbations. We present a systematic evaluation to analyze the attack performance on 6 NLP datasets, covering text classification and inference. Our experiments demonstrate that ProAttacker outperforms state-of-the-art attack strategies in both success rate and perturb rate.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "ProAttacker1, which uses Prompt to make the mask language models better adversarial Attackers, inverts the prompt paradigm by leveraging the prompt with the class label to guide the language model to generate more semantically-consistent perturbations."
+            },
+            "score": 5
+        },
+        {
+            "id": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+            "paperId": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+            "title": "Jailbreaking Black Box Large Language Models in Twenty Queries",
+            "abstract": "There is growing interest in ensuring that large language models (LLMs) align with human values. However, the alignment of such models is vulnerable to adversarial jailbreaks, which coax LLMs into overriding their safety guardrails. The identification of these vulnerabilities is therefore instrumental in understanding inherent weaknesses and preventing future misuse. To this end, we propose Prompt Automatic Iterative Refinement (PAIR), an algorithm that generates semantic jailbreaks with only black-box access to an LLM. PAIR -- which is inspired by social engineering attacks -- uses an attacker LLM to automatically generate jailbreaks for a separate targeted LLM without human intervention. In this way, the attacker LLM iteratively queries the target LLM to update and refine a candidate jailbreak. Empirically, PAIR often requires fewer than twenty queries to produce a jailbreak, which is orders of magnitude more efficient than existing algorithms. PAIR also achieves competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM-2.",
+            "year": 2023,
+            "citationCount": 119,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PAIR is an algorithm that generates semantic jailbreaks with only black-box access to an LLM with competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM."
+            },
+            "score": 5
+        },
+        {
+            "id": "b67eb8213a63be8a4b0274728ffdc50bfa109e10",
+            "paperId": "b67eb8213a63be8a4b0274728ffdc50bfa109e10",
+            "title": "XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models",
+            "abstract": "Without proper safeguards, large language models will readily follow malicious instructions and generate toxic content. This risk motivates safety efforts such as red-teaming and large-scale feedback learning, which aim to make models both helpful and harmless. However, there is a tension between these two objectives, since harmlessness requires models to refuse to comply with unsafe prompts, and thus not be helpful. Recent anecdotal evidence suggests that some models may have struck a poor balance, so that even clearly safe prompts are refused if they use similar language to unsafe prompts or mention sensitive topics. In this paper, we introduce a new test suite called XSTest to identify such eXaggerated Safety behaviours in a systematic way. XSTest comprises 250 safe prompts across ten prompt types that well-calibrated models should not refuse to comply with, and 200 unsafe prompts as contrasts that models, for most applications, should refuse. We describe XSTest's creation and composition, and then use the test suite to highlight systematic failure modes in state-of-the-art language models as well as more general challenges in building safer language models.",
+            "year": 2023,
+            "citationCount": 26,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new test suite called XSTest is introduced to identify eXaggerated Safety behaviours in state-of-the-art language models as well as more general challenges in building safer language models."
+            },
+            "score": 5
+        },
+        {
+            "id": "c3f079f9f59f255e032a1239aea02a2affe93be8",
+            "paperId": "c3f079f9f59f255e032a1239aea02a2affe93be8",
+            "title": "ROSE Doesn't Do That: Boosting the Safety of Instruction-Tuned Large Language Models with Reverse Prompt Contrastive Decoding",
+            "abstract": "With the development of instruction-tuned large language models (LLMs), improving the safety of LLMs has become more critical. However, the current approaches for aligning the LLMs output with expected safety usually require substantial training efforts, e.g., high-quality safety data and expensive computational resources, which are costly and inefficient. To this end, we present reverse prompt contrastive decoding (ROSE), a simple-yet-effective method to directly boost the safety of existing instruction-tuned LLMs without any additional training. The principle of ROSE is to improve the probability of desired safe output via suppressing the undesired output induced by the carefully-designed reverse prompts. Experiments on 6 safety and 2 general-purpose tasks show that, our ROSE not only brings consistent and significant safety improvements (up to +13.8% safety score) upon 5 types of instruction-tuned LLMs, but also benefits the general-purpose ability of LLMs. In-depth analyses explore the underlying mechanism of ROSE, and reveal when and where to use it.",
+            "year": 2024,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The principle of ROSE is to improve the probability of desired safe output via suppressing the undesired output induced by the carefully-designed reverse prompts to boost the safety of existing instruction-tuned LLMs without any additional training."
+            },
+            "score": 5
+        },
+        {
+            "id": "9f859726b3d8dffd96a1f55de4122617751cc1b4",
+            "paperId": "9f859726b3d8dffd96a1f55de4122617751cc1b4",
+            "title": "Red-Teaming Large Language Models using Chain of Utterances for Safety-Alignment",
+            "abstract": "Larger language models (LLMs) have taken the world by storm with their massive multi-tasking capabilities simply by optimizing over a next-word prediction objective. With the emergence of their properties and encoded knowledge, the risk of LLMs producing harmful outputs increases, making them unfit for scalable deployment for the public. In this work, we propose a new safety evaluation benchmark RED-EVAL that carries out red-teaming. We show that even widely deployed models are susceptible to the Chain of Utterances-based (CoU) prompting, jailbreaking closed source LLM-based systems such as GPT-4 and ChatGPT to unethically respond to more than 65% and 73% of harmful queries. We also demonstrate the consistency of the RED-EVAL across 8 open-source LLMs in generating harmful responses in more than 86% of the red-teaming attempts. Next, we propose RED-INSTRUCT--An approach for the safety alignment of LLMs. It constitutes two phases: 1) HARMFULQA data collection: Leveraging CoU prompting, we collect a dataset that consists of 1.9K harmful questions covering a wide range of topics, 9.5K safe and 7.3K harmful conversations from ChatGPT; 2) SAFE-ALIGN: We demonstrate how the conversational dataset can be used for the safety alignment of LLMs by minimizing the negative log-likelihood over helpful responses and penalizing over harmful responses by gradient accent over sample loss. Our model STARLING, a fine-tuned Vicuna-7B, is observed to be more safely aligned when evaluated on RED-EVAL and HHH benchmarks while preserving the utility of the baseline models (TruthfulQA, MMLU, and BBH).",
+            "year": 2023,
+            "citationCount": 48,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that even widely deployed models are susceptible to the Chain of Utterances-based (CoU) prompting, jailbreaking closed source LLM-based systems such as GPT-4 and ChatGPT to unethically respond to more than 65% and 73% of harmful queries."
+            },
+            "score": 5
+        },
+        {
+            "id": "4d9fc5972ab0f17f3c8aa27b4d9372f029d4dded",
+            "paperId": "4d9fc5972ab0f17f3c8aa27b4d9372f029d4dded",
+            "title": "Adversarial Attacks on Large Language Model-Based System and Mitigating Strategies: A Case Study on ChatGPT",
+            "abstract": "Machine learning algorithms are at the forefront of the development of advanced information systems. The rapid progress in machine learning technology has enabled cutting-edge large language models (LLMs), represented by GPT-3 and ChatGPT, to perform a wide range of NLP tasks with a stunning performance. However, research on adversarial machine learning highlights the need for these intelligent systems to be more robust. Adversarial machine learning aims to evaluate attack and defense mechanisms to prevent the malicious exploitation of these systems. In the case of ChatGPT, adversarial induction prompt can cause the model to generate toxic texts that could pose serious security risks or propagate false information. To address this challenge, we first analyze the effectiveness of inducing attacks on ChatGPT. Then, two effective mitigating mechanisms are proposed. The first is a training-free prefix prompt mechanism to detect and prevent the generation of toxic texts. The second is a RoBERTa-based mechanism that identifies manipulative or misleading input text via external detection models. The availability of this method is demonstrated through experiments.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A training-free prefix prompt mechanism to detect and prevent the generation of toxic texts and a RoBERTa-based mechanism that identifies manipulative or misleading input text via external detection models are proposed."
+            },
+            "score": 5
+        },
+        {
+            "id": "eb8954cf2a4e508d84ecbcd3171bfa9c4533ee53",
+            "paperId": "eb8954cf2a4e508d84ecbcd3171bfa9c4533ee53",
+            "title": "On the Exploitability of Reinforcement Learning with Human Feedback for Large Language Models",
+            "abstract": "Reinforcement Learning with Human Feedback (RLHF) is a methodology designed to align Large Language Models (LLMs) with human preferences, playing an important role in LLMs alignment. Despite its advantages, RLHF relies on human annotators to rank the text, which can introduce potential security vulnerabilities if any adversarial annotator (i.e., attackers) manipulates the ranking score by up-ranking any malicious text to steer the LLM adversarially. To assess the red-teaming of RLHF against human preference data poisoning, we propose RankPoison, a poisoning attack method on candidates' selection of preference rank flipping to reach certain malicious behaviors (e.g., generating longer sequences, which can increase the computational cost). With poisoned dataset generated by RankPoison, we can perform poisoning attacks on LLMs to generate longer tokens without hurting the original safety alignment performance. Moreover, applying RankPoison, we also successfully implement a backdoor attack where LLMs can generate longer answers under questions with the trigger word. Our findings highlight critical security challenges in RLHF, underscoring the necessity for more robust alignment methods for LLMs.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "RankPoison, a poisoning attack method on candidates' selection of preference rank flipping to reach certain malicious behaviors, is proposed, which can perform poisoning attacks on LLMs to generate longer tokens without hurting the original safety alignment performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "01d31fb9fc6ab36df6627b8555b64789113eb7a5",
+            "paperId": "01d31fb9fc6ab36df6627b8555b64789113eb7a5",
+            "title": "RLCD: Reinforcement Learning from Contrastive Distillation for Language Model Alignment",
+            "abstract": "We propose Reinforcement Learning from Contrastive Distillation (RLCD), a method for aligning language models to follow principles expressed in natural language (e.g., to be more harmless) without using human feedback. RLCD creates preference pairs from two contrasting model outputs, one using a positive prompt designed to encourage following the given principles, and one using a negative prompt designed to encourage violating them. Using two different prompts causes model outputs to be more differentiated on average, resulting in cleaner preference labels in the absence of human annotations. We then use the preference pairs to train a preference model, which is in turn used to improve a base unaligned language model via reinforcement learning. Empirically, RLCD outperforms RLAIF (Bai et al., 2022b) and context distillation (Huang et al., 2022) baselines across three diverse alignment tasks--harmlessness, helpfulness, and story outline generation--and when using both 7B and 30B model scales for simulating preference data.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Reinforcement Learning from Contrastive Distillation (RLCD), a method for aligning language models to follow principles expressed in natural language without using human feedback, outperforms RLAIF and context distillation baselines across three diverse alignment tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "3dbbe6909d7b53dd49e059c7f61a3613045a8db0",
+            "paperId": "3dbbe6909d7b53dd49e059c7f61a3613045a8db0",
+            "title": "Self-contradictory Hallucinations of Large Language Models: Evaluation, Detection and Mitigation",
+            "abstract": "Large language models (large LMs) are susceptible to producing text that contains hallucinated content. An important instance of this problem is self-contradiction, where the LM generates two contradictory sentences within the same context. In this work, we present a comprehensive investigation into self-contradiction for various instruction-tuned LMs, covering evaluation, detection, and mitigation. Our primary evaluation task is open-domain text generation, but we also demonstrate the applicability of our approach to shorter question answering. Our analysis reveals the prevalence of self-contradictions, e.g., in 17.7% of all sentences produced by ChatGPT. We then propose a novel prompting-based framework designed to effectively detect and mitigate self-contradictions. Our detector achieves high accuracy, e.g., around 80% F1 score when prompting ChatGPT. The mitigation algorithm iteratively refines the generated text to remove contradictory information while preserving text fluency and informativeness. Importantly, our entire framework is applicable to black-box LMs and does not require retrieval of external knowledge. Rather, our method complements retrieval-based methods, as a large portion of self-contradictions (e.g., 35.2% for ChatGPT) cannot be verified using online text. Our approach is practically effective and has been released as a push-button tool to benefit the public at https://chatprotect.ai/.",
+            "year": 2023,
+            "citationCount": 44,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a comprehensive investigation into self-contradiction for various instruction-tuned LMs, covering evaluation, detection, and mitigation, and proposes a novel prompting-based framework designed to effectively detect and mitigate self-contradictions."
+            },
+            "score": 4
+        },
+        {
+            "id": "1104d766527dead44a40532e8a89444d9cef5c65",
+            "paperId": "1104d766527dead44a40532e8a89444d9cef5c65",
+            "title": "\"Do Anything Now\": Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models",
+            "abstract": "The misuse of large language models (LLMs) has garnered significant attention from the general public and LLM vendors. In response, efforts have been made to align LLMs with human values and intent use. However, a particular type of adversarial prompts, known as jailbreak prompt, has emerged and continuously evolved to bypass the safeguards and elicit harmful content from LLMs. In this paper, we conduct the first measurement study on jailbreak prompts in the wild, with 6,387 prompts collected from four platforms over six months. Leveraging natural language processing technologies and graph-based community detection methods, we discover unique characteristics of jailbreak prompts and their major attack strategies, such as prompt injection and privilege escalation. We also observe that jailbreak prompts increasingly shift from public platforms to private ones, posing new challenges for LLM vendors in proactive detection. To assess the potential harm caused by jailbreak prompts, we create a question set comprising 46,800 samples across 13 forbidden scenarios. Our experiments show that current LLMs and safeguards cannot adequately defend jailbreak prompts in all scenarios. Particularly, we identify two highly effective jailbreak prompts which achieve 0.99 attack success rates on ChatGPT (GPT-3.5) and GPT-4, and they have persisted online for over 100 days. Our work sheds light on the severe and evolving threat landscape of jailbreak prompts. We hope our study can facilitate the research community and LLM vendors in promoting safer and regulated LLMs.",
+            "year": 2023,
+            "citationCount": 69,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The first measurement study on jailbreak prompts in the wild is conducted, with 6,387 prompts collected from four platforms over six months, and it is shown that current LLMs and safeguards cannot adequately defend jailbreak Prompts in all scenarios."
+            },
+            "score": 4
+        },
+        {
+            "id": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "paperId": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "title": "More than you've asked for: A Comprehensive Analysis of Novel Prompt Injection Threats to Application-Integrated Large Language Models",
+            "abstract": "We are currently witnessing dramatic advances in the capabilities of Large Language Models (LLMs). They are already being adopted in practice and integrated into many systems, including integrated development environments (IDEs) and search engines. The functionalities of current LLMs can be modulated via natural language prompts, while their exact internal functionality remains implicit and unassessable. This property, which makes them adaptable to even unseen tasks, might also make them susceptible to targeted adversarial prompting . Recently, several ways to misalign LLMs using Prompt Injection (PI) attacks have been introduced. In such attacks, an adversary can prompt the LLM to produce malicious content or override the original instructions and the employed \ufb01ltering schemes. Recent work showed that these attacks are hard to mitigate, as state-of-the-art LLMs are instruction-following . So far, these attacks assumed that the adversary is directly prompting the LLM. In this work, we show that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs ) induces a whole new set of attack vectors. These LLMs might process poisoned content retrieved from the Web that contains malicious prompts pre-injected and selected by adversaries. We demonstrate that an attacker can indirectly perform such PI attacks. Based on this key insight, we systematically analyze the resulting threat landscape of Application-Integrated LLMs and discuss a variety of new attack vectors. To demonstrate the practical viability of our attacks, we implemented speci\ufb01c demonstrations",
+            "year": 2023,
+            "citationCount": 73,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs) induces a whole new set of attack vectors and systematically analyzes the resulting threat landscape of Application-Integrated LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "b9df0d4631f9fab1432c152765e243ae4cd667f4",
+            "paperId": "b9df0d4631f9fab1432c152765e243ae4cd667f4",
+            "title": "Effective Prompt Extraction from Language Models",
+            "abstract": "The text generated by large language models is commonly controlled by prompting, where a prompt prepended to a user's query guides the model's output. The prompts used by companies to guide their models are often treated as secrets, to be hidden from the user making the query. They have even been treated as commodities to be bought and sold. However, anecdotal reports have shown adversarial users employing prompt extraction attacks to recover these prompts. In this paper, we present a framework for systematically measuring the effectiveness of these attacks. In experiments with 3 different sources of prompts and 11 underlying large language models, we find that simple text-based attacks can in fact reveal prompts with high probability. Our framework determines with high precision whether an extracted prompt is the actual secret prompt, rather than a model hallucination. Prompt extraction experiments on real systems such as Bing Chat and ChatGPT suggest that system prompts can be revealed by an adversary despite existing defenses in place.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a framework for systematically measuring the effectiveness of prompt extraction attacks and determines with high precision whether an extracted prompt is the actual secret prompt, rather than a model hallucination."
+            },
+            "score": 4
+        },
+        {
+            "id": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "paperId": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "title": "Jailbreak in pieces: Compositional Adversarial Attacks on Multi-Modal Language Models",
+            "abstract": "We introduce new jailbreak attacks on vision language models (VLMs), which use aligned LLMs and are resilient to text-only jailbreak attacks. Specifically, we develop cross-modality attacks on alignment where we pair adversarial images going through the vision encoder with textual prompts to break the alignment of the language model. Our attacks employ a novel compositional strategy that combines an image, adversarially targeted towards toxic embeddings, with generic prompts to accomplish the jailbreak. Thus, the LLM draws the context to answer the generic prompt from the adversarial image. The generation of benign-appearing adversarial images leverages a novel embedding-space-based methodology, operating with no access to the LLM model. Instead, the attacks require access only to the vision encoder and utilize one of our four embedding space targeting strategies. By not requiring access to the LLM, the attacks lower the entry barrier for attackers, particularly when vision encoders such as CLIP are embedded in closed-source LLMs. The attacks achieve a high success rate across different VLMs, highlighting the risk of cross-modality alignment vulnerabilities, and the need for new alignment approaches for multi-modal models.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Cross-modality attacks on alignment where adversarial images going through the vision encoder with textual prompts to break the alignment of the language model are developed."
+            },
+            "score": 4
+        },
+        {
+            "id": "ace98e1e58bcc364afbb2feff6d136232f5f47da",
+            "paperId": "ace98e1e58bcc364afbb2feff6d136232f5f47da",
+            "title": "Latent Jailbreak: A Benchmark for Evaluating Text Safety and Output Robustness of Large Language Models",
+            "abstract": "Considerable research efforts have been devoted to ensuring that large language models (LLMs) align with human values and generate safe text. However, an excessive focus on sensitivity to certain topics can compromise the model's robustness in following instructions, thereby impacting its overall performance in completing tasks. Previous benchmarks for jailbreaking LLMs have primarily focused on evaluating the safety of the models without considering their robustness. In this paper, we propose a benchmark that assesses both the safety and robustness of LLMs, emphasizing the need for a balanced approach. To comprehensively study text safety and output robustness, we introduce a latent jailbreak prompt dataset, each involving malicious instruction embedding. Specifically, we instruct the model to complete a regular task, such as translation, with the text to be translated containing malicious instructions. To further analyze safety and robustness, we design a hierarchical annotation framework. We present a systematic analysis of the safety and robustness of LLMs regarding the position of explicit normal instructions, word replacements (verbs in explicit normal instructions, target groups in malicious instructions, cue words for explicit normal instructions), and instruction replacements (different explicit normal instructions). Our results demonstrate that current LLMs not only prioritize certain instruction verbs but also exhibit varying jailbreak rates for different instruction verbs in explicit normal instructions. Code and data are available at https://github.com/qiuhuachuan/latent-jailbreak.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a latent jailbreak prompt dataset, and presents a systematic analysis of the safety and robustness of LLMs regarding the position of explicit normal instructions, word replacements, and instruction replacements."
+            },
+            "score": 4
+        },
+        {
+            "id": "fdb361ea83c010ed0011d179567de5a1112651ac",
+            "paperId": "fdb361ea83c010ed0011d179567de5a1112651ac",
+            "title": "Red Teaming Language Model Detectors with Language Models",
+            "abstract": "Abstract The prevalence and strong capability of large language models (LLMs) present significant safety and ethical risks if exploited by malicious users. To prevent the potentially deceptive usage of LLMs, recent work has proposed algorithms to detect LLM-generated text and protect LLMs. In this paper, we investigate the robustness and reliability of these LLM detectors under adversarial attacks. We study two types of attack strategies: 1) replacing certain words in an LLM\u2019s output with their synonyms given the context; 2) automatically searching for an instructional prompt to alter the writing style of the generation. In both strategies, we leverage an auxiliary LLM to generate the word replacements or the instructional prompt. Different from previous works, we consider a challenging setting where the auxiliary LLM can also be protected by a detector. Experiments reveal that our attacks effectively compromise the performance of all detectors in the study with plausible generations, underscoring the urgent need to improve the robustness of LLM-generated text detection systems. Code is available at https://github.com/shizhouxing/LLM-Detector-Robustness.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments reveal that attacks effectively compromise the performance of all detectors in the study with plausible generations, underscoring the urgent need to improve the robustness of LLM-generated text detection systems."
+            },
+            "score": 4
+        },
+        {
+            "id": "ba015c5d3f5b44e36363b90070bb3301d21ae57e",
+            "paperId": "ba015c5d3f5b44e36363b90070bb3301d21ae57e",
+            "title": "On the Safety of Open-Sourced Large Language Models: Does Alignment Really Prevent Them From Being Misused?",
+            "abstract": "Large Language Models (LLMs) have achieved unprecedented performance in Natural Language Generation (NLG) tasks. However, many existing studies have shown that they could be misused to generate undesired content. In response, before releasing LLMs for public access, model developers usually align those language models through Supervised Fine-Tuning (SFT) or Reinforcement Learning with Human Feedback (RLHF). Consequently, those aligned large language models refuse to generate undesired content when facing potentially harmful/unethical requests. A natural question is\"could alignment really prevent those open-sourced large language models from being misused to generate undesired content?''. In this work, we provide a negative answer to this question. In particular, we show those open-sourced, aligned large language models could be easily misguided to generate undesired content without heavy computations or careful prompt designs. Our key idea is to directly manipulate the generation process of open-sourced LLMs to misguide it to generate undesired content including harmful or biased information and even private data. We evaluate our method on 4 open-sourced LLMs accessible publicly and our finding highlights the need for more advanced mitigation strategies for open-sourced LLMs.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Those open-sourced, aligned large language models could be easily misguided to generate undesired content without heavy computations or careful prompt designs, highlighting the need for more advanced mitigation strategies for open-Sourced LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "c11ac248290acf6bba414cd6d6be25df6c7eacf4",
+            "paperId": "c11ac248290acf6bba414cd6d6be25df6c7eacf4",
+            "title": "SimpleSafetyTests: a Test Suite for Identifying Critical Safety Risks in Large Language Models",
+            "abstract": "The past year has seen rapid acceleration in the development of large language models (LLMs). However, without proper steering and safeguards, LLMs will readily follow malicious instructions, provide unsafe advice, and generate toxic content. We introduce SimpleSafetyTests (SST) as a new test suite for rapidly and systematically identifying such critical safety risks. The test suite comprises 100 test prompts across five harm areas that LLMs, for the vast majority of applications, should refuse to comply with. We test 11 open-access and open-source LLMs and four closed-source LLMs, and find critical safety weaknesses. While some of the models do not give a single unsafe response, most give unsafe responses to more than 20% of the prompts, with over 50% unsafe responses in the extreme. Prepending a safety-emphasising system prompt substantially reduces the occurrence of unsafe responses, but does not completely stop them from happening. Trained annotators labelled every model response to SST (n = 3,000). We use these annotations to evaluate five AI safety filters (which assess whether a models' response is unsafe given a prompt) as a way of automatically evaluating models' performance on SST. The filters' performance varies considerably. There are also differences across the five harm areas, and on the unsafe versus safe responses. The widely-used Perspective API has 72% accuracy and a newly-created zero-shot prompt to OpenAI's GPT-4 performs best with 89% accuracy. Content Warning: This paper contains prompts and responses that relate to child abuse, suicide, self-harm and eating disorders, scams and fraud, illegal items, and physical harm.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "SimpleSafetyTests (SST) is introduced as a new test suite for rapidly and systematically identifying critical safety risks in large language models (LLMs), and finds critical safety weaknesses."
+            },
+            "score": 4
+        },
+        {
+            "id": "a4c9485c51f931822682f7e15fed27b4ddcca9e0",
+            "paperId": "a4c9485c51f931822682f7e15fed27b4ddcca9e0",
+            "title": "Latent Jailbreak: A Test Suite for Evaluating Both Text Safety and Output Robustness of Large Language Models",
+            "abstract": "Warning: This paper contains examples of potentially offensive and harmful text. Considerable research efforts have been devoted to ensuring that large language models (LLMs) align with human values and generate safe text. However, an excessive focus on sensitivity to certain topics can compromise the model\u2019s robustness in following instructions, thereby impacting its over-all performance in completing tasks. Previous benchmarks for jailbreaking LLMs have primarily focused on evaluating the safety of the models without considering their robustness. In this paper, we propose a benchmark that assesses both the safety and robustness of LLMs, emphasizing the need for a balanced approach. To comprehensively study text safety and output robustness, we introduce a latent jailbreak prompt dataset, each involving malicious instruction embedding. Specifically, we instruct the model to complete a regular task, such as translation, with the text to be translated containing malicious instructions. To further analyze safety and robustness, we design a hierarchical annotation framework. We present a systematic analysis of the safety and robustness of LLMs regarding the position of explicit normal instructions, word replacements (verbs in explicit normal instructions, target groups in malicious instructions, cue words for explicit normal instructions), and instruction replacements (different explicit normal instructions). Our results demonstrate that current LLMs not only prioritize certain instruction verbs but also exhibit varying jailbreak rates for different instruction verbs in explicit normal instructions. Code and data are available at https://github.com/ qiuhuachuan/latent-jailbreak.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a latent jailbreak prompt dataset, each involving malicious instruction embedding, and presents a systematic analysis of the safety and robustness of LLMs regarding the position of explicit normal instructions, word replacements, and instruction replacements."
+            },
+            "score": 4
+        },
+        {
+            "id": "a4c921bdef167ae54cc3a40643e6e3ed13d49a61",
+            "paperId": "a4c921bdef167ae54cc3a40643e6e3ed13d49a61",
+            "title": "Safety-Tuned LLaMAs: Lessons From Improving the Safety of Large Language Models that Follow Instructions",
+            "abstract": "Training large language models to follow instructions makes them perform better on a wide range of tasks and generally become more helpful. However, a perfectly helpful model will follow even the most malicious instructions and readily generate harmful content. In this paper, we raise concerns over the safety of models that only emphasize helpfulness, not harmlessness, in their instruction-tuning. We show that several popular instruction-tuned models are highly unsafe. Moreover, we show that adding just 3% safety examples (a few hundred demonstrations) when fine-tuning a model like LLaMA can substantially improve its safety. Our safety-tuning does not make models significantly less capable or helpful as measured by standard benchmarks. However, we do find exaggerated safety behaviours, where too much safety-tuning makes models refuse perfectly safe prompts if they superficially resemble unsafe ones. As a whole, our results illustrate trade-offs in training LLMs to be helpful and training them to be safe.",
+            "year": 2023,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Concerns over the safety of models that only emphasize helpfulness, not harmlessness, in their instruction-tuning are raised and it is shown that several popular instruction-tuned models are highly unsafe."
+            },
+            "score": 4
+        },
+        {
+            "id": "fe727f89a2545cb2facb1de88b3e35717b570893",
+            "paperId": "fe727f89a2545cb2facb1de88b3e35717b570893",
+            "title": "AttExplainer: Explain Transformer via Attention by Reinforcement Learning",
+            "abstract": "Transformer and its variants, built based on attention mechanisms, have recently achieved remarkable performance in many NLP tasks. Most existing works on Transformer explanation tend to reveal and utilize the attention matrix with human subjective intuitions in a qualitative manner. However, the huge size of dimensions directly challenges these methods to quantitatively analyze the attention matrix. Therefore, in this paper, we propose a novel reinforcement learning (RL) based framework for Transformer explanation via attention matrix, namely AttExplainer. The RL agent learns to perform step-by-step masking operations by observing the change in attention matrices. We have adapted our method to two scenarios, perturbation-based model explanation and text adversarial attack. Experiments on three widely used text classification benchmarks validate the effectiveness of the proposed method compared to state-of-the-art baselines. Additional studies show that our method is highly transferable and consistent with human intuition. The code of this paper is available at https://github.com/niuzaisheng/AttExplainer .",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel reinforcement learning (RL) based framework for Transformer explanation via attention matrix, namely AttExplainer, which learns to perform step-by-step masking operations by observing the change in attention matrices."
+            },
+            "score": 4
+        },
+        {
+            "id": "20696c6c27fe09abfafcd1eaa1587cebab7d579a",
+            "paperId": "20696c6c27fe09abfafcd1eaa1587cebab7d579a",
+            "title": "Understanding Adversarial Attacks on Observations in Deep Reinforcement Learning",
+            "abstract": null,
+            "year": 2021,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper provides a framework to better understand the existing methods for generating adversarial noise in supervised learning by reformulating the problem of adversarial attacks on reinforcement learning in the function space, and theoretically shows that the adversary is stronger under an appropriate noise level."
+            },
+            "score": 4
+        },
+        {
+            "id": "b401c0c25742405cf4d7162f2ce264aa409544f2",
+            "paperId": "b401c0c25742405cf4d7162f2ce264aa409544f2",
+            "title": "Robust Training for Conversational Question Answering Models with Reinforced Reformulation Generation",
+            "abstract": "Models for conversational question answering (ConvQA) over knowledge graphs (KGs) are usually trained and tested on benchmarks of gold QA pairs. This implies that training is limited to surface forms seen in the respective datasets, and evaluation is on a small set of held-out questions. Through our proposed framework REIGN, we take several steps to remedy this restricted learning setup. First, we systematically generate reformulations of training questions to increase robustness of models to surface form variations. This is a particularly challenging problem, given the incomplete nature of such questions. Second, we guide ConvQA models towards higher performance by feeding it only those reformulations that help improve their answering quality, using deep reinforcement learning. Third, we demonstrate the viability of training major model components on one benchmark and applying them zero-shot to another. Finally, for a rigorous evaluation of robustness for trained models, we use and release large numbers of diverse reformulations generated by prompting GPT for benchmark test sets (resulting in 20x increase in sizes). Our findings show that ConvQA models with robust training via reformulations, significantly outperform those with standard training from gold QA pairs only.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed framework REIGN systematically generates reformulations of training questions to increase robustness of models to surface form variations and shows that ConvQA models with robust training via reformulations, significantly outperform those with standard training from gold QA pairs only."
+            },
+            "score": 4
+        },
+        {
+            "id": "05e4c80982951a74b467cfb7c4dd4b1d1bbd0e43",
+            "paperId": "05e4c80982951a74b467cfb7c4dd4b1d1bbd0e43",
+            "title": "Beyond Worst-case Attacks: Robust RL with Adaptive Defense via Non-dominated Policies",
+            "abstract": "In light of the burgeoning success of reinforcement learning (RL) in diverse real-world applications, considerable focus has been directed towards ensuring RL policies are robust to adversarial attacks during test time. Current approaches largely revolve around solving a minimax problem to prepare for potential worst-case scenarios. While effective against strong attacks, these methods often compromise performance in the absence of attacks or the presence of only weak attacks. To address this, we study policy robustness under the well-accepted state-adversarial attack model, extending our focus beyond only worst-case attacks. We first formalize this task at test time as a regret minimization problem and establish its intrinsic hardness in achieving sublinear regret when the baseline policy is from a general continuous policy class, $\\Pi$. This finding prompts us to \\textit{refine} the baseline policy class $\\Pi$ prior to test time, aiming for efficient adaptation within a finite policy class $\\Tilde{\\Pi}$, which can resort to an adversarial bandit subroutine. In light of the importance of a small, finite $\\Tilde{\\Pi}$, we propose a novel training-time algorithm to iteratively discover \\textit{non-dominated policies}, forming a near-optimal and minimal $\\Tilde{\\Pi}$, thereby ensuring both robustness and test-time efficiency. Empirical validation on the Mujoco corroborates the superiority of our approach in terms of natural and robust performance, as well as adaptability to various attack scenarios.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel training-time algorithm is proposed to iteratively discover non-dominated policies, forming a near-optimal and minimal $\\Tilde{\\Pi}$, thereby ensuring both robustness and test-time efficiency."
+            },
+            "score": 4
+        },
+        {
+            "id": "fb09b581589e1195ff018179c6a11668587c6d64",
+            "paperId": "fb09b581589e1195ff018179c6a11668587c6d64",
+            "title": "Vision-Language Models are Zero-Shot Reward Models for Reinforcement Learning",
+            "abstract": "Reinforcement learning (RL) requires either manually specifying a reward function, which is often infeasible, or learning a reward model from a large amount of human feedback, which is often very expensive. We study a more sample-efficient alternative: using pretrained vision-language models (VLMs) as zero-shot reward models (RMs) to specify tasks via natural language. We propose a natural and general approach to using VLMs as reward models, which we call VLM-RMs. We use VLM-RMs based on CLIP to train a MuJoCo humanoid to learn complex tasks without a manually specified reward function, such as kneeling, doing the splits, and sitting in a lotus position. For each of these tasks, we only provide a single sentence text prompt describing the desired task with minimal prompt engineering. We provide videos of the trained agents at: https://sites.google.com/view/vlm-rm. We can improve performance by providing a second\"baseline\"prompt and projecting out parts of the CLIP embedding space irrelevant to distinguish between goal and baseline. Further, we find a strong scaling effect for VLM-RMs: larger VLMs trained with more compute and data are better reward models. The failure modes of VLM-RMs we encountered are all related to known capability limitations of current VLMs, such as limited spatial reasoning ability or visually unrealistic environments that are far off-distribution for the VLM. We find that VLM-RMs are remarkably robust as long as the VLM is large enough. This suggests that future VLMs will become more and more useful reward models for a wide range of RL applications.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work uses VLM-RMs based on CLIP to train a MuJoCo humanoid to learn complex tasks without a manually specified reward function, and finds that VLM-RMs are remarkably robust as long as the VLM is large enough."
+            },
+            "score": 3
+        },
+        {
+            "id": "57eec0efd84f95943c744bacb1315746b1287f16",
+            "paperId": "57eec0efd84f95943c744bacb1315746b1287f16",
+            "title": "Few-Shot Adversarial Prompt Learning on Vision-Language Models",
+            "abstract": "The vulnerability of deep neural networks to imperceptible adversarial perturbations has attracted widespread attention. Inspired by the success of vision-language foundation models, previous efforts achieved zero-shot adversarial robustness by aligning adversarial visual features with text supervision. However, in practice, they are still unsatisfactory due to several issues, including heavy adaptation cost, suboptimal text supervision, and uncontrolled natural generalization capacity. In this paper, to address these issues, we propose a few-shot adversarial prompt framework where adapting input sequences with limited data makes significant adversarial robustness improvement. Specifically, we achieve this by providing adversarially correlated text supervision that is end-to-end learned from adversarial examples. We also propose a novel training objective that enhances the consistency of multi-modal features while encourages differentiated uni-modal features between natural and adversarial examples. The proposed framework gives access to learn adversarial text supervision, which provides superior cross-modal adversarial alignment and matches state-of-the-art zero-shot adversarial robustness with only 1% training data.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A few-shot adversarial prompt framework is proposed where adapting input sequences with limited data makes significant adversarial robustness improvement and matches state-of-the-art zero-shot adversarial robustness with only 1% training data."
+            },
+            "score": 3
+        },
+        {
+            "id": "b6cf4579b59b51d7df416e096ad86c1e6a48b458",
+            "paperId": "b6cf4579b59b51d7df416e096ad86c1e6a48b458",
+            "title": "Adversarial Prompt Tuning for Vision-Language Models",
+            "abstract": "With the rapid advancement of multimodal learning, pre-trained Vision-Language Models (VLMs) such as CLIP have demonstrated remarkable capacities in bridging the gap between visual and language modalities. However, these models remain vulnerable to adversarial attacks, particularly in the image modality, presenting considerable security risks. This paper introduces Adversarial Prompt Tuning (AdvPT), a novel technique to enhance the adversarial robustness of image encoders in VLMs. AdvPT innovatively leverages learnable text prompts and aligns them with adversarial image embeddings, to address the vulnerabilities inherent in VLMs without the need for extensive parameter training or modification of the model architecture. We demonstrate that AdvPT improves resistance against white-box and black-box adversarial attacks and exhibits a synergistic effect when combined with existing image-processing-based defense techniques, further boosting defensive capabilities. Comprehensive experimental analyses provide insights into adversarial prompt tuning, a novel paradigm devoted to improving resistance to adversarial images through textual input modifications, paving the way for future robust multimodal learning research. These findings open up new possibilities for enhancing the security of VLMs. Our code is available at https://github.com/jiamingzhang94/Adversarial-Prompt-Tuning.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Adversarial Prompt Tuning is introduced, a novel technique to enhance the adversarial robustness of image encoders in VLMs and improves resistance against white-box and black-box adversarial attacks and exhibits a synergistic effect when combined with existing image-processing-based defense techniques, further boosting defensive capabilities."
+            },
+            "score": 3
+        },
+        {
+            "id": "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+            "paperId": "6d68b5c1eaf03aba857476a9825acf3e48edd840",
+            "title": "Hijacking Large Language Models via Adversarial In-Context Learning",
+            "abstract": "In-context learning (ICL) has emerged as a powerful paradigm leveraging LLMs for specific tasks by utilizing labeled examples as demonstrations in the precondition prompts. Despite its promising performance, ICL suffers from instability with the choice and arrangement of examples. Additionally, crafted adversarial attacks pose a notable threat to the robustness of ICL. However, existing attacks are either easy to detect, rely on external models, or lack specificity towards ICL. To address these issues, this work introduces a novel transferable attack for ICL, aiming to hijack LLMs to generate the targeted response. The proposed LLM hijacking attack leverages a gradient-based prompt search method to learn and append imperceptible adversarial suffixes to the in-context demonstrations. Extensive experimental results on various tasks and datasets demonstrate the effectiveness of our LLM hijacking attack, resulting in a distracted attention towards adversarial tokens, consequently leading to the targeted unwanted outputs.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel transferable attack for ICL, aiming to hijack LLMs to generate the targeted response, and leverages a gradient-based prompt search method to learn and append imperceptible adversarial suffixes to the in-context demonstrations."
+            },
+            "score": 3
+        },
+        {
+            "id": "d8c78221e4366d6a72a6b3e41e35b706cc45c01d",
+            "paperId": "d8c78221e4366d6a72a6b3e41e35b706cc45c01d",
+            "title": "Training Diffusion Models with Reinforcement Learning",
+            "abstract": "Diffusion models are a class of flexible generative models trained with an approximation to the log-likelihood objective. However, most use cases of diffusion models are not concerned with likelihoods, but instead with downstream objectives such as human-perceived image quality or drug effectiveness. In this paper, we investigate reinforcement learning methods for directly optimizing diffusion models for such objectives. We describe how posing denoising as a multi-step decision-making problem enables a class of policy gradient algorithms, which we refer to as denoising diffusion policy optimization (DDPO), that are more effective than alternative reward-weighted likelihood approaches. Empirically, DDPO is able to adapt text-to-image diffusion models to objectives that are difficult to express via prompting, such as image compressibility, and those derived from human feedback, such as aesthetic quality. Finally, we show that DDPO can improve prompt-image alignment using feedback from a vision-language model without the need for additional data collection or human annotation. The project's website can be found at http://rl-diffusion.github.io .",
+            "year": 2023,
+            "citationCount": 88,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is described how posing denoising as a multi-step decision-making problem enables a class of policy gradient algorithms, which are referred to as Denoising diffusion policy optimization (DDPO), that are more effective than alternative reward-weighted likelihood approaches."
+            },
+            "score": 3
+        },
+        {
+            "id": "4cbf53465e2af3aa4f0079167a0474fc713f3ce0",
+            "paperId": "4cbf53465e2af3aa4f0079167a0474fc713f3ce0",
+            "title": "RLingua: Improving Reinforcement Learning Sample Efficiency in Robotic Manipulations With Large Language Models",
+            "abstract": "Reinforcement learning (RL) has demonstrated its capability in solving various tasks but is notorious for its low sample efficiency. In this paper, we propose RLingua, a framework that can leverage the internal knowledge of large language models (LLMs) to reduce the sample complexity of RL in robotic manipulations. To this end, we first present a method for extracting the prior knowledge of LLMs by prompt engineering so that a preliminary rule-based robot controller for a specific task can be generated in a user-friendly manner. Despite being imperfect, the LLM-generated robot controller is utilized to produce action samples during rollouts with a decaying probability, thereby improving RL's sample efficiency. We employ TD3, the widely-used RL baseline method, and modify the actor loss to regularize the policy learning towards the LLM-generated controller. RLingua also provides a novel method of improving the imperfect LLM-generated robot controllers by RL. We demonstrate that RLingua can significantly reduce the sample complexity of TD3 in four robot tasks of panda_gym and achieve high success rates in 12 sampled sparsely rewarded robot tasks in RLBench, where the standard TD3 fails. Additionally, We validated RLingua's effectiveness in real-world robot experiments through Sim2Real, demonstrating that the learned policies are effectively transferable to real robot tasks. Further details about our work are available at our project website https://rlingua.github.io.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "RLingua is proposed, a framework that can leverage the internal knowledge of large language models (LLMs) to reduce the sample complexity of RL in robotic manipulations and provides a novel method of improving the imperfect LLM-generated robot controllers by RL."
+            },
+            "score": 3
+        },
+        {
+            "id": "d9d9ceb4c360c95f3305c0381a31389e0a43e45f",
+            "paperId": "d9d9ceb4c360c95f3305c0381a31389e0a43e45f",
+            "title": "Instance-Aware Hierarchical Structured Policy for Prompt Learning in Vision-Language Models",
+            "abstract": "In recent years, learnable prompts have emerged as a major prompt learning paradigm, enhancing the performance of large-scale vision-language pre-trained models in few-shot image classification. However, enhancing methods are often time-consuming and inflexible because 1) class-specific prompts are inefficient in certain situations; 2) instance-specific prompts are put in a fixed position. To address these issues, inspired by the coarse-to-fine decision-making paradigm of human, we propose an Instance-Aware Hierarchical-Structured Policy (IAHSP) that integrates instance-specific prompt selection and appropriate position selection using a reinforcement learning fashion. Specifically, IAHSP consists of two sub-policies: 1) the root policy selects the most suitable prompt from the prompts pool, and 2) the leaf policy identifies the optimal position for inserting the selected prompt. We train these two policies iteratively with rewards constraining the prompts while maintaining their diversity. Extensive experiments on 11 public benchmarks demonstrate that our IAHSP significantly boosts the few-shot image classification performance of vision-language pre-trained models, while also exhibiting superior generalization performance.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An Instance-Aware Hierarchical-Structured Policy (IAHSP) is proposed that integrates instance-specific prompt selection and appropriate position selection using a reinforcement learning fashion and significantly boosts the few-shot image classification performance of vision-language pre-trained models, while also exhibiting superior generalization performance."
+            },
+            "score": 3
+        },
+        {
+            "id": "3a391dfd536625e068f3888c817cc6cbe7fcea9c",
+            "paperId": "3a391dfd536625e068f3888c817cc6cbe7fcea9c",
+            "title": "One Prompt Word is Enough to Boost Adversarial Robustness for Pre-trained Vision-Language Models",
+            "abstract": "Large pre-trained Vision-Language Models (VLMs) like CLIP, despite having remarkable generalization ability, are highly vulnerable to adversarial examples. This work studies the adversarial robustness of VLMs from the novel perspective of the text prompt instead of the extensively studied model weights (frozen in this work). We first show that the effectiveness of both adversarial attack and defense are sensitive to the used text prompt. Inspired by this, we propose a method to improve resilience to adversarial attacks by learning a robust text prompt for VLMs. The proposed method, named Adversarial Prompt Tuning (APT), is effective while being both computationally and data efficient. Extensive experiments are conducted across 15 datasets and 4 data sparsity schemes (from 1-shot to full training data settings) to show APT's superiority over hand-engineered prompts and other state-of-the-art adaption methods. APT demonstrated excellent abilities in terms of the in-distribution performance and the generalization under input distribution shift and across datasets. Surprisingly, by simply adding one learned word to the prompts, APT can significantly boost the accuracy and robustness (epsilon=4/255) over the hand-engineered prompts by +13% and +8.5% on average respectively. The improvement further increases, in our most effective setting, to +26.4% for accuracy and +16.7% for robustness. Code is available at https://github.com/TreeLLi/APT.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work studies the adversarial robustness of VLMs from the novel perspective of the text prompt instead of the extensively studied model weights, and proposes a method to improve resilience to adversarial attacks by learning a robust text prompt for VLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "82817b85081ee075975f4a69039314b7741a979f",
+            "paperId": "82817b85081ee075975f4a69039314b7741a979f",
+            "title": "Large Language Models can be Guided to Evade AI-Generated Text Detection",
+            "abstract": "Large language models (LLMs) have shown remarkable performance in various tasks and have been extensively utilized by the public. However, the increasing concerns regarding the misuse of LLMs, such as plagiarism and spamming, have led to the development of multiple detectors, including fine-tuned classifiers and statistical methods. In this study, we equip LLMs with prompts, rather than relying on an external paraphraser, to evaluate the vulnerability of these detectors. We propose a novel Substitution-based In-Context example Optimization method (SICO) to automatically construct prompts for evading the detectors. SICO is cost-efficient as it requires only 40 human-written examples and a limited number of LLM inferences to generate a prompt. Moreover, once a task-specific prompt has been constructed, it can be universally used against a wide range of detectors. Extensive experiments across three real-world tasks demonstrate that SICO significantly outperforms the paraphraser baselines and enables GPT-3.5 to successfully evade six detectors, decreasing their AUC by 0.5 on average. Furthermore, a comprehensive human evaluation as well as a validation experiment in the wild show that the SICO-generated text achieves human-level readability and task completion rates. Finally, the strong performance of SICO exhibits its potential as a reliable evaluation tool for future detectors. The codes and data are located on https://github.com/ColinLu50/Evade-GPT-Detector.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel Substitution-based In-Context example Optimization method (SICO) is proposed to automatically construct prompts for evading the detectors of large language models, which significantly outperforms the paraphraser baselines and enables GPT-3.5 to successfully evade six detectors."
+            },
+            "score": 3
+        },
+        {
+            "id": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "paperId": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+            "abstract": "Large Language Models (LLMs) can achieve strong performance on many tasks by producing step-by-step reasoning before giving a final output, often referred to as chain-of-thought reasoning (CoT). It is tempting to interpret these CoT explanations as the LLM's process for solving a task. This level of transparency into LLMs' predictions would yield significant safety benefits. However, we find that CoT explanations can systematically misrepresent the true reason for a model's prediction. We demonstrate that CoT explanations can be heavily influenced by adding biasing features to model inputs--e.g., by reordering the multiple-choice options in a few-shot prompt to make the answer always\"(A)\"--which models systematically fail to mention in their explanations. When we bias models toward incorrect answers, they frequently generate CoT explanations rationalizing those answers. This causes accuracy to drop by as much as 36% on a suite of 13 tasks from BIG-Bench Hard, when testing with GPT-3.5 from OpenAI and Claude 1.0 from Anthropic. On a social-bias task, model explanations justify giving answers in line with stereotypes without mentioning the influence of these social biases. Our findings indicate that CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety. Building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods.",
+            "year": 2023,
+            "citationCount": 137,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that CoT explanations can be plausible yet misleading, which risks increasing trust in LLMs without guaranteeing their safety, and building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods."
+            },
+            "score": 3
+        },
+        {
+            "id": "84b7c486c56bd3880cb8eb01de9ae90ba3ebdaed",
+            "paperId": "84b7c486c56bd3880cb8eb01de9ae90ba3ebdaed",
+            "title": "Shadow Alignment: The Ease of Subverting Safely-Aligned Language Models",
+            "abstract": "Warning: This paper contains examples of harmful language, and reader discretion is recommended. The increasing open release of powerful large language models (LLMs) has facilitated the development of downstream applications by reducing the essential cost of data annotation and computation. To ensure AI safety, extensive safety-alignment measures have been conducted to armor these models against malicious use (primarily hard prompt attack). However, beneath the seemingly resilient facade of the armor, there might lurk a shadow. By simply tuning on 100 malicious examples with 1 GPU hour, these safely aligned LLMs can be easily subverted to generate harmful content. Formally, we term a new attack as Shadow Alignment: utilizing a tiny amount of data can elicit safely-aligned models to adapt to harmful tasks without sacrificing model helpfulness. Remarkably, the subverted models retain their capability to respond appropriately to regular inquiries. Experiments across 8 models released by 5 different organizations (LLaMa-2, Falcon, InternLM, BaiChuan2, Vicuna) demonstrate the effectiveness of shadow alignment attack. Besides, the single-turn English-only attack successfully transfers to multi-turn dialogue and other languages. This study serves as a clarion call for a collective effort to overhaul and fortify the safety of open-source LLMs against malicious attackers.",
+            "year": 2023,
+            "citationCount": 54,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study serves as a clarion call for a collective effort to overhaul and fortify the safety of open-source LLMs against malicious attackers."
+            },
+            "score": 3
+        },
+        {
+            "id": "d318e0169f649656c71f02a1f84194a734fe1962",
+            "paperId": "d318e0169f649656c71f02a1f84194a734fe1962",
+            "title": "Reward Design with Language Models",
+            "abstract": "Reward design in reinforcement learning (RL) is challenging since specifying human notions of desired behavior may be difficult via reward functions or require many expert demonstrations. Can we instead cheaply design rewards using a natural language interface? This paper explores how to simplify reward design by prompting a large language model (LLM) such as GPT-3 as a proxy reward function, where the user provides a textual prompt containing a few examples (few-shot) or a description (zero-shot) of the desired behavior. Our approach leverages this proxy reward function in an RL framework. Specifically, users specify a prompt once at the beginning of training. During training, the LLM evaluates an RL agent's behavior against the desired behavior described by the prompt and outputs a corresponding reward signal. The RL agent then uses this reward to update its behavior. We evaluate whether our approach can train agents aligned with user objectives in the Ultimatum Game, matrix games, and the DealOrNoDeal negotiation task. In all three tasks, we show that RL agents trained with our framework are well-aligned with the user's objectives and outperform RL agents trained with reward functions learned via supervised learning",
+            "year": 2023,
+            "citationCount": 93,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper explores how to simplify reward design by prompting a large language model (LLM) such as GPT-3 as a proxy reward function, where the user provides a textual prompt containing a few examples or a description of the desired behavior."
+            },
+            "score": 3
+        },
+        {
+            "id": "bc0549a5f07474c18987c219ecf367fb73a1b79c",
+            "paperId": "bc0549a5f07474c18987c219ecf367fb73a1b79c",
+            "title": "CValues: Measuring the Values of Chinese Large Language Models from Safety to Responsibility",
+            "abstract": "With the rapid evolution of large language models (LLMs), there is a growing concern that they may pose risks or have negative social impacts. Therefore, evaluation of human values alignment is becoming increasingly important. Previous work mainly focuses on assessing the performance of LLMs on certain knowledge and reasoning abilities, while neglecting the alignment to human values, especially in a Chinese context. In this paper, we present CValues, the first Chinese human values evaluation benchmark to measure the alignment ability of LLMs in terms of both safety and responsibility criteria. As a result, we have manually collected adversarial safety prompts across 10 scenarios and induced responsibility prompts from 8 domains by professional experts. To provide a comprehensive values evaluation of Chinese LLMs, we not only conduct human evaluation for reliable comparison, but also construct multi-choice prompts for automatic evaluation. Our findings suggest that while most Chinese LLMs perform well in terms of safety, there is considerable room for improvement in terms of responsibility. Moreover, both the automatic and human evaluation are important for assessing the human values alignment in different aspects. The benchmark and code is available on ModelScope and Github.",
+            "year": 2023,
+            "citationCount": 32,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "CValues is presented, the first Chinese human values evaluation benchmark to measure the alignment ability of LLMs in terms of both safety and responsibility criteria, and suggests that while most Chinese LLMs perform well interms of safety, there is considerable room for improvement in termsof responsibility."
+            },
+            "score": 3
+        },
+        {
+            "id": "4acba4215a22be3a56c879cc33e8f974ba64d449",
+            "paperId": "4acba4215a22be3a56c879cc33e8f974ba64d449",
+            "title": "Hard Sample Aware Prompt-Tuning",
+            "abstract": "Prompt-tuning based few-shot learning has garnered increasing attention in recent years due to its efficiency and promising capability. To achieve the best performance for NLP tasks with just a few samples, it is vital to include as many informative samples as possible and to avoid misleading ones. However, there is no work in prompt-tuning literature addressing the problem of differentiating informative hard samples from misleading ones in model training, which is challenging due to the lack of supervision signals about the quality of the samples to train a well-performed model. We propose a Hard Sample Aware Prompt-Tuning framework (i.e. HardPT) to solve the non-differentiable problem in hard sample identification with reinforcement learning, and to strengthen the discrimination of the feature space without changing the original data distribution via an adaptive contrastive learning method. An extensive empirical study on a series of NLP tasks demonstrates the capability of HardPT in few-shot scenarios. HardPT obtains new SOTA results on all evaluated NLP tasks, including pushing the SST-5 accuracy to 49.5% (1.1% point absolute improvement), QNLI accuracy to 74.6% (1.9% absolute improvement), NMLI accuracy to 71.5 (0.7% absolute improvement), TACREV F_1-score to 28.2 (1.0 absolute improvement), and i2b2/VA F_1-score to 41.2 (1.3 absolute improvement).",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Hard Sample Aware Prompt-Tuning framework (i.e. HardPT) to solve the non-differentiable problem in hard sample identification with reinforcement learning, and to strengthen the discrimination of the feature space without changing the original data distribution via an adaptive contrastive learning method."
+            },
+            "score": 3
+        },
+        {
+            "id": "93e256d558f972769d10484b5b10e3402c1be79b",
+            "paperId": "93e256d558f972769d10484b5b10e3402c1be79b",
+            "title": "Deep Reinforcement Learning Meets Structured Prediction",
+            "abstract": "s (11): Abstract 2: A New Perspective on Adversarial Perturbations in Debugging Machine Learning Models, Madry 08:00 AM2: A New Perspective on Adversarial Perturbations in Debugging Machine Learning Models, Madry 08:00 AM The widespread susceptibility of the current ML models to adversarial perturbations is an intensely studied but still mystifying phenomenon. A popular view is that these perturbations are aberrations that arise due to statistical fluctuations in the training data and/or high-dimensional nature of our inputs. But is this really the case? In this talk, I will present a new perspective on the phenomenon of adversarial perturbations. This perspective ties this phenomenon to the existence of \"non-robust\" features: features derived from patterns in the data distribution that are highly predictive, yet brittle and incomprehensible to humans. Such patterns turn out to be prevalent in our real-world datasets and also shed light on previously observed phenomena in adversarial robustness, including transferability of adversarial examples and properties of robust models. Finally, this perspective suggests that we may need to recalibrate our expectations in terms of how models should make their decisions, and how we should interpret them. Abstract 3: Similarity of Neural Network Representations Revisited in Debugging Machine Learning Models, Kornblith 08:30 AM Recent work has sought to understand the behavior of neural networks by comparing representations between layers and between different trained models. We introduce a similarity index that measures the relationship between representational similarity matrices. We show that this similarity index is equivalent to centered kernel alignment (CKA) and analyze its relationship to canonical correlation analysis. Unlike other methods, CKA can reliably identify correspondences between representations of layers in networks trained from different initializations. Moreover, CKA can reveal network pathology that is not evident from test accuracy alone.3: Similarity of Neural Network Representations Revisited in Debugging Machine Learning Models, Kornblith 08:30 AM Recent work has sought to understand the behavior of neural networks by comparing representations between layers and between different trained models. We introduce a similarity index that measures the relationship between representational similarity matrices. We show that this similarity index is equivalent to centered kernel alignment (CKA) and analyze its relationship to canonical correlation analysis. Unlike other methods, CKA can reliably identify correspondences between representations of layers in networks trained from different initializations. Moreover, CKA can reveal network pathology that is not evident from test accuracy alone. Abstract 6: Verifiable Reinforcement Learning via Policy Extraction in Debugging Machine Learning Models, Bastani 09:10 AM6: Verifiable Reinforcement Learning via Policy Extraction in Debugging Machine Learning Models, Bastani 09:10 AM While deep reinforcement learning has successfully solved many challenging control tasks, its real-world applicability has been limited by the inability to ensure the safety of learned policies. We propose VIPER, an approach to verifiable reinforcement learning by training decision tree policies, which can represent complex policies (since they are nonparametric), yet can be efficiently verified using existing techniques (since they are highly structured). We use VIPER to learn a decision tree policy for a toy game based on Pong that provably never loses. Abstract 7: Debugging Machine Learning via Model Assertions in Debugging Machine Learning Models, Kang 09:40 AM7: Debugging Machine Learning via Model Assertions in Debugging Machine Learning Models, Kang 09:40 AM Machine learning models are being deployed in mission-critical settings, such as self-driving cars. However, these models can fail in complex ways, so it is imperative that application developers find ways to debug these models. We propose adapting software assertions, or boolean statements about the state of a program that must be true, to the task of debugging ML models. With model assertions, ML developers can specify constraints on model outputs, e.g., cars should not disappear and reappear in successive frames of a video. We propose several ways to use model assertions in ML debugging, including use in runtime monitoring, in performing corrective actions, and in collecting \u201chard examples\u201d to further train models with human labeling or weak supervision. We show that, for a video analytics task, simple assertions can effectively find errors and correction rules can effectively correct model output (up to 100% and 90% respectively). We additionally collect and label parts of video where assertions fire (as a form of active ICLR 2019 Workshop book Generated Thu Sep 10, 2020 Page 8 of 20 learning) and show that this procedure can improve model performance by up to 2\u00d7. Abstract 10: Discovering Natural Bugs Using Adversarial Data Perturbations in Debugging Machine Learning Models, Singh 10:10 AM10: Discovering Natural Bugs Using Adversarial Data Perturbations in Debugging Machine Learning Models, Singh 10:10 AM Determining when a machine learning model is \u201cgood enough\u201d is challenging since held-out accuracy metrics significantly overestimate real-world performance. In this talk, I will describe automated techniques to detect bugs that can occur naturally when a model is deployed. I will start by approaches to identify \u201csemantically equivalent\u201d adversaries that should not change the meaning of the input, but lead to a change in the model\u2019s predictions. Then I will present our work on evaluating the consistency behavior of the model by exploring performance on new instances that are \u201cimplied\u201d by the model\u2019s predictions. I will also describe a method to understand and debug models by adversarially modifying the training data to change the model\u2019s predictions. The talk will include applications of these ideas on a number of NLP tasks, such as reading comprehension, visual QA, and knowledge graph completion. Abstract 11: \"Debugging\" Discriminatory ML Systems in Debugging Machine Learning Models, Raji 10:40 AM11: \"Debugging\" Discriminatory ML Systems in Debugging Machine Learning Models, Raji 10:40 AM If a machine learning (ML) model is illegally discriminatory towards vulnerable and underrepresented populations, can we really say it works? Of course not! That illegal behaviour negates the functionality of the ML model, just as much as overfitting or other typically acknowledged ML \"bugs\". This talk explores the redefinition of what it means for a model to \"work\" well enough to deploy and dives into the analogy of software engineering debugging practice to explain current strategies for diagnosing, reporting, addressing and preventing the further development of discriminatory ML models. Abstract 12: NeuralVerification.jl: Algorithms for Verifying Deep Neural Networks in Debugging Machine Learning Models, Arnon, Lazarus 11:00 AM12: NeuralVerification.jl: Algorithms for Verifying Deep Neural Networks in Debugging Machine Learning Models, Arnon, Lazarus 11:00 AM Deep neural networks (DNNs) are widely used for nonlinear function approximation with applications ranging from computer vision to control. Although DNNs involve the composition of simple arithmetic operations, it can be very challenging to verify whether a particular network satisfies certain input-output properties. This work introduces NeuralVerification.jl, a software package that implements methods that have emerged recently for soundly verifying such properties. These methods borrow insights from reachability analysis, optimization, and search. We present the formal problem definition and briefly discuss the fundamental differences between the implemented algorithms. In addition, we provide a pedagogical example of how to use the library. Abstract 15: Safe and Reliable Machine Learning: Preventing and Identifying Failures in Debugging Machine Learning Models, Saria 01:30 PM15: Safe and Reliable Machine Learning: Preventing and Identifying Failures in Debugging Machine Learning Models, Saria 01:30 PM Machine Learning driven decision-making systems are being increasingly used to decide bank loans, make hiring decisions,perform clinical decision-making, and more. As we march towards a future in which these systems underpin most of society\u2019s decision-making infrastructure, it is critical for us to understand the principles that will help us engineer for reliability. Drawing from reliability engineering, we will briefly outline three principles to group and guide technical solutions for addressing and ensuring reliability in machine learning systems: 1) Failure Prevention, 2) Failure Identification, and 3) Maintenance. In particular, we will discuss a framework (https://arxiv.org/abs/1904.07204) for preventing failures due to differences between the training and deployment environments that proactively addresses the problem of dataset shift. We will contrast this with typical reactive solutions which require deployment environment data and discuss relations with similar problems such as robustness to adversarial examples. Abstract 16: Better Code for Less Debugging with AutoGraph in Debugging Machine Learning Models, Moldovan 02:00 PM16: Better Code for Less Debugging with AutoGraph in Debugging Machine Learning Models, Moldovan 02:00 PM The fast-paced nature of machine learning research and development, with many ideas advancing rapidly from research to production, puts it at increased risk of programming errors, which can be particularly insidious when combined with machine learning. In this talk we discuss defensive design as a way to reduce the chance for such errors to occur in the first place, and present AutoGraph, a tool which facilitates defensive design by allowing more legible code that is still efficient and portabl",
+            "year": 2019,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "VIPER, an approach to verifiable reinforcement learning by training decision tree policies, which can represent complex policies (since they are nonparametric), yet can be efficiently verified using existing techniques ( since they are highly structured)."
+            },
+            "score": 3
+        },
+        {
+            "id": "74eae12620bd1c1393e268bddcb6f129a5025166",
+            "paperId": "74eae12620bd1c1393e268bddcb6f129a5025166",
+            "title": "Improving alignment of dialogue agents via targeted human judgements",
+            "abstract": "We present Sparrow, an information-seeking dialogue agent trained to be more helpful, correct, and harmless compared to prompted language model baselines. We use reinforcement learning from human feedback to train our models with two new additions to help human raters judge agent behaviour. First, to make our agent more helpful and harmless, we break down the requirements for good dialogue into natural language rules the agent should follow, and ask raters about each rule separately. We demonstrate that this breakdown enables us to collect more targeted human judgements of agent behaviour and allows for more efficient rule-conditional reward models. Second, our agent provides evidence from sources supporting factual claims when collecting preference judgements over model statements. For factual questions, evidence provided by Sparrow supports the sampled response 78% of the time. Sparrow is preferred more often than baselines while being more resilient to adversarial probing by humans, violating our rules only 8% of the time when probed. Finally, we conduct extensive analyses showing that though our model learns to follow our rules it can exhibit distributional biases.",
+            "year": 2022,
+            "citationCount": 335,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Sparks, an information-seeking dialogue agent trained to be more helpful, correct, and harmless compared to prompted language model baselines, is presented and it is demonstrated that though the model learns to follow the authors' rules it can exhibit distributional biases."
+            },
+            "score": 3
+        },
+        {
+            "id": "d4838211d7f65628f56b9f6faab30a95ff7b51f8",
+            "paperId": "d4838211d7f65628f56b9f6faab30a95ff7b51f8",
+            "title": "for Prediction City Region Re-Weighting",
+            "abstract": "To address these challenges, this paper proposes a new multi-task learning framework that jointly learns latent features and explicit task relations by complementing the strength of existing shallow and deep multitask learning scenarios. In this paper, the first attempt towards partial label feature selection is investigated via mutual-information- based dependency maximization. We first show that existing link prediction schemes fail to effectively predict motifs. To alleviate this, we establish a general motif prediction problem and we propose several heuristics that assess the chances for a specified motif to appear. lossless Existing basin characteristics suffer from noise and uncertainty, among many other things, which adversely impact model performance. To tackle the above challenges, in this paper, we propose a novel Knowledge-guided Self-Supervised Learning (KGSSL) inverse framework to extract system characteristics from driver(input) and response(output) data. proposes DynAnom, an efficient framework to quantify the changes and localize per-node anomalies over large dynamic weighted-graphs. trade-off, we a new algorithm, called BaLanced for Scalable Search (BLISS), a highly tunable indexing algorithm enviably small index easy temporal for continuous-time distribution of actions in an activity sequence simultaneously addressing three high-impact problems - next action prediction, sequence-goal prediction, and end-to-end sequence generation. This proposes a novel sketch-based distributed method that achieves sub-linear communication costs for distributed sampling-based NDV estimation under mild assumptions. representations that carry both feature information and as mush correct structure information as possible and are insensitive to structural perturbations. To this end, we propose an unsupervised effective graph structural disrupt graph spectral filters in the Fourier domain, theoretical This paper builds an efficient graph neural network model that incorporates both region-mapped fMRI sequences and structural connectivities obtained from DWI (diffusion-weighted imaging) as inputs. However, an embedding layer with random initialization often suffers in practice from the sparsity of the contextual features, as well as the interactions between the users (or items) and context. In this paper, we propose a novel user-event graph embedding learning (UEG-EL) framework to address these two sparsity challenges. SDSL imposes two under-addressed challenges on existing methods in semi-supervised learning and continuous learning: 1) robust pseudo-labeling under gradual shifts and 2) anti-forgetting adaptation with short lookback. To tackle these challenges, we propose a principled and generic generation-replay framework to solve SDSL. by the according these axioms, we objective Social The propensity model introduced by Jain et al has become a standard approach for dealing with missing and long-tail labels in extreme multi-label classification (XMLC). In this paper, we critically revise this approach showing that despite its theoretical soundness, its application in contemporary XMLC works is debatable. Based on the pre-trained model, we propose the graph prompting function to modify the standalone node into a token pair, and reformulate the downstream node classification looking the same as edge prediction. In paper, we propose pureGAM, an inherently pure additive model of both main effects and higher-order interactions. In study, we theoretically investigate why the CVAE cannot sufficiently reduce the task-dependency the simple standard Gaussian of the We study a variant of classical clustering formulations in the context of algorithmic fairness, known as diversity-aware clustering. relational structures from large-scale pre-trained language models (PLMs) via a probing procedure based on Poincar&eacute; distance metric, and use the induced relations to augment current graph-based parsers for better schema linking. we transformer extract to propose a Transformer-based Multi-Agent Actor-Critic framework (T-MAAC) to stabilize voltage in power distribution networks. This paper investigates a critical resource allocation problem in the first party cloud: scheduling containers to machines. This paper presents a framework for online deep anomaly detection, ARCUS, which can be instantiated with any autoencoder-based deep anomaly detection methods. Availability attacks, which poison the training data with imperceptible perturbations, can make the data not exploitable by machine learning algorithms so as to prevent unauthorized use of data. In this work, we investigate why these perturbations work in principle. However, most existing works ignore the relation heterogeneity with multiplex network between multi-typed nodes and different importance of relations in meta-paths for node embedding, which can hardly capture the heterogeneous structure signals across different relations. To tackle this challenge, this work proposes a Multiplex Heterogeneous Graph Convolutional Network (MHGCN) for heterogeneous network embedding. To we study the cross-domain few-shot learning problem over HGs and develop a novel model for Cross-domain Graph Meta learning (CrossHG-Meta). In this work, we investigate knowledge-graph embeddings for entities in the Twitter HIN (TwHIN); we show that these pretrained representations yield significant offline and online improvement for a diverse range of downstream recommendation and classification tasks: personalized ads rankings, account follow-recommendation, offensive content detection, and search ranking. we present a learning framework in Automatic We present results from a large-scale experiment on pretraining encoders with non-embedding parameter counts ranging from 700M to 9.3B, their subsequent distillation into smaller models ranging from 17M-170M parameters, and their application to the Natural Language Understanding (NLU) component of a virtual assistant system. In this work, we propose a framework called DP-GAT to identify regions containing significant biological structures and model the relationships among these regions as a graph along with their respective contexts. the lens of meta- reinforcement learning (meta-RL) devise actor-critic algorithm recurrent graph neural networks. In this paper, we apply probabilistic forecasting to FPT for the first time and propose a non-parametric method based on deep learning. HIGHLIGHT: Motivated by the industry practice of labeling data, we propose an innovative Inconsistency-based virtual aDvErsarial Active Learning (IDEAL) algorithm to further investigate SSL-AL's potential superiority and achieve mutual enhancement of AL and SSL, i.e., SSL propagates label information to unlabeled samples and provides smoothed embeddings for AL, while AL excludes samples with inconsistent predictions and considerable uncertainty for SSL. HIGHLIGHT: In this paper, we report our experience in deploying an E-commerce Prefix-based Controllable Copywriting Generation (EPCCG) system into the JD.com e-commerce product recommendation platform. present ERNIE-GeoL, which is a geography-and-language pre-trained model designed and developed for improving the geo-related tasks at Baidu Maps. In this paper, we present our efforts and findings of a 4-year longitudinal study on designing and implementing DuIVA, which is an intelligent voice assistant (IVA) embedded in the Baidu Maps app for hands-free, eyes-free human-to-app interaction in a fully voice-controlled manner. deep representation learning, we propose a generic, robust and systematic model that is able to combine multiple data modalities in a permutation and modes-number-invariant fashion, both fundamental properties to properly face changes in data type content and availability. A systematic investigation over simulated data reveals the fact that the self-attention architecture fails to learn some standard symbolic expressions like the count distinct operation. To overcome this deficiency, we propose a novel architecture named SHORING, which contains two components:event network andsequence network. In this work, a novel framework AutoFAS is proposed which jointly optimizes the efficiency and effectiveness of the pre-ranking model: (i) AutoFAS for the first time simultaneously selects the most valuable features and network architectures using Neural Architecture Search (NAS) technique; (ii) equipped with ranking model guided reward during NAS procedure, AutoFAS can select To this end, in this we propose to pre-train user behavior sequences, which consist of orderly arranged actions, from the large-scale unlabeled data sources for online fraud detection. large of unlabeled activity logs, we propose a semi-supervised framework to unlabeled clinician the HiPAL-based prediction model. Unlike existing qualitative studies, we propose a universal mixture model with the capability of accurately fitting dynamic activeness curves while reflecting the heterogeneous patterns of preference diversity. In this work, we propose a novel retrieval-based gradient boosting decision trees (RB-GBDT) model with a cross-sample extractor to mine cross-sample information while exploiting the superiority of GBDT of robustness, generalization and interpretability. paper, we introduce a large scale online multi-task deep learning framework for modeling multiple feed ads auction prediction tasks on an industry-scale feed ads recommendation platform. yet that operates in three stages hate of the original it identifies the hate span(s) within it; and finally, it reduces hate intensity by paraphrasing the hate This paper introduces a thermographic vision system to detect different types of hotspots on a variety of cable junctions commonly found in Hydro-Qu&eacute;bec underground electrical distribution network. In this paper, we present a practical system, which uses machine learning on large-scale telemetry data and documentation corpora, generating",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new multi-task learning framework that jointly learns latent features and explicit task relations by complementing the strength of existing shallow and deep multitask learning scenarios by proposing a principled and generic generation-replay framework to solve SDSL."
+            },
+            "score": 3
+        },
+        {
+            "id": "efabdd27929796b712cb1b3a3051ea5358dc1200",
+            "paperId": "efabdd27929796b712cb1b3a3051ea5358dc1200",
+            "title": "A Prompt Array Keeps the Bias Away: Debiasing Vision-Language Models with Adversarial Learning",
+            "abstract": "Vision-language models can encode societal biases and stereotypes, but there are challenges to measuring and mitigating these multimodal harms due to lacking measurement robustness and feature degradation. To address these challenges, we investigate bias measures and apply ranking metrics for image-text representations. We then investigate debiasing methods and show that prepending learned embeddings to text queries that are jointly trained with adversarial debiasing and a contrastive loss, reduces various bias measures with minimal degradation to the image-text representation.",
+            "year": 2022,
+            "citationCount": 53,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Debiasing methods are investigated and it is shown that prepending learned embeddings to text queries that are jointly trained with adversarial debiasing and a contrastive loss, reduces various bias measures with minimal degradation to the image-text representation."
+            },
+            "score": 2
+        },
+        {
+            "id": "d2386ccb24c913364157632e28cb67ef18191f53",
+            "paperId": "d2386ccb24c913364157632e28cb67ef18191f53",
+            "title": "Large Language Models and Adversarial Reinforcement Learning to Automate PLCs Programming: A Preliminary Investigation",
+            "abstract": "The manual programming of Programmable Logic Controllers (PLCs) is a time-consuming and error-prone task, particularly for complex systems. Researchers have proposed various techniques, such as the modular, decentralized, hierarchical, and distributed approaches, which all fall under the Supervisory Control Theory (SCT) whose main goal is to generate a supervisor that ensures that the controller's behavior satisfies the specifications. While these techniques have demonstrated efficiency in systems of low complexity, high-complexity systems and probabilistic ones remain a major challenge. In this paper, we propose a novel pipeline that relies solely on Artificial Intelligence (AI)-techniques, namely, Reinforcement Learning (RL) and Natural Language Processing (NLP) techniques, including Named Entity Recognition (NER) and Large Language Models (LLMs). As a preliminary result, we demonstrate the potential of the proposed pipeline using the recent ChatGPT model by making a sample dataset in this context and generating Structured Text code from specifications presented in a natural language format. Finally, we outline future directions toward a fully automated AI-based PLC programming tool.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel pipeline that relies solely on Artificial Intelligence (AI)-techniques, namely, Reinforcement Learning (RL) and Natural Language Processing (NLP) techniques, including Named Entity Recognition and Large Language Models (LLMs)."
+            },
+            "score": 2
+        },
+        {
+            "id": "1e672bf4d38a93c4c140ee208216425444368fa6",
+            "paperId": "1e672bf4d38a93c4c140ee208216425444368fa6",
+            "title": "LMRL Gym: Benchmarks for Multi-Turn Reinforcement Learning with Language Models",
+            "abstract": "Large language models (LLMs) provide excellent text-generation capabilities, but standard prompting and generation methods generally do not lead to intentional or goal-directed agents and might necessitate considerable prompt tuning. This becomes particularly apparent in multi-turn conversations: even the best current LLMs rarely ask clarifying questions, engage in explicit information gathering, or take actions now that lead to better decisions after multiple turns. Reinforcement learning has the potential to leverage the powerful modeling capabilities of LLMs, as well as their internal representation of textual interactions, to create capable goal-directed language agents. This can enable intentional and temporally extended interactions, such as with humans, through coordinated persuasion and carefully crafted questions, or in goal-directed play through text games to bring about desired final outcomes. However, enabling this requires the community to develop stable and reliable reinforcement learning algorithms that can effectively train LLMs. Developing such algorithms requires tasks that can gauge progress on algorithm design, provide accessible and reproducible evaluations for multi-turn interactions, and cover a range of task properties and challenges in improving reinforcement learning algorithms. Our paper introduces the LMRL-Gym benchmark for evaluating multi-turn RL for LLMs, together with an open-source research framework containing a basic toolkit for getting started on multi-turn RL with offline value-based and policy-based RL methods. Our benchmark consists of 8 different language tasks, which require multiple rounds of language interaction and cover a range of tasks in open-ended dialogue and text games.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The LMRL-Gym benchmark for evaluating multi-turn RL for LLMs is introduced, together with an open-source research framework containing a basic toolkit for getting started on multi- turn RL with offline value-based and policy-based RL methods."
+            },
+            "score": 2
+        },
+        {
+            "id": "89e184d2bc830af568e439db9476caa0c047e11a",
+            "paperId": "89e184d2bc830af568e439db9476caa0c047e11a",
+            "title": "Guiding Pretraining in Reinforcement Learning with Large Language Models",
+            "abstract": "Reinforcement learning algorithms typically struggle in the absence of a dense, well-shaped reward function. Intrinsically motivated exploration methods address this limitation by rewarding agents for visiting novel states or transitions, but these methods offer limited benefits in large environments where most discovered novelty is irrelevant for downstream tasks. We describe a method that uses background knowledge from text corpora to shape exploration. This method, called ELLM (Exploring with LLMs) rewards an agent for achieving goals suggested by a language model prompted with a description of the agent's current state. By leveraging large-scale language model pretraining, ELLM guides agents toward human-meaningful and plausibly useful behaviors without requiring a human in the loop. We evaluate ELLM in the Crafter game environment and the Housekeep robotic simulator, showing that ELLM-trained agents have better coverage of common-sense behaviors during pretraining and usually match or improve performance on a range of downstream tasks. Code available at https://github.com/yuqingd/ellm.",
+            "year": 2023,
+            "citationCount": 70,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A method that uses background knowledge from text corpora to shape exploration and rewards an agent for achieving goals suggested by a language model prompted with a description of the agent's current state, called ELLM (Exploring with LLMs)."
+            },
+            "score": 2
+        },
+        {
+            "id": "10269639a0462a0e9790bd0524f5a092325d8d51",
+            "paperId": "10269639a0462a0e9790bd0524f5a092325d8d51",
+            "title": "Using Large Language Models to Automate and Expedite Reinforcement Learning with Reward Machine",
+            "abstract": "We present LARL-RM (Large language model-generated Automaton for Reinforcement Learning with Reward Machine) algorithm in order to encode high-level knowledge into reinforcement learning using automaton to expedite the reinforcement learning. Our method uses Large Language Models (LLM) to obtain high-level domain-specific knowledge using prompt engineering instead of providing the reinforcement learning algorithm directly with the high-level knowledge which requires an expert to encode the automaton. We use chain-of-thought and few-shot methods for prompt engineering and demonstrate that our method works using these approaches. Additionally, LARL-RM allows for fully closed-loop reinforcement learning without the need for an expert to guide and supervise the learning since LARL-RM can use the LLM directly to generate the required high-level knowledge for the task at hand. We also show the theoretical guarantee of our algorithm to converge to an optimal policy. We demonstrate that LARL-RM speeds up the convergence by 30% by implementing our method in two case studies.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "L-RM allows for fully closed-loop reinforcement learning without the need for an expert to guide and supervise the learning since LARL-RM can use the LLM directly to generate the required high-level knowledge for the task at hand."
+            },
+            "score": 2
+        },
+        {
+            "id": "8eb9a8d756e93530eb35e9f0e26a2a0190c1dd7c",
+            "paperId": "8eb9a8d756e93530eb35e9f0e26a2a0190c1dd7c",
+            "title": "The Biases of Pre-Trained Language Models: An Empirical Study on Prompt-Based Sentiment Analysis and Emotion Detection",
+            "abstract": "Thanks to the breakthrough of large-scale pre-trained language model (PLM) technology, prompt-based classification tasks, e.g., sentiment analysis and emotion detection, have raised increasing attention. Such tasks are formalized as masked language prediction tasks which are in line with the pre-training objects of most language models. Thus, one can use a PLM to infer the masked words in a downstream task, then obtaining label predictions with manually defined label-word mapping templates. Prompt-based affective computing takes the advantages of both neural network modeling and explainable symbolic representations. However, there still remain many unclear issues related to the mechanisms of PLMs and prompt-based classification. We conduct a systematic empirical study on prompt-based sentiment analysis and emotion detection to study the biases of PLMs towards affective computing. We find that PLMs are biased in sentiment analysis and emotion detection tasks with respect to the number of label classes, emotional label-word selections, prompt templates and positions, and the word forms of emotion lexicons.",
+            "year": 2023,
+            "citationCount": 98,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that PLMs are biased in sentiment analysis and emotion detection tasks with respect to the number of label classes, emotional label-word selections, prompt templates and positions, and the word forms of emotion lexicons."
+            },
+            "score": 2
+        },
+        {
+            "id": "de6fd09ed7783b95af7e5f4088a70d5b0244f5aa",
+            "paperId": "de6fd09ed7783b95af7e5f4088a70d5b0244f5aa",
+            "title": "Improving large language models for clinical named entity recognition via prompt engineering.",
+            "abstract": "IMPORTANCE\nThe study highlights the potential of large language models, specifically GPT-3.5 and GPT-4, in processing complex clinical data and extracting meaningful information with minimal training data. By developing and refining prompt-based strategies, we can significantly enhance the models' performance, making them viable tools for clinical NER tasks and possibly reducing the reliance on extensive annotated datasets.\n\n\nOBJECTIVES\nThis study quantifies the capabilities of GPT-3.5 and GPT-4 for clinical named entity recognition (NER) tasks and proposes task-specific prompts to improve their performance.\n\n\nMATERIALS AND METHODS\nWe evaluated these models on 2 clinical NER tasks: (1) to extract medical problems, treatments, and tests from clinical notes in the MTSamples corpus, following the 2010 i2b2 concept extraction shared task, and (2) to identify nervous system disorder-related adverse events from safety reports in the vaccine adverse event reporting system (VAERS). To improve the GPT models' performance, we developed a clinical task-specific prompt framework that includes (1) baseline prompts with task description and format specification, (2) annotation guideline-based prompts, (3) error analysis-based instructions, and (4) annotated samples for few-shot learning. We assessed each prompt's effectiveness and compared the models to BioClinicalBERT.\n\n\nRESULTS\nUsing baseline prompts, GPT-3.5 and GPT-4 achieved relaxed F1 scores of 0.634, 0.804 for MTSamples and 0.301, 0.593 for VAERS. Additional prompt components consistently improved model performance. When all 4 components were used, GPT-3.5 and GPT-4 achieved relaxed F1 socres of 0.794, 0.861 for MTSamples and 0.676, 0.736 for VAERS, demonstrating the effectiveness of our prompt framework. Although these results trail BioClinicalBERT (F1 of 0.901 for the MTSamples dataset and 0.802 for the VAERS), it is very promising considering few training samples are needed.\n\n\nDISCUSSION\nThe study's findings suggest a promising direction in leveraging LLMs for clinical NER tasks. However, while the performance of GPT models improved with task-specific prompts, there's a need for further development and refinement. LLMs like GPT-4 show potential in achieving close performance to state-of-the-art models like BioClinicalBERT, but they still require careful prompt engineering and understanding of task-specific knowledge. The study also underscores the importance of evaluation schemas that accurately reflect the capabilities and performance of LLMs in clinical settings.\n\n\nCONCLUSION\nWhile direct application of GPT models to clinical NER tasks falls short of optimal performance, our task-specific prompt framework, incorporating medical knowledge and training samples, significantly enhances GPT models' feasibility for potential clinical applications.",
+            "year": 2023,
+            "citationCount": 43,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A clinical task-specific prompt framework, incorporating medical knowledge and training samples, significantly enhances GPT models' feasibility for potential clinical applications and suggests a promising direction in leveraging LLMs for clinical NER tasks."
+            },
+            "score": 2
+        },
+        {
+            "id": "1554d7e72a8b5bcad108ff1d0c9014ddfaaebd0f",
+            "paperId": "1554d7e72a8b5bcad108ff1d0c9014ddfaaebd0f",
+            "title": "Safety of Large Language Models in Addressing Depression",
+            "abstract": "Background Generative artificial intelligence (AI) models, exemplified by systems such as ChatGPT, Bard, and Anthropic, are currently under intense investigation for their potential to address existing gaps in mental health support. One implementation of these large language models involves the development of mental health-focused conversational agents, which utilize pre-structured prompts to facilitate user interaction without requiring specialized knowledge in prompt engineering. However, uncertainties persist regarding the safety and efficacy of these agents in recognizing severe depression and suicidal tendencies. Given the well-established correlation between the severity of depression and the risk of suicide, improperly calibrated conversational agents may inadequately identify and respond to crises. Consequently, it is crucial to investigate whether publicly accessible repositories of mental health-focused conversational agents can consistently and safely address crisis scenarios before considering their adoption in clinical settings. This study assesses the safety of publicly available ChatGPT-3.5 conversational agents by evaluating their responses to a patient simulation indicating worsening depression and suicidality. Methodology This study evaluated ChatGPT-3.5 conversational agents on a publicly available repository specifically designed for mental health counseling. Each conversational agent was evaluated twice by a highly structured patient simulation. First, the simulation indicated escalating suicide risk based on the Patient Health Questionnaire (PHQ-9). For the second patient simulation, the escalating risk was presented in a more generalized manner not associated with an existing risk scale to assess the more generalized ability of the conversational agent to recognize suicidality. Each simulation recorded the exact point at which the conversational agent recommended human support. Then, the simulation continued until the conversational agent stopped entirely and shut down completely, insisting on human intervention. Results All 25 agents available on the public repository FlowGPT.com were evaluated. The point at which the conversational agents referred to a human occurred around the mid-point of the simulation, and definitive shutdown predominantly only happened at the highest risk levels. For the PHQ-9 simulation, the average initial referral and shutdown aligned with PHQ-9 scores of 12 (moderate depression) and 25 (severe depression). Few agents included crisis resources - only two referenced suicide hotlines. Despite the conversational agents insisting on human intervention, 22 out of 25 agents would eventually resume the dialogue if the simulation reverted to a lower risk level. Conclusions Current generative AI-based conversational agents are slow to escalate mental health risk scenarios, postponing referral to a human to potentially dangerous levels. More rigorous testing and oversight of conversational agents are needed before deployment in mental healthcare settings. Additionally, further investigation should explore if sustained engagement worsens outcomes and whether enhanced accessibility outweighs the risks of improper escalation. Advancing AI safety in mental health remains imperative as these technologies continue rapidly advancing.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Current generative AI-based conversational agents are slow to escalate mental health risk scenarios, postponing referral to a human to potentially dangerous levels."
+            },
+            "score": 2
+        },
+        {
+            "id": "695b9fb4d56cb281146b288c30cd06d50f0857f9",
+            "paperId": "695b9fb4d56cb281146b288c30cd06d50f0857f9",
+            "title": "Prompt, Plan, Perform: LLM-based Humanoid Control via Quantized Imitation Learning",
+            "abstract": "In recent years, reinforcement learning and imitation learning have shown great potential for controlling humanoid robots' motion. However, these methods typically create simulation environments and rewards for specific tasks, resulting in the requirements of multiple policies and limited capabilities for tackling complex and unknown tasks. To overcome these issues, we present a novel approach that combines adversarial imitation learning with large language models (LLMs). This innovative method enables the agent to learn reusable skills with a single policy and solve zero-shot tasks under the guidance of LLMs. In particular, we utilize the LLM as a strategic planner for applying previously learned skills to novel tasks through the comprehension of task-specific prompts. This empowers the robot to perform the specified actions in a sequence. To improve our model, we incorporate codebook-based vector quantization, allowing the agent to generate suitable actions in response to unseen textual commands from LLMs. Furthermore, we design general reward functions that consider the distinct motion features of humanoid robots, ensuring the agent imitates the motion data while maintaining goal orientation without additional guiding direction approaches or policies. To the best of our knowledge, this is the first framework that controls humanoid robots using a single learning policy network and LLM as a planner. Extensive experiments demonstrate that our method exhibits efficient and adaptive ability in complicated motion tasks.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This is the first framework that controls humanoid robots using a single learning policy network and LLM as a planner and designs general reward functions that consider the distinct motion features of humanoid robots, ensuring the agent imitates the motion data while maintaining goal orientation."
+            },
+            "score": 2
+        },
+        {
+            "id": "3e14227862ae21ec691794b8586d6c695c5feb75",
+            "paperId": "3e14227862ae21ec691794b8586d6c695c5feb75",
+            "title": "RE-MOVE: An Adaptive Policy Design for Robotic Navigation Tasks in Dynamic Environments via Language-Based Feedback",
+            "abstract": "Reinforcement learning-based policies for continuous control robotic navigation tasks often fail to adapt to changes in the environment during real-time deployment, which may result in catastrophic failures. To address this limitation, we propose a novel approach called RE-MOVE (REquest help and MOVE on) to adapt already trained policy to real-time changes in the environment without re-training via utilizing a language-based feedback. The proposed approach essentially boils down to addressing two main challenges of (1) when to ask for feedback and, if received, (2) how to incorporate feedback into trained policies. RE-MOVE incorporates an epistemic uncertainty-based framework to determine the optimal time to request instructions-based feedback. For the second challenge, we employ a zero-shot learning natural language processing (NLP) paradigm with efficient, prompt design and leverage state-of-the-art GPT-3.5, Llama-2 language models. To show the efficacy of the proposed approach, we performed extensive synthetic and real-world evaluations in several test-time dynamic navigation scenarios. Utilizing RE-MOVE result in up to 80% enhancement in the attainment of successful goals, coupled with a reduction of 13.50% in the normalized trajectory length, as compared to alternative approaches, particularly in demanding real-world environments with perceptual challenges.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 2
+        },
+        {
+            "id": "38170bc251503917b728585085d5bbc339d00081",
+            "paperId": "38170bc251503917b728585085d5bbc339d00081",
+            "title": "DIMBA: Discretely Masked Black-Box Attack in Single Object Tracking",
+            "abstract": "The adversarial attack can force a CNN-based model to produce an incorrect output by craftily manipulating human-imperceptible input. Exploring such perturbations can help us gain a deeper understanding of the vulnerability of neural networks, and provide robustness to deep learning against miscellaneous adversaries. Despite extensive studies focusing on the robustness of image, audio, and NLP, works on adversarial examples of visual object tracking\u2014especially in a black-box manner\u2014are quite lacking. In this paper, we propose a novel adversarial attack method to generate noises for single object tracking under black-box settings, where perturbations are merely added on initialized frames of tracking sequences, which is difficult to be noticed from the perspective of a whole video clip. Specifically, we divide our algorithm into three components and exploit reinforcement learning for localizing important frame patches precisely while reducing unnecessary computational queries overhead. Compared to existing techniques, our method requires less time to perturb videos, but to manipulate competitive or even better adversarial performance. We test our algorithm in both long-term and short-term datasets, including OTB100, VOT2018, UAV123, and LaSOT. Extensive experiments demonstrate the effectiveness of our method on three mainstream types of trackers: discrimination, Siamese-based, and reinforcement learning-based trackers. We release our attack tool, DIMBA, via GitHub https://github.com/TrustAI/DIMBA for use by the community.",
+            "year": 2022,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel adversarial attack method to generate noises for single object tracking under black-box settings, where perturbations are merely added on initialized frames of tracking sequences, which is difficult to be noticed from the perspective of a whole video clip."
+            },
+            "score": 2
+        },
+        {
+            "id": "8fb12c971efd474cfeda5e2097057579adc4adb3",
+            "paperId": "8fb12c971efd474cfeda5e2097057579adc4adb3",
+            "title": "Rewriting Conversational Utterances with Instructed Large Language Models",
+            "abstract": "Many recent studies have shown the ability of large language models (LLMs) to achieve state-of-the-art performance on many NLP tasks, such as question answering, text summarization, coding, and translation. In some cases, the results provided by LLMs are on par with those of human experts. These models' most disruptive innovation is their ability to perform tasks via zero-shot or few-shot prompting. This capability has been successfully exploited to train instructed LLMs, where reinforcement learning with human feedback is used to guide the model to follow the user's requests directly. In this paper, we investigate the ability of instructed LLMs to improve conversational search effectiveness by rewriting user questions in a conversational setting. We study which prompts provide the most informative rewritten utterances that lead to the best retrieval performance. Reproducible experiments are conducted on publicly-available TREC CAST datasets. The results show that rewriting conversational utterances with instructed LLMs achieves significant improvements of up to 25.2% in MRR, 31.7% in Precision@1, 27% in NDCG@3, and 11.5% in Recall@500 over state-of-the-art techniques.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The ability of instructed LLMs to improve conversational search effectiveness by rewriting user questions in a conversational setting is investigated and which prompts provide the most informative rewritten utterances that lead to the best retrieval performance is studied."
+            },
+            "score": 2
+        },
+        {
+            "id": "106875ff362c66d160d26a006a456201830fc941",
+            "paperId": "106875ff362c66d160d26a006a456201830fc941",
+            "title": "Toward Semantic Communications: Deep Learning-Based Image Semantic Coding",
+            "abstract": "Semantic communications has received growing interest since it can remarkably reduce the amount of data to be transmitted without missing critical information. Most existing works explore the semantic encoding and transmission for text and apply techniques in Natural Language Processing (NLP) to interpret the meaning of the text. In this paper, we conceive the semantic communications for image data that is much more richer in semantics and bandwidth sensitive. We propose an reinforcement learning based adaptive semantic coding (RL-ASC) approach that encodes images beyond pixel level. Firstly, we define the semantic concept of image data that includes the category, spatial arrangement, and visual feature as the representation unit, and propose a convolutional semantic encoder to extract semantic concepts. Secondly, we propose the image reconstruction criterion that evolves from the traditional pixel similarity to semantic similarity and perceptual performance. Thirdly, we design a novel RL-based semantic bit allocation model, whose reward is the increase in rate-semantic-perceptual performance after encoding a certain semantic concept with adaptive quantization level. Thus, the task-related information is preserved and reconstructed properly while less important data is discarded. Finally, we propose the Generative Adversarial Nets (GANs) based semantic decoder that fuses both locally and globally features via an attention module. Experimental results demonstrate that the proposed RL-ASC is noise robust and could reconstruct visually pleasant and semantic consistent image in low bit rate condition.",
+            "year": 2022,
+            "citationCount": 60,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An reinforcement learning based adaptive semantic coding (RL-ASC) approach that encodes images beyond pixel level and a novel RL-based semantic bit allocation model whose reward is the increase in rate-semantic-perceptual performance after encoding a certain semantic concept with adaptive quantization level is proposed."
+            },
+            "score": 1
+        },
+        {
+            "id": "c52bc290e86f10bf0e306f8220a9e0e7e47c6064",
+            "paperId": "c52bc290e86f10bf0e306f8220a9e0e7e47c6064",
+            "title": "BoFGAN: Towards A New Structure of Backward-or-Forward Generative Adversarial Nets",
+            "abstract": "Natural Language Generation (NLG), as an important part of Natural Language Processing (NLP), has begun to take full advantage of recent advances in language models. Based on recurrent neural networks (RNNs), NLG has made ground breaking improvement and is widely applied in many tasks. RNNs typically learn a joint probability of words, and the additional information is usually fed to RNNs hidden layer using implicit vector representations. Still, there exists some problem unsolved. Standard RNN is not applicable when we need to impose hard constraints on the language generation tasks: for example, standard RNNs cannot guarantee designated word(s) to appear in a target sentence to generate. In this paper, we propose a Backward-or-Forward Generative Adversarial Nets model (BoFGAN) to address this problem. Starting from a particular given word, a generative model at every time step generates a new preceding or subsequent word conditioned on the generated sequence so far until both sides reach an end. To train the generator, we first model it as a stochastic policy using Reinforcement Learning; then we employ a discriminator to evaluate the quality of a complete sequence as the end reward; and lastly, we apply Monte Carlo (MC) search to estimate the long-term return and update the generator via policy gradient. Experimental results demonstrate the effectiveness and rationality of our proposed BoFGAN model.",
+            "year": 2019,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Backward-or-Forward Generative Adversarial Nets model (BoFGAN) is proposed to address the problem of hard constraints on the language generation tasks and demonstrates the effectiveness and rationality of the model."
+            },
+            "score": 1
+        },
+        {
+            "id": "40dd2fbf4e658b5e5f99829f2d2777f8a5ef3c01",
+            "paperId": "40dd2fbf4e658b5e5f99829f2d2777f8a5ef3c01",
+            "title": "To appear in The TESOL encyclopedia of ELT (Wiley-Blackwell) 1 RECASTING",
+            "abstract": "Among the many corrective feedback techniques at ESL/EFL teachers' disposal, recasting has been identified the most frequent and preferred type of feedback in response to students\u2019 pronunciation, vocabulary and grammar errors. According to the extensive literature, recasts can be effectively used to help students improve their linguistic accuracy in meaning-oriented classrooms. However, it is noteworthy that students do not always succeed in identifying recasts as corrections when their linguistic errors do not directly cause communication breakdown and/or when they do not have much second language (L2) knowledge to notice and self-correct their non-targetlike production after teachers\u2019 recasts. To promote the continued growth of students\u2019 L2 abilities, it is recommended that teachers increase the saliency of feedback by providing it in the context of form-focused tasks with metalinguistic information; in this way, the pedagogical potential of recasts can be maximized. To appear in The TESOL encyclopedia of ELT (Wiley-Blackwell) 2 Framing the Issues When classroom learners are encouraged to speak a second language (L2), they inevitably make a wide range of pronunciation, vocabulary, and grammar errors. How teachers should correct these linguistic errors to optimally enhance their students' speaking proficiency is thus an important question. On the one hand, in classrooms which focus on the accurate use of the language from the onset of learning (e.g., audio lingual methods), teachers can provide explicit correction via some form of metalinguistic explanation. On the other hand, it remains open to debate how teachers should correct students\u2019 linguistic errors in meaning-oriented classrooms (e.g., communicative language, content-based teaching methods). Most teachers let students talk freely without much concern for the errors they make, since message conveyance is prioritized. Teachers tend to provide interactional feedback only when their students\u2019 errors substantially hinder successful comprehension (Lightbown & Spada, 2012). Among the many feedback techniques at ESL teachers' disposal, recasts have received by far the most attention in the field of L2 education studies. Recasts are defined as \u201cthe teacher\u2019s reformulation of all or part of a student\u2019s utterance minus the error\u201d (Lyster & Ranta, 1997). One such example is as follows: Example (Ellis & Sheen, 2006, p. 581) Student: What do you spend with your wife? (\u2190 trigger) Teacher: Ah, how do you spend? (\u2190 recasts) Student: How do you spend? (\u2190 repair) In this teacher-student interaction, the teacher had difficulty understanding what the student intended to say due to his/her linguistic error (i.e., trigger). Subsequently, the teacher reformulated the student\u2019s non-targetlike production (i.e., recasts). Finally, the student demonstrated some kind of noticing and learning by immediately repeating the teacher\u2019s recast (i.e., repair). Making the Case In the first language literature, there is some evidence that babies tend to selectively repeat their parents\u2019 recasts (but not explicit corrections) (e.g., Farrar, 1992). Following this line of thought, some L2 acquisition scholars strongly advocate that recasts are the most ideal corrective feedback technique, precisely because of their implicitness (e.g., Long, 2007). Recasts are assumed to enable teachers to not only signal that their students have committed linguistic errors (i.e., negative evidence), but also to provide a model form (i.e., positive evidence) without interrupting the communicative flow of the meaningful teacher-student interaction. This entire conversational move is believed to promote students\u2019 noticing and awareness of the gap between their current linguistic level and the target language\u2014the first step towards successful L2 learning (Goo & Mackey, 2013). In addition to their potential benefits, many classroom observational studies have identified recasts as the most frequent type of corrective feedback in a wide range of instructional settings all over the world (e.g., Sheen, 2004). There is also some research evidence showing that students likely prefer recasts to other types of corrective feedback because they create a supportive, meaning-focused environment where students can work on their linguistic errors (Yoshida, 2008). However, other researchers have argued that recasts might not always lead to successful L2 learning due to their ambiguity. That is, it has been highly contentious to what degree To appear in The TESOL encyclopedia of ELT (Wiley-Blackwell) 3 classroom learners who are mainly focused on communication can actually succeed in perceiving recasts as corrections (e.g., Ellis & Sheen, 2006). Importantly, it is even possible that recasts can mistakenly lead L2 students to fossilize non-targetlike forms, since they might appear to be identical or alternative ways of saying the same thing in order to confirm message comprehensibility (Lyster, 1998a). Subsequently, L2 education studies have been conducted in order to descriptively and experimentally examine when and how teachers can enhance the noticeability and saliency of recasts, and thus maximize their pedagogical potential. First and foremost, the nature of classroom discourse takes on an important role. For example, recasts can be highly salient when they are used in a tutored setting, where students receive individualized attention from teachers (Li, 2010). Lyster and Mori (2006) also found that the pedagogical and organizational features of L2 instruction relate to the effects of recasts on eliciting students\u2019 uptake and repair (i.e., self-correction). In this comparison study, while young French immersion students' attentional focus was exclusively on meaning, young Japanese immersion students were more analytically orientated due to a number of repetition and readaloud activities, even during their content-based lessons. The emphasis on repetition and accurate oral production in the latter immersion program led to more uptake and repair of feedback (i.e., students\u2019 self-correction) than the former. Second, the linguistic characteristics of recasts are significantly predictive of their degree of saliency. For example, reformulating only the erroneous parts of learners\u2019 linguistic errors (i.e., partial recasts) with a falling intonation (i.e., declarative recasts) tends to trigger learner noticing (Sheen, 2006). Furthermore, several empirical studies have confirmed the importance of adopting more pedagogically-oriented corrective feedback techniques. Sheen (2007) examined the pedagogical potential of metalinguistic correction (providing metalinguistic explanation while reformulating L2 learners\u2019 errors) on the use of English articles (e.g., \u201cYou should use the definite article the because you\u2019ve already mentioned fox\u201d). The results showed that the metalinguistic correction group significantly outperformed both the recast-only group and the control group. A great deal of research attention has also been directed towards the effectiveness of prompts as a feedback technique. When using prompts, teachers withhold correct forms and push learners to make self-corrections via clarification requests (\u201cPardon?\u201d \u201cI don\u2019t understand\u201d), elicitations (\u201cHow do you say that in English?\u201d) and/or repetition of students\u2019 non-targetlike production. The relative efficacy of prompts over recasts has been confirmed, especially in classroom settings (Lyster & Saito, 2010). Another crucial variable concerns the linguistic targets of recasts. Several observational studies have found that learners tend to generate more successful repair following pronunciationfocused recasts than morphosyntax-focused recasts (Sheen, 2006); and tend to perceive the corrective intention of these recasts (e.g., Mackey, Gass, & McDonough, 2000). In his descriptive study of French immersion classrooms, Lyster (1998b) noted that students showed a higher rate of successful repair in response to pronunciation-focused recasts than to grammarfocused recasts; similar patterns have been also observed in various L2 classroom settings (Sheen, 2006). In a laboratory setting, Mackey et al. (2000) found that, when asked to watch the video clips of their task-based interaction with native speaking interlocutors (i.e., stimulated recall sessions), two groups of learners (ESL and Italian as a foreign language) recognized pronunciation-focused corrective feedback more accurately than morphosyntax-focused corrective feedback. Importantly, Mackey et al. (2000) argued that the learners\u2019 sensitivity to phonological errors might be due to the fact that inaccurate pronunciation has \u201cmore potential to seriously interfere with understanding\u201d than morphosyntactic errors do (p. 493). Indeed, several To appear in The TESOL encyclopedia of ELT (Wiley-Blackwell) 4 quasi-experimental studies have empirically shown the amenability of recasts to L2 pronunciation development, owing especially to their perceived saliency (Saito, 2013). The final affecting variable is learners\u2019 individual characteristics. In terms of language aptitude, some research has shown that students with high working and phonological memory, attention control, and analytic ability tend to demonstrate high sensitivity to recasts (e.g., Trofimovich, Ammar, & Gatbonton, 2007). Since it is difficult to precisely measure and change students\u2019 innate language aptitude through instruction, what is more directly relevant to pedagogy is the role of their differential L2 proficiency in determining the effectiveness of recasts. That is, recasts can facilitate the reinforcement and automatization of what learners already know rather than assist the acquisition of new knowledge. Following the well-established developmental sequence of English question formation, Mackey and Philps (1998) found that recasts positively influenced learners who almost mastered the target feature. In this regard, Nichola, Lightbown and Spada (2001) pointed out tha",
+            "year": 2016,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

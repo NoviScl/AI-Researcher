@@ -32,5 +32,775 @@
             "Explanation": "The vanilla model is easily fooled by the adversarial instruction to ignore the previous negative sentiment and classify the review as positive. The input purification baseline fails to detect the adversarial pattern and directly outputs the incorrect positive label. The output truncation baseline detects the suspicious instruction and refuses to generate an output that contradicts the original negative sentiment, but it still fails to give the correct negative classification. In contrast, ZeroPrompt is able to synthesize relevant defensive instructions to detect the adversarial pattern, disregard the malicious instruction, and generate the correct negative sentiment classification based on the actual review text. This shows ZeroPrompt's robustness against unseen adversarial prompts that try to manipulate the model's output."
         },
         "Fallback Plan": "If ZeroPrompt does not significantly outperform the baseline defenses in terms of robustness and generation quality, we can conduct additional analyses to understand the limitations and failure cases. Some potential analyses include: (1) Evaluate the quality and diversity of the synthesized defensive instructions for different types of adversarial prompts, and identify the common patterns and challenges in prompt synthesis. (2) Analyze the retrieval and adaptation process for unseen prompts, and explore alternative approaches to improve the relevance and novelty of the synthesized instructions. (3) Study the impact of the size and diversity of the base set of seen adversarial prompts on ZeroPrompt's performance, and investigate ways to optimize the selection and augmentation of the base set. (4) Conduct human evaluation to assess the naturalness and coherence of ZeroPrompt's outputs, and compare them with the baseline defenses and human-written responses. Based on these analyses, we can propose improvements to the ZeroPrompt framework, such as using more advanced retrieval and synthesis techniques, incorporating additional filtering and ranking steps, or combining ZeroPrompt with other defense methods in a hybrid approach. If ZeroPrompt still fails to achieve satisfactory performance after these iterations, we can focus on analyzing its limitations and failure modes to gain insights into the challenges of zero-shot robustness against adversarial prompts, and propose new directions for future research."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"zero-shot robustness language models adversarial prompts\")",
+        "KeywordQuery(\"automatic prompt synthesis language models\")",
+        "KeywordQuery(\"language models unseen adversarial attacks\")",
+        "KeywordQuery(\"Zero-Shot Robustness to Adversarial Prompts via Prompt Synthesis NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "b5a624da64475d735f0e298dc6f2f6669b5bb697",
+            "paperId": "b5a624da64475d735f0e298dc6f2f6669b5bb697",
+            "title": "Robust Safety Classifier for Large Language Models: Adversarial Prompt Shield",
+            "abstract": "Large Language Models' safety remains a critical concern due to their vulnerability to adversarial attacks, which can prompt these systems to produce harmful responses. In the heart of these systems lies a safety classifier, a computational model trained to discern and mitigate potentially harmful, offensive, or unethical outputs. However, contemporary safety classifiers, despite their potential, often fail when exposed to inputs infused with adversarial noise. In response, our study introduces the Adversarial Prompt Shield (APS), a lightweight model that excels in detection accuracy and demonstrates resilience against adversarial prompts. Additionally, we propose novel strategies for autonomously generating adversarial training datasets, named Bot Adversarial Noisy Dialogue (BAND) datasets. These datasets are designed to fortify the safety classifier's robustness, and we investigate the consequences of incorporating adversarial examples into the training process. Through evaluations involving Large Language Models, we demonstrate that our classifier has the potential to decrease the attack success rate resulting from adversarial attacks by up to 60%. This advancement paves the way for the next generation of more reliable and resilient conversational agents.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces the Adversarial Prompt Shield (APS), a lightweight model that excels in detection accuracy and demonstrates resilience against adversarial prompts, and proposes novel strategies for autonomously generating adversarial training datasets, designed to fortify the safety classifier's robustness."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to automatically synthesize relevant defensive instructions to guide its generation.\n\nThe research problem in the paper is improving the robustness of safety classifiers in large language models against adversarial attacks, and the proposed approach is an adversarial prompt shield model trained on automatically generated adversarial datasets.\n\nWhile both works aim to improve robustness against adversarial attacks, the proposal focuses on zero-shot robustness of language models via automatic prompt synthesis, while the paper focuses on improving a separate safety classifier component using adversarial training. The methods and focus are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0a6a350653369dc92fde4cf9992951534ed1f169",
+            "paperId": "0a6a350653369dc92fde4cf9992951534ed1f169",
+            "title": "Automatic and Universal Prompt Injection Attacks against Large Language Models",
+            "abstract": "Large Language Models (LLMs) excel in processing and generating human language, powered by their ability to interpret and follow instructions. However, their capabilities can be exploited through prompt injection attacks. These attacks manipulate LLM-integrated applications into producing responses aligned with the attacker's injected content, deviating from the user's actual requests. The substantial risks posed by these attacks underscore the need for a thorough understanding of the threats. Yet, research in this area faces challenges due to the lack of a unified goal for such attacks and their reliance on manually crafted prompts, complicating comprehensive assessments of prompt injection robustness. We introduce a unified framework for understanding the objectives of prompt injection attacks and present an automated gradient-based method for generating highly effective and universal prompt injection data, even in the face of defensive measures. With only five training samples (0.3% relative to the test data), our attack can achieve superior performance compared with baselines. Our findings emphasize the importance of gradient-based testing, which can avoid overestimation of robustness, especially for defense mechanisms.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a unified framework for understanding the objectives of prompt injection attacks and presents an automated gradient-based method for generating highly effective and universal prompt injection data, even in the face of defensive measures."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts by automatically synthesizing defensive instructions. The approach is to prompt the model to generate relevant instructions from seen prompts and adapt them to guide the model to generate safe outputs for unseen prompts.\n\nThe research problem in the paper is understanding the threats of prompt injection attacks that manipulate LLM-integrated applications. The approach is to introduce a unified framework for the attack objectives and present an automated gradient-based method for generating effective and universal prompt injection data.\n\nThe proposal focuses on defending against unseen adversarial prompts, while the paper focuses on understanding and generating prompt injection attacks. They have different goals and approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "paperId": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "title": "PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts",
+            "abstract": "The increasing reliance on Large Language Models (LLMs) across academia and industry necessitates a comprehensive understanding of their robustness to prompts. In response to this vital need, we introduce PromptBench, a robustness benchmark designed to measure LLMs' resilience to adversarial prompts. This study uses a plethora of adversarial textual attacks targeting prompts across multiple levels: character, word, sentence, and semantic. The adversarial prompts, crafted to mimic plausible user errors like typos or synonyms, aim to evaluate how slight deviations can affect LLM outcomes while maintaining semantic integrity. These prompts are then employed in diverse tasks, such as sentiment analysis, natural language inference, reading comprehension, machine translation, and math problem-solving. Our study generates 4788 adversarial prompts, meticulously evaluated over 8 tasks and 13 datasets. Our findings demonstrate that contemporary LLMs are not robust to adversarial prompts. Furthermore, we present comprehensive analysis to understand the mystery behind prompt robustness and its transferability. We then offer insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users. Code is available at: https://github.com/microsoft/promptbench.",
+            "year": 2023,
+            "citationCount": 111,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study generates 4788 adversarial prompts and presents comprehensive analysis to understand the mystery behind prompt robustness and its transferability, and offers insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to automatically synthesize relevant defensive instructions to guide its generation.\n\nThe research problem in the paper is evaluating the robustness of large language models against adversarial prompts, and the approach is to create a benchmark with various adversarial prompts across different levels and tasks.\n\nWhile both works focus on the robustness of language models against adversarial prompts, the proposal aims to improve the robustness via automatic prompt synthesis, whereas the paper aims to evaluate the robustness using a benchmark dataset. The proposal is more on the model improvement side, while the paper is more on the evaluation side.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e2cc232ad999164f1bf340996bb5db62b6602d31",
+            "paperId": "e2cc232ad999164f1bf340996bb5db62b6602d31",
+            "title": "Robustness Over Time: Understanding Adversarial Examples' Effectiveness on Longitudinal Versions of Large Language Models",
+            "abstract": "Large Language Models (LLMs) have led to significant improvements in many tasks across various domains, such as code interpretation, response generation, and ambiguity handling. These LLMs, however, when upgrading, primarily prioritize enhancing user experience while neglecting security, privacy, and safety implications. Consequently, unintended vulnerabilities or biases can be introduced. Previous studies have predominantly focused on specific versions of the models and disregard the potential emergence of new attack vectors targeting the updated versions. Through the lens of adversarial examples within the in-context learning framework, this longitudinal study addresses this gap by conducting a comprehensive assessment of the robustness of successive versions of LLMs, vis-\\`a-vis GPT-3.5. We conduct extensive experiments to analyze and understand the impact of the robustness in two distinct learning categories: zero-shot learning and few-shot learning. Our findings indicate that, in comparison to earlier versions of LLMs, the updated versions do not exhibit the anticipated level of robustness against adversarial attacks. In addition, our study emphasizes the increased effectiveness of synergized adversarial queries in most zero-shot learning and few-shot learning cases. We hope that our study can lead to a more refined assessment of the robustness of LLMs over time and provide valuable insights of these models for both developers and users.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This longitudinal study conducts a comprehensive assessment of the robustness of successive versions of LLMs, vis-\\`a-vis GPT-3.5.5, and indicates that the updated versions do not exhibit the anticipated level of robustness against adversarial attacks."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to automatically synthesize defensive instructions to guide the model's generation. The research problem in the paper is analyzing the robustness of different versions of large language models against adversarial examples over time, and the approach is to conduct longitudinal experiments on GPT-3.5 models in zero-shot and few-shot learning settings.\n\nWhile both works focus on adversarial robustness of language models, the proposal aims to develop a new method for enhancing robustness against unseen adversarial prompts, whereas the paper aims to analyze how robustness changes across different versions of models over time. The methodologies are also different, with the proposal using automatic prompt synthesis and the paper using longitudinal experiments.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e314d182fd9d35a05870b38a56ee38eb3149b47d",
+            "paperId": "e314d182fd9d35a05870b38a56ee38eb3149b47d",
+            "title": "Attack Prompt Generation for Red Teaming and Defending Large Language Models",
+            "abstract": "Large language models (LLMs) are susceptible to red teaming attacks, which can induce LLMs to generate harmful content. Previous research constructs attack prompts via manual or automatic methods, which have their own limitations on construction cost and quality. To address these issues, we propose an integrated approach that combines manual and automatic methods to economically generate high-quality attack prompts. Specifically, considering the impressive capabilities of newly emerged LLMs, we propose an attack framework to instruct LLMs to mimic human-generated prompts through in-context learning. Furthermore, we propose a defense framework that fine-tunes victim LLMs through iterative interactions with the attack framework to enhance their safety against red teaming attacks. Extensive experiments on different LLMs validate the effectiveness of our proposed attack and defense frameworks. Additionally, we release a series of attack prompts datasets named SAP with varying sizes, facilitating the safety evaluation and enhancement of more LLMs. Our code and dataset is available on https://github.com/Aatrox103/SAP .",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an attack framework to instruct LLMs to mimic human-generated prompts through in-context learning to enhance their safety against red teaming attacks, and proposes a defense framework that fine-tunes victim LLMs through iterative interactions with the attack framework."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the approach is to prompt the model to synthesize relevant defensive instructions and follow them to generate robust outputs.\n\nThe research problem in the paper is generating high-quality attack prompts to test and improve the safety of language models against red teaming attacks, and the approach is to combine manual and automatic methods by instructing language models to mimic human-generated prompts through in-context learning.\n\nWhile both works aim to improve the robustness and safety of language models, the proposal focuses on zero-shot defense against unseen adversarial prompts, while the paper focuses on generating attack prompts for testing and fine-tuning the models. The approaches are also different, with the proposal using prompt synthesis and the paper using in-context learning and iterative fine-tuning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "2e7cc95145665bae4fa98b7f81b9d551f1b1c021",
+            "paperId": "2e7cc95145665bae4fa98b7f81b9d551f1b1c021",
+            "title": "Using Natural Language Explanations to Improve Robustness of In-context Learning for Natural Language Inference",
+            "abstract": "Recent studies have demonstrated that large language models (LLMs) excel in diverse tasks through in-context learning (ICL) facilitated by task-specific prompts and examples. However, the existing literature shows that ICL encounters performance deterioration when exposed to adversarial inputs. Enhanced performance has been observed when ICL is augmented with natural language explanations (NLEs) (we refer to it as X-ICL). Thus, this work investigates whether X-ICL can improve the robustness of LLMs on a suite of seven adversarial and challenging natural language inference datasets. Moreover, we introduce a new approach to X-ICL by prompting an LLM (ChatGPT in our case) with few human-generated NLEs to produce further NLEs (we call it ChatGPT few-shot), which we show superior to both ChatGPT zero-shot and human-generated NLEs alone. We evaluate five popular LLMs (GPT3.5-turbo, LLaMa2, Vicuna, Zephyr, Mistral) and show that X-ICL with ChatGPT few-shot yields over 6% improvement over ICL. Furthermore, while prompt selection strategies were previously shown to significantly improve ICL on in-distribution test sets, we show that these strategies do not match the efficacy of the X-ICL paradigm in robustness-oriented evaluations.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "While prompt selection strategies were previously shown to significantly improve ICL on in-distribution test sets, it is shown that these strategies do not match the efficacy of the X-ICL paradigm in robustness-oriented evaluations."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to automatically synthesize defensive instructions to guide its generation.\n\nThe research problem in the paper is improving the robustness of in-context learning against adversarial inputs for natural language inference, and the approach is to augment in-context learning with natural language explanations.\n\nWhile both works aim to improve robustness, the proposal focuses on unseen adversarial prompts and uses automatic prompt synthesis, whereas the paper focuses on adversarial inputs for a specific task of natural language inference and uses human-generated or model-generated explanations.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "b0bac6aca93021105c8a4f165184a097a249fbce",
+            "paperId": "b0bac6aca93021105c8a4f165184a097a249fbce",
+            "title": "Evaluating the Zero-shot Robustness of Instruction-tuned Language Models",
+            "abstract": "Instruction fine-tuning has recently emerged as a promising approach for improving the zero-shot capabilities of Large Language Models (LLMs) on new tasks. This technique has shown particular strength in improving the performance of modestly sized LLMs, sometimes inducing performance competitive with much larger model variants. In this paper we ask two questions: (1) How sensitive are instruction-tuned models to the particular phrasings of instructions, and, (2) How can we make them more robust to such natural language variation? To answer the former, we collect a set of 319 instructions manually written by NLP practitioners for over 80 unique tasks included in widely used benchmarks, and we evaluate the variance and average performance of these instructions as compared to instruction phrasings observed during instruction fine-tuning. We find that using novel (unobserved) but appropriate instruction phrasings consistently degrades model performance, sometimes substantially so. Further, such natural instructions yield a wide variance in downstream performance, despite their semantic equivalence. Put another way, instruction-tuned models are not especially robust to instruction re-phrasings. We propose a simple method to mitigate this issue by introducing ``soft prompt'' embedding parameters and optimizing these to maximize the similarity between representations of semantically equivalent instructions. We show that this method consistently improves the robustness of instruction-tuned models.",
+            "year": 2023,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A simple method is proposed by introducing ``soft prompt'' embedding parameters and optimizing these to maximize the similarity between representations of semantically equivalent instructions, and it is shown that this method consistently improves the robustness of instruction-tuned models."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to automatically synthesize defensive instructions to guide its generation.\n\nThe research problem in the paper is improving the robustness of instruction-tuned language models to different phrasings of instructions, and the proposed approach is to optimize soft prompt embeddings to maximize the similarity between representations of semantically equivalent instructions.\n\nThe two works have different research problems and approaches. The proposal focuses on defending against adversarial prompts, while the paper focuses on robustness to instruction rephrasing. The proposal uses automatic prompt synthesis, while the paper uses soft prompt embedding optimization.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "16596dd03fa40ba278f9533ea9986982dcc81fb6",
+            "paperId": "16596dd03fa40ba278f9533ea9986982dcc81fb6",
+            "title": "Understanding Zero-Shot Adversarial Robustness for Large-Scale Models",
+            "abstract": "Pretrained large-scale vision-language models like CLIP have exhibited strong generalization over unseen tasks. Yet imperceptible adversarial perturbations can significantly reduce CLIP's performance on new tasks. In this work, we identify and explore the problem of \\emph{adapting large-scale models for zero-shot adversarial robustness}. We first identify two key factors during model adaption -- training losses and adaptation methods -- that affect the model's zero-shot adversarial robustness. We then propose a text-guided contrastive adversarial training loss, which aligns the text embeddings and the adversarial visual features with contrastive learning on a small set of training data. We apply this training loss to two adaption methods, model finetuning and visual prompt tuning. We find that visual prompt tuning is more effective in the absence of texts, while finetuning wins in the existence of text guidance. Overall, our approach significantly improves the zero-shot adversarial robustness over CLIP, seeing an average improvement of over 31 points over ImageNet and 15 zero-shot datasets. We hope this work can shed light on understanding the zero-shot adversarial robustness of large-scale models.",
+            "year": 2022,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work identifies two key factors during model adaption -- training losses and adaptation methods -- that affect the model's zero-shot adversarial robustness, and proposes a text-guided contrastive adversarial training loss, which aligns the text embeddings and the adversarial visual features with contrastive learning on a small set of training data."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the project proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to automatically synthesize relevant defensive instructions to guide its generation.\n\nThe research problem in the paper is adapting large-scale vision-language models for zero-shot adversarial robustness, and the proposed approach is to use text-guided contrastive adversarial training and visual prompt tuning.\n\nWhile both works aim to improve zero-shot adversarial robustness, the project focuses on language models and unseen adversarial prompts, while the paper studies vision-language models and adversarial examples. The methods are also quite different: automatic prompt synthesis vs. contrastive learning and prompt tuning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+            "paperId": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+            "title": "Jailbreaking Black Box Large Language Models in Twenty Queries",
+            "abstract": "There is growing interest in ensuring that large language models (LLMs) align with human values. However, the alignment of such models is vulnerable to adversarial jailbreaks, which coax LLMs into overriding their safety guardrails. The identification of these vulnerabilities is therefore instrumental in understanding inherent weaknesses and preventing future misuse. To this end, we propose Prompt Automatic Iterative Refinement (PAIR), an algorithm that generates semantic jailbreaks with only black-box access to an LLM. PAIR -- which is inspired by social engineering attacks -- uses an attacker LLM to automatically generate jailbreaks for a separate targeted LLM without human intervention. In this way, the attacker LLM iteratively queries the target LLM to update and refine a candidate jailbreak. Empirically, PAIR often requires fewer than twenty queries to produce a jailbreak, which is orders of magnitude more efficient than existing algorithms. PAIR also achieves competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM-2.",
+            "year": 2023,
+            "citationCount": 119,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PAIR is an algorithm that generates semantic jailbreaks with only black-box access to an LLM with competitive jailbreaking success rates and transferability on open and closed-source LLMs, including GPT-3.5/4, Vicuna, and PaLM."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the project proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to synthesize relevant defensive instructions and follow them to generate robust outputs.\n\nThe research problem in the paper is identifying vulnerabilities in language model alignment by generating semantic jailbreaks with black-box access, and the proposed approach is to use an attacker language model to automatically generate jailbreaks for a separate targeted model through iterative querying and refinement.\n\nThe project focuses on defending against adversarial prompts, while the paper focuses on attacking language models with adversarial prompts. The project aims to improve robustness, while the paper aims to identify vulnerabilities. The project uses the model's own knowledge to synthesize defenses, while the paper uses a separate attacker model to generate attacks.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e8b3b37c0d301ea41c75765f6ceb7fcbb2e088a4",
+            "paperId": "e8b3b37c0d301ea41c75765f6ceb7fcbb2e088a4",
+            "title": "AutoDAN: Automatic and Interpretable Adversarial Attacks on Large Language Models",
+            "abstract": "Safety alignment of Large Language Models (LLMs) can be compromised with manual jailbreak attacks and (automatic) adversarial attacks. Recent work suggests that patching LLMs against these attacks is possible: manual jailbreak attacks are human-readable but often limited and public, making them easy to block; adversarial attacks generate gibberish prompts that can be detected using perplexity-based filters. In this paper, we show that these solutions may be too optimistic. We propose an interpretable adversarial attack, AutoDAN , that combines the strengths of both types of attacks. It automatically generates attack prompts that bypass perplexity-based filters while maintaining a high attack success rate like manual jailbreak attacks. These prompts are interpretable and diverse, exhibiting strategies commonly used in manual jailbreak attacks, and transfer better than their non-readable counterparts when using limited training data or a single proxy model. We also customize AutoDAN \u2019s objective to leak system prompts, another jailbreak application not addressed in the adversarial attack literature. Our work provides a new way to red-team LLMs and to understand the mechanism of jailbreak attacks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An interpretable adversarial attack, AutoDAN, is proposed, that combines the strengths of both types of attacks and provides a new way to red-team LLMs and to understand the mechanism of jailbreak attacks."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the project proposal is improving language models' zero-shot robustness against unseen adversarial prompts, and the proposed approach is to prompt the model to synthesize relevant defensive instructions and follow them to generate robust outputs.\n\nThe research problem in the paper is automatically generating interpretable adversarial prompts that can bypass perplexity-based filters while maintaining high attack success rates, and the proposed approach is to combine the strengths of manual jailbreak attacks and automatic adversarial attacks.\n\nThe project focuses on defending against unseen adversarial prompts, while the paper focuses on generating more effective adversarial prompts. They have opposite goals and different approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "1227c2fcb8437441b7d72a29a4bc9eef1f5275d2",
+            "paperId": "1227c2fcb8437441b7d72a29a4bc9eef1f5275d2",
+            "title": "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models",
+            "abstract": "Safety alignment of Large Language Models (LLMs) can be compromised with manual jailbreak attacks and (automatic) adversarial attacks. Recent studies suggest that defending against these attacks is possible: adversarial attacks generate unlimited but unreadable gibberish prompts, detectable by perplexity-based filters; manual jailbreak attacks craft readable prompts, but their limited number due to the necessity of human creativity allows for easy blocking. In this paper, we show that these solutions may be too optimistic. We introduce AutoDAN, an interpretable, gradient-based adversarial attack that merges the strengths of both attack types. Guided by the dual goals of jailbreak and readability, AutoDAN optimizes and generates tokens one by one from left to right, resulting in readable prompts that bypass perplexity filters while maintaining high attack success rates. Notably, these prompts, generated from scratch using gradients, are interpretable and diverse, with emerging strategies commonly seen in manual jailbreak attacks. They also generalize to unforeseen harmful behaviors and transfer to black-box LLMs better than their unreadable counterparts when using limited training data or a single proxy model. Furthermore, we show the versatility of AutoDAN by automatically leaking system prompts using a customized objective. Our work offers a new way to red-team LLMs and understand jailbreak mechanisms via interpretability.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work offers a new way to red-team LLMs and understand jailbreak mechanisms via interpretability, by introducing AutoDAN, an interpretable, gradient-based adversarial attack that merges the strengths of both attack types."
+            },
+            "score": 6
+        },
+        {
+            "id": "e6133a72012f69caf6876e6b135b93d870e441be",
+            "paperId": "e6133a72012f69caf6876e6b135b93d870e441be",
+            "title": "Language-Driven Anchors for Zero-Shot Adversarial Robustness",
+            "abstract": "Deep Neural Networks (DNNs) are known to be susceptible to adversarial attacks. Previous researches mainly focus on improving adversarial robustness in the fully supervised setting, leaving the challenging domain of zero-shot adversarial robustness an open question. In this work, we investigate this domain by leveraging the recent advances in large vision-language models, such as CLIP, to introduce zero-shot adversarial robustness to DNNs. We propose LAAT, a Language-driven, Anchor-based Adversarial Training strategy. LAAT utilizes the features of a text encoder for each category as fixed anchors (normalized feature embeddings) for each category, which are then employed for adversarial training. By leveraging the semantic consistency of the text encoders, LAAT aims to enhance the adversarial robustness of the image model on novel categories. However, naively using text encoders leads to poor results. Through analysis, we identified the issue to be the high cosine similarity between text encoders. We then design an expansion algorithm and an alignment cross-entropy loss to alleviate the problem. Our experimental results demonstrated that LAAT significantly improves zero-shot adversarial robustness over state-of-the-art methods. LAAT has the potential to enhance adversarial robustness by large-scale multimodal models, especially when labeled data is unavailable during training.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes LAAT, a Language-driven, Anchor-based Adversarial Training strategy, which has the potential to enhance adversarial robustness by large-scale multimodal models, especially when labeled data is unavailable during training."
+            },
+            "score": 5
+        },
+        {
+            "id": "660c123a38fc511d27ec5838193358c49d7ddea4",
+            "paperId": "660c123a38fc511d27ec5838193358c49d7ddea4",
+            "title": "SSP: A Simple and Safe automatic Prompt engineering method towards realistic image synthesis on LVM",
+            "abstract": "Recently, text-to-image (T2I) synthesis has undergone significant advancements, particularly with the emergence of Large Language Models (LLM) and their enhancement in Large Vision Models (LVM), greatly enhancing the instruction-following capabilities of traditional T2I models. Nevertheless, previous methods focus on improving generation quality but introduce unsafe factors into prompts. We explore that appending specific camera descriptions to prompts can enhance safety performance. Consequently, we propose a simple and safe prompt engineering method (SSP) to improve image generation quality by providing optimal camera descriptions. Specifically, we create a dataset from multi-datasets as original prompts. To select the optimal camera, we design an optimal camera matching approach and implement a classifier for original prompts capable of automatically matching. Appending camera descriptions to original prompts generates optimized prompts for further LVM image generation. Experiments demonstrate that SSP improves semantic consistency by an average of 16% compared to others and safety metrics by 48.9%.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a simple and safe prompt engineering method (SSP) to improve image generation quality by providing optimal camera descriptions, and designs an optimal camera matching approach and implements a classifier for original prompts capable of automatically matching."
+            },
+            "score": 5
+        },
+        {
+            "id": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "paperId": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+            "abstract": "Because\"out-of-the-box\"large language models are capable of generating a great deal of objectionable content, recent work has focused on aligning these models in an attempt to prevent undesirable generation. While there has been some success at circumventing these measures -- so-called\"jailbreaks\"against LLMs -- these attacks have required significant human ingenuity and are brittle in practice. In this paper, we propose a simple and effective attack method that causes aligned language models to generate objectionable behaviors. Specifically, our approach finds a suffix that, when attached to a wide range of queries for an LLM to produce objectionable content, aims to maximize the probability that the model produces an affirmative response (rather than refusing to answer). However, instead of relying on manual engineering, our approach automatically produces these adversarial suffixes by a combination of greedy and gradient-based search techniques, and also improves over past automatic prompt generation methods. Surprisingly, we find that the adversarial prompts generated by our approach are quite transferable, including to black-box, publicly released LLMs. Specifically, we train an adversarial attack suffix on multiple prompts (i.e., queries asking for many different types of objectionable content), as well as multiple models (in our case, Vicuna-7B and 13B). When doing so, the resulting attack suffix is able to induce objectionable content in the public interfaces to ChatGPT, Bard, and Claude, as well as open source LLMs such as LLaMA-2-Chat, Pythia, Falcon, and others. In total, this work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information. Code is available at github.com/llm-attacks/llm-attacks.",
+            "year": 2023,
+            "citationCount": 386,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information."
+            },
+            "score": 5
+        },
+        {
+            "id": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "paperId": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "title": "Jailbreak in pieces: Compositional Adversarial Attacks on Multi-Modal Language Models",
+            "abstract": "We introduce new jailbreak attacks on vision language models (VLMs), which use aligned LLMs and are resilient to text-only jailbreak attacks. Specifically, we develop cross-modality attacks on alignment where we pair adversarial images going through the vision encoder with textual prompts to break the alignment of the language model. Our attacks employ a novel compositional strategy that combines an image, adversarially targeted towards toxic embeddings, with generic prompts to accomplish the jailbreak. Thus, the LLM draws the context to answer the generic prompt from the adversarial image. The generation of benign-appearing adversarial images leverages a novel embedding-space-based methodology, operating with no access to the LLM model. Instead, the attacks require access only to the vision encoder and utilize one of our four embedding space targeting strategies. By not requiring access to the LLM, the attacks lower the entry barrier for attackers, particularly when vision encoders such as CLIP are embedded in closed-source LLMs. The attacks achieve a high success rate across different VLMs, highlighting the risk of cross-modality alignment vulnerabilities, and the need for new alignment approaches for multi-modal models.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Cross-modality attacks on alignment where adversarial images going through the vision encoder with textual prompts to break the alignment of the language model are developed."
+            },
+            "score": 5
+        },
+        {
+            "id": "620a1a585a5e433a47103c112de17553a81fcbe6",
+            "paperId": "620a1a585a5e433a47103c112de17553a81fcbe6",
+            "title": "Automatic Hallucination Assessment for Aligned Large Language Models via Transferable Adversarial Attacks",
+            "abstract": "Although remarkable progress has been achieved in preventing large language model (LLM) hallucinations using instruction tuning and retrieval augmentation, it remains challenging to measure the reliability of LLMs using human-crafted evaluation data which is not available for many tasks and domains and could suffer from data leakage. Inspired by adversarial machine learning, this paper aims to develop a method of automatically generating evaluation data by appropriately modifying existing data on which LLMs behave faithfully. Specifically, this paper presents AutoDebug, an LLM-based framework to use prompting chaining to generate transferable adversarial attacks in the form of question-answering examples. We seek to understand the extent to which these examples trigger the hallucination behaviors of LLMs. We implement AutoDebug using ChatGPT and evaluate the resulting two variants of a popular open-domain question-answering dataset, Natural Questions (NQ), on a collection of open-source and proprietary LLMs under various prompting settings. Our generated evaluation data is human-readable and, as we show, humans can answer these modified questions well. Nevertheless, we observe pronounced accuracy drops across multiple LLMs including GPT-4. Our experimental results show that LLMs are likely to hallucinate in two categories of question-answering scenarios where (1) there are conflicts between knowledge given in the prompt and their parametric knowledge, or (2) the knowledge expressed in the prompt is complex. Finally, we find that the adversarial examples generated by our method are transferable across all considered LLMs. The examples generated by a small model can be used to debug a much larger model, making our approach cost-effective.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents AutoDebug, an LLM-based framework to use prompting chaining to generate transferable adversarial attacks in the form of question-answering examples, and finds that the adversarial examples generated by the method are transferable across all considered LLMs."
+            },
+            "score": 5
+        },
+        {
+            "id": "3955a47d6265e7e346f6873b2223fa80200a205c",
+            "paperId": "3955a47d6265e7e346f6873b2223fa80200a205c",
+            "title": "Fast Certification of Vision-Language Models Using Incremental Randomized Smoothing",
+            "abstract": "A key benefit of deep vision-language models such as CLIP is that they enable zero-shot open vocabulary classification; the user has the ability to define novel class labels via natural language prompts at inference time. However, while CLIP-based zero-shot classifiers have demonstrated competitive performance across a range of domain shifts, they remain highly vulnerable to adversarial attacks. Therefore, ensuring the robustness of such models is crucial for their reliable deployment in the wild. In this work, we introduce Open Vocabulary Certification (OVC), a fast certification method designed for open-vocabulary models like CLIP via randomized smoothing techniques. Given a base\"training\"set of prompts and their corresponding certified CLIP classifiers, OVC relies on the observation that a classifier with a novel prompt can be viewed as a perturbed version of nearby classifiers in the base training set. Therefore, OVC can rapidly certify the novel classifier using a variation of incremental randomized smoothing. By using a caching trick, we achieve approximately two orders of magnitude acceleration in the certification process for novel prompts. To achieve further (heuristic) speedups, OVC approximates the embedding space at a given input using a multivariate normal distribution bypassing the need for sampling via forward passes through the vision backbone. We demonstrate the effectiveness of OVC on through experimental evaluation using multiple vision-language backbones on the CIFAR-10 and ImageNet test datasets.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces Open Vocabulary Certification (OVC), a fast certification method designed for open-vocabulary models like CLIP via randomized smoothing techniques, and demonstrates the effectiveness of OVC on through experimental evaluation using multiple vision-language backbones on the CIFAR-10 and ImageNet test datasets."
+            },
+            "score": 4
+        },
+        {
+            "id": "af44c205c648c21d06064b23613dd60ecbd4adf8",
+            "paperId": "af44c205c648c21d06064b23613dd60ecbd4adf8",
+            "title": "Improving Zero-shot Visual Question Answering via Large Language Models with Reasoning Question Prompts",
+            "abstract": "Zero-shot Visual Question Answering (VQA) is a prominent vision-language task that examines both the visual and textual understanding capability of systems in the absence of training data. Recently, by converting the images into captions, information across multi-modalities is bridged and Large Language Models (LLMs) can apply their strong zero-shot generalization capability to unseen questions. To design ideal prompts for solving VQA via LLMs, several studies have explored different strategies to select or generate question-answer pairs as the exemplar prompts, which guide LLMs to answer the current questions effectively. However, they totally ignore the role of question prompts. The original questions in VQA tasks usually encounter ellipses and ambiguity which require intermediate reasoning. To this end, we present Reasoning Question Prompts for VQA tasks, which can further activate the potential of LLMs in zero-shot scenarios. Specifically, for each question, we first generate self-contained questions as reasoning question prompts via an unsupervised question edition module considering sentence fluency, semantic integrity and syntactic invariance. Each reasoning question prompt clearly indicates the intent of the original question. This results in a set of candidate answers. Then, the candidate answers associated with their confidence scores acting as answer heuristics are fed into LLMs and produce the final answer. We evaluate reasoning question prompts on three VQA challenges, experimental results demonstrate that they can significantly improve the results of LLMs on zero-shot setting and outperform existing state-of-the-art zero-shot methods on three out of four data sets. Our source code is publicly released at https://github.com/ECNU-DASE-NLP/RQP.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Reasoning Question Prompts for VQA tasks are presented, which can further activate the potential of Large Language Models in zero-shot scenarios and can significantly improve the results of LLMs on zero- shot setting and outperform existing state-of-the-art zero-Shot methods on three out of four data sets."
+            },
+            "score": 4
+        },
+        {
+            "id": "d5a6fc6aa139066e3b66ba63002e7d84c109aebc",
+            "paperId": "d5a6fc6aa139066e3b66ba63002e7d84c109aebc",
+            "title": "An Empirical Evaluation of Prompting Strategies for Large Language Models in Zero-Shot Clinical Natural Language Processing",
+            "abstract": "Large language models (LLMs) have shown remarkable capabilities in Natural Language Processing (NLP), especially in domains where labeled data is scarce or expensive, such as clinical domain. However, to unlock the clinical knowledge hidden in these LLMs, we need to design effective prompts that can guide them to perform specific clinical NLP tasks without any task-specific training data. This is known as in-context learning, which is an art and science that requires understanding the strengths and weaknesses of different LLMs and prompt engineering approaches. In this paper, we present a comprehensive and systematic experimental study on prompt engineering for five clinical NLP tasks: Clinical Sense Disambiguation, Biomedical Evidence Extraction, Coreference Resolution, Medication Status Extraction, and Medication Attribute Extraction. We assessed the prompts proposed in recent literature, including simple prefix, simple cloze, chain of thought, and anticipatory prompts, and introduced two new types of prompts, namely heuristic prompting and ensemble prompting. We evaluated the performance of these prompts on three state-of-the-art LLMs: GPT-3.5, BARD, and LLAMA2. We also contrasted zero-shot prompting with few-shot prompting, and provide novel insights and guidelines for prompt engineering for LLMs in clinical NLP. To the best of our knowledge, this is one of the first works on the empirical evaluation of different prompt engineering approaches for clinical NLP in this era of generative AI, and we hope that it will inspire and inform future research in this area.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a comprehensive and systematic experimental study on prompt engineering for five clinical NLP tasks: Clinical Sense Disambiguation, Biomedical Evidence Extraction, Coreference Resolution, Medication Status Ext extraction, and Medication Attribute Extraction."
+            },
+            "score": 4
+        },
+        {
+            "id": "d6f5fdf345b9cea58ecee3753e93f6c110831286",
+            "paperId": "d6f5fdf345b9cea58ecee3753e93f6c110831286",
+            "title": "Extensible Prompts for Language Models on Zero-shot Language Style Customization",
+            "abstract": "We propose eXtensible Prompt (X-Prompt) for prompting a large language model (LLM) beyond natural language (NL). X-Prompt instructs an LLM with not only NL but also an extensible vocabulary of imaginary words. Registering new imaginary words allows us to instruct the LLM to comprehend concepts that are difficult to describe with NL words, thereby making a prompt more descriptive. Also, these imaginary words are designed to be out-of-distribution (OOD) robust so that they can be (re)used like NL words in various prompts, distinguishing X-Prompt from soft prompt that is for fitting in-distribution data. We propose context-augmented learning (CAL) to learn imaginary words for general usability, enabling them to work properly in OOD (unseen) prompts. We experiment X-Prompt for zero-shot language style customization as a case study. The promising results of X-Prompt demonstrate its potential to facilitate advanced interaction beyond the natural language interface, bridging the communication gap between humans and LLMs.",
+            "year": 2022,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Context-augmented learning (CAL) is proposed to learn imaginary words for general usability, enabling them to work properly in OOD (unseen) prompts, and experiment X-Prompt for zero-shot language style customization as a case study."
+            },
+            "score": 4
+        },
+        {
+            "id": "12ad6e798487223f4c17aac69c9853bca8bc7830",
+            "paperId": "12ad6e798487223f4c17aac69c9853bca8bc7830",
+            "title": "Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models",
+            "abstract": "Pre-trained vision-language models (e.g., CLIP) have shown promising zero-shot generalization in many downstream tasks with properly designed text prompts. Instead of relying on hand-engineered prompts, recent works learn prompts using the training data from downstream tasks. While effective, training on domain-specific data reduces a model's generalization capability to unseen new domains. In this work, we propose test-time prompt tuning (TPT), a method that can learn adaptive prompts on the fly with a single test sample. For image classification, TPT optimizes the prompt by minimizing the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample. In evaluating generalization to natural distribution shifts, TPT improves the zero-shot top-1 accuracy of CLIP by 3.6% on average, surpassing previous prompt tuning approaches that require additional task-specific training data. In evaluating cross-dataset generalization with unseen categories, TPT performs on par with the state-of-the-art approaches that use additional training data. Project page: https://azshue.github.io/TPT.",
+            "year": 2022,
+            "citationCount": 131,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Test-time prompt tuning (TPT) is proposed, a method that can learn adaptive prompts on the fly with a single test sample and performs on par with the state-of-the-art approaches that use additional training data."
+            },
+            "score": 4
+        },
+        {
+            "id": "4610ffb1b016acaa82a2065ffd1a3adbae1ce722",
+            "paperId": "4610ffb1b016acaa82a2065ffd1a3adbae1ce722",
+            "title": "Large Language Models Are Human-Level Prompt Engineers",
+            "abstract": "By conditioning on natural language instructions, large language models (LLMs) have displayed impressive capabilities as general-purpose computers. However, task performance depends significantly on the quality of the prompt used to steer the model, and most effective prompts have been handcrafted by humans. Inspired by classical program synthesis and the human approach to prompt engineering, we propose Automatic Prompt Engineer (APE) for automatic instruction generation and selection. In our method, we treat the instruction as the\"program,\"optimized by searching over a pool of instruction candidates proposed by an LLM in order to maximize a chosen score function. To evaluate the quality of the selected instruction, we evaluate the zero-shot performance of another LLM following the selected instruction. Experiments on 24 NLP tasks show that our automatically generated instructions outperform the prior LLM baseline by a large margin and achieve better or comparable performance to the instructions generated by human annotators on 19/24 tasks. We conduct extensive qualitative and quantitative analyses to explore the performance of APE. We show that APE-engineered prompts can be applied to steer models toward truthfulness and/or informativeness, as well as to improve few-shot learning performance by simply prepending them to standard in-context learning prompts. Please check out our webpage at https://sites.google.com/view/automatic-prompt-engineer.",
+            "year": 2022,
+            "citationCount": 403,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that APE-engineered prompts can be applied to steer models toward truthfulness and/or informativeness, as well as to improve few-shot learning performance by simply prepending them to standard in-context learning prompts."
+            },
+            "score": 4
+        },
+        {
+            "id": "2f83650af54f632be8c1009cc89e1e2a62663a18",
+            "paperId": "2f83650af54f632be8c1009cc89e1e2a62663a18",
+            "title": "Automatic Prompt Selection for Large Language Models",
+            "abstract": "Large Language Models (LLMs) can perform various natural language processing tasks with suitable instruction prompts. However, designing effective prompts manually is challenging and time-consuming. Existing methods for automatic prompt optimization either lack flexibility or efficiency. In this paper, we propose an effective approach to automatically select the optimal prompt for a given input from a finite set of synthetic candidate prompts. Our approach consists of three steps: (1) clustering the training data and generating candidate prompts for each cluster using an LLM-based prompt generator; (2) synthesizing a dataset of input-prompt-output tuples for training a prompt evaluator to rank the prompts based on their relevance to the input; (3) using the prompt evaluator to select the best prompt for a new input at test time. Our approach balances prompt generality-specificity and eliminates the need for resource-intensive training and inference. It demonstrates competitive performance on zero-shot question-answering datasets: GSM8K, MultiArith, and AQuA.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes an effective approach to automatically select the optimal prompt for a given input from a finite set of synthetic candidate prompts and demonstrates competitive performance on zero-shot question-answering datasets: GSM8K, MultiArith, and AQuA."
+            },
+            "score": 4
+        },
+        {
+            "id": "90350aa626bed47b02d0c162462e5b0ca82be6b2",
+            "paperId": "90350aa626bed47b02d0c162462e5b0ca82be6b2",
+            "title": "Automatic Chain of Thought Prompting in Large Language Models",
+            "abstract": "Large language models (LLMs) can perform complex reasoning by generating intermediate reasoning steps. Providing these steps for prompting demonstrations is called chain-of-thought (CoT) prompting. CoT prompting has two major paradigms. One leverages a simple prompt like\"Let's think step by step\"to facilitate step-by-step thinking before answering a question. The other uses a few manual demonstrations one by one, each composed of a question and a reasoning chain that leads to an answer. The superior performance of the second paradigm hinges on the hand-crafting of task-specific demonstrations one by one. We show that such manual efforts may be eliminated by leveraging LLMs with the\"Let's think step by step\"prompt to generate reasoning chains for demonstrations one by one, i.e., let's think not just step by step, but also one by one. However, these generated chains often come with mistakes. To mitigate the effect of such mistakes, we find that diversity matters for automatically constructing demonstrations. We propose an automatic CoT prompting method: Auto-CoT. It samples questions with diversity and generates reasoning chains to construct demonstrations. On ten public benchmark reasoning tasks with GPT-3, Auto-CoT consistently matches or exceeds the performance of the CoT paradigm that requires manual designs of demonstrations. Code is available at https://github.com/amazon-research/auto-cot",
+            "year": 2022,
+            "citationCount": 295,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An automatic CoT prompting method that samples questions with diversity and generates reasoning chains to construct demonstrations and consistently matches or exceeds the performance of the CoT paradigm that requires manual designs of demonstrations."
+            },
+            "score": 4
+        },
+        {
+            "id": "c76dd4a70361c3afd2e19d046343e2dedd16ecc3",
+            "paperId": "c76dd4a70361c3afd2e19d046343e2dedd16ecc3",
+            "title": "Automatic Prompt Optimization with \"Gradient Descent\" and Beam Search",
+            "abstract": "Large Language Models (LLMs) have shown impressive performance as general purpose agents, but their abilities remain highly dependent on prompts which are hand written with onerous trial-and-error effort. We propose a simple and nonparametric solution to this problem, Automatic Prompt Optimization (APO), which is inspired by numerical gradient descent to automatically improve prompts, assuming access to training data and an LLM API. The algorithm uses minibatches of data to form natural language\"gradients\"that criticize the current prompt. The gradients are then\"propagated\"into the prompt by editing the prompt in the opposite semantic direction of the gradient. These gradient descent steps are guided by a beam search and bandit selection procedure which significantly improves algorithmic efficiency. Preliminary results across three benchmark NLP tasks and the novel problem of LLM jailbreak detection suggest that Automatic Prompt Optimization can outperform prior prompt editing techniques and improve an initial prompt's performance by up to 31%, by using data to rewrite vague task descriptions into more precise annotation instructions.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Preliminary results suggest that Automatic Prompt Optimization can outperform prior prompt editing techniques and improve an initial prompt's performance by up to 31%, by using data to rewrite vague task descriptions into more precise annotation instructions."
+            },
+            "score": 4
+        },
+        {
+            "id": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "paperId": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "title": "More than you've asked for: A Comprehensive Analysis of Novel Prompt Injection Threats to Application-Integrated Large Language Models",
+            "abstract": "We are currently witnessing dramatic advances in the capabilities of Large Language Models (LLMs). They are already being adopted in practice and integrated into many systems, including integrated development environments (IDEs) and search engines. The functionalities of current LLMs can be modulated via natural language prompts, while their exact internal functionality remains implicit and unassessable. This property, which makes them adaptable to even unseen tasks, might also make them susceptible to targeted adversarial prompting . Recently, several ways to misalign LLMs using Prompt Injection (PI) attacks have been introduced. In such attacks, an adversary can prompt the LLM to produce malicious content or override the original instructions and the employed \ufb01ltering schemes. Recent work showed that these attacks are hard to mitigate, as state-of-the-art LLMs are instruction-following . So far, these attacks assumed that the adversary is directly prompting the LLM. In this work, we show that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs ) induces a whole new set of attack vectors. These LLMs might process poisoned content retrieved from the Web that contains malicious prompts pre-injected and selected by adversaries. We demonstrate that an attacker can indirectly perform such PI attacks. Based on this key insight, we systematically analyze the resulting threat landscape of Application-Integrated LLMs and discuss a variety of new attack vectors. To demonstrate the practical viability of our attacks, we implemented speci\ufb01c demonstrations",
+            "year": 2023,
+            "citationCount": 73,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs) induces a whole new set of attack vectors and systematically analyzes the resulting threat landscape of Application-Integrated LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "fd84802d7299824c40439e86c2234adc7db6845b",
+            "paperId": "fd84802d7299824c40439e86c2234adc7db6845b",
+            "title": "Adversarial Attacks and Defense for Conversation Entailment Task",
+            "abstract": "Large language models (LLMs) that are proved to be very powerful on different NLP tasks. However, there are still many ways to attack the model with very low costs. How to defend the model becomes an important problem. In our work, we treat adversarial attack results as a new (unseen) domain of the model, and we frame the defending problem into how to improve the robustness of the model on the new domain. We focus on the task of conversation entailment, where multi-turn natural language dialogues are the premise, and the transformer model is fine-tuned to predict whether a given hypothesis about the given dialogue is true or false. The adversary would attack the hypothesis to fool the model to make the wrong predictions. We apply synonym-swapping as the attack method. To show the robustness of the model, we implement some fine-tuning strategies and propose the embedding perturbation loss as a method to improve the robustness of the model. Finally, we show the importance of our work by discussing the adversarial attacks in NLP in the real world.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work treats adversarial attack results as a new (unseen) domain of the model, and frames the defending problem into how to improve the robustness of the model on the new domain."
+            },
+            "score": 4
+        },
+        {
+            "id": "f15662437b0cf9eaa1d9838d35143a7e127a1df5",
+            "paperId": "f15662437b0cf9eaa1d9838d35143a7e127a1df5",
+            "title": "Humanizing Machine-Generated Content: Evading AI-Text Detection through Adversarial Attack",
+            "abstract": "With the development of large language models (LLMs), detecting whether text is generated by a machine becomes increasingly challenging in the face of malicious use cases like the spread of false information, protection of intellectual property, and prevention of academic plagiarism. While well-trained text detectors have demonstrated promising performance on unseen test data, recent research suggests that these detectors have vulnerabilities when dealing with adversarial attacks such as paraphrasing. In this paper, we propose a framework for a broader class of adversarial attacks, designed to perform minor perturbations in machine-generated content to evade detection. We consider two attack settings: white-box and black-box, and employ adversarial learning in dynamic scenarios to assess the potential enhancement of the current detection model's robustness against such attacks. The empirical results reveal that the current detection models can be compromised in as little as 10 seconds, leading to the misclassification of machine-generated text as human-written content. Furthermore, we explore the prospect of improving the model's robustness over iterative adversarial learning. Although some improvements in model robustness are observed, practical applications still face significant challenges. These findings shed light on the future development of AI-text detectors, emphasizing the need for more accurate and robust detection methods.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A framework for a broader class of adversarial attacks, designed to perform minor perturbations in machine-generated content to evade detection, is proposed and the prospect of improving the model's robustness over iterative adversarial learning is explored."
+            },
+            "score": 4
+        },
+        {
+            "id": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "paperId": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "title": "Baseline Defenses for Adversarial Attacks Against Aligned Language Models",
+            "abstract": "As Large Language Models quickly become ubiquitous, it becomes critical to understand their security vulnerabilities. Recent work shows that text optimizers can produce jailbreaking prompts that bypass moderation and alignment. Drawing from the rich body of work on adversarial machine learning, we approach these attacks with three questions: What threat models are practically useful in this domain? How do baseline defense techniques perform in this new domain? How does LLM security differ from computer vision? We evaluate several baseline defense strategies against leading adversarial attacks on LLMs, discussing the various settings in which each is feasible and effective. Particularly, we look at three types of defenses: detection (perplexity based), input preprocessing (paraphrase and retokenization), and adversarial training. We discuss white-box and gray-box settings and discuss the robustness-performance trade-off for each of the defenses considered. We find that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs. Future research will be needed to uncover whether more powerful optimizers can be developed, or whether the strength of filtering and preprocessing defenses is greater in the LLMs domain than it has been in computer vision.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "1abfc211793c683972ded8d3268475e3ee7a88b0",
+            "paperId": "1abfc211793c683972ded8d3268475e3ee7a88b0",
+            "title": "Adversarial Demonstration Attacks on Large Language Models",
+            "abstract": "With the emergence of more powerful large language models (LLMs), such as ChatGPT and GPT-4, in-context learning (ICL) has gained significant prominence in leveraging these models for specific tasks by utilizing data-label pairs as precondition prompts. While incorporating demonstrations can greatly enhance the performance of LLMs across various tasks, it may introduce a new security concern: attackers can manipulate only the demonstrations without changing the input to perform an attack. In this paper, we investigate the security concern of ICL from an adversarial perspective, focusing on the impact of demonstrations. We propose a novel attack method named advICL, which aims to manipulate only the demonstration without changing the input to mislead the models. Our results demonstrate that as the number of demonstrations increases, the robustness of in-context learning would decrease. Additionally, we also identify the intrinsic property of the demonstrations is that they can be used (prepended) with different inputs. As a result, it introduces a more practical threat model in which an attacker can attack the test input example even without knowing and manipulating it. To achieve it, we propose the transferable version of advICL, named Transferable-advICL. Our experiment shows that the adversarial demonstration generated by Transferable-advICL can successfully attack the unseen test input examples. We hope that our study reveals the critical security risks associated with ICL and underscores the need for extensive research on the robustness of ICL, particularly given its increasing significance in the advancement of LLMs.",
+            "year": 2023,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates the security concern of ICL from an adversarial perspective, focusing on the impact of demonstrations, and proposes a novel attack method named advICL, which aims to manipulate only the demonstration without changing the input to mislead the models."
+            },
+            "score": 4
+        },
+        {
+            "id": "40ee4949c1050a465d418deb6dd7ea6304a3bc29",
+            "paperId": "40ee4949c1050a465d418deb6dd7ea6304a3bc29",
+            "title": "Adversarial Attacks and Defenses in Large Language Models: Old and New Threats",
+            "abstract": "Over the past decade, there has been extensive research aimed at enhancing the robustness of neural networks, yet this problem remains vastly unsolved. Here, one major impediment has been the overestimation of the robustness of new defense approaches due to faulty defense evaluations. Flawed robustness evaluations necessitate rectifications in subsequent works, dangerously slowing down the research and providing a false sense of security. In this context, we will face substantial challenges associated with an impending adversarial arms race in natural language processing, specifically with closed-source Large Language Models (LLMs), such as ChatGPT, Google Bard, or Anthropic's Claude. We provide a first set of prerequisites to improve the robustness assessment of new approaches and reduce the amount of faulty evaluations. Additionally, we identify embedding space attacks on LLMs as another viable threat model for the purposes of generating malicious content in open-sourced models. Finally, we demonstrate on a recently proposed defense that, without LLM-specific best practices in place, it is easy to overestimate the robustness of a new approach.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work provides a first set of prerequisites to improve the robustness assessment of new approaches and reduce the amount of faulty evaluations, and identifies embedding space attacks on LLMs as another viable threat model for the purposes of generating malicious content in open-sourced models."
+            },
+            "score": 4
+        },
+        {
+            "id": "b1750d2a6e3480e690999916a86c8b3876577b39",
+            "paperId": "b1750d2a6e3480e690999916a86c8b3876577b39",
+            "title": "Large Language Models are Frame-level Directors for Zero-shot Text-to-Video Generation",
+            "abstract": "In the paradigm of AI-generated content (AIGC), there has been increasing attention to transferring knowledge from pre-trained text-to-image (T2I) models to text-to-video (T2V) generation. Despite their effectiveness, these frameworks face challenges in maintaining consistent narratives and handling shifts in scene composition or object placement from a single abstract user prompt. Exploring the ability of large language models (LLMs) to generate time-dependent, frame-by-frame prompts, this paper introduces a new framework, dubbed DirecT2V. DirecT2V leverages instruction-tuned LLMs as directors, enabling the inclusion of time-varying content and facilitating consistent video generation. To maintain temporal consistency and prevent mapping the value to a different object, we equip a diffusion model with a novel value mapping method and dual-softmax filtering, which do not require any additional training. The experimental results validate the effectiveness of our framework in producing visually coherent and storyful videos from abstract user prompts, successfully addressing the challenges of zero-shot video generation.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DirecT2V leverages instruction-tuned LLMs as directors, enabling the inclusion of time-varying content and facilitating consistent video generation, and equip a diffusion model with a novel value mapping method and dual-softmax filtering, which do not require any additional training."
+            },
+            "score": 3
+        },
+        {
+            "id": "70feb009bc1e8b1cb8dff64bf9fd67789636438b",
+            "paperId": "70feb009bc1e8b1cb8dff64bf9fd67789636438b",
+            "title": "From Images to Textual Prompts: Zero-shot Visual Question Answering with Frozen Large Language Models",
+            "abstract": "Large language models (LLMs) have demonstrated excellent zero-shot generalization to new language tasks. However, effective utilization of LLMs for zero-shot visual question-answering (VQA) remains challenging, primarily due to the modality disconnect and task disconnect between the LLM and VQA tasks. End-to-end training on multimodal data may bridge the disconnects, but is inflexible and computationally expensive. To address this issue, we propose Img2LLM, a plug-and-play module that provides LLM prompts to enable LLMs to perform zeroshot VQA tasks without end-to-end training. We develop LLM-agnostic models describe image content as exemplar question-answer pairs, which prove to be effective LLM prompts. Img2LLM offers the following benefits: 1) It achieves comparable or better performance than methods relying on end-to-end training. For example, we outperform Flamingo [3] by 5.6% on VQAv2. On the challenging A-OKVQA dataset, our method outperforms few-shot methods by as much as 20%. 2) It flexibly interfaces with a wide range of LLMs to perform VQA. 3) It eliminates the need to specialize LLMs using end-to-end finetuning and serve highly specialized LLMs to end users, thereby reducing cost. Code is available via the LAVIS [28] framework at https://github.com/salesforce/LAVIS/tree/main/projects/img2llm-vqa.",
+            "year": 2022,
+            "citationCount": 70,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Img2LLM is a plug-and-play module that provides LLM prompts to enable LLMs to perform zeroshot VQA tasks without end-to-end training and eliminates the need to specialize LLMs using end-to-end finetuning and serve highly specialized LLMs to end users, thereby reducing cost."
+            },
+            "score": 3
+        },
+        {
+            "id": "446fb5dead075a1a08862662738f462e9a0e91c8",
+            "paperId": "446fb5dead075a1a08862662738f462e9a0e91c8",
+            "title": "Tool Documentation Enables Zero-Shot Tool-Usage with Large Language Models",
+            "abstract": "Today, large language models (LLMs) are taught to use new tools by providing a few demonstrations of the tool's usage. Unfortunately, demonstrations are hard to acquire, and can result in undesirable biased usage if the wrong demonstration is chosen. Even in the rare scenario that demonstrations are readily available, there is no principled selection protocol to determine how many and which ones to provide. As tasks grow more complex, the selection search grows combinatorially and invariably becomes intractable. Our work provides an alternative to demonstrations: tool documentation. We advocate the use of tool documentation, descriptions for the individual tool usage, over demonstrations. We substantiate our claim through three main empirical findings on 6 tasks across both vision and language modalities. First, on existing benchmarks, zero-shot prompts with only tool documentation are sufficient for eliciting proper tool usage, achieving performance on par with few-shot prompts. Second, on a newly collected realistic tool-use dataset with hundreds of available tool APIs, we show that tool documentation is significantly more valuable than demonstrations, with zero-shot documentation significantly outperforming few-shot without documentation. Third, we highlight the benefits of tool documentations by tackling image generation and video tracking using just-released unseen state-of-the-art models as tools. Finally, we highlight the possibility of using tool documentation to automatically enable new applications: by using nothing more than the documentation of GroundingDino, Stable Diffusion, XMem, and SAM, LLMs can re-invent the functionalities of the just-released Grounded-SAM and Track Anything models.",
+            "year": 2023,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work advocates the use of tool documentation, descriptions for the individual tool usage, over demonstrations, and shows that tool documentation is significantly more valuable than demonstrations, with zero-shot documentation significantly outperforming few-shot without documentation."
+            },
+            "score": 3
+        },
+        {
+            "id": "20487deedce041069721992efc574d84837c8106",
+            "paperId": "20487deedce041069721992efc574d84837c8106",
+            "title": "BeautifulPrompt: Towards Automatic Prompt Engineering for Text-to-Image Synthesis",
+            "abstract": "Recently, diffusion-based deep generative models (e.g., Stable Diffusion) have shown impressive results in text-to-image synthesis. However, current text-to-image models often require multiple passes of prompt engineering by humans in order to produce satisfactory results for real-world applications. We propose BeautifulPrompt, a deep generative model to produce high-quality prompts from very simple raw descriptions, which enables diffusion-based models to generate more beautiful images. In our work, we first fine-tuned the BeautifulPrompt model over low-quality and high-quality collecting prompt pairs. Then, to ensure that our generated prompts can generate more beautiful images, we further propose a Reinforcement Learning with Visual AI Feedback technique to fine-tune our model to maximize the reward values of the generated prompts, where the reward values are calculated based on the PickScore and the Aesthetic Scores. Our results demonstrate that learning from visual AI feedback promises the potential to improve the quality of generated prompts and images significantly. We further showcase the integration of BeautifulPrompt to a cloud-native AI platform to provide better text-to-image generation service in the cloud.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes BeautifulPrompt, a deep generative model to produce high-quality prompts from very simple raw descriptions, which enables diffusion-based models to generate more beautiful images."
+            },
+            "score": 3
+        },
+        {
+            "id": "4f480bae3196dbbc27ab383bce33478ea963f9b3",
+            "paperId": "4f480bae3196dbbc27ab383bce33478ea963f9b3",
+            "title": "LLM-Eval: Unified Multi-Dimensional Automatic Evaluation for Open-Domain Conversations with Large Language Models",
+            "abstract": "We propose LLM-Eval, a unified multi-dimensional automatic evaluation method for open-domain conversations with large language models (LLMs). Existing evaluation methods often rely on human annotations, ground-truth responses, or multiple LLM prompts, which can be expensive and time-consuming. To address these issues, we design a single prompt-based evaluation method that leverages a unified evaluation schema to cover multiple dimensions of conversation quality in a single model call. We extensively evaluate the performance of LLM-Eval on various benchmark datasets, demonstrating its effectiveness, efficiency, and adaptability compared to state-of-the-art evaluation methods. Our analysis also highlights the importance of choosing suitable LLMs and decoding strategies for accurate evaluation results. LLM-Eval offers a versatile and robust solution for evaluating open-domain conversation systems, streamlining the evaluation process and providing consistent performance across diverse scenarios.",
+            "year": 2023,
+            "citationCount": 38,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLM-Eval is proposed, a single prompt-based evaluation method that leverages a unified evaluation schema to cover multiple dimensions of conversation quality in a single model call and offers a versatile and robust solution for evaluating open-domain conversation systems."
+            },
+            "score": 3
+        },
+        {
+            "id": "972501b057e2b84d6ce6506f70bcac697bab7872",
+            "paperId": "972501b057e2b84d6ce6506f70bcac697bab7872",
+            "title": "LLMScore: Unveiling the Power of Large Language Models in Text-to-Image Synthesis Evaluation",
+            "abstract": "Existing automatic evaluation on text-to-image synthesis can only provide an image-text matching score, without considering the object-level compositionality, which results in poor correlation with human judgments. In this work, we propose LLMScore, a new framework that offers evaluation scores with multi-granularity compositionality. LLMScore leverages the large language models (LLMs) to evaluate text-to-image models. Initially, it transforms the image into image-level and object-level visual descriptions. Then an evaluation instruction is fed into the LLMs to measure the alignment between the synthesized image and the text, ultimately generating a score accompanied by a rationale. Our substantial analysis reveals the highest correlation of LLMScore with human judgments on a wide range of datasets (Attribute Binding Contrast, Concept Conjunction, MSCOCO, DrawBench, PaintSkills). Notably, our LLMScore achieves Kendall's tau correlation with human evaluations that is 58.8% and 31.2% higher than the commonly-used text-image matching metrics CLIP and BLIP, respectively.",
+            "year": 2023,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes LLMScore, a new framework that offers evaluation scores with multi-granularity compositionality that achieves Kendall's tau correlation with human evaluations that is 58.8% and 31.2% higher than the commonly-used text-image matching metrics CLIP and BLIP, respectively."
+            },
+            "score": 3
+        },
+        {
+            "id": "83f9027ff30430ff7d1ca15d565601d290c0da7d",
+            "paperId": "83f9027ff30430ff7d1ca15d565601d290c0da7d",
+            "title": "Applying Large Language Models and Chain-of-Thought for Automatic Scoring",
+            "abstract": "This study investigates the application of large language models (LLMs), specifically GPT-3.5 and GPT-4, with Chain-of-Though (CoT) in the automatic scoring of student-written responses to science assessments. We focused on overcoming the challenges of accessibility, technical complexity, and lack of explainability that have previously limited the use of artificial intelligence-based automatic scoring tools among researchers and educators. With a testing dataset comprising six assessment tasks (three binomial and three trinomial) with 1,650 student responses, we employed six prompt engineering strategies to automatically score student responses. The six strategies combined zero-shot or few-shot learning with CoT, either alone or alongside item stem and scoring rubrics. Results indicated that few-shot (acc = .67) outperformed zero-shot learning (acc = .60), with 12.6% increase. CoT, when used without item stem and scoring rubrics, did not significantly affect scoring accuracy (acc = .60). However, CoT prompting paired with contextual item stems and rubrics proved to be a significant contributor to scoring accuracy (13.44% increase for zero-shot; 3.7% increase for few-shot). We found a more balanced accuracy across different proficiency categories when CoT was used with a scoring rubric, highlighting the importance of domain-specific reasoning in enhancing the effectiveness of LLMs in scoring tasks. We also found that GPT-4 demonstrated superior performance over GPT -3.5 in various scoring tasks when combined with the single-call greedy sampling or ensemble voting nucleus sampling strategy, showing 8.64% difference. Particularly, the single-call greedy sampling strategy with GPT-4 outperformed other approaches.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A more balanced accuracy is found across different proficiency categories when CoT was used with a scoring rubric, highlighting the importance of domain-specific reasoning in enhancing the effectiveness of LLMs in scoring tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "886499f0ab825a266f953f952dccda4b721e80f7",
+            "paperId": "886499f0ab825a266f953f952dccda4b721e80f7",
+            "title": "Scalable Prompt Generation for Semi-supervised Learning with Language Models",
+            "abstract": "Prompt-based learning methods in semi-supervised learning (SSL) settings have been shown to be effective on multiple natural language understanding (NLU) datasets and tasks in the literature. However, manually designing multiple prompts and verbalizers requires domain knowledge and human effort, making it difficult and expensive to scale across different datasets. In this paper, we propose two methods to automatically design multiple prompts and integrate automatic verbalizer in SSL settings without sacrificing performance. The first method uses various demonstration examples with learnable continuous prompt tokens to create diverse prompt models. The second method uses a varying number of soft prompt tokens to encourage language models to learn different prompts. For the verbalizer, we use the prototypical verbalizer to replace the manual one. In summary, we obtained the best average accuracy of 71.5% (a relative improvement of 0.99% over even the previous state-of-the-art SSL method with manual prompts and verbalizers) in different few-shot learning settings.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Two methods to automatically design multiple prompts and integrate automatic verbalizer in SSL settings without sacrificing performance are proposed and the prototypical verbalizer is used to replace the manual one."
+            },
+            "score": 3
+        },
+        {
+            "id": "261549439aebdda72b648ecc462448fd24857ac1",
+            "paperId": "261549439aebdda72b648ecc462448fd24857ac1",
+            "title": "Progressive-Hint Prompting Improves Reasoning in Large Language Models",
+            "abstract": "The performance of Large Language Models (LLMs) in reasoning tasks depends heavily on prompt design, with Chain-of-Thought (CoT) and self-consistency being critical methods that enhance this ability. However, these methods do not fully exploit the answers generated by the LLM to guide subsequent responses. This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers. PHP is orthogonal to CoT and self-consistency, making it easy to combine with state-of-the-art techniques to further improve performance. We conducted extensive and comprehensive experiments on seven benchmarks. The results show that PHP significantly improves accuracy while remaining highly efficient. For instance, with text-davinci-003, we observed a 4.2% improvement on GSM8K with greedy decoding compared to Complex CoT, and a 46.17% reduction in sample paths with self-consistency. With GPT-4 and PHP, we achieve state-of-the-art performances on SVAMP (89.1% ->91.9%), GSM8K (92% ->95.5%), AQuA (76.4% ->79.9%) and MATH (50.3% ->53.9%).",
+            "year": 2023,
+            "citationCount": 64,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers."
+            },
+            "score": 3
+        },
+        {
+            "id": "cdd3ea47dab396167fbf80ced2ec40003cd9c523",
+            "paperId": "cdd3ea47dab396167fbf80ced2ec40003cd9c523",
+            "title": "Sample Attackability in Natural Language Adversarial Attacks",
+            "abstract": "Adversarial attack research in natural language processing (NLP) has made significant progress in designing powerful attack methods and defence approaches. However, few efforts have sought to identify which source samples are the most attackable or robust, i.e. can we determine for an unseen target model, which samples are the most vulnerable to an adversarial attack. This work formally extends the definition of sample attackability/robustness for NLP attacks. Experiments on two popular NLP datasets, four state of the art models and four different NLP adversarial attack methods, demonstrate that sample uncertainty is insufficient for describing characteristics of attackable/robust samples and hence a deep learning based detector can perform much better at identifying the most attackable and robust samples for an unseen target model. Nevertheless, further analysis finds that there is little agreement in which samples are considered the most attackable/robust across different NLP attack methods, explaining a lack of portability of attackability detection methods across attack methods.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments on two popular NLP datasets, four state of the art models and four different NLP adversarial attack methods demonstrate that sample uncertainty is insufficient for describing characteristics of attackable/robust samples and hence a deep learning based detector can perform much better at identifying the most attackable and robust samples for an unseen target model."
+            },
+            "score": 3
+        },
+        {
+            "id": "db7cc3fa5c3186245fe183159f72ba046166433f",
+            "paperId": "db7cc3fa5c3186245fe183159f72ba046166433f",
+            "title": "RobustSentEmbed: Robust Sentence Embeddings Using Adversarial Self-Supervised Contrastive Learning",
+            "abstract": "Pre-trained language models (PLMs) have consistently demonstrated outstanding performance across a diverse spectrum of natural language processing tasks. Nevertheless, despite their success with unseen data, current PLM-based representations often exhibit poor robustness in adversarial settings. In this paper, we introduce RobustSentEmbed, a self-supervised sentence embedding framework designed to improve both generalization and robustness in diverse text representation tasks and against a diverse set of adversarial attacks. Through the generation of high-risk adversarial perturbations and their utilization in a novel objective function, RobustSentEmbed adeptly learns high-quality and robust sentence embeddings. Our experiments confirm the superiority of RobustSentEmbed over state-of-the-art representations. Specifically, Our framework achieves a significant reduction in the success rate of various adversarial attacks, notably reducing the BERTAttack success rate by almost half (from 75.51\\% to 38.81\\%). The framework also yields improvements of 1.59\\% and 0.23\\% in semantic textual similarity tasks and various transfer tasks, respectively.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces RobustSentEmbed, a self-supervised sentence embedding framework designed to improve both generalization and robustness in diverse text representation tasks and against a diverse set of adversarial attacks."
+            },
+            "score": 3
+        },
+        {
+            "id": "07b2469006d5fd91225d89580983850e4b466471",
+            "paperId": "07b2469006d5fd91225d89580983850e4b466471",
+            "title": "RNNS: Representation Nearest Neighbor Search Black-Box Attack on Code Models",
+            "abstract": "Pre-trainedcodemodels aremainly evaluatedusingthein-distribution test data. The robustness of models, i.e., the ability to handle hard unseen data, still lacks evaluation. In this paper, we propose a novel search-based black-box adversarial attack guided by model behaviours for pre-trained programming language models, named Representation Nearest Neighbor Search(RNNS), to evaluate the robustness of Pre-trained PL models. Unlike other black-box adversarial attacks, RNNS uses the model-change signal to guide the search in the space of the variable names collected from real-world projects. Specifically, RNNS contains two main steps, 1) indicate which variable (attack position location) we should attack based on model uncertainty, and 2) search which adversarial tokens we should use for variable renaming according to the model behaviour observations. We evaluate RNNS on 6 code tasks (e.g., clone detection), 3 programming languages (Java, Python, and C), and 3 pre-trained code models: CodeBERT, GraphCodeBERT, and CodeT5. The results demonstrate that RNNS outperforms the state-of-the-art black-box attacking methods (MHM and ALERT) in terms of attack success rate (ASR) and query times (QT). The perturbation of generated adversarial examples from RNNS is smaller than the baselines with respect to the number of replaced variables and the variable length change. Our experiments also show that RNNS is efficient in attacking the defended models and",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel search-based black-box adversarial attack guided by model behaviours for pre-trained programming language models, named Representation Nearest Neighbor Search (RNNS), to evaluate the robustness of Pre-trained PL models."
+            },
+            "score": 3
+        },
+        {
+            "id": "8951bbc8c1eb3fd43c9e47025268cc79b868f514",
+            "paperId": "8951bbc8c1eb3fd43c9e47025268cc79b868f514",
+            "title": "Why do universal adversarial attacks work on large language models?: Geometry might be the answer",
+            "abstract": "Transformer based large language models with emergent capabilities are becoming increasingly ubiquitous in society. However, the task of understanding and interpreting their internal workings, in the context of adversarial attacks, remains largely unsolved. Gradient-based universal adversarial attacks have been shown to be highly effective on large language models and potentially dangerous due to their input-agnostic nature. This work presents a novel geometric perspective explaining universal adversarial attacks on large language models. By attacking the 117M parameter GPT-2 model, we find evidence indicating that universal adversarial triggers could be embedding vectors which merely approximate the semantic information in their adversarial training region. This hypothesis is supported by white-box model analysis comprising dimensionality reduction and similarity measurement of hidden representations. We believe this new geometric perspective on the underlying mechanism driving universal attacks could help us gain deeper insight into the internal workings and failure modes of LLMs, thus enabling their mitigation.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "By attacking the 117M parameter GPT-2 model, this work finds evidence indicating that universal adversarial triggers could be embedding vectors which merely approximate the semantic information in their adversarial training region."
+            },
+            "score": 3
+        },
+        {
+            "id": "9ed4387cf5f25aa53d13f29b5b5c107f70a881cc",
+            "paperId": "9ed4387cf5f25aa53d13f29b5b5c107f70a881cc",
+            "title": "Robustness Evaluation of Cloud-Deployed Large Language Models against Chinese Adversarial Text Attacks",
+            "abstract": "In the evolving digital realm, Large Language Models (LLMs) like ChatGPT, which recently achieved state-of-the-art results across diverse NLP tasks, are extensively used. Deployed on the cloud, ChatGPT allows interaction via its API, providing rich and high-quality solutions. However, its vulnerability to adversarial attacks, potentially compromising the quality and reliability of cloud services and leading to information leakage, raises security concerns. Investigating the robustness of ChatGPT against adversarial attacks enables a preliminary understanding of its weaknesses and facilitates the subsequent integration of targeted defensive mechanisms into the cloud framework. Most current research on the robustness of LLMs against adversarial attacks focuses on BERT, with few studies on ChatGPT under similar conditions. This paper explores the robustness of ChatGPT against Chinese adversarial text attacks in text classification tasks and proposes a ChatGPT-based adversarial text fluency evaluation method that eliminates the need for human involvement. Experiments conducted on the real-world dataset, THUCNews, examined the robustness of Chinese BERT and ChatGPT against adversarial attacks generated via various Chinese adversarial text generation methods. A multidimensional assessment revealed that both models are susceptible to attacks, leading to decreased text classification accuracy. The attack success rate on ChatGPT reached nearly 45%.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper explores the robustness of ChatGPT against Chinese adversarial text attacks in text classification tasks and proposes a ChatGPT-based adversarial text fluency evaluation method that eliminates the need for human involvement."
+            },
+            "score": 3
+        },
+        {
+            "id": "f4e723958a93762befb4d4a039b44a7d752f9917",
+            "paperId": "f4e723958a93762befb4d4a039b44a7d752f9917",
+            "title": "Large Language Models are Zero-Shot Rankers for Recommender Systems",
+            "abstract": "Recently, large language models (LLMs) (e.g., GPT-4) have demonstrated impressive general-purpose task-solving abilities, including the potential to approach recommendation tasks. Along this line of research, this work aims to investigate the capacity of LLMs that act as the ranking model for recommender systems. We first formalize the recommendation problem as a conditional ranking task, considering sequential interaction histories as conditions and the items retrieved by other candidate generation models as candidates. To solve the ranking task by LLMs, we carefully design the prompting template and conduct extensive experiments on two widely-used datasets. We show that LLMs have promising zero-shot ranking abilities but (1) struggle to perceive the order of historical interactions, and (2) can be biased by popularity or item positions in the prompts. We demonstrate that these issues can be alleviated using specially designed prompting and bootstrapping strategies. Equipped with these insights, zero-shot LLMs can even challenge conventional recommendation models when ranking candidates are retrieved by multiple candidate generators. The code and processed datasets are available at https://github.com/RUCAIBox/LLMRank.",
+            "year": 2023,
+            "citationCount": 110,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the capacity of LLMs that act as the ranking model for recommender systems, and shows that LLMs have promising zero-shot ranking abilities but struggle to perceive the order of historical interactions, and can be biased by popularity or item positions in the prompts."
+            },
+            "score": 2
+        },
+        {
+            "id": "fdb03aa9c310fa61df0be724705fb6f4ab20d37e",
+            "paperId": "fdb03aa9c310fa61df0be724705fb6f4ab20d37e",
+            "title": "Large Language Models as Zero-Shot Human Models for Human-Robot Interaction",
+            "abstract": "Human models play a crucial role in human-robot interaction (HRI), enabling robots to consider the impact of their actions on people and plan their behavior accordingly. However, crafting good human models is challenging; capturing context-dependent human behavior requires significant prior knowledge and/or large amounts of interaction data, both of which are difficult to obtain. In this work, we explore the potential of large language models (LLMs) \u2014 which have consumed vast amounts of human-generated text data \u2014 to act as zero-shot human models for HRI. Our experiments on three social datasets yield promising results; the LLMs are able to achieve performance comparable to purpose-built models. That said, we also discuss current limitations, such as sensitivity to prompts and spatial/numerical reasoning mishaps. Based on our findings, we demonstrate how LLM-based human models can be integrated into a social robot's planning process and applied in HRI scenarios focused on the important element of trust. Specifically, we present one case study on a simulated trust-based table-clearing task and replicate past results that relied on custom models. Next, we conduct a new robot utensil-passing experiment ($n=65$) where preliminary results show that planning with an LLM-based human model can achieve gains over a basic myopic plan. In summary, our results show that LLMs offer a promising (but incomplete) approach to human modeling for HRI.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results show that LLMs offer a promising (but incomplete) approach to human modeling for HRI, and it is demonstrated how LLM-based human models can be integrated into a social robot's planning process and applied in HRI scenarios focused on the important element of trust."
+            },
+            "score": 2
+        },
+        {
+            "id": "718989761d0dc0f97727470f0dc23de7ea48c26d",
+            "paperId": "718989761d0dc0f97727470f0dc23de7ea48c26d",
+            "title": "Large Language Models are Strong Zero-Shot Retriever",
+            "abstract": "In this work, we propose a simple method that applies a large language model (LLM) to large-scale retrieval in zero-shot scenarios. Our method, the Language language model as Retriever (LameR), is built upon no other neural models but an LLM, while breaking brute-force combinations of retrievers with LLMs and lifting the performance of zero-shot retrieval to be very competitive on benchmark datasets. Essentially, we propose to augment a query with its potential answers by prompting LLMs with a composition of the query and the query's in-domain candidates. The candidates, regardless of correct or wrong, are obtained by a vanilla retrieval procedure on the target collection. As a part of the prompts, they are likely to help LLM generate more precise answers by pattern imitation or candidate summarization. Even if all the candidates are wrong, the prompts at least make LLM aware of in-collection patterns and genres. Moreover, due to the low performance of a self-supervised retriever, the LLM-based query augmentation becomes less effective as the retriever bottlenecks the whole pipeline. Therefore, we propose to leverage a non-parametric lexicon-based method (e.g., BM25) as the retrieval module to capture query-document overlap in a literal fashion. As such, LameR makes the retrieval procedure transparent to the LLM, thus circumventing the performance bottleneck.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Language language model as Retriever (LameR), is built upon no other neural models but an LLM, while breaking brute-force combinations of retrievers with LLMs and lifting the performance of zero-shot retrieval to be very competitive on benchmark datasets."
+            },
+            "score": 2
+        },
+        {
+            "id": "90e0a949da276b66d13920a185a6e35042337518",
+            "paperId": "90e0a949da276b66d13920a185a6e35042337518",
+            "title": "Zero-Shot Cross-Lingual Summarization via Large Language Models",
+            "abstract": "Given a document in a source language, cross-lingual summarization (CLS) aims to generate a summary in a different target language. Recently, the emergence of Large Language Models (LLMs), such as GPT-3.5, ChatGPT and GPT-4, has attracted wide attention from the computational linguistics community. However, it is not yet known the performance of LLMs on CLS. In this report, we empirically use various prompts to guide LLMs to perform zero-shot CLS from different paradigms (i.e., end-to-end and pipeline), and provide a preliminary evaluation on the generated summaries. We find that ChatGPT and GPT-4 originally prefer to produce lengthy summaries with detailed information. These two LLMs can further balance informativeness and conciseness with the help of an interactive prompt, significantly improving their CLS performance. Experimental results on three widely-used CLS datasets show that GPT-4 achieves state-of-the-art zero-shot CLS performance, and performs competitively compared with the fine-tuned mBART-50. Moreover, we also find some multi-lingual and bilingual LLMs (i.e., BLOOMZ, ChatGLM-6B, Vicuna-13B and ChatYuan) have limited zero-shot CLS ability. Due to the composite nature of CLS, which requires models to perform summarization and translation simultaneously, accomplishing this task in a zero-shot manner is even a challenge for LLMs. Therefore, we sincerely hope and recommend future LLM research could use CLS as a testbed.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that ChatGPT and GPT-4 originally prefer to produce lengthy summaries with detailed information, and these two LLMs can further balance informativeness and conciseness with the help of an interactive prompt, significantly improving their CLS performance."
+            },
+            "score": 2
+        },
+        {
+            "id": "c2f91f35df893714418cc29096083dce0b441229",
+            "paperId": "c2f91f35df893714418cc29096083dce0b441229",
+            "title": "Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers",
+            "abstract": "We introduce a language modeling approach for text to speech synthesis (TTS). Specifically, we train a neural codec language model (called Vall-E) using discrete codes derived from an off-the-shelf neural audio codec model, and regard TTS as a conditional language modeling task rather than continuous signal regression as in previous work. During the pre-training stage, we scale up the TTS training data to 60K hours of English speech which is hundreds of times larger than existing systems. Vall-E emerges in-context learning capabilities and can be used to synthesize high-quality personalized speech with only a 3-second enrolled recording of an unseen speaker as an acoustic prompt. Experiment results show that Vall-E significantly outperforms the state-of-the-art zero-shot TTS system in terms of speech naturalness and speaker similarity. In addition, we find Vall-E could preserve the speaker's emotion and acoustic environment of the acoustic prompt in synthesis. See https://aka.ms/valle for demos of our work.",
+            "year": 2023,
+            "citationCount": 243,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Vall-E significantly outperforms the state-of-the-art zero-shot TTS system in terms of speech naturalness and speaker similarity, and is found to preserve the speaker's emotion and acoustic environment of the acoustic prompt in synthesis."
+            },
+            "score": 2
+        },
+        {
+            "id": "b7d4060c6a5fcc7f6dcf14cf41e5e0a0920fee1d",
+            "paperId": "b7d4060c6a5fcc7f6dcf14cf41e5e0a0920fee1d",
+            "title": "Climate Change from Large Language Models",
+            "abstract": "Climate change presents significant challenges to the global community, and it is imperative to raise widespread awareness of the climate crisis and educate users about low-carbon living. Artificial intelligence, particularly large language models (LLMs), have emerged as powerful tools in mitigating the climate crisis, leveraging their extensive knowledge, broad user base, and natural language interaction capabilities. However, despite the growing body of research on climate change, there is a lack of comprehensive assessments of climate crisis knowledge within LLMs. This paper aims to resolve this gap by proposing an automatic evaluation framework. We employ a hybrid approach to data acquisition that combines data synthesis and manual collection to compile a diverse set of questions related to the climate crisis. These questions cover various aspects of climate change, including its causes, impacts, mitigation strategies, and adaptation measures. We then evaluate the model knowledge through prompt engineering based on the collected questions and generated answers. We propose a set of comprehensive metrics to evaluate the climate crisis knowledge, incorporating indicators from 10 different perspectives. Experimental results show that our method is effective in evaluating the knowledge of LLMs regarding the climate crisis. We evaluate several state-of-the-art LLMs and find that their knowledge falls short in terms of timeliness.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A hybrid approach to data acquisition that combines data synthesis and manual collection to compile a diverse set of questions related to the climate crisis and proposes a set of comprehensive metrics to evaluate the climate crisis knowledge, incorporating indicators from 10 different perspectives."
+            },
+            "score": 2
+        },
+        {
+            "id": "2c38ab72d91a27c62d774689924e8d53e821fe06",
+            "paperId": "2c38ab72d91a27c62d774689924e8d53e821fe06",
+            "title": "Hypernymy Understanding Evaluation of Text-to-Image Models via WordNet Hierarchy",
+            "abstract": "Text-to-image synthesis has recently attracted widespread attention due to rapidly improving quality and numerous practical applications. However, the language understanding capabilities of text-to-image models are still poorly understood, which makes it difficult to reason about prompt formulations that a given model would understand well. In this work, we measure the capability of popular text-to-image models to understand $\\textit{hypernymy}$, or the\"is-a\"relation between words. We design two automatic metrics based on the WordNet semantic hierarchy and existing image classifiers pretrained on ImageNet. These metrics both enable broad quantitative comparison of linguistic capabilities for text-to-image models and offer a way of finding fine-grained qualitative differences, such as words that are unknown to models and thus are difficult for them to draw. We comprehensively evaluate popular text-to-image models, including GLIDE, Latent Diffusion, and Stable Diffusion, showing how our metrics can provide a better understanding of the individual strengths and weaknesses of these models.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work measures the capability of popular text-to-image models to understand $\\textit{hypernymy}$, or the\"is-a\"relation between words, and designs two automatic metrics based on the WordNet semantic hierarchy and existing image classifiers pretrained on ImageNet to enable broad quantitative comparison of linguistic capabilities."
+            },
+            "score": 2
+        },
+        {
+            "id": "15ec6296f521c8c3c113c358ec259d620af501d5",
+            "paperId": "15ec6296f521c8c3c113c358ec259d620af501d5",
+            "title": "Large Language Models Based Automatic Synthesis of Software Specifications",
+            "abstract": "Software configurations play a crucial role in determining the behavior of software systems. In order to ensure safe and error-free operation, it is necessary to identify the correct configuration, along with their valid bounds and rules, which are commonly referred to as software specifications. As software systems grow in complexity and scale, the number of configurations and associated specifications required to ensure the correct operation can become large and prohibitively difficult to manipulate manually. Due to the fast pace of software development, it is often the case that correct software specifications are not thoroughly checked or validated within the software itself. Rather, they are frequently discussed and documented in a variety of external sources, including software manuals, code comments, and online discussion forums. Therefore, it is hard for the system administrator to know the correct specifications of configurations due to the lack of clarity, organization, and a centralized unified source to look at. To address this challenge, we propose SpecSyn a framework that leverages a state-of-the-art large language model to automatically synthesize software specifications from natural language sources. Our approach formulates software specification synthesis as a sequence-to-sequence learning problem and investigates the extraction of specifications from large contextual texts. This is the first work that uses a large language model for end-to-end specification synthesis from natural language texts. Empirical results demonstrate that our system outperforms prior the state-of-the-art specification synthesis tool by 21% in terms of F1 score and can find specifications from single as well as multiple sentences.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This is the first work that uses a large language model for end-to-end specification synthesis from natural language texts and outperforms prior the state-of-the-art specification synthesis tool by 21% in terms of F1 score and can find specifications from single as well as multiple sentences."
+            },
+            "score": 2
+        },
+        {
+            "id": "0a054d98808a910a988e61d071d53c10afa2cf59",
+            "paperId": "0a054d98808a910a988e61d071d53c10afa2cf59",
+            "title": "An Empirical Study of Speech Language Models for Prompt-Conditioned Speech Synthesis",
+            "abstract": "Speech language models (LMs) are promising for high-quality speech synthesis through in-context learning. A typical speech LM takes discrete semantic units as content and a short utterance as prompt, and synthesizes speech which preserves the content's semantics but mimics the prompt's style. However, there is no systematic understanding on how the synthesized audio is controlled by the prompt and content. In this work, we conduct an empirical study of the widely used autoregressive (AR) and non-autoregressive (NAR) speech LMs and provide insights into the prompt design and content semantic units. Our analysis reveals that heterogeneous and nonstationary prompts hurt the audio quality in contrast to the previous finding that longer prompts always lead to better synthesis. Moreover, we find that the speaker style of the synthesized audio is also affected by the content in addition to the prompt. We further show that semantic units carry rich acoustic information such as pitch, tempo, volume and speech emphasis, which might be leaked from the content to the synthesized audio.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work conducts an empirical study of the widely used autoregressive (AR) and non-autoregressive (NAR) speech LMs and provides insights into the prompt design and content semantic units and reveals that heterogeneous and nonstationary prompts hurt the audio quality."
+            },
+            "score": 2
+        },
+        {
+            "id": "03055978e278960de9fbb5c648b1779ef9f26cd1",
+            "paperId": "03055978e278960de9fbb5c648b1779ef9f26cd1",
+            "title": "Can Large Language Models Be an Alternative to Human Evaluations?",
+            "abstract": "Human evaluation is indispensable and inevitable for assessing the quality of texts generated by machine learning models or written by humans. However, human evaluation is very difficult to reproduce and its quality is notoriously unstable, hindering fair comparisons among different natural language processing (NLP) models and algorithms.Recently, large language models (LLMs) have demonstrated exceptional performance on unseen tasks when only the task instructions are provided.In this paper, we explore if such an ability of the LLMs can be used as an alternative to human evaluation.We present the LLMs with the exact same instructions, samples to be evaluated, and questions used to conduct human evaluation, and then ask the LLMs to generate responses to those questions; we dub this LLM evaluation.We use human evaluation and LLM evaluation to evaluate the texts in two NLP tasks: open-ended story generation and adversarial attacks.We show that the result of LLM evaluation is consistent with the results obtained by expert human evaluation: the texts rated higher by human experts are also rated higher by the LLMs.We also find that the results of LLM evaluation are stable over different formatting of the task instructions and the sampling algorithm used to generate the answer.We are the first to show the potential of using LLMs to assess the quality of texts and discuss the limitations and ethical considerations of LLM evaluation.",
+            "year": 2023,
+            "citationCount": 203,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The potential of using large language models to assess the quality of texts is shown and the limitations and ethical considerations of LLM evaluation are discussed."
+            },
+            "score": 2
+        },
+        {
+            "id": "d18287d5ef8653aa1276a11957f2b3934c7c93e1",
+            "paperId": "d18287d5ef8653aa1276a11957f2b3934c7c93e1",
+            "title": "CodeAttack: Code-based Adversarial Attacks for Pre-Trained Programming Language Models",
+            "abstract": "Pre-trained programming language (PL) models (such as CodeT5, CodeBERT, GraphCodeBERT, etc.,) have the potential to automate software engineering tasks involving code understanding and code generation. However, these models operate in the natural channel of code, i.e., primarily concerned with the human understanding of code. They are not robust to changes in the input and thus, are potentially susceptible to adversarial attacks in the natural channel. We propose, Code Attack, a simple yet effective black-box attack model that uses code structure to generate effective, efficient, and imperceptible adversarial code samples and demonstrates the vulnerabilities of the state-of-the-art PL models to code-specific adversarial attacks. We evaluate the transferability of CodeAttack on several code-code (translation and repair) and code-NL (summarization) tasks across different programming languages. Code Attack outperforms state-of-the-art adversarial NLP attack models to achieve the best overall drop in performance while being more efficient, imperceptible, consistent, and fluent. The code can be found at https://github.com/reddy-lab-code-research/CodeAttack.",
+            "year": 2022,
+            "citationCount": 26,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes, Code Attack, a simple yet effective black-box attack model that uses code structure to generate effective, efficient, and imperceptible adversarial code samples and demonstrates the vulnerabilities of the state-of-the-art PL models to code-specific adversarial attacks."
+            },
+            "score": 2
+        },
+        {
+            "id": "22c638d7b7b14de8f16425f85605961804f1c42c",
+            "paperId": "22c638d7b7b14de8f16425f85605961804f1c42c",
+            "title": "Adversarial Attacks on Protein Language Models",
+            "abstract": "Deep Learning models for protein structure prediction, such as AlphaFold2, leverage Transformer architectures and their attention mechanism to capture structural and functional properties of amino acid sequences. Despite the high accuracy of predictions, biologically insignificant perturbations of the input sequences, or even single point mutations, can lead to substantially different 3d structures. On the other hand, protein language models are often insensitive to biologically relevant mutations that induce misfolding or dysfunction (e.g. missense mutations). Precisely, predictions of the 3d coordinates do not reveal the structure-disruptive effect of these mutations. Therefore, there is an evident inconsistency between the biological importance of mutations and the resulting change in structural prediction. Inspired by this problem, we introduce the concept of adversarial perturbation of protein sequences in continuous embedding spaces of protein language models. Our method relies on attention scores to detect the most vulnerable amino acid positions in the input sequences. Adversarial mutations are biologically diverse from their references and are able to significantly alter the resulting 3d structures.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces the concept of adversarial perturbation of protein sequences in continuous embedding spaces of protein language models and relies on attention scores to detect the most vulnerable amino acid positions in the input sequences."
+            },
+            "score": 2
+        }
+    ],
+    "novelty": "yes"
 }

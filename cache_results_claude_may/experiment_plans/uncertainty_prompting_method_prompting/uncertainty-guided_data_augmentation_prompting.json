@@ -35,5 +35,788 @@
             "Explanation": "The proposed UGDAP method generates more diverse and informative augmented examples by leveraging the model's uncertainty estimates. This helps the model learn to provide better-calibrated confidence scores, especially for out-of-distribution or rare examples. In this case, the model trained with UGDAP assigns a lower confidence score to the highly negative review, indicating its increased uncertainty compared to the overconfident baseline models."
         },
         "Fallback Plan": "If the proposed UGDAP method does not significantly improve the performance and calibration of the model compared to the baselines, consider the following alternative plans:\n1. Analyze the quality and diversity of the generated augmented examples to identify potential issues with the data augmentation techniques or the uncertainty estimation methods.\n2. Experiment with different example selection strategies or develop new ones that better balance exploration and exploitation during the iterative fine-tuning process.\n3. Investigate the impact of different hyperparameters, such as the number of augmented examples generated per original example, the threshold for selecting examples based on their uncertainty scores, and the learning rate during fine-tuning.\n4. Explore alternative uncertainty estimation techniques, such as using the model's output distribution entropy or the variance of the model's predictions across different subsets of the training data.\n5. Consider turning the project into an analysis paper by conducting in-depth ablation studies and providing insights into the factors that influence the effectiveness of uncertainty-guided data augmentation for improving confidence calibration in large language models."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"uncertainty-guided data augmentation language models\")",
+        "KeywordQuery(\"confidence calibration data augmentation language models\")",
+        "KeywordQuery(\"iterative fine-tuning data augmentation language models\")",
+        "KeywordQuery(\"Uncertainty-Guided Data Augmentation Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "paperId": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "title": "Just Ask for Calibration: Strategies for Eliciting Calibrated Confidence Scores from Language Models Fine-Tuned with Human Feedback",
+            "abstract": "A trustworthy real-world prediction system should produce well-calibrated confidence scores; that is, its confidence in an answer should be indicative of the likelihood that the answer is correct, enabling deferral to an expert in cases of low-confidence predictions. Recent studies have shown that unsupervised pre-training produces large language models (LMs) whose conditional probabilities are remarkably well-calibrated. However, the most widely-used LMs are fine-tuned with reinforcement learning from human feedback (RLHF-LMs), and some studies have suggested that RLHF-LMs produce conditional probabilities that are very poorly calibrated. In light of this perceived weakness, we conduct a broad evaluation of methods for extracting confidence scores from RLHF-LMs. For RLHF-LMs such as ChatGPT, GPT-4, and Claude, we find that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%.",
+            "year": 2023,
+            "citationCount": 96,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "For RLHF-LMs such as ChatGPT, GPT-4, and Claude, it is found that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models, especially for out-of-distribution or rare examples, by using uncertainty-guided data augmentation prompting. The approach involves generating diverse augmented examples, estimating their uncertainty, and iteratively fine-tuning the model with the most informative examples.\n\nThe research problem in the paper is also improving the confidence calibration of large language models, but specifically for models fine-tuned with reinforcement learning from human feedback (RLHF-LMs). The approach involves extracting verbalized confidence scores emitted as output tokens, which are found to be better-calibrated than the model's conditional probabilities.\n\nWhile both the proposal and the paper aim to improve confidence calibration in large language models, their approaches differ. The proposal focuses on uncertainty-guided data augmentation prompting, while the paper explores strategies for eliciting calibrated confidence scores from RLHF-LMs using verbalized confidences.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "2a74fc66beea8bce542581560ca6ec5a0e1bb024",
+            "paperId": "2a74fc66beea8bce542581560ca6ec5a0e1bb024",
+            "title": "CoAnnotating: Uncertainty-Guided Work Allocation between Human and Large Language Models for Data Annotation",
+            "abstract": "Annotated data plays a critical role in Natural Language Processing (NLP) in training models and evaluating their performance. Given recent developments in Large Language Models (LLMs), models such as ChatGPT demonstrate zero-shot capability on many text-annotation tasks, comparable with or even exceeding human annotators. Such LLMs can serve as alternatives for manual annotation, due to lower costs and higher scalability. However, limited work has leveraged LLMs as complementary annotators, nor explored how annotation work is best allocated among humans and LLMs to achieve both quality and cost objectives. We propose CoAnnotating, a novel paradigm for Human-LLM co-annotation of unstructured texts at scale. Under this framework, we utilize uncertainty to estimate LLMs' annotation capability. Our empirical study shows CoAnnotating to be an effective means to allocate work from results on different datasets, with up to 21% performance improvement over random baseline. For code implementation, see https://github.com/SALT-NLP/CoAnnotating.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes CoAnnotating, a novel paradigm for Human-LLM co-annotation of unstructured texts at scale, and utilizes uncertainty to estimate LLMs' annotation capability."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the project proposal is improving the confidence calibration of large language models, especially for out-of-distribution or rare examples, by using uncertainty-guided data augmentation prompting. The approach involves iteratively fine-tuning the model with informative and diverse augmented examples selected based on their uncertainty scores.\n\nThe research problem in the paper is allocating annotation work between humans and large language models to achieve both quality and cost objectives. The approach, called CoAnnotating, utilizes uncertainty to estimate the annotation capability of large language models and guide the work allocation.\n\nWhile both the project proposal and the paper involve using uncertainty estimates, their research problems and approaches are different. The project proposal focuses on improving confidence calibration during fine-tuning, while the paper focuses on allocating annotation work between humans and models.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ba121a6e2583c5f9b137f04324c25239c63d3473",
+            "paperId": "ba121a6e2583c5f9b137f04324c25239c63d3473",
+            "title": "Bag of Tricks for In-Distribution Calibration of Pretrained Transformers",
+            "abstract": "While pre-trained language models (PLMs) have become a de-facto standard promoting the accuracy of text classification tasks, recent studies find that PLMs often predict over-confidently.Although calibration methods have been proposed, such as ensemble learning and data augmentation, most of the methods have been verified in computer vision benchmarks rather than in PLM-based text classification tasks. In this paper, we present an empirical study on confidence calibration for PLMs, addressing three categories, including confidence penalty losses, data augmentations, and ensemble methods. We find that the ensemble model overfitted to the training set shows sub-par calibration performance and also observe that PLMs trained with confidence penalty loss have a trade-off between calibration and accuracy. Building on these observations, we propose the Calibrated PLM (CALL), a combination of calibration techniques. The CALL complements shortcomings that may occur when utilizing a calibration method individually and boosts both classification and calibration accuracy. Design choices in CALL\u2019s training procedures are extensively studied, and we provide a detailed analysis of how calibration techniques affect the calibration performance of PLMs.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the ensemble model overfitted to the training set shows sub-par calibration performance and also observe that PLMs trained with confidence penalty loss have a trade-off between calibration and accuracy."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration of large language models, especially for out-of-distribution or rare examples, by using uncertainty-guided data augmentation. The approach is to iteratively fine-tune the model with augmented examples selected based on their uncertainty scores.\n\nThe research problem in the paper is also improving confidence calibration of pre-trained language models for text classification tasks. The approach is to combine various calibration techniques, including confidence penalty losses, data augmentations, and ensemble methods.\n\nWhile both the proposal and the paper aim to improve confidence calibration of language models, the proposal focuses on a specific novel method (uncertainty-guided data augmentation prompting) for fine-tuning, whereas the paper studies a combination of existing calibration techniques. The proposal also emphasizes improving calibration for out-of-distribution and rare examples, which is not the main focus of the paper.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "paperId": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "title": "On the Calibration of Large Language Models and Alignment",
+            "abstract": "As large language models attract increasing attention and find widespread application, concurrent challenges of reliability also arise at the same time. Confidence calibration, an effective analysis method for gauging the reliability of deep models, serves as a crucial tool for assessing and improving their reliability. However, such investigation has been comparatively underexplored. In this work, we conduct a systematic examination of the calibration of aligned language models throughout the entire construction process, including pretraining and alignment training. At each stage, we investigate how different training settings, such as parameter scales and training data, affect model calibration. To thoroughly assess model calibration, we evaluate models on three most concerned aspects: generation, factuality and understanding. Our work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration, as well as how different training settings affect model calibration."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models, especially for out-of-distribution or rare examples. The proposed approach is to use uncertainty-guided data augmentation prompting (UGDAP) during fine-tuning.\n\nThe research problem in the paper is also about investigating the calibration of large language models. However, the paper focuses on examining how different training settings, such as parameter scales and training data, affect model calibration throughout the pretraining and alignment training process.\n\nWhile both the proposal and the paper address the calibration of large language models, the proposal focuses on a specific method (UGDAP) to improve calibration during fine-tuning, whereas the paper conducts a systematic examination of calibration throughout the entire construction process without proposing a specific method.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "10b0cbc35fa2e53a9b2db66de7af65b3212d9f11",
+            "paperId": "10b0cbc35fa2e53a9b2db66de7af65b3212d9f11",
+            "title": "LM-CPPF: Paraphrasing-Guided Data Augmentation for Contrastive Prompt-Based Few-Shot Fine-Tuning",
+            "abstract": "In recent years, there has been significant progress in developing pre-trained language models for NLP. However, these models often struggle when fine-tuned on small datasets. To address this issue, researchers have proposed various adaptation approaches. Prompt-based tuning is arguably the most common way, especially for larger models. Previous research shows that adding contrastive learning to prompt-based fine-tuning is effective as it helps the model generate embeddings that are more distinguishable between classes, and it can also be more sample-efficient as the model learns from positive and negative examples simultaneously. One of the most important components of contrastive learning is data augmentation, but unlike computer vision, effective data augmentation for NLP is still challenging. This paper proposes LM-CPPF, Contrastive Paraphrasing-guided Prompt-based Fine-tuning of Language Models, which leverages prompt-based few-shot paraphrasing using generative language models, especially large language models such as GPT-3 and OPT-175B, for data augmentation. Our experiments on multiple text classification benchmarks show that this augmentation method outperforms other methods, such as easy data augmentation, back translation, and multiple templates.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LM-CPPF, Contrastive Paraphrasing-guided Prompt-based Fine-tuning of Language Models, which leverages prompt-based few-shot paraphrasing using generative language models, especially large language models such as GPT-3 and OPT-175B, for data augmentation is proposed."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models, especially for out-of-distribution or rare examples, by using uncertainty-guided data augmentation prompting. The approach involves iteratively fine-tuning the model with augmented examples selected based on their uncertainty scores.\n\nThe research problem in the paper is improving the performance of prompt-based few-shot fine-tuning of language models on small datasets. The approach leverages prompt-based few-shot paraphrasing using large language models for data augmentation in a contrastive learning setting.\n\nWhile both the proposal and the paper focus on improving the performance of language models through data augmentation, the specific research problems and approaches differ. The proposal targets confidence calibration and uses uncertainty-guided data augmentation, while the paper aims to improve few-shot fine-tuning performance and employs paraphrasing-based data augmentation in a contrastive learning framework.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7f3bc301ae0e2bbb78a0d42f074865e87d908f9a",
+            "paperId": "7f3bc301ae0e2bbb78a0d42f074865e87d908f9a",
+            "title": "Tuning Language Models as Training Data Generators for Augmentation-Enhanced Few-Shot Learning",
+            "abstract": "Recent studies have revealed the intriguing few-shot learning ability of pretrained language models (PLMs): They can quickly adapt to a new task when fine-tuned on a small amount of labeled data formulated as prompts, without requiring abundant task-specific annotations. Despite their promising performance, most existing few-shot approaches that only learn from the small training set still underperform fully supervised training by nontrivial margins. In this work, we study few-shot learning with PLMs from a different perspective: We first tune an autoregressive PLM on the few-shot samples and then use it as a generator to synthesize a large amount of novel training samples which augment the original training set. To encourage the generator to produce label-discriminative samples, we train it via weighted maximum likelihood where the weight of each token is automatically adjusted based on a discriminative meta-learning objective. A classification PLM can then be fine-tuned on both the few-shot and the synthetic samples with regularization for better generalization and stability. Our approach FewGen achieves an overall better result across seven classification tasks of the GLUE benchmark than existing few-shot learning methods, improving no-augmentation methods by 5+ average points, and outperforming augmentation methods by 3+ average points.",
+            "year": 2022,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work first tunes an autoregressive PLM on the few-shot samples and then uses it as a generator to synthesize a large amount of novel training samples which augment the original training set, achieving an overall better result across seven classification tasks of the GLUE benchmark than existing few- shot learning methods."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models on out-of-distribution or rare examples, and the proposed approach is uncertainty-guided data augmentation prompting (UGDAP).\n\nThe research problem in the paper is improving the performance of few-shot learning with pretrained language models, and the proposed approach is tuning a language model on few-shot samples to generate synthetic training data for augmentation.\n\nWhile both works involve data augmentation and language models, the research problems and approaches are different. The proposal focuses on improving confidence calibration, while the paper aims to enhance few-shot learning performance. The proposal uses uncertainty estimates to guide data augmentation, while the paper tunes a language model to generate augmented data.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "paperId": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "title": "On the Calibration of Pre-trained Language Models using Mixup Guided by Area Under the Margin and Saliency",
+            "abstract": "A well-calibrated neural model produces confidence (probability outputs) closely approximated by the expected accuracy. While prior studies have shown that mixup training as a data augmentation technique can improve model calibration on image classification tasks, little is known about using mixup for model calibration on natural language understanding (NLU) tasks. In this paper, we explore mixup for model calibration on several NLU tasks and propose a novel mixup strategy for pre-trained language models that improves model calibration further. Our proposed mixup is guided by both the Area Under the Margin (AUM) statistic (Pleiss et al., 2020) and the saliency map of each sample (Simonyan et al., 2013). Moreover, we combine our mixup strategy with model miscalibration correction techniques (i.e., label smoothing and temperature scaling) and provide detailed analyses of their impact on our proposed mixup. We focus on systematically designing experiments on three NLU tasks: natural language inference, paraphrase detection, and commonsense reasoning. Our method achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy.",
+            "year": 2022,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper systematically designs experiments on three NLU tasks and proposes a novel mixup strategy for pre-trained language models that improves model calibration further and achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models, especially for out-of-distribution or rare examples. The proposed approach is to use uncertainty-guided data augmentation prompting (UGDAP) to generate informative and diverse examples for fine-tuning.\n\nThe research problem in the paper is also improving the calibration of pre-trained language models. However, the proposed approach is different - it uses mixup guided by Area Under the Margin (AUM) and saliency maps, combined with label smoothing and temperature scaling.\n\nWhile both works aim to improve model calibration, the proposal focuses on data augmentation prompting guided by uncertainty, while the paper explores mixup strategies guided by AUM and saliency. Therefore, the two works have different approaches to tackling the calibration problem.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "53f61f53acc5589505ad18e166997afeac5fe06b",
+            "paperId": "53f61f53acc5589505ad18e166997afeac5fe06b",
+            "title": "A Data Cartography based MixUp for Pre-trained Language Models",
+            "abstract": "MixUp is a data augmentation strategy where additional samples are generated during training by combining random pairs of training samples and their labels. However, selecting random pairs is not potentially an optimal choice. In this work, we propose TDMixUp, a novel MixUp strategy that leverages Training Dynamics and allows more informative samples to be combined for generating new data samples. Our proposed TDMixUp first measures confidence, variability, (Swayamdipta et al., 2020), and Area Under the Margin (AUM) (Pleiss et al., 2020) to identify the characteristics of training samples (e.g., as easy-to-learn or ambiguous samples), and then interpolates these characterized samples. We empirically validate that our method not only achieves competitive performance using a smaller subset of the training data compared with strong baselines, but also yields lower expected calibration error on the pre-trained language model, BERT, on both in-domain and out-of-domain settings in a wide range of NLP tasks. We publicly release our code.",
+            "year": 2022,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes TDMixUp, a novel MixUp strategy that leverages Training Dynamics and allows more informative samples to be combined for generating new data samples and empirically validate that this method not only achieves competitive performance using a smaller subset of the training data compared with strong baselines, but also yields lower expected calibration error on the pre-trained language model, BERT."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models on out-of-distribution or rare examples, and the approach is to use uncertainty-guided data augmentation during prompting. The research problem in the paper is improving the performance of pre-trained language models using a smaller subset of training data, and the approach is to use a MixUp strategy that leverages training dynamics to combine more informative samples.\n\nThe proposal focuses on improving confidence calibration, while the paper focuses on improving performance with less data. The proposal uses uncertainty-guided data augmentation during prompting, while the paper uses a MixUp strategy based on training dynamics during fine-tuning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "06c8f8aa5d9fc02ea8ba35010e5b1e8420014c62",
+            "paperId": "06c8f8aa5d9fc02ea8ba35010e5b1e8420014c62",
+            "title": "CATfOOD: Counterfactual Augmented Training for Improving Out-of-Domain Performance and Calibration",
+            "abstract": "In recent years, large language models (LLMs) have shown remarkable capabilities at scale, particularly at generating text conditioned on a prompt. In our work, we investigate the use of LLMs to augment training data of smaller language models (SLMs) with automatically generated counterfactual (CF) instances \u2013 i.e. minimally altered inputs \u2013 in order to improve out-of-domain (OOD) performance of SLMs in the extractive question answering (QA) setup. We show that, across various LLM generators, such data augmentation consistently enhances OOD performance and improves model calibration for both confidence-based and rationale-augmented calibrator models. Furthermore, these performance improvements correlate with higher diversity of CF instances in terms of their surface form and semantic content. Finally, we show that CF augmented models which are easier to calibrate also exhibit much lower entropy when assigning importance, indicating that rationale-augmented calibrators prefer concise explanations.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the use of LLMs to augment training data of smaller language models with automatically generated counterfactual instances \u2013 i.e. minimally altered inputs \u2013 in order to improve out-of-domain (OOD) performance of SLMs in the extractive question answering (QA) setup and shows that such data augmentation consistently enhances OOD performance and improves model calibration."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models on out-of-distribution or rare examples, and the proposed approach is uncertainty-guided data augmentation prompting.\n\nThe research problem in the paper is improving the out-of-domain performance and calibration of smaller language models in extractive question answering, and the proposed approach is augmenting the training data with automatically generated counterfactual instances using large language models.\n\nWhile both works aim to improve the performance and calibration of language models, the proposal focuses on large language models and uses uncertainty-guided data augmentation prompting, whereas the paper focuses on smaller language models in the specific task of extractive question answering and uses counterfactual data augmentation generated by large language models.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7c8851cce662351c49da94fa4512e2a6d2c1ace0",
+            "paperId": "7c8851cce662351c49da94fa4512e2a6d2c1ace0",
+            "title": "LLM2LLM: Boosting LLMs with Novel Iterative Data Enhancement",
+            "abstract": "Pretrained large language models (LLMs) are currently state-of-the-art for solving the vast majority of natural language processing tasks. While many real-world applications still require fine-tuning to reach satisfactory levels of performance, many of them are in the low-data regime, making fine-tuning challenging. To address this, we propose LLM2LLM, a targeted and iterative data augmentation strategy that uses a teacher LLM to enhance a small seed dataset by augmenting additional data that can be used for fine-tuning on a specific task. LLM2LLM (1) fine-tunes a baseline student LLM on the initial seed data, (2) evaluates and extracts data points that the model gets wrong, and (3) uses a teacher LLM to generate synthetic data based on these incorrect data points, which are then added back into the training data. This approach amplifies the signal from incorrectly predicted data points by the LLM during training and reintegrates them into the dataset to focus on more challenging examples for the LLM. Our results show that LLM2LLM significantly enhances the performance of LLMs in the low-data regime, outperforming both traditional fine-tuning and other data augmentation baselines. LLM2LLM reduces the dependence on labor-intensive data curation and paves the way for more scalable and performant LLM solutions, allowing us to tackle data-constrained domains and tasks. We achieve improvements up to 24.2% on the GSM8K dataset, 32.6% on CaseHOLD, 32.0% on SNIPS, 52.6% on TREC and 39.8% on SST-2 over regular fine-tuning in the low-data regime using a LLaMA2-7B student model.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLM2LLM reduces the dependence on labor-intensive data curation and paves the way for more scalable and performant LLM solutions, allowing us to tackle data-constrained domains and tasks."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve the confidence calibration of large language models on out-of-distribution or rare examples by using uncertainty-guided data augmentation prompting. The paper, on the other hand, proposes a targeted and iterative data augmentation strategy called LLM2LLM that uses a teacher LLM to enhance a small seed dataset by augmenting additional data based on the student model's incorrect predictions, focusing on more challenging examples for the LLM.\n\nWhile both the project proposal and the paper address the problem of improving the performance of large language models in low-data regimes, their approaches differ. The project proposal focuses on improving confidence calibration using uncertainty estimates to guide data augmentation, while the paper focuses on iteratively augmenting data based on the model's incorrect predictions to improve overall performance.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "845356b44c1efa1a5f7a29966a23b2dd4dd03494",
+            "paperId": "845356b44c1efa1a5f7a29966a23b2dd4dd03494",
+            "title": "CoDa: Constrained Generation based Data Augmentation for Low-Resource NLP",
+            "abstract": "We present CoDa (Constrained Generation based Data Augmentation), a controllable, effective, and training-free data augmentation technique for low-resource (data-scarce) NLP. Our approach is based on prompting off-the-shelf instruction-following Large Language Models (LLMs) for generating text that satisfies a set of constraints. Precisely, we extract a set of simple constraints from every instance in the low-resource dataset and verbalize them to prompt an LLM to generate novel and diverse training instances. Our findings reveal that synthetic data that follows simple constraints in the downstream dataset act as highly effective augmentations, and CoDa can achieve this without intricate decoding-time constrained generation techniques or fine-tuning with complex algorithms that eventually make the model biased toward the small number of training instances. Additionally, CoDa is the first framework that provides users explicit control over the augmentation generation process, thereby also allowing easy adaptation to several domains. We demonstrate the effectiveness of CoDa across 11 datasets spanning 3 tasks and 3 low-resource settings. CoDa outperforms all our baselines, qualitatively and quantitatively, with improvements of 0.12%-7.19%. Code is available here: https://github.com/Sreyan88/CoDa",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The findings reveal that synthetic data that follows simple constraints in the downstream dataset act as highly effective augmentations, and CoDa can achieve this without intricate decoding-time constrained generation techniques or fine-tuning with complex algorithms that eventually make the model biased toward the small number of training instances."
+            },
+            "score": 6
+        },
+        {
+            "id": "c587a10e6c2569e81ebdebd317b5e49cc4df7373",
+            "paperId": "c587a10e6c2569e81ebdebd317b5e49cc4df7373",
+            "title": "Data Augmentation with GPT-3.5 for Vietnamese Natural Language Inference",
+            "abstract": "Data augmentation is a widely-used technique in natural language processing (NLP) for performance improvement and out-of-domain generalization. Current works on data augmentation for Vietnamese NLP tasks typically just modify one or several words (tokens) in each original sentence of an existing dataset, limiting the diversity of the augmented data. We investigate a recently-introduced data augmentation methodology, in which a pretrained large language model (LLM), particularly OpenAI GPT-3.5 Turbo in this paper, is used for generating new data as well as filtering high-quality data for the final usage. We focus on a natural language inference (NLI) task for the Vietnamese language with four labels: \u201centailment\u201d, \u201ccontradiction\u201d, \u201cneural\u201d, and \u201cother\u201d. Instead of replacing or deleting several words in each sentence as in most conventional approaches, our pipeline exploits the capability of the LLM to rewrite the sentences anew following the prompt for each label definition. Experimental results indicate that our augmented data can enhance the accuracy performance of Vietnamese classifiers in the NLI task with a better out-of-domain generalization.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results indicate that the augmented data can enhance the accuracy performance of Vietnamese classifiers in the NLI task with a better out-of-domain generalization."
+            },
+            "score": 6
+        },
+        {
+            "id": "176ec99005b5085d5d9a34fb770d75d34166c9f5",
+            "paperId": "176ec99005b5085d5d9a34fb770d75d34166c9f5",
+            "title": "PromptDA: Label-guided Data Augmentation for Prompt-based Few Shot Learners",
+            "abstract": "Recent advances in large pre-trained language models (PLMs) lead to impressive gains on natural language understanding (NLU) tasks with task-specific fine-tuning. However, directly fine-tuning PLMs heavily relies on sufficient labeled training instances, which are usually hard to obtain. Prompt-based tuning on PLMs has shown to be powerful for various downstream few-shot tasks. Existing works studying prompt-based tuning for few-shot NLU tasks mainly focus on deriving proper label words with a verbalizer or generating prompt templates to elicit semantics from PLMs. In addition, conventional data augmentation strategies such as synonym substitution are also widely adopted in low-resource scenarios. However, the improvements they bring to prompt-based few-shot learning have been demonstrated to be marginal. Thus, an important research question arises as follows: how to design effective data augmentation methods for prompt-based few-shot tuning? To this end, considering the label semantics are essential in prompt-based tuning, we propose a novel label-guided data augmentation framework PromptDA, which exploits the enriched label semantic information for data augmentation. Extensive experiment results on few-shot text classification tasks show that our proposed framework achieves superior performances by effectively leveraging label semantics and data augmentation for natural language understanding.",
+            "year": 2022,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel label-guided data augmentation framework PromptDA, which exploits the enriched label semantic information for data augmentations in prompt-based few-shot tuning and achieves superior performances."
+            },
+            "score": 5
+        },
+        {
+            "id": "3728aec0c3e720e7f3f22e1306a98bd0013d47ad",
+            "paperId": "3728aec0c3e720e7f3f22e1306a98bd0013d47ad",
+            "title": "Data Augmentation for Intent Classification with Off-the-shelf Large Language Models",
+            "abstract": "Data augmentation is a widely employed technique to alleviate the problem of data scarcity. In this work, we propose a prompting-based approach to generate labelled training data for intent classification with off-the-shelf language models (LMs) such as GPT-3. An advantage of this method is that no task-specific LM-fine-tuning for data generation is required; hence the method requires no hyper parameter tuning and is applicable even when the available training data is very scarce. We evaluate the proposed method in a few-shot setting on four diverse intent classification tasks. We find that GPT-generated data significantly boosts the performance of intent classifiers when intents in consideration are sufficiently distinct from each other. In tasks with semantically close intents, we observe that the generated data is less helpful. Our analysis shows that this is because GPT often generates utterances that belong to a closely-related intent instead of the desired one. We present preliminary evidence that a prompting-based GPT classifier could be helpful in filtering the generated data to enhance its quality.",
+            "year": 2022,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that GPT-generated data significantly boosts the performance of intent classifiers when intents in consideration are sufficiently distinct from each other, and preliminary evidence that a prompting-based GPT classifier could be helpful in filtering the generated data to enhance its quality is presented."
+            },
+            "score": 5
+        },
+        {
+            "id": "84b77180228051040286423cec82b62c323a8fda",
+            "paperId": "84b77180228051040286423cec82b62c323a8fda",
+            "title": "Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation",
+            "abstract": "Knowledge-intensive tasks (e.g., open-domain question answering (QA)) require a substantial amount of factual knowledge and often rely on external information for assistance. Recently, large language models (LLMs) (e.g., ChatGPT), have demonstrated impressive prowess in solving a wide range of tasks with world knowledge, including knowledge-intensive tasks. However, it remains unclear how well LLMs are able to perceive their factual knowledge boundaries, particularly how they behave when incorporating retrieval augmentation. In this study, we present an initial analysis of the factual knowledge boundaries of LLMs and how retrieval augmentation affects LLMs on open-domain QA. Specially, we focus on three primary research questions and analyze them by examining QA performance, priori judgement and posteriori judgement of LLMs. We show evidence that LLMs possess unwavering confidence in their capabilities to respond to questions and the accuracy of their responses. Furthermore, retrieval augmentation proves to be an effective approach in enhancing LLMs' awareness of knowledge boundaries, thereby improving their judgemental abilities. Additionally, we also find that LLMs have a propensity to rely on the provided retrieval results when formulating answers, while the quality of these results significantly impacts their reliance. The code to reproduce this work is available at https://github.com/RUCAIBox/LLM-Knowledge-Boundary.",
+            "year": 2023,
+            "citationCount": 48,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study presents an initial analysis of the factual knowledge boundaries of LLMs and how retrieval augmentation affects LLMs on open-domain QA and finds that LLMs have a propensity to rely on the provided retrieval results when formulating answers, while the quality of these results significantly impacts their reliance."
+            },
+            "score": 5
+        },
+        {
+            "id": "734101311a8ae392ded894696ca070b04b82575f",
+            "paperId": "734101311a8ae392ded894696ca070b04b82575f",
+            "title": "Diverse Data Augmentation with Diffusions for Effective Test-time Prompt Tuning",
+            "abstract": "Benefiting from prompt tuning, recent years have witnessed the promising performance of pre-trained vision-language models, e.g., CLIP, on versatile downstream tasks. In this paper, we focus on a particular setting of learning adaptive prompts on the fly for each test sample from an unseen new domain, which is known as test-time prompt tuning (TPT). Existing TPT methods typically rely on data augmentation and confidence selection. However, conventional data augmentation techniques, e.g., random resized crops, suffers from the lack of data diversity, while entropy-based confidence selection alone is not sufficient to guarantee prediction fidelity. To address these issues, we propose a novel TPT method, named DiffTPT, which leverages pre-trained diffusion models to generate diverse and informative new data. Specifically, we incorporate augmented data by both conventional method and pre-trained stable diffusion to exploit their respective merits, improving the model\u2019s ability to adapt to unknown new test data. Moreover, to ensure the prediction fidelity of generated data, we introduce a cosine similarity-based filtration technique to select the generated data with higher similarity to the single test sample. Our experiments on test datasets with distribution shifts and unseen categories demonstrate that DiffTPT improves the zero-shot accuracy by an average of 5.13% compared to the state-of-the-art TPT method.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel TPT method, named DiffTPT, which leverages pre-trained diffusion models to generate diverse and informative new data, and incorporates augmented data by both conventional method and pre-trained stable diffusion to exploit their respective merits, improving the model\u2019s ability to adapt to unknown new test data."
+            },
+            "score": 5
+        },
+        {
+            "id": "4ed78e944e66ba306cb17ef4c7a6d4653db3a29f",
+            "paperId": "4ed78e944e66ba306cb17ef4c7a6d4653db3a29f",
+            "title": "Guiding Generative Language Models for Data Augmentation in Few-Shot Text Classification",
+            "abstract": "Data augmentation techniques are widely used for enhancing the performance of machine learning models by tackling class imbalance issues and data sparsity. State-of-the-art generative language models have been shown to provide significant gains across different NLP tasks. However, their applicability to data augmentation for text classification tasks in few-shot settings have not been fully explored, especially for specialised domains. In this paper, we leverage GPT-2 (Radford et al, 2019) for generating artificial training instances in order to improve classification performance. Our aim is to analyse the impact the selection process of seed training examples has over the quality of GPT-generated samples and consequently the classifier performance. We propose a human-in-the-loop approach for selecting seed samples. Further, we compare the approach to other seed selection strategies that exploit the characteristics of specialised domains such as human-created class hierarchical structure and the presence of noun phrases. Our results show that fine-tuning GPT-2 in a handful of label instances leads to consistent classification improvements and outperform competitive baselines. The seed selection strategies developed in this work lead to significant improvements over random seed selection for specialised domains. We show that guiding text generation through domain expert selection can lead to further improvements, which opens up interesting research avenues for combining generative models and active learning.",
+            "year": 2021,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a human-in-the-loop approach for selecting seed samples and shows that guiding text generation through domain expert selection can lead to further improvements, which opens up interesting research avenues for combining generative models and active learning."
+            },
+            "score": 5
+        },
+        {
+            "id": "c44ec5fe53b0349b7239ab1c08135f7cb0f1c96d",
+            "paperId": "c44ec5fe53b0349b7239ab1c08135f7cb0f1c96d",
+            "title": "Virtual Data Augmentation: A Robust and General Framework for Fine-tuning Pre-trained Models",
+            "abstract": "Recent works have shown that powerful pre-trained language models (PLM) can be fooled by small perturbations or intentional attacks. To solve this issue, various data augmentation techniques are proposed to improve the robustness of PLMs. However, it is still challenging to augment semantically relevant examples with sufficient diversity. In this work, we present Virtual Data Augmentation (VDA), a general framework for robustly fine-tuning PLMs. Based on the original token embeddings, we construct a multinomial mixture for augmenting virtual data embeddings, where a masked language model guarantees the semantic relevance and the Gaussian noise provides the augmentation diversity. Furthermore, a regularized training strategy is proposed to balance the two aspects. Extensive experiments on six datasets show that our approach is able to improve the robustness of PLMs and alleviate the performance degradation under adversarial attacks. Our codes and data are publicly available at bluehttps://github.com/RUCAIBox/VDA.",
+            "year": 2021,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work constructs a multinomial mixture for augmenting virtual data embeddings, where a masked language model guarantees the semantic relevance and the Gaussian noise provides the augmentation diversity."
+            },
+            "score": 5
+        },
+        {
+            "id": "319bf433a4a58a60742b480a0db444c86a55cd0d",
+            "paperId": "319bf433a4a58a60742b480a0db444c86a55cd0d",
+            "title": "Noise-Robust Fine-Tuning of Pretrained Language Models via External Guidance",
+            "abstract": "Adopting a two-stage paradigm of pretraining followed by fine-tuning, Pretrained Language Models (PLMs) have achieved substantial advancements in the field of natural language processing. However, in real-world scenarios, data labels are often noisy due to the complex annotation process, making it essential to develop strategies for fine-tuning PLMs with such noisy labels. To this end, we introduce an innovative approach for fine-tuning PLMs using noisy labels, which incorporates the guidance of Large Language Models (LLMs) like ChatGPT. This guidance assists in accurately distinguishing between clean and noisy samples and provides supplementary information beyond the noisy labels, thereby boosting the learning process during fine-tuning PLMs. Extensive experiments on synthetic and real-world noisy datasets further demonstrate the superior advantages of our framework over the state-of-the-art baselines.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An innovative approach for fine-tuning PLMs using noisy labels is introduced, which incorporates the guidance of Large Language Models (LLMs) like ChatGPT, which assists in accurately distinguishing between clean and noisy samples and provides supplementary information beyond the noisy labels, thereby boosting the learning process during fine- tuning PLMs."
+            },
+            "score": 5
+        },
+        {
+            "id": "29f032fc875576b5c3c6b1c2d76af8639bacfb88",
+            "paperId": "29f032fc875576b5c3c6b1c2d76af8639bacfb88",
+            "title": "OpenChat: Advancing Open-source Language Models with Mixed-Quality Data",
+            "abstract": "Nowadays, open-source large language models like LLaMA have emerged. Recent developments have incorporated supervised fine-tuning (SFT) and reinforcement learning fine-tuning (RLFT) to align these models with human goals. However, SFT methods treat all training data with mixed quality equally, while RLFT methods require high-quality pairwise or ranking-based preference data. In this study, we present a novel framework, named OpenChat, to advance open-source language models with mixed-quality data. Specifically, we consider the general SFT training data, consisting of a small amount of expert data mixed with a large proportion of sub-optimal data, without any preference labels. We propose the C(onditioned)-RLFT, which regards different data sources as coarse-grained reward labels and learns a class-conditioned policy to leverage complementary data quality information. Interestingly, the optimal policy in C-RLFT can be easily solved through single-stage, RL-free supervised learning, which is lightweight and avoids costly human preference labeling. Through extensive experiments on three standard benchmarks, our openchat-13b fine-tuned with C-RLFT achieves the highest average performance among all 13b open-source language models. Moreover, we use AGIEval to validate the model generalization performance, in which only openchat-13b surpasses the base model. Finally, we conduct a series of analyses to shed light on the effectiveness and robustness of OpenChat. Our code, data, and models are publicly available at https://github.com/imoneoi/openchat and https://huggingface.co/openchat.",
+            "year": 2023,
+            "citationCount": 87,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study presents a novel framework, named OpenChat, to advance open-source language models with mixed-quality data, and proposes the C(onditioned)-RLFT, which regards different data sources as coarse-grained reward labels and learns a class-conditioned policy to leverage complementary data quality information."
+            },
+            "score": 5
+        },
+        {
+            "id": "d2c55f9e96b432263523d34abbaf85cda469a9e1",
+            "paperId": "d2c55f9e96b432263523d34abbaf85cda469a9e1",
+            "title": "AttentionMix: Data augmentation method that relies on BERT attention mechanism",
+            "abstract": "The Mixup method has proven to be a powerful data augmentation technique in Computer Vision, with many successors that perform image mixing in a guided manner. One of the interesting research directions is transferring the underlying Mixup idea to other domains, e.g. Natural Language Processing (NLP). Even though there already exist several methods that apply Mixup to textual data, there is still room for new, improved approaches. In this work, we introduce AttentionMix, a novel mixing method that relies on attention-based information. While the paper focuses on the BERT attention mechanism, the proposed approach can be applied to generally any attention-based model. AttentionMix is evaluated on 3 standard sentiment classification datasets and in all three cases outperforms two benchmark approaches that utilize Mixup mechanism, as well as the vanilla BERT method. The results confirm that the attention-based information can be effectively used for data augmentation in the NLP domain.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 5
+        },
+        {
+            "id": "bdc53b2cd5fcfbcde1715cc84a923cc9a63ad524",
+            "paperId": "bdc53b2cd5fcfbcde1715cc84a923cc9a63ad524",
+            "title": "Data Augmentation with In-Context Learning and Comparative Evaluation in Math Word Problem Solving",
+            "abstract": null,
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study aims to provide MWP solvers with a more diverse training set, ultimately improving their ability to solve various math problems by introducing a new in-context learning augmentation method, employing the Llama-7b language model."
+            },
+            "score": 5
+        },
+        {
+            "id": "8f4b6acc298fcd8b6fbc85e78fbbb3d79cd8e0f4",
+            "paperId": "8f4b6acc298fcd8b6fbc85e78fbbb3d79cd8e0f4",
+            "title": "Enhancing Cross-lingual Prompting with Dual Prompt Augmentation",
+            "abstract": "Prompting shows promising results in few-shot scenarios. However, its strength for multilingual/cross-lingual problems has not been fully exploited. Zhao and Sch\\\"utze (2021) made initial explorations in this direction by presenting that cross-lingual prompting outperforms cross-lingual finetuning. In this paper, we conduct an empirical exploration on the effect of each component in cross-lingual prompting and derive language-agnostic Universal Prompting, which helps alleviate the discrepancies between source-language training and target-language inference. Based on this, we propose DPA, a dual prompt augmentation framework, aiming at relieving the data scarcity issue in few-shot cross-lingual prompting. Notably, for XNLI, our method achieves 46.54% with only 16 English training examples per class, significantly better than 34.99% of finetuning. Our code is available at https://github.com/DAMO-NLP-SG/DPA.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DPA is proposed, a dual prompt augmentation framework, aiming at relieving the data scarcity issue in few-shot cross-lingual prompting and derive language-agnostic Universal Prompting, which helps alleviate the discrepancies between source-language training and target-language inference."
+            },
+            "score": 5
+        },
+        {
+            "id": "ba07ecfc729d15265113dd514273e173be832d1f",
+            "paperId": "ba07ecfc729d15265113dd514273e173be832d1f",
+            "title": "Data Augmentation for Emotion Detection in Small Imbalanced Text Data",
+            "abstract": "Emotion recognition in text, the task of identifying emotions such as joy or anger, is a challenging problem in NLP with many applications. One of the challenges is the shortage of available datasets that have been annotated with emotions. Certain existing datasets are small, follow different emotion taxonomies and display imbalance in their emotion distribution. In this work, we studied the impact of data augmentation techniques precisely when applied to small imbalanced datasets, for which current state-of-the-art models (such as RoBERTa) under-perform. Specifically, we utilized four data augmentation methods (Easy Data Augmentation EDA, static and contextual Embedding-based, and ProtAugment) on three datasets that come from different sources and vary in size, emotion categories and distributions. Our experimental results show that using the augmented data when training the classifier model leads to significant improvements. Finally, we conducted two case studies: a) directly using the popular chat-GPT API to paraphrase text using different prompts, and b) using external data to augment the training set. Results show the promising potential of these methods.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work studied the impact of data augmentation techniques precisely when applied to small imbalanced datasets, for which current state-of-the-art models (such as RoBERTa) under-perform."
+            },
+            "score": 5
+        },
+        {
+            "id": "a262a68d9fd78ab9681a3edb7f855f8f63fc3e47",
+            "paperId": "a262a68d9fd78ab9681a3edb7f855f8f63fc3e47",
+            "title": "Leveraging Prompt and Top-K Predictions with ChatGPT Data Augmentation for Improved Relation Extraction",
+            "abstract": "Relation extraction tasks aim to predict the type of relationship between two entities from a given text. However, many existing methods fail to fully utilize the semantic information and the probability distribution of the output of pre-trained language models, and existing data augmentation approaches for natural language processing (NLP) may introduce errors. To address this issue, we propose a method that introduces prompt information and Top-K prediction sets and utilizes ChatGPT for data augmentation to improve relational classification model performance. First, we add prompt information before each sample and encode the modified samples by pre-training the language model RoBERTa and using these feature vectors to obtain the Top-K prediction set. We add a multi-attention mechanism to link the Top-K prediction set with the prompt information. We then reduce the possibility of introducing noise by bootstrapping ChatGPT so that it can better perform the data augmentation task and reduce subsequent unnecessary operations. Finally, we investigate the predefined relationship categories in the SemEval 2010 Task 8 dataset and the prediction results of the model and propose an entity location prediction task designed to assist the model in accurately determining the relative locations between entities. Experimental results indicate that our model achieves high results on the SemEval 2010 Task 8 dataset.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a method that introduces prompt information and Top-K prediction sets and utilizes ChatGPT for data augmentation to improve relational classification model performance and investigates the predefined relationship categories and prediction results of the model."
+            },
+            "score": 5
+        },
+        {
+            "id": "15dd43ded15e6dbf750278430bd822ee2d1b977f",
+            "paperId": "15dd43ded15e6dbf750278430bd822ee2d1b977f",
+            "title": "Large Language Models for Healthcare Data Augmentation: An Example on Patient-Trial Matching.",
+            "abstract": "The process of matching patients with suitable clinical trials is essential for advancing medical research and providing optimal care. However, current approaches face challenges such as data standardization, ethical considerations, and a lack of interoperability between Electronic Health Records (EHRs) and clinical trial criteria. In this paper, we explore the potential of large language models (LLMs) to address these challenges by leveraging their advanced natural language generation capabilities to improve compatibility between EHRs and clinical trial descriptions. We propose an innovative privacy-aware data augmentation approach for LLM-based patient-trial matching (LLM-PTM), which balances the benefits of LLMs while ensuring the security and confidentiality of sensitive patient data. Our experiments demonstrate a 7.32% average improvement in performance using the proposed LLM-PTM method, and the generalizability to new data is improved by 12.12%. Additionally, we present case studies to further illustrate the effectiveness of our approach and provide a deeper understanding of its underlying principles.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes an innovative privacy-aware data augmentation approach for LLM-based patient-trial matching (LLM-PTM), which balances the benefits of LLMs while ensuring the security and confidentiality of sensitive patient data."
+            },
+            "score": 4
+        },
+        {
+            "id": "8f72127459ade06831ec2990f7da4914cc1a6e22",
+            "paperId": "8f72127459ade06831ec2990f7da4914cc1a6e22",
+            "title": "Self-Knowledge Guided Retrieval Augmentation for Large Language Models",
+            "abstract": "Large language models (LLMs) have shown superior performance without task-specific fine-tuning. Despite the success, the knowledge stored in the parameters of LLMs could still be incomplete and difficult to update due to the computational costs. As complementary, retrieval-based methods can offer non-parametric world knowledge and improve the performance on tasks such as question answering. However, we find that the retrieved knowledge does not always help and even has a negative impact on original responses occasionally. To better make use of both internal knowledge and external world knowledge, we investigate eliciting the model's ability to recognize what they know and do not know (which is also called self-knowledge) and propose Self-Knowledge guided Retrieval augmentation (SKR), a simple yet effective method which can let LLMs refer to the questions they have previously encountered and adaptively call for external resources when dealing with new questions. We evaluate SKR on multiple datasets and demonstrate that it outperforms chain-of-thought based and fully retrieval-based methods by using either InstructGPT or ChatGPT.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-Knowledge guided Retrieval augmentation (SKR), a simple yet effective method which can let LLMs refer to the questions they have previously encountered and adaptively call for external resources when dealing with new questions, is proposed."
+            },
+            "score": 4
+        },
+        {
+            "id": "4e36db22808c1d677438137b10979a9279fb6c1f",
+            "paperId": "4e36db22808c1d677438137b10979a9279fb6c1f",
+            "title": "InPars: Data Augmentation for Information Retrieval using Large Language Models",
+            "abstract": "The information retrieval community has recently witnessed a revolution due to large pretrained transformer models. Another key ingredient for this revolution was the MS MARCO dataset, whose scale and diversity has enabled zero-shot transfer learning to various tasks. However, not all IR tasks and domains can benefit from one single dataset equally. Extensive research in various NLP tasks has shown that using domain-specific training data, as opposed to a general-purpose one, improves the performance of neural models. In this work, we harness the few-shot capabilities of large pretrained language models as synthetic data generators for IR tasks. We show that models finetuned solely on our unsupervised dataset outperform strong baselines such as BM25 as well as recently proposed self-supervised dense retrieval methods. Furthermore, retrievers finetuned on both supervised and our synthetic data achieve better zero-shot transfer than models finetuned only on supervised data. Code, models, and data are available at https://github.com/zetaalphavector/inpars .",
+            "year": 2022,
+            "citationCount": 47,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work harnesses the few-shot capabilities of large pretrained language models as synthetic data generators for IR tasks and shows that models finetuned solely on the authors' unsupervised dataset outperform strong baselines such as BM25 as well as recently proposed self-supervised dense retrieval methods."
+            },
+            "score": 4
+        },
+        {
+            "id": "25eba922c7076e1a8a0a86fd0eed2bfcdbe0bbc3",
+            "paperId": "25eba922c7076e1a8a0a86fd0eed2bfcdbe0bbc3",
+            "title": "AugESC: Large-scale Data Augmentation for Emotional Support Conversation with Pre-trained Language Models",
+            "abstract": "Crowd-sourcing is commonly adopted for dialog data collection. However, it is highly costly and time-consuming, and the collected data is limited in scale and topic coverage. In this paper, aiming to generate emotional support conversations, we propose exploiting large-scale pre-trained language models for data augmentation, and provide key \ufb01ndings in our pilot exploration. Our adopted approach leverages the 6B-parameter GPT-J model and utilizes publicly available dialog posts to trigger conversations on various topics. Then we construct A UG ESC 1 , a machine-augmented dataset for emotional support conversation. It is two orders of magnitude larger than the original ESConv dataset in scale, covers more diverse topics, and is shown to be of high quality by human evaluation. Lastly, we demonstrate with interactive evaluation that A UG ESC can further enhance dialog models tuned on ES-Conv to handle various conversation topics and to provide signi\ufb01cantly more effective emotional support.",
+            "year": 2022,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes exploiting large-scale pre-trained language models for data augmentation, and demonstrates with interactive evaluation that A UG ESC can further enhance dialog models tuned on ES-Conv to handle various conversation topics and to provide signi\ufb01cantly more effective emotional support."
+            },
+            "score": 4
+        },
+        {
+            "id": "1351a827a5039586a3b3e27865ab8ceda342a235",
+            "paperId": "1351a827a5039586a3b3e27865ab8ceda342a235",
+            "title": "LearnDA: Learnable Knowledge-Guided Data Augmentation for Event Causality Identification",
+            "abstract": "Modern models for event causality identification (ECI) are mainly based on supervised learning, which are prone to the data lacking problem. Unfortunately, the existing NLP-related augmentation methods cannot directly produce available data required for this task. To solve the data lacking problem, we introduce a new approach to augment training data for event causality identification, by iteratively generating new examples and classifying event causality in a dual learning framework. On the one hand, our approach is knowledge guided, which can leverage existing knowledge bases to generate well-formed new sentences. On the other hand, our approach employs a dual mechanism, which is a learnable augmentation framework, and can interactively adjust the generation process to generate task-related sentences. Experimental results on two benchmarks EventStoryLine and Causal-TimeBank show that 1) our method can augment suitable task-related training data for ECI; 2) our method outperforms previous methods on EventStoryLine and Causal-TimeBank (+2.5 and +2.1 points on F1 value respectively).",
+            "year": 2021,
+            "citationCount": 34,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a new approach to augment training data for event causality identification, by iteratively generating new examples and classifyingevent causality in a dual learning framework, which can leverage existing knowledge bases to generate well-formed new sentences."
+            },
+            "score": 4
+        },
+        {
+            "id": "3ebd251e5307e91adc009c0515ea5c8e3ef44344",
+            "paperId": "3ebd251e5307e91adc009c0515ea5c8e3ef44344",
+            "title": "AuGPT: Auxiliary Tasks and Data Augmentation for End-To-End Dialogue with Pre-Trained Language Models",
+            "abstract": "Attention-based pre-trained language models such as GPT-2 brought considerable progress to end-to-end dialogue modelling. However, they also present considerable risks for task-oriented dialogue, such as lack of knowledge grounding or diversity. To address these issues, we introduce modified training objectives for language model finetuning, and we employ massive data augmentation via back-translation to increase the diversity of the training data. We further examine the possibilities of combining data from multiples sources to improve performance on the target dataset. We carefully evaluate our contributions with both human and automatic methods. Our model substantially outperforms the baseline on the MultiWOZ data and shows competitive performance with state of the art in both automatic and human evaluation.",
+            "year": 2021,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces modified training objectives for language model finetuning, and employs massive data augmentation via back-translation to increase the diversity of the training data and examines the possibilities of combining data from multiples sources to improve performance on the target dataset."
+            },
+            "score": 4
+        },
+        {
+            "id": "87424eafa76cbb071eca5283bd5d6e3d81dbf685",
+            "paperId": "87424eafa76cbb071eca5283bd5d6e3d81dbf685",
+            "title": "AuGPT: Dialogue with Pre-trained Language Models and Data Augmentation",
+            "abstract": "Attention-based pre-trained language models such as GPT-2 brought considerable progress to end-to-end dialogue modelling. However, they also present considerable risks for task-oriented dialogue, such as lack of knowledge grounding or diversity. To address these issues, we introduce modi\ufb01ed training objectives for language model \ufb01netuning, and we employ massive data augmentation via back-translation to increase the diversity of the training data. We further examine the possibilities of combining data from multiples sources to improve performance on the target dataset. We carefully evaluate our contributions with both human and automatic methods. Our model achieves state-of-the-art performance on the MultiWOZ data and shows competitive performance in human evaluation.",
+            "year": 2021,
+            "citationCount": 26,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces modi\ufb01ed training objectives for language model netuning, and employs massive data augmentation via back-translation to increase the diversity of the training data and achieves state-of-the-art performance on the MultiWOZ data and shows competitive performance in human evaluation."
+            },
+            "score": 4
+        },
+        {
+            "id": "5088a04d1a9f42b967f3dcf791145e8aa367fc54",
+            "paperId": "5088a04d1a9f42b967f3dcf791145e8aa367fc54",
+            "title": "How Abilities in Large Language Models are Affected by Supervised Fine-tuning Data Composition",
+            "abstract": "Large language models (LLMs) with enormous pre-training tokens and parameters emerge diverse abilities, including math reasoning, code generation, and instruction following. These abilities are further enhanced by supervised fine-tuning (SFT). While the open-source community has explored ad-hoc SFT for enhancing individual capabilities, proprietary LLMs exhibit versatility across various skills. Therefore, understanding the facilitation of multiple abilities via SFT is paramount. In this study, we specifically focuses on the interplay of data composition between mathematical reasoning, code generation, and general human-aligning abilities during SFT. We propose four intriguing research questions to explore the association between model performance and various factors including data amount, composition ratio, model size and SFT strategies. Our experiments reveal that distinct capabilities scale differently and larger models generally show superior performance with same amount of data. Mathematical reasoning and code generation consistently improve with increasing data amount, whereas general abilities plateau after roughly a thousand samples. Moreover, we observe data composition appears to enhance various abilities under limited data conditions, yet can lead to performance conflicts when data is plentiful. Our findings also suggest the amount of composition data influences performance more than the composition ratio. In analysis of SFT strategies, we find that sequentially learning multiple skills risks catastrophic forgetting. Our proposed Dual-stage Mixed Fine-tuning (DMT) strategy offers a promising solution to learn multiple abilities with different scaling patterns.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study focuses on the interplay of data composition between mathematical reasoning, code generation, and general human-aligning abilities during SFT, and suggests the amount of composition data influences performance more than the composition ratio."
+            },
+            "score": 4
+        },
+        {
+            "id": "ed4e9c26f15fbb72c512aaf74e74b3495872591d",
+            "paperId": "ed4e9c26f15fbb72c512aaf74e74b3495872591d",
+            "title": "PAC-tuning: Fine-tuning Pretrained Language Models with PAC-driven Perturbed Gradient Descent",
+            "abstract": "Fine-tuning pretrained language models (PLMs) for downstream tasks is a large-scale optimization problem, in which the choice of the training algorithm critically determines how well the trained model can generalize to unseen test data, especially in the context of few-shot learning. To achieve good generalization performance and avoid overfitting, techniques such as data augmentation and pruning are often applied. However, adding these regularizations necessitates heavy tuning of the hyperparameters of optimization algorithms, such as the popular Adam optimizer. In this paper, we propose a two-stage fine-tuning method, PAC-tuning, to address this optimization challenge. First, based on PAC-Bayes training, PAC-tuning directly minimizes the PAC-Bayes generalization bound to learn proper parameter distribution. Second, PAC-tuning modifies the gradient by injecting noise with the variance learned in the first stage into the model parameters during training, resulting in a variant of perturbed gradient descent (PGD). In the past, the few-shot scenario posed difficulties for PAC-Bayes training because the PAC-Bayes bound, when applied to large models with limited training data, might not be stringent. Our experimental results across 5 GLUE benchmark tasks demonstrate that PAC-tuning successfully handles the challenges of fine-tuning tasks and outperforms strong baseline methods by a visible margin, further confirming the potential to apply PAC training for any other settings where the Adam optimizer is currently used for training.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results across 5 GLUE benchmark tasks demonstrate that PAC-tuning successfully handles the challenges of fine- Tuning tasks and outperforms strong baseline methods by a visible margin, further confirming the potential to apply PAC training for any other settings where the Adam optimizer is currently used for training."
+            },
+            "score": 4
+        },
+        {
+            "id": "d4fb836846b79d8692df8bf54d20d1a9d02ffe7d",
+            "paperId": "d4fb836846b79d8692df8bf54d20d1a9d02ffe7d",
+            "title": "Debiasing Pre-Trained Language Models via Efficient Fine-Tuning",
+            "abstract": "An explosion in the popularity of transformer-based language models (such as GPT-3, BERT, RoBERTa, and ALBERT) has opened the doors to new machine learning applications involving language modeling, text generation, and more. However, recent scrutiny reveals that these language models contain inherent biases towards certain demographics reflected in their training data. While research has tried mitigating this problem, existing approaches either fail to remove the bias completely, degrade performance (\u201ccatastrophic forgetting\u201d), or are costly to execute. This work examines how to reduce gender bias in a GPT-2 language model by fine-tuning less than 1% of its parameters. Through quantitative benchmarks, we show that this is a viable way to reduce prejudice in pre-trained language models while remaining cost-effective at scale.",
+            "year": 2022,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work examines how to reduce gender bias in a GPT-2 language model by fine-tuning less than 1% of its parameters and shows that this is a viable way to reduce prejudice in pre-trained language models while remaining cost-effective at scale."
+            },
+            "score": 4
+        },
+        {
+            "id": "0744580e75a74357e466a57082c85cb42f548aa9",
+            "paperId": "0744580e75a74357e466a57082c85cb42f548aa9",
+            "title": "The CoT Collection: Improving Zero-shot and Few-shot Learning of Language Models via Chain-of-Thought Fine-Tuning",
+            "abstract": "Language models (LMs) with less than 100B parameters are known to perform poorly on chain-of-thought (CoT) reasoning in contrast to large LMs when solving unseen tasks. In this work, we aim to equip smaller LMs with the step-by-step reasoning capability by instruction tuning with CoT rationales. In order to achieve this goal, we first introduce a new instruction-tuning dataset called the CoT Collection, which augments the existing Flan Collection (including only 9 CoT tasks) with additional 1.84 million rationales across 1,060 tasks. We show that CoT fine-tuning Flan-T5 (3B&11B) with CoT Collection enables smaller LMs to have better CoT capabilities on unseen tasks. On the BIG-Bench-Hard (BBH) benchmark, we report an average improvement of +4.34% (Flan-T5 3B) and +2.60% (Flan-T5 11B), in terms of zero-shot task accuracy. Furthermore, we show that instruction tuning with CoT Collection allows LMs to possess stronger few-shot learning capabilities on 4 domain-specific tasks, resulting in an improvement of +2.24% (Flan-T5 3B) and +2.37% (Flan-T5 11B), even outperforming ChatGPT utilizing demonstrations until the max length by a +13.98% margin. Our code, the CoT Collection data, and model checkpoints are publicly available.",
+            "year": 2023,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a new instruction-tuning dataset called the CoT Collection, which augments the existing Flan Collection with additional 1.84 million rationales across 1,060 tasks, and shows that instruction tuning with coT Collection allows LMs to possess stronger few-shot learning capabilities on 4 domain-specific tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "82a78fabbf92f9d5477fa8a044272c2766411b43",
+            "paperId": "82a78fabbf92f9d5477fa8a044272c2766411b43",
+            "title": "Dual Uncertainty-Guided Mixing Consistency for Semi-Supervised 3D Medical Image Segmentation",
+            "abstract": "3D semi-supervised medical image segmentation is extremely essential in computer-aided diagnosis, which can reduce the time-consuming task of performing annotation. The challenges with current 3D semi-supervised segmentation algorithms includes the methods, limited attention to volume-wise context information, their inability to generate accurate pseudo labels and a failure to capture important details during data augmentation. This article proposes a dual uncertainty-guided mixing consistency network for accurate 3D semi-supervised segmentation, which can solve the above challenges. The proposed network consists of a Contrastive Training Module which improves the quality of augmented images by retaining the invariance of data augmentation between original data and their augmentations. The Dual Uncertainty Strategy calculates dual uncertainty between two different models to select a more confident area for subsequent segmentation. The Mixing Volume Consistency Module that guides the consistency between mixing before and after segmentation for final segmentation, uses dual uncertainty and can fully learn volume-wise context information. Results from evaluative experiments on brain tumor and left atrial segmentation shows that the proposed method outperforms state-of-the-art 3D semi-supervised methods as confirmed by quantitative and qualitative analysis on datasets. This effectively demonstrates that this study has the potential to become a medical tool for accurate segmentation. Code is available at: https://github.com/yang6277/DUMC.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results from evaluative experiments on brain tumor and left atrial segmentation shows that the proposed method outperforms state-of-the-art 3D semi-supervised methods as confirmed by quantitative and qualitative analysis on datasets, demonstrating that this study has the potential to become a medical tool for accurate segmentation."
+            },
+            "score": 4
+        },
+        {
+            "id": "8e8c49391435e9801699d4729b4504ea9c18979f",
+            "paperId": "8e8c49391435e9801699d4729b4504ea9c18979f",
+            "title": "UCC: Uncertainty guided Cross-head Cotraining for Semi-Supervised Semantic Segmentation",
+            "abstract": "Deep neural networks (DNNs) have witnessed great successes in semantic segmentation, which requires a large number of labeled data for training. We present a novel learning framework called Uncertainty guided Cross-head Cotraining (UCC) for semi-supervised semantic segmentation. Our framework introduces weak and strong augmentations within a shared encoder to achieve cotraining, which naturally combines the benefits of consistency and self-training. Every segmentation head interacts with its peers and, the weak augmentation result is used for supervising the strong. The consistency training samples' diversity can be boosted by Dynamic Cross-Set Copy-Paste (DCSCP), which also alleviates the distribution mismatch and class imbalance problems. Moreover, our proposed Uncertainty Guided Re-weight Module (UGRM) enhances the self-training pseudo labels by suppressing the effect of the low-quality pseudo labels from its peer via modeling uncertainty. Extensive experiments on Cityscapes and PASCAL VOC 2012 demonstrate the effectiveness of our UCC. Our approach significantly outperforms other state-of-the-art semi-supervised semantic segmentation methods. It achieves 77.17%, 76.49% mIoU on Cityscapes and PASCAL VOC 2012 datasets respectively under 1/16 protocols, which are + 10.1%, + 7.91% better than the supervised baseline.",
+            "year": 2022,
+            "citationCount": 30,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel learning framework called Uncertainty guided Cross-head Cotraining (UCC) for semi-supervised semantic segmentation, which introduces weak and strong augmentations within a shared encoder to achieve cotraining, which naturally combines the benefits of consistency and self-training."
+            },
+            "score": 4
+        },
+        {
+            "id": "fa3e3507111d3ecfc37b68598858d697efade090",
+            "paperId": "fa3e3507111d3ecfc37b68598858d697efade090",
+            "title": "Weakly Supervised Temporal Sentence Grounding with Uncertainty-Guided Self-training",
+            "abstract": "The task of weakly supervised temporal sentence grounding aims at finding the corresponding temporal moments of a language description in the video, given video-language correspondence only at video-level. Most existing works select mismatched video-language pairs as negative samples and train the model to generate better positive proposals that are distinct from the negative ones. However, due to the complex temporal structure of videos, proposals distinct from the negative ones may correspond to several video segments but not necessarily the correct ground truth. To alleviate this problem, we propose an uncertainty-guided self-training technique to provide extra self-supervision signal to guide the weakly-supervised learning. The self-training process is based on teacher-student mutual learning with weak-strong augmentation, which enables the teacher network to generate relatively more reliable outputs compared to the student network, so that the student network can learn from the teacher's output. Since directly applying existing self-training methods in this task easily causes error accumulation, we specifically design two techniques in our selftraining method: (1) we construct a Bayesian teacher network, leveraging its uncertainty as a weight to suppress the noisy teacher supervisory signals; (2) we leverage the cycle consistency brought by temporal data augmentation to perform mutual learning between the two networks. Experiments demonstrate our method's superiority on Charades-STA and ActivityNet Captions datasets. We also show in the experiment that our self-training method can be applied to improve the performance of multiple backbone methods.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work designs a Bayesian teacher network, leveraging its uncertainty as a weight to suppress the noisy teacher supervisory signals, and leverages the cycle consistency brought by temporal data augmentation to perform mutual learning between the two networks."
+            },
+            "score": 4
+        },
+        {
+            "id": "afd06b32754faacd556c9666df2d04a7cfbf1aa1",
+            "paperId": "afd06b32754faacd556c9666df2d04a7cfbf1aa1",
+            "title": "Facial Expression Guided Diagnosis of Parkinson's Disease via High-Quality Data Augmentation",
+            "abstract": "Parkinson's disease (PD) is a neurodegenerative disease which is prevalent among the elder population and severely affects the life quality of patients and their families. Therefore, it is important to conduct an early diagnosis for potential patients with PD, so as to promote prompt treatment and avoid the aggravation of the disease. Recently, the in-vitro PD diagnosis based on facial expressions has received increasing attention because of its distinguishability (i.e., PD patients always possess the characteristics of \u201cmasked face\u201d) and affordability. However, the performance of the existing facial expression-based PD diagnosis approaches is limited by: 1) the small-scale training data on PD patients' facial expressions, and 2) the weak prediction model. To address these two problems, we propose a new facial expression guided PD diagnosis method based on high-quality training data augmentation and deep neural network prediction. Specifically, the proposed method consists of three stages: Firstly, we synthesize virtual facial expression images with 6 basic emotions (i.e., anger, disgust, fear, happiness, sadness, and surprise) based on multi-domain adversarial learning to approximate the premorbid expressions of PD patients. Secondly, we introduce three facial image quality assessment (FIQA) criteria to measure the quality of these synthesized facial expression images and design a fusion screening strategy that shortlists the high-quality ones to augment the training data. Finally, we train a deep neural network prediction model based on the original and synthesized high-quality facial expression images for PD diagnosis. To show real-world impacts and evaluate the proposed method under different facial expressions, we also create a (currently largest) multiple facial expressions-based PD face dataset in collaboration with a hospital. Extensive experiments are performed to demonstrate the effectiveness of the multi-domain adversarial learning-based facial expression synthesis and the fusion screening strategy, particularly the superior performance of the proposed method for PD diagnosis.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new facial expression guided PD diagnosis method based on high-quality training data augmentation and deep neural network prediction based on multi-domain adversarial learning based on facial expression synthesis and the fusion screening strategy is proposed."
+            },
+            "score": 4
+        },
+        {
+            "id": "ab093ae44a6fe2327addf27b6594d3fd2938da0a",
+            "paperId": "ab093ae44a6fe2327addf27b6594d3fd2938da0a",
+            "title": "Cap2Aug: Caption guided Image to Image data Augmentation",
+            "abstract": "Visual recognition in a low-data regime is challenging and often prone to overfitting. To mitigate this issue, several data augmentation strategies have been proposed. However, standard transformations, e.g., rotation, cropping, and flipping provide limited semantic variations. To this end, we propose Cap2Aug, an image-to-image diffusion model-based data augmentation strategy using image captions as text prompts. We generate captions from the limited training images and using these captions edit the training images using an image-to-image stable diffusion model to generate semantically meaningful augmentations. This strategy generates augmented versions of images similar to the training images yet provides semantic diversity across the samples. We show that the variations within the class can be captured by the captions and then translated to generate diverse samples using the image-to-image diffusion model guided by the captions. However, naive learning on synthetic images is not adequate due to the domain gap between real and synthetic images. Thus, we employ a maximum mean discrepancy (MMD) loss to align the synthetic images to the real images for minimizing the domain gap. We evaluate our method on few-shot and long-tail classification tasks and obtain performance improvements over state-of-the-art, especially in the low-data regimes.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Cap2Aug, an image-to-image diffusion model-based data augmentation strategy using image captions as text prompts, is proposed, which generates augmented versions of images similar to the training images yet provides semantic diversity across the samples."
+            },
+            "score": 4
+        },
+        {
+            "id": "69c14fe221afdfd180e45ad826f7f50f28a3f514",
+            "paperId": "69c14fe221afdfd180e45ad826f7f50f28a3f514",
+            "title": "Horses to Zebras: Ontology-Guided Data Augmentation and Synthesis for ICD-9 Coding",
+            "abstract": "Medical document coding is the process of assigning labels from a structured label space (ontology \u2013 e.g., ICD-9) to medical documents. This process is laborious, costly, and error-prone. In recent years, efforts have been made to automate this process with neural models. The label spaces are large (in the order of thousands of labels) and follow a big-head long-tail label distribution, giving rise to few-shot and zero-shot scenarios. Previous efforts tried to address these scenarios within the model, leading to improvements on rare labels, but worse results on frequent ones. We propose data augmentation and synthesis techniques in order to address these scenarios. We further introduce an analysis technique for this setting inspired by confusion matrices. This analysis technique points to the positive impact of data augmentation and synthesis, but also highlights more general issues of confusion within families of codes, and underprediction.",
+            "year": 2022,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An analysis technique for this setting inspired by confusion matrices is introduced that points to the positive impact of data augmentation and synthesis, but also highlights more general issues of confusion within families of codes, and underprediction."
+            },
+            "score": 3
+        },
+        {
+            "id": "662b16cf6b212ec73f3508f6666ab89510c84428",
+            "paperId": "662b16cf6b212ec73f3508f6666ab89510c84428",
+            "title": "Team:PULSAR at ProbSum 2023:PULSAR: Pre-training with Extracted Healthcare Terms for Summarising Patients\u2019 Problems and Data Augmentation with Black-box Large Language Models",
+            "abstract": "Medical progress notes play a crucial role in documenting a patient\u2019s hospital journey, including his or her condition, treatment plan, and any updates for healthcare providers. Automatic summarisation of a patient\u2019s problems in the form of a \u201cproblem list\u201d can aid stakeholders in understanding a patient\u2019s condition, reducing workload and cognitive bias. BioNLP 2023 Shared Task 1A focusses on generating a list of diagnoses and problems from the provider\u2019s progress notes during hospitalisation. In this paper, we introduce our proposed approach to this task, which integrates two complementary components. One component employs large language models (LLMs) for data augmentation; the other is an abstractive summarisation LLM with a novel pre-training objective for generating the patients\u2019 problems summarised as a list. Our approach was ranked second among all submissions to the shared task. The performance of our model on the development and test datasets shows that our approach is more robust on unknown data, with an improvement of up to 3.1 points over the same size of the larger model.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed approach to this task, which integrates two complementary components, employs large language models (LLMs) for data augmentation; the other is an abstractive summarisation LLM with a novel pre-training objective for generating the patients\u2019 problems summarised as a list."
+            },
+            "score": 3
+        },
+        {
+            "id": "a390f26af171e784c15329847dd4a5e9806e15fa",
+            "paperId": "a390f26af171e784c15329847dd4a5e9806e15fa",
+            "title": "Logic-Guided Data Augmentation and Regularization for Consistent Question Answering",
+            "abstract": "Many natural language questions require qualitative, quantitative or logical comparisons between two entities or events. This paper addresses the problem of improving the accuracy and consistency of responses to comparison questions by integrating logic rules and neural models. Our method leverages logical and linguistic knowledge to augment labeled training data and then uses a consistency-based regularizer to train the model. Improving the global consistency of predictions, our approach achieves large improvements over previous methods in a variety of question answering (QA) tasks, including multiple-choice qualitative reasoning, cause-effect reasoning, and extractive machine reading comprehension. In particular, our method significantly improves the performance of RoBERTa-based models by 1-5% across datasets. We advance state of the art by around 5-8% on WIQA and QuaRel and reduce consistency violations by 58% on HotpotQA. We further demonstrate that our approach can learn effectively from limited data.",
+            "year": 2020,
+            "citationCount": 95,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper addresses the problem of improving the accuracy and consistency of responses to comparison questions by integrating logic rules and neural models by leveraging logical and linguistic knowledge to augment labeled training data and then uses a consistency-based regularizer to train the model."
+            },
+            "score": 3
+        },
+        {
+            "id": "5aa3b1009955ce2c8f896e0d5e94e06155ef1e43",
+            "paperId": "5aa3b1009955ce2c8f896e0d5e94e06155ef1e43",
+            "title": "LLMRec: Large Language Models with Graph Augmentation for Recommendation",
+            "abstract": "The problem of data sparsity has long been a challenge in recommendation systems, and previous studies have attempted to address this issue by incorporating side information. However, this approach often introduces side effects such as noise, availability issues, and low data quality, which in turn hinder the accurate modeling of user preferences and adversely impact recommendation performance. In light of the recent advancements in large language models (LLMs), which possess extensive knowledge bases and strong reasoning capabilities, we propose a novel framework called LLMRec that enhances recommender systems by employing three simple yet effective LLM-based graph augmentation strategies. Our approach leverages the rich content available within online platforms (e.g., Netflix, MovieLens) to augment the interaction graph in three ways: (i) reinforcing user-item interaction egde, (ii) enhancing the understanding of item node attributes, and (iii) conducting user node profiling, intuitively from the natural language perspective. By employing these strategies, we address the challenges posed by sparse implicit feedback and low-quality side information in recommenders. Besides, to ensure the quality of the augmentation, we develop a denoised data robustification mechanism that includes techniques of noisy implicit feedback pruning and MAE-based feature enhancement that help refine the augmented data and improve its reliability. Furthermore, we provide theoretical analysis to support the effectiveness of LLMRec and clarify the benefits of our method in facilitating model optimization. Experimental results on benchmark datasets demonstrate the superiority of our LLM-based augmentation approach over state-of-the-art techniques. To ensure reproducibility, we have made our code and augmented data publicly available at: https://github.com/HKUDS/LLMRec.git",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework called LLMRec is proposed that enhances recommender systems by employing three simple yet effective LLM-based graph augmentation strategies and develops a denoised data robustification mechanism that includes techniques of noisy implicit feedback pruning and MAE-based feature enhancement that help refine the augmented data and improve its reliability."
+            },
+            "score": 3
+        },
+        {
+            "id": "bdb68c5e2369633b20e733774ac66eb4600c34d1",
+            "paperId": "bdb68c5e2369633b20e733774ac66eb4600c34d1",
+            "title": "LLM-Adapters: An Adapter Family for Parameter-Efficient Fine-Tuning of Large Language Models",
+            "abstract": "The success of large language models (LLMs), like GPT-4 and ChatGPT, has led to the development of numerous cost-effective and accessible alternatives that are created by finetuning open-access LLMs with task-specific data (e.g., ChatDoctor) or instruction data (e.g., Alpaca). Among the various fine-tuning methods, adapter-based parameter-efficient fine-tuning (PEFT) is undoubtedly one of the most attractive topics, as it only requires fine-tuning a few external parameters instead of the entire LLMs while achieving comparable or even better performance. To enable further research on PEFT methods of LLMs, this paper presents LLM-Adapters, an easy-to-use framework that integrates various adapters into LLMs and can execute these adapter-based PEFT methods of LLMs for different tasks. The framework includes state-of-the-art open-access LLMs such as LLaMA, BLOOM, and GPT-J, as well as widely used adapters such as Series adapters, Parallel adapter, Prompt-based learning and Reparametrization-based methods. Moreover, we conduct extensive empirical studies on the impact of adapter types, placement locations, and hyper-parameters to the best design for each adapter-based methods. We evaluate the effectiveness of the adapters on fourteen datasets from two different reasoning tasks, Arithmetic Reasoning and Commonsense Reasoning. The results demonstrate that using adapter-based PEFT in smaller-scale LLMs (7B) with few extra trainable parameters yields comparable, and in some cases superior, performance to powerful LLMs (175B) in zero-shot inference on both reasoning tasks.",
+            "year": 2023,
+            "citationCount": 65,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLM-Adapters is presented, an easy-to-use framework that integrates various adapters into LLMs and can execute these adapter-based PEFT methods of LLMs for different tasks, demonstrating that using adapter- based PEFT in smaller-scale LLMs with few extra trainable parameters yields comparable, and in some cases superior, performance to powerful LLMs in zero-shot inference on both reasoning tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "5d74263a6e7dc7c69a06e1a28521dc542d30963d",
+            "paperId": "5d74263a6e7dc7c69a06e1a28521dc542d30963d",
+            "title": "TALP-UPC at ProbSum 2023: Fine-tuning and Data Augmentation Strategies for NER",
+            "abstract": "This paper describes the submission of the TALP-UPC team to the Problem List Summarization task from the BioNLP 2023 workshop. This task consists of automatically extracting a list of health issues from the e-health medical record of a given patient. Our submission combines additional steps of data annotationwith finetuning of BERT pre-trained language models. Our experiments focus on the impact of finetuning on different datasets as well as the addition of data augmentation techniques to delay overfitting.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper describes the submission of the TALP-UPC team to the Problem List Summarization task from the BioNLP 2023 workshop, which combines additional steps of data annotation with finetuning of BERT pre-trained language models."
+            },
+            "score": 3
+        },
+        {
+            "id": "45872b94798c3125abfb185b7926689c5e767763",
+            "paperId": "45872b94798c3125abfb185b7926689c5e767763",
+            "title": "GraphGPT: Graph Instruction Tuning for Large Language Models",
+            "abstract": "Graph Neural Networks (GNNs) have advanced graph structure understanding via recursive information exchange and aggregation among graph nodes. To improve model robustness, self-supervised learning (SSL) has emerged as a promising approach for data augmentation. However, existing methods for generating pre-trained graph embeddings often rely on fine-tuning with specific downstream task labels, which limits their usability in scenarios where labeled data is scarce or unavailable. To address this, our research focuses on advancing the generalization capabilities of graph models in challenging zero-shot learning scenarios. Inspired by the success of large language models (LLMs), we aim to develop a graph-oriented LLM that can achieve high generalization across diverse downstream datasets and tasks, even without any information available from the downstream graph data. In this work, we present the GraphGPT framework that aligns LLMs with graph structural knowledge with a graph instruction tuning paradigm. Our framework incorporates a text-graph grounding component to establish a connection between textual information and graph structures. Additionally, we propose a dual-stage instruction tuning paradigm, accompanied by a lightweight graph-text alignment projector. This paradigm explores self-supervised graph structural signals and task-specific graph instructions, to guide LLMs in understanding complex graph structures and improving their adaptability across different downstream tasks. Our framework is evaluated on supervised and zero-shot graph learning tasks, demonstrating superior generalization and outperforming state-of-the-art baselines.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The GraphGPT framework is presented, which combines a text-graph grounding component to establish a connection between textual information and graph structures, and a dual-stage instruction tuning paradigm, accompanied by a lightweight graph-text alignment projector, that explores self-supervised graph structural signals and task-specific graph instructions."
+            },
+            "score": 3
+        },
+        {
+            "id": "457b945ad7868b674222791d699f933be6fca58e",
+            "paperId": "457b945ad7868b674222791d699f933be6fca58e",
+            "title": "Privacy-Preserving Federated Learning through Clustered Sampling on Fine-Tuning Distributed non-iid Large Language Models",
+            "abstract": "Recently, Large Language Models (LLMs) have been a phenomenal trend in the Artificial intelligence field. However, training and fine-tuning can be challenging because of privacy concerns and limited computing resources. Federated Learning (FL) has emerged as a novel machine learning framework offering privacy protection. The challenges in applying FL to real-world applications include dealing with heterogeneous data, poor client updates, and client selection. This paper introduces Privacy-preserving Federated Learning through Clustered Sampling on LLMs (FCLM), a framework that clusters models by their distribution similarity. It helps the model group similar models to improve text data heterogeneity handling and privacy concerns in distributed machine-learning environments. The FCLM framework is implemented and evaluated using popular Language models and text data. The framework shows a robust performance over the heterogeneous text data, which can further extend to the use of more complex LLMs.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Privacy-preserving Federated Learning through Clustered Sampling on LLMs (FCLM), a framework that clusters models by their distribution similarity to improve text data heterogeneity handling and privacy concerns in distributed machine-learning environments is introduced."
+            },
+            "score": 3
+        },
+        {
+            "id": "aa9cda8e13dc60bde7531245c3d878bec8fdccad",
+            "paperId": "aa9cda8e13dc60bde7531245c3d878bec8fdccad",
+            "title": "Prompt-Tuning Can Be Much Better Than Fine-Tuning on Cross-lingual Understanding With Multilingual Language Models",
+            "abstract": "Pre-trained multilingual language models show significant performance gains for zero-shot cross-lingual model transfer on a wide range of natural language understanding (NLU) tasks. Previously, for zero-shot cross-lingual evaluation, pre-trained models are only fine-tuned on English data and tested on a variety of target languages. In this paper, we do cross-lingual evaluation on various NLU tasks (sentence classification, sequence labeling, question answering) using prompt-tuning and compare it with fine-tuning. The results show that prompt tuning achieves much better cross-lingual transfer than fine-tuning across datasets, with only 0.1% to 0.3% tuned parameters. Additionally, we demonstrate through the analysis that prompt tuning can have better cross-lingual transferability of representations on downstream tasks with better aligned decision boundaries.",
+            "year": 2022,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 3
+        },
+        {
+            "id": "31bb493c4d3286562a5cbadce439bb591ba65d53",
+            "paperId": "31bb493c4d3286562a5cbadce439bb591ba65d53",
+            "title": "Toward Unified Data and Algorithm Fairness via Adversarial Data Augmentation and Adaptive Model Fine-tuning",
+            "abstract": "There is some recent research interest in algorithmic fairness for biased data. There are a variety of pre-, in-, and post-processing methods designed for this problem. However, these methods are exclusively targeting data unfairness and algorithmic unfairness. In this paper, we propose a novel intra-processing method to broaden the application scenario of fairness methods, which can simultaneously address the two bias sources. Since training modern deep models from scratch is expensive due to the enormous training data and the complicated structures, we propose an augmentation and fine-tuning framework. First, we design an adversarial attack to generate weighted samples disentangled with the protected attribute. Next, we identify the fair sub-structure in the biased model and fine-tune the model via weight reactivation. At last, we provide an optional joint training scheme for the augmentation and the fine-tuning. Our method can be combined with a variety of fairness measures. We benchmark our method and some related baselines to show the advantage and the scalability. Experimental results on several standard datasets demonstrate that our approach can effectively learn fair augmentation and achieve superior results to the state-of-the-art baselines. Our method also generalizes well to different types of data.",
+            "year": 2022,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results demonstrate that the proposed novel intra-processing method can effectively learn fair augmentation and achieve superior results to the state-of-the-art baselines and generalizes well to different types of data."
+            },
+            "score": 3
+        },
+        {
+            "id": "a3e0b5d252d3f2937f353586cf20ab5e26cf443e",
+            "paperId": "a3e0b5d252d3f2937f353586cf20ab5e26cf443e",
+            "title": "Output Feedback Tube MPC-Guided Data Augmentation for Robust, Efficient Sensorimotor Policy Learning",
+            "abstract": "Imitation learning (IL) can generate computationally efficient sensorimotor policies from demonstrations provided by computationally expensive model-based sensing and control algorithms. However, commonly employed IL methods are often data-inefficient, requiring the collection of a large number of demonstrations and producing policies with limited robustness to uncertainties. In this work, we combine IL with an output feedback robust tube model predictive controller (RTMPC) to co-generate demonstrations and a data augmentation strategy to efficiently learn neural network-based sensorimotor policies. Thanks to the augmented data, we reduce the computation time and the number of demonstrations needed by IL, while providing robustness to sensing and process uncertainty. We tailor our approach to the task of learning a trajectory tracking visuomotor policy for an aerial robot, leveraging a 3D mesh of the environment as part of the data augmentation process. We numerically demonstrate that our method can learn a robust visuomotor policy from a single demonstration\u2014a two-orders of magnitude improvement in demonstration efficiency compared to existing IL methods.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work combines IL with an output feedback robust tube model predictive controller (RTMPC) to co-generate demonstrations and a data augmentation strategy to efficiently learn neural network-based sensorimotor policies and numerically demonstrates that this method can learn a robust visuomotor policy from a single demonstration."
+            },
+            "score": 3
+        },
+        {
+            "id": "4b2c7a42b06f35e5a3ea7bc2c89837afd927bf29",
+            "paperId": "4b2c7a42b06f35e5a3ea7bc2c89837afd927bf29",
+            "title": "Tube-NeRF: Efficient Imitation Learning of Visuomotor Policies from MPC using Tube-Guided Data Augmentation and NeRFs",
+            "abstract": "Imitation learning (IL) can train computationally-efficient sensorimotor policies from a resource-intensive Model Predictive Controller (MPC), but it often requires many samples, leading to long training times or limited robustness. To address these issues, we combine IL with a variant of robust MPC that accounts for process and sensing uncertainties, and we design a data augmentation (DA) strategy that enables efficient learning of vision-based policies. The proposed DA method, named Tube-NeRF, leverages Neural Radiance Fields (NeRFs) to generate novel synthetic images, and uses properties of the robust MPC (the tube) to select relevant views and to efficiently compute the corresponding actions. We tailor our approach to the task of localization and trajectory tracking on a multirotor, by learning a visuomotor policy that generates control actions using images from the onboard camera as only source of horizontal position. Numerical evaluations show 80-fold increase in demonstration efficiency and a 50% reduction in training time over current IL methods. Additionally, our policies successfully transfer to a real multirotor, achieving low tracking errors despite large disturbances, with an onboard inference time of only 1.5 ms. Video: https://youtu.be/_W5z33ZK1m4",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed DA method, named Tube-NeRF, leverages Neural Radiance Fields (NeRFs) to generate novel synthetic images, and uses properties of the robust MPC (the tube) to select relevant views and to efficiently compute the corresponding actions."
+            },
+            "score": 3
+        },
+        {
+            "id": "2581e491a9950d9be54b5ed274cccf2a644de75e",
+            "paperId": "2581e491a9950d9be54b5ed274cccf2a644de75e",
+            "title": "Efficient Deep Learning of Robust, Adaptive Policies using Tube MPC-Guided Data Augmentation",
+            "abstract": "The deployment of agile autonomous systems in challenging, unstructured environments requires adaptation capabilities and robustness to uncertainties. Existing robust and adaptive controllers, such as those based on model predictive control (MPC), can achieve impressive performance at the cost of heavy online onboard computations. Strategies that efficiently learn robust and onboard-deployable policies from MPC have emerged, but they still lack fundamental adaptation capabilities. In this work, we extend an existing efficient Imitation Learning (IL) algorithm for robust policy learning from MPC with the ability to learn policies that adapt to challenging model/environment uncertainties. The key idea of our approach consists in modifying the IL procedure by conditioning the policy on a learned lower-dimensional model/environment representation that can be efficiently estimated online. We tailor our approach to the task of learning an adaptive position and attitude control policy to track trajectories under challenging disturbances on a multirotor. Evaluations in simulation show that a high-quality adaptive policy can be obtained in about 1.3 hours. We additionally empirically demonstrate rapid adaptation to in- and out-of-training-distribution uncertainties, achieving a 6.1 cm average position error under wind disturbances that correspond to about 50% of the weight of the robot, and that are 36% larger than the maximum wind seen during training.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work extends an existing efficient Imitation Learning algorithm for robust policy learning from MPC with the ability to learn policies that adapt to challenging model/environment uncertainties, and tailor the approach to the task of learning an adaptive position and attitude control policy to track trajectories under challenging disturbances on a multirotor."
+            },
+            "score": 3
+        },
+        {
+            "id": "04ce21c492d9ae82ee711b2190dc1a89301063e2",
+            "paperId": "04ce21c492d9ae82ee711b2190dc1a89301063e2",
+            "title": "Enhancing Surface Neural Implicits with Curvature-Guided Sampling and Uncertainty-Augmented Representations",
+            "abstract": "Neural implicits have become popular for representing surfaces because they offer an adaptive resolution and support arbitrary topologies. While previous works rely on ground truth point clouds, they often ignore the effect of input quality and sampling methods during reconstructing process. In this paper, we introduce a sampling method with an uncertainty-augmented surface implicit representation that employs a sampling technique that considers the geometric characteristics of inputs. To this end, we introduce a strategy that efficiently computes differentiable geometric features, namely, mean curvatures, to augment the sampling phase during the training period. The uncertainty augmentation offers insights into the occupancy and reliability of the output signed distance value, thereby expanding representation capabilities into open surfaces. Finally, we demonstrate that our method leads to state-of-the-art reconstructions on both synthetic and real-world data.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a sampling method with an uncertainty-augmented surface implicit representation that employs a sampling technique that considers the geometric characteristics of inputs and offers insights into the occupancy and reliability of the output signed distance value, thereby expanding representation capabilities into open surfaces."
+            },
+            "score": 3
+        },
+        {
+            "id": "af13a4be49bd146c659b771a05e6272d5404a284",
+            "paperId": "af13a4be49bd146c659b771a05e6272d5404a284",
+            "title": "Domain-guided data augmentation for deep learning on medical imaging",
+            "abstract": "While domain-specific data augmentation can be useful in training neural networks for medical imaging tasks, such techniques have not been widely used to date. Our objective was to test whether domain-specific data augmentation is useful for medical imaging using a well-benchmarked task: view classification on fetal ultrasound FETAL-125 and OB-125 datasets. We found that using a context-preserving cut-paste strategy, we could create valid training data as measured by performance of the resulting trained model on the benchmark test dataset. When used in an online fashion, models trained on this hybrid data performed similarly to those trained using traditional data augmentation (FETAL-125 F-score 85.33 \u00b1 0.24 vs 86.89 \u00b1 0.60, p-value 0.014; OB-125 F-score 74.60 \u00b1 0.11 vs 72.43 \u00b1 0.62, p-value 0.004). Furthermore, the ability to perform augmentations during training time, as well as the ability to apply chosen augmentations equally across data classes, are important considerations in designing a bespoke data augmentation. Finally, we provide open-source code to facilitate running bespoke data augmentations in an online fashion. Taken together, this work expands the ability to design and apply domain-guided data augmentations for medical imaging tasks.",
+            "year": 2022,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work found that using a context-preserving cut-paste strategy, it could create valid training data as measured by performance of the resulting trained model on the benchmark test dataset, and provides open-source code to facilitate running bespoke data augmentations in an online fashion."
+            },
+            "score": 2
+        },
+        {
+            "id": "d94516685f0f55841d3676f3e655e1b50e836a6e",
+            "paperId": "d94516685f0f55841d3676f3e655e1b50e836a6e",
+            "title": "The NiuTrans Machine Translation Systems for WMT22",
+            "abstract": "This paper describes the NiuTrans neural machine translation systems of the WMT22 General MT constrained task. We participate in four directions, including Chinese\u2192English, English\u2192Croatian, and Livonian\u2194English. Our models are based on several advanced Transformer variants, e.g., Transformer-ODE, Universal Multiscale Transformer (UMST). The main workflow consists of data filtering, large-scale data augmentation (i.e., iterative back-translation, iterative knowledge distillation), and specific-domain fine-tuning. Moreover, we try several multi-domain methods, such as a multi-domain model structure and a multi-domain data clustering method, to rise to this year\u2019s newly proposed multi-domain test set challenge. For low-resource scenarios, we build a multi-language translation model to enhance the performance, and try to use the pre-trained language model (mBERT) to initialize the translation model.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The NiuTrans neural machine translation systems of the WMT22 General MT constrained task are described, including Chinese\u2192English, English\u2192Croatian, and Livonian\u2194English, based on several advanced Transformer variants, e.g., Transformer-ODE, Universal Multiscale Transformer (UMST)."
+            },
+            "score": 2
+        },
+        {
+            "id": "96492a98d7fc6f8fd79c166fdfa9289db5e6947a",
+            "paperId": "96492a98d7fc6f8fd79c166fdfa9289db5e6947a",
+            "title": "Fine-tuning Neural Language Models for Multidimensional Opinion Mining of English-Maltese Social Data",
+            "abstract": "This paper presents multidimensional Social Opinion Mining on user-generated content gathered from newswires and social networking services in three different languages: English \u2014a high-resourced language, Maltese \u2014a low-resourced language, and Maltese-English \u2014a code-switched language. Multiple fine-tuned neural classification language models which cater for the i) English, Maltese and Maltese-English languages as well as ii) five different social opinion dimensions, namely subjectivity, sentiment polarity, emotion, irony and sarcasm, are presented. Results per classification model for each social opinion dimension are discussed.",
+            "year": 2021,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Multiple fine-tuned neural classification language models which cater for the English, Maltese and Maltese-English languages as well as five different social opinion dimensions, namely subjectivity, sentiment polarity, emotion, irony and sarcasm are presented."
+            },
+            "score": 2
+        }
+    ],
+    "novelty": "yes"
 }

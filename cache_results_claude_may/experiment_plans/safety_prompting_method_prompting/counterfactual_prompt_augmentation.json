@@ -33,5 +33,983 @@
             "Explanation": "The baseline model is fooled by the adversarial prompt, which contains a subtle change in sentiment (\"fantastic\" to \"terrible\") while keeping the rest of the input similar. The CPA model, trained on counterfactual prompts, correctly identifies the negative sentiment despite the adversarial perturbation."
         },
         "Fallback Plan": "If the proposed CPA method does not significantly improve the robustness of LLMs against adversarial attacks, consider the following alternative approaches:\n1. Analyze the generated counterfactual prompts to assess their quality and diversity. If the perturbations are not effective in creating challenging adversarial examples, refine the perturbation techniques or explore alternative methods for generating counterfactuals.\n2. Investigate the impact of different model architectures and pre-training strategies on robustness. Experiment with models that have shown inherent robustness properties, such as models trained with contrastive learning or models with explicit robustness objectives.\n3. Explore the combination of CPA with other robustness enhancement techniques, such as adversarial training or data augmentation using external knowledge sources. Combining complementary approaches may yield better results.\n4. Conduct a thorough error analysis to identify the types of adversarial prompts that the CPA models struggle with. This analysis can provide insights into the limitations of the approach and guide the development of targeted improvements.\n5. If the CPA models exhibit limited generalization to new types of adversarial prompts, consider incorporating meta-learning techniques to improve their adaptability. Meta-learning can help the models learn to quickly adapt to new adversarial patterns with minimal fine-tuning.\n6. Explore the use of CPA as a data augmentation technique in combination with other robustness methods, such as adversarial training. Instead of directly training on the counterfactual prompts, use them to augment the training data for other robustness-enhancing techniques.\nBy implementing these fallback strategies, the project can still provide valuable insights into the challenges of improving LLMs' robustness and contribute to the development of more effective methods."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"counterfactual augmentation language models robustness\")",
+        "KeywordQuery(\"adversarial attacks language models prompt perturbations\")",
+        "KeywordQuery(\"language models robustness training counterfactual prompts\")",
+        "KeywordQuery(\"Counterfactual Prompt Augmentation NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "1227c2fcb8437441b7d72a29a4bc9eef1f5275d2",
+            "paperId": "1227c2fcb8437441b7d72a29a4bc9eef1f5275d2",
+            "title": "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models",
+            "abstract": "Safety alignment of Large Language Models (LLMs) can be compromised with manual jailbreak attacks and (automatic) adversarial attacks. Recent studies suggest that defending against these attacks is possible: adversarial attacks generate unlimited but unreadable gibberish prompts, detectable by perplexity-based filters; manual jailbreak attacks craft readable prompts, but their limited number due to the necessity of human creativity allows for easy blocking. In this paper, we show that these solutions may be too optimistic. We introduce AutoDAN, an interpretable, gradient-based adversarial attack that merges the strengths of both attack types. Guided by the dual goals of jailbreak and readability, AutoDAN optimizes and generates tokens one by one from left to right, resulting in readable prompts that bypass perplexity filters while maintaining high attack success rates. Notably, these prompts, generated from scratch using gradients, are interpretable and diverse, with emerging strategies commonly seen in manual jailbreak attacks. They also generalize to unforeseen harmful behaviors and transfer to black-box LLMs better than their unreadable counterparts when using limited training data or a single proxy model. Furthermore, we show the versatility of AutoDAN by automatically leaking system prompts using a customized objective. Our work offers a new way to red-team LLMs and understand jailbreak mechanisms via interpretability.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work offers a new way to red-team LLMs and understand jailbreak mechanisms via interpretability, by introducing AutoDAN, an interpretable, gradient-based adversarial attack that merges the strengths of both attack types."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving large language models' robustness against adversarial attacks, and the proposed approach is counterfactual prompt augmentation. The research problem in the paper is generating interpretable and readable adversarial prompts to attack large language models, and the proposed approach is a gradient-based method called AutoDAN.\n\nThe proposal focuses on defending against adversarial attacks, while the paper focuses on generating effective adversarial attacks. Although both deal with adversarial attacks on large language models, their goals and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "paperId": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "title": "PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts",
+            "abstract": "The increasing reliance on Large Language Models (LLMs) across academia and industry necessitates a comprehensive understanding of their robustness to prompts. In response to this vital need, we introduce PromptBench, a robustness benchmark designed to measure LLMs' resilience to adversarial prompts. This study uses a plethora of adversarial textual attacks targeting prompts across multiple levels: character, word, sentence, and semantic. The adversarial prompts, crafted to mimic plausible user errors like typos or synonyms, aim to evaluate how slight deviations can affect LLM outcomes while maintaining semantic integrity. These prompts are then employed in diverse tasks, such as sentiment analysis, natural language inference, reading comprehension, machine translation, and math problem-solving. Our study generates 4788 adversarial prompts, meticulously evaluated over 8 tasks and 13 datasets. Our findings demonstrate that contemporary LLMs are not robust to adversarial prompts. Furthermore, we present comprehensive analysis to understand the mystery behind prompt robustness and its transferability. We then offer insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users. Code is available at: https://github.com/microsoft/promptbench.",
+            "year": 2023,
+            "citationCount": 111,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study generates 4788 adversarial prompts and presents comprehensive analysis to understand the mystery behind prompt robustness and its transferability, and offers insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the robustness of large language models against adversarial attacks by generating counterfactual prompts for data augmentation during training. The paper, on the other hand, introduces a benchmark called PromptBench to evaluate the robustness of large language models on adversarial prompts across various tasks and datasets.\n\nWhile both the project proposal and the paper address the robustness of large language models, their approaches differ. The project proposal focuses on a specific method (counterfactual prompt augmentation) to enhance robustness, whereas the paper introduces a benchmark to assess the robustness of existing models.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "fb8d0982d76945e136836a57e7a23907c21c2fb2",
+            "paperId": "fb8d0982d76945e136836a57e7a23907c21c2fb2",
+            "title": "Relation-based Counterfactual Data Augmentation and Contrastive Learning for Robustifying Natural Language Inference Models",
+            "abstract": "Although pre-trained language models show good performance on various natural language processing tasks, they often rely on non-causal features and patterns to determine the outcome. For natural language inference tasks, previous results have shown that even a model trained on a large number of data fails to perform well on counterfactually revised data, indicating that the model is not robustly learning the semantics of the classes. In this paper, we propose a method in which we use token-based and sentence-based augmentation methods to generate counter-factual sentence pairs that belong to each class, and apply contrastive learning to help the model learn the difference between sentence pairs of different classes with similar contexts. Evaluation results with counterfactually-revised dataset and general NLI datasets show that the proposed method can improve the performance and robustness of the NLI model.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A method is proposed in which token-based and sentence-based augmentation methods are used to generate counter-factual sentence pairs that belong to each class, and contrastive learning is applied to help the model learn the difference between sentence pairs of different classes with similar contexts."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve large language models' robustness against adversarial attacks by generating counterfactual prompts to augment the training data. The paper focuses on improving the robustness of natural language inference models using counterfactual data augmentation and contrastive learning.\n\nBoth the project proposal and the paper address the robustness of language models and use counterfactual data augmentation as the approach. However, the project proposal targets large language models and adversarial attacks in general, while the paper specifically focuses on natural language inference models.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ab94014cbf4c43926b6322a2c7085e7df2079792",
+            "paperId": "ab94014cbf4c43926b6322a2c7085e7df2079792",
+            "title": "Improving Robustness through Pairwise Generative Counterfactual Data Augmentation",
+            "abstract": "Counterfactual Data Augmentation (CDA) is a commonly used technique for improving robustness in natural language classi\ufb01ers. However, one fundamental challenge is how to ef\ufb01-ciently label such synthetic data, particularly when they are in regions where the model is already not con\ufb01dent. Most meth-ods either rely on human-annotated templates, an expensive process which limits the scale of counterfactual data, or implicitly assume label invariance, which may mislead the model with incorrect labels. In this paper, we utilize counterfactual generative models to generate a large number of diverse coun-terfactuals that include multiple label changing and invariant assumptions, and learn a classi\ufb01er to automatically annotate more counterfactuals. Our key insight is that we can more effectively and ef\ufb01ciently annotate generated counterfactuals by training a pairwise classi\ufb01er that uses the original exam-ple\u2019s ground-truth label and compares the original example to the counterfactual. We demonstrate that with a small amount of human-annotated counterfactual data (e.g., 10%), we generate a counterfactual augmentation dataset which provides an 18-20% improvement in robustness and a 14-21% reduction in errors on 3 out-of-domain datasets, comparable to that of a fully human-annotated counterfactual dataset for both sentiment classi\ufb01cation and question paraphrase tasks.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A counterfactual augmentation dataset is generated which provides an 18-20% improvement in robustness and a 14-21% reduction in errors on 3 out-of-domain datasets, comparable to that of a fully human-annotated counterfactual dataset for both sentiment classi\ufb01cation and question paraphrase tasks."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve large language models' robustness against adversarial attacks by generating counterfactual prompts to augment the training data. The paper focuses on improving robustness in natural language classifiers through pairwise generative counterfactual data augmentation.\n\nWhile both the project proposal and the paper aim to improve robustness using counterfactual data augmentation, the project proposal targets large language models and adversarial attacks, while the paper focuses on natural language classifiers and out-of-domain datasets. The project proposal generates counterfactual prompts, while the paper generates counterfactual examples and uses a pairwise classifier for annotation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e188f9525523d274cf846fb9f407b4a6f4b6994d",
+            "paperId": "e188f9525523d274cf846fb9f407b4a6f4b6994d",
+            "title": "Improving Classifier Robustness through Active Generation of Pairwise Counterfactuals",
+            "abstract": "Counterfactual Data Augmentation (CDA) is a commonly used technique for improving robustness in natural language classifiers. However, one fundamental challenge is how to discover meaningful counterfactuals and efficiently label them, with minimal human labeling cost. Most existing methods either completely rely on human-annotated labels, an expensive process which limits the scale of counterfactual data, or implicitly assume label invariance, which may mislead the model with incorrect labels. In this paper, we present a novel framework that utilizes counterfactual generative models to generate a large number of diverse counterfactuals by actively sampling from regions of uncertainty, and then automatically label them with a learned pairwise classifier. Our key insight is that we can more correctly label the generated counterfactuals by training a pairwise classifier that interpolates the relationship between the original example and the counterfactual. We demonstrate that with a small amount of human-annotated counterfactual data (10%), we can generate a counterfactual augmentation dataset with learned labels, that provides an 18-20% improvement in robustness and a 14-21% reduction in errors on 6 out-of-domain datasets, comparable to that of a fully human-annotated counterfactual dataset for both sentiment classification and question paraphrase tasks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a novel framework that utilizescounterfactual generative models to generate a large number of diverse counterfactuals by actively sampling from regions of uncertainty, and then automatically label them with a learned pairwise classifier."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the robustness of large language models against adversarial attacks by generating counterfactual prompts to augment the training data. The paper focuses on improving the robustness of natural language classifiers through active generation of pairwise counterfactuals and automatically labeling them with a learned pairwise classifier.\n\nWhile both the project proposal and the paper utilize counterfactual data augmentation to improve robustness, the project proposal targets large language models and adversarial attacks, while the paper focuses on natural language classifiers and out-of-domain datasets. Additionally, the project proposal generates counterfactual prompts, while the paper generates pairwise counterfactuals and labels them using a learned classifier.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0db108da7811200b25f979d659269812d0b52b61",
+            "paperId": "0db108da7811200b25f979d659269812d0b52b61",
+            "title": "Counterfactual Adversarial Training for Improving Robustness of Pre-trained Language Models",
+            "abstract": "One of the approaches for improving the robustness of NLP models is adversarial training by adversarial examples. However, in previous work on adversarial training, the adversarial examples were not guaranteed to be minimally edited and to change the model\u2019s prediction. Our hypothesis is adversarial training could make models more robust if the adversarial examples were guaranteed to be minimally edited and to change the model\u2019s prediction. We propose Counterfactual Adversarial Training (CAT), which uses counterfactual explanations to improve the robustness of the model. Our experiments on Natural Language Inference and Sentiment Analysis show that CAT significantly enhances out-of-the-box pre-trained NLP models on 11 datasets, indicating that CAT is a promising approach to improve the robustness of the pre-trained language models.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experiments on Natural Language Inference and Sentiment Analysis show that CAT significantly enhances out-of-the-box pre-trained NLP models on 11 datasets, indicating that CAT is a promising approach to improve the robustness of the pre-trained language models."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the robustness of large language models against adversarial attacks by generating counterfactual prompts to augment the training data. The paper proposes Counterfactual Adversarial Training (CAT) to improve the robustness of pre-trained language models using counterfactual explanations.\n\nBoth the project proposal and the paper focus on improving the robustness of language models using counterfactual examples. However, the project proposal specifically targets large language models and aims to generate counterfactual prompts for data augmentation, while the paper focuses on pre-trained language models in general and uses counterfactual explanations for adversarial training.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "aa9aa1c315cb2a0c1759d82fb3d4b4506c2dbb7c",
+            "paperId": "aa9aa1c315cb2a0c1759d82fb3d4b4506c2dbb7c",
+            "title": "ASSERT: Automated Safety Scenario Red Teaming for Evaluating the Robustness of Large Language Models",
+            "abstract": "As large language models are integrated into society, robustness toward a suite of prompts is increasingly important to maintain reliability in a high-variance environment.Robustness evaluations must comprehensively encapsulate the various settings in which a user may invoke an intelligent system. This paper proposes ASSERT, Automated Safety Scenario Red Teaming, consisting of three methods -- semantically aligned augmentation, target bootstrapping, and adversarial knowledge injection. For robust safety evaluation, we apply these methods in the critical domain of AI safety to algorithmically generate a test suite of prompts covering diverse robustness settings -- semantic equivalence, related scenarios, and adversarial. We partition our prompts into four safety domains for a fine-grained analysis of how the domain affects model performance. Despite dedicated safeguards in existing state-of-the-art models, we find statistically significant performance differences of up to 11% in absolute classification accuracy among semantically related scenarios and error rates of up to 19% absolute error in zero-shot adversarial settings, raising concerns for users' physical safety.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "ASSERT, Automated Safety Scenario Red Teaming, consisting of three methods -- semantically aligned augmentation, target bootstrapping, and adversarial knowledge injection is proposed, for robust safety evaluation."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve large language models' robustness against adversarial attacks by generating counterfactual prompts for data augmentation during training. The paper focuses on evaluating the robustness of large language models in the domain of AI safety by generating a diverse test suite of prompts using methods like semantically aligned augmentation, target bootstrapping, and adversarial knowledge injection.\n\nWhile both the project proposal and the paper address the robustness of large language models, the project proposal focuses on improving robustness through counterfactual prompt augmentation during training, whereas the paper emphasizes evaluating robustness using a generated test suite of prompts in the AI safety domain. The approaches and specific domains differ between the two.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "b6499bcc10d4a70c3ca8b84995270cfd0d29de4c",
+            "paperId": "b6499bcc10d4a70c3ca8b84995270cfd0d29de4c",
+            "title": "Model-tuning Via Prompts Makes NLP Models Adversarially Robust",
+            "abstract": "In recent years, NLP practitioners have converged on the following practice: (i) import an off-the-shelf pretrained (masked) language model; (ii) append a multilayer perceptron atop the CLS token's hidden representation (with randomly initialized weights); and (iii) fine-tune the entire model on a downstream task (MLP-FT). This procedure has produced massive gains on standard NLP benchmarks, but these models remain brittle, even to mild adversarial perturbations. In this work, we demonstrate surprising gains in adversarial robustness enjoyed by Model-tuning Via Prompts (MVP), an alternative method of adapting to downstream tasks. Rather than appending an MLP head to make output prediction, MVP appends a prompt template to the input, and makes prediction via text infilling/completion. Across 5 NLP datasets, 4 adversarial attacks, and 3 different models, MVP improves performance against adversarial substitutions by an average of 8% over standard methods and even outperforms adversarial training-based state-of-art defenses by 3.5%. By combining MVP with adversarial training, we achieve further improvements in adversarial robustness while maintaining performance on unperturbed examples. Finally, we conduct ablations to investigate the mechanism underlying these gains. Notably, we find that the main causes of vulnerability of MLP-FT can be attributed to the misalignment between pre-training and fine-tuning tasks, and the randomly initialized MLP parameters.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work demonstrates surprising gains in adversarial robustness enjoyed by Model-tuning Via Prompts (MVP), an alternative method of adapting to downstream tasks that improves performance against adversarial substitutions and outperforms adversarial training-based state-of-art defenses by 3.5%."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve large language models' robustness against adversarial attacks by generating counterfactual prompts to augment the training data. The paper focuses on improving the adversarial robustness of NLP models by using prompt-based fine-tuning instead of the standard method of appending a multilayer perceptron on top of the pretrained model.\n\nWhile both the project proposal and the paper address the problem of adversarial robustness in NLP models, their approaches differ. The project proposal suggests generating counterfactual prompts to augment the training data, while the paper proposes using prompt-based fine-tuning (MVP) as an alternative to the standard fine-tuning method (MLP-FT).\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e8b3b37c0d301ea41c75765f6ceb7fcbb2e088a4",
+            "paperId": "e8b3b37c0d301ea41c75765f6ceb7fcbb2e088a4",
+            "title": "AutoDAN: Automatic and Interpretable Adversarial Attacks on Large Language Models",
+            "abstract": "Safety alignment of Large Language Models (LLMs) can be compromised with manual jailbreak attacks and (automatic) adversarial attacks. Recent work suggests that patching LLMs against these attacks is possible: manual jailbreak attacks are human-readable but often limited and public, making them easy to block; adversarial attacks generate gibberish prompts that can be detected using perplexity-based filters. In this paper, we show that these solutions may be too optimistic. We propose an interpretable adversarial attack, AutoDAN , that combines the strengths of both types of attacks. It automatically generates attack prompts that bypass perplexity-based filters while maintaining a high attack success rate like manual jailbreak attacks. These prompts are interpretable and diverse, exhibiting strategies commonly used in manual jailbreak attacks, and transfer better than their non-readable counterparts when using limited training data or a single proxy model. We also customize AutoDAN \u2019s objective to leak system prompts, another jailbreak application not addressed in the adversarial attack literature. Our work provides a new way to red-team LLMs and to understand the mechanism of jailbreak attacks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An interpretable adversarial attack, AutoDAN, is proposed, that combines the strengths of both types of attacks and provides a new way to red-team LLMs and to understand the mechanism of jailbreak attacks."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving large language models' robustness against adversarial attacks, and the proposed approach is counterfactual prompt augmentation. The research problem in the paper is automatically generating interpretable adversarial prompts to attack large language models, and the proposed approach is AutoDAN, which combines the strengths of manual jailbreak attacks and adversarial attacks.\n\nThe proposal focuses on defending against adversarial attacks, while the paper focuses on generating effective adversarial attacks. Although both deal with adversarial attacks on large language models, their goals and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "8cf9b49698fdb1b754df2556576412a7b44929f6",
+            "paperId": "8cf9b49698fdb1b754df2556576412a7b44929f6",
+            "title": "SmoothLLM: Defending Large Language Models Against Jailbreaking Attacks",
+            "abstract": "Despite efforts to align large language models (LLMs) with human values, widely-used LLMs such as GPT, Llama, Claude, and PaLM are susceptible to jailbreaking attacks, wherein an adversary fools a targeted LLM into generating objectionable content. To address this vulnerability, we propose SmoothLLM, the first algorithm designed to mitigate jailbreaking attacks on LLMs. Based on our finding that adversarially-generated prompts are brittle to character-level changes, our defense first randomly perturbs multiple copies of a given input prompt, and then aggregates the corresponding predictions to detect adversarial inputs. SmoothLLM reduces the attack success rate on numerous popular LLMs to below one percentage point, avoids unnecessary conservatism, and admits provable guarantees on attack mitigation. Moreover, our defense uses exponentially fewer queries than existing attacks and is compatible with any LLM. Our code is publicly available at the following link: https://github.com/arobey1/smooth-llm.",
+            "year": 2023,
+            "citationCount": 59,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes SmoothLLM, the first algorithm designed to mitigate jailbreaking attacks on LLMs, which first randomly perturbs multiple copies of a given input prompt, and then aggregates the corresponding predictions to detect adversarial inputs."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve large language models' robustness against adversarial attacks by generating counterfactual prompts to augment the training data. The paper proposes SmoothLLM, an algorithm designed to mitigate jailbreaking attacks on LLMs by randomly perturbing input prompts and aggregating predictions to detect adversarial inputs.\n\nWhile both the project proposal and the paper address the issue of adversarial attacks on large language models, their approaches differ. The project proposal focuses on generating counterfactual prompts to augment training data and improve robustness, while the paper proposes a defense mechanism that perturbs input prompts and aggregates predictions to detect adversarial inputs.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "99368d6fc86e2eb181d9d36165cfed578bfe938d",
+            "paperId": "99368d6fc86e2eb181d9d36165cfed578bfe938d",
+            "title": "Q: How to Specialize Large Vision-Language Models to Data-Scarce VQA Tasks? A: Self-Train on Unlabeled Images!",
+            "abstract": "Finetuning a large vision language model (VLM) on a target dataset after large scale pretraining is a dominant paradigm in visual question answering (VQA). Datasets for specialized tasks such as knowledge-based VQA or VQA in non natural-image domains are orders of magnitude smaller than those for general-purpose VQA. While collecting additional labels for specialized tasks or domains can be challenging, unlabeled images are often available. We introduce SelTDA (Self-Taught Data Augmentation), a strategy for finetuning large VLMs on small-scale VQA datasets. SelTDA uses the VLM and target dataset to build a teacher model that can generate question-answer pseudolabels directly conditioned on an image alone, allowing us to pseudolabel unlabeled images. SelTDA then finetunes the initial VLM on the original dataset augmented with freshly pseudolabeled images. We describe a series of experiments showing that our self-taught data augmentation increases robustness to adversarially searched questions, counterfactual examples and rephrasings, improves domain generalization, and results in greater retention of numerical reasoning skills. The proposed strategy requires no additional annotations or architectural modifications, and is compatible with any modern encoder-decoder multimodal transformer. Code available at https://github.com/codezakh/SelTDA.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces SelTDA (Self-Taught Data Augmentation), a strategy for finetuning large VLMs on small-scale VQA datasets and describes a series of experiments showing that the proposed strategy increases robustness to adversarially searched questions, counterfactual examples and rephrasings, improves domain generalization, and results in greater retention of numerical reasoning skills."
+            },
+            "score": 6
+        },
+        {
+            "id": "2660fcbec300315e349d1bff65c8802e4c7c4df4",
+            "paperId": "2660fcbec300315e349d1bff65c8802e4c7c4df4",
+            "title": "Counterfactual Data Augmentation for Neural Machine Translation",
+            "abstract": "We propose a data augmentation method for neural machine translation. It works by interpreting language models and phrasal alignment causally. Specifically, it creates augmented parallel translation corpora by generating (path-specific) counterfactual aligned phrases. We generate these by sampling new source phrases from a masked language model, then sampling an aligned counterfactual target phrase by noting that a translation language model can be interpreted as a Gumbel-Max Structural Causal Model (Oberst and Sontag, 2019). Compared to previous work, our method takes both context and alignment into account to maintain the symmetry between source and target sequences. Experiments on IWSLT\u201915 English \u2192 Vietnamese, WMT\u201917 English \u2192 German, WMT\u201918 English \u2192 Turkish, and WMT\u201919 robust English \u2192 French show that the method can improve the performance of translation, backtranslation and translation robustness.",
+            "year": 2021,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work creates augmented parallel translation corpora by generating (path-specific) counterfactual aligned phrases by interpreting language models and phrasal alignment causally by taking both context and alignment into account."
+            },
+            "score": 6
+        },
+        {
+            "id": "5f5dffcc47a08ef74e93077583b0e8a11662bf02",
+            "paperId": "5f5dffcc47a08ef74e93077583b0e8a11662bf02",
+            "title": "Learning to Contrast the Counterfactual Samples for Robust Visual Question Answering",
+            "abstract": "In the task of Visual Question Answering (VQA), most state-of-the-art models tend to learn spurious correlations in the training set and achieve poor performance in out-of-distribution test data. Some methods of generating counterfactual samples have been proposed to alleviate this problem. However, the counterfactual samples generated by most previous methods are simply added to the training data for augmentation and are not fully utilized. Therefore, we introduce a novel self-supervised contrastive learning mechanism to learn the relationship between original samples, factual samples and counterfactual samples. With the better cross-modal joint embeddings learned from the auxiliary training objective, the reasoning capability and robustness of the VQA model are boosted significantly. We evaluate the effectiveness of our method by surpassing current state-of-the-art models on the VQA-CP dataset, a diagnostic benchmark for assessing the VQA model\u2019s robustness.",
+            "year": 2020,
+            "citationCount": 85,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel self-supervised contrastive learning mechanism to learn the relationship between original samples, factual samples and counterfactual samples and evaluates the effectiveness by surpassing current state-of-the-art models on the VQA-CP dataset."
+            },
+            "score": 6
+        },
+        {
+            "id": "c41c3d07a10bebb4d8b6dcaea0d263ede051bda8",
+            "paperId": "c41c3d07a10bebb4d8b6dcaea0d263ede051bda8",
+            "title": "Can We Improve Model Robustness through Secondary Attribute Counterfactuals?",
+            "abstract": "Developing robust NLP models that perform well on many, even small, slices of data is a significant but important challenge, with implications from fairness to general reliability. To this end, recent research has explored how models rely on spurious correlations, and how counterfactual data augmentation (CDA) can mitigate such issues. In this paper we study how and why modeling counterfactuals over multiple attributes can go significantly further in improving model performance. We propose RDI, a context-aware methodology which takes into account the impact of secondary attributes on the model\u2019s predictions and increases sensitivity for secondary attributes over reweighted counterfactually augmented data. By implementing RDI in the context of toxicity detection, we find that accounting for secondary attributes can significantly improve robustness, with improvements in sliced accuracy on the original dataset up to 7% compared to existing robustness methods. We also demonstrate that RDI generalizes to the coreference resolution task and provide guidelines to extend this to other tasks.",
+            "year": 2021,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes RDI, a context-aware methodology which takes into account the impact of secondary attributes on the model\u2019s predictions and increases sensitivity for secondary attributes over reweighted counterfactually augmented data, and finds that accounting forsecondary attributes can significantly improve robustness."
+            },
+            "score": 6
+        },
+        {
+            "id": "93b66e394afedcd345148ca8b9ecc1e6edf2c042",
+            "paperId": "93b66e394afedcd345148ca8b9ecc1e6edf2c042",
+            "title": "Causal Augmentation for Causal Sentence Classification",
+            "abstract": "Scarcity of annotated causal texts leads to poor robustness when training state-of-the-art language models for causal sentence classification. In particular, we found that models misclassify on augmented sentences that have been negated or strengthened with respect to its causal meaning. This is worrying since minor linguistic differences in causal sentences can have disparate meanings. Therefore, we propose the generation of counterfactual causal sentences by creating contrast sets (Gardner et al., 2020) to be included during model training. We experimented on two model architectures and predicted on two out-of-domain corpora. While our strengthening schemes proved useful in improving model performance, for negation, regular edits were insufficient. Thus, we also introduce heuristics like shortening or multiplying root words of a sentence. By including a mixture of edits when training, we achieved performance improvements beyond the baseline across both models, and within and out of corpus\u2019 domain, suggesting that our proposed augmentation can also help models generalize.",
+            "year": 2021,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "By including a mixture of edits when training, the generation of counterfactual causal sentences is proposed by creating contrast sets and performance improvements are achieved beyond the baseline across both models, and within and out of corpus\u2019 domain, suggesting that the proposed augmentation can also help models generalize."
+            },
+            "score": 6
+        },
+        {
+            "id": "63897018266ce8b8df9a63845c561aa63c90285a",
+            "paperId": "63897018266ce8b8df9a63845c561aa63c90285a",
+            "title": "Counterfactually-Augmented SNLI Training Data Does Not Yield Better Generalization Than Unaugmented Data",
+            "abstract": "A growing body of work shows that models exploit annotation artifacts to achieve state-of-the-art performance on standard crowdsourced benchmarks\u2014datasets collected from crowdworkers to create an evaluation task\u2014while still failing on out-of-domain examples for the same task. Recent work has explored the use of counterfactually-augmented data\u2014data built by minimally editing a set of seed examples to yield counterfactual labels\u2014to augment training data associated with these benchmarks and build more robust classifiers that generalize better. However, Khashabi et al. (2020) find that this type of augmentation yields little benefit on reading comprehension tasks when controlling for dataset size and cost of collection. We build upon this work by using English natural language inference data to test model generalization and robustness and find that models trained on a counterfactually-augmented SNLI dataset do not generalize better than unaugmented datasets of similar size and that counterfactual augmentation can hurt performance, yielding models that are less robust to challenge examples. Counterfactual augmentation of natural language understanding data through standard crowdsourcing techniques does not appear to be an effective way of collecting training data and further innovation is required to make this general line of work viable.",
+            "year": 2020,
+            "citationCount": 33,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that models trained on a counterfactually-augmented SNLI dataset do not generalize better than unaugmenting datasets of similar size and that counterfactual augmentation can hurt performance, yielding models that are less robust to challenge examples."
+            },
+            "score": 6
+        },
+        {
+            "id": "4c90eecb60659ecafcca9be1edf1d9b2a4bd07eb",
+            "paperId": "4c90eecb60659ecafcca9be1edf1d9b2a4bd07eb",
+            "title": "Exploring Lightweight Debiasing and Enhancing Robustness Through Data Augmentation in Pretrained Language Models",
+            "abstract": "Large-scale pretrained language models, while revolutionary, can inadvertently incorporate biases from their training data, leading to potential unintended outcomes. Traditional debiasing methods, although effective, are resource-intensive and may adversely affect a model's linguistic capabilities. In contrast, lightweight debiasing offers a more efficient approach, but its effectiveness is often constrained and challenges in generalization arise. In response to these challenges, our research adopted a dual-pronged approach. We first investigated the Mass Memory Editing Technique, a novel lightweight method that modifies the original model by adjusting weights over specific critical layers. This was contrasted with the prevalent adapter tuning, an approach that retains and freezes the original model, introducing subsequent adapter layers for fine-tuning. Despite the Memory Editing Technique's prowess in targeted debiasing, its generalizability was limited. This realization transitioned our focus to the second phase: fortifying the robustness of lightweight debiasing through data augmentation tailored for adapter tuning. This involved the exploration of term-based, sentence-based, synonym-based",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research adopted a dual-pronged approach, first investigating the Mass Memory Editing Technique, a novel lightweight method that modifies the original model by adjusting weights over specific critical layers, and fortifying the robustness of lightweight debiasing through data augmentation tailored for adapter tuning."
+            },
+            "score": 6
+        },
+        {
+            "id": "66cca7a055ee9278d0439654f474cbfa4135aff0",
+            "paperId": "66cca7a055ee9278d0439654f474cbfa4135aff0",
+            "title": "Why So Gullible? Enhancing the Robustness of Retrieval-Augmented Models against Counterfactual Noise",
+            "abstract": "Most existing retrieval-augmented language models (LMs) assume a naive dichotomy within a retrieved document set: query-relevance and irrelevance. Our work investigates a more challenging scenario in which even the\"relevant\"documents may contain misleading or incorrect information, causing conflict among the retrieved documents and thereby negatively influencing model decisions as noise. We observe that existing LMs are highly brittle to the presence of conflicting information in both the fine-tuning and in-context few-shot learning scenarios. We propose approaches for handling knowledge conflicts among retrieved documents by explicitly fine-tuning a discriminator or prompting GPT-3.5 to elicit its discriminative capability. Our empirical results on open-domain QA show that these approaches significantly enhance model robustness. We also provide our findings on incorporating the fine-tuned discriminator's decision into the in-context learning process, proposing a way to exploit the benefits of two disparate learning schemes. Alongside our findings, we provide MacNoise, a machine-generated, conflict-induced dataset to further encourage research in this direction.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes approaches for handling knowledge conflicts among retrieved documents by explicitly fine-tuning a discriminator or prompting GPT-3.5 to elicit its discriminative capability, and shows that these approaches significantly enhance model robustness."
+            },
+            "score": 6
+        },
+        {
+            "id": "3914b2ea74d7dd593ae65eac88f6e8cfc736438b",
+            "paperId": "3914b2ea74d7dd593ae65eac88f6e8cfc736438b",
+            "title": "Adversarial Text Purification: A Large Language Model Approach for Defense",
+            "abstract": "Adversarial purification is a defense mechanism for safeguarding classifiers against adversarial attacks without knowing the type of attacks or training of the classifier. These techniques characterize and eliminate adversarial perturbations from the attacked inputs, aiming to restore purified samples that retain similarity to the initially attacked ones and are correctly classified by the classifier. Due to the inherent challenges associated with characterizing noise perturbations for discrete inputs, adversarial text purification has been relatively unexplored. In this paper, we investigate the effectiveness of adversarial purification methods in defending text classifiers. We propose a novel adversarial text purification that harnesses the generative capabilities of Large Language Models (LLMs) to purify adversarial text without the need to explicitly characterize the discrete noise perturbations. We utilize prompt engineering to exploit LLMs for recovering the purified examples for given adversarial examples such that they are semantically similar and correctly classified. Our proposed method demonstrates remarkable performance over various classifiers, improving their accuracy under the attack by over 65% on average.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel adversarial text purification that harnesses the generative capabilities of Large Language Models (LLMs) to purify adversarial text without the need to explicitly characterize the discrete noise perturbations."
+            },
+            "score": 6
+        },
+        {
+            "id": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "paperId": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "title": "Baseline Defenses for Adversarial Attacks Against Aligned Language Models",
+            "abstract": "As Large Language Models quickly become ubiquitous, it becomes critical to understand their security vulnerabilities. Recent work shows that text optimizers can produce jailbreaking prompts that bypass moderation and alignment. Drawing from the rich body of work on adversarial machine learning, we approach these attacks with three questions: What threat models are practically useful in this domain? How do baseline defense techniques perform in this new domain? How does LLM security differ from computer vision? We evaluate several baseline defense strategies against leading adversarial attacks on LLMs, discussing the various settings in which each is feasible and effective. Particularly, we look at three types of defenses: detection (perplexity based), input preprocessing (paraphrase and retokenization), and adversarial training. We discuss white-box and gray-box settings and discuss the robustness-performance trade-off for each of the defenses considered. We find that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs. Future research will be needed to uncover whether more powerful optimizers can be developed, or whether the strength of filtering and preprocessing defenses is greater in the LLMs domain than it has been in computer vision.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs."
+            },
+            "score": 6
+        },
+        {
+            "id": "07cfaf543b2bd991406be1d72a52d784cc9c62fb",
+            "paperId": "07cfaf543b2bd991406be1d72a52d784cc9c62fb",
+            "title": "Prompt Makes mask Language Models Better Adversarial Attackers",
+            "abstract": "Generating high-quality synonymous perturbations is a core challenge for textual adversarial tasks. However, candidates generated from the masked language model often contain many words that are antonyms or irrelevant to the original words, which limit the perturbation space and affect the attack\u2019s effectiveness. We present ProAttacker1 which uses Prompt to make the mask language models better adversarial Attackers. ProAttacker inverts the prompt paradigm by leveraging the prompt with the class label to guide the language model to generate more semantically-consistent perturbations. We present a systematic evaluation to analyze the attack performance on 6 NLP datasets, covering text classification and inference. Our experiments demonstrate that ProAttacker outperforms state-of-the-art attack strategies in both success rate and perturb rate.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "ProAttacker1, which uses Prompt to make the mask language models better adversarial Attackers, inverts the prompt paradigm by leveraging the prompt with the class label to guide the language model to generate more semantically-consistent perturbations."
+            },
+            "score": 6
+        },
+        {
+            "id": "1abfc211793c683972ded8d3268475e3ee7a88b0",
+            "paperId": "1abfc211793c683972ded8d3268475e3ee7a88b0",
+            "title": "Adversarial Demonstration Attacks on Large Language Models",
+            "abstract": "With the emergence of more powerful large language models (LLMs), such as ChatGPT and GPT-4, in-context learning (ICL) has gained significant prominence in leveraging these models for specific tasks by utilizing data-label pairs as precondition prompts. While incorporating demonstrations can greatly enhance the performance of LLMs across various tasks, it may introduce a new security concern: attackers can manipulate only the demonstrations without changing the input to perform an attack. In this paper, we investigate the security concern of ICL from an adversarial perspective, focusing on the impact of demonstrations. We propose a novel attack method named advICL, which aims to manipulate only the demonstration without changing the input to mislead the models. Our results demonstrate that as the number of demonstrations increases, the robustness of in-context learning would decrease. Additionally, we also identify the intrinsic property of the demonstrations is that they can be used (prepended) with different inputs. As a result, it introduces a more practical threat model in which an attacker can attack the test input example even without knowing and manipulating it. To achieve it, we propose the transferable version of advICL, named Transferable-advICL. Our experiment shows that the adversarial demonstration generated by Transferable-advICL can successfully attack the unseen test input examples. We hope that our study reveals the critical security risks associated with ICL and underscores the need for extensive research on the robustness of ICL, particularly given its increasing significance in the advancement of LLMs.",
+            "year": 2023,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates the security concern of ICL from an adversarial perspective, focusing on the impact of demonstrations, and proposes a novel attack method named advICL, which aims to manipulate only the demonstration without changing the input to mislead the models."
+            },
+            "score": 6
+        },
+        {
+            "id": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "paperId": "8fdd34153d1035d09dd4a6efa9cb0c91d23d0045",
+            "title": "More than you've asked for: A Comprehensive Analysis of Novel Prompt Injection Threats to Application-Integrated Large Language Models",
+            "abstract": "We are currently witnessing dramatic advances in the capabilities of Large Language Models (LLMs). They are already being adopted in practice and integrated into many systems, including integrated development environments (IDEs) and search engines. The functionalities of current LLMs can be modulated via natural language prompts, while their exact internal functionality remains implicit and unassessable. This property, which makes them adaptable to even unseen tasks, might also make them susceptible to targeted adversarial prompting . Recently, several ways to misalign LLMs using Prompt Injection (PI) attacks have been introduced. In such attacks, an adversary can prompt the LLM to produce malicious content or override the original instructions and the employed \ufb01ltering schemes. Recent work showed that these attacks are hard to mitigate, as state-of-the-art LLMs are instruction-following . So far, these attacks assumed that the adversary is directly prompting the LLM. In this work, we show that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs ) induces a whole new set of attack vectors. These LLMs might process poisoned content retrieved from the Web that contains malicious prompts pre-injected and selected by adversaries. We demonstrate that an attacker can indirectly perform such PI attacks. Based on this key insight, we systematically analyze the resulting threat landscape of Application-Integrated LLMs and discuss a variety of new attack vectors. To demonstrate the practical viability of our attacks, we implemented speci\ufb01c demonstrations",
+            "year": 2023,
+            "citationCount": 73,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that augmenting LLMs with retrieval and API calling capabilities (so-called Application-Integrated LLMs) induces a whole new set of attack vectors and systematically analyzes the resulting threat landscape of Application-Integrated LLMs."
+            },
+            "score": 6
+        },
+        {
+            "id": "50a5c61b5283e4dc2e0de1fcfd3ed9a525d2973a",
+            "paperId": "50a5c61b5283e4dc2e0de1fcfd3ed9a525d2973a",
+            "title": "Bias Challenges in Counterfactual Data Augmentation",
+            "abstract": "Deep learning models tend not to be out-of-distribution robust primarily due to their reliance on spurious features to solve the task. Counterfactual data augmentations provide a general way of (approximately) achieving representations that are counterfactual-invariant to spurious features, a requirement for out-of-distribution (OOD) robustness. In this work, we show that counterfactual data augmentations may not achieve the desired counterfactual-invariance if the augmentation is performed by a context-guessing machine, an abstract machine that guesses the most-likely context of a given input. We theoretically analyze the invariance imposed by such counterfactual data augmentations and describe an exemplar NLP task where counterfactual data augmentation by a context-guessing machine does not lead to robust OOD classifiers.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that counterfactual data augmentations may not achieve the desired counterfactUAL-invariance if the augmentation is performed by a context-guessing machine, an abstract machine that guesses the most-likely context of a given input."
+            },
+            "score": 6
+        },
+        {
+            "id": "301c09d74e46436bc75ea5f56d60acc549831961",
+            "paperId": "301c09d74e46436bc75ea5f56d60acc549831961",
+            "title": "CREST: A Joint Framework for Rationalization and Counterfactual Text Generation",
+            "abstract": "Selective rationales and counterfactual examples have emerged as two effective, complementary classes of interpretability methods for analyzing and training NLP models. However, prior work has not explored how these methods can be integrated to combine their complementary advantages. We overcome this limitation by introducing CREST (ContRastive Edits with Sparse raTionalization), a joint framework for selective rationalization and counterfactual text generation, and show that this framework leads to improvements in counterfactual quality, model robustness, and interpretability. First, CREST generates valid counterfactuals that are more natural than those produced by previous methods, and subsequently can be used for data augmentation at scale, reducing the need for human-generated examples. Second, we introduce a new loss function that leverages CREST counterfactuals to regularize selective rationales and show that this regularization improves both model robustness and rationale quality, compared to methods that do not leverage CREST counterfactuals. Our results demonstrate that CREST successfully bridges the gap between selective rationales and counterfactual examples, addressing the limitations of existing methods and providing a more comprehensive view of a model\u2019s predictions.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results demonstrate that CREST successfully bridges the gap between selective rationales and counterfactual examples, addressing the limitations of existing methods and providing a more comprehensive view of a model\u2019s predictions."
+            },
+            "score": 6
+        },
+        {
+            "id": "06c8f8aa5d9fc02ea8ba35010e5b1e8420014c62",
+            "paperId": "06c8f8aa5d9fc02ea8ba35010e5b1e8420014c62",
+            "title": "CATfOOD: Counterfactual Augmented Training for Improving Out-of-Domain Performance and Calibration",
+            "abstract": "In recent years, large language models (LLMs) have shown remarkable capabilities at scale, particularly at generating text conditioned on a prompt. In our work, we investigate the use of LLMs to augment training data of smaller language models (SLMs) with automatically generated counterfactual (CF) instances \u2013 i.e. minimally altered inputs \u2013 in order to improve out-of-domain (OOD) performance of SLMs in the extractive question answering (QA) setup. We show that, across various LLM generators, such data augmentation consistently enhances OOD performance and improves model calibration for both confidence-based and rationale-augmented calibrator models. Furthermore, these performance improvements correlate with higher diversity of CF instances in terms of their surface form and semantic content. Finally, we show that CF augmented models which are easier to calibrate also exhibit much lower entropy when assigning importance, indicating that rationale-augmented calibrators prefer concise explanations.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the use of LLMs to augment training data of smaller language models with automatically generated counterfactual instances \u2013 i.e. minimally altered inputs \u2013 in order to improve out-of-domain (OOD) performance of SLMs in the extractive question answering (QA) setup and shows that such data augmentation consistently enhances OOD performance and improves model calibration."
+            },
+            "score": 6
+        },
+        {
+            "id": "b6d534c8e49f7a9b167ce35facba0b1a907e4a85",
+            "paperId": "b6d534c8e49f7a9b167ce35facba0b1a907e4a85",
+            "title": "A Rationale-centric Counterfactual Data Augmentation Method for Cross-Document Event Coreference Resolution",
+            "abstract": "Based on Pre-trained Language Models (PLMs), event coreference resolution (ECR) systems have demonstrated outstanding performance in clustering coreferential events across documents. However, the existing system exhibits an excessive reliance on the `triggers lexical matching' spurious pattern in the input mention pair text. We formalize the decision-making process of the baseline ECR system using a Structural Causal Model (SCM), aiming to identify spurious and causal associations (i.e., rationales) within the ECR task. Leveraging the debiasing capability of counterfactual data augmentation, we develop a rationale-centric counterfactual data augmentation method with LLM-in-the-loop. This method is specialized for pairwise input in the ECR system, where we conduct direct interventions on triggers and context to mitigate the spurious association while emphasizing the causation. Our approach achieves state-of-the-art performance on three popular cross-document ECR benchmarks and demonstrates robustness in out-of-domain scenarios.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work formalizes the decision-making process of the baseline ECR system using a Structural Causal Model (SCM), aiming to identify spurious and causal associations within the ECR task and develops a rationale-centric counterfactual data augmentation method with LLM-in-the-loop."
+            },
+            "score": 5
+        },
+        {
+            "id": "bcc66ec3019642b083face5aca1c476308edd45e",
+            "paperId": "bcc66ec3019642b083face5aca1c476308edd45e",
+            "title": "Will the Prince Get True Love's Kiss? On the Model Sensitivity to Gender Perturbation over Fairytale Texts",
+            "abstract": "Recent studies show that traditional fairytales are rife with harmful gender biases. To help mitigate these gender biases in fairytales, this work aims to assess learned biases of language models by evaluating their robustness against gender perturbations. Specifically, we focus on Question Answering (QA) tasks in fairytales. Using counterfactual data augmentation to the FairytaleQA dataset, we evaluate model robustness against swapped gender character information, and then mitigate learned biases by introducing counterfactual gender stereotypes during training time. We additionally introduce a novel approach that utilizes the massive vocabulary of language models to support text genres beyond fairytales. Our experimental results suggest that models are sensitive to gender perturbations, with significant performance drops compared to the original testing set. However, when first fine-tuned on a counterfactual training dataset, models are less sensitive to the later introduced anti-gender stereotyped text.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work evaluates model robustness against swapped gender character information, and then mitigate learned biases by introducing counterfactual gender stereotypes during training time, and suggests that models are sensitive to gender perturbations, but when first fine-tuned on acounterfactual training dataset, models are less sensitive to the later introduced anti-gender stereotyped text."
+            },
+            "score": 5
+        },
+        {
+            "id": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "paperId": "47030369e97cc44d4b2e3cf1be85da0fd134904a",
+            "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+            "abstract": "Because\"out-of-the-box\"large language models are capable of generating a great deal of objectionable content, recent work has focused on aligning these models in an attempt to prevent undesirable generation. While there has been some success at circumventing these measures -- so-called\"jailbreaks\"against LLMs -- these attacks have required significant human ingenuity and are brittle in practice. In this paper, we propose a simple and effective attack method that causes aligned language models to generate objectionable behaviors. Specifically, our approach finds a suffix that, when attached to a wide range of queries for an LLM to produce objectionable content, aims to maximize the probability that the model produces an affirmative response (rather than refusing to answer). However, instead of relying on manual engineering, our approach automatically produces these adversarial suffixes by a combination of greedy and gradient-based search techniques, and also improves over past automatic prompt generation methods. Surprisingly, we find that the adversarial prompts generated by our approach are quite transferable, including to black-box, publicly released LLMs. Specifically, we train an adversarial attack suffix on multiple prompts (i.e., queries asking for many different types of objectionable content), as well as multiple models (in our case, Vicuna-7B and 13B). When doing so, the resulting attack suffix is able to induce objectionable content in the public interfaces to ChatGPT, Bard, and Claude, as well as open source LLMs such as LLaMA-2-Chat, Pythia, Falcon, and others. In total, this work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information. Code is available at github.com/llm-attacks/llm-attacks.",
+            "year": 2023,
+            "citationCount": 386,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work significantly advances the state-of-the-art in adversarial attacks against aligned language models, raising important questions about how such systems can be prevented from producing objectionable information."
+            },
+            "score": 5
+        },
+        {
+            "id": "6d465be006615460d41060f9f5068d51fc1f46b1",
+            "paperId": "6d465be006615460d41060f9f5068d51fc1f46b1",
+            "title": "Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models",
+            "abstract": "The integration of large language models (LLMs) with external content has enabled more up-to-date and wide-ranging applications of LLMs, such as Microsoft Copilot. However, this integration has also exposed LLMs to the risk of indirect prompt injection attacks, where an attacker can embed malicious instructions within external content, compromising LLM output and causing responses to deviate from user expectations. To investigate this important but underexplored issue, we introduce the first benchmark for indirect prompt injection attacks, named BIPIA, to evaluate the risk of such attacks. Based on the evaluation, our work makes a key analysis of the underlying reason for the success of the attack, namely the inability of LLMs to distinguish between instructions and external content and the absence of LLMs' awareness to not execute instructions within external content. Building upon this analysis, we develop two black-box methods based on prompt learning and a white-box defense method based on fine-tuning with adversarial training accordingly. Experimental results demonstrate that black-box defenses are highly effective in mitigating these attacks, while the white-box defense reduces the attack success rate to near-zero levels. Overall, our work systematically investigates indirect prompt injection attacks by introducing a benchmark, analyzing the underlying reason for the success of the attack, and developing an initial set of defenses.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work systematically investigates indirect prompt injection attacks by introducing a benchmark, analyzing the underlying reason for the success of the attack, and developing an initial set of defenses."
+            },
+            "score": 5
+        },
+        {
+            "id": "b6cf4579b59b51d7df416e096ad86c1e6a48b458",
+            "paperId": "b6cf4579b59b51d7df416e096ad86c1e6a48b458",
+            "title": "Adversarial Prompt Tuning for Vision-Language Models",
+            "abstract": "With the rapid advancement of multimodal learning, pre-trained Vision-Language Models (VLMs) such as CLIP have demonstrated remarkable capacities in bridging the gap between visual and language modalities. However, these models remain vulnerable to adversarial attacks, particularly in the image modality, presenting considerable security risks. This paper introduces Adversarial Prompt Tuning (AdvPT), a novel technique to enhance the adversarial robustness of image encoders in VLMs. AdvPT innovatively leverages learnable text prompts and aligns them with adversarial image embeddings, to address the vulnerabilities inherent in VLMs without the need for extensive parameter training or modification of the model architecture. We demonstrate that AdvPT improves resistance against white-box and black-box adversarial attacks and exhibits a synergistic effect when combined with existing image-processing-based defense techniques, further boosting defensive capabilities. Comprehensive experimental analyses provide insights into adversarial prompt tuning, a novel paradigm devoted to improving resistance to adversarial images through textual input modifications, paving the way for future robust multimodal learning research. These findings open up new possibilities for enhancing the security of VLMs. Our code is available at https://github.com/jiamingzhang94/Adversarial-Prompt-Tuning.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Adversarial Prompt Tuning is introduced, a novel technique to enhance the adversarial robustness of image encoders in VLMs and improves resistance against white-box and black-box adversarial attacks and exhibits a synergistic effect when combined with existing image-processing-based defense techniques, further boosting defensive capabilities."
+            },
+            "score": 5
+        },
+        {
+            "id": "0b65449b5f80cf884de205b815d6ac035f625be9",
+            "paperId": "0b65449b5f80cf884de205b815d6ac035f625be9",
+            "title": "Using Random Perturbations to Mitigate Adversarial Attacks on NLP Models",
+            "abstract": "Deep learning models have excelled in solving many problems in Natural Language Processing, but are susceptible to extensive vulnerabilities. We offer a solution to this vulnerability by using random perturbations such as spelling correction, synonym substitution, or dropping the word. These perturbations are applied to random words in random sentences to defend NLP models against adversarial attacks. Our defense methods are successful in returning attacked models to their original accuracy within statistical significance.",
+            "year": 2022,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Random perturbations are applied to random words in random sentences to defend NLP models against adversarial attacks and are successful in returning attacked models to their original accuracy within statistical significance."
+            },
+            "score": 5
+        },
+        {
+            "id": "40ee4949c1050a465d418deb6dd7ea6304a3bc29",
+            "paperId": "40ee4949c1050a465d418deb6dd7ea6304a3bc29",
+            "title": "Adversarial Attacks and Defenses in Large Language Models: Old and New Threats",
+            "abstract": "Over the past decade, there has been extensive research aimed at enhancing the robustness of neural networks, yet this problem remains vastly unsolved. Here, one major impediment has been the overestimation of the robustness of new defense approaches due to faulty defense evaluations. Flawed robustness evaluations necessitate rectifications in subsequent works, dangerously slowing down the research and providing a false sense of security. In this context, we will face substantial challenges associated with an impending adversarial arms race in natural language processing, specifically with closed-source Large Language Models (LLMs), such as ChatGPT, Google Bard, or Anthropic's Claude. We provide a first set of prerequisites to improve the robustness assessment of new approaches and reduce the amount of faulty evaluations. Additionally, we identify embedding space attacks on LLMs as another viable threat model for the purposes of generating malicious content in open-sourced models. Finally, we demonstrate on a recently proposed defense that, without LLM-specific best practices in place, it is easy to overestimate the robustness of a new approach.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work provides a first set of prerequisites to improve the robustness assessment of new approaches and reduce the amount of faulty evaluations, and identifies embedding space attacks on LLMs as another viable threat model for the purposes of generating malicious content in open-sourced models."
+            },
+            "score": 5
+        },
+        {
+            "id": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "paperId": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "title": "Context-faithful Prompting for Large Language Models",
+            "abstract": "Large language models (LLMs) encode parametric knowledge about world facts and have shown remarkable performance in knowledge-driven NLP tasks. However, their reliance on parametric knowledge may cause them to overlook contextual cues, leading to incorrect predictions in context-sensitive NLP tasks (e.g., knowledge acquisition tasks). In this paper, we seek to assess and enhance LLMs' contextual faithfulness in two aspects: knowledge conflict and prediction with abstention. We demonstrate that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies. In particular, we identify opinion-based prompts and counterfactual demonstrations as the most effective methods. Opinion-based prompts reframe the context as a narrator's statement and inquire about the narrator's opinions, while counterfactual demonstrations use instances containing false facts to improve faithfulness in knowledge conflict situations. Neither technique requires additional training. We conduct experiments on three datasets of two standard NLP tasks, machine reading comprehension and relation extraction, and the results demonstrate significant improvement in faithfulness to contexts. Code and data are released at https://github.com/wzhouad/context-faithful-llm.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies, and opinion-based prompts and counterfactual demonstrations are identified as the most effective methods."
+            },
+            "score": 5
+        },
+        {
+            "id": "6b135e922a0c673aeb0b05c5aeecdb6c794791c6",
+            "paperId": "6b135e922a0c673aeb0b05c5aeecdb6c794791c6",
+            "title": "Jailbreak and Guard Aligned Language Models with Only Few In-Context Demonstrations",
+            "abstract": "Large Language Models (LLMs) have shown remarkable success in various tasks, but concerns about their safety and the potential for generating malicious content have emerged. In this paper, we explore the power of In-Context Learning (ICL) in manipulating the alignment ability of LLMs. We find that by providing just few in-context demonstrations without fine-tuning, LLMs can be manipulated to increase or decrease the probability of jailbreaking, i.e. answering malicious prompts. Based on these observations, we propose In-Context Attack (ICA) and In-Context Defense (ICD) methods for jailbreaking and guarding aligned language model purposes. ICA crafts malicious contexts to guide models in generating harmful outputs, while ICD enhances model robustness by demonstrations of rejecting to answer harmful prompts. Our experiments show the effectiveness of ICA and ICD in increasing or reducing the success rate of adversarial jailbreaking attacks. Overall, we shed light on the potential of ICL to influence LLM behavior and provide a new perspective for enhancing the safety and alignment of LLMs.",
+            "year": 2023,
+            "citationCount": 59,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Light is shed on the potential of In-Context Learning (ICL) to influence LLM behavior and a new perspective for enhancing the safety and alignment of LLMs is provided."
+            },
+            "score": 5
+        },
+        {
+            "id": "bbffc1d5b4a8786d6a33080204e5a35590a08389",
+            "paperId": "bbffc1d5b4a8786d6a33080204e5a35590a08389",
+            "title": "BLCU-NLP at SemEval-2020 Task 5: Data Augmentation for Efficient Counterfactual Detecting",
+            "abstract": "Counterfactuals describe events counter to facts and hence naturally involve common sense, knowledge, and reasoning. SemEval 2020 task 5 is focusing on this field. We participate in the subtask 1 and we use BERT as our system. Our Innovations are feature extraction and data augmentation. We extract and summarize features of counterfactual statements, augment counterfactual examples in training set with the help of these features, and two general methods of data augmentation is experimented in our work. We demonstrate the effectiveness of our approaches, which achieves 0.95 of subtask 1 in F1 while using only a subset of giving training set to fine-tune the BERT model, and our official submission achieves F1 0.802, which ranks us 16th in the competition.",
+            "year": 2020,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The effectiveness of the approaches is demonstrated, which achieves 0.95 of subtask 1 in F1 while using only a subset of giving training set to fine-tune the BERT model, and the official submission achieves F1 0.802, which ranks us 16th in the competition."
+            },
+            "score": 5
+        },
+        {
+            "id": "f285c395a5c3ae93e6c8f4a3d552efd3a3816e36",
+            "paperId": "f285c395a5c3ae93e6c8f4a3d552efd3a3816e36",
+            "title": "A Novel Counterfactual Data Augmentation Method for Aspect-Based Sentiment Analysis",
+            "abstract": "Aspect-based-sentiment-analysis (ABSA) is a fine-grained sentiment evaluation task, which analyzes the emotional polarity of the evaluation aspects. Generally, the emotional polarity of an aspect exists in the corresponding opinion expression, whose diversity has great impact on model's performance. To mitigate this problem, we propose a novel and simple counterfactual data augmentation method to generate opinion expressions with reversed sentiment polarity. In particular, the integrated gradients are calculated to locate and mask the opinion expression. Then, a prompt combined with the reverse expression polarity is added to the original text, and a Pre-trained language model (PLM), T5, is finally was employed to predict the masks. The experimental results shows the proposed counterfactual data augmentation method performs better than current augmentation methods on three ABSA datasets, i.e. Laptop, Restaurant, and MAMS.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel and simple counterfactual data augmentation method to generate opinion expressions with reversed sentiment polarity is proposed, in which the integrated gradients are calculated to locate and mask the opinion expression."
+            },
+            "score": 5
+        },
+        {
+            "id": "01aa29292d3da33163c56e3c3c23ac933680b95b",
+            "paperId": "01aa29292d3da33163c56e3c3c23ac933680b95b",
+            "title": "Reinforced Counterfactual Data Augmentation for Dual Sentiment Classification",
+            "abstract": "Data augmentation and adversarial perturbation approaches have recently achieved promising results in solving the over-fitting problem in many natural language processing (NLP) tasks including sentiment classification. However, existing studies aimed to improve the generalization ability by augmenting the training data with synonymous examples or adding random noises to word embeddings, which cannot address the spurious association problem. In this work, we propose an end-to-end reinforcement learning framework, which jointly performs counterfactual data generation and dual sentiment classification. Our approach has three characteristics:1) the generator automatically generates massive and diverse antonymous sentences; 2) the discriminator contains a original-side sentiment predictor and an antonymous-side sentiment predictor, which jointly evaluate the quality of the generated sample and help the generator iteratively generate higher-quality antonymous samples; 3) the discriminator is directly used as the final sentiment classifier without the need to build an extra one. Extensive experiments show that our approach outperforms strong data augmentation baselines on several benchmark sentiment classification datasets. Further analysis confirms our approach\u2019s advantages in generating more diverse training samples and solving the spurious association problem in sentiment classification.",
+            "year": 2021,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An end-to-end reinforcement learning framework, which jointly performs counterfactual data generation and dual sentiment classification, and confirms the approach\u2019s advantages in generating more diverse training samples and solving the spurious association problem in sentiment classification."
+            },
+            "score": 5
+        },
+        {
+            "id": "27285b3760be8f0473245c13b97988265cd0467b",
+            "paperId": "27285b3760be8f0473245c13b97988265cd0467b",
+            "title": "Entity-level Factual Adaptiveness of Fine-tuning based Abstractive Summarization Models",
+            "abstract": "Abstractive summarization models often generate factually inconsistent content particularly when the parametric knowledge of the model conflicts with the knowledge in the input document. In this paper, we analyze the robustness of fine-tuning based summarization models to the knowledge conflict, which we call factual adaptiveness. We utilize pre-trained language models to construct evaluation sets and find that factual adaptiveness is not strongly correlated with factual consistency on original datasets. Furthermore, we introduce a controllable counterfactual data augmentation method where the degree of knowledge conflict within the augmented data can be adjustable. Our experimental results on two pre-trained language models (PEGASUS and BART) and two fine-tuning datasets (XSum and CNN/DailyMail) demonstrate that our method enhances factual adaptiveness while achieving factual consistency on original datasets on par with the contrastive learning baseline.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper analyzes the robustness of fine-tuning based summarization models to the knowledge conflict, which is called factual adaptiveness, and introduces a controllable counterfactual data augmentation method where the degree of knowledge conflict within the augmented data can be adjustable."
+            },
+            "score": 4
+        },
+        {
+            "id": "5bdaadb84db0cbf72aaebda9f55f4288b63c6e9b",
+            "paperId": "5bdaadb84db0cbf72aaebda9f55f4288b63c6e9b",
+            "title": "Image Hijacks: Adversarial Images can Control Generative Models at Runtime",
+            "abstract": "Are foundation models secure against malicious actors? In this work, we focus on the image input to a vision-language model (VLM). We discover image hijacks, adversarial images that control the behaviour of VLMs at inference time, and introduce the general Behaviour Matching algorithm for training image hijacks. From this, we derive the Prompt Matching method, allowing us to train hijacks matching the behaviour of an arbitrary user-defined text prompt (e.g. 'the Eiffel Tower is now located in Rome') using a generic, off-the-shelf dataset unrelated to our choice of prompt. We use Behaviour Matching to craft hijacks for four types of attack, forcing VLMs to generate outputs of the adversary's choice, leak information from their context window, override their safety training, and believe false statements. We study these attacks against LLaVA, a state-of-the-art VLM based on CLIP and LLaMA-2, and find that all attack types achieve a success rate of over 80%. Moreover, our attacks are automated and require only small image perturbations.",
+            "year": 2023,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work discovers image hijacks, adversarial images that control the behaviour of VLMs at inference time, and introduces the general Behaviour Matching algorithm for training image hijacks, forcing VLMs to generate outputs of the adversary's choice."
+            },
+            "score": 4
+        },
+        {
+            "id": "3a0cee573e19db7f3c561152199a3386adf6cb74",
+            "paperId": "3a0cee573e19db7f3c561152199a3386adf6cb74",
+            "title": "An Optimized Transfer Attack Framework Towards Multi-Modal Machine Learning",
+            "abstract": "Deep neural networks (DNNs) have excelled at a wide range of tasks, including computer vision (CV), natural language processing (NLP), and speech recognition. However, past research has demonstrated that DNNs are vulnerable to adversarial examples, which are deliberately meant to trick models into making incorrect predictions by adding subtle perturbations into inputs. Adversarial examples create an exponential threat to multi-modal models that can accept a variety of inputs. By attacking substitute models, we provide a transferable attack framework. The suggested framework optimizes the attack process by modifying the prompt templates and simultaneously raising the attack on multiple inputs. Our experiments demonstrate that the proposed attack framework can significantly improve the success rate of transferable attacks, and adversarial examples are rarely noticed by humans. Meanwhile, experiments show that in transferable attacks, coarse-grained adversarial examples can achieve higher attack success rates than fine-grained ones, and the multi-modal models has some robustness against uni-modal attacks.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work attacks substitute models to provide a transferable attack framework for DNNs vulnerable to adversarial examples, and demonstrates that the proposed attack framework can significantly improve the success rate of transferable attacks."
+            },
+            "score": 4
+        },
+        {
+            "id": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "paperId": "92b9d8b8c81c4c53ea62000c0924500b2dd11bce",
+            "title": "Jailbreak in pieces: Compositional Adversarial Attacks on Multi-Modal Language Models",
+            "abstract": "We introduce new jailbreak attacks on vision language models (VLMs), which use aligned LLMs and are resilient to text-only jailbreak attacks. Specifically, we develop cross-modality attacks on alignment where we pair adversarial images going through the vision encoder with textual prompts to break the alignment of the language model. Our attacks employ a novel compositional strategy that combines an image, adversarially targeted towards toxic embeddings, with generic prompts to accomplish the jailbreak. Thus, the LLM draws the context to answer the generic prompt from the adversarial image. The generation of benign-appearing adversarial images leverages a novel embedding-space-based methodology, operating with no access to the LLM model. Instead, the attacks require access only to the vision encoder and utilize one of our four embedding space targeting strategies. By not requiring access to the LLM, the attacks lower the entry barrier for attackers, particularly when vision encoders such as CLIP are embedded in closed-source LLMs. The attacks achieve a high success rate across different VLMs, highlighting the risk of cross-modality alignment vulnerabilities, and the need for new alignment approaches for multi-modal models.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Cross-modality attacks on alignment where adversarial images going through the vision encoder with textual prompts to break the alignment of the language model are developed."
+            },
+            "score": 4
+        },
+        {
+            "id": "8dd9605fbc9702f08a295cba5ae263f625781856",
+            "paperId": "8dd9605fbc9702f08a295cba5ae263f625781856",
+            "title": "VLAttack: Multimodal Adversarial Attacks on Vision-Language Tasks via Pre-trained Models",
+            "abstract": "Vision-Language (VL) pre-trained models have shown their superiority on many multimodal tasks. However, the adversarial robustness of such models has not been fully explored. Existing approaches mainly focus on exploring the adversarial robustness under the white-box setting, which is unrealistic. In this paper, we aim to investigate a new yet practical task to craft image and text perturbations using pre-trained VL models to attack black-box fine-tuned models on different downstream tasks. Towards this end, we propose VLAttack to generate adversarial samples by fusing perturbations of images and texts from both single-modal and multimodal levels. At the single-modal level, we propose a new block-wise similarity attack (BSA) strategy to learn image perturbations for disrupting universal representations. Besides, we adopt an existing text attack strategy to generate text perturbations independent of the image-modal attack. At the multimodal level, we design a novel iterative cross-search attack (ICSA) method to update adversarial image-text pairs periodically, starting with the outputs from the single-modal level. We conduct extensive experiments to attack three widely-used VL pretrained models for six tasks on eight datasets. Experimental results show that the proposed VLAttack framework achieves the highest attack success rates on all tasks compared with state-of-the-art baselines, which reveals a significant blind spot in the deployment of pre-trained VL models. Codes will be released soon.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes VLAttack to generate adversarial samples by fusing perturbations of images and texts from both single-modal and multimodal levels, and proposes a novel iterative cross-search attack method to update adversarial image-text pairs periodically."
+            },
+            "score": 4
+        },
+        {
+            "id": "01efb3fd2d3ae4b5f4389c916c94f2c6d9c11b81",
+            "paperId": "01efb3fd2d3ae4b5f4389c916c94f2c6d9c11b81",
+            "title": "Explore Spurious Correlations at the Concept Level in Language Models for Text Classification",
+            "abstract": "Language models (LMs) have achieved notable success in numerous NLP tasks, employing both fine-tuning and in-context learning (ICL) methods. While language models demonstrate exceptional performance, they face robustness challenges due to spurious correlations arising from imbalanced label distributions in training data or ICL exemplars. Previous research has primarily concentrated on word, phrase, and syntax features, neglecting the concept level, often due to the absence of concept labels and difficulty in identifying conceptual content in input texts. This paper introduces two main contributions. First, we employ ChatGPT to assign concept labels to texts, assessing concept bias in models during fine-tuning or ICL on test data. We find that LMs, when encountering spurious correlations between a concept and a label in training or prompts, resort to shortcuts for predictions. Second, we introduce a data rebalancing technique that incorporates ChatGPT-generated counterfactual data, thereby balancing label distribution and mitigating spurious correlations. Our method's efficacy, surpassing traditional token removal approaches, is validated through extensive testing.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A data rebalancing technique is introduced that incorporates ChatGPT-generated counterfactual data, thereby balancing label distribution and mitigating spurious correlations and finding that LMs, when encountering spurious correlations between a concept and a label in training or prompts, resort to shortcuts for predictions."
+            },
+            "score": 4
+        },
+        {
+            "id": "e327ef8d46ea0413316c80ee1404453834d84f05",
+            "paperId": "e327ef8d46ea0413316c80ee1404453834d84f05",
+            "title": "Black-Box Prompt Optimization: Aligning Large Language Models without Model Training",
+            "abstract": "Large language models (LLMs) have shown impressive success in various applications. However, these models are often not well aligned with human intents, which calls for additional treatments on them, that is, the alignment problem. To make LLMs better follow user instructions, existing alignment methods mostly focus on further training them. However, the extra training of LLMs are usually expensive in terms of GPU compute; worse still, LLMs of interest are oftentimes not accessible for user-demanded training, such as GPTs. In this work, we take a different perspective -- Black-Box Prompt Optimization (BPO) -- to perform alignments. The idea is to optimize user prompts to suit LLMs' input understanding, so as to best realize users' intents without updating LLMs' parameters. BPO is model-agnostic and the empirical results demonstrate that the BPO-aligned ChatGPT yields a 22% increase in the win rate against its original version, and 10% for GPT-4. Importantly, the BPO-aligned LLMs can outperform the same models aligned by PPO and DPO, and it also brings additional performance gains when combining BPO with PPO or DPO. Code and datasets are released at https://github.com/thu-coai/BPO.",
+            "year": 2023,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work takes a different perspective -- Black-Box Prompt Optimization (BPO) -- to perform alignments of large language models to optimize user prompts to suit LLMs' input understanding, so as to best realize users' intents without updating LL Ms' parameters."
+            },
+            "score": 4
+        },
+        {
+            "id": "a4c921bdef167ae54cc3a40643e6e3ed13d49a61",
+            "paperId": "a4c921bdef167ae54cc3a40643e6e3ed13d49a61",
+            "title": "Safety-Tuned LLaMAs: Lessons From Improving the Safety of Large Language Models that Follow Instructions",
+            "abstract": "Training large language models to follow instructions makes them perform better on a wide range of tasks and generally become more helpful. However, a perfectly helpful model will follow even the most malicious instructions and readily generate harmful content. In this paper, we raise concerns over the safety of models that only emphasize helpfulness, not harmlessness, in their instruction-tuning. We show that several popular instruction-tuned models are highly unsafe. Moreover, we show that adding just 3% safety examples (a few hundred demonstrations) when fine-tuning a model like LLaMA can substantially improve its safety. Our safety-tuning does not make models significantly less capable or helpful as measured by standard benchmarks. However, we do find exaggerated safety behaviours, where too much safety-tuning makes models refuse perfectly safe prompts if they superficially resemble unsafe ones. As a whole, our results illustrate trade-offs in training LLMs to be helpful and training them to be safe.",
+            "year": 2023,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Concerns over the safety of models that only emphasize helpfulness, not harmlessness, in their instruction-tuning are raised and it is shown that several popular instruction-tuned models are highly unsafe."
+            },
+            "score": 4
+        },
+        {
+            "id": "845356b44c1efa1a5f7a29966a23b2dd4dd03494",
+            "paperId": "845356b44c1efa1a5f7a29966a23b2dd4dd03494",
+            "title": "CoDa: Constrained Generation based Data Augmentation for Low-Resource NLP",
+            "abstract": "We present CoDa (Constrained Generation based Data Augmentation), a controllable, effective, and training-free data augmentation technique for low-resource (data-scarce) NLP. Our approach is based on prompting off-the-shelf instruction-following Large Language Models (LLMs) for generating text that satisfies a set of constraints. Precisely, we extract a set of simple constraints from every instance in the low-resource dataset and verbalize them to prompt an LLM to generate novel and diverse training instances. Our findings reveal that synthetic data that follows simple constraints in the downstream dataset act as highly effective augmentations, and CoDa can achieve this without intricate decoding-time constrained generation techniques or fine-tuning with complex algorithms that eventually make the model biased toward the small number of training instances. Additionally, CoDa is the first framework that provides users explicit control over the augmentation generation process, thereby also allowing easy adaptation to several domains. We demonstrate the effectiveness of CoDa across 11 datasets spanning 3 tasks and 3 low-resource settings. CoDa outperforms all our baselines, qualitatively and quantitatively, with improvements of 0.12%-7.19%. Code is available here: https://github.com/Sreyan88/CoDa",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The findings reveal that synthetic data that follows simple constraints in the downstream dataset act as highly effective augmentations, and CoDa can achieve this without intricate decoding-time constrained generation techniques or fine-tuning with complex algorithms that eventually make the model biased toward the small number of training instances."
+            },
+            "score": 4
+        },
+        {
+            "id": "835ac3cbb41f2ec47718c5491211dd33b64f382b",
+            "paperId": "835ac3cbb41f2ec47718c5491211dd33b64f382b",
+            "title": "Counterfactual Data Augmentation for Mitigating Gender Stereotypes in Languages with Rich Morphology",
+            "abstract": "Gender stereotypes are manifest in most of the world\u2019s languages and are consequently propagated or amplified by NLP systems. Although research has focused on mitigating gender stereotypes in English, the approaches that are commonly employed produce ungrammatical sentences in morphologically rich languages. We present a novel approach for converting between masculine-inflected and feminine-inflected sentences in such languages. For Spanish and Hebrew, our approach achieves F1 scores of 82% and 73% at the level of tags and accuracies of 90% and 87% at the level of forms. By evaluating our approach using four different languages, we show that, on average, it reduces gender stereotyping by a factor of 2.5 without any sacrifice to grammaticality.",
+            "year": 2019,
+            "citationCount": 221,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a novel approach for converting between masculine-inflected and feminine-inflection sentences in morphologically rich languages and shows that it reduces gender stereotyping by a factor of 2.5 without any sacrifice to grammaticality."
+            },
+            "score": 4
+        },
+        {
+            "id": "46dfd46fb41d56bc77055e436dc969de8df0e76b",
+            "paperId": "46dfd46fb41d56bc77055e436dc969de8df0e76b",
+            "title": "Data augmentation and the role of hardness for feature learning in NLP",
+            "abstract": ". Abstract Neural models often exploit features that generalize badly in order to achieve good performance. Overcoming this tendency is a central challenge in areas such as representation learning and ML fairness. We approach this problem, in part, from the perspective of feature hardness and data augmentation. First, we construct a dataset for linguistic acceptability in which multiple, competing features might be used for prediction. We \ufb01nd that in this setting, the downstream model \u2018prefers\u2019 \u2013 to some extent \u2013 the feature that is more easily extracted from the pre-trained model. OUr preliminary results suggest that the learning of downstream tasks in natural language processing (NLP) is governed, in part, by the \u2018clarity\u2019 with which features are represented by pre-trained models. Second, we introduce a toy setting to probe the e\ufb00ectiveness of data augmentation, a widely-used strategy to prevent models from learning undesirable heuristics. Adversarial or counterfactual data augmentation involves generating training examples where these heuristics fail, in order to encourage the model to use more general features. We show that, often, the added training examples help prevent the model from adopting the targeted heuristic, but do not help it learn more general features. We also \ufb01nd in many cases that the number of adversarial examples needed to reach a given error rate is independent of the amount of training data, and that adversarial data augmentation becomes less e\ufb00ective as the number of available heuristics increases and/or as the underlying learning problem becomes more challenging. Finally, we explore several de\ufb01nitions of feature hardness in the context of the same toy setting, including: (1) the area under the classi\ufb01cation learning curve, (2) the sum of weights of a classi\ufb01cation model, (3) the minimum description length given by the probing methods of Voita and Titov [2020], and (4) the number of adversarial counterexamples that are needed to induce a model to learn the feature. We show an correspondence between these de\ufb01nitions for the features in our toy setting.",
+            "year": 2020,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Preliminary results suggest that the learning of downstream tasks in natural language processing (NLP) is governed, in part, by the \u2018clarity\u2019 with which features are represented by pre-trained models."
+            },
+            "score": 4
+        },
+        {
+            "id": "733ab85431becba55b91ead62f695b9e5da1ecaa",
+            "paperId": "733ab85431becba55b91ead62f695b9e5da1ecaa",
+            "title": "Towards Robust Aspect-based Sentiment Analysis through Non-counterfactual Augmentations",
+            "abstract": "While state-of-the-art NLP models have demonstrated excellent performance for aspect based sentiment analysis (ABSA), substantial evidence has been presented on their lack of robustness. This is especially manifested as significant degradation in performance when faced with out-of-distribution data. Recent solutions that rely on counterfactually augmented datasets show promising results, but they are inherently limited because of the lack of access to explicit causal structure. In this paper, we present an alternative approach that relies on non-counterfactual data augmentation. Our proposal instead relies on using noisy, cost-efficient data augmentations that preserve semantics associated with the target aspect. Our approach then relies on modelling invariances between different versions of the data to improve robustness. A comprehensive suite of experiments shows that our proposal significantly improves upon strong pre-trained baselines on both standard and robustness-specific datasets. Our approach further establishes a new state-of-the-art on the ABSA robustness benchmark and transfers well across domains.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper's approach relies on using noisy, cost-efficient data augmentations that preserve semantics associated with the target aspect that establishes a new state-of-the-art on the ABSA robustness benchmark and transfers well across domains."
+            },
+            "score": 4
+        },
+        {
+            "id": "31852f9fc732c0868af12d631c72693702d80521",
+            "paperId": "31852f9fc732c0868af12d631c72693702d80521",
+            "title": "Text Data Augmentation for Deep Learning",
+            "abstract": null,
+            "year": 2021,
+            "citationCount": 258,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The major motifs of Data Augmentation are summarized into strengthening local decision boundaries, brute force training, causality and counterfactual examples, and the distinction between meaning and form."
+            },
+            "score": 4
+        },
+        {
+            "id": "28e2ecb4183ebc0eec504b12dddc677f8aef8745",
+            "paperId": "28e2ecb4183ebc0eec504b12dddc677f8aef8745",
+            "title": "Benchmarking Large Language Models in Retrieval-Augmented Generation",
+            "abstract": "Retrieval-Augmented Generation (RAG) is a promising approach for mitigating the hallucination of large language models (LLMs). However, existing research lacks rigorous evaluation of the impact of retrieval-augmented generation on different large language models, which make it challenging to identify the potential bottlenecks in the capabilities of RAG for different LLMs. In this paper, we systematically investigate the impact of Retrieval-Augmented Generation on large language models. We analyze the performance of different large language models in 4 fundamental abilities required for RAG, including noise robustness, negative rejection, information integration, and counterfactual robustness. To this end, we establish Retrieval-Augmented Generation Benchmark (RGB), a new corpus for RAG evaluation in both English and Chinese. RGB divides the instances within the benchmark into 4 separate testbeds based on the aforementioned fundamental abilities required to resolve the case. Then we evaluate 6 representative LLMs on RGB to diagnose the challenges of current LLMs when applying RAG. Evaluation reveals that while LLMs exhibit a certain degree of noise robustness, they still struggle significantly in terms of negative rejection, information integration, and dealing with false information. The aforementioned assessment outcomes indicate that there is still a considerable journey ahead to effectively apply RAG to LLMs.",
+            "year": 2023,
+            "citationCount": 51,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Evaluation reveals that while LLMs exhibit a certain degree of noise robustness, they still struggle significantly in terms of negative rejection, information integration, and dealing with false information, indicating that there is still a considerable journey ahead to effectively apply RAG to LLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "45872b94798c3125abfb185b7926689c5e767763",
+            "paperId": "45872b94798c3125abfb185b7926689c5e767763",
+            "title": "GraphGPT: Graph Instruction Tuning for Large Language Models",
+            "abstract": "Graph Neural Networks (GNNs) have advanced graph structure understanding via recursive information exchange and aggregation among graph nodes. To improve model robustness, self-supervised learning (SSL) has emerged as a promising approach for data augmentation. However, existing methods for generating pre-trained graph embeddings often rely on fine-tuning with specific downstream task labels, which limits their usability in scenarios where labeled data is scarce or unavailable. To address this, our research focuses on advancing the generalization capabilities of graph models in challenging zero-shot learning scenarios. Inspired by the success of large language models (LLMs), we aim to develop a graph-oriented LLM that can achieve high generalization across diverse downstream datasets and tasks, even without any information available from the downstream graph data. In this work, we present the GraphGPT framework that aligns LLMs with graph structural knowledge with a graph instruction tuning paradigm. Our framework incorporates a text-graph grounding component to establish a connection between textual information and graph structures. Additionally, we propose a dual-stage instruction tuning paradigm, accompanied by a lightweight graph-text alignment projector. This paradigm explores self-supervised graph structural signals and task-specific graph instructions, to guide LLMs in understanding complex graph structures and improving their adaptability across different downstream tasks. Our framework is evaluated on supervised and zero-shot graph learning tasks, demonstrating superior generalization and outperforming state-of-the-art baselines.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The GraphGPT framework is presented, which combines a text-graph grounding component to establish a connection between textual information and graph structures, and a dual-stage instruction tuning paradigm, accompanied by a lightweight graph-text alignment projector, that explores self-supervised graph structural signals and task-specific graph instructions."
+            },
+            "score": 3
+        },
+        {
+            "id": "64e30319758596f98d3b53c2a45ea1f493799d24",
+            "paperId": "64e30319758596f98d3b53c2a45ea1f493799d24",
+            "title": "Demo: Certified Robustness on Toolformer",
+            "abstract": "Tool-augmented language models (TALMs) overcome the limitations of current language models (LMs), allowing them to leverage external tools to enhance performance. One state-of-the-art example is Toolformer introduced by Meta AI Research, which achieves a broader integration of tool utilization. However, Toolformer faces particular concerns related to the robustness of its predictions in the optimal positioning for API calls. Adversarial perturbations can alter the position of API calls chosen by Toolformer, thus resulting in responses that are not only incorrect but potentially even less accurate than those generated by standard language models. To improve the robustness of Toolformer and fulfill the capability of its toolbox, our focus lies on addressing the potential vulnerabilities that arise from small perturbations in the input or prompt space. To achieve this goal, we plan to study adversarial attacks from both attackers' and defenders' perspectives by first studying the adversarial attack algorithms on the input and prompt space, then proposing the certified robustness to the Toolformer API calls scheduling, which is not only empirically effective but also theory-backed.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work plans to study adversarial attacks from both attackers' and defenders' perspectives by first studying the adversarial attack algorithms on the input and prompt space, then proposing the certified robustness to the Toolformer API calls scheduling, which is not only empirically effective but also theory-backed."
+            },
+            "score": 3
+        },
+        {
+            "id": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+            "paperId": "d766bffc357127e0dc86dd69561d5aeb520d6f4c",
+            "title": "Training language models to follow instructions with human feedback",
+            "abstract": "Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by fine-tuning with human feedback. Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API, we collect a dataset of labeler demonstrations of the desired model behavior, which we use to fine-tune GPT-3 using supervised learning. We then collect a dataset of rankings of model outputs, which we use to further fine-tune this supervised model using reinforcement learning from human feedback. We call the resulting models InstructGPT. In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters. Moreover, InstructGPT models show improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets. Even though InstructGPT still makes simple mistakes, our results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent.",
+            "year": 2022,
+            "citationCount": 5935,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent and showing improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets."
+            },
+            "score": 3
+        },
+        {
+            "id": "850b71c61d9fa4a153eee6e2c912c16ecc459b7a",
+            "paperId": "850b71c61d9fa4a153eee6e2c912c16ecc459b7a",
+            "title": "Debiasing Vision-Language Models via Biased Prompts",
+            "abstract": "Machine learning models have been shown to inherit biases from their training datasets. This can be particularly problematic for vision-language foundation models trained on uncurated datasets scraped from the internet. The biases can be amplified and propagated to downstream applications like zero-shot classifiers and text-to-image generative models. In this study, we propose a general approach for debiasing vision-language foundation models by projecting out biased directions in the text embedding. In particular, we show that debiasing only the text embedding with a calibrated projection matrix suffices to yield robust classifiers and fair generative models. The proposed closed-form solution enables easy integration into large-scale pipelines, and empirical results demonstrate that our approach effectively reduces social bias and spurious correlation in both discriminative and generative vision-language models without the need for additional data or training.",
+            "year": 2023,
+            "citationCount": 43,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that debiasing only the text embedding with a calibrated projection matrix suffices to yield robust classifiers and fair generative models and effectively reduces social bias and spurious correlation in both discriminative and generative vision-language models without the need for additional data or training."
+            },
+            "score": 3
+        },
+        {
+            "id": "41a41c75ba336dec98d58c563605f261019e5df0",
+            "paperId": "41a41c75ba336dec98d58c563605f261019e5df0",
+            "title": "\u201cAccording to . . . \u201d: Prompting Language Models Improves Quoting from Pre-Training Data",
+            "abstract": "Large Language Models (LLMs) may hallucinate and generate fake information, despite pre-training on factual data. Inspired by the journalistic device of \u201caccording to sources\u201d, we propose according-to prompting: directing LLMs to ground responses against previously observed text. To quantify this grounding, we propose a novel evaluation metric (QUIP-Score) that measures the extent to which model-produced answers are directly found in underlying text corpora. We illustrate with experiments on three corpora (Wikipedia, PubMed, and the U.S. legal tax code) that these prompts improve grounding under our metrics, with the additional benefit of often improving end-task performance. Furthermore, prompts that ask the model to decrease grounding (or to ground to other corpora) indeed decrease QUIP-Score, indicating the ability of LLMs to increase or decrease grounded generations on request.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "According-to prompting is proposed: directing LLMs to ground responses against previously observed text, to quantify this grounding, and proposes a novel evaluation metric (QUIP-Score) that measures the extent to which model-produced answers are directly found in underlying text corpora."
+            },
+            "score": 3
+        },
+        {
+            "id": "f8b9929fde93c170fd284b17ea812a9031be8858",
+            "paperId": "f8b9929fde93c170fd284b17ea812a9031be8858",
+            "title": "EPA: Easy Prompt Augmentation on Large Language Models via Multiple Sources and Multiple Targets",
+            "abstract": "Large language models (LLMs) have shown promising performance on various NLP tasks via task prompting. And their performance can be further improved by appending task demonstrations to the head of the prompt. And usually, a better performance can be achieved with more demonstrations. However, asking the users to write the demonstrations can be cumbersome. As a simple yet cost-effective workaround, this paper proposes a novel method called EPA (\\textbf{E}asy \\textbf{P}rompt \\textbf{A}ugmentation)\\footnote{While this paper considers augmenting prompts via demonstrations, we name it EPA as the name EDA is already taken by a well-known NLP method \\citep{wei-zou-2019-eda}.} that effectively minimizes user efforts in writing demonstrations while improving the model performance at the same time. EPA achieves these goals by automatically augmenting the demonstrations with multiple sources/targets, where each of them paraphrases each other. This is well motivated as augmenting data via paraphrasing effectively improves neural language models. EPA thus employs paraphrasing as an augmentation method for in-context learning. Extensive experiments indicate that EPA effectively improves both NLU and NLG tasks, covering from natural language inference to machine translation in translating tens of languages.\\footnote{Code and data will be released upon publication.}",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel method called EPA that effectively minimizes user efforts in writing demonstrations while improving the model performance at the same time, and automatically augmenting the demonstrations with multiple sources/targets, where each of them paraphrasing each other."
+            },
+            "score": 3
+        },
+        {
+            "id": "10b0cbc35fa2e53a9b2db66de7af65b3212d9f11",
+            "paperId": "10b0cbc35fa2e53a9b2db66de7af65b3212d9f11",
+            "title": "LM-CPPF: Paraphrasing-Guided Data Augmentation for Contrastive Prompt-Based Few-Shot Fine-Tuning",
+            "abstract": "In recent years, there has been significant progress in developing pre-trained language models for NLP. However, these models often struggle when fine-tuned on small datasets. To address this issue, researchers have proposed various adaptation approaches. Prompt-based tuning is arguably the most common way, especially for larger models. Previous research shows that adding contrastive learning to prompt-based fine-tuning is effective as it helps the model generate embeddings that are more distinguishable between classes, and it can also be more sample-efficient as the model learns from positive and negative examples simultaneously. One of the most important components of contrastive learning is data augmentation, but unlike computer vision, effective data augmentation for NLP is still challenging. This paper proposes LM-CPPF, Contrastive Paraphrasing-guided Prompt-based Fine-tuning of Language Models, which leverages prompt-based few-shot paraphrasing using generative language models, especially large language models such as GPT-3 and OPT-175B, for data augmentation. Our experiments on multiple text classification benchmarks show that this augmentation method outperforms other methods, such as easy data augmentation, back translation, and multiple templates.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LM-CPPF, Contrastive Paraphrasing-guided Prompt-based Fine-tuning of Language Models, which leverages prompt-based few-shot paraphrasing using generative language models, especially large language models such as GPT-3 and OPT-175B, for data augmentation is proposed."
+            },
+            "score": 3
+        },
+        {
+            "id": "8f4b6acc298fcd8b6fbc85e78fbbb3d79cd8e0f4",
+            "paperId": "8f4b6acc298fcd8b6fbc85e78fbbb3d79cd8e0f4",
+            "title": "Enhancing Cross-lingual Prompting with Dual Prompt Augmentation",
+            "abstract": "Prompting shows promising results in few-shot scenarios. However, its strength for multilingual/cross-lingual problems has not been fully exploited. Zhao and Sch\\\"utze (2021) made initial explorations in this direction by presenting that cross-lingual prompting outperforms cross-lingual finetuning. In this paper, we conduct an empirical exploration on the effect of each component in cross-lingual prompting and derive language-agnostic Universal Prompting, which helps alleviate the discrepancies between source-language training and target-language inference. Based on this, we propose DPA, a dual prompt augmentation framework, aiming at relieving the data scarcity issue in few-shot cross-lingual prompting. Notably, for XNLI, our method achieves 46.54% with only 16 English training examples per class, significantly better than 34.99% of finetuning. Our code is available at https://github.com/DAMO-NLP-SG/DPA.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DPA is proposed, a dual prompt augmentation framework, aiming at relieving the data scarcity issue in few-shot cross-lingual prompting and derive language-agnostic Universal Prompting, which helps alleviate the discrepancies between source-language training and target-language inference."
+            },
+            "score": 3
+        },
+        {
+            "id": "6320b8064ef85679c5e0a86b0628da112f0918e1",
+            "paperId": "6320b8064ef85679c5e0a86b0628da112f0918e1",
+            "title": "EPT: Data Augmentation with Embedded Prompt Tuning for Low-Resource Named Entity Recognition",
+            "abstract": "Data augmentation methods are often used to address data scarcity in natural language processing (NLP). However, token-label misalignment, which refers to situations where tokens are matched with incorrect entity labels in the augmented sentences, hinders the data augmentation methods from achieving high scores in token-level tasks like named entity recognition (NER). In this paper, we propose embedded prompt tuning (EPT) as a novel data augmentation approach to low-resource NER. To address the problem of token-label misalignment, we implicitly embed NER labels as prompt into the hidden layer of pre-trained language model, and therefore entity tokens masked can be predicted by the finetuned EPT. Hence, EPT can generate high-quality and high-diverse data with various entities, which improves performance of NER. As datasets of cross-domain NER are available, we also explore NER domain adaption with EPT. The experimental results show that EPT achieves substantial improvement over the baseline methods on low-resource NER tasks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Embedded prompt tuning (EPT) is proposed as a novel data augmentation approach to low-resource NER that implicitly embed NER labels as prompt into the hidden layer of pre-trained language model, and therefore entity tokens masked can be predicted by the finetuned EPT, which improves performance of NER."
+            },
+            "score": 3
+        },
+        {
+            "id": "3f876fa95eec6e6aebf40e62822185acef8bdd78",
+            "paperId": "3f876fa95eec6e6aebf40e62822185acef8bdd78",
+            "title": "Prompt-based Data Augmentation for Semantically-Precise Event Relation Classification",
+            "abstract": "The process of recognizing and classifying the relationships between events mentioned in the text is a crucial task in natural language processing (NLP) known as event relation extraction. If temporal relations and causality are largely studied in the literature, other types of relations have found less interest. Our study specifically concentrates on four types of event relations: causality, enabling, prevention, and intention. Our main contribution consists of the use of a state-of-the-art language model (GPT-3) to extend an existing small dataset with synthetic examples to address the challenge of insufficient training data. We evaluate the quality of these generated samples by training an event relations extraction system, showing improved performances in classifying event relations.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study uses a state-of-the-art language model (GPT-3) to extend an existing small dataset with synthetic examples to address the challenge of insufficient training data and evaluates the quality of these generated samples by training an event relations extraction system, showing improved performances in classifying event relations."
+            },
+            "score": 3
+        },
+        {
+            "id": "2488a75031fcd4d0f0ffe4fd0a5246325a71f241",
+            "paperId": "2488a75031fcd4d0f0ffe4fd0a5246325a71f241",
+            "title": "Prompt Tuning Pushes Farther, Contrastive Learning Pulls Closer: A Two-Stage Approach to Mitigate Social Biases",
+            "abstract": "As the representation capability of Pre-trained Language Models (PLMs) improve, there is growing concern that they will inherit social biases from unprocessed corpora. Most previous debiasing techniques used Counterfactual Data Augmentation (CDA) to balance the training corpus. However, CDA slightly modifies the original corpus, limiting the representation distance between different demographic groups to a narrow range. As a result, the debiasing model easily fits the differences between counterfactual pairs, which affects its debiasing performance with limited text resources. In this paper, we propose an adversarial training-inspired two-stage debiasing model using Contrastive learning with Continuous Prompt Augmentation (named CCPA) to mitigate social biases in PLMs\u2019 encoding. In the first stage, we propose a data augmentation method based on continuous prompt tuning to push farther the representation distance between sample pairs along different demographic groups. In the second stage, we utilize contrastive learning to pull closer the representation distance between the augmented sample pairs and then fine-tune PLMs\u2019 parameters to get debiased encoding. Our approach guides the model to achieve stronger debiasing performance by adding difficulty to the training process. Extensive experiments show that CCPA outperforms baselines in terms of debiasing performance. Meanwhile, experimental results on the GLUE benchmark show that CCPA retains the language modeling capability of PLMs.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes an adversarial training-inspired two-stagedebiasing model using Contrastive learning with Continuous Prompt Augmentation (named CCPA) to mitigate social biases in PLMs\u2019 encoding and guides the model to achieve stronger debiasing performance by adding difficulty to the training process."
+            },
+            "score": 3
+        },
+        {
+            "id": "c587a10e6c2569e81ebdebd317b5e49cc4df7373",
+            "paperId": "c587a10e6c2569e81ebdebd317b5e49cc4df7373",
+            "title": "Data Augmentation with GPT-3.5 for Vietnamese Natural Language Inference",
+            "abstract": "Data augmentation is a widely-used technique in natural language processing (NLP) for performance improvement and out-of-domain generalization. Current works on data augmentation for Vietnamese NLP tasks typically just modify one or several words (tokens) in each original sentence of an existing dataset, limiting the diversity of the augmented data. We investigate a recently-introduced data augmentation methodology, in which a pretrained large language model (LLM), particularly OpenAI GPT-3.5 Turbo in this paper, is used for generating new data as well as filtering high-quality data for the final usage. We focus on a natural language inference (NLI) task for the Vietnamese language with four labels: \u201centailment\u201d, \u201ccontradiction\u201d, \u201cneural\u201d, and \u201cother\u201d. Instead of replacing or deleting several words in each sentence as in most conventional approaches, our pipeline exploits the capability of the LLM to rewrite the sentences anew following the prompt for each label definition. Experimental results indicate that our augmented data can enhance the accuracy performance of Vietnamese classifiers in the NLI task with a better out-of-domain generalization.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results indicate that the augmented data can enhance the accuracy performance of Vietnamese classifiers in the NLI task with a better out-of-domain generalization."
+            },
+            "score": 3
+        },
+        {
+            "id": "f0888b9c0ef63e68c7758e6aec2370961c0eede9",
+            "paperId": "f0888b9c0ef63e68c7758e6aec2370961c0eede9",
+            "title": "On the Tool Manipulation Capability of Open-source Large Language Models",
+            "abstract": "Recent studies on software tool manipulation with large language models (LLMs) mostly rely on closed model APIs. The industrial adoption of these models is substantially constrained due to the security and robustness risks in exposing information to closed LLM API services. In this paper, we ask can we enhance open-source LLMs to be competitive to leading closed LLM APIs in tool manipulation, with practical amount of human supervision. By analyzing common tool manipulation failures, we first demonstrate that open-source LLMs may require training with usage examples, in-context demonstration and generation style regulation to resolve failures. These insights motivate us to revisit classical methods in LLM literature, and demonstrate that we can adapt them as model alignment with programmatic data generation, system prompts and in-context demonstration retrievers to enhance open-source LLMs for tool manipulation. To evaluate these techniques, we create the ToolBench, a tool manipulation benchmark consisting of diverse software tools for real-world tasks. We demonstrate that our techniques can boost leading open-source LLMs by up to 90% success rate, showing capabilities competitive to OpenAI GPT-4 in 4 out of 8 ToolBench tasks. We show that such enhancement typically requires about one developer day to curate data for each tool, rendering a recipe with practical amount of human supervision.",
+            "year": 2023,
+            "citationCount": 36,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that classical methods in LLM literature can adapt as model alignment with programmatic data generation, system prompts and in-context demonstration retrievers to enhance open-source LLMs for tool manipulation, and it is shown that such enhancement typically requires about one developer day to curate data for each tool, rendering a recipe with practical amount of human supervision."
+            },
+            "score": 2
+        },
+        {
+            "id": "118e5b53976a69da9277cdb8d9ffcefa5a081340",
+            "paperId": "118e5b53976a69da9277cdb8d9ffcefa5a081340",
+            "title": "Pre-training Language Models with Deterministic Factual Knowledge",
+            "abstract": "Previous works show that Pre-trained Language Models (PLMs) can capture factual knowledge. However, some analyses reveal that PLMs fail to perform it robustly, e.g., being sensitive to the changes of prompts when extracting factual knowledge. To mitigate this issue, we propose to let PLMs learn the deterministic relationship between the remaining context and the masked content. The deterministic relationship ensures that the masked factual content can be deterministically inferable based on the existing clues in the context. That would provide more stable patterns for PLMs to capture factual knowledge than randomly masking. Two pre-training tasks are further introduced to motivate PLMs to rely on the deterministic relationship when filling masks. Specifically, we use an external Knowledge Base (KB) to identify deterministic relationships and continuously pre-train PLMs with the proposed methods. The factual knowledge probing experiments indicate that the continuously pre-trained PLMs achieve better robustness in factual knowledge capturing. Further experiments on question-answering datasets show that trying to learn a deterministic relationship with the proposed methods can also help other knowledge-intensive tasks.",
+            "year": 2022,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The factual knowledge probing experiments indicate that the continuously pre-trained PLMs achieve better robustness in factual knowledge capturing and trying to learn a deterministic relationship with the proposed methods can also help other knowledge-intensive tasks."
+            },
+            "score": 2
+        },
+        {
+            "id": "a757999ed260d7bc45484dc6b4456bf33fe6f679",
+            "paperId": "a757999ed260d7bc45484dc6b4456bf33fe6f679",
+            "title": "LLaMA-Adapter: Efficient Fine-tuning of Language Models with Zero-init Attention",
+            "abstract": "We present LLaMA-Adapter, a lightweight adaption method to efficiently fine-tune LLaMA into an instruction-following model. Using 52K self-instruct demonstrations, LLaMA-Adapter only introduces 1.2M learnable parameters upon the frozen LLaMA 7B model, and costs less than one hour for fine-tuning on 8 A100 GPUs. Specifically, we adopt a set of learnable adaption prompts, and prepend them to the word tokens at higher transformer layers. Then, a zero-initialized attention mechanism with zero gating is proposed, which adaptively injects the new instructional cues into LLaMA, while effectively preserves its pre-trained knowledge. With our efficient training, LLaMA-Adapter can generate high-quality responses, comparable to Alpaca with fully fine-tuned 7B parameters. Besides language commands, our approach can be simply extended to multi-modal instructions for learning image-conditioned LLaMA model, which achieves superior reasoning performance on ScienceQA and COCO Caption benchmarks. Furthermore, we also evaluate the zero-initialized attention mechanism for fine-tuning other pre-trained models (ViT, RoBERTa) on traditional vision and language tasks, demonstrating the superior generalization capacity of our approach. Code is released at https://github.com/OpenGVLab/LLaMA-Adapter.",
+            "year": 2023,
+            "citationCount": 361,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A zero-initialized attention mechanism with zero gating is proposed, which adaptively injects the new instructional cues into LLaMA, while effectively preserves its pre-trained knowledge on traditional vision and language tasks, demonstrating the superior generalization capacity of the approach."
+            },
+            "score": 2
+        },
+        {
+            "id": "ce6b0a9877e135c38eb3a6c6705c95422181af78",
+            "paperId": "ce6b0a9877e135c38eb3a6c6705c95422181af78",
+            "title": "Evaluating the Robustness of Discrete Prompts",
+            "abstract": "Discrete prompts have been used for fine-tuning Pre-trained Language Models for diverse NLP tasks. In particular, automatic methods that generate discrete prompts from a small set of training instances have reported superior performance. However, a closer look at the learnt prompts reveals that they contain noisy and counter-intuitive lexical constructs that would not be encountered in manually-written prompts. This raises an important yet understudied question regarding the robustness of automatically learnt discrete prompts when used in downstream tasks. To address this question, we conduct a systematic study of the robustness of discrete prompts by applying carefully designed perturbations into an application using AutoPrompt and then measure their performance in two Natural Language Inference (NLI) datasets. Our experimental results show that although the discrete prompt-based method remains relatively robust against perturbations to NLI inputs, they are highly sensitive to other types of perturbations such as shuffling and deletion of prompt tokens. Moreover, they generalize poorly across different NLI datasets. We hope our findings will inspire future work on robust discrete prompt learning.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Although the discrete prompt-based method remains relatively robust against perturbation to NLI inputs, they are highly sensitive to other types of perturbations such as shuffling and deletion of prompt tokens and generalize poorly across different NLI datasets."
+            },
+            "score": 2
+        },
+        {
+            "id": "de6fd09ed7783b95af7e5f4088a70d5b0244f5aa",
+            "paperId": "de6fd09ed7783b95af7e5f4088a70d5b0244f5aa",
+            "title": "Improving large language models for clinical named entity recognition via prompt engineering.",
+            "abstract": "IMPORTANCE\nThe study highlights the potential of large language models, specifically GPT-3.5 and GPT-4, in processing complex clinical data and extracting meaningful information with minimal training data. By developing and refining prompt-based strategies, we can significantly enhance the models' performance, making them viable tools for clinical NER tasks and possibly reducing the reliance on extensive annotated datasets.\n\n\nOBJECTIVES\nThis study quantifies the capabilities of GPT-3.5 and GPT-4 for clinical named entity recognition (NER) tasks and proposes task-specific prompts to improve their performance.\n\n\nMATERIALS AND METHODS\nWe evaluated these models on 2 clinical NER tasks: (1) to extract medical problems, treatments, and tests from clinical notes in the MTSamples corpus, following the 2010 i2b2 concept extraction shared task, and (2) to identify nervous system disorder-related adverse events from safety reports in the vaccine adverse event reporting system (VAERS). To improve the GPT models' performance, we developed a clinical task-specific prompt framework that includes (1) baseline prompts with task description and format specification, (2) annotation guideline-based prompts, (3) error analysis-based instructions, and (4) annotated samples for few-shot learning. We assessed each prompt's effectiveness and compared the models to BioClinicalBERT.\n\n\nRESULTS\nUsing baseline prompts, GPT-3.5 and GPT-4 achieved relaxed F1 scores of 0.634, 0.804 for MTSamples and 0.301, 0.593 for VAERS. Additional prompt components consistently improved model performance. When all 4 components were used, GPT-3.5 and GPT-4 achieved relaxed F1 socres of 0.794, 0.861 for MTSamples and 0.676, 0.736 for VAERS, demonstrating the effectiveness of our prompt framework. Although these results trail BioClinicalBERT (F1 of 0.901 for the MTSamples dataset and 0.802 for the VAERS), it is very promising considering few training samples are needed.\n\n\nDISCUSSION\nThe study's findings suggest a promising direction in leveraging LLMs for clinical NER tasks. However, while the performance of GPT models improved with task-specific prompts, there's a need for further development and refinement. LLMs like GPT-4 show potential in achieving close performance to state-of-the-art models like BioClinicalBERT, but they still require careful prompt engineering and understanding of task-specific knowledge. The study also underscores the importance of evaluation schemas that accurately reflect the capabilities and performance of LLMs in clinical settings.\n\n\nCONCLUSION\nWhile direct application of GPT models to clinical NER tasks falls short of optimal performance, our task-specific prompt framework, incorporating medical knowledge and training samples, significantly enhances GPT models' feasibility for potential clinical applications.",
+            "year": 2023,
+            "citationCount": 43,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A clinical task-specific prompt framework, incorporating medical knowledge and training samples, significantly enhances GPT models' feasibility for potential clinical applications and suggests a promising direction in leveraging LLMs for clinical NER tasks."
+            },
+            "score": 2
+        },
+        {
+            "id": "a262a68d9fd78ab9681a3edb7f855f8f63fc3e47",
+            "paperId": "a262a68d9fd78ab9681a3edb7f855f8f63fc3e47",
+            "title": "Leveraging Prompt and Top-K Predictions with ChatGPT Data Augmentation for Improved Relation Extraction",
+            "abstract": "Relation extraction tasks aim to predict the type of relationship between two entities from a given text. However, many existing methods fail to fully utilize the semantic information and the probability distribution of the output of pre-trained language models, and existing data augmentation approaches for natural language processing (NLP) may introduce errors. To address this issue, we propose a method that introduces prompt information and Top-K prediction sets and utilizes ChatGPT for data augmentation to improve relational classification model performance. First, we add prompt information before each sample and encode the modified samples by pre-training the language model RoBERTa and using these feature vectors to obtain the Top-K prediction set. We add a multi-attention mechanism to link the Top-K prediction set with the prompt information. We then reduce the possibility of introducing noise by bootstrapping ChatGPT so that it can better perform the data augmentation task and reduce subsequent unnecessary operations. Finally, we investigate the predefined relationship categories in the SemEval 2010 Task 8 dataset and the prediction results of the model and propose an entity location prediction task designed to assist the model in accurately determining the relative locations between entities. Experimental results indicate that our model achieves high results on the SemEval 2010 Task 8 dataset.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a method that introduces prompt information and Top-K prediction sets and utilizes ChatGPT for data augmentation to improve relational classification model performance and investigates the predefined relationship categories and prediction results of the model."
+            },
+            "score": 2
+        },
+        {
+            "id": "230137d02910e43a9d161e21af24b80fd94d351e",
+            "paperId": "230137d02910e43a9d161e21af24b80fd94d351e",
+            "title": "Feature Normalization and Cartography-Based Demonstrations for Prompt-Based Fine-Tuning on Emotion-Related Tasks",
+            "abstract": "To train a model in a traditional supervised learning classification system for natural language processing (NLP) tasks, it is essential to have labeled data, which is not present in large amounts for many tasks. Prompt-based learning methods attempt to combat the supervised learning need for labeled data by directly adapting pre-trained language models and modeling the probability of text itself. In this paper, we propose a novel data-agnostic strategy for prompt-based fine-tuning that leverages feature moments (a.k.a., mean and standard deviation) as a data augmentation technique and employs training dynamics (i.e., confidence and variability) to allow more informative samples to be concatenated for generating demonstrations as input context. Our approach is a strong method for few-shot learning that forces the language model to pay special attention to the feature moments and allows more informative samples to be concatenated for generating demonstrations as input context by selecting high confidence and low variance samples. To demonstrate its effectiveness given limited training data, we conduct extensive experiments in different few-shot settings on three empathy and emotion classification datasets (from various domains). We further evaluate our method's robustness by introducing noise to our few-shot input data and labels and show that exchanging moments between samples and incorporating cartography-based demonstrations are beneficial when the available data is limited and noisy.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel data-agnostic strategy for prompt-based fine-tuning that leverages feature moments (a.k.a., mean and standard deviation) as a data augmentation technique and employs training dynamics to allow more informative samples to be concatenated for generating demonstrations as input context."
+            },
+            "score": 2
+        },
+        {
+            "id": "10632e0a667cbc3c52cc8f11a46d8e8e9c7739e3",
+            "paperId": "10632e0a667cbc3c52cc8f11a46d8e8e9c7739e3",
+            "title": "Causal Reasoning and Large Language Models: Opening a New Frontier for Causality",
+            "abstract": "The causal capabilities of large language models (LLMs) is a matter of significant debate, with critical implications for the use of LLMs in societally impactful domains such as medicine, science, law, and policy. We further our understanding of LLMs and their causal implications, considering the distinctions between different types of causal reasoning tasks, as well as the entangled threats of construct and measurement validity. LLM-based methods establish new state-of-the-art accuracies on multiple causal benchmarks. Algorithms based on GPT-3.5 and 4 outperform existing algorithms on a pairwise causal discovery task (97%, 13 points gain), counterfactual reasoning task (92%, 20 points gain), and actual causality (86% accuracy in determining necessary and sufficient causes in vignettes). At the same time, LLMs exhibit unpredictable failure modes and we provide some techniques to interpret their robustness. Crucially, LLMs perform these causal tasks while relying on sources of knowledge and methods distinct from and complementary to non-LLM based approaches. Specifically, LLMs bring capabilities so far understood to be restricted to humans, such as using collected knowledge to generate causal graphs or identifying background causal context from natural language. We envision LLMs to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis, one of the biggest impediments to the widespread adoption of causal methods. We also see existing causal methods as promising tools for LLMs to formalize, validate, and communicate their reasoning especially in high-stakes scenarios. In capturing common sense and domain knowledge about causal mechanisms and supporting translation between natural language and formal methods, LLMs open new frontiers for advancing the research, practice, and adoption of causality.",
+            "year": 2023,
+            "citationCount": 96,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLMs are envisioned to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis, one of the biggest impediments to the widespread adoption of causal methods."
+            },
+            "score": 1
+        },
+        {
+            "id": "68850153b0210615c86f9a72624f34e2913bcddf",
+            "paperId": "68850153b0210615c86f9a72624f34e2913bcddf",
+            "title": "Document-Level Machine Translation with Large Language Models",
+            "abstract": "Large language models (LLMs) such as ChatGPT can produce coherent, cohesive, relevant, and fluent answers for various natural language processing (NLP) tasks. Taking document-level machine translation (MT) as a testbed, this paper provides an in-depth evaluation of LLMs' ability on discourse modeling. The study focuses on three aspects: 1) Effects of Context-Aware Prompts, where we investigate the impact of different prompts on document-level translation quality and discourse phenomena; 2) Comparison of Translation Models, where we compare the translation performance of ChatGPT with commercial MT systems and advanced document-level MT methods; 3) Analysis of Discourse Modelling Abilities, where we further probe discourse knowledge encoded in LLMs and shed light on impacts of training techniques on discourse modeling. By evaluating on a number of benchmarks, we surprisingly find that LLMs have demonstrated superior performance and show potential to become a new paradigm for document-level translation: 1) leveraging their powerful long-text modeling capabilities, GPT-3.5 and GPT-4 outperform commercial MT systems in terms of human evaluation; 2) GPT-4 demonstrates a stronger ability for probing linguistic knowledge than GPT-3.5. This work highlights the challenges and opportunities of LLMs for MT, which we hope can inspire the future design and evaluation of LLMs.We release our data and annotations at https://github.com/longyuewangdcu/Document-MT-LLM.",
+            "year": 2023,
+            "citationCount": 53,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An in-depth evaluation of LLMs' ability on discourse modeling using document-level machine translation (MT) as a testbed finds that LLMs have demonstrated superior performance and show potential to become a new paradigm for document- level translation."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

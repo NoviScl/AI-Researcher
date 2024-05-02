@@ -43,5 +43,1076 @@
             }
         },
         "Fallback Plan": "If Cognitive Dissonance Prompting does not significantly improve factual correctness over the baselines, we can perform additional analysis to understand why. Potential investigations include:\n1. Analyzing the quality of the generated contradictory evidence. Is the model generating relevant and factual counterevidence, or is it struggling to come up with valid contradictions?\n2. Examining cases where the model fails to change its answer even when presented with contradictory evidence. Is the model struggling to recognize the implications of the counterevidence? Is it generating rationalizations to dismiss the contradictions?\n3. Experimenting with different prompts for generating dissonance and resolving it. Perhaps alternative prompt formulations could better encourage the model to engage in genuine belief revision.\n4. Exploring whether the effectiveness of the technique varies across different models and datasets. Are certain models or domains more amenable to Cognitive Dissonance Prompting?\nBased on the findings from these additional analyses, we could refine the prompting strategy or develop new variations of the technique. If the approach still yields limited success, the project could pivot to an empirical analysis of the conditions under which models do and don't change their beliefs in response to contradictory evidence, which could yield valuable insights to guide future work on reducing hallucination and improving truthfulness in language models."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"cognitive dissonance language models\")",
+        "KeywordQuery(\"contradictory evidence language models\")",
+        "KeywordQuery(\"reducing hallucination language models\")",
+        "KeywordQuery(\"self-correction language models\")",
+        "KeywordQuery(\"Cognitive Dissonance Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "3dbbe6909d7b53dd49e059c7f61a3613045a8db0",
+            "paperId": "3dbbe6909d7b53dd49e059c7f61a3613045a8db0",
+            "title": "Self-contradictory Hallucinations of Large Language Models: Evaluation, Detection and Mitigation",
+            "abstract": "Large language models (large LMs) are susceptible to producing text that contains hallucinated content. An important instance of this problem is self-contradiction, where the LM generates two contradictory sentences within the same context. In this work, we present a comprehensive investigation into self-contradiction for various instruction-tuned LMs, covering evaluation, detection, and mitigation. Our primary evaluation task is open-domain text generation, but we also demonstrate the applicability of our approach to shorter question answering. Our analysis reveals the prevalence of self-contradictions, e.g., in 17.7% of all sentences produced by ChatGPT. We then propose a novel prompting-based framework designed to effectively detect and mitigate self-contradictions. Our detector achieves high accuracy, e.g., around 80% F1 score when prompting ChatGPT. The mitigation algorithm iteratively refines the generated text to remove contradictory information while preserving text fluency and informativeness. Importantly, our entire framework is applicable to black-box LMs and does not require retrieval of external knowledge. Rather, our method complements retrieval-based methods, as a large portion of self-contradictions (e.g., 35.2% for ChatGPT) cannot be verified using online text. Our approach is practically effective and has been released as a push-button tool to benefit the public at https://chatprotect.ai/.",
+            "year": 2023,
+            "citationCount": 44,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a comprehensive investigation into self-contradiction for various instruction-tuned LMs, covering evaluation, detection, and mitigation, and proposes a novel prompting-based framework designed to effectively detect and mitigate self-contradictions."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The proposed approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is also reducing hallucination, specifically self-contradictions, in large language models. The approach is a prompting-based framework to detect and mitigate self-contradictions in the generated text.\n\nWhile both works aim to reduce hallucination, the proposal focuses on using contradictory evidence to change the model's beliefs, while the paper detects and removes self-contradictions from the generated text. The methods are different: cognitive dissonance prompting vs. contradiction detection and mitigation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "bfc7762ab90d18bdb687d93723c51e9827be254a",
+            "paperId": "bfc7762ab90d18bdb687d93723c51e9827be254a",
+            "title": "Confidence Matters: Revisiting Intrinsic Self-Correction Capabilities of Large Language Models",
+            "abstract": "The recent success of Large Language Models (LLMs) has catalyzed an increasing interest in their self-correction capabilities. This paper presents a comprehensive investigation into the intrinsic self-correction of LLMs, attempting to address the ongoing debate about its feasibility. Our research has identified an important latent factor - the\"confidence\"of LLMs - during the self-correction process. Overlooking this factor may cause the models to over-criticize themselves, resulting in unreliable conclusions regarding the efficacy of self-correction. We have experimentally observed that LLMs possess the capability to understand the\"confidence\"in their own responses. It motivates us to develop an\"If-or-Else\"(IoE) prompting framework, designed to guide LLMs in assessing their own\"confidence\", facilitating intrinsic self-corrections. We conduct extensive experiments and demonstrate that our IoE-based Prompt can achieve a consistent improvement regarding the accuracy of self-corrected responses over the initial answers. Our study not only sheds light on the underlying factors affecting self-correction in LLMs, but also introduces a practical framework that utilizes the IoE prompting principle to efficiently improve self-correction capabilities with\"confidence\". The code is available at https://github.com/MBZUAI-CLeaR/IoE-Prompting.git.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a comprehensive investigation into the intrinsic self-correction of LLMs, attempting to address the ongoing debate about its feasibility and introduces a practical framework that utilizes the IoE prompting principle to efficiently improve self-correction capabilities with\"confidence\"."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is improving the intrinsic self-correction capabilities of large language models. The approach is an \"If-or-Else\" prompting framework that guides models to assess their own confidence to facilitate self-correction.\n\nWhile both works aim to improve the truthfulness of language model outputs, the proposal focuses specifically on reducing hallucination by creating cognitive dissonance, while the paper focuses more broadly on self-correction guided by model confidence. The methods proposed are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "aafc487e8a71c32daa151ce56f9c656a86631cab",
+            "paperId": "aafc487e8a71c32daa151ce56f9c656a86631cab",
+            "title": "Self-Contradictory Reasoning Evaluation and Detection",
+            "abstract": "In a plethora of recent work, large language models (LLMs) demonstrated impressive reasoning ability, but many proposed downstream reasoning tasks focus on performance-wise evaluation. Two fundamental questions persist: 1) how reliable is the quality of reasoning, and 2) can models detect unreliable reasoning? In this paper, we investigate self-contradictory (Self-Contra) reasoning, where the model reasoning does not support predictions. To address 1), we assess the Self-Contra rate across four datasets and delve into finer-grained categories of Self-Contra reasoning. We find that LLMs often contradict themselves when performing reasoning tasks that involve contextual information understanding or commonsense. Importantly, a higher accuracy does not necessarily correspond to a lower Self-Contra rate. The model may appear to generate correct answers but it may take shortcuts in reasoning or skip over contextual evidence, thereby displaying Self-Contra behaviors with compromised reasoning. As for 2), we task GPT-4 with identifying Self-Contra reasoning and finer-grained fallacies. We observe that GPT-4 struggles to effectively detect Self-Contra reasoning, with significantly low performance compared with human judgment. Our results indicate that the current LLMs lack robustness necessary for reliable reasoning and we emphasize the urgent need for establishing best practices in comprehensive reasoning evaluations beyond accuracy-based metrics.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results indicate that the current LLMs lack robustness necessary for reliable reasoning and the urgent need for establishing best practices in comprehensive reasoning evaluations beyond accuracy-based metrics is emphasized."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is evaluating the reliability and detectability of self-contradictory reasoning in large language models. The approach is to assess the self-contradiction rate across datasets, categorize types of self-contradictory reasoning, and task GPT-4 with identifying self-contradictory reasoning.\n\nWhile both works involve contradictions and reasoning in language models, the research problems and approaches are different. The proposal focuses on using contradictions to reduce hallucination, while the paper focuses on evaluating and detecting self-contradictory reasoning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "696bc5ba0d023822bbee6b878a71ea2e4a4b0e5a",
+            "paperId": "696bc5ba0d023822bbee6b878a71ea2e4a4b0e5a",
+            "title": "N-Critics: Self-Refinement of Large Language Models with Ensemble of Critics",
+            "abstract": "We propose a self-correction mechanism for Large Language Models (LLMs) to mitigate issues such as toxicity and fact hallucination. This method involves refining model outputs through an ensemble of critics and the model's own feedback. Drawing inspiration from human behavior, we explore whether LLMs can emulate the self-correction process observed in humans who often engage in self-reflection and seek input from others to refine their understanding of complex topics. Our approach is model-agnostic and can be applied across various domains to enhance trustworthiness by addressing fairness, bias, and robustness concerns. We consistently observe performance improvements in LLMs for reducing toxicity and correcting factual errors.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a self-correction mechanism for Large Language Models (LLMs) to mitigate issues such as toxicity and fact hallucination and consistently observe performance improvements in LLMs for reducing toxicity and correcting factual errors."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach involves prompting the model to generate evidence that contradicts its original response and then re-evaluate its answer.\n\nThe research problem in the paper is mitigating issues like toxicity and fact hallucination in large language models. The approach is to refine model outputs through an ensemble of critics and the model's own feedback.\n\nWhile both works aim to address the problem of hallucination in large language models, the proposed approaches are different. The proposal focuses on using contradictory evidence to induce cognitive dissonance, while the paper uses an ensemble of critics and the model's own feedback for self-correction.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "fbaa68ea755430522dfefae2aafdd4bab94dd4ed",
+            "paperId": "fbaa68ea755430522dfefae2aafdd4bab94dd4ed",
+            "title": "On the Intersection of Self-Correction and Trust in Language Models",
+            "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in performing complex cognitive tasks. However, their complexity and lack of transparency have raised several trustworthiness concerns, including the propagation of misinformation and toxicity. Recent research has explored the self-correction capabilities of LLMs to enhance their performance. In this work, we investigate whether these self-correction capabilities can be harnessed to improve the trustworthiness of LLMs. We conduct experiments focusing on two key aspects of trustworthiness: truthfulness and toxicity. Our findings reveal that self-correction can lead to improvements in toxicity and truthfulness, but the extent of these improvements varies depending on the specific aspect of trustworthiness and the nature of the task. Interestingly, our study also uncovers instances of\"self-doubt\"in LLMs during the self-correction process, introducing a new set of challenges that need to be addressed.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is revealed that self-correction can lead to improvements in toxicity and truthfulness, but the extent of these improvements varies depending on the specific aspect of trustworthiness and the nature of the task."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach involves prompting the model to generate evidence contradicting its original response and then re-evaluate its response.\n\nThe research problem in the paper is improving the trustworthiness of language models, focusing on truthfulness and toxicity. The approach involves harnessing the self-correction capabilities of language models.\n\nWhile both works aim to improve the reliability of language models, the specific research problems and approaches differ. The proposal focuses on reducing hallucination using cognitive dissonance prompting, while the paper investigates the impact of self-correction on truthfulness and toxicity.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "dcfe736fbe1e72b46ee28a744d9525d152912c4c",
+            "paperId": "dcfe736fbe1e72b46ee28a744d9525d152912c4c",
+            "title": "Learning to Check: Unleashing Potentials for Self-Correction in Large Language Models",
+            "abstract": "Large language models (LLMs) have made significant strides in reasoning capabilities, with ongoing efforts to refine their reasoning through self-correction. However, recent studies suggest that self-correction can be limited or even counterproductive without external accurate knowledge, raising questions about the limits and effectiveness of self-correction. In this paper, we aim to enhance LLM's self-checking capabilities by meticulously designing training data, thereby improving the accuracy of self-correction. We conduct a detailed analysis of error types in mathematical reasoning and develop a tailored prompt, termed\"Step CoT Check\". Then we construct a checking-correction dataset for training models. After integrating the original CoT data and checking-correction data for training, we observe that models could improve their self-checking capabilities, thereby enhancing their self-correction capacity and eliminating the need for external feedback or ground truth labels to ascertain the endpoint of correction. We compare the performance of models fine-tuned with the\"Step CoT Check\"prompt against those refined using other promps within the context of checking-correction data. The\"Step CoT Check\"outperforms the other two check formats in model with lager parameters, providing more precise feedback thus achieving a higher rate of correctness. For reproducibility, all the datasets and codes are provided in https://github.com/bammt/Learn-to-check.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper aims to enhance LLM's self-checking capabilities by meticulously designing training data, thereby improving the accuracy of self-correction and eliminating the need for external feedback or ground truth labels to ascertain the endpoint of correction."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is enhancing large language models' self-checking capabilities to improve the accuracy of self-correction. The approach is to design a tailored \"Step CoT Check\" prompt and construct a checking-correction dataset for training models.\n\nWhile both works aim to improve the accuracy of large language models, the proposal focuses specifically on reducing hallucination by creating cognitive dissonance, while the paper focuses on improving self-checking and self-correction capabilities through prompt design and dataset construction. The approaches are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "822f7a276a4ff7dae59b849f57b95d2603a40d99",
+            "paperId": "822f7a276a4ff7dae59b849f57b95d2603a40d99",
+            "title": "Small Language Models Need Strong Verifiers to Self-Correct Reasoning",
+            "abstract": "Self-correction has emerged as a promising solution to boost the reasoning performance of large language models (LLMs), where LLMs refine their solutions using self-generated critiques that pinpoint the errors. This work explores whether smaller-size (<= 13B) language models (LMs) have the ability of self-correction on reasoning tasks with minimal inputs from stronger LMs. We propose a novel pipeline that prompts smaller LMs to collect self-correction data that supports the training of self-refinement abilities. First, we leverage correct solutions to guide the model in critiquing their incorrect responses. Second, the generated critiques, after filtering, are used for supervised fine-tuning of the self-correcting reasoner through solution refinement. Our experimental results show improved self-correction abilities of two models on five datasets spanning math and commonsense reasoning, with notable performance gains when paired with a strong GPT-4-based verifier, though limitations are identified when using a weak self-verifier for determining when to correct.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work explores whether smaller-size (<= 13B) language models have the ability of self-correction on reasoning tasks with minimal inputs from stronger LMs, and proposes a novel pipeline that prompts smaller LMs to collect self-correction data that supports the training of self-refinement abilities."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence that contradicts its original response, then ask it to re-evaluate its response in light of the contradictory evidence.\n\nThe research problem in the paper is improving the self-correction ability of smaller language models on reasoning tasks. The approach is to use correct solutions to guide the model in critiquing its incorrect responses, then use the critiques for supervised fine-tuning of the self-correcting reasoner.\n\nWhile both works aim to improve the reasoning abilities of language models, the proposal focuses on reducing hallucination in large models using cognitive dissonance, while the paper focuses on enhancing self-correction in smaller models using critique-based fine-tuning. The methods and model sizes are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "9f741fc94faa53d7c6b2243515b603a0dedb8ab7",
+            "paperId": "9f741fc94faa53d7c6b2243515b603a0dedb8ab7",
+            "title": "Alignment is not sufficient to prevent large language models from generating harmful information: A psychoanalytic perspective",
+            "abstract": "Large Language Models (LLMs) are central to a multitude of applications but struggle with significant risks, notably in generating harmful content and biases. Drawing an analogy to the human psyche's conflict between evolutionary survival instincts and societal norm adherence elucidated in Freud's psychoanalysis theory, we argue that LLMs suffer a similar fundamental conflict, arising between their inherent desire for syntactic and semantic continuity, established during the pre-training phase, and the post-training alignment with human values. This conflict renders LLMs vulnerable to adversarial attacks, wherein intensifying the models' desire for continuity can circumvent alignment efforts, resulting in the generation of harmful information. Through a series of experiments, we first validated the existence of the desire for continuity in LLMs, and further devised a straightforward yet powerful technique, such as incomplete sentences, negative priming, and cognitive dissonance scenarios, to demonstrate that even advanced LLMs struggle to prevent the generation of harmful information. In summary, our study uncovers the root of LLMs' vulnerabilities to adversarial attacks, hereby questioning the efficacy of solely relying on sophisticated alignment methods, and further advocates for a new training idea that integrates modal concepts alongside traditional amodal concepts, aiming to endow LLMs with a more nuanced understanding of real-world contexts and ethical considerations.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": null,
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is that alignment methods are not sufficient to prevent large language models from generating harmful information due to a conflict between the model's desire for continuity and the alignment with human values. The approach is to demonstrate that intensifying the model's desire for continuity using techniques like incomplete sentences, negative priming, and cognitive dissonance scenarios can circumvent alignment efforts.\n\nWhile both works mention cognitive dissonance, the proposal uses it as a technique to reduce hallucination, whereas the paper considers it a vulnerability that can be exploited to generate harmful information. The two works address different problems (hallucination vs. generating harmful information) and have different goals (improving factual consistency vs. demonstrating insufficiency of alignment methods).\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e1ee25d3b09a5eb43d0145ff5ac58c7c8ae965ed",
+            "paperId": "e1ee25d3b09a5eb43d0145ff5ac58c7c8ae965ed",
+            "title": "Detecting Contradictory COVID-19 Drug Efficacy Claims from Biomedical Literature",
+            "abstract": "The COVID-19 pandemic created a deluge of questionable and contradictory scientific claims about drug efficacy \u2013 an \u201cinfodemic\u201d with lasting consequences for science and society. In this work, we argue that NLP models can help domain experts distill and understand the literature in this complex, high-stakes area. Our task is to automatically identify contradictory claims about COVID-19 drug efficacy. We frame this as a natural language inference problem and offer a new NLI dataset created by domain experts. The NLI framing allows us to create curricula combining existing datasets and our own. The resulting models are useful investigative tools. We provide a case study of how these models help a domain expert summarize and assess evidence concerning remdisivir and hydroxychloroquine.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is argued that NLP models can help domain experts distill and understand the literature in this complex, high-stakes area of COVID-19 and provide a case study of how these models help a domain expert summarize and assess evidence concerning remdisivir and hydroxychloroquine."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is identifying contradictory claims about COVID-19 drug efficacy in biomedical literature. The approach is to frame it as a natural language inference task and train models on a combination of existing NLI datasets and a new dataset created by domain experts.\n\nThe proposal focuses on reducing hallucination in language models, while the paper focuses on identifying contradictory claims in a specific domain. The methods are also different, with the proposal using a novel prompting technique and the paper framing the problem as NLI and using dataset combination.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "01a9102aa93b152f2d2978c568fb7061eb7152f1",
+            "paperId": "01a9102aa93b152f2d2978c568fb7061eb7152f1",
+            "title": "I like fish, especially dolphins: Addressing Contradictions in Dialogue Modeling",
+            "abstract": "To quantify how well natural language understanding models can capture consistency in a general conversation, we introduce the DialoguE COntradiction DEtection task (DECODE) and a new conversational dataset containing both human-human and human-bot contradictory dialogues. We show that: (i) our newly collected dataset is notably more effective at providing supervision for the dialogue contradiction detection task than existing NLI data including those aimed to cover the dialogue domain; (ii) Transformer models that explicitly hinge on utterance structures for dialogue contradiction detection are more robust and generalize well on both analysis and out-of-distribution dialogues than standard (unstructured) Transformers. We also show that our best contradiction detection model correlates well with human judgments and further provide evidence for its usage in both automatically evaluating and improving the consistency of state-of-the-art generative chatbots.",
+            "year": 2020,
+            "citationCount": 73,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The DialoguE COntradiction DEtection task (DECODE) and a new conversational dataset containing both human-human and human-bot contradictory dialogues are introduced and it is shown that the best contradiction detection model correlates well with human judgments and is used in both automatically evaluating and improving the consistency of state-of-the-art generative chatbots."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is reducing hallucination in large language models by leveraging contradictory evidence to induce cognitive dissonance. The approach is to prompt the model to generate evidence contradicting its original response, then ask it to re-evaluate the response in light of the contradictory evidence.\n\nThe research problem in the paper is detecting contradictions in dialogue to evaluate the consistency of conversational models. The approach is to introduce a new dataset for dialogue contradiction detection and use structured Transformer models that leverage utterance structures.\n\nThe proposal focuses on reducing hallucination in language model outputs, while the paper focuses on detecting contradictions in dialogues. The methods are also different: the proposal uses prompting to generate contradictory evidence, while the paper uses a new dataset and structured Transformer models.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "6489640b1d30a8a3e7cb906bb6557f1ccd0d799d",
+            "paperId": "6489640b1d30a8a3e7cb906bb6557f1ccd0d799d",
+            "title": "Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models",
+            "abstract": "Retrieval-augmented language models (RALMs) represent a substantial advancement in the capabilities of large language models, notably in reducing factual hallucination by leveraging external knowledge sources. However, the reliability of the retrieved information is not always guaranteed. The retrieval of irrelevant data can lead to misguided responses, and potentially causing the model to overlook its inherent knowledge, even when it possesses adequate information to address the query. Moreover, standard RALMs often struggle to assess whether they possess adequate knowledge, both intrinsic and retrieved, to provide an accurate answer. In situations where knowledge is lacking, these systems should ideally respond with\"unknown\"when the answer is unattainable. In response to these challenges, we introduces Chain-of-Noting (CoN), a novel approach aimed at improving the robustness of RALMs in facing noisy, irrelevant documents and in handling unknown scenarios. The core idea of CoN is to generate sequential reading notes for retrieved documents, enabling a thorough evaluation of their relevance to the given question and integrating this information to formulate the final answer. We employed ChatGPT to create training data for CoN, which was subsequently trained on an LLaMa-2 7B model. Our experiments across four open-domain QA benchmarks show that RALMs equipped with CoN significantly outperform standard RALMs. Notably, CoN achieves an average improvement of +7.9 in EM score given entirely noisy retrieved documents and +10.5 in rejection rates for real-time questions that fall outside the pre-training knowledge scope.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Chain-of-Noting (CoN) is introduced, a novel approach aimed at improving the robustness of RALMs in facing noisy, irrelevant documents and in handling unknown scenarios, and achieves an average improvement of +7.9 in EM score given entirely noisy retrieved documents and +10.5 in rejection rates for real-time questions that fall outside the pre-training knowledge scope."
+            },
+            "score": 6
+        },
+        {
+            "id": "03764434729b83d4f04a8bd02f99f2500cd5bbae",
+            "paperId": "03764434729b83d4f04a8bd02f99f2500cd5bbae",
+            "title": "Teaching Language Models to Hallucinate Less with Synthetic Tasks",
+            "abstract": "Large language models (LLMs) frequently hallucinate on abstractive summarization tasks such as document-based question-answering, meeting summarization, and clinical report generation, even though all necessary information is included in context. However, optimizing LLMs to hallucinate less on these tasks is challenging, as hallucination is hard to efficiently evaluate at each optimization step. In this work, we show that reducing hallucination on a synthetic task can also reduce hallucination on real-world downstream tasks. Our method, SynTra, first designs a synthetic task where hallucinations are easy to elicit and measure. It next optimizes the LLM's system message via prefix-tuning on the synthetic task, and finally transfers the system message to realistic, hard-to-optimize tasks. Across three realistic abstractive summarization tasks, SynTra reduces hallucination for two 13B-parameter LLMs using only a synthetic retrieval task for supervision. We also find that optimizing the system message rather than the model weights can be critical; fine-tuning the entire model on the synthetic task can counterintuitively increase hallucination. Overall, SynTra demonstrates that the extra flexibility of working with synthetic data can help mitigate undesired behaviors in practice.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Across three realistic abstractive summarization tasks, SynTra reduces hallucination for two 13B-parameter LLMs using only a synthetic retrieval task for supervision, demonstrating that the extra flexibility of working with synthetic data can help mitigate undesired behaviors in practice."
+            },
+            "score": 6
+        },
+        {
+            "id": "6fbf4e4c7872efdc03f7003d2d89b15ad8c4c552",
+            "paperId": "6fbf4e4c7872efdc03f7003d2d89b15ad8c4c552",
+            "title": "The Capacity for Moral Self-Correction in Large Language Models",
+            "abstract": "We test the hypothesis that language models trained with reinforcement learning from human feedback (RLHF) have the capability to\"morally self-correct\"-- to avoid producing harmful outputs -- if instructed to do so. We find strong evidence in support of this hypothesis across three different experiments, each of which reveal different facets of moral self-correction. We find that the capability for moral self-correction emerges at 22B model parameters, and typically improves with increasing model size and RLHF training. We believe that at this level of scale, language models obtain two capabilities that they can use for moral self-correction: (1) they can follow instructions and (2) they can learn complex normative concepts of harm like stereotyping, bias, and discrimination. As such, they can follow instructions to avoid certain kinds of morally harmful outputs. We believe our results are cause for cautious optimism regarding the ability to train language models to abide by ethical principles.",
+            "year": 2023,
+            "citationCount": 101,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 6
+        },
+        {
+            "id": "6d4bacb69923e1e94fb4de468b939ce6db32fb51",
+            "paperId": "6d4bacb69923e1e94fb4de468b939ce6db32fb51",
+            "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+            "abstract": "Large Language Models (LLMs) have emerged as a groundbreaking technology with their unparalleled text generation capabilities across various applications. Nevertheless, concerns persist regarding the accuracy and appropriateness of their generated content. A contemporary methodology, self-correction, has been proposed as a remedy to these issues. Building upon this premise, this paper critically examines the role and efficacy of self-correction within LLMs, shedding light on its true potential and limitations. Central to our investigation is the notion of intrinsic self-correction, whereby an LLM attempts to correct its initial responses based solely on its inherent capabilities, without the crutch of external feedback. In the context of reasoning, our research indicates that LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction. Drawing from these insights, we offer suggestions for future research and practical applications in this field.",
+            "year": 2023,
+            "citationCount": 122,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is indicated that LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction."
+            },
+            "score": 6
+        },
+        {
+            "id": "529e997e0d9730c25ad4347502da7e5a753274b8",
+            "paperId": "529e997e0d9730c25ad4347502da7e5a753274b8",
+            "title": "Enhancing Self-Consistency and Performance of Pre-Trained Language Models through Natural Language Inference",
+            "abstract": "While large pre-trained language models are powerful, their predictions often lack logical consistency across test inputs. For example, a state-of-the-art Macaw question-answering (QA) model answers Yes to Is a sparrow a bird? and Does a bird have feet? but answers No to Does a sparrow have feet?. To address this failure mode, we propose a framework, Consistency Correction through Relation Detection, or ConCoRD, for boosting the consistency and accuracy of pre-trained NLP models using pre-trained natural language inference (NLI) models without fine-tuning or re-training. Given a batch of test inputs, ConCoRD samples several candidate outputs for each input and instantiates a factor graph that accounts for both the model\u2019s belief about the likelihood of each answer choice in isolation and the NLI model\u2019s beliefs about pair-wise answer choice compatibility. We show that a weighted MaxSAT solver can efficiently compute high-quality answer choices under this factor graph, improving over the raw model\u2019s predictions. Our experiments demonstrate that ConCoRD consistently boosts accuracy and consistency of off-the-shelf closed-book QA and VQA models using off-the-shelf NLI models, notably increasing accuracy of LXMERT on ConVQA by 5% absolute. See the project website (https://ericmitchell.ai/emnlp-2022-concord/) for code and data.",
+            "year": 2022,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a framework, Consistency Correction through Relation Detection, or ConCoRD, for boosting the consistency and accuracy of pre- trained NLP models using pre-trained natural language inference (NLI) models without fine-tuning or re-training."
+            },
+            "score": 6
+        },
+        {
+            "id": "6e5972640c7492172e636b0b5d644f1f7db2f4e8",
+            "paperId": "6e5972640c7492172e636b0b5d644f1f7db2f4e8",
+            "title": "Learning and Forgetting Unsafe Examples in Large Language Models",
+            "abstract": "As the number of large language models (LLMs) released to the public grows, there is a pressing need to understand the safety implications associated with these models learning from third-party custom finetuning data. We explore the behavior of LLMs finetuned on noisy custom data containing unsafe content, represented by datasets that contain biases, toxicity, and harmfulness, finding that while aligned LLMs can readily learn this unsafe content, they also tend to forget it more significantly than other examples when subsequently finetuned on safer content. Drawing inspiration from the discrepancies in forgetting, we introduce the\"ForgetFilter\"algorithm, which filters unsafe data based on how strong the model's forgetting signal is for that data. We demonstrate that the ForgetFilter algorithm ensures safety in customized finetuning without compromising downstream task performance, unlike sequential safety finetuning. ForgetFilter outperforms alternative strategies like replay and moral self-correction in curbing LLMs' ability to assimilate unsafe content during custom finetuning, e.g. 75% lower than not applying any safety measures and 62% lower than using self-correction in toxicity score.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces the ForgetFilter algorithm, which filters unsafe data based on how strong the model's forgetting signal is for that data, and demonstrates that the ForgetFilter algorithm ensures safety in customized finetuning without compromising downstream task performance, unlike sequential safety finetuning."
+            },
+            "score": 6
+        },
+        {
+            "id": "16f55d843b1aed18cab7464580f229c07f9bd188",
+            "paperId": "16f55d843b1aed18cab7464580f229c07f9bd188",
+            "title": "Prompting Techniques for Reducing Social Bias in LLMs through System 1 and System 2 Cognitive Processes",
+            "abstract": "Dual process theory posits that human cognition arises via two systems. System 1, which is a quick, emotional, and intuitive process, which is subject to cognitive biases, and System 2, a slow, onerous, and deliberate process. NLP researchers often compare zero-shot prompting in LLMs to System 1 reasoning and chain-of-thought (CoT) prompting to System 2. In line with this interpretation, prior research has found that using CoT prompting in LLMs leads to reduced gender bias. We investigate the relationship between bias, CoT prompting, and dual process theory in LLMs directly. We compare zero-shot, CoT, and a variety of dual process theory-based prompting strategies on two bias datasets spanning nine different social bias categories. We also use human and machine personas to determine whether the effects of dual process theory in LLMs are based on modeling human cognition or inherent to the system. We find that a human persona, System 2, and CoT prompting all tend to reduce social biases in LLMs, though the best combination of features depends on the exact model and bias category -- resulting in up to a 13 percent drop in stereotypical judgments by an LLM.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that a human persona, System 2, and CoT prompting all tend to reduce social biases in LLMs, though the best combination of features depends on the exact model and bias category -- resulting in up to a 13 percent drop in stereotypical judgments by an LLM."
+            },
+            "score": 6
+        },
+        {
+            "id": "4f8ca3ccb77ff3c60ce90910854175eb8ab21a57",
+            "paperId": "4f8ca3ccb77ff3c60ce90910854175eb8ab21a57",
+            "title": "Empowering Psychotherapy with Large Language Models: Cognitive Distortion Detection through Diagnosis of Thought Prompting",
+            "abstract": "Mental illness remains one of the most critical public health issues of our time, due to the severe scarcity and accessibility limit of professionals. Psychotherapy requires high-level expertise to conduct deep, complex reasoning and analysis on the cognition modeling of the patients. In the era of Large Language Models, we believe it is the right time to develop AI assistance for computational psychotherapy. We study the task of cognitive distortion detection and propose the Diagnosis of Thought (DoT) prompting. DoT performs diagnosis on the patient's speech via three stages: subjectivity assessment to separate the facts and the thoughts; contrastive reasoning to elicit the reasoning processes supporting and contradicting the thoughts; and schema analysis to summarize the cognition schemas. The generated diagnosis rationales through the three stages are essential for assisting the professionals. Experiments demonstrate that DoT obtains significant improvements over ChatGPT for cognitive distortion detection, while generating high-quality rationales approved by human experts.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The task of cognitive distortion detection is studied and the Diagnosis of Thought (DoT) prompting is proposed, demonstrating that DoT obtains significant improvements over ChatGPT for Cognitive distortion detection, while generating high-quality rationales approved by human experts."
+            },
+            "score": 5
+        },
+        {
+            "id": "4e53b481beabba42aac027e5a8c69fed26ab4062",
+            "paperId": "4e53b481beabba42aac027e5a8c69fed26ab4062",
+            "title": "RHO ($\u03c1$): Reducing Hallucination in Open-domain Dialogues with Knowledge Grounding",
+            "abstract": "Dialogue systems can leverage large pre-trained language models and knowledge to generate fluent and informative responses. However, these models are still prone to produce hallucinated responses not supported by the input source, which greatly hinders their application. The heterogeneity between external knowledge and dialogue context challenges representation learning and source integration, and further contributes to unfaithfulness. To handle this challenge and generate more faithful responses, this paper presents RHO ($\\rho$) utilizing the representations of linked entities and relation predicates from a knowledge graph (KG). We propose (1) local knowledge grounding to combine textual embeddings with the corresponding KG embeddings; and (2) global knowledge grounding to equip RHO with multi-hop reasoning abilities via the attention mechanism. In addition, we devise a response re-ranking technique based on walks over KG sub-graphs for better conversational reasoning. Experimental results on OpenDialKG show that our approach significantly outperforms state-of-the-art methods on both automatic and human evaluation by a large margin, especially in hallucination reduction (17.54% in FeQA).",
+            "year": 2022,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "RHO is presented utilizing the representations of linked entities and relation predicates from a knowledge graph (KG) to equip RHO with multi-hop reasoning abilities via the attention mechanism and devise a response re-ranking technique based on walks over KG sub-graphs for better conversational reasoning."
+            },
+            "score": 5
+        },
+        {
+            "id": "889feabe31ba0d24c093ac94d54a06eecb87e3f4",
+            "paperId": "889feabe31ba0d24c093ac94d54a06eecb87e3f4",
+            "title": "Neural Path Hunter: Reducing Hallucination in Dialogue Systems via Path Grounding",
+            "abstract": "Dialogue systems powered by large pre-trained language models exhibit an innate ability to deliver fluent and natural-sounding responses. Despite their impressive performance, these models are fitful and can often generate factually incorrect statements impeding their widespread adoption. In this paper, we focus on the task of improving faithfulness and reducing hallucination of neural dialogue systems to known facts supplied by a Knowledge Graph (KG). We propose Neural Path Hunter which follows a generate-then-refine strategy whereby a generated response is amended using the KG. Neural Path Hunter leverages a separate token-level fact critic to identify plausible sources of hallucination followed by a refinement stage that retrieves correct entities by crafting a query signal that is propagated over a k-hop subgraph. We empirically validate our proposed approach on the OpenDialKG dataset (Moon et al., 2019) against a suite of metrics and report a relative improvement of faithfulness over dialogue responses by 20.35% based on FeQA (Durmus et al., 2020). The code is available at https://github.com/nouhadziri/Neural-Path-Hunter.",
+            "year": 2021,
+            "citationCount": 80,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes Neural Path Hunter which follows a generate-then-refine strategy whereby a generated response is amended using the KG, and leverages a separate token-level fact critic to identify plausible sources of hallucination and retrieves correct entities by crafting a query signal that is propagated over a k-hop subgraph."
+            },
+            "score": 5
+        },
+        {
+            "id": "79429814fd4d967b9277af2805c53f370e52ebb5",
+            "paperId": "79429814fd4d967b9277af2805c53f370e52ebb5",
+            "title": "Chain of Natural Language Inference for Reducing Large Language Model Ungrounded Hallucinations",
+            "abstract": "Large language models (LLMs) can generate fluent natural language texts when given relevant documents as background context. This ability has attracted considerable interest in developing industry applications of LLMs. However, LLMs are prone to generate hallucinations that are not supported by the provided sources. In this paper, we propose a hierarchical framework to detect and mitigate such ungrounded hallucination. Our framework uses Chain of Natural Language Inference (CoNLI) for hallucination detection and hallucination reduction via post-editing. Our approach achieves state-of-the-art performance on hallucination detection and enhances text quality through rewrite, using LLMs without any fine-tuning or domain-specific prompt engineering. We show that this simple plug-and-play framework can serve as an effective choice for hallucination detection and reduction, achieving competitive performance across various contexts.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a hierarchical framework to detect and mitigate ungrounded hallucination, using Chain of Natural Language Inference (CoNLI) for hallucination detection and hallucination reduction via post-editing and shows that this simple plug-and-play framework can serve as an effective choice for hallucinations detection and reduction, achieving competitive performance across various contexts."
+            },
+            "score": 5
+        },
+        {
+            "id": "fcee1c19e12f3b7e3595aeba702416d055bdbc3f",
+            "paperId": "fcee1c19e12f3b7e3595aeba702416d055bdbc3f",
+            "title": "Knowledge Verification to Nip Hallucination in the Bud",
+            "abstract": "While large language models (LLMs) have demonstrated exceptional performance across various tasks following human alignment, they may still generate responses that sound plausible but contradict factual knowledge, a phenomenon known as \\emph{hallucination}. In this paper, we demonstrate the feasibility of mitigating hallucinations by verifying and minimizing the inconsistency between external knowledge present in the alignment data and the intrinsic knowledge embedded within foundation LLMs. Specifically, we propose a novel approach called Knowledge Consistent Alignment (KCA), which employs a well-aligned LLM to automatically formulate assessments based on external knowledge to evaluate the knowledge boundaries of foundation LLMs. To address knowledge inconsistencies in the alignment data, KCA implements several specific strategies to deal with these data instances. We demonstrate the superior efficacy of KCA in reducing hallucinations across six benchmarks, utilizing foundation LLMs of varying backbones and scales. This confirms the effectiveness of mitigating hallucinations by reducing knowledge inconsistency. Our code, model weights, and data are openly accessible at \\url{https://github.com/fanqiwan/KCA}.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The superior efficacy of KCA is demonstrated in reducing hallucinations across six benchmarks, utilizing foundation LLMs of varying backbones and scales, which confirms the effectiveness of mitigating hallucinations by reducing knowledge inconsistency."
+            },
+            "score": 5
+        },
+        {
+            "id": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "paperId": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "title": "Automatic Calibration and Error Correction for Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities out of box for a wide range of applications, yet accuracy still remains a major growth area, especially in mission-critical domains such as biomedicine. An effective method to calibrate the con\ufb01dence level on LLM responses is essential to automatically detect errors and facilitate human-in-the-loop veri\ufb01cation. An important source of calibration signals stems from expert-stipulated programmatic super-vision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align LLM output with other available supervision sources, which would assign higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction tasks in biomedical and general domains demonstrate the promise of this approach, with our proposed risk scores highly correlated with the real error rate of LLMs. For the most uncertain test instances, dynamic prompting based on our proposed risk scores results in signi\ufb01cant accuracy improvement for off-the-shelf LLMs, boosting GPT-3 results past state-of-the-art (SOTA) weak supervision and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts."
+            },
+            "score": 5
+        },
+        {
+            "id": "9a61d51212eb4ff677fe777a7ba9ddc4f675b387",
+            "paperId": "9a61d51212eb4ff677fe777a7ba9ddc4f675b387",
+            "title": "Automatic Calibration and Error Correction for Generative Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Generative Large language models (LLMs) have demonstrated remarkable capabilities for a wide range of applications, but reducing ungrounded or erroneous responses remains a major growth area. Unlike task-specific models, there lack an effective method to calibrate the confidence level of LLM responses to indicate potential errors and facilitate human-in-the-loop verification. An important source of calibration stems from expert-stipulated programmatic supervision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every LLM response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align with LLM output as well as other weak supervision sources. The model assigns higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction and classification tasks in biomedical and general domains demonstrate that the proposed risk score is highly correlated with the actual LLM error rate. By using a dynamic prompting strategy based on the risk score, we observed significant accuracy improvement for off-the-shelf LLMs, boosting GPT-3.5 results past state-of-the-art (SOTA) weak supervision model and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every LLM response, without any additional manual efforts."
+            },
+            "score": 5
+        },
+        {
+            "id": "c31396f00c4e4ddba20d085d0da819b89c71bf4a",
+            "paperId": "c31396f00c4e4ddba20d085d0da819b89c71bf4a",
+            "title": "CITING: Large Language Models Create Curriculum for Instruction Tuning",
+            "abstract": "The recent advancement of large language models (LLMs) has been achieved through a combo of instruction tuning and human alignment. However, building manually crafted instruction datasets and performing human alignment become the bottleneck for scaling the development of LLMs. In this paper, we exploit the idea of leveraging AI models in lieu of humans as the teacher to train student LLMs. Our method is inspired by how human students refine their writing skills by following the rubrics and learning from the revisions offered by their tutors. Specifically, we employ a teacher LLM to create a curriculum for instruction tuning of the student LLM, namely Curriculum Instruction TunING (CITING). It encompasses two main steps: (1) the teacher LLM crafts the rubrics for evaluating the answers corresponding to various types of questions, and (2) the student LLM learns to follow the rubrics and perform self-correction from the revision made by the teacher. We further iteratively carry out it to embody the procedure of CITING. We compare CITING to a series of state-of-the-art baselines on four datasets. Our method demonstrates strong improvement in terms of articulate, in-depth, and comprehensive by GPT-4 evaluation. Specifically, it achieves an average winning rate of 79.4% over SFT, 73.4% over RLHF, 78.1% over RRHF, and 76.3% over RAFT, respectively.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The idea of leveraging AI models in lieu of humans as the teacher to train student LLMs is exploited, inspired by how human students refine their writing skills by following the rubrics and learning from the revisions offered by their tutors."
+            },
+            "score": 5
+        },
+        {
+            "id": "24ddf4f8d3f25e3b94e3397a66f2b006d69c3305",
+            "paperId": "24ddf4f8d3f25e3b94e3397a66f2b006d69c3305",
+            "title": "PROMPTING GROWTH FOR PROSPECTIVE TEACHERS USING COGNITIVE DISSONANCE",
+            "abstract": "Universities are designing new courses and licensure programs to support the enactment of reform recommendations by prospective teachers. Professional development schools provide a context in which prospective teachers collaborate with teachers and university professors to connect theory and practice. Teachers\u2019 experiences in mathematics often do not reflect current reform recommendations and enacting new pedagogy can be problematic for them. This study sought to explore how cognitive dissonance may help prospective teachers make their implicit conceptions about teaching and learning explicit and support their reconstruction of these notions. Findings indicate that elementary teachers\u2019 conceptions about mathematics change after experiencing and reflecting on cognitive dissonance.",
+            "year": null,
+            "citationCount": 4,
+            "tldr": null,
+            "score": 5
+        },
+        {
+            "id": "0c1ef418e4104f487cc3cfa9b71229c39070c4e2",
+            "paperId": "0c1ef418e4104f487cc3cfa9b71229c39070c4e2",
+            "title": "Cognitive Dissonance: Why Do Language Model Outputs Disagree with Internal Representations of Truthfulness?",
+            "abstract": "Neural language models (LMs) can be used to evaluate the truth of factual statements in two ways: they can be either queried for statement probabilities, or probed for internal representations of truthfulness. Past work has found that these two procedures sometimes disagree, and that probes tend to be more accurate than LM outputs. This has led some researchers to conclude that LMs\"lie\"or otherwise encode non-cooperative communicative intents. Is this an accurate description of today's LMs, or can query-probe disagreement arise in other ways? We identify three different classes of disagreement, which we term confabulation, deception, and heterogeneity. In many cases, the superiority of probes is simply attributable to better calibration on uncertain answers rather than a greater fraction of correct, high-confidence answers. In some cases, queries and probes perform better on different subsets of inputs, and accuracy can further be improved by ensembling the two. Code is available at github.com/lingo-mit/lm-truthfulness.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": null,
+            "score": 4
+        },
+        {
+            "id": "622b064bd56d5be022f6dae9f7656fa8b658e0cf",
+            "paperId": "622b064bd56d5be022f6dae9f7656fa8b658e0cf",
+            "title": "From Complex to Simple: Unraveling the Cognitive Tree for Reasoning with Small Language Models",
+            "abstract": "Reasoning is a distinctive human capacity, enabling us to address complex problems by breaking them down into a series of manageable cognitive steps. Yet, complex logical reasoning is still cumbersome for language models. Based on the dual process theory in cognitive science, we are the first to unravel the cognitive reasoning abilities of language models. Our framework employs an iterative methodology to construct a Cognitive Tree (CogTree). The root node of this tree represents the initial query, while the leaf nodes consist of straightforward questions that can be answered directly. This construction involves two main components: the implicit extraction module (referred to as the intuitive system) and the explicit reasoning module (referred to as the reflective system). The intuitive system rapidly generates multiple responses by utilizing in-context examples, while the reflective system scores these responses using comparative learning. The scores guide the intuitive system in its subsequent generation step. Our experimental results on two popular and challenging reasoning tasks indicate that it is possible to achieve a performance level comparable to that of GPT-3.5 (with 175B parameters), using a significantly smaller language model that contains fewer parameters (<=7B) than 5% of GPT-3.5.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work is the first to unravel the cognitive reasoning abilities of language models using an iterative methodology to construct a Cognitive Tree (CogTree), and indicates that it is possible to achieve a performance level comparable to that of GPT-3.5."
+            },
+            "score": 4
+        },
+        {
+            "id": "5b43168efb6ca1cf6d1035c6ee2cccd20ba16d5a",
+            "paperId": "5b43168efb6ca1cf6d1035c6ee2cccd20ba16d5a",
+            "title": "Pre-training Language Models for Comparative Reasoning",
+            "abstract": "Comparative reasoning is a process of comparing objects, concepts, or entities to draw conclusions, which constitutes a fundamental cognitive ability. In this paper, we propose a novel framework to pre-train language models for enhancing their abilities of comparative reasoning over texts. While there have been approaches for NLP tasks that require comparative reasoning, they suffer from costly manual data labeling and limited generalizability to different tasks. Our approach introduces a novel method of collecting scalable data for text-based entity comparison, which leverages both structured and unstructured data. Moreover, we present a framework of pre-training language models via three novel objectives on comparative reasoning. Evaluation on downstream tasks including comparative question answering, question generation, and summarization shows that our pre-training framework significantly improves the comparative reasoning abilities of language models, especially under low-resource conditions. This work also releases the first integrated benchmark for comparative reasoning.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Evaluation on downstream tasks including comparative question answering, question generation, and summarization shows that the proposed pre-training framework significantly improves the comparative reasoning abilities of language models, especially under low-resource conditions."
+            },
+            "score": 4
+        },
+        {
+            "id": "32da2634d6b6ac62954222a9b364152f9fdffe8d",
+            "paperId": "32da2634d6b6ac62954222a9b364152f9fdffe8d",
+            "title": "Towards Recognition of Textual Entailment in the Biomedical Domain",
+            "abstract": null,
+            "year": 2019,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The main focus of this research is to recognize textual entailment in published evidence-based medicine findings, and investigates improving the inference detection abilities of the models by incorporating traditional machine learning features with deep learning architecture."
+            },
+            "score": 4
+        },
+        {
+            "id": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "paperId": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "title": "Enabling Large Language Models to Generate Text with Citations",
+            "abstract": "Large language models (LLMs) have emerged as a widely-used tool for information seeking, but their generated outputs are prone to hallucination. In this work, our aim is to allow LLMs to generate text with citations, improving their factual correctness and verifiability. Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches. We propose ALCE, the first benchmark for Automatic LLMs' Citation Evaluation. ALCE collects a diverse set of questions and retrieval corpora and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. We develop automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrate their strong correlation with human judgements. Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement -- For example, on the ELI5 dataset, even the best models lack complete citation support 50% of the time. Our analyses further highlight promising future directions, including developing better retrievers, advancing long-context LLMs, and improving the ability to synthesize information from multiple sources.",
+            "year": 2023,
+            "citationCount": 102,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ALCE, the first benchmark for Automatic LLMs' Citation Evaluation, and develops automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrates their strong correlation with human judgements."
+            },
+            "score": 4
+        },
+        {
+            "id": "f41977c497c96c1da2e9e945315e9be6d6ad472e",
+            "paperId": "f41977c497c96c1da2e9e945315e9be6d6ad472e",
+            "title": "Towards reducing hallucination in extracting information from financial reports using Large Language Models",
+            "abstract": "For a financial analyst, the question and answer (Q\\&A) segment of the company financial report is a crucial piece of information for various analysis and investment decisions. However, extracting valuable insights from the Q\\&A section has posed considerable challenges as the conventional methods such as detailed reading and note-taking lack scalability and are susceptible to human errors, and Optical Character Recognition (OCR) and similar techniques encounter difficulties in accurately processing unstructured transcript text, often missing subtle linguistic nuances that drive investor decisions. Here, we demonstrate the utilization of Large Language Models (LLMs) to efficiently and rapidly extract information from earnings report transcripts while ensuring high accuracy transforming the extraction process as well as reducing hallucination by combining retrieval-augmented generation technique as well as metadata. We evaluate the outcomes of various LLMs with and without using our proposed approach based on various objective metrics for evaluating Q\\&A systems, and empirically demonstrate superiority of our method.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work demonstrates the utilization of Large Language Models (LLMs) to efficiently and rapidly extract information from earnings report transcripts while ensuring high accuracy transforming the extraction process as well as reducing hallucination by combining retrieval-augmented generation technique aswell as metadata."
+            },
+            "score": 4
+        },
+        {
+            "id": "798963674902f741c3ea9298403eb8384c099a42",
+            "paperId": "798963674902f741c3ea9298403eb8384c099a42",
+            "title": "Factored Verification: Detecting and Reducing Hallucination in Summaries of Academic Papers",
+            "abstract": "Hallucination plagues even frontier LLMs--but how bad is it really for summarizing academic papers? We evaluate Factored Verification, a simple automated method for detecting hallucinations in abstractive summaries. This method sets a new SotA on hallucination detection in the summarization task of the HaluEval benchmark, achieving 76.2% accuracy. We then use this method to estimate how often language models hallucinate when summarizing across multiple academic papers and find 0.62 hallucinations in the average ChatGPT (16k) summary, 0.84 for GPT-4, and 1.55 for Claude 2. We ask models to self-correct using Factored Critiques and find that this lowers the number of hallucinations to 0.49 for ChatGPT, 0.46 for GPT-4, and 0.95 for Claude 2. The hallucinations we find are often subtle, so we advise caution when using models to synthesize academic papers.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Factored Verification, a simple automated method for detecting hallucinations in abstractive summaries, is evaluated and sets a new SotA on hallucination detection in the summarization task of the HaluEval benchmark, achieving 76.2% accuracy."
+            },
+            "score": 4
+        },
+        {
+            "id": "2986b2b06173e065c94bae49c7a9a3718dad486c",
+            "paperId": "2986b2b06173e065c94bae49c7a9a3718dad486c",
+            "title": "Reducing hallucination in structured outputs via Retrieval-Augmented Generation",
+            "abstract": "A common and fundamental limitation of Generative AI (GenAI) is its propensity to hallucinate. While large language models (LLM) have taken the world by storm, without eliminating or at least reducing hallucinations, real-world GenAI systems may face challenges in user adoption. In the process of deploying an enterprise application that produces workflows based on natural language requirements, we devised a system leveraging Retrieval Augmented Generation (RAG) to greatly improve the quality of the structured output that represents such workflows. Thanks to our implementation of RAG, our proposed system significantly reduces hallucinations in the output and improves the generalization of our LLM in out-of-domain settings. In addition, we show that using a small, well-trained retriever encoder can reduce the size of the accompanying LLM, thereby making deployments of LLM-based systems less resource-intensive.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This proposed system significantly reduces hallucinations in the output and improves the generalization of the LLM in out-of-domain settings, and it is shown that using a small, well-trained retriever encoder can reduce the size of the accompanying LLM, thereby making deployments of LLM-based systems less resource-intensive."
+            },
+            "score": 4
+        },
+        {
+            "id": "60988a0ebad89af503f17de977785814fb864635",
+            "paperId": "60988a0ebad89af503f17de977785814fb864635",
+            "title": "Correction with Backtracking Reduces Hallucination in Summarization",
+            "abstract": "Abstractive summarization aims at generating natural language summaries of a source document that are succinct while preserving the important elements. Despite recent advances, neural text summarization models are known to be susceptible to hallucinating (or more correctly confabulating), that is to produce summaries with details that are not grounded in the source document. In this paper, we introduce a simple yet efficient technique, CoBa, to reduce hallucination in abstractive summarization. The approach is based on two steps: hallucination detection and mitigation. We show that the former can be achieved through measuring simple statistics about conditional word probabilities and distance to context words. Further, we demonstrate that straight-forward backtracking is surprisingly effective at mitigation. We thoroughly evaluate the proposed method with prior art on three benchmark datasets for text summarization. The results show that CoBa is effective and efficient in reducing hallucination, and offers great adaptability and flexibility.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a simple yet efficient technique, CoBa, to reduce hallucination in abstractive summarization, and shows that the former can be achieved through measuring simple statistics about conditional word probabilities and distance to context words."
+            },
+            "score": 4
+        },
+        {
+            "id": "afdeef9585232642d18e7c6a7942b2395e94ede1",
+            "paperId": "afdeef9585232642d18e7c6a7942b2395e94ede1",
+            "title": "A Cause-Effect Look at Alleviating Hallucination of Knowledge-grounded Dialogue Generation",
+            "abstract": "Empowered by the large-scale pretrained language models, existing dialogue systems have demonstrated impressive performance conducting fluent and natural-sounding conversations. However, they are still plagued by the hallucination problem, causing unpredictable factual errors in the generated responses. Recently, knowledge-grounded dialogue generation models, that intentionally invoke external knowledge resources to more informative responses, are also proven to be effective in reducing hallucination. Following the idea of getting high-quality knowledge, a few efforts have achieved pretty good performance on this issue. As some inevitable knowledge noises may also lead to hallucinations, it is emergent to investigate the reason and future directions for building noise-tolerant methods in KGD tasks. In this paper, we analyze the causal story behind this problem with counterfactual reasoning methods. Based on the causal effect analysis, we propose a possible solution for alleviating the hallucination in KGD by exploiting the dialogue-knowledge interaction. Experimental results of our example implementation show that this method can reduce hallucination without disrupting other dialogue performance, while keeping adaptive to different generation models. We hope our efforts can support and call for more attention to developing lightweight techniques towards robust and trusty dialogue systems.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Based on the causal effect analysis, a possible solution for alleviating the hallucination in KGD by exploiting the dialogue-knowledge interaction is proposed and results show this method can reduce hallucination without disrupting other dialogue performance, while keeping adaptive to different generation models."
+            },
+            "score": 4
+        },
+        {
+            "id": "f767f0a883c8fc70de03fb8b65ed87e1fef5f415",
+            "paperId": "f767f0a883c8fc70de03fb8b65ed87e1fef5f415",
+            "title": "Hallucination Diversity-Aware Active Learning for Text Summarization",
+            "abstract": "Large Language Models (LLMs) have shown propensity to generate hallucinated outputs, i.e., texts that are factually incorrect or unsupported. Existing methods for alleviating hallucinations typically require costly human annotations to identify and correct hallucinations in LLM outputs. Moreover, most of these methods focus on a specific type of hallucination, e.g., entity or token errors, which limits their effectiveness in addressing various types of hallucinations exhibited in LLM outputs. To our best knowledge, in this paper we propose the first active learning framework to alleviate LLM hallucinations, reducing costly human annotations of hallucination needed. By measuring fine-grained hallucinations from errors in semantic frame, discourse and content verifiability in text summarization, we propose HAllucination Diversity-Aware Sampling (HADAS) to select diverse hallucinations for annotations in active learning for LLM finetuning. Extensive experiments on three datasets and different backbone models demonstrate advantages of our method in effectively and efficiently mitigating LLM hallucinations.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes the first active learning framework to alleviate LLM hallucinations, reducing costly human annotations of hallucination needed, and proposes HAllucination Diversity-Aware Sampling (HADAS) to select diverse hallucinations for annotations in active learning for LLM finetuning."
+            },
+            "score": 4
+        },
+        {
+            "id": "cc0f0cb09a73f82ed44d900f5ca710bec784acc1",
+            "paperId": "cc0f0cb09a73f82ed44d900f5ca710bec784acc1",
+            "title": "DIN-SQL: Decomposed In-Context Learning of Text-to-SQL with Self-Correction",
+            "abstract": "We study the problem of decomposing a complex text-to-sql task into smaller sub-tasks and how such a decomposition can significantly improve the performance of Large Language Models (LLMs) in the reasoning process. There is currently a significant gap between the performance of fine-tuned models and prompting approaches using LLMs on challenging text-to-sql datasets such as Spider. We show that SQL queries, despite their declarative structure, can be broken down into sub-problems and the solutions of those sub-problems can be fed into LLMs to significantly improve their performance. Our experiments with three LLMs show that this approach consistently improves their performance by roughly 10%, pushing the accuracy of LLMs towards state-of-the-art, and even beating large fine-tuned models on the holdout Spider dataset.",
+            "year": 2023,
+            "citationCount": 91,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that SQL queries, despite their declarative structure, can be broken down into sub-Problems and the solutions of those sub-problems can be fed into LLMs to significantly improve their performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "2c3a4099a62b4bfc2cc69692df8f0d8f98aed7c1",
+            "paperId": "2c3a4099a62b4bfc2cc69692df8f0d8f98aed7c1",
+            "title": "HiCRISP: An LLM-based Hierarchical Closed-Loop Robotic Intelligent Self-Correction Planner",
+            "abstract": "The integration of Large Language Models (LLMs) into robotics has revolutionized human-robot interactions and autonomous task planning. However, these systems are often unable to self-correct during the task execution, which hinders their adaptability in dynamic real-world environments. To address this issue, we present a Hierarchical Closed-loop Robotic Intelligent Self-correction Planner (HiCRISP), an innovative framework that enables robots to correct errors within individual steps during the task execution. HiCRISP actively monitors and adapts the task execution process, addressing both high-level planning and low-level action errors. Extensive benchmark experiments, encompassing virtual and real-world scenarios, showcase HiCRISP's exceptional performance, positioning it as a promising solution for robotic task planning with LLMs.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Hierarchical Closed-loop Robotic Intelligent Self-correction Planner (HiCRISP), an innovative framework that enables robots to correct errors within individual steps during the task execution."
+            },
+            "score": 4
+        },
+        {
+            "id": "d9e771732100c0f696cefb2a5c82cdd953140bb0",
+            "paperId": "d9e771732100c0f696cefb2a5c82cdd953140bb0",
+            "title": "TarGEN: Targeted Data Generation with Large Language Models",
+            "abstract": "The rapid advancement of large language models (LLMs) has sparked interest in data synthesis techniques, aiming to generate diverse and high-quality synthetic datasets. However, these synthetic datasets often suffer from a lack of diversity and added noise. In this paper, we present TarGEN, a multi-step prompting strategy for generating high-quality synthetic datasets utilizing a LLM. An advantage of TarGEN is its seedless nature; it does not require specific task instances, broadening its applicability beyond task replication. We augment TarGEN with a method known as self-correction empowering LLMs to rectify inaccurately labeled instances during dataset creation, ensuring reliable labels. To assess our technique's effectiveness, we emulate 8 tasks from the SuperGLUE benchmark and finetune various language models, including encoder-only, encoder-decoder, and decoder-only models on both synthetic and original training sets. Evaluation on the original test set reveals that models trained on datasets generated by TarGEN perform approximately 1-2% points better than those trained on original datasets (82.84% via syn. vs. 81.12% on og. using Flan-T5). When incorporating instruction tuning, the performance increases to 84.54% on synthetic data vs. 81.49% on original data by Flan-T5. A comprehensive analysis of the synthetic dataset compared to the original dataset reveals that the synthetic dataset demonstrates similar or higher levels of dataset complexity and diversity. Furthermore, the synthetic dataset displays a bias level that aligns closely with the original dataset. Finally, when pre-finetuned on our synthetic SuperGLUE dataset, T5-3B yields impressive results on the OpenLLM leaderboard, surpassing the model trained on the Self-Instruct dataset by 4.14% points. We hope that TarGEN can be helpful for quality data generation and reducing the human efforts to create complex benchmarks.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "TarGEN is presented, a multi-step prompting strategy for generating high-quality synthetic datasets utilizing a LLM that augments TarGEN with a method known as self-correction empowering LLMs to rectify inaccurately labeled instances during dataset creation, ensuring reliable labels."
+            },
+            "score": 4
+        },
+        {
+            "id": "48de22a24f6569f9bc10b667ab492a62a2a20fb4",
+            "paperId": "48de22a24f6569f9bc10b667ab492a62a2a20fb4",
+            "title": "Meta AI at Arabic Hate Speech 2022: MultiTask Learning with Self-Correction for Hate Speech Classification",
+            "abstract": "In this paper, we tackle the Arabic Fine-Grained Hate Speech Detection shared task and demonstrate significant improvements over reported baselines for its three subtasks. The tasks are to predict if a tweet contains (1) Offensive language; and whether it is considered (2) Hate Speech or not and if so, then predict the (3) Fine-Grained Hate Speech label from one of six categories. Our final solution is an ensemble of models that employs multitask learning and a self-consistency correction method yielding 82.7% on the hate speech subtask\u2014reflecting a 3.4% relative improvement compared to previous work.",
+            "year": 2022,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The final solution is an ensemble of models that employs multitask learning and a self-consistency correction method yielding 82.7% on the hate speech subtask\u2014reflecting a 3.4% relative improvement compared to previous work."
+            },
+            "score": 4
+        },
+        {
+            "id": "dab4be7f5aa36e8b7b8a9f7bfda3db71f7e6c47b",
+            "paperId": "dab4be7f5aa36e8b7b8a9f7bfda3db71f7e6c47b",
+            "title": "Dissonance and Self-Reflections: Decentering Assumptions to Foster Learners\u2019 Cognitive Flexibility",
+            "abstract": "The process of developing intercultural competence requires students to decenter from their existing frames of interpretation. Dissonance creates opportunities to question assumptions by challenging the primacy of perspectives, fostering skills to grapple with new knowledge and the ability to think more dialectically about the world. The present study examines how reflecting on dissonance engages skills and dispositions that support the development of cognitive flexibility, the ability to switch between emic and etic perspectives. In an advanced French course focused on marketing and communication, embodiments of economic patriotism in advertising and marketing practices in France aimed to disrupt and destabilize assumptions about the impact and role of globalization on local product consumption and consumer behavior. The analysis of students\u2019 self-reflections collected in two sections of the course shows that dissonance acted as a sensitizing device, signaling to students the limits of their own perspectives. The juxtaposition of multiple perspectives through the angle of marketing prompted reinterpretation, questioning, and awareness of the subjectivities of interpretation, fostering dialectical thinking skills. Imagination, interest, and curiosity were key in sustaining the decentering process and developing a readiness for cognitive flexibility.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 4
+        },
+        {
+            "id": "8f673349cd6b8e5e7dc76cd2cf148e191d306006",
+            "paperId": "8f673349cd6b8e5e7dc76cd2cf148e191d306006",
+            "title": "Beyond Transparency: Using Cognitive Dissonance to Improve the Promotions Process in Firms",
+            "abstract": "In this study, we investigate self-deception among managers in a position to make a biased promotion recommendation. In a tournament, managers promote their weaker employees instead of their best in order to compete against them at later stages. However, we find that when their promotion recommendations are transparent, generating cognitive dissonance in managers prompts them to amend their behavior. Managers\u2019 behavior becomes fairer and yet, they tend to feel more unfair \u2013 confirming the effect of cognitive dissonance on self-deception. On the other hand, making managers\u2019 promotion recommendations transparent alone does not sufficiently improve their behavior. Our findings have important implications for improving promotions processes and decision-making in organizations.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 4
+        },
+        {
+            "id": "1352d240827a48d71aa2139569691dca91bd4837",
+            "paperId": "1352d240827a48d71aa2139569691dca91bd4837",
+            "title": "Auditors \u2019 Ability to Detect Financial Deception : The Role of Auditor Experience and Management Cognitive Dissonance",
+            "abstract": "We are grateful to the accounting professionals from various audit firms who participated in the study. We appreciate helpful comments from We examine how extensive audit experience and a prompt to attend to the CEO's cognitive dissonance individually and jointly influence auditors' detection of financial deception. We predict and find that experienced auditors outperform both chance and inexperienced auditors, especially when prompted to attend to managers' cognitive dissonance. This is encouraging, as meta-analyses from psychology find that experts generally outperform neither chance nor novices in detecting deception. Also as predicted but more worrisome, unprompted experienced auditors' performance edge over novices arises predominantly from fewer false positives. While false positives about fraud could strain an auditor's relationship with management, false negatives jeopardize audit effectiveness and increase the risk that financial statement users will suffer loss from fraud. In supplemental process analysis, we find that experience enables auditors to identify more, and more accurate, red flags in CEO's narratives. This red flag advantage, when experienced auditors are prompted to attend management's cognitive dissonance, translates into more accurate fraud detection. Finally, in exploring whether adding audio to written transcripts improves accuracy, we observe it does so only for inexperienced auditors.",
+            "year": 2015,
+            "citationCount": 3,
+            "tldr": null,
+            "score": 4
+        },
+        {
+            "id": "5f20fbe331599618a42fe3fffbc05a01178325dd",
+            "paperId": "5f20fbe331599618a42fe3fffbc05a01178325dd",
+            "title": "Transfer and Active Learning for Dissonance Detection: Addressing the Rare-Class Challenge",
+            "abstract": "While transformer-based systems have enabled greater accuracies with fewer training examples, data acquisition obstacles still persist for rare-class tasks \u2013 when the class label is very infrequent (e.g. < 5% of samples). Active learning has in general been proposed to alleviate such challenges, but choice of selection strategy, the criteria by which rare-class examples are chosen, has not been systematically evaluated. Further, transformers enable iterative transfer-learning approaches. We propose and investigate transfer- and active learning solutions to the rare class problem of dissonance detection through utilizing models trained on closely related tasks and the evaluation of acquisition strategies, including a proposed probability-of-rare-class (PRC) approach. We perform these experiments for a specific rare-class problem: collecting language samples of cognitive dissonance from social media. We find that PRC is a simple and effective strategy to guide annotations and ultimately improve model accuracy while transfer-learning in a specific order can improve the cold-start performance of the learner but does not benefit iterations of active learning.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes and investigates transfer- and active learning solutions to the rare class problem of dissonance detection through utilizing models trained on closely related tasks and the evaluation of acquisition strategies, including a proposed probability-of-rare-class (PRC) approach."
+            },
+            "score": 3
+        },
+        {
+            "id": "fb31c33349816063f999af1351c03fcea08aeb2e",
+            "paperId": "fb31c33349816063f999af1351c03fcea08aeb2e",
+            "title": "Humans vs. ChatGPT: Evaluating Annotation Methods for Financial Corpora",
+            "abstract": "Given the vast amount of unstructured financial text data available today, there is a high demand for reliable, quality annotations to facilitate robust model development. However, traditional methods can often be expensive and time-inefficient. In this study, we investigate annotations for emotion, sentiment, and cognitive dissonance generated by the large language models (LLMs), GPT-3.5 and GPT-4, for quarterly earnings conference calls and compare them against human annotations obtained via traditional methods. We also investigate different prompt engineering choices on LLM annotation quality, experimenting with 4 styles of prompts centered around varying the amount of contextual information given and how it is presented to the models. Our results show the GPT models are not only more consistent and reliable than human annotators, but also provide annotations in a more cost- and time-efficient manner.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results show the GPT models are not only more consistent and reliable than human annotators, but also provide annotations in a more cost- and time-efficient manner."
+            },
+            "score": 3
+        },
+        {
+            "id": "1366b07120580eaf1badde105b9361806e8f9629",
+            "paperId": "1366b07120580eaf1badde105b9361806e8f9629",
+            "title": "Evaluating Subjective Cognitive Appraisals of Emotions from Large Language Models",
+            "abstract": "The emotions we experience involve complex processes; besides physiological aspects, research in psychology has studied cognitive appraisals where people assess their situations subjectively, according to their own values (Scherer, 2005). Thus, the same situation can often result in different emotional experiences. While the detection of emotion is a well-established task, there is very limited work so far on the automatic prediction of cognitive appraisals. This work fills the gap by presenting CovidET-Appraisals, the most comprehensive dataset to-date that assesses 24 appraisal dimensions, each with a natural language rationale, across 241 Reddit posts. CovidET-Appraisals presents an ideal testbed to evaluate the ability of large language models -- excelling at a wide range of NLP tasks -- to automatically assess and explain cognitive appraisals. We found that while the best models are performant, open-sourced LLMs fall short at this task, presenting a new challenge in the future development of emotionally intelligent models. We release our dataset at https://github.com/honglizhan/CovidET-Appraisals-Public.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "CovidET-Appraisals is presented, the most comprehensive dataset to-date that assesses 24 appraisal dimensions, each with a natural language rationale, across 241 Reddit posts, and found that while the best models are performant, open-sourced LLMs fall short at this task, presenting a new challenge in the future development of emotionally intelligent models."
+            },
+            "score": 3
+        },
+        {
+            "id": "2d7ecee735bb696d8d4b0247cba662e694e79bb8",
+            "paperId": "2d7ecee735bb696d8d4b0247cba662e694e79bb8",
+            "title": "Large Language Models Demonstrate the Potential of Statistical Learning in Language",
+            "abstract": "To what degree can language be acquired from linguistic input alone? This question has vexed scholars for millennia and is still a major focus of debate in the cognitive science of language. The complexity of human language has hampered progress because studies of language-especially those involving computational modeling-have only been able to deal with small fragments of our linguistic skills. We suggest that the most recent generation of Large Language Models (LLMs) might finally provide the computational tools to determine empirically how much of the human language ability can be acquired from linguistic experience. LLMs are sophisticated deep learning architectures trained on vast amounts of natural language data, enabling them to perform an impressive range of linguistic tasks. We argue that, despite their clear semantic and pragmatic limitations, LLMs have already demonstrated that human-like grammatical language can be acquired without the need for a built-in grammar. Thus, while there is still much to learn about how humans acquire and use language, LLMs provide full-fledged computational models for cognitive scientists to empirically evaluate just how far statistical learning might take us in explaining the full complexity of human language.",
+            "year": 2023,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is suggested that the most recent generation of Large Language Models (LLMs) might finally provide the computational tools to determine empirically how much of the human language ability can be acquired from linguistic experience."
+            },
+            "score": 3
+        },
+        {
+            "id": "fd263395256baaabf3b6f022ce00505d4c370000",
+            "paperId": "fd263395256baaabf3b6f022ce00505d4c370000",
+            "title": "Conflict of Text Interpretations as a Consequence of Cognitive Dissonance in Internet Disputes",
+            "abstract": "Latent cognitive dissonance in Internet disputers manifests itself as a conflict of text interpretations. This cognitive interpretation process of pre-textual cognitive dissonance often results in aggressive comments. The author analyzed interpretive Internet texts (comments) to reveal the cognitive patterns and prove the effect of pre-textual, i.e., cognitive, dissonance on the language and content of Internet comments. Addressee's external interpretive activity, represented in the text, is determined by internal cognitive processes, i.e., pre-textual presumptions and expectations. The study was based on the article entitled The people are multiplying \"on earth\", which was posted on a Runet information network resource on January 30, 2023. The article, which featured national demographic problems and possible solutions, yielded 189 comments that clearly illustrated the mechanism of conflict of interpretations. The methods of content and intent analyses revealed two cognitive patterns: the first one correlated with the intentional content of the trigger-text whereas the second pattern did not. Both patterns covered a number of cognitive models. The original text, subjectively interpreted by the addressee, triggered a wide range of comments that followed various cognitive patterns. As a result, the discussion unfolded as a conflict scenario, i.e., a struggle of attitudes and opinions, determined by the pre-textual cognitive dissonance of the disputers.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The author analyzed interpretive Internet texts (comments) to reveal the cognitive patterns and prove the effect of pre-textual, i.e., cognitive, dissonance on the language and content of Internet comments."
+            },
+            "score": 3
+        },
+        {
+            "id": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+            "paperId": "6001dce1c8f63350263e013e0e6ff69816f0a9af",
+            "title": "Text Classification via Large Language Models",
+            "abstract": "Despite the remarkable success of large-scale Language Models (LLMs) such as GPT-3, their performances still significantly underperform fine-tuned models in the task of text classification. This is due to (1) the lack of reasoning ability in addressing complex linguistic phenomena (e.g., intensification, contrast, irony etc); (2) limited number of tokens allowed in in-context learning. In this paper, we introduce Clue And Reasoning Prompting (CARP). CARP adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification: CARP first prompts LLMs to find superficial clues (e.g., keywords, tones, semantic relations, references, etc), based on which a diagnostic reasoning process is induced for final decisions. To further address the limited-token issue, CARP uses a fine-tuned model on the supervised dataset for $k$NN demonstration search in the in-context learning, allowing the model to take the advantage of both LLM's generalization ability and the task-specific evidence provided by the full labeled dataset. Remarkably, CARP yields new SOTA performances on 4 out of 5 widely-used text-classification benchmarks, 97.39 (+1.24) on SST-2, 96.40 (+0.72) on AGNews, 98.78 (+0.25) on R8 and 96.95 (+0.6) on R52, and a performance comparable to SOTA on MR (92.39 v.s. 93.3). More importantly, we find that CARP delivers impressive abilities on low-resource and domain-adaptation setups. Specifically, using 16 examples per class, CARP achieves comparable performances to supervised models with 1,024 examples per class.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Clue And Reasoning Prompting (CARP) adopts a progressive reasoning strategy tailored to addressing the complex linguistic phenomena involved in text classification, and achieves comparable performances to supervised models with 1,024 examples per class."
+            },
+            "score": 3
+        },
+        {
+            "id": "0e0d72be9950fde9b5e8996e2147d1318f216ebb",
+            "paperId": "0e0d72be9950fde9b5e8996e2147d1318f216ebb",
+            "title": "Prompting is not a substitute for probability measurements in large language models",
+            "abstract": "Prompting is now a dominant method for evaluating the linguistic knowledge of large language models (LLMs). While other methods directly read out models' probability distributions over strings, prompting requires models to access this internal information by processing linguistic input, thereby implicitly testing a new type of emergent ability: metalinguistic judgment. In this study, we compare metalinguistic prompting and direct probability measurements as ways of measuring models' linguistic knowledge. Broadly, we find that LLMs' metalinguistic judgments are inferior to quantities directly derived from representations. Furthermore, consistency gets worse as the prompt query diverges from direct measurements of next-word probabilities. Our findings suggest that negative results relying on metalinguistic prompts cannot be taken as conclusive evidence that an LLM lacks a particular linguistic generalization. Our results also highlight the value that is lost with the move to closed APIs where access to probability distributions is limited.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": null,
+            "score": 3
+        },
+        {
+            "id": "06b2ac5153e3d8d05c13c82f93d7f4e13eee6d0f",
+            "paperId": "06b2ac5153e3d8d05c13c82f93d7f4e13eee6d0f",
+            "title": "Mitigating Fine-Grained Hallucination by Fine-Tuning Large Vision-Language Models with Caption Rewrites",
+            "abstract": "Large language models (LLMs) have shown remarkable performance in natural language processing (NLP) tasks. To comprehend and execute diverse human instructions over image data, instruction-tuned large vision-language models (LVLMs) have been introduced. However, LVLMs may suffer from different types of object hallucinations. Nevertheless, LVLMs are evaluated for coarse-grained object hallucinations only (i.e., generated objects non-existent in the input image). The fine-grained object attributes and behaviors non-existent in the image may still be generated but not measured by the current evaluation methods. In this paper, we thus focus on reducing fine-grained hallucinations of LVLMs. We propose \\textit{ReCaption}, a framework that consists of two components: rewriting captions using ChatGPT and fine-tuning the instruction-tuned LVLMs on the rewritten captions. We also propose a fine-grained probing-based evaluation method named \\textit{Fine-Grained Object Hallucination Evaluation} (\\textit{FGHE}). Our experiment results demonstrate that ReCaption effectively reduces fine-grained object hallucination for different LVLM options and improves their text generation quality. The code can be found at https://github.com/Anonymousanoy/FOHE.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "ReCaption is proposed, a framework that consists of two components: rewriting captions using ChatGPT and fine-tuning the instruction-tuned LVLMs on the rewritten captions, and a fine-grained probing-based evaluation method named \\textit{Fine-Grained Object Hallucination Evaluation} (FGHE)."
+            },
+            "score": 3
+        },
+        {
+            "id": "f99116659c7522941c2353f23bddd07251adaccc",
+            "paperId": "f99116659c7522941c2353f23bddd07251adaccc",
+            "title": "BTR: Binary Token Representations for Efficient Retrieval Augmented Language Models",
+            "abstract": "Retrieval augmentation addresses many critical problems in large language models such as hallucination, staleness, and privacy leaks. However, running retrieval-augmented language models (LMs) is slow and difficult to scale due to processing large amounts of retrieved text. We introduce binary token representations (BTR), which use 1-bit vectors to precompute every token in passages, significantly reducing computation during inference. Despite the potential loss of accuracy, our new calibration techniques and training objectives restore performance. Combined with offline and runtime compression, this only requires 127GB of disk space for encoding 3 billion tokens in Wikipedia. Our experiments show that on five knowledge-intensive NLP tasks, BTR accelerates state-of-the-art inference by up to 4x and reduces storage by over 100x while maintaining over 95% task performance.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "BTR is introduced, which use 1-bit vectors to precompute every token in passages, significantly reducing computation during inference, and accelerates state-of-the-art inference by up to 4x and reduces storage by over 100x while maintaining over 95% task performance."
+            },
+            "score": 3
+        },
+        {
+            "id": "7cfbd36c0043098589cbaf18dca2b41d8dc24abe",
+            "paperId": "7cfbd36c0043098589cbaf18dca2b41d8dc24abe",
+            "title": "Plausible May Not Be Faithful: Probing Object Hallucination in Vision-Language Pre-training",
+            "abstract": "Large-scale vision-language pre-trained (VLP) models are prone to hallucinate non-existent visual objects when generating text based on visual information. In this paper, we systematically study the object hallucination problem from three aspects. First, we examine recent state-of-the-art VLP models, showing that they still hallucinate frequently and models achieving better scores on standard metrics (e.g., CIDEr) could be more unfaithful. Second, we investigate how different types of image encoding in VLP influence hallucination, including region-based, grid-based, and patch-based. Surprisingly, we find that patch-based features perform the best and smaller patch resolution yields a non-trivial reduction in object hallucination. Third, we decouple various VLP objectives and demonstrate that token-level image-text alignment and controlled generation are crucial to reducing hallucination. Based on that, we propose a simple yet effective VLP loss named ObjMLM to further mitigate object hallucination. Results show that it reduces object hallucination by up to 17.4% when tested on two benchmarks (COCO Caption for in-domain and NoCaps for out-of-domain evaluation).",
+            "year": 2022,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a simple yet effective VLP loss named ObjMLM to further mitigate object hallucination and decouple various VLP objectives and demonstrates that token-level image-text alignment and controlled generation are crucial to reducing hallucination."
+            },
+            "score": 3
+        },
+        {
+            "id": "6df5ba162b38d2853cc8431ff6f878d085c03693",
+            "paperId": "6df5ba162b38d2853cc8431ff6f878d085c03693",
+            "title": "SERPENT-VLM : Self-Refining Radiology Report Generation Using Vision Language Models",
+            "abstract": "Radiology Report Generation (R2Gen) demonstrates how Multi-modal Large Language Models (MLLMs) can automate the creation of accurate and coherent radiological reports. Existing methods often hallucinate details in text-based reports that don't accurately reflect the image content. To mitigate this, we introduce a novel strategy, SERPENT-VLM (SElf Refining Radiology RePort GENeraTion using Vision Language Models), which improves the R2Gen task by integrating a self-refining mechanism into the MLLM framework. We employ a unique self-supervised loss that leverages similarity between pooled image representations and the contextual representations of the generated radiological text, alongside the standard Causal Language Modeling objective, to refine image-text representations. This allows the model to scrutinize and align the generated text through dynamic interaction between a given image and the generated text, therefore reducing hallucination and continuously enhancing nuanced report generation. SERPENT-VLM outperforms existing baselines such as LLaVA-Med, BiomedGPT, etc., achieving SoTA performance on the IU X-ray and Radiology Objects in COntext (ROCO) datasets, and also proves to be robust against noisy images. A qualitative case study emphasizes the significant advancements towards more sophisticated MLLM frameworks for R2Gen, opening paths for further research into self-supervised refinement in the medical imaging domain.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel strategy, SERPENT-VLM (SElf Refining Radiology RePort GENeraTion using Vision Language Models), which improves the R2Gen task by integrating a self-refining mechanism into the MLLM framework, and proves to be robust against noisy images."
+            },
+            "score": 3
+        },
+        {
+            "id": "7751f6cdec0f4473c1733eec91699744a7d5176f",
+            "paperId": "7751f6cdec0f4473c1733eec91699744a7d5176f",
+            "title": "HALC: Object Hallucination Reduction via Adaptive Focal-Contrast Decoding",
+            "abstract": "While large vision-language models (LVLMs) have demonstrated impressive capabilities in interpreting multi-modal contexts, they invariably suffer from object hallucinations (OH). We introduce HALC, a novel decoding algorithm designed to mitigate OH in LVLMs. HALC leverages distinct fine-grained optimal visual information in vision-language tasks and operates on both local and global contexts simultaneously. Specifically, HALC integrates a robust auto-focal grounding mechanism (locally) to correct hallucinated tokens on the fly, and a specialized beam search algorithm (globally) to significantly reduce OH while preserving text generation quality. Additionally, HALC can be integrated into any LVLMs as a plug-and-play module without extra training. Extensive experimental studies demonstrate the effectiveness of HALC in reducing OH, outperforming state-of-the-arts across four benchmarks.",
+            "year": 2024,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "HALC, a novel decoding algorithm designed to mitigate OH in LVLMs, is introduced, which leverages distinct fine-grained optimal visual information in vision-language tasks and operates on both local and global contexts simultaneously."
+            },
+            "score": 3
+        },
+        {
+            "id": "0935ce0adad57e1b24c50d793d46a407c3f563f3",
+            "paperId": "0935ce0adad57e1b24c50d793d46a407c3f563f3",
+            "title": "Describe, Explain, Plan and Select: Interactive Planning with Large Language Models Enables Open-World Multi-Task Agents",
+            "abstract": "We investigate the challenge of task planning for multi-task embodied agents in open-world environments. Two main difficulties are identified: 1) executing plans in an open-world environment (e.g., Minecraft) necessitates accurate and multi-step reasoning due to the long-term nature of tasks, and 2) as vanilla planners do not consider how easy the current agent can achieve a given sub-task when ordering parallel sub-goals within a complicated plan, the resulting plan could be inefficient or even infeasible. To this end, we propose\"$\\underline{D}$escribe, $\\underline{E}$xplain, $\\underline{P}$lan and $\\underline{S}$elect\"($\\textbf{DEPS}$), an interactive planning approach based on Large Language Models (LLMs). DEPS facilitates better error correction on initial LLM-generated $\\textit{plan}$ by integrating $\\textit{description}$ of the plan execution process and providing self-$\\textit{explanation}$ of feedback when encountering failures during the extended planning phases. Furthermore, it includes a goal $\\textit{selector}$, which is a trainable module that ranks parallel candidate sub-goals based on the estimated steps of completion, consequently refining the initial plan. Our experiments mark the milestone of the first zero-shot multi-task agent that can robustly accomplish 70+ Minecraft tasks and nearly double the overall performances. Further testing reveals our method's general effectiveness in popularly adopted non-open-ended domains as well (i.e., ALFWorld and tabletop manipulation). The ablation and exploratory studies detail how our design beats the counterparts and provide a promising update on the $\\texttt{ObtainDiamond}$ grand challenge with our approach. The code is released at https://github.com/CraftJarvis/MC-Planner.",
+            "year": 2023,
+            "citationCount": 163,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The ablation and exploratory studies detail how the design beats the counterparts and provide a promising update on the $\\texttt{ObtainDiamond}$ grand challenge with the MC-Planner approach."
+            },
+            "score": 3
+        },
+        {
+            "id": "83ac0851a8f6fa02f5db251b260f635907d7a01e",
+            "paperId": "83ac0851a8f6fa02f5db251b260f635907d7a01e",
+            "title": "Tactical Rewind: Self-Correction via Backtracking in Vision-And-Language Navigation",
+            "abstract": "We present the Frontier Aware Search with backTracking (FAST) Navigator, a general framework for action decoding, that achieves state-of-the-art results on the 2018 Room-to-Room (R2R) Vision-and-Language navigation challenge. Given a natural language instruction and photo-realistic image views of a previously unseen environment, the agent was tasked with navigating from source to target location as quickly as possible. While all current approaches make local action decisions or score entire trajectories using beam search, ours balances local and global signals when exploring an unobserved environment. Importantly, this lets us act greedily but use global signals to backtrack when necessary. Applying FAST framework to existing state-of-the-art models achieved a 17% relative gain, an absolute 6% gain on Success rate weighted by Path Length.",
+            "year": 2019,
+            "citationCount": 147,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Frontier Aware Search with backTracking (FAST) Navigator is presented, a general framework for action decoding, that achieves state-of-the-art results on the 2018 Room-to-Room (R2R) Vision-and-Language navigation challenge."
+            },
+            "score": 3
+        },
+        {
+            "id": "f11d7ff00ac0dacc4248559dc3e14479123d9cbb",
+            "paperId": "f11d7ff00ac0dacc4248559dc3e14479123d9cbb",
+            "title": "Enhancing Early Detection of Cognitive Decline in the Elderly through Ensemble of NLP Techniques: A Comparative Study Utilizing Large Language Models in Clinical Notes",
+            "abstract": "Background: Early detection of cognitive decline in elderly individuals facilitates clinical trial enrollment and timely medical interventions. This study aims to apply, evaluate, and compare advanced natural language processing techniques for identifying signs of cognitive decline in clinical notes. Methods: This study, conducted at Mass General Brigham (MGB), Boston, MA, included clinical notes from the 4 years prior to initial mild cognitive impairment (MCI) diagnosis in 2019 for patients [\u2265] 50 years. Note sections regarding cognitive decline were labeled manually. A random sample of 4,949 note sections filtered with cognitive functions-related keywords were used for traditional AI model development, and 200 random subset were used for LLM and prompt development; another random sample of 1996 note sections without keyword filtering were used for testing. Prompt templates for large language models (LLM), Llama 2 on Amazon Web Service and GPT-4 on Microsoft Azure, were developed with multiple prompting approaches to select the optimal LLM-based method. Baseline comparisons were made with XGBoost and a hierarchical attention-based deep neural network model. An ensemble of the three models was then constructed using majority vote. Results: GPT-4 demonstrated superior accuracy and efficiency to Llama 2. The ensemble model outperformed individual models, achieving a precision of 90.3%, recall of 94.2%, and F1-score of 92.2%. Notably, the ensemble model demonstrated a marked improvement in precision (from a 70%-79% range to above 90%) compared to the best performing single model. Error analysis revealed 63 samples were wrongly predicted by at least one model; however, only 2 cases (3.2%) were mutual errors across all models, indicating diverse error profiles among them. Conclusion: Our findings indicate that LLMs and traditional models exhibit diverse error profiles. The ensemble of LLMs and locally trained machine learning models on EHR data was found to be complementary, enhancing performance and improving diagnostic accuracy.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The ensemble of LLMs and locally trained machine learning models on EHR data was found to be complementary, enhancing performance and improving diagnostic accuracy, indicating that LLMs and traditional models exhibit diverse error profiles."
+            },
+            "score": 3
+        },
+        {
+            "id": "5814cb76b4300a004d2b1a7404bdb6d9e4a251d4",
+            "paperId": "5814cb76b4300a004d2b1a7404bdb6d9e4a251d4",
+            "title": "Cognitive dissonance: how self\u2010protective distortions can undermine clinical judgement",
+            "abstract": "When errors occur in clinical settings, it is important that they are recognised without defensiveness so that prompt corrective action can be taken and learning can occur. Cognitive dissonance \u2013 the uncomfortable tension we experience when we hold two or more inconsistent beliefs \u2013 can hinder our ability to respond optimally to error.",
+            "year": 2019,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 3
+        },
+        {
+            "id": "64b96d483f6481de0d8fba23afddcf09cb33a873",
+            "paperId": "64b96d483f6481de0d8fba23afddcf09cb33a873",
+            "title": "Selecting and Performing Service-Learning in a Team-Based Learning Format Fosters Dissonance, Reflective Capacity, Self-Examination, Bias Mitigation, and Compassionate Behavior in Prospective Medical Students",
+            "abstract": "More compassionate behavior should make both patients and their providers happier and healthier. Consequently, work to increase this behavior ought to be a major component of premedical and medical education. Interactions between doctors and patients are often less than fully compassionate owing to implicit biases against patients. Such biases adversely affect treatment, adherence, and health outcomes. For these reasons, we studied whether selecting and performing service-learning projects by teams of prospective medical students prompts them to write reflections exhibiting dissonance, self-examination, bias mitigation, dissonance reconciliation, and compassionate behavior. Not only did these students report changes in their behavior to become more compassionate, but their reflective capacity also grew in association with selecting and performing team service-learning projects. Components of reflective capacity, such as reflection-on-action and self-appraisal, correlated strongly with cognitive empathy (a component of compassion) in these students. Our results are, however, difficult to generalize to other universities and other preprofessional and professional healthcare programs. Hence, we encourage others to test further our hypothesis that provocative experiences foster frequent self-examination and more compassionate behavior by preprofessional and professional healthcare students, especially when teams of students are free to make their own meaning of, and build trust and psychological safety in, shared experiences.",
+            "year": 2019,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Not only did these students report changes in their behavior to become more compassionate, but their reflective capacity also grew in association with selecting and performing team service-learning projects, and components of reflective capacity correlated strongly with cognitive empathy (a component of compassion) in these students."
+            },
+            "score": 3
+        },
+        {
+            "id": "1ddd81dbda59130c7a5c1278992cf8eb2a5a3b08",
+            "paperId": "1ddd81dbda59130c7a5c1278992cf8eb2a5a3b08",
+            "title": "Reproducible Pedagogy for Cognitive Dissonance Reduction",
+            "abstract": "We describe a general work-flow which scales intuitively to high-performance computing (HPC) clusters for different domains of scientific computation. We demonstrate our methodology with a radial distribution function calculation in C++, with mental models for FORTRAN and Python as well. We present a pedagogical framework for the development of guided concrete incremental techniques to incorporate domain-specific knowledge and transfer existing expertise for developing highperformance, platform-independent, reproducible scientific software. This is effected by presenting the acceleration of a radial distribution function, a well known algorithm in computational chemistry. Thus we assert that for domain specific algorithms, there is a language-independent pedagogical methodology which may be leveraged to ensure best practices for the scientific HPC community with minimal cognitive dissonance for practitioners and students.",
+            "year": 2019,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is asserted that for domain specific algorithms, there is a language-independent pedagogical methodology which may be leveraged to ensure best practices for the scientific HPC community with minimal cognitive dissonance for practitioners and students."
+            },
+            "score": 2
+        },
+        {
+            "id": "621b106d080b68f645eac57d3a5ed08f73e51b75",
+            "paperId": "621b106d080b68f645eac57d3a5ed08f73e51b75",
+            "title": "\u0421\u0410\u041c\u041e\u041a\u041e\u0420\u0415\u041a\u0426\u0406\u042f \u041a\u041e\u0413\u041d\u0406\u0422\u0418\u0412\u041d\u041e\u0413\u041e \u0414\u0418\u0421\u041e\u041d\u0410\u041d\u0421\u0423 \u041f\u0415\u0420\u0415\u041a\u041b\u0410\u0414\u0410\u0427\u0406\u0412 \u0423 \u0411\u0420\u0415\u041d\u0414\u041a\u041e\u041c\u0423\u041d\u0406\u041a\u0410\u0426\u0406\u0407",
+            "abstract": "There is considered the dependence of the success of translational activity of specialists in brand-communication on the effect of cognitive dissonance on two levels: on the level of improvement of imaginary models of control attributes and on the level of modification of the program of technical and tactical actions aimed at their realization. It is found that the quickest finding by the translators of high-quality foreign language constructs of a new generalized image of information occurs under the influence of the optimum intensity of cognitive dissonance or if a cognitive consonance is achieved. It is proved that presentation of several alternative variants of foreign-language constructs of a new generalized image during the perception of information enhances cognitive dissonance, while the construction in imagination of such an image from identical foreign-language constructs reduces its intensity.",
+            "year": 2019,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the quickest finding by the translators of high-quality foreign language constructs of a new generalized image of information occurs under the influence of the optimum intensity of cognitive dissonance or if a cognitive consonance is achieved."
+            },
+            "score": 2
+        },
+        {
+            "id": "d6751e611dac6ba3e1e3312b8836e95009385c45",
+            "paperId": "d6751e611dac6ba3e1e3312b8836e95009385c45",
+            "title": "\u041a\u043e\u0433\u043d\u0438\u0442\u0438\u0432\u043d\u044b\u0439 \u0434\u0438\u0441\u0441\u043e\u043d\u0430\u043d\u0441 \u043a\u0430\u043a \u043f\u0440\u0438\u0447\u0438\u043d\u0430 \u043d\u0435\u0443\u0441\u043f\u0435\u0445\u0430 \u043f\u0440\u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0438 \u0420\u041a\u0418 \u0432 \u0432\u0443\u0437\u0430\u0445 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f",
+            "abstract": "This article is devoted to the problem of \u201ccognitive dissonance\u201d between the philologist who acts as a teacher and the foreign aspiring engineer. In order to clarify this problem due attention is given to the question of Russian mental culture with regards to \u201cwestern\u201d and \u201ceastern\u201d mentality, as well as to the question to what extent the knowledge of engineering terminology enables the student to communicate in Russian in a number of other situations. The article deals with the problem of \u201ctwo cultures\u201d: Those sectors and models of the language which can be applied to the realm of liberal arts are semantically and logically quite different from those sectors which are needed for efficient communication in the field of natural science. The author demonstrates that the study of engineering belongs to \u201cwestern\u201d rather than to \"eastern\" culture and differs from the latter in numerous points.",
+            "year": 2014,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "98abfbbf11d663f0d14c5bab5c56e64d944c7fb1",
+            "paperId": "98abfbbf11d663f0d14c5bab5c56e64d944c7fb1",
+            "title": "The relationship between bilingual language control and language dominance: An empirical study of visual language perception",
+            "abstract": "Bilingual visual perception is an under-researched area in psycholinguistics and has yielded contradictory results regarding language control. Two theories were developed to account for visual language perception in bilinguals \u2013 the Inhibitory Control model (Green, 1986) and the Bilingual Interactive Activation model (Grainger and Dijkstra, 1992). Even though these two accounts have opposite predictions for asymmetrical language control (different for the bilingual\u2019s L1 and L2), most research up to date found evidence only for symmetrical control (Macizo et al., 2012; Orfanidou and Summer, 2005). This study aims to investigate the influence of language dominance on the visual language perception of bilinguals and providing evidence for the accountability of the models mentioned above. Thirty-one Hungarian-English bilinguals were recruited for this study. Participants\u2019 language dominance was operationalized by a complex score using the Bilingual Language Profile questionnaire (Birdsong et al., 2012). The bilingual lexical decision task was used to investigate the differences in the cognitive processing of the two languages. Target stimuli were carefully matched for their visual and linguistic features to eliminate the potential confounding influences on their perception during task performance. For unbalanced, L1 dominant bilinguals, asymmetrical, dominance-related switching cost was observed, indicating the relevance of the Inhibitory Control model. Faster L2 processing correlated with a richer history of L2-associated experiences and more balanced bilingualism. However, no correlations were found with the frequency of language use, language attitudes, and only weak correlations were observed with language proficiency. The current research proposes a methodological framework for measuring the influence of linguistic background on language switching cost that could ensure comparability between further studies.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "27a56b2ad7c2bf3973a75b9ab7d69caa3d2af6fa",
+            "paperId": "27a56b2ad7c2bf3973a75b9ab7d69caa3d2af6fa",
+            "title": "Handling Variance of Pretrained Language Models in Grading Evidence in the Medical Literature",
+            "abstract": "In this paper, we investigate the utility of modern pretrained language models for the evidence grading system in the medical literature based on the ALTA 2021 shared task. We benchmark 1) domain-specific models that are optimized for medical literature and 2) domain-generic models with rich latent discourse representation (i.e. ELECTRA, RoBERTa). Our empirical experiments reveal that these modern pretrained language models suffer from high variance, and the ensemble method can improve the model performance. We found that ELECTRA performs best with an accuracy of 53.6% on the test set, outperforming domain-specific models.1",
+            "year": 2021,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that ELECTRA performs best with an accuracy of 53.6% on the test set, outperforming domain-specific models and the ensemble method can improve the model performance."
+            },
+            "score": 2
+        },
+        {
+            "id": "8e0dbc206db278c29c4b70eae2060db2818f72dd",
+            "paperId": "8e0dbc206db278c29c4b70eae2060db2818f72dd",
+            "title": "Generalization and Hallucination of Large Vision-Language Models through a Camouflaged Lens",
+            "abstract": "Large Vision-Language Model (LVLM) has seen burgeoning development and increasing attention recently. In this paper, we propose a novel framework, camo-perceptive vision-language framework (CPVLF), to explore whether LVLM can generalize to the challenging camouflaged object detection (COD) scenario in a training-free manner. During the process of generalization, we find that due to hallucination issues within LVLM, it can erroneously perceive objects in camouflaged scenes, producing counterfactual concepts. Moreover, as LVLM is not specifically trained for the precise localization of camouflaged objects, it exhibits a degree of uncertainty in accurately pinpointing these objects. Therefore, we propose chain of visual perception, which enhances LVLM's perception of camouflaged scenes from both linguistic and visual perspectives, reducing the hallucination issue and improving its capability in accurately locating camouflaged objects. We validate the effectiveness of CPVLF on three widely used COD datasets, and the experiments show the potential of LVLM in the COD task.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework, camo-perceptive vision-language framework (CPVLF), is proposed, which enhances LVLM's perception of camouflaged scenes from both linguistic and visual perspectives, reducing the hallucination issue and improving its capability in accurately locating camouflaged objects."
+            },
+            "score": 2
+        },
+        {
+            "id": "d16f8d624ab16c8bb35dde676f522b66a771d271",
+            "paperId": "d16f8d624ab16c8bb35dde676f522b66a771d271",
+            "title": "Large Language Models are Null-Shot Learners",
+            "abstract": "This paper presents null-shot prompting. Null-shot prompting exploits hallucination in large language models (LLMs) by instructing LLMs to utilize information from the\"Examples\"section that never exists within the provided context to perform a task. While reducing hallucination is crucial and non-negligible for daily and critical uses of LLMs, we propose that in the current landscape in which these LLMs still hallucinate, it is possible, in fact, to exploit hallucination to increase performance in performing tasks compared to standard zero-shot prompting. Experiments with eight LLMs show improvements in performance across the majority of eight datasets, including reading comprehension, arithmetic reasoning, and closed-book question answering. The observed inconsistency in increased relative performance across the LLMs also potentially indicates a different degree of inherent hallucination in each model. These differences show that it is possible to utilize null-shot prompting as a way to detect degrees of hallucination in LLMs using existing benchmarking datasets. We also perform ablation studies, including experimenting with a modified version of null-shot prompting that incorporates ideas from zero-shot chain-of-thought prompting, which shows different trends of results.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments with eight LLMs show improvements in performance across the majority of eight datasets, including reading comprehension, arithmetic reasoning, and closed-book question answering, and differences show that it is possible to utilize null-shot prompting as a way to detect degrees of hallucination in LLMs using existing benchmarking datasets."
+            },
+            "score": 2
+        },
+        {
+            "id": "f3297c79a2b05e3833673ca90bf0607012097a49",
+            "paperId": "f3297c79a2b05e3833673ca90bf0607012097a49",
+            "title": "Unsupervised Accent Adaptation Through Masked Language Model Correction Of Discrete Self-Supervised Speech Units",
+            "abstract": "Self-supervised pre-trained speech models have strongly improved speech recognition, yet they are still sensitive to domain shifts and accented or atypical speech. Many of these models rely on quantisation or clustering to learn discrete acoustic units. We propose to correct the discovered discrete units for accented speech back to a standard pronunciation in an unsupervised manner. A masked language model is trained on discrete units from a standard accent and iteratively corrects an accented token sequence by masking unexpected cluster sequences and predicting their common variant. Small accent adapter blocks are inserted in the pre-trained model and fine-tuned by predicting the corrected clusters, which leads to an increased robustness of the pre-trained model towards a target accent, and this without supervision. We are able to improve a state-of-the-art HuBERT Large model on a downstream accented speech recognition task by altering the training regime with the proposed method.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A state-of-the-art HuBERT Large model is improved on a downstream accented speech recognition task by altering the training regime with the proposed method, which leads to an increased robustness of the pre-trained model towards a target accent without supervision."
+            },
+            "score": 2
+        },
+        {
+            "id": "710b1bdd820707da029c44546e9873c5697b53ad",
+            "paperId": "710b1bdd820707da029c44546e9873c5697b53ad",
+            "title": "IMPACT OF COGNITIVE DISSONANCE",
+            "abstract": "The hypothesis of \"subjective cacophony\" is of awesome significance in shopper conduct and advertisers have loads of enthusiasm for breaking down the post buy conduct of buyers experienced by them. This paper has investigated the components that make intellectual cacophony in shopper purchasing choice making especially among the customer products buyer in the city range. Some of these are family status, religious worth, traditions, conviction and so forth the concentrate likewise uncovers the issues and recognized plausible answers for defeat these problems. This article investigates the ramifications of intellectual discord on differed parts of customer purchasing behavior. Some of the components prompting disharmony post buy.",
+            "year": 2016,
+            "citationCount": 1,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "ccd62aa77037dddca68e924c4fc6af70c054768d",
+            "paperId": "ccd62aa77037dddca68e924c4fc6af70c054768d",
+            "title": "Effect of media on Cognitive Dissonance among Rural and Urban Adolescents",
+            "abstract": "The study was conducted to find the relationship, between media and cognitive dissonance, at high school level. Furthermore to test, whether, the urban teenagers had exhibited cognitive dissonance as compared to the rural pool. A pool of 405 adolescents (from rural and urban setup), is chosen, using stratified sampling technique. They were made to respond to the questionnaire consists of 75 items. Initially a scale was constructed, with items (n=150) measuring cognitive dissonance, its reliability was tested and retested, by doing a pilot study on a sample of (60) adolescents (r=.89). Statistical operations (correlation, ANOVA and t-test) were applied to calculate the significance in relationship among various variables. Results have revealed a strong positive relationship exists between exposure to media and cognitive dissonance (r=.89; p<.01). In addition, various TV programs (r=.799; p<.01) prompt cognitive dissonance among urban group as compared to their rural counterparts.",
+            "year": 2012,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "36a5539e9653512f1968d4ce6cf857e51152dd48",
+            "paperId": "36a5539e9653512f1968d4ce6cf857e51152dd48",
+            "title": "Religious Identity Dissonance: Understanding How Sexual Minority Adolescents Manage Antihomosexual Religious Messages",
+            "abstract": "ABSTRACT Sexual minority adolescents from religious contexts may be at high risk of mental health issues due to religious identity dissonance. This study investigated the cognitive strategies used to manage antihomosexual religious messages and resolve religious identity dissonance among sexual minority adolescents. In 2014, 46 adolescents were interviewed in Los Angeles, CA. Youths were prompted to discuss experiences with religion, antihomosexual messages, and their strategies for managing these messages. Ninety-one percent of the sample reported hearing antihomosexual religious messages. Messages came from multiple sources (e.g., parents, pastors) and contained three types of content (i.e., creation, sin, and afterlife). A quarter of the sample reported religious identity dissonance. Three primary strategies to manage antihomosexual messages emerged. Findings indicate that all youths, including nonreligious youths, use cognitive strategies to manage negative messages and that these strategies relate to current religious identification.",
+            "year": 2020,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Investigation of the cognitive strategies used to manage antihomosexual religious messages and resolve religious identity dissonance among sexual minority adolescents indicates that all youths, including nonreligious youths, use cognitive strategies to manage negative messages and that these strategies relate to current religious identification."
+            },
+            "score": 2
+        },
+        {
+            "id": "b38ad35ca13e7b34d0ef5e211ab3db55f61e6726",
+            "paperId": "b38ad35ca13e7b34d0ef5e211ab3db55f61e6726",
+            "title": "Identifying Cognitive Impairment Using Sentence Representation Vectors",
+            "abstract": "The widely used word vectors can be extended at the sentence level to perform a wide range of natural language processing (NLP) tasks. Recently the Bidirectional Encoder Rep-resentations from Transformers (BERT) language representation achieved state-of-the-art performance for these applications. The model is trained with punctuated and well-formed (writ-ten) text, however, the performance of the model drops signi\ufb01cantly when the input text is the \u2013 erroneous and un-punctuated\u2013 output of automatic speech recognition (ASR). We use a sliding window and averaging approach for pre-processing text for BERT to extract features for classifying three diagnostic categories relating to cognitive impairment: neurodegenerative dis-order (ND), mild cognitive impairment (MCI), and healthy controls (HC). The in-house dataset contains the audio recordings of an intelligent virtual agent (IVA) who asks the participants several conversational questions prompts in addition to giving a picture description prompt. For the three-way classi-\ufb01cation, we achieve a 73.88% F-score (accuracy: 76.53%) us-ing the pre-trained, uncased base BERT and for the two-way classi\ufb01er (HCvs. ND) we achieve 89.80% (accuracy: 90%). We further improve these by using a prompt selection technique, reaching the F-scores of 79.98% (accuracy: 81.63%) and 93.56% (accuracy:93.75%) respectively.",
+            "year": 2021,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work uses a sliding window and averaging approach for pre-processing text for BERT to extract features for classifying three diagnostic categories relating to cognitive impairment: neurodegenerative dis-order, mild cognitive impairment (MCI), and healthy controls (HC)."
+            },
+            "score": 2
+        },
+        {
+            "id": "9d2a6a9db7e812aab2c24c8ab3409d84d47eec79",
+            "paperId": "9d2a6a9db7e812aab2c24c8ab3409d84d47eec79",
+            "title": "COGNITIVE NATURAL LANGUAGE PROCESSING ASSISTANT FOR POST-OPERATIVE CARE",
+            "abstract": "The vast intricacies that hover over post-operative care often lead to higher risk and inherent damage, when ignored. Postoperative care has several complications, ranging from decreased quality of care due to enormous patient to doctor gap ratio to unavailability of remote healthcare. To ensure that these issues are eradicated, the Cognitive NLP assistant using Dialogflow is proposed. This assistant will hold a regular conversation similar to what a medical professional would, but at the feasibility of the user\u2019s home. It will monitor and track symptoms. The assistant will suggest prompts, based on prior charts and care suggested for the respective surgery. The proposed methodology is achieved by using the Rule-Based Grammar algorithm and the ML matching algorithm. The assistant\u2019s services will extend to connecting with the medical professional if any abnormalities arise and cover communication gaps, by providing the details it has gathered. This assistant has reduced the burden of the physician while providing care to the user and eliminating the need to travel distances to seek treatment for non-emergent issues along with reducing the stress to schedule an appointment. It will function as a whole care provider by being available around the clock to tend to the user.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Cognitive NLP assistant using Dialogflow is proposed, which has reduced the burden of the physician while providing care to the user and eliminating the need to travel distances to seek treatment for non-emergent issues along with reducing the stress to schedule an appointment."
+            },
+            "score": 2
+        },
+        {
+            "id": "0e0c0b3ea89b918bb12431575bb373f8af524739",
+            "paperId": "0e0c0b3ea89b918bb12431575bb373f8af524739",
+            "title": "Application of cognitive dissonance in the teaching of FORTRAN IV in an unstructured setting",
+            "abstract": "An experiment in the teaching of FORTRAN IV using cognitive dissonance in an unstructured setting was conducted at Montgomery College. \u201cClassical\u201d instruction, in the form of lecture sessions proceeding in an orderly manner from simple to more difficult algorithms, was compared to the \u201cexperimental\u201d method, in which students were given sample programs and ordered to create solutions to assignments using the sample programs as models, with no formal lectures in FORTRAN. The students in the experimental group thus became very familiar with their course materials, and their need for instructional assistance fell off rapidly. Statistical results showed that the groups acquired equal grasp of the fundamentals of FORTRAN, but the experimental group indicated a greater depth in the subject. We have shown that the teacher can be more helpful to his students by creating challenging and instructive assignments which encourage them to expand their knowledge of the time-saving features of FORTRAN language, rather than by, in effect, holding them back with a structured technique.",
+            "year": 1973,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that the teacher can be more helpful to his students by creating challenging and instructive assignments which encourage them to expand their knowledge of the time-saving features of FORTRAN language, rather than by, in effect, holding them back with a structured technique."
+            },
+            "score": 1
+        },
+        {
+            "id": "2401b5ae2ed7b7baac861615d99612753abedeec",
+            "paperId": "2401b5ae2ed7b7baac861615d99612753abedeec",
+            "title": "Joining the Club",
+            "abstract": "abstract:The clinical environment of the hospital ward and clinic is where medical students become physicians by engaging with patients under the tutelage of clinician teachers. These formative experiences guide the students' regard and respect for patients, shape their nascent medical identities, and influence their confidence in their chosen profession. This essay is grounded in an exegesis of narratives proffered by senior medical students during a selective course on the language of medicine. These stories reveal the affinity of students for their patients and their sensitivity to inappropriate behaviors by physicians and other caregivers. By contrast, observing role models who enact respect for patients reinforces the natural regard of students towards patients as persons and engenders respect of students for their teachers. Students grapple with moral dilemmas that contribute to cognitive dissonance in their lived realities. They arrive at medical school with powerful and sometimes clear images of their calling as physicians yet encounter antithetical role models whose behaviors contradict their own evolving identities. In consequence, medical students may wonder whether entry to the club they are eager to join entails abandoning both their patients and their ideals.",
+            "year": 2018,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This essay is grounded in an exegesis of narratives proffered by senior medical students during a selective course on the language of medicine that reveal the affinity of students for their patients and their sensitivity to inappropriate behaviors by physicians and other caregivers."
+            },
+            "score": 1
+        },
+        {
+            "id": "7d5117abfb9bf9fa807bffee3fde63c4c568040e",
+            "paperId": "7d5117abfb9bf9fa807bffee3fde63c4c568040e",
+            "title": "\u041e\u0421\u041e\u0411\u0415\u041d\u041d\u041e\u0421\u0422\u0418 \u0423\u041f\u041e\u0422\u0420\u0415\u0411\u041b\u0415\u041d\u0418\u042f \u0421\u0422\u0418\u041b\u0418\u0421\u0422\u0418\u0427\u0415\u0421\u041a\u0418\u0425 \u041f\u0420\u0418\u0415\u041c\u041e\u0412 \u0412 \u0414\u0420\u0415\u0412\u041d\u0415\u0410\u041d\u0413\u041b\u0418\u0419\u0421\u041a\u041e\u0419 \u041f\u041e\u042d\u0417\u0418\u0418 \u041d\u0410 \u041e\u0421\u041d\u041e\u0412\u0415 \u0414\u0420\u0415\u0412\u041d\u0415\u0410\u041d\u0413\u041b\u0418\u0419\u0421\u041a\u041e\u0413\u041e \u041f\u0418\u0421\u042c\u041c\u0415\u041d\u041d\u041e\u0413\u041e \u041f\u041e\u042d\u0422\u0418\u0427\u0415\u0421\u041a\u041e\u0413\u041e \u041f\u0410\u041c\u042f\u0422\u041d\u0418\u041a\u0410 \u00ab\u0411\u0415\u041e\u0412\u0423\u041b\u042c\u0424\u00bb",
+            "abstract": "Statement of the problem. Learning the canons of the Old German art of poetry is the main instrument for forming the skills of poetic syllable as a source of new cultural information for the specialists in the field of the history of the Old English language and German Philology in general. The object for the analysis is the mythological praising epos with its strictly limited lexical models and metric rules. The Old English metrics is considered as a result of a linguistic experiment absolutizing the principal of conditional stylistic figures as language signs. Extraordinary stylistic devices such as hending, scothending, aldahending, and kenning present a great interest for understanding the opportunities in the old English poetry and demand a thorough textual analysis. \nThe purpose of this article is to consider the canons of the old English poetry in the aspect of comparative historical language study for overcoming intercultural dissonance in the cognitive perception of the epos by a modern reader. \nThe methodology of study is based on comprising the materials of the old English epos using the comparative historical method and the method of the purposeful search of examples of stylistic devices which are not typical for present day poetry. The method of their etymological analysis corrects the notion of the poetic form used in the literary creation. \nResearch results. The textual material of the old English epos researched by the authors leads to the conclusion that a poetic form is shown in the diachronic interaction of a poetic word and old English culture. \nConclusion. The methodology of the study allowed pointing out the main directions of using metric rules on the phonetic level and lexical patterns on the level of language usage. The research of extraordinary stylistic devices contributes to the development of methods for studying old English and old German poetry in general.",
+            "year": 2019,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "b9225c16f388eaaeeac8293e10dc0026d0beb92e",
+            "paperId": "b9225c16f388eaaeeac8293e10dc0026d0beb92e",
+            "title": "Coherence relations and concept dynamic in learners' personal theories",
+            "abstract": "This article examines metaphorical conceptualizations of educational practices emerging from students\ufffd personal theories. Particular emphasis is placed upon coherence relations observable between and among individual constructs forming an Idealized Cognitive Model of the teaching/learning process. It is postulated that learners\ufffd metaphors are built around unpredictable and varied inferences, often resulting from cognitive dissonance between novel experience and entrenched cultural models. Moreover, the image surfacing from learners\ufffd analogies is characterized by internal dynamics, which may well indicate that students\ufffd discourse is particularly susceptible to new extralinguistic stimuli. Consequently, while linguistic metaphors become more creative, conceptual blueprints are modified to encompass emerging meanings. Thus, the popular notions about language and language learning which are frequently transmitted from teachers\ufffd jargon to students\ufffd talk are gradually giving way to modified, internalized and perpetuated concepts.",
+            "year": 2008,
+            "citationCount": 10,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "cb2aa1aa7ebf703d69da0e8e331796d887ad92e9",
+            "paperId": "cb2aa1aa7ebf703d69da0e8e331796d887ad92e9",
+            "title": "Book Reviews : Perspectives in Management Accounting John Sizer",
+            "abstract": "its use. In contrast Making Experience Pay, although claiming to be a practical layman\u2019s guide, dishes out theory and abstractions even though the author himself admits: \u2019not all managers may want to study their learning processes, however. Many will be initially more attracted to looking at the specific learning activities in the remaining chapters of this book, preferring concrete illustrations to relatively abstract learning processes\u2019. Yes, exactly. To hold the reader\u2019s interest I wonder why Mr. Mumford doesn\u2019t limit his theory to outlines of the models before offering practical hints and concrete illustrations. More detailed theory could be included as reference material at the end. Then if the reader was interested in pursuing cognitive dissonance, motivation or learning theory, he could look it up. Not only is the pace affected by the theory but the theory is not clearly explained. Recurring jargon like \u2019real-time learning\u2019 soon becomes an irritant as does the pompous language which dresses up the obvious. For example he writes: \u2019In short, the manager I described as the opportunist as distinct from the planner can optimise his opportunism by being aware that most activities in which he is involved give some opportunities to learn\u2019. However a more serious criticism of the style is that it prevents the manager making sense of the theories beyond a generalised level; a danger Mr. Mumford himself mentions. The reader soon gets lost in psychological language, for example:",
+            "year": 1981,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "3234cf543756c9b06382ea3c2278581de433a728",
+            "paperId": "3234cf543756c9b06382ea3c2278581de433a728",
+            "title": "Effects of Elementary School Home Language, Immigrant Generation, Language Classification, and School's English Learner Concentration on Latinos\u2019 High School Completion",
+            "abstract": "Background/Context Relying largely on high school measures of home language use, the literature examining immigrant incorporation in schools provides contradictory evidence of home language effects on educational outcomes. More recent research has demonstrated that home language use is dynamic and thus it is important to examine the implications of elementary school home language, as opposed to the typically used high school home language, as a factor influencing various school processes. We argue that it is also necessary to take into account school-related language contexts when considering the experiences of Latino immigrant students. Purpose This study investigates the effects of early acculturation, measured by elementary school language, immigrant generation, and early linguistic experiences on high school completion. Research Design Using hierarchical generalized linear models, we test the effects of elementary home language, immigrant generation, early language classification, and middle school concentration of English Learners (EL) on the probability of high school completion for a cohort of Latino students in a large urban school district (N = 26,487). Findings Consistent with some of the existing research, this study finds that speaking Spanish at home in the elementary school years has positive effects on high school completion. Moreover, for Spanish speakers, having been reclassified as English-fluent before sixth grade and having attended middle schools with lower concentrations of EL students increases the probability of high school completion. Conclusions These findings suggest that taking into account earlier schooling processes and contexts in discussions about the influence of home language on academic achievement broaden the scope of accountability for educating immigrant students.",
+            "year": 2014,
+            "citationCount": 13,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "cf0a51f511d116d529ecc451f8a7fc9df8b7a3ee",
+            "paperId": "cf0a51f511d116d529ecc451f8a7fc9df8b7a3ee",
+            "title": "Facilitatory and interfering effects of neighbourhood density on speech production: Evidence from aphasic errors",
+            "abstract": "In a system where tens of thousands of words are made up of a limited number of phonemes, many words are bound to sound alike. This similarity of the words in the lexicon as characterized by phonological neighbourhood density (PhND) has been shown to affect speed and accuracy of word comprehension and production. Whereas there is a consensus about the interfering nature of neighbourhood effects in comprehension, the language production literature offers a more contradictory picture with mainly facilitatory but also interfering effects reported on word production. Here we report both of these two types of effects in the same study. Multiple regression mixed models analyses were conducted on PhND effects on errors produced in a naming task by a group of 21 participants with aphasia. These participants produced more formal errors (interfering effect) for words in dense phonological neighbourhoods, but produced fewer nonwords and semantic errors (a facilitatory effect) with increasing density. In order to investigate the nature of these opposite effects of PhND, we further analysed a subset of formal errors and nonword errors by distinguishing errors differing on a single phoneme from the target (corresponding to the definition of phonological neighbours) from those differing on two or more phonemes. This analysis confirmed that only formal errors that were phonological neighbours of the target increased in dense neighbourhoods, while all other errors decreased. Based on additional observations favouring a lexical origin of these formal errors (they exceeded the probability of producing a real-word error by chance, were of a higher frequency, and preserved the grammatical category of the targets), we suggest that the interfering effect of PhND is due to competition between lexical neighbours and target words in dense neighbourhoods.",
+            "year": 2013,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is suggested that the interfering effect of PhND is due to competition between lexical neighbours and target words in dense neighbourhoods."
+            },
+            "score": 1
+        },
+        {
+            "id": "a2c8cdbb87bc8cf708a2646f04bb472b95592118",
+            "paperId": "a2c8cdbb87bc8cf708a2646f04bb472b95592118",
+            "title": "Language, the Brain, and the Question of Dichotomies",
+            "abstract": "In 1981, Bradshaw and Nettleton reminded the large and growing community of scientists and scholars concerned with the study of the human brain that the weight of modern evidence argues against rigid dichotomies in the interpretation of hemispheric functions--particularly the shopworn verbal/nonverbal distinction and in favor of continuities, differences in degree rather than in kind. That they found such a reminder necessary, in view of the data that have for years presented strong and increasing challenge to such schemes, is an unfortunate commentary on an apparently irresistible human urge, to which science is certainly not immune, to erect grand explanatory edifices on limited and often contradictory evidence. Since the early 1960s, we have been bombarded by an amazing and seemingly endless array of dichotomous models purporting to account for certain functional differences between the",
+            "year": 1984,
+            "citationCount": 4,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "4f39b3d740cfd41cbff6312ddb4cf1178270fac0",
+            "paperId": "4f39b3d740cfd41cbff6312ddb4cf1178270fac0",
+            "title": "The relationship between judgement data and frequency data in syntactic well-formedness : The Decathlon Model \u2217",
+            "abstract": "Introspective judgements, frequency data, and processing studies all provide clues about the genesis, storage and use of linguistic constraints and structures. However the evidence from these separate data sources is often contradictory, which results in researchers who favour different data types having rather different ideas about the nature of linguistic structures and the mental architecture embedding them. For example, syntacticians making use of corpus data often favour probabilistic grammars (eg Manning, 2003), since this feature of language is very evident in this data type, while those relying on introspective data will tend to declarative grammatical models as a response to the intuition of absolute grammaticality (eg Pollard and Sag, 1994). A third group lays weight on processing evidence and finds support for the-grammar-isthe-parser approaches (eg Phillips, 1996). Exactly how these separate findings relate to each other is problematic and tends to lead syntacticians to inhabit different schools, depending in part on their chief data source. Needless to say, this division constitutes a major block on progress in syntax: a first step in describing a grammar must be agreement on what it means for a given structure to be part of the language.",
+            "year": 2004,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "17fbffb05fa14e21d1c506fd5f0f568b955fe983",
+            "paperId": "17fbffb05fa14e21d1c506fd5f0f568b955fe983",
+            "title": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models",
+            "abstract": "Language models have graduated from being research prototypes to commercialized products offered as web APIs, and recent works have highlighted the multilingual capabilities of these products. The API vendors charge their users based on usage, more specifically on the number of ``tokens'' processed or generated by the underlying language models. What constitutes a token, however, is training data and model dependent with a large variance in the number of tokens required to convey the same information in different languages. In this work, we analyze the effect of this non-uniformity on the fairness of an API's pricing policy across languages. We conduct a systematic analysis of the cost and utility of OpenAI's language model API on multilingual benchmarks in 22 typologically diverse languages. We show evidence that speakers of a large number of the supported languages are overcharged while obtaining poorer results. These speakers tend to also come from regions where the APIs are less affordable to begin with. Through these analyses, we aim to increase transparency around language model APIs' pricing policies and encourage the vendors to make them more equitable.",
+            "year": 2023,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work conducts a systematic analysis of the cost and utility of OpenAI's language model API on multilingual benchmarks in 22 typologically diverse languages and shows evidence that speakers of a large number of the supported languages are overcharged while obtaining poorer results."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

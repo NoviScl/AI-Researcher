@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define an array of cache names
-cache_names=("factuality_prompting_new_method_prompting")
+cache_names=("factuality_prompting_method_prompting")
 
 # Seed value
 seed=2024

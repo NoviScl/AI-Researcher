@@ -47,5 +47,909 @@
             "Explanation": "In the first test case, the baseline methods generate responses without considering the model's uncertainty. The confidence thresholding approach filters out some information, but it may not provide the most relevant answer. UGDP, on the other hand, generates a clarification question to better understand the user's intent and provides a more targeted response based on the user's clarification.\n\nIn the second test case, the baseline methods generate recommendations without considering the user's preferences. The response ranking approach selects the top recommendations but may not be tailored to the user's specific needs. UGDP generates a clarification question to gather more information about the user's preferences and provides a more personalized recommendation based on the user's clarification."
         },
         "Fallback Plan": "If the proposed UGDP method does not significantly improve the performance of dialogue systems compared to the baselines, consider the following alternative approaches:\n\n1. Analyze the generated clarification questions to determine if they are relevant, clear, and effective in eliciting useful information from users. If the clarification questions are not of high quality, investigate alternative question generation techniques, such as using pre-defined question templates or leveraging knowledge from external sources.\n\n2. Evaluate the uncertainty estimation methods and determine if they accurately capture the model's confidence in its responses. If the uncertainty estimates are not reliable, explore alternative approaches, such as using Bayesian neural networks or calibrating the uncertainty estimates using additional training data.\n\n3. Investigate the impact of different conversation context management techniques on the performance of UGDP. If the current methods do not effectively incorporate user clarifications into the context, consider using more advanced techniques, such as hierarchical attention networks or graph-based representations.\n\n4. Conduct a user study to gather feedback on the effectiveness and usability of UGDP in real-world dialogue scenarios. Analyze user feedback to identify areas for improvement and iterate on the design of the clarification question generation and response generation components.\n\n5. If the performance of UGDP remains unsatisfactory after exploring these alternatives, consider pivoting the project to focus on analyzing the limitations of current dialogue systems in handling uncertainty. Conduct a thorough error analysis to identify common failure modes and propose potential solutions for future research."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"uncertainty guided dialogue language models\")",
+        "KeywordQuery(\"confidence calibration dialogue language models\")",
+        "KeywordQuery(\"clarification questions language models\")",
+        "KeywordQuery(\"Uncertainty-Guided Dialogue Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "2a3c0ffbe70b4aa4b5d118cc0da365fe2a04f262",
+            "paperId": "2a3c0ffbe70b4aa4b5d118cc0da365fe2a04f262",
+            "title": "Deal, or no deal (or who knows)? Forecasting Uncertainty in Conversations using Large Language Models",
+            "abstract": "Effective interlocutors account for the uncertain goals, beliefs, and emotions of others. But even the best human conversationalist cannot perfectly anticipate the trajectory of a dialogue. How well can language models represent inherent uncertainty in conversations? We propose FortUne Dial, an expansion of the long-standing\"conversation forecasting\"task: instead of just accuracy, evaluation is conducted with uncertainty-aware metrics, effectively enabling abstention on individual instances. We study two ways in which language models potentially represent outcome uncertainty (internally, using scores and directly, using tokens) and propose fine-tuning strategies to improve calibration of both representations. Experiments on eight difficult negotiation corpora demonstrate that our proposed fine-tuning strategies (a traditional supervision strategy and an off-policy reinforcement learning strategy) can calibrate smaller open-source models to compete with pre-trained models 10x their size.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes FortUne Dial, an expansion of the long-standing conversation forecasting task, where instead of just accuracy, evaluation is conducted with uncertainty-aware metrics, effectively enabling abstention on individual instances."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration in dialogue systems by guiding the conversation based on the model's uncertainty. The proposed approach is Uncertainty-Guided Dialogue Prompting (UGDP), which generates clarification questions when the model's uncertainty is high.\n\nThe research problem in the paper is forecasting uncertainty in conversations using language models. The proposed approach is to study how language models represent outcome uncertainty and propose fine-tuning strategies to improve calibration.\n\nWhile both works deal with uncertainty in conversations, the proposal focuses on using uncertainty estimates to guide the dialogue flow, while the paper focuses on forecasting uncertainty and improving calibration. The specific research problems and proposed approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "49a605392a58ca776404fd130942d79fc5ff329d",
+            "paperId": "49a605392a58ca776404fd130942d79fc5ff329d",
+            "title": "Aligning Predictive Uncertainty with Clarification Questions in Grounded Dialog",
+            "abstract": "Asking for clarification is fundamental to effective collaboration. An interactive artificial agent must know when to ask a human instructor for more information in order to ascertain their goals. Previous work bases the timing of questions on supervised models learned from interactions between humans. Instead of a supervised classification task, we wish to ground the need for questions in the acting agent\u2019s predictive uncertainty. In this work, we investigate if ambiguous linguistic instructions can be aligned with uncertainty in neural models. We train an agent using the T5 encoder-decoder architecture to solve the Minecraft Collaborative Building Task and identify uncertainty metrics that achieve better distributional separation between clear and ambiguous instructions. We further show that well-calibrated prediction probabilities benefit the detection of ambiguous instructions. Lastly, we provide a novel empirical analysis on the relationship between uncertainty and dialog history length and highlight an important property that poses a difficulty for detection.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work training an agent using the T5 encoder-decoder architecture to solve the Minecraft Collaborative Building Task and identifying uncertainty metrics that achieve better distributional separation between clear and ambiguous instructions, shows that well-calibrated prediction probabilities benefit the detection of ambiguous instructions."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the confidence calibration of large language models in dialogue systems by using uncertainty-guided dialogue prompting, where the model actively incorporates its uncertainty estimates into the conversation flow and generates clarification questions to seek additional information in areas of high uncertainty.\n\nThe paper focuses on aligning the need for clarification questions with the predictive uncertainty of neural models in the context of the Minecraft Collaborative Building Task. It investigates uncertainty metrics that achieve better separation between clear and ambiguous instructions and highlights the relationship between uncertainty and dialog history length.\n\nWhile both the project proposal and the paper address the topic of uncertainty in dialogue systems and the use of clarification questions, the project proposal focuses on improving confidence calibration in large language models, while the paper is specifically concerned with aligning predictive uncertainty with the need for clarification questions in a grounded dialog setting (Minecraft Collaborative Building Task).\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "22b29b88c87333d4b324c8a0508429b611790278",
+            "paperId": "22b29b88c87333d4b324c8a0508429b611790278",
+            "title": "Empowering Language Models with Active Inquiry for Deeper Understanding",
+            "abstract": "The rise of large language models (LLMs) has revolutionized the way that we interact with artificial intelligence systems through natural language. However, LLMs often misinterpret user queries because of their uncertain intention, leading to less helpful responses. In natural human interactions, clarification is sought through targeted questioning to uncover obscure information. Thus, in this paper, we introduce LaMAI (Language Model with Active Inquiry), designed to endow LLMs with this same level of interactive engagement. LaMAI leverages active learning techniques to raise the most informative questions, fostering a dynamic bidirectional dialogue. This approach not only narrows the contextual gap but also refines the output of the LLMs, aligning it more closely with user expectations. Our empirical studies, across a variety of complex datasets where LLMs have limited conversational context, demonstrate the effectiveness of LaMAI. The method improves answer accuracy from 31.9% to 50.9%, outperforming other leading question-answering frameworks. Moreover, in scenarios involving human participants, LaMAI consistently generates responses that are superior or comparable to baseline methods in more than 82% of the cases. The applicability of LaMAI is further evidenced by its successful integration with various LLMs, highlighting its potential for the future of interactive language models.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LaMAI (Language Model with Active Inquiry) is introduced, designed to endow LLMs with this same level of interactive engagement, and leverages active learning techniques to raise the most informative questions, fostering a dynamic bidirectional dialogue."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration and uncertainty communication in dialogue systems powered by large language models. The proposed approach is Uncertainty-Guided Dialogue Prompting (UGDP), where the LLM actively incorporates its uncertainty estimates into the conversation flow by generating prompts that seek clarification or additional information in areas of high uncertainty.\n\nThe research problem in the paper is improving the helpfulness of LLM responses when the user query intention is uncertain. The proposed approach is LaMAI (Language Model with Active Inquiry), which leverages active learning techniques to raise informative questions and foster a dynamic bidirectional dialogue to narrow the contextual gap and refine the LLM output.\n\nWhile both the proposal and the paper aim to improve LLM performance in dialogue systems by asking clarification questions, the proposal focuses specifically on improving confidence calibration and uncertainty communication, whereas the paper has a broader scope of improving the helpfulness of responses when the user query intention is uncertain. Additionally, the proposal uses uncertainty estimates to guide the generation of clarification questions, while the paper uses active learning techniques.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "13c85adfa950651ffcd91ef3018fa30801b74472",
+            "paperId": "13c85adfa950651ffcd91ef3018fa30801b74472",
+            "title": "Prompting and Evaluating Large Language Models for Proactive Dialogues: Clarification, Target-guided, and Non-collaboration",
+            "abstract": "Conversational systems based on Large Language Models (LLMs), such as ChatGPT, show exceptional proficiency in context understanding and response generation. However, despite their impressive capabilities, they still possess limitations, such as providing randomly-guessed answers to ambiguous queries or failing to refuse users' requests, both of which are considered aspects of a conversational agent's proactivity. This raises the question of whether LLM-based conversational systems are equipped to handle proactive dialogue problems. In this work, we conduct a comprehensive analysis of LLM-based conversational systems, specifically focusing on three aspects of proactive dialogue systems: clarification, target-guided, and non-collaborative dialogues. To trigger the proactivity of LLMs, we propose the Proactive Chain-of-Thought prompting scheme, which augments LLMs with the goal planning capability over descriptive reasoning chains. Empirical findings are discussed to promote future studies on LLM-based proactive dialogue systems.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive analysis of LLM-based conversational systems, specifically focusing on three aspects of proactive dialogue systems: clarification, target-guided, and non-collaborative dialogues, and the Proactive Chain-of-Thought prompting scheme is proposed."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration and uncertainty communication in LLM-based dialogue systems, and the proposed approach is uncertainty-guided dialogue prompting.\n\nThe research problem in the paper is analyzing the proactivity of LLM-based conversational systems in handling clarification, target-guided, and non-collaborative dialogues, and the proposed approach is the Proactive Chain-of-Thought prompting scheme.\n\nWhile both works focus on improving LLM-based dialogue systems, the specific research problems and approaches are different. The proposal aims to improve confidence calibration and uncertainty communication, while the paper focuses on analyzing and enhancing the proactivity of LLMs in handling specific types of dialogues.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "paperId": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "title": "Just Ask for Calibration: Strategies for Eliciting Calibrated Confidence Scores from Language Models Fine-Tuned with Human Feedback",
+            "abstract": "A trustworthy real-world prediction system should produce well-calibrated confidence scores; that is, its confidence in an answer should be indicative of the likelihood that the answer is correct, enabling deferral to an expert in cases of low-confidence predictions. Recent studies have shown that unsupervised pre-training produces large language models (LMs) whose conditional probabilities are remarkably well-calibrated. However, the most widely-used LMs are fine-tuned with reinforcement learning from human feedback (RLHF-LMs), and some studies have suggested that RLHF-LMs produce conditional probabilities that are very poorly calibrated. In light of this perceived weakness, we conduct a broad evaluation of methods for extracting confidence scores from RLHF-LMs. For RLHF-LMs such as ChatGPT, GPT-4, and Claude, we find that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%.",
+            "year": 2023,
+            "citationCount": 96,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "For RLHF-LMs such as ChatGPT, GPT-4, and Claude, it is found that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve confidence calibration in dialogue systems powered by large language models (LLMs) by generating prompts that seek clarification or additional information in areas of high uncertainty, guiding the user to provide more context and improve the quality of the interaction.\n\nThe paper investigates methods for extracting well-calibrated confidence scores from LLMs fine-tuned with reinforcement learning from human feedback (RLHF-LMs), finding that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on various benchmarks.\n\nWhile both the project proposal and the paper address the issue of confidence calibration in LLMs, the project focuses on improving calibration in dialogue systems through uncertainty-guided prompting, while the paper evaluates methods for extracting calibrated confidence scores from RLHF-LMs on question-answering benchmarks. The approaches and application domains differ.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7154e7f42e35a7e5f0795f5d674a8a5356584c04",
+            "paperId": "7154e7f42e35a7e5f0795f5d674a8a5356584c04",
+            "title": "CLAM: Selective Clarification for Ambiguous Questions with Generative Language Models",
+            "abstract": "Users often ask dialogue systems ambiguous questions that require clarification. We show that current language models rarely ask users to clarify ambiguous questions and instead provide incorrect answers. To address this, we introduce CLAM: a framework for getting language models to selectively ask for clarification about ambiguous user questions. In particular, we show that we can prompt language models to detect whether a given question is ambiguous, generate an appropriate clarifying question to ask the user, and give a final answer after receiving clarification. We also show that we can simulate users by providing language models with privileged information. This lets us automatically evaluate multi-turn clarification dialogues. Finally, CLAM significantly improves language models' accuracy on mixed ambiguous and unambiguous questions relative to SotA.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that it can prompt language models to detect whether a given question is ambiguous, generate an appropriate clarifying question to ask the user, and give a final answer after receiving clarification and significantly improves language models' accuracy on mixed ambiguous and unambiguous questions relative to SotA."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the confidence calibration of language models in dialogue systems by generating clarification questions when the model is uncertain. The approach involves estimating the uncertainty of generated responses and guiding the conversation based on the model's confidence.\n\nThe paper focuses on improving the accuracy of language models in answering ambiguous questions by selectively asking for clarification. The approach involves prompting language models to detect ambiguous questions, generate clarifying questions, and provide a final answer after receiving clarification.\n\nWhile both the project proposal and the paper address the issue of handling ambiguity or uncertainty in dialogue systems, the project proposal focuses on improving confidence calibration by generating clarification questions based on the model's uncertainty, whereas the paper aims to improve the accuracy of answering ambiguous questions by selectively asking for clarification.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4ca1057d642caf8a7b817c4aeb6198801bc69758",
+            "paperId": "4ca1057d642caf8a7b817c4aeb6198801bc69758",
+            "title": "CLAM: Selective Clarification for Ambiguous Questions with Large Language Models",
+            "abstract": "State-of-the-art language models are often accurate on many question-answering benchmarks with well-de\ufb01ned questions. Yet, in real settings questions are often unanswerable without asking the user for clarifying information. We show that current SotA models often do not ask the user for clari\ufb01cation when presented with imprecise questions and instead provide incorrect answers or \u2018hallucinate\u2019. To address this, we introduce CLAM, a framework that \ufb01rst uses the model to detect ambiguous questions, and if an ambiguous question is detected, prompts the model to ask the user for clari\ufb01cation. Furthermore, we show how to construct a scalable and cost-effective automatic evaluation protocol using an oracle language model with privileged information to provide clarifying information. We show that our method achieves a 20.15 percentage point accuracy improvement over SotA on a novel ambiguous question-answering answering data set derived from TriviaQA.",
+            "year": 2022,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "CLAM is introduced, a framework that first uses the model to detect ambiguous questions, and if an ambiguous question is detected, prompts themodel to ask the user for clari\ufb01cation, and how to construct a scalable and cost-effective automatic evaluation protocol using an oracle language model with privileged information to provide clarifying information is shown."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the confidence calibration of large language models in dialogue systems by generating clarification questions when the model is uncertain about its response. The proposed approach, Uncertainty-Guided Dialogue Prompting (UGDP), uses uncertainty estimates to guide the conversation and elicit additional information from users.\n\nThe paper focuses on improving the accuracy of question-answering systems when presented with ambiguous or unanswerable questions. The proposed method, CLAM, detects ambiguous questions and prompts the model to ask the user for clarification before providing an answer.\n\nWhile both the project proposal and the paper address the issue of handling ambiguity or uncertainty in language models, their specific research problems and approaches differ. The project proposal focuses on improving confidence calibration in dialogue systems, while the paper aims to improve question-answering accuracy on ambiguous questions. The project proposal uses uncertainty estimates to guide the conversation, while the paper detects ambiguous questions and asks for clarification.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "2a74fc66beea8bce542581560ca6ec5a0e1bb024",
+            "paperId": "2a74fc66beea8bce542581560ca6ec5a0e1bb024",
+            "title": "CoAnnotating: Uncertainty-Guided Work Allocation between Human and Large Language Models for Data Annotation",
+            "abstract": "Annotated data plays a critical role in Natural Language Processing (NLP) in training models and evaluating their performance. Given recent developments in Large Language Models (LLMs), models such as ChatGPT demonstrate zero-shot capability on many text-annotation tasks, comparable with or even exceeding human annotators. Such LLMs can serve as alternatives for manual annotation, due to lower costs and higher scalability. However, limited work has leveraged LLMs as complementary annotators, nor explored how annotation work is best allocated among humans and LLMs to achieve both quality and cost objectives. We propose CoAnnotating, a novel paradigm for Human-LLM co-annotation of unstructured texts at scale. Under this framework, we utilize uncertainty to estimate LLMs' annotation capability. Our empirical study shows CoAnnotating to be an effective means to allocate work from results on different datasets, with up to 21% performance improvement over random baseline. For code implementation, see https://github.com/SALT-NLP/CoAnnotating.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes CoAnnotating, a novel paradigm for Human-LLM co-annotation of unstructured texts at scale, and utilizes uncertainty to estimate LLMs' annotation capability."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the project proposal is improving confidence calibration in large language models for dialogue systems by guiding the conversation based on the model's uncertainty. The proposed approach is Uncertainty-Guided Dialogue Prompting (UGDP), where the model generates clarification questions when uncertain and incorporates user responses to improve the interaction quality.\n\nThe research problem in the paper is allocating annotation work between humans and large language models to achieve quality and cost objectives. The proposed approach is CoAnnotating, which utilizes uncertainty to estimate LLMs' annotation capability and allocates work accordingly.\n\nThe project proposal focuses on improving dialogue systems by guiding conversations based on model uncertainty, while the paper focuses on optimizing the allocation of annotation work between humans and LLMs. The problems and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "b0435af3063195e8ae880489e64ccde64e6d7563",
+            "paperId": "b0435af3063195e8ae880489e64ccde64e6d7563",
+            "title": "Guiding Large Language Models via Directional Stimulus Prompting",
+            "abstract": "We introduce Directional Stimulus Prompting, a novel framework for guiding black-box large language models (LLMs) toward specific desired outputs. Instead of directly adjusting LLMs, our method employs a small tunable policy model (e.g., T5) to generate an auxiliary directional stimulus prompt for each input instance. These directional stimulus prompts act as nuanced, instance-specific hints and clues to guide LLMs in generating desired outcomes, such as including specific keywords in the generated summary. Our approach sidesteps the challenges of direct LLM tuning by optimizing the policy model to explore directional stimulus prompts that align LLMs with desired behaviors. The policy model can be optimized through 1) supervised fine-tuning using labeled data and 2) reinforcement learning from offline or online rewards based on the LLM's output. We assess our method across summarization, dialogue response generation, and chain-of-thought reasoning tasks. Our experiments demonstrate that the framework consistently improves LLMs' (e.g., ChatGPT, Codex, InstructGPT) performance on these supervised tasks using minimal labeled data. Notably, using just 80 dialogues on the MultiWOZ dataset, our approach enhances ChatGPT's performance by an impressive 41.4%, matching or surpassing some fully supervised start-of-the-art models. Additionally, the instance-specific chain-of-thought prompt generated by our approach improves InstructGPT's reasoning accuracy compared to human-crafted or automatically generated prompts. The code and data are publicly available at \\url{https://github.com/Leezekun/Directional-Stimulus-Prompting}.",
+            "year": 2023,
+            "citationCount": 37,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Directional Stimulus Prompting, a novel framework for guiding black-box large language models (LLMs) toward specific desired outputs, sidesteps the challenges of direct LLM tuning by optimizing the policy model to explore directional stimulus prompts that align LLMs with desired behaviors."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the confidence calibration of large language models in dialogue systems by incorporating uncertainty estimates into the conversation flow. The proposed approach is Uncertainty-Guided Dialogue Prompting (UGDP), which generates clarification questions or requests for additional information when the model's uncertainty is high.\n\nThe research problem in the paper is guiding large language models toward desired outputs. The proposed approach is Directional Stimulus Prompting, which employs a small tunable policy model to generate instance-specific auxiliary prompts that guide the language model to generate desired outcomes.\n\nWhile both the proposal and the paper aim to guide or improve large language models, the specific research problems and approaches are different. The proposal focuses on improving confidence calibration in dialogue systems using uncertainty estimates, while the paper focuses on guiding language models toward desired outputs using auxiliary prompts generated by a policy model.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "27dd800cb087f1575a65fba06c95ec8fd83a0fb4",
+            "paperId": "27dd800cb087f1575a65fba06c95ec8fd83a0fb4",
+            "title": "Fact-and-Reflection (FaR) Improves Confidence Calibration of Large Language Models",
+            "abstract": "For a LLM to be trustworthy, its confidence level should be well-calibrated with its actual performance. While it is now common sense that LLM performances are greatly impacted by prompts, the confidence calibration in prompting LLMs has yet to be thoroughly explored. In this paper, we explore how different prompting strategies influence LLM confidence calibration and how it could be improved. We conduct extensive experiments on six prompting methods in the question-answering context and we observe that, while these methods help improve the expected LLM calibration, they also trigger LLMs to be over-confident when responding to some instances. Inspired by human cognition, we propose Fact-and-Reflection (FaR) prompting, which improves the LLM calibration in two steps. First, FaR elicits the known\"facts\"that are relevant to the input prompt from the LLM. And then it asks the model to\"reflect\"over them to generate the final answer. Experiments show that FaR prompting achieves significantly better calibration; it lowers the Expected Calibration Error by 23.5% on our multi-purpose QA tasks. Notably, FaR prompting even elicits the capability of verbally expressing concerns in less confident scenarios, which helps trigger retrieval augmentation for solving these harder instances.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Fact-and-Reflection prompting is proposed, which improves the LLM calibration in two steps, and even elicits the capability of verbally expressing concerns in less confident scenarios, which helps trigger retrieval augmentation for solving these harder instances."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration in dialogue systems powered by large language models, while the approach is to use uncertainty-guided dialogue prompting to generate clarification questions when the model is uncertain.\n\nThe research problem in the paper is also improving confidence calibration in large language models, but the approach is to use a two-step fact-and-reflection prompting method to elicit relevant facts and reflect on them to generate the final answer.\n\nWhile both the proposal and paper aim to improve confidence calibration in large language models, their approaches differ. The proposal focuses on dialogue systems and uses uncertainty-guided prompting to generate clarification questions, while the paper uses a fact-and-reflection prompting method in a question-answering context.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "paperId": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "title": "On the Calibration of Large Language Models and Alignment",
+            "abstract": "As large language models attract increasing attention and find widespread application, concurrent challenges of reliability also arise at the same time. Confidence calibration, an effective analysis method for gauging the reliability of deep models, serves as a crucial tool for assessing and improving their reliability. However, such investigation has been comparatively underexplored. In this work, we conduct a systematic examination of the calibration of aligned language models throughout the entire construction process, including pretraining and alignment training. At each stage, we investigate how different training settings, such as parameter scales and training data, affect model calibration. To thoroughly assess model calibration, we evaluate models on three most concerned aspects: generation, factuality and understanding. Our work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration, as well as how different training settings affect model calibration."
+            },
+            "score": 6
+        },
+        {
+            "id": "47eb0468ba7b6457d32b6aa0ee15ad269c04864d",
+            "paperId": "47eb0468ba7b6457d32b6aa0ee15ad269c04864d",
+            "title": "Confidently Wrong: Exploring the Calibration and Expression of (Un)Certainty of Large Language Models in a Multilingual Setting",
+            "abstract": "While the fluency and coherence of Large Language Models (LLMs) in text generation have seen significant improvements, their competency in generating appropriate expressions of uncertainty remains limited.Using a multilingual closed-book QA task and GPT-3.5, we explore how well LLMs are calibrated and express certainty across a diverse set of languages, including low-resource settings. Our results reveal strong performance in high-resource languages but a marked decline in performance in lower-resource languages. Across all, we observe an exaggerated expression of confidence in the model, which does not align with the correctness or likelihood of its responses. Our findings highlight the need for further research into accurate calibration of LLMs especially in a multilingual setting.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using a multilingual closed-book QA task and GPT-3.5, how well LLMs are calibrated and express certainty across a diverse set of languages, including low-resource settings is explored."
+            },
+            "score": 6
+        },
+        {
+            "id": "30669080bc6652f0466fba618b7c59317a346fb2",
+            "paperId": "30669080bc6652f0466fba618b7c59317a346fb2",
+            "title": "A Formalism and Approach for Improving Robustness of Large Language Models Using Risk-Adjusted Confidence Scores",
+            "abstract": "Large Language Models (LLMs), such as ChatGPT, have achieved impressive milestones in natural language processing (NLP). Despite their impressive performance, the models are known to pose important risks. As these models are deployed in real-world applications, a systematic understanding of different risks posed by these models on tasks such as natural language inference (NLI), is much needed. In this paper, we define and formalize two distinct types of risk: decision risk and composite risk. We also propose a risk-centric evaluation framework, and four novel metrics, for assessing LLMs on these risks in both in-domain and out-of-domain settings. Finally, we propose a risk-adjusted calibration method called DwD for helping LLMs minimize these risks in an overall NLI architecture. Detailed experiments, using four NLI benchmarks, three baselines and two LLMs, including ChatGPT, show both the practical utility of the evaluation framework, and the efficacy of DwD in reducing decision and composite risk. For instance, when using DwD, an underlying LLM is able to address an extra 20.1% of low-risk inference tasks (but which the LLM erroneously deems high-risk without risk adjustment) and skip a further 19.8% of high-risk tasks, which would have been answered incorrectly.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper defines and formalizes two distinct types of risk: decision risk and composite risk, and proposes a risk-centric evaluation framework, and four novel metrics, for assessing LLMs on these risks in both in-domain and out-of-domain settings."
+            },
+            "score": 6
+        },
+        {
+            "id": "036e96ed196a7f4bb812380f3b76ac75d4a648e4",
+            "paperId": "036e96ed196a7f4bb812380f3b76ac75d4a648e4",
+            "title": "Calibrating the Confidence of Large Language Models by Eliciting Fidelity",
+            "abstract": "Large language models optimized with techniques like RLHF have achieved good alignment in being helpful and harmless. However, post-alignment, these language models often exhibit overconfidence, where the expressed confidence does not accurately calibrate with their correctness rate. In this paper, we decompose the language model confidence into the \\textit{Uncertainty} about the question and the \\textit{Fidelity} to the answer generated by language models. Then, we propose a plug-and-play method to estimate the confidence of language models. Our method has shown good calibration performance by conducting experiments with 6 RLHF-LMs on four MCQA datasets. Moreover, we propose two novel metrics, IPR and CE, to evaluate the calibration of the model, and we have conducted a detailed discussion on \\textit{Truly Well-Calibrated Confidence}. Our method could serve as a strong baseline, and we hope that this work will provide some insights into the model confidence calibration.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper decomposes the language model confidence into the uncertainty about the question and the fidelity to the answer generated by language models, and proposes a plug-and-play method to estimate the confidence of language models."
+            },
+            "score": 6
+        },
+        {
+            "id": "5d3105a5ffa133b873537bda8ff1ec6244c2b841",
+            "paperId": "5d3105a5ffa133b873537bda8ff1ec6244c2b841",
+            "title": "Think Twice Before Assure: Confidence Estimation for Large Language Models through Reflection on Multiple Answers",
+            "abstract": "Confidence estimation aiming to evaluate output trustability is crucial for the application of large language models (LLM), especially the black-box ones. Existing confidence estimation of LLM is typically not calibrated due to the overconfidence of LLM on its generated incorrect answers. Existing approaches addressing the overconfidence issue are hindered by a significant limitation that they merely consider the confidence of one answer generated by LLM. To tackle this limitation, we propose a novel paradigm that thoroughly evaluates the trustability of multiple candidate answers to mitigate the overconfidence on incorrect answers. Building upon this paradigm, we introduce a two-step framework, which firstly instructs LLM to reflect and provide justifications for each answer, and then aggregates the justifications for comprehensive confidence estimation. This framework can be integrated with existing confidence estimation approaches for superior calibration. Experimental results on six datasets of three tasks demonstrate the rationality and effectiveness of the proposed framework.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel paradigm that thoroughly evaluates the trustability of multiple candidate answers to mitigate the overconfidence on incorrect answers and introduces a two-step framework, which firstly instructs LLM to reflect and provide justifications for each answer, and then aggregates the justifications for comprehensive confidence estimation."
+            },
+            "score": 6
+        },
+        {
+            "id": "c49fd6cac5382cdbc2bc31be195e42bc28dc615d",
+            "paperId": "c49fd6cac5382cdbc2bc31be195e42bc28dc615d",
+            "title": "Tree of Clarifications: Answering Ambiguous Questions with Retrieval-Augmented Large Language Models",
+            "abstract": "Questions in open-domain question answering are often ambiguous, allowing multiple interpretations. One approach to handling them is to identify all possible interpretations of the ambiguous question (AQ) and to generate a long-form answer addressing them all, as suggested by Stelmakh et al., (2022). While it provides a comprehensive response without bothering the user for clarification, considering multiple dimensions of ambiguity and gathering corresponding knowledge remains a challenge. To cope with the challenge, we propose a novel framework, Tree of Clarifications (ToC): It recursively constructs a tree of disambiguations for the AQ -- via few-shot prompting leveraging external knowledge -- and uses it to generate a long-form answer. ToC outperforms existing baselines on ASQA in a few-shot setup across the metrics, while surpassing fully-supervised baselines trained on the whole training set in terms of Disambig-F1 and Disambig-ROUGE. Code is available at https://github.com/gankim/tree-of-clarifications.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework, Tree of Clarifications (ToC), recursively constructs a tree of disambiguations for the AQ -- via few-shot prompting leveraging external knowledge -- and uses it to generate a long-form answer."
+            },
+            "score": 6
+        },
+        {
+            "id": "517f770a38c6f09b1d0ee03793887912a844e69e",
+            "paperId": "517f770a38c6f09b1d0ee03793887912a844e69e",
+            "title": "Asking Clarification Questions in Knowledge-Based Question Answering",
+            "abstract": "The ability to ask clarification questions is essential for knowledge-based question answering (KBQA) systems, especially for handling ambiguous phenomena. Despite its importance, clarification has not been well explored in current KBQA systems. Further progress requires supervised resources for training and evaluation, and powerful models for clarification-related text understanding and generation. In this paper, we construct a new clarification dataset, CLAQUA, with nearly 40K open-domain examples. The dataset supports three serial tasks: given a question, identify whether clarification is needed; if yes, generate a clarification question; then predict answers base on external user feedback. We provide representative baselines for these tasks and further introduce a coarse-to-fine model for clarification question generation. Experiments show that the proposed model achieves better performance than strong baselines. The further analysis demonstrates that our dataset brings new challenges and there still remain several unsolved problems, like reasonable automatic evaluation metrics for clarification question generation and powerful models for handling entity sparsity.",
+            "year": 2019,
+            "citationCount": 41,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new clarification dataset, CLAQUA, with nearly 40K open-domain examples is constructed and a coarse-to-fine model for clarification question generation is introduced, showing that the proposed model achieves better performance than strong baselines."
+            },
+            "score": 6
+        },
+        {
+            "id": "1af678b040ce638aedf8b582212937f0921ccc1d",
+            "paperId": "1af678b040ce638aedf8b582212937f0921ccc1d",
+            "title": "Abg-CoQA: Clarifying Ambiguity in Conversational Question Answering",
+            "abstract": "E\ufb00ective communication requires the ability to identify ambiguities and request clar-i\ufb01cation of utterances. For machines to engage in a conversation, they need to learn to generate di\ufb00erent forms of clari\ufb01cation questions. This paper aims at studying the extent to which the state of the art neural generation models can generate e\ufb00ective clari\ufb01ca-tion questions in conversational question answering. We introduce Abg-CoQA, a novel crowdsourced dataset for clarifying ambiguities in conversational question answering systems. Our dataset contains 8,615 questions with answers where 994 questions are ambiguous. The conversational questions are about 3,968 text passages from \ufb01ve diverse domains which are pre-selected from the CoQA dataset. For ambiguous turns, we have collected the clari\ufb01cation questions and their answers. We evaluate strong language generation models and conversational question answering models on Abg-CoQA. The best-performing system achieves a F1-score of 23.6% on ambiguity detection; an accuracy of 56.0% on generating clari\ufb01cation question in human evaluation; and a F1 score of 40.1% on question answering after clari\ufb01cation, which is 35.1 points behind human performance (75.2%), indicating there is ample room for improvement.",
+            "year": 2021,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The extent to which the state of the art neural generation models can generate e\ufb00ective clari\ufb01ca-tion questions in conversational question answering in Abg-CoQA is studied."
+            },
+            "score": 6
+        },
+        {
+            "id": "215de09ac6e5de81187c85065b5ace8bc01f2862",
+            "paperId": "215de09ac6e5de81187c85065b5ace8bc01f2862",
+            "title": "Routing to the Expert: Efficient Reward-guided Ensemble of Large Language Models",
+            "abstract": "The complementary potential of Large Language Models (LLM) assumes off-the-shelf LLMs have heterogeneous expertise in a wide range of domains and tasks so that an ensemble of LLMs can achieve consistently better performance. Existing ensemble methods for LLMs mainly focus on reward model ranking of outputs, leading to significant computation overhead. To combat this issue, we revisit the complementary potential of LLMs and further elaborate it by mining latent expertise with off-the-shelf reward models. We propose Zooter, a reward-guided routing method distilling rewards on training queries to train a routing function, which can precisely distribute each query to the LLM with expertise about it. We also integrate a tag-based label enhancement to mitigate noise from uncertainty when using rewards as silver supervision. Zooter shows computation efficiency in inference as it introduces only a minor computation overhead of a routing function compared with reward model ranking methods. We evaluate Zooter on a comprehensive benchmark collection with 26 subsets on different domains and tasks. Zooter outperforms the best single model on average and ranks first on 44% of tasks, even surpassing multiple reward model ranking methods.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Zooter is proposed, a reward-guided routing method distilling rewards on training queries to train a routing function, which can precisely distribute each query to the LLM with expertise about it, and shows computation efficiency in inference."
+            },
+            "score": 5
+        },
+        {
+            "id": "81d0303db4cbd755945669ab9c42938d63b3c987",
+            "paperId": "81d0303db4cbd755945669ab9c42938d63b3c987",
+            "title": "Simple is Better and Large is Not Enough: Towards Ensembling of Foundational Language Models",
+            "abstract": "Foundational Language Models (FLMs) have advanced natural language processing (NLP) research. Current researchers are developing larger FLMs (e.g., XLNet, T5) to enable contextualized language representation, classification, and generation. While developing larger FLMs has been of significant advantage, it is also a liability concerning hallucination and predictive uncertainty. Fundamentally, larger FLMs are built on the same foundations as smaller FLMs (e.g., BERT); hence, one must recognize the potential of smaller FLMs which can be realized through an ensemble. In the current research, we perform a reality check on FLMs and their ensemble on benchmark and real-world datasets. We hypothesize that the ensembling of FLMs can influence the individualistic attention of FLMs and unravel the strength of coordination and cooperation of different FLMs. We utilize BERT and define three other ensemble techniques: {Shallow, Semi, and Deep}, wherein the Deep-Ensemble introduces a knowledge-guided reinforcement learning approach. We discovered that the suggested Deep-Ensemble BERT outperforms its large variation i.e. BERTlarge, by a factor of many times using datasets that show the usefulness of NLP in sensitive fields, such as mental health.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is discovered that the suggested Deep-Ensemble BERT outperforms its large variation i.e. BERTlarge, by a factor of many times using datasets that show the usefulness of NLP in sensitive fields, such as mental health."
+            },
+            "score": 5
+        },
+        {
+            "id": "4feb412574eb5d0b187276069fe6024c22629c0e",
+            "paperId": "4feb412574eb5d0b187276069fe6024c22629c0e",
+            "title": "The Calibration Gap between Model and Human Confidence in Large Language Models",
+            "abstract": "For large language models (LLMs) to be trusted by humans they need to be well-calibrated in the sense that they can accurately assess and communicate how likely it is that their predictions are correct. Recent work has focused on the quality of internal LLM confidence assessments, but the question remains of how well LLMs can communicate this internal model confidence to human users. This paper explores the disparity between external human confidence in an LLM's responses and the internal confidence of the model. Through experiments involving multiple-choice questions, we systematically examine human users' ability to discern the reliability of LLM outputs. Our study focuses on two key areas: (1) assessing users' perception of true LLM confidence and (2) investigating the impact of tailored explanations on this perception. The research highlights that default explanations from LLMs often lead to user overestimation of both the model's confidence and its' accuracy. By modifying the explanations to more accurately reflect the LLM's internal confidence, we observe a significant shift in user perception, aligning it more closely with the model's actual confidence levels. This adjustment in explanatory approach demonstrates potential for enhancing user trust and accuracy in assessing LLM outputs. The findings underscore the importance of transparent communication of confidence levels in LLMs, particularly in high-stakes applications where understanding the reliability of AI-generated information is essential.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "By modifying the explanations of large language models to more accurately reflect the LLM's internal confidence, a significant shift in user perception is observed, aligning it more closely with the model's actual confidence levels."
+            },
+            "score": 5
+        },
+        {
+            "id": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "paperId": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "title": "Automatic Calibration and Error Correction for Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities out of box for a wide range of applications, yet accuracy still remains a major growth area, especially in mission-critical domains such as biomedicine. An effective method to calibrate the con\ufb01dence level on LLM responses is essential to automatically detect errors and facilitate human-in-the-loop veri\ufb01cation. An important source of calibration signals stems from expert-stipulated programmatic super-vision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align LLM output with other available supervision sources, which would assign higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction tasks in biomedical and general domains demonstrate the promise of this approach, with our proposed risk scores highly correlated with the real error rate of LLMs. For the most uncertain test instances, dynamic prompting based on our proposed risk scores results in signi\ufb01cant accuracy improvement for off-the-shelf LLMs, boosting GPT-3 results past state-of-the-art (SOTA) weak supervision and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts."
+            },
+            "score": 5
+        },
+        {
+            "id": "9a61d51212eb4ff677fe777a7ba9ddc4f675b387",
+            "paperId": "9a61d51212eb4ff677fe777a7ba9ddc4f675b387",
+            "title": "Automatic Calibration and Error Correction for Generative Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Generative Large language models (LLMs) have demonstrated remarkable capabilities for a wide range of applications, but reducing ungrounded or erroneous responses remains a major growth area. Unlike task-specific models, there lack an effective method to calibrate the confidence level of LLM responses to indicate potential errors and facilitate human-in-the-loop verification. An important source of calibration stems from expert-stipulated programmatic supervision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every LLM response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align with LLM output as well as other weak supervision sources. The model assigns higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction and classification tasks in biomedical and general domains demonstrate that the proposed risk score is highly correlated with the actual LLM error rate. By using a dynamic prompting strategy based on the risk score, we observed significant accuracy improvement for off-the-shelf LLMs, boosting GPT-3.5 results past state-of-the-art (SOTA) weak supervision model and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every LLM response, without any additional manual efforts."
+            },
+            "score": 5
+        },
+        {
+            "id": "48fb667125298cf724f7b652d521686180412351",
+            "paperId": "48fb667125298cf724f7b652d521686180412351",
+            "title": "A Close Look into the Calibration of Pre-trained Language Models",
+            "abstract": "Pre-trained language models (PLMs) may fail in giving reliable estimates of their predictive uncertainty. We take a close look into this problem, aiming to answer two questions: (1) Do PLMs learn to become calibrated in the training process? (2) How effective are existing calibration methods? For the first question, we conduct fine-grained control experiments to study the dynamic change in PLMs\u2019 calibration performance in training. We consider six factors as control variables, including dataset difficulty, available training samples, training steps, the number of tunable parameters, model scale, and pretraining. We observe a consistent change in calibration performance across six factors. We find that PLMs don\u2019t learn to become calibrated in training, evidenced by the continual increase in confidence, no matter whether the predictions are correct or not. We highlight that our finding somewhat contradicts two established conclusions: (a) Larger PLMs are more calibrated; (b) Pretraining improves model calibration. Next, we study the effectiveness of existing calibration methods in mitigating the overconfidence issue. Besides unlearnable calibration methods (e.g., label smoothing), we adapt and extend two recently proposed learnable methods that directly collect data to train models to have reasonable confidence estimations. Experimental results show that learnable methods significantly reduce PLMs\u2019 confidence in wrong predictions.",
+            "year": 2022,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that pre-trained language models don\u2019t learn to become calibrated in training, evidenced by the continual increase in confidence, no matter whether the predictions are correct or not."
+            },
+            "score": 5
+        },
+        {
+            "id": "ba63e1ab5b6e9d849982ae293ac0483053badaff",
+            "paperId": "ba63e1ab5b6e9d849982ae293ac0483053badaff",
+            "title": "Uncertainty in Language Models: Assessment through Rank-Calibration",
+            "abstract": "Language Models (LMs) have shown promising performance in natural language generation. However, as LMs often generate incorrect or hallucinated responses, it is crucial to correctly quantify their uncertainty in responding to given inputs. In addition to verbalized confidence elicited via prompting, many uncertainty measures ($e.g.$, semantic entropy and affinity-graph-based measures) have been proposed. However, these measures can differ greatly, and it is unclear how to compare them, partly because they take values over different ranges ($e.g.$, $[0,\\infty)$ or $[0,1]$). In this work, we address this issue by developing a novel and practical framework, termed $Rank$-$Calibration$, to assess uncertainty and confidence measures for LMs. Our key tenet is that higher uncertainty (or lower confidence) should imply lower generation quality, on average. Rank-calibration quantifies deviations from this ideal relationship in a principled manner, without requiring ad hoc binary thresholding of the correctness score ($e.g.$, ROUGE or METEOR). The broad applicability and the granular interpretability of our methods are demonstrated empirically.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel and practical framework, termed $Rank$-$Calibration$ is developed, to assess uncertainty and confidence measures for LMs, with the key tenet that higher uncertainty should imply lower generation quality, on average."
+            },
+            "score": 5
+        },
+        {
+            "id": "8210cef990b8e5cddbc95000e46309bdd25337f7",
+            "paperId": "8210cef990b8e5cddbc95000e46309bdd25337f7",
+            "title": "Asking Clarification Questions for Code Generation in General-Purpose Programming Language",
+            "abstract": "Code generation from text requires understanding the user\u2019s intent from a natural language description (NLD) and generating an executable program code snippet that satis\ufb01es this intent. While recent pretrained language models (PLMs) demonstrate remarkable performance for this task, these models fail when the given NLD is ambiguous due to the lack of enough speci\ufb01cations for generating a high-quality code snippet. In this work, we introduce a novel and more realistic setup for this task. We hypothesize that ambiguities in the speci\ufb01cations of an NLD are resolved by asking clari\ufb01cation questions (CQs). Therefore, we collect and introduce a new dataset named CodeClarQA containing NLD-Code pairs with created CQAs. We evaluate the performance of PLMs for code generation on our dataset. The empirical results support our hypothesis that clari\ufb01cations result in more precise generated code, as shown by an improvement of 17.52 in BLEU, 12.72 in CodeBLEU, and 7.7% in the exact match. Alongside this, our task and dataset introduce new challenges to the community, including when and what CQs should be asked.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The hypothesis that ambiguities in the speci\ufb01cations of an NLD are resolved by asking clari\ufb01cation questions (CQs) is hypothesized and a new dataset named CodeClarQA containing NLD-Code pairs with created CQAs is introduced."
+            },
+            "score": 5
+        },
+        {
+            "id": "b5ddfea0af89eec6678d4b191c4eee48eee8ae30",
+            "paperId": "b5ddfea0af89eec6678d4b191c4eee48eee8ae30",
+            "title": "Python Code Generation by Asking Clarification Questions",
+            "abstract": "Code generation from text requires understanding the user\u2019s intent from a natural languagedescription and generating an executable code snippet that satisfies this intent. While recent pretrained language models demonstrate remarkable performance for this task, these models fail when the given natural language description is under-specified. In this work, we introduce a novel and more realistic setup for this task. We hypothesize that the under-specification of a natural language description can be resolved by asking clarification questions. Therefore, we collect and introduce a new dataset named CodeClarQA containing pairs of natural language descriptions and code with created synthetic clarification questions and answers. The empirical results of our evaluation of pretrained language model performance on code generation show that clarifications result in more precisely generated code, as shown by the substantial improvement of model performance in all evaluation metrics. Alongside this, our task and dataset introduce new challenges to the community, including when and what clarification questions should be asked. Our code and dataset are available on GitHub.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel and more realistic setup for code generation from text, hypothesize that the under-specification of a natural language description can be resolved by asking clarification questions, and introduces a new dataset named CodeClarQA containing pairs of natural language descriptions and code with created synthetic clarification questions and answers."
+            },
+            "score": 5
+        },
+        {
+            "id": "223884ef08f38fd0765e4c0e467a223aef573236",
+            "paperId": "223884ef08f38fd0765e4c0e467a223aef573236",
+            "title": "Towards Facet-Driven Generation of Clarifying Questions for Conversational Search",
+            "abstract": "Clarifying an underlying user information need is an important aspect of a modern-day IR system. The importance of clarification is even higher in limited-bandwidth scenarios, such as conversational or mobile search, where a user is unable to easily browse through a long list of retrieved results. Thus, asking clarifying questions about user's potentially ambiguous queries arises as one of the main tasks of conversational search. Recent approaches have, while making significant progress in the field, remained limited to selecting a clarifying question from a predefined set or prompting the user with vague or template-based questions. However, with the recent advances in text generation through large-scale language models, an ideal system should generate the next clarifying question. The challenge of generating an appropriate clarifying question is twofold: 1) to produce the question in coherent natural language; 2) to ask a question that is relevant to the user query. In this paper, we propose a model that generates clarifying questions with respect to the user query and query facets. We fine-tune the GPT-2 language model to generate questions related to the query and one of the extracted query facets. Compared to competitive baselines, results show that our proposed method is both natural and useful, as judged by human annotators. Moreover, we discuss the potential theoretical framework this approach would fit in. We release the code for future work and reproducibility purposes.",
+            "year": 2021,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A model that generates clarifying questions with respect to the user query and query facets is proposed using the GPT-2 language model and results show that the proposed method is both natural and useful, as judged by human annotators."
+            },
+            "score": 5
+        },
+        {
+            "id": "80ce53797207cfef954a5af495dfcc9ce5650c44",
+            "paperId": "80ce53797207cfef954a5af495dfcc9ce5650c44",
+            "title": "Large Language Models guided Generative Prompt for Dialogue Generation",
+            "abstract": "The applications of large language models (LLMs) such as ChatGPT exhibit impressive comprehension and generative capabilities in dialogue task. LLMs require massive high-quality data and computational cost, which limits their application to low-resource tasks. Dialogue generation when using smaller language models like GPT-2 encounters difficulties in maintaining context consistency. To address the problem of dialogue generation under resource constraints, we propose an LLM-guided Generative Prompt method (LGP). LGP enhances the relevance and coherence of generated dialogues through a smaller model GPT-2 and generative prompt (GP). GP is produced by the proposed Prompt Network, which leverages prompt encoder to learn dialogue history features and utilizes LSTM to extract contextual temporal features. Therefore, GP shown as the simple fixed-length learnable embeddings can replace the original complex and redundant context in GPT-2. The few-shot training of GP is guided by the LLM\u2019s responses, which facilitates GPT-2 in generating more contextually consistent and comprehensive responses. Experiments on the DailyDialog and MultiWOZ datasets show that LGP achieves high improvements in BLEU, NIST, METEOR and ROUGE-L metrics. Remarkably, LGP achieves these results with approximately 18% of the training data, surpassing other full-data-finetuning methods in automatic evaluation metrics.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LGP enhances the relevance and coherence of generated dialogues through a smaller model GPT-2 and generative prompt and achieves high improvements in BLEU, NIST, METEOR and ROUGE-L metrics."
+            },
+            "score": 4
+        },
+        {
+            "id": "5acbf917da5be89e4eebd7e98c81d87069450a5d",
+            "paperId": "5acbf917da5be89e4eebd7e98c81d87069450a5d",
+            "title": "Cloud-Device Collaborative Learning for Multimodal Large Language Models",
+            "abstract": "The burgeoning field of Multimodal Large Language Models (MLLMs) has exhibited remarkable performance in diverse tasks such as captioning, commonsense reasoning, and visual scene understanding. However, the deployment of these large-scale MLLMs on client devices is hindered by their extensive model parameters, leading to a notable decline in generalization capabilities when these models are compressed for device deployment. Addressing this challenge, we introduce a Cloud-Device Collaborative Continual Adaptation framework, designed to enhance the performance of compressed, device-deployed MLLMs by leveraging the robust capabilities of cloud-based, larger-scale MLLMs. Our framework is structured into three key components: a device-to-cloud uplink for efficient data transmission, cloud-based knowledge adaptation, and an optimized cloud-to-device downlink for model deployment. In the uplink phase, we employ an Uncertainty-guided Token Sampling (UTS) strategy to effectively filter out-of-distribution tokens, thereby reducing transmission costs and improving training efficiency. On the cloud side, we propose Adapter-based Knowledge Distillation (AKD) method to transfer refined knowledge from large-scale to compressed, pocket-size MLLMs. Furthermore, we propose a Dynamic Weight update Compression (DWC) strategy for the downlink, which adaptively selects and quantizes updated weight parameters, enhancing transmission efficiency and reducing the representational disparity between cloud and device models. Extensive experiments on several multimodal benchmarks demonstrate the superiority of our proposed framework over prior Knowledge Distillation and device-cloud collaboration methods. Notably, we also validate the feasibility of our approach to real-world experiments.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a Cloud-Device Collaborative Continual Adaptation framework, designed to enhance the performance of compressed, device-deployed MLLMs by leveraging the robust capabilities of cloud-based, larger-scale MLLMs."
+            },
+            "score": 4
+        },
+        {
+            "id": "59ef1b67c5f238d5d6d175d84fb6b239b4221a97",
+            "paperId": "59ef1b67c5f238d5d6d175d84fb6b239b4221a97",
+            "title": "Stabilized In-Context Learning with Pre-trained Language Models for Few Shot Dialogue State Tracking",
+            "abstract": "Prompt-based methods with large pre-trained language models (PLMs) have shown impressive unaided performance across many NLP tasks. These models improve even further with the addition of a few labeled in-context exemplars to guide output generation. However, for more complex tasks such as dialogue state tracking (DST), designing prompts that reliably convey the desired intent is nontrivial, leading to unstable results. Furthermore, building in-context exemplars for dialogue tasks is difficult because conversational contexts are long while model input lengths are relatively short.To overcome these issues we first adapt a meta-learning scheme to the dialogue domain which stabilizes the ability of the model to perform well under various prompts. We additionally design a novel training method to improve upon vanilla retrieval mechanisms to find ideal in-context examples. Finally, we introduce a saliency model to limit dialogue text length, allowing us to include more exemplars per query. In effect, we are able to achieve highly competitive results for few-shot DST on MultiWOZ.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A meta-learning scheme is adapted to the dialogue domain which stabilizes the ability of the model to perform well under various prompts and introduces a saliency model to limit dialogue text length, allowing for highly competitive results for few-shot DST on MultiWOZ."
+            },
+            "score": 4
+        },
+        {
+            "id": "a83724fd55cd2bcf5583ca181373c34571ac1f73",
+            "paperId": "a83724fd55cd2bcf5583ca181373c34571ac1f73",
+            "title": "DialCoT Meets PPO: Decomposing and Exploring Reasoning Paths in Smaller Language Models",
+            "abstract": "Chain-of-Thought (CoT) prompting has proven to be effective in enhancing the reasoning capabilities of Large Language Models (LLMs) with at least 100 billion parameters. However, it is ineffective or even detrimental when applied to reasoning tasks in Smaller Language Models (SLMs) with less than 10 billion parameters. To address this limitation, we introduce Dialogue-guided Chain-of-Thought (DialCoT) which employs a dialogue format to generate intermediate reasoning steps, guiding the model toward the final answer. Additionally, we optimize the model's reasoning path selection using the Proximal Policy Optimization (PPO) algorithm, further enhancing its reasoning capabilities. Our method offers several advantages compared to previous approaches. Firstly, we transform the process of solving complex reasoning questions by breaking them down into a series of simpler sub-questions, significantly reducing the task difficulty and making it more suitable for SLMs. Secondly, we optimize the model's reasoning path selection through the PPO algorithm. We conduct comprehensive experiments on four arithmetic reasoning datasets, demonstrating that our method achieves significant performance improvements compared to state-of-the-art competitors.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Dialogue-guided Chain-of-Thought (DialCoT) is introduced which employs a dialogue format to generate intermediate reasoning steps, guiding the model toward the final answer, and optimize the model's reasoning path selection using the Proximal Policy Optimization (PPO) algorithm, further enhancing its reasoning capabilities."
+            },
+            "score": 4
+        },
+        {
+            "id": "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+            "paperId": "e586a4591ba0303b769f2c07cbddaf1899cb72e4",
+            "title": "H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models",
+            "abstract": "Large Language Models (LLMs), despite their recent impressive accomplishments, are notably cost-prohibitive to deploy, particularly for applications involving long-content generation, such as dialogue systems and story writing. Often, a large amount of transient state information, referred to as the KV cache, is stored in GPU memory in addition to model parameters, scaling linearly with the sequence length and batch size. In this paper, we introduce a novel approach for implementing the KV cache which significantly reduces its memory footprint. Our approach is based on the noteworthy observation that a small portion of tokens contributes most of the value when computing attention scores. We call these tokens Heavy Hitters (H$_2$). Through a comprehensive investigation, we find that (i) the emergence of H$_2$ is natural and strongly correlates with the frequent co-occurrence of tokens in the text, and (ii) removing them results in significant performance degradation. Based on these insights, we propose Heavy Hitter Oracle (H$_2$O), a KV cache eviction policy that dynamically retains a balance of recent and H$_2$ tokens. We formulate the KV cache eviction as a dynamic submodular problem and prove (under mild assumptions) a theoretical guarantee for our novel eviction algorithm which could help guide future work. We validate the accuracy of our algorithm with OPT, LLaMA, and GPT-NeoX across a wide range of tasks. Our implementation of H$_2$O with 20% heavy hitters improves the throughput over three leading inference systems DeepSpeed Zero-Inference, Hugging Face Accelerate, and FlexGen by up to 29$\\times$, 29$\\times$, and 3$\\times$ on OPT-6.7B and OPT-30B. With the same batch size, H2O can reduce the latency by up to 1.9$\\times$. The code is available at https://github.com/FMInference/H2O.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel approach for implementing the KV cache eviction policy that dynamically retains a balance of recent and H$_2$ tokens is introduced and a theoretical guarantee for the novel eviction algorithm is proved."
+            },
+            "score": 4
+        },
+        {
+            "id": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "paperId": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "title": "On the Calibration of Pre-trained Language Models using Mixup Guided by Area Under the Margin and Saliency",
+            "abstract": "A well-calibrated neural model produces confidence (probability outputs) closely approximated by the expected accuracy. While prior studies have shown that mixup training as a data augmentation technique can improve model calibration on image classification tasks, little is known about using mixup for model calibration on natural language understanding (NLU) tasks. In this paper, we explore mixup for model calibration on several NLU tasks and propose a novel mixup strategy for pre-trained language models that improves model calibration further. Our proposed mixup is guided by both the Area Under the Margin (AUM) statistic (Pleiss et al., 2020) and the saliency map of each sample (Simonyan et al., 2013). Moreover, we combine our mixup strategy with model miscalibration correction techniques (i.e., label smoothing and temperature scaling) and provide detailed analyses of their impact on our proposed mixup. We focus on systematically designing experiments on three NLU tasks: natural language inference, paraphrase detection, and commonsense reasoning. Our method achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy.",
+            "year": 2022,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper systematically designs experiments on three NLU tasks and proposes a novel mixup strategy for pre-trained language models that improves model calibration further and achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy."
+            },
+            "score": 4
+        },
+        {
+            "id": "a2b89d2196b4cc88797d4907ce7458bb7584f6b6",
+            "paperId": "a2b89d2196b4cc88797d4907ce7458bb7584f6b6",
+            "title": "On the Calibration of Massively Multilingual Language Models",
+            "abstract": "Massively Multilingual Language Models (MMLMs) have recently gained popularity due to their surprising effectiveness in cross-lingual transfer. While there has been much work in evaluating these models for their performance on a variety of tasks and languages, little attention has been paid on how well calibrated these models are with respect to the confidence in their predictions. We first investigate the calibration of MMLMs in the zero-shot setting and observe a clear case of miscalibration in low-resource languages or those which are typologically diverse from English. Next, we empirically show that calibration methods like temperature scaling and label smoothing do reasonably well in improving calibration in the zero-shot scenario. We also find that few-shot examples in the language can further help reduce calibration errors, often substantially. Overall, our work contributes towards building more reliable multilingual models by highlighting the issue of their miscalibration, understanding what language and model-specific factors influence it, and pointing out the strategies to improve the same.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the calibration of MMLMs in the zero-shot setting and observes a clear case of miscalibration in low-resource languages or those which are typologically diverse from English, and empirically shows that calibration methods like temperature scaling and label smoothing do reasonably well in improving calibration in thezero-shot scenario."
+            },
+            "score": 4
+        },
+        {
+            "id": "12db3efff4cc9e16822dd64bb1cad66f3f034f3b",
+            "paperId": "12db3efff4cc9e16822dd64bb1cad66f3f034f3b",
+            "title": "L2CEval: Evaluating Language-to-Code Generation Capabilities of Large Language Models",
+            "abstract": "Recently, large language models (LLMs), especially those that are pretrained on code, have demonstrated strong capabilities in generating programs from natural language inputs in a few-shot or even zero-shot manner. Despite promising results, there is a notable lack of a comprehensive evaluation of these models language-to-code generation capabilities. Existing studies often focus on specific tasks, model architectures, or learning paradigms, leading to a fragmented understanding of the overall landscape. In this work, we present L2CEval, a systematic evaluation of the language-to-code generation capabilities of LLMs on 7 tasks across the domain spectrum of semantic parsing, math reasoning and Python programming, analyzing the factors that potentially affect their performance, such as model size, pretraining data, instruction tuning, and different prompting methods. In addition to assessing model performance, we measure confidence calibration for the models and conduct human evaluations of the output programs. This enables us to identify and analyze the typical failure modes across various tasks and models. L2CEval offers a comprehensive understanding of the capabilities and limitations of LLMs in language-to-code generation. We also release the evaluation framework and all model outputs, hoping to lay the groundwork for further future research in this domain.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents L2CEval, a systematic evaluation of the language-to-code generation capabilities of LLMs on 7 tasks across the domain spectrum of semantic parsing, math reasoning and Python programming, analyzing the factors that potentially affect their performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "208d9e72a80c9333c36f8ede204128e3c808af84",
+            "paperId": "208d9e72a80c9333c36f8ede204128e3c808af84",
+            "title": "C3: Confidence Calibration Model Cascade for Inference-Efficient Cross-Lingual Natural Language Understanding",
+            "abstract": "Cross-lingual natural language understanding (NLU) is a critical task in natural language processing (NLP). Recent advancements have seen multilingual pre-trained language models (mPLMs) significantly enhance the performance of these tasks. However, mPLMs necessitate substantial resources and incur high computational costs during inference, posing challenges for deployment in real-world and real-time systems. Existing model cascade methods seek to enhance inference efficiency by greedily selecting the lightest model capable of processing the current input from a variety of models, based on model confidence scores. Nonetheless, deep models tend to exhibit overconfidence, and confidence distributions vary across languages. This leads to the emission of confident but incorrect predictions by smaller models, hindering their ability to generalize effectively across test languages. In this study, we introduce a confidence calibration model cascade ($C^3$) method. This approach, simple yet effective, involves calibration prior to cascade inference, thereby enhancing cascade accuracy through more reliable predictions. Extensive experiments conducted on three cross-lingual benchmarks demonstrate that $C^3$ significantly outperforms all state-of-the-art baselines.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This approach involves calibration prior to cascade inference, thereby enhancing cascade accuracy through more reliable predictions, and significantly outperforms all state-of-the-art baselines."
+            },
+            "score": 4
+        },
+        {
+            "id": "bd0d6a6bd10f80726b870450f6275f0530c24afb",
+            "paperId": "bd0d6a6bd10f80726b870450f6275f0530c24afb",
+            "title": "Preserving Pre-trained Features Helps Calibrate Fine-tuned Language Models",
+            "abstract": "Large pre-trained language models (PLMs) have demonstrated strong performance on natural language understanding (NLU) tasks through fine-tuning. However, fine-tuned models still suffer from overconfident predictions, especially in out-of-domain settings. In this paper, we tackle the problem of calibrating fine-tuned language models. We demonstrate that the PLMs are well-calibrated on the masked language modeling task with robust predictive confidence under domain shift, yet the fine-tuned models fail to retain such property due to catastrophic forgetting, which impacts the calibration on the downstream classification task. In light of these observations, we evaluate the calibration of several methods that preserve pre-trained features and show that preserving pre-trained features can improve the calibration of fine-tuned language models. Among these methods, our proposed method that encourages the fine-tuned model to learn generative representations with auxiliary language modeling objective achieves competitive accuracy and the lowest expected calibration error compared to several strong baselines under both in-domain and out-of-domain settings on three downstream NLU tasks.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A proposed method that encourages the fine-tuned model to learn generative representations with auxiliary language modeling objective achieves competitive accuracy and the lowest expected calibration error compared to several strong baselines under both in-domain and out-of-domain settings on three downstream NLU tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "77b4e11cf494be085f506cdc4ab77946b07b6b52",
+            "paperId": "77b4e11cf494be085f506cdc4ab77946b07b6b52",
+            "title": "Open-Vocabulary Calibration for Vision-Language Models",
+            "abstract": "Vision-language models (VLMs) have emerged as formidable tools, showing their strong capability in handling various open-vocabulary tasks in image recognition, text-driven visual content generation, and visual chatbots, to name a few. In recent years, considerable efforts and resources have been devoted to adaptation methods for improving downstream performance of VLMs, particularly on parameter-efficient fine-tuning methods like prompt learning. However, a crucial aspect that has been largely overlooked is the confidence calibration problem in fine-tuned VLMs, which could greatly reduce reliability when deploying such models in the real world. This paper bridges the gap by systematically investigating the confidence calibration problem in the context of prompt learning and reveals that existing calibration methods are insufficient to address the problem, especially in the open-vocabulary setting. To solve the problem, we present a simple and effective approach called Distance-Aware Calibration (DAC), which is based on scaling the temperature using as guidance the distance between predicted text labels and base classes. The experiments with 7 distinct prompt learning methods applied across 11 diverse downstream datasets demonstrate the effectiveness of DAC, which achieves high efficacy without sacrificing the inference speed.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A simple and effective approach called Distance-Aware Calibration (DAC) is presented, based on scaling the temperature using as guidance the distance between predicted text labels and base classes, which achieves high efficacy without sacrificing the inference speed."
+            },
+            "score": 4
+        },
+        {
+            "id": "28fbbf98bac1bb941162df553ca034d600cb59a6",
+            "paperId": "28fbbf98bac1bb941162df553ca034d600cb59a6",
+            "title": "Rephrase, Augment, Reason: Visual Grounding of Questions for Vision-Language Models",
+            "abstract": "An increasing number of vision-language tasks can be handled with little to no training, i.e., in a zero and few-shot manner, by marrying large language models (LLMs) to vision encoders, resulting in large vision-language models (LVLMs). While this has huge upsides, such as not requiring training data or custom architectures, how an input is presented to an LVLM can have a major impact on zero-shot model performance. In particular, inputs phrased in an underspecified way can result in incorrect answers due to factors like missing visual information, complex implicit reasoning, or linguistic ambiguity. Therefore, adding visually-grounded information to the input as a preemptive clarification should improve model performance by reducing underspecification, e.g., by localizing objects and disambiguating references. Similarly, in the VQA setting, changing the way questions are framed can make them easier for models to answer. To this end, we present Rephrase, Augment and Reason (RepARe), a gradient-free framework that extracts salient details about the image using the underlying LVLM as a captioner and reasoner, in order to propose modifications to the original question. We then use the LVLM's confidence over a generated answer as an unsupervised scoring function to select the rephrased question most likely to improve zero-shot performance. Focusing on three visual question answering tasks, we show that RepARe can result in a 3.85% (absolute) increase in zero-shot accuracy on VQAv2, 6.41%, and 7.94% points increase on A-OKVQA, and VizWiz respectively. Additionally, we find that using gold answers for oracle question candidate selection achieves a substantial gain in VQA accuracy by up to 14.41%. Through extensive analysis, we demonstrate that outputs from RepARe increase syntactic complexity, and effectively utilize vision-language interaction and the frozen LLM.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Rephrase, Augment and Reason (RepARe), a gradient-free framework that extracts salient details about the image using the underlying LVLM as a captioner and reasoner, in order to propose modifications to the original question, is presented."
+            },
+            "score": 4
+        },
+        {
+            "id": "4e64399b54bc4de8d97328cddf38dd1038459cad",
+            "paperId": "4e64399b54bc4de8d97328cddf38dd1038459cad",
+            "title": "Ranking Clarification Questions via Natural Language Inference",
+            "abstract": "Given a natural language query, teaching machines to ask clarifying questions is of immense utility in practical natural language processing systems. Such interactions could help in filling information gaps for better machine comprehension of the query. For the task of ranking clarification questions, we hypothesize that determining whether a clarification question pertains to a missing entry in a given post (on QA forums such as StackExchange) could be considered as a special case of Natural Language Inference (NLI), where both the post and the most relevant clarification question point to a shared latent piece of information or context. We validate this hypothesis by incorporating representations from a Siamese BERT model fine-tuned on NLI and Multi-NLI datasets into our models and demonstrate that our best performing model obtains a relative performance improvement of 40 percent and 60 percent respectively (on the key metric of Precision@1), over the state-of-the-art baseline(s) on the two evaluation sets of the StackExchange dataset, thereby, significantly surpassing the state-of-the-art.",
+            "year": 2020,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is hypothesized that determining whether a clarification question pertains to a missing entry in a given post could be considered as a special case of Natural Language Inference (NLI), where both the post and the most relevant clarification question point to a shared latent piece of information or context."
+            },
+            "score": 4
+        },
+        {
+            "id": "8a5d1e5a50e282ecffaaca76fa655004e103a361",
+            "paperId": "8a5d1e5a50e282ecffaaca76fa655004e103a361",
+            "title": "Deep Learning for Database Mapping and Asking Clarification Questions in Dialogue Systems",
+            "abstract": "A dialogue system will often ask followup clarification questions when interacting with a user if the agent is unsure how to respond. In this new study, we explore deep reinforcement learning (RL) for asking followup questions when a user records a meal description, and the system needs to narrow down the options for which foods the person has eaten. We build off of prior work in which we use novel convolutional neural network models to bypass the standard feature engineering used in dialogue systems to handle the text mismatch between natural language user queries and structured database entries, demonstrating that our model learns semantically meaningful embedding representations of natural language. In this new nutrition domain, the followup clarification questions consist of possible attributes for each food that was consumed; for example, if the user drinks a cup of milk, the system should ask about the percent milkfat. We investigate an RL agent to dynamically follow up with the user, which we compare to rule-based and entropy-based methods. On a held-out test set, assuming the followup questions are answered correctly, deep RL significantly boosts top five food recall from 54.9% without followup to 89.0%. We also demonstrate that a hybrid RL model achieves the best perceived naturalness ratings in a human evaluation.",
+            "year": 2019,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study explores deep reinforcement learning for asking followup questions when a user records a meal description, and the system needs to narrow down the options for which foods the person has eaten, and investigates an RL agent to dynamically follow up with the user."
+            },
+            "score": 4
+        },
+        {
+            "id": "9c770a7a392df853387d5701e9876324f71f36c7",
+            "paperId": "9c770a7a392df853387d5701e9876324f71f36c7",
+            "title": "Probing the Multi-turn Planning Capabilities of LLMs via 20 Question Games",
+            "abstract": "Large language models (LLMs) are effective at answering questions that are clearly asked. However, when faced with ambiguous queries they can act unpredictably and produce incorrect outputs. This underscores the need for the development of intelligent agents capable of asking clarification questions to resolve ambiguities effectively. This capability requires complex understanding, state tracking, reasoning and planning over multiple conversational turns. However, directly measuring this can be challenging. In this paper, we offer a surrogate problem which assesses an LLMs's capability to deduce an entity unknown to itself, but revealed to a judge, by asking the judge a series of queries. This \\textit{entity-deducing game} can serve as an evaluation framework to probe the conversational reasoning and planning capabilities of language models. We systematically evaluate various LLMs and discover significant differences in their performance on this task. We find that strong LLMs like GPT-4 outperform human players by a large margin. We further employ Behavior Cloning (BC) to examine whether a weaker model is capable of imitating a stronger model and generalizing to data or domains, using only the demonstrations from a stronger model. We finally propose to use Reinforcement Learning to enhance reasoning and planning capacity of Vicuna models through episodes of game playing, which lead to significant performance improvement. We hope that this problem offers insights into how autonomous agents could be trained to behave more intelligently in ambiguous circumstances.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper offers a surrogate problem which assesses an LLMs's capability to deduce an entity unknown to itself, but revealed to a judge, by asking the judge a series of queries, and proposes to use Reinforcement Learning to enhance reasoning and planning capacity of Vicuna models through episodes of game playing."
+            },
+            "score": 4
+        },
+        {
+            "id": "63179e3321c29b455b16fdbfdf59017113b66071",
+            "paperId": "63179e3321c29b455b16fdbfdf59017113b66071",
+            "title": "Efficiently Aligned Cross-Lingual Transfer Learning for Conversational Tasks using Prompt-Tuning",
+            "abstract": "Cross-lingual transfer of language models trained on high-resource languages like English has been widely studied for many NLP tasks, but focus on conversational tasks has been rather limited. This is partly due to the high cost of obtaining non-English conversational data, which results in limited coverage. In this work, we introduce for cross-lingual alignment pretraining, a parallel and large-scale multilingual conversation dataset that we created by translating the English-only Schema-Guided Dialogue (SGD) dataset (Rastogi et al., 2020) into 105 other languages. XSGD contains about 330k utterances per language. To facilitate aligned cross-lingual representations, we develop an efficient prompt-tuning-based method for learning alignment prompts. We also investigate two different classifiers: NLI-based and vanilla classifiers, and test cross-lingual capability enabled by the aligned prompts. We evaluate our model\u2019s cross-lingual generalization capabilities on two conversation tasks: slot-filling and intent classification. Our results demonstrate strong and efficient modeling ability of NLI-based classifiers and the large cross-lingual transfer improvements achieved by our aligned prompts, particularly in few-shot settings. We also conduct studies on large language models (LLMs) such as text-davinci-003 and ChatGPT in both zero- and few-shot settings. While LLMs exhibit impressive performance in English, their cross-lingual capabilities in other languages, particularly low-resource ones, are limited.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces for cross-lingual alignment pretraining, a parallel and large-scale multilingual conversation dataset that is created by translating the English-only Schema-Guided Dialogue (SGD) dataset into 105 other languages and develops an efficient prompt-tuning-based method for learning alignment prompts."
+            },
+            "score": 4
+        },
+        {
+            "id": "dce4e4cf1cd8c42b8a400280a48283234ad7aafb",
+            "paperId": "dce4e4cf1cd8c42b8a400280a48283234ad7aafb",
+            "title": "Are Large Language Models All You Need for Task-Oriented Dialogue?",
+            "abstract": "Instruction-finetuned large language models (LLMs) gained a huge popularity recently, thanks to their ability to interact with users through conversation. In this work, we aim to evaluate their ability to complete multi-turn tasks and interact with external databases in the context of established task-oriented dialogue benchmarks. We show that in explicit belief state tracking, LLMs underperform compared to specialized task-specific models. Nevertheless, they show some ability to guide the dialogue to a successful ending through their generated responses if they are provided with correct slot values. Furthermore, this ability improves with few-shot in-domain examples.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that in explicit belief state tracking, LLMs underperform compared to specialized task-specific models, but they show some ability to guide the dialogue to a successful ending through their generated responses if they are provided with correct slot values."
+            },
+            "score": 3
+        },
+        {
+            "id": "bc604b501ede16121a87666e05860e49989ef8fc",
+            "paperId": "bc604b501ede16121a87666e05860e49989ef8fc",
+            "title": "More Robust Schema-Guided Dialogue State Tracking via Tree-Based Paraphrase Ranking",
+            "abstract": "The schema-guided paradigm overcomes scalability issues inherent in building task-oriented dialogue (TOD) agents with static ontologies. Rather than operating on dialogue context alone, agents have access to hierarchical schemas containing task-relevant natural language descriptions. Fine-tuned language models excel at schema-guided dialogue state tracking (DST) but are sensitive to the writing style of the schemas. We explore methods for improving the robustness of DST models. We propose a framework for generating synthetic schemas which uses tree-based ranking to jointly optimise lexical diversity and semantic faithfulness. The robust generalisation of strong baselines is improved when augmenting their training data with prompts generated by our framework, as demonstrated by marked improvements in average Joint Goal Accuracy (JGA) and schema sensitivity (SS) on the SGD-X benchmark.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A framework for generating synthetic schemas which uses tree-based ranking to jointly optimise lexical diversity and semantic faithfulness is proposed and demonstrated by marked improvements in average Joint Goal Accuracy (JGA) and schema sensitivity (SS) on the SGD-X benchmark."
+            },
+            "score": 3
+        },
+        {
+            "id": "1fcffc771fdebb50682d3aad716b955ef0e72fe3",
+            "paperId": "1fcffc771fdebb50682d3aad716b955ef0e72fe3",
+            "title": "InstructTODS: Large Language Models for End-to-End Task-Oriented Dialogue Systems",
+            "abstract": "Large language models (LLMs) have been used for diverse tasks in natural language processing (NLP), yet remain under-explored for task-oriented dialogue systems (TODS), especially for end-to-end TODS. We present InstructTODS, a novel off-the-shelf framework for zero-shot end-to-end task-oriented dialogue systems that can adapt to diverse domains without fine-tuning. By leveraging LLMs, InstructTODS generates a proxy belief state that seamlessly translates user intentions into dynamic queries for efficient interaction with any KB. Our extensive experiments demonstrate that InstructTODS achieves comparable performance to fully fine-tuned TODS in guiding dialogues to successful completion without prior knowledge or task-specific data. Furthermore, a rigorous human evaluation of end-to-end TODS shows that InstructTODS produces dialogue responses that notably outperform both the gold responses and the state-of-the-art TODS in terms of helpfulness, informativeness, and humanness. Moreover, the effectiveness of LLMs in TODS is further supported by our comprehensive evaluations on TODS subtasks: dialogue state tracking, intent classification, and response generation. Code and implementations could be found here https://github.com/WillyHC22/InstructTODS/",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "InstructTODS is presented, a novel off-the-shelf framework for zero-shot end-to-end task-oriented dialogue systems that can adapt to diverse domains without fine-tuning and produces dialogue responses that notably outperform both the gold responses and the state-of theart TODS in terms of helpfulness, informativeness, and humanness."
+            },
+            "score": 3
+        },
+        {
+            "id": "4c5b4a8e31d3119c1e3b5753693ff283c9717218",
+            "paperId": "4c5b4a8e31d3119c1e3b5753693ff283c9717218",
+            "title": "DISC-MedLLM: Bridging General Large Language Models and Real-World Medical Consultation",
+            "abstract": "We propose DISC-MedLLM, a comprehensive solution that leverages Large Language Models (LLMs) to provide accurate and truthful medical response in end-to-end conversational healthcare services. To construct high-quality Supervised Fine-Tuning (SFT) datasets, we employ three strategies: utilizing medical knowledge-graphs, reconstructing real-world dialogues, and incorporating human-guided preference rephrasing. These datasets are instrumental in training DISC-MedLLM, surpassing existing medical LLMs in both single-turn and multi-turn consultation scenarios. Extensive experimental results demonstrate the effectiveness of the proposed model in bridging the gap between general language models and real-world medical consultation. Additionally, we release the constructed dataset and model weights to further contribute to research and development. Further details and resources can be found at https://github.com/FudanDISC/DISC-MedLLM",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed DISC-MedLLM is a comprehensive solution that leverages Large Language Models (LLMs) to provide accurate and truthful medical response in end-to-end conversational healthcare services, surpassing existing medical LLMs in both single-turn and multi-turn consultation scenarios."
+            },
+            "score": 3
+        },
+        {
+            "id": "75300b35eee9e5e013400a163cb91b4950e5dcb9",
+            "paperId": "75300b35eee9e5e013400a163cb91b4950e5dcb9",
+            "title": "Schema Graph-Guided Prompt for Multi-Domain Dialogue State Tracking",
+            "abstract": "Tracking dialogue states is an essential topic in task-oriented dialogue systems, which involve filling in the necessary information in pre-defined slots corresponding to a schema. While general pre-trained language models have been shown effective in slot-filling, their performance is limited when applied to specific domains. We propose a graph-based framework that learns domain-specific prompts by incorporating the dialogue schema. Specifically, we embed domain-specific schema encoded by a graph neural network into the pre-trained language model, which allows for relations in the schema to guide the model for better adaptation to the specific domain. Our experiments demonstrate that the proposed graph-based method outperforms other multi-domain DST approaches while using similar or fewer trainable parameters. We also conduct a comprehensive study of schema graph architectures, parameter usage, and module ablation that demonstrate the effectiveness of our model on multi-domain dialogue state tracking.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A graph-based framework that learns domain-specific prompts by incorporating the dialogue schema into the pre-trained language model, which allows for relations in the schema to guide the model for better adaptation to the specific domain."
+            },
+            "score": 3
+        },
+        {
+            "id": "2eb0d00e5675582980245b95a48e40bd8e5f46a0",
+            "paperId": "2eb0d00e5675582980245b95a48e40bd8e5f46a0",
+            "title": "Vision-Language Models Performing Zero-Shot Tasks Exhibit Gender-based Disparities",
+            "abstract": "We explore the extent to which zero-shot vision-language models exhibit gender bias for different vision tasks. Vision models traditionally required task-specific labels for representing concepts, as well as finetuning; zero-shot models like CLIP instead perform tasks with an open-vocabulary, meaning they do not need a fixed set of labels, by using text embeddings to represent concepts. With these capabilities in mind, we ask: Do vision-language models exhibit gender bias when performing zero-shot image classification, object detection and semantic segmentation? We evaluate different vision-language models with multiple datasets across a set of concepts and find (i) all models evaluated show distinct performance differences based on the perceived gender of the person co-occurring with a given concept in the image and that aggregating analyses over all concepts can mask these concerns; (ii) model calibration (i.e. the relationship between accuracy and confidence) also differs distinctly by perceived gender, even when evaluating on similar representations of concepts; and (iii) these observed disparities align with existing gender biases in word embeddings from language models. These findings suggest that, while language greatly expands the capability of vision tasks, it can also contribute to social biases in zero-shot vision settings. Furthermore, biases can further propagate when foundational models like CLIP are used by other models to enable zero-shot capabilities.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work evaluates different vision-language models with multiple datasets across a set of concepts and finds all models evaluated show distinct performance differences based on the perceived gender of the person co-occurring with a given concept in the image."
+            },
+            "score": 3
+        },
+        {
+            "id": "21ae9d85c3c31114abe39acf56f18a117e3e3ead",
+            "paperId": "21ae9d85c3c31114abe39acf56f18a117e3e3ead",
+            "title": "Large Language Models as Minecraft Agents",
+            "abstract": "In this work we examine the use of Large Language Models (LLMs) in the challenging setting of acting as a Minecraft agent. We apply and evaluate LLMs in the builder and architect settings, introduce clarification questions and examining the challenges and opportunities for improvement. In addition, we present a platform for online interaction with the agents and an evaluation against previous works.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work applies and evaluates LLMs in the builder and architect settings, introduces clarification questions and examines the challenges and opportunities for improvement, and presents a platform for online interaction with the agents."
+            },
+            "score": 3
+        },
+        {
+            "id": "2522410b1cac0c14fa656a0aaeaff08bacb358a9",
+            "paperId": "2522410b1cac0c14fa656a0aaeaff08bacb358a9",
+            "title": "InterroLang: Exploring NLP Models and Datasets through Dialogue-based Explanations",
+            "abstract": "While recently developed NLP explainability methods let us open the black box in various ways (Madsen et al., 2022), a missing ingredient in this endeavor is an interactive tool offering a conversational interface. Such a dialogue system can help users explore datasets and models with explanations in a contextualized manner, e.g. via clarification or follow-up questions, and through a natural language interface. We adapt the conversational explanation framework TalkToModel (Slack et al., 2022) to the NLP domain, add new NLP-specific operations such as free-text rationalization, and illustrate its generalizability on three NLP tasks (dialogue act classification, question answering, hate speech detection). To recognize user queries for explanations, we evaluate fine-tuned and few-shot prompting models and implement a novel Adapter-based approach. We then conduct two user studies on (1) the perceived correctness and helpfulness of the dialogues, and (2) the simulatability, i.e. how objectively helpful dialogical explanations are for humans in figuring out the model's predicted label when it's not shown. We found rationalization and feature attribution were helpful in explaining the model behavior. Moreover, users could more reliably predict the model outcome based on an explanation dialogue rather than one-off explanations.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work adapts the conversational explanation framework TalkToModel to the NLP domain, adds new NLP-specific operations such as free-text rationalization and feature attribution, and illustrates its generalizability on three NLP tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "1c24b3fe71e223d380b3bc806e4f02d80539d5f3",
+            "paperId": "1c24b3fe71e223d380b3bc806e4f02d80539d5f3",
+            "title": "Jointly Improving Parsing and Perception for Natural Language Commands through Human-Robot Dialog",
+            "abstract": "In this work, we present methods for using human-robot dialog to improve language understanding for a mobile robot agent. The agent parses natural language to underlying semantic meanings and uses robotic sensors to create multi-modal models of perceptual concepts like red and heavy . The agent can be used for showing navigation routes, delivering objects to people, and relocating objects from one location to another. We use dialog clari\ufb01cation questions both to understand commands and to generate additional parsing training data. The agent employs opportunistic active learning to select questions about how words relate to objects, improving its understanding of perceptual concepts. We evaluated this agent on Amazon Mechanical Turk. After training on data induced from conversations, the agent reduced the number of dialog questions it asked while receiving higher usability ratings. Additionally, we demonstrated the agent on a robotic platform, where it learned new perceptual concepts on the \ufb02y while completing a real-world task.",
+            "year": 2020,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Methods for using human-robot dialog to improve language understanding for a mobile robot agent that parses natural language to underlying semantic meanings and uses robotic sensors to create multi-modal models of perceptual concepts like red and heavy are presented."
+            },
+            "score": 3
+        },
+        {
+            "id": "53871ac59c687d312dfdd89f0dde82f79c5faf76",
+            "paperId": "53871ac59c687d312dfdd89f0dde82f79c5faf76",
+            "title": "PAIGE: Personalized Adaptive Interactions Graph Encoder for Query Rewriting in Dialogue Systems",
+            "abstract": "Unexpected responses or repeated clarification questions from conversational agents detract from the users\u2019 experience with technology meant to streamline their daily tasks. To reduce these frictions, Query Rewriting ( QR ) techniques replace transcripts of faulty queries with alternatives that lead to responses that satisfy the users\u2019 needs. Despite their successes, existing QR approaches are limited in their ability to fix queries that require considering users\u2019 personal preferences. We improve QR by proposing P ersonalized A daptive I nteractions G raph E ncoder (PAIGE). PAIGE is the first QR architecture that jointly models user\u2019s affinities and query semantics end-to-end. The core idea is to represent previous user-agent interactions and world knowledge in a structured form \u2014 a heterogeneous graph \u2014 and apply message passing to propagate latent representations of users\u2019 affinities to refine utterance embeddings. Using these embeddings, PAIGE can potentially provide different rewrites given the same query for users with different preferences. Our model, trained without any human-annotated data, improves the rewrite retrieval precision of state-of-the-art baselines by 12.5\u201317.5% while having nearly ten times fewer parameters.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PAIGE is the first QR architecture that jointly models user\u2019s affinities and query semantics end-to-end and improves the rewrite retrieval precision of state-of-the-art baselines by 12.5\u201317.5% while having nearly ten times fewer parameters."
+            },
+            "score": 3
+        },
+        {
+            "id": "2957bdd2bce3124f84935277231c2867a9a4ef4e",
+            "paperId": "2957bdd2bce3124f84935277231c2867a9a4ef4e",
+            "title": "Speaker Information Can Guide Models to Better Inductive Biases: A Case Study On Predicting Code-Switching",
+            "abstract": "Natural language processing (NLP) models trained on people-generated data can be unreliable because, without any constraints, they can learn from spurious correlations that are not relevant to the task. We hypothesize that enriching models with speaker information in a controlled, educated way can guide them to pick up on relevant inductive biases. For the speaker-driven task of predicting code-switching points in English\u2013Spanish bilingual dialogues, we show that adding sociolinguistically-grounded speaker features as prepended prompts significantly improves accuracy. We find that by adding influential phrases to the input, speaker-informed models learn useful and explainable linguistic information. To our knowledge, we are the first to incorporate speaker characteristics in a neural model for code-switching, and more generally, take a step towards developing transparent, personalized models that use speaker information in a controlled way.",
+            "year": 2022,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "To the knowledge, this work is the first to incorporate speaker characteristics in a neural model for code-switching, and more generally, takes a step towards developing transparent, personalized models that use speaker information in a controlled way."
+            },
+            "score": 3
+        },
+        {
+            "id": "e9a171cdb24f6ad6b7e1ae0b233181bdb3aeca55",
+            "paperId": "e9a171cdb24f6ad6b7e1ae0b233181bdb3aeca55",
+            "title": "Span-Selective Linear Attention Transformers for Effective and Robust Schema-Guided Dialogue State Tracking",
+            "abstract": "In schema-guided dialogue state tracking models estimate the current state of a conversation using natural language descriptions of the service schema for generalization to unseen services. Prior generative approaches which decode slot values sequentially do not generalize well to variations in schema, while discriminative approaches separately encode history and schema and fail to account for inter-slot and intent-slot dependencies. We introduce SPLAT, a novel architecture which achieves better generalization and efficiency than prior approaches by constraining outputs to a limited prediction space. At the same time, our model allows for rich attention among descriptions and history while keeping computation costs constrained by incorporating linear-time attention. We demonstrate the effectiveness of our model on the Schema-Guided Dialogue (SGD) and MultiWOZ datasets. Our approach significantly improves upon existing models achieving 85.3 JGA on the SGD dataset. Further, we show increased robustness on the SGD-X benchmark: our model outperforms the more than 30x larger D3ST-XXL model by 5.0 points.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 2
+        },
+        {
+            "id": "fa3e3507111d3ecfc37b68598858d697efade090",
+            "paperId": "fa3e3507111d3ecfc37b68598858d697efade090",
+            "title": "Weakly Supervised Temporal Sentence Grounding with Uncertainty-Guided Self-training",
+            "abstract": "The task of weakly supervised temporal sentence grounding aims at finding the corresponding temporal moments of a language description in the video, given video-language correspondence only at video-level. Most existing works select mismatched video-language pairs as negative samples and train the model to generate better positive proposals that are distinct from the negative ones. However, due to the complex temporal structure of videos, proposals distinct from the negative ones may correspond to several video segments but not necessarily the correct ground truth. To alleviate this problem, we propose an uncertainty-guided self-training technique to provide extra self-supervision signal to guide the weakly-supervised learning. The self-training process is based on teacher-student mutual learning with weak-strong augmentation, which enables the teacher network to generate relatively more reliable outputs compared to the student network, so that the student network can learn from the teacher's output. Since directly applying existing self-training methods in this task easily causes error accumulation, we specifically design two techniques in our selftraining method: (1) we construct a Bayesian teacher network, leveraging its uncertainty as a weight to suppress the noisy teacher supervisory signals; (2) we leverage the cycle consistency brought by temporal data augmentation to perform mutual learning between the two networks. Experiments demonstrate our method's superiority on Charades-STA and ActivityNet Captions datasets. We also show in the experiment that our self-training method can be applied to improve the performance of multiple backbone methods.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work designs a Bayesian teacher network, leveraging its uncertainty as a weight to suppress the noisy teacher supervisory signals, and leverages the cycle consistency brought by temporal data augmentation to perform mutual learning between the two networks."
+            },
+            "score": 2
+        },
+        {
+            "id": "59443ee80457ab6f9fab069d7ba24ebae624b64d",
+            "paperId": "59443ee80457ab6f9fab069d7ba24ebae624b64d",
+            "title": "Building Dialogue Understanding Models for Low-resource Language Indonesian from Scratch",
+            "abstract": "Using off-the-shelf resources from resource-rich languages to transfer knowledge to low-resource languages has received a lot of attention. The requirements of enabling the model to achieve the reliable performance, including the scale of required annotated data and the effective framework, are not well guided. To address the first question, we empirically investigate the cost-effectiveness of several methods for training intent classification and slot-filling models from scratch in Indonesia (ID) using English data. Confronting the second challenge, we propose a Bi-Confidence-Frequency Cross-Lingual transfer framework (BiCF), which consists of \u201cBiCF Mixing\u201d, \u201cLatent Space Refinement\u201d and \u201cJoint Decoder\u201d, respectively, to overcome the lack of low-resource language dialogue data. BiCF Mixing based on the word-level alignment strategy generates code-mixed data by utilizing the importance-frequency and translating-confidence. Moreover, Latent Space Refinement trains a new dialogue understanding model using code-mixed data and word embedding models. Joint Decoder based on Bidirectional LSTM (BiLSTM) and Conditional Random Field (CRF) is used to obtain experimental results of intent classification and slot-filling. We also release a large-scale fine-labeled Indonesia dialogue dataset (ID-WOZ1) and ID-BERT for experiments. BiCF achieves 93.56% and 85.17% (F1 score) on intent classification and slot filling, respectively. Extensive experiments demonstrate that our framework performs reliably and cost-efficiently on different scales of manually annotated Indonesian data.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Bi-Confidence-Frequency Cross-Lingual transfer framework (BiCF) is proposed, which consists of \u201cBiCF Mixing\u201d, \u201cLatent Space Refinement\u201d and \u201cJoint Decoder\u2019, respectively, to overcome the lack of low-resource language dialogue data and performs reliably and cost-efficiently on different scales of manually annotated Indonesian data."
+            },
+            "score": 2
+        },
+        {
+            "id": "a08086808517c1f1274a0df592cab1528797cc79",
+            "paperId": "a08086808517c1f1274a0df592cab1528797cc79",
+            "title": "Large Language Models Meet Harry Potter: A Bilingual Dataset for Aligning Dialogue Agents with Characters",
+            "abstract": "In recent years, Dialogue-style Large Language Models (LLMs) such as ChatGPT and GPT4 have demonstrated immense potential in constructing open-domain dialogue agents. However, aligning these agents with specific characters or individuals remains a considerable challenge due to the complexities of character representation and the lack of comprehensive annotations. In this paper, we introduce the Harry Potter Dialogue (HPD) dataset, designed to advance the study of dialogue agents and character alignment. The dataset encompasses all dialogue sessions (in both English and Chinese) from the Harry Potter series and is annotated with vital background information, including dialogue scenes, speakers, character relationships, and attributes. These extensive annotations may empower LLMs to unlock character-driven dialogue capabilities. Furthermore, it can serve as a universal benchmark for evaluating how well can a LLM aligning with a specific character. We benchmark LLMs on HPD using both fine-tuning and in-context learning settings. Evaluation results reveal that although there is substantial room for improvement in generating high-quality, character-aligned responses, the proposed dataset is valuable in guiding models toward responses that better align with the character of Harry Potter.",
+            "year": 2022,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Harry Potter Dialogue (HPD) dataset is introduced, designed to advance the study of dialogue agents and character alignment and can serve as a universal benchmark for evaluating how well can a LLM aligning with a specific character."
+            },
+            "score": 2
+        },
+        {
+            "id": "4677d86972e7ffcd0ab9a02fa3ca510e51e400e9",
+            "paperId": "4677d86972e7ffcd0ab9a02fa3ca510e51e400e9",
+            "title": "ASR error detection using recurrent neural network language model and complementary ASR",
+            "abstract": "Detecting automatic speech recognition (ASR) errors can play an important role for effective human-computer spoken dialogue system, as recognition errors can hinder accurate system understanding of user intents. Our goal is to locate errors in an utterance so that the dialogue manager can pose appropriate clarification questions to the users. We propose two approaches to improve ASR error detection: (1) using recurrent neural network language models to capture long-distance word context within and across previous utterances; (2) using a complementary ASR system. The intuition is that when two complementary ASR systems disagree on a region in an utterance, this region is most likely an error. We train a neural network predictor of errors using a variety of features. We performed experiments on both English and Iraqi Arabic ASR and observed significant improvement in error detection using the proposed methods.",
+            "year": 2014,
+            "citationCount": 63,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes two approaches to improve ASR error detection: using recurrent neural network language models to capture long-distance word context within and across previous utterances, and using a complementary ASR system to train a neural network predictor of errors using a variety of features."
+            },
+            "score": 2
+        },
+        {
+            "id": "9353520f5d45ba8831afaa99110f454903cbbc2f",
+            "paperId": "9353520f5d45ba8831afaa99110f454903cbbc2f",
+            "title": "How to disagree well: Investigating the dispute tactics used on Wikipedia",
+            "abstract": "Disagreements are frequently studied from the perspective of either detecting toxicity or analysing argument structure. We propose a framework of dispute tactics which unifies these two perspectives, as well as other dialogue acts which play a role in resolving disputes, such as asking questions and providing clarification. This framework includes a preferential ordering among rebuttal-type tactics, ranging from ad hominem attacks to refuting the central argument. Using this framework, we annotate 213 disagreements (3,865 utterances) from Wikipedia Talk pages. This allows us to investigate research questions around the tactics used in disagreements; for instance, we provide empirical validation of the approach to disagreement recommended by Wikipedia. We develop models for multilabel prediction of dispute tactics in an utterance, achieving the best performance with a transformer-based label powerset model. Adding an auxiliary task to incorporate the ordering of rebuttal tactics further yields a statistically significant increase. Finally, we show that these annotations can be used to provide useful additional signals to improve performance on the task of predicting escalation.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A framework of dispute tactics which unifies these two perspectives, as well as other dialogue acts which play a role in resolving disputes, are proposed, including a preferential ordering among rebuttal-type tactics, ranging from ad hominem attacks to refuting the central argument."
+            },
+            "score": 2
+        },
+        {
+            "id": "37aa27d65ef60629522619960b6c922705c17783",
+            "paperId": "37aa27d65ef60629522619960b6c922705c17783",
+            "title": "Exploring the Potential of Large Language Models in Generating Code-Tracing Questions for Introductory Programming Courses",
+            "abstract": "In this paper, we explore the application of large language models (LLMs) for generating code-tracing questions in introductory programming courses. We designed targeted prompts for GPT4, guiding it to generate code-tracing questions based on code snippets and descriptions. We established a set of human evaluation metrics to assess the quality of questions produced by the model compared to those created by human experts. Our analysis provides insights into the capabilities and potential of LLMs in generating diverse code-tracing questions. Additionally, we present a unique dataset of human and LLM-generated tracing questions, serving as a valuable resource for both the education and NLP research communities. This work contributes to the ongoing dialogue on the potential uses of LLMs in educational settings.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work designed targeted prompts for GPT4, guiding it to generate code-tracing questions based on code snippets and descriptions, and established a set of human evaluation metrics to assess the quality of questions produced by the model compared to those created by human experts."
+            },
+            "score": 2
+        },
+        {
+            "id": "3309b6140f84e258e9589d6b16872f27029290ec",
+            "paperId": "3309b6140f84e258e9589d6b16872f27029290ec",
+            "title": "Re: growth - a spatial agitation",
+            "abstract": "This paper discusses an urban design proposal that investigates how interventions can activate residual space through a spatial form of agitation. Agitation is discussed in relation to architecture and spatial practices, and it is proposed that agitation can occur not only through people, in the role as agitators, but also through inanimate space, artefacts, networks of people, spaces and things. Residual spaces are defined as spaces of obsolescence; unproductive, dysfunctional, urban territories that do not any longer meet conventional, aesthetic and economic expectations. It is these spaces that require agitation in order to be highlighted, and to provoke the public and local authorities into considering alternative forms of redevelopment and occupation. The illustrated proposal, re: growth, is an installation involving a performative spatiotemporal event at a residual site in the City of Wellington, New Zealand. The ensuing agitation, it is proposed, will grow awareness about how the site can grow back into \u2018existence\u2019, how and in what form it can be folded back into urban life. In that way the design of the space performs a subtle form of agitation, politically, physically and emotionally. Re: growth a spatial agitation Jeffrey Inaba and Mark Wigley in a recent issue of Volume, both argue that architecture has lost its potential role for agitation and describe the current discourse as suffering from a \u2018profound agitation deficit\u2019. Agitation, they say, is needed to provoke dissent over spatial issues and to generate discussion, debate and engagement amongst the professionals, clients and the public. We are interested in how an intervention can activate residual space through a spatial form of agitation. We have defined residual spaces as spaces of obsolescence; unproductive, dysfunctional, urban territories that do not any longer meet conventional, aesthetic and economic expectations. The spatial design / art proposal described and illustrated in this paper responds to the conditions of such a residual space located within the City of Wellington, New Zealand. It addresses in particular how the public can be made aware of such unused and forgotten spaces. The aim of the proposal is to provoke people to think about alternative urban redevelopment and occupation possibilities, by engaging them in the dialogue of such renewal practices. The proposal demonstrates an application of performance based design agitation strategies that acknowledge and intervene with the social, economic and political systems that have created such residual spaces. Agitation leads to action Inaba distinguishes three forms of agitation when translated into the practice of architecture, \u201ca physical technique, an emotion, and a form of politics\u201d. Both Inaba and Wigley observe that the current culture of architectural debate is impoverished, and that Re: growth a spatial agitation Proceedings of the Conference held at the Occupation: Negotiations with University of Brighton 2 to 4 July 2009 Constructed Space 2 there is little lively disagreement or challenging of established values. They suggest that this might be due to a growing suspicion about agitation, that when negatively applied it means that someone is dissenting with the establishment, with a political authority. Therefore they are regarded as disturbers, no more than dissenting trouble-makers and naysayers. More so, Wigley actually identifies the role of the architect as the one that can calm and handle the turbulent confusion of forces, from private clients to \u201cthe cauldron of the technical, legal, social, economic and psychological factors impacting a public project\u201d in order for projects to be designed and built. He suggests that the architect has been assigned a calming, ordering role in order to find a process through this agitated state associated with the process of building, as opposed to the role of questioning and instigating debate. But it is really this cauldron of confusion, as Wigley calls it, consisting of a network of stakeholders and the forces of the market logic that requires careful attention and a good degree of agitation. It is exactly within that realm where public projects, their spaces and forms of occupation are determined, come into being. It is the realm where a good degree of dialogue should occur. Too often the processes involved in designing and managing public space, is characterised by a lack of transparency and guided by a path of least resistance by avoiding potential difficulties, debate, and political confrontations. In recent modern history, agitation came to prominence through its use during postrevolutionary Soviet Union as Agitprop. This was subsequently taken up and practiced by communist and socialist political systems of states in Eastern Europe such as in the former GDR, the socialist based German Democratic Republic. Agitation and Propaganda were the two main mechanisms through which the key ideas of Eastern Germany\u2019s political leadership were communicated to the masses. While Propaganda provided the definitions of the key ideas, Agitation disseminated and clarified the ideas on a community level. This was done by official party members that were referred to as \u2018agitators\u2019. Agitation, and agitators, regarded in this way, perform and act out their role to persuade the individual, and community, thereby leading to action by others. What if such an agitator is a spatial intervention, a spatial experience, instead of a person? This is a central question this paper explores. We are putting forward that agitation in our design proposal is not only a person, but that it is part spatial experience, part physical form, part emotion, part network of stakeholders and systems. Event and Performativity It is useful, in this case, to comprehend space as an \u2018event\u2019, a term developed by Bernard Tschumi, and which aligns architecture with people\u2019s actions in space. He identifies a disjunction between the form of space and use of space, which he seeks to transcend through his notion of the event. He describes the form of space as ideal space, a conceptual cognitive aspect of space that is in disjunction with real, inhabited or practiced space. Space as a concept therefore becomes a live, site-specific place through the inhabitation of its users. The actions are based on social and cultural spatial practices, which are about \u201cthe everyday social/spatial patterns of people in particular places\u201d. These practices describe habitation patterns based on our customs and routines. By Re: growth a spatial agitation Proceedings of the Conference held at the Occupation: Negotiations with University of Brighton 2 to 4 July 2009 Constructed Space 3 acting out these practices, the occupant of space is making the space a specific place. This is a continuous event of locating through performative acts. This idea frames spatial experience as one that is informed by past experiences, current interests and values, habitual behaviour and actual sensory perception. To conceive of spatial design as event, can emphasise a visitor\u2019s role in interpreting space or displayed work such as in our proposal described shortly, and the inherent uncertainty of meaning that is created in this process. A visitor\u2019s role then is performative by emphasising their presence, by them being there. The performance paradigm however also regards cultural artefacts as performative. They are active, rather than descriptive, and this paradigm therefore expands into inanimate places and things which are, and I quote from the recent publication Performance Design edited by Dorita Hannah and Olav Harslof \u201cinextricably bound to performance through notions of embodiment, action and event\u201d. The two notions, event and performativity, help acknowledge the significance of the actions of the network-like involvement of people over time, that constitutes a key part of the process in making a public space. At the same time event and performativity, recognise the role that the inanimate can play for understanding and experiencing a place. These various constituent parts all play a role for agitation, and become agitators themselves. The design proposes an intervention that uses agitation as its strategy, to increase people\u2019s awareness of publicly owned residual spaces that exist in urban environments. It seeks to set into motion actions that involve people and processes, spanning from the general public to the local authority and the media, to begin a dialogue on issues of urban redevelopment. The art / design strategy for this proposal is to provide a deliberately queer, off centre and unconventional spatial experience to prompt contemplation about other ways of occupying urban space and how space can perform. Re: growth At the beginning of this project, several sites were indentified and tested for a potential intervention and ranged from sunny alleyways and unoccupied buildings to various locations within the Wellington Town Belt. The following site, an enclosed bridge / walkway, was eventually chosen for its prominent, public location, a still intact architecture, but significantly too, because of a perceived lack of redevelopment action by the managing council administration. The bridge was originally designed to link the Wellington Town Hall building complex and Convention Centre on the north side of Wakefield Street with a car parking building and a public access way on its south side (fig.1-2). It was built in 1988 in concrete, steel and glass. The bridge has been shut off from public use for several years now due to increasing vandalism and crime during the time when it was accessible. Due to its 1980s aesthetic it is perceived as lacking charm and of having little or no architectural value and it has been unused for so long that it has virtually become invisible to the general public. These conditions make it a difficult and awkward site that doesn\u2019t fit into typical or normal real estate redevelopment",
+            "year": 2009,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "b5341f6e624dec1c069671390b54e02ec85e9a12",
+            "paperId": "b5341f6e624dec1c069671390b54e02ec85e9a12",
+            "title": "Appropriating a Climate Science Discourse About Uncertainty in Online Lessons",
+            "abstract": "In an online lesson on climate change, pairs of students make claims in the context of uncertainties, using graphs from authentic scientific publications designed originally for public use. As students grapple with describing and delimiting sources of uncertainty discerned from these rather sophisticated graphs, they migrate from attributing uncertainty to themselves to climate-related phenomena. The dialogue between students appears to be instrumental in the strengthening of uncertainty-based claims and explanations. Discourse about uncertainty Some of the earliest studies on human experience with uncertainty noted the distinction between internal attributions of uncertainty and external ones (Kahneman & Tversky, 1982). To attribute uncertainty internally to the competence of the self forecloses personal agency to resolve or delimit uncertainties arising from natural phenomena. To attribute uncertainty externally suggests a disposition to make sense of the indeterminacy of events in the world. Science curricula have traditionally downplayed or ignored the essential uncertainty of scientific practice, discouraging those students otherwise disposed to look externally to not bother trying. This inaccurate depiction of science deprives students of agency to formulate and explain claims based on limited and fallible evidence and thereby diminishes incentives to learn science (Lemke, 1990). Content understanding is enhanced with attention to the scientific practices of constructing and critiquing claims (Ford, 2008). For this reason, scientific practices have become a central feature of the Next Generation Science Standards (NGSS Lead States, 2013). The online lessons described here on the topic of climate science are part of a suite of lessons where public concerns intersect with controversies within specific fields of science. Climate change is a collective problem complicated by, and perhaps even limited by, citizens\u2019 abilities to participate in productive conversation about it (Corner, 2012). These lessons provide scaffolded instruction around scientific graphical representations as well as user-friendly simulations so as to facilitate explanations and conversation. Students make claims based on evidence while also reflecting specifically on how certain they are and to which factors they attribute any uncertainty. Analyzing screen captures The students described here participated in a series of online tasks on climate science in a public high school in the northeast of the United States. We recorded their work via computer screen capture, a process that also captured their talk. This paper limits itself to two episodes, as the analysis is ongoing and results are preliminary. The first episode involves a lesson on solar irradiance and the second involves future trends in temperature. In our analysis we transcribe student talk and then search for themes, using methods of interaction analysis (Jordan & Henderson, 1995). Our guiding concern is to determine interactional factors that contribute to the written responses that students provide in these online tasks. Each task sits on a single webpage along which students can scroll and into which they submit a series of responses to prompts. Due to constraints in our study at the time, our data do not include video of the students themselves, only their shared screen. Though this is not ideal, it is still feasible to inspect their interaction via their speech and, at times, their cursor movements. Appropriating an uncertainty-infused discourse These lessons discursively position students as competent agents capable of making claims. They orient students to features of authentic graphical representations by providing some contextual information. This is necessary because interpretation goes beyond merely taking up presented evidence. Interpretation is predicated on ways of seeing and making things see-able distinctive to a given discipline (e.g., \u201chighlighting\u201d, Goodwin, 1994). That is, people have to be taught to see. So, the extent to which students can draw evidence from data depends crucially on how the data are framed for them. Explicitly addressing uncertainty as part of scientific activity raises questions for students as to how to construe uncertainty in relation to themselves. Typical curricular materials rarely elevate or highlight uncertainty as a salient and productive aspect of scientific practice. It is perhaps counterintuitive to dwell on uncertainty when cultivating the making of claims. But concerted reflection CSCL 2017 Proceedings 577 \u00a9 ISLS on the tentative and provisional nature of scientific claims should foster greater confidence in them, not less (Latour, 2004). This is because the means of creating an argument conveys essential information about its strength and durability. The students working on these tasks tend to engage in considerable uncertainty-related talk as they prepare written responses to uncertainty-enriched argumentation prompts. In doing so they \u201cappropriate\u201d (Levrini, Fantini, Tasquier, Pecori, & Levin, 2015) climate science discourse in order to deal with what for them are novel forms of uncertainty. To appropriate a discourse is a matter in part of identifying oneself as a legitimate practitioner and of having the resources available to begin to participate successfully. Uncertainties in the solar irradiance task: General imitation versus waviness In the Solar Activity Task (see Figure 1), students are told they will make arguments based on evidence. They are first prompted to make claims about whether, \u201cBased on the graph, is Earth\u2019s temperature dependent on the level of solar activity?\u201d Since this is an original graph from a scientific publication, let us first note the rich senses of uncertainty embedded in it that the general public would encounter. Both the following year\u2019s temperature and solar activity are highly uncertain based on what we know about the present one, as indicated by the light-colored, erratically-varying lines. This uncertainty in yearly fluctuations is managed somewhat by means of a darker, relatively smooth lines described as the \u201c11 yr average\u201d for each quantity. Based on our knowledge of the 11-year average for a given year, the 11-year average for the next year is comparatively less uncertain. By taming somewhat the fluctuations in quantities in this way, it becomes more feasible to see beyond year-to-year variations so as to inspect trends over decades. The original authors\u2019 intent was to show to the general public that solar activity and temperature run parallel (until about 1960) and then diverge. Figure 1. Cropped Portion of Screenshot of the Solar Activity Webpage for Annie and Betty. The audience for this lesson consists of students rather than the general public. In providing a limited synopsis, the webpage for the lesson explains that, \u201cThe graph shows Earth's air temperature and solar activity (irradiance) from 1880 to 2009. Solar activity includes sunspots, solar flares, and other solar weather events. The light-colored lines show the yearly measurements, and the darker lines show the average of 11 years of temperature or solar irradiance data. Earth's temperature is affected by many different factors\u201d (cropped out of Figure 1). By giving students the task of making claims with only limited additional information, the task frames the interpretation of this authentic scientific graph as an activity students are capable of doing as well as any other public person. And they can presumably do so without having to attend to the layered meanings of some terms (e.g., the unit, W/m2) or deeper reflections on the data processing of measurements (e.g., How the earth comes to have a singular temperature for a given year). Table 1 illustrates the kind of conversation that can transpire with a task of this kind. The left column includes the time elapsed in seconds since the beginning of the episode, to provide information on the duration of turns of speech. In the right column, brackets indicate overlapping speech. The two speakers are Annie and Betty (all names are pseudonyms). In Line 1, Annie reads the question out loud and the two students take some time to think about a response. In Lines 2 and 3, they do not initially agree as to which bullet to select, \u201cyes\u201d or \u201cno.\u201d In Line 3 Annie asks rhetorically whether temperature imitates solar activity, answering her own question negatively. In Line 4, Betty signals disagreement, while nevertheless expressing some new doubt in that it may only imitate it partially. In Lines 5 and 7 Annie contrasts an imitation that is (merely) general in some way with a waviness that shows lack of (authentic) imitation. In Lines 6 and 8 Betty agrees but it is unclear whether this agreement is in regard to the general imitation or to the lack of imitation in waviness. In Lines 7-9 Annie elaborates further, characterizing the waviness in terms of some curve being especially \u201cspikey.\u201d She appears to CSCL 2017 Proceedings 578 \u00a9 ISLS indicate the Total Solar Irradiance Yearly, since it is the most erratic-looking. In Line 10, Betty at first goes back to her initial pick of, \u201cyes,\u201d despite having just agreed to what Annie had just been saying about the waviness. But after a pause, she assents to Annie\u2019s preferred answer. In Line 11 Annie follows up by elaborating on the lack of dependence in terms of not fitting. Later, after Line 11, Annie and Betty wrote, \u201cThe temperature and solar activity do not match in terms of \u201cfitting together\u201d because their graphs are not aligned, the temperature is not dependent on the solar activity.\u201d Betty appears to initially construe imitation in terms of a correspondence between the darker lines up to 1960 (\u201cfor a little bit\u201d). What is uncertain, then, is the permanence of this relation between 11-year running means. But Annie construes imitation in terms of how erratic the light lines are. What is uncertain is how well measures remain stable f",
+            "year": 2017,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "In an online lesson on climate change, pairs of students make claims in the context of uncertainties, using graphs from authentic scientific publications designed originally for public use, to discursively position students as competent agents capable of making claims."
+            },
+            "score": 1
+        },
+        {
+            "id": "ce0762752e5e1ce837b5f23dfbea0dbb29684d91",
+            "paperId": "ce0762752e5e1ce837b5f23dfbea0dbb29684d91",
+            "title": "Exploring transitional justice options for Zimbabwe",
+            "abstract": "Zimbabwe is in dire need of wholesale reform. Gross human rights violations which date back to the pre-colonial period could have been abated in 1980 when the magnanimous policy of national reconciliation promised a new start. The watershed opportunity was, however, lost mainly because no deliberate efforts were made to account for the wrongs of the past in order to start afresh. The result was that Zimbabwe won the independence, but peace remained elusive. This is evidenced in the continued instability, insecurity and uncertainty. The non-retributive pledge had inherent weaknesses; it lacked inclusive participation, hence, no broad ownership. Simply drawing a line between the wounded past and the present, meant burying the past without the prerequisite rituals bent on ensuring non-recurrence. The futility of this blanket amnesty is evident in the sustained legacy of gross human rights abuses and impunity. Political violence has been institutionalised through politicisation of all aspects of life. This research is guided by Lederach\u2019s reconciliation theory which uses Psalms 85:10 to emphasise the importance of commitment in converging the seemingly divergent aspects of truth, peace, justice and mercy into a \u2018meeting place\u2019 called reconciliation. Using a mixed methods approach, this research established that the invariably top-bottom approaches massage the symptoms rather than address the root causes of conflicts. The victims\u2019 agitations for revenge and retribution prompted me to design action research processes aimed at engaging the research participants in interactive activities. The action research component aimed at sensitising participants to the merits of letting go of the burdens of the past, and to use scars as reminders of hope and not victimhood. The issues of forgiveness without apology, compensation or even remorse were contentious. However, through give-and-take concessions, the dialogue intervention yielded invaluable by-products such as maximisation of indigenous knowledge systems. Building on the participants\u2019 input, sustainable healing and reconciliation can be achieved through deliberate truth-recovery, the right to justice, reparation, forgiveness and non-recurrence assurances. The research outcomes show that Zimbabwe urgently needs a \u2018hybrid\u2019 transitional justice framework based on inclusive participation. Inclusivity is critical because politicians are not necessarily experts in peacebuilding. The yet to be implemented National Peace and Reconciliation Commission can be used as a tool to seek public opinion on how to overcome the entrenched \u2018fearology and militarism\u2019 (Oberg 2016) ahead of the watershed 2018 general elections. Uncensored national debates can be used to gather information on the way forward. The multiple merits of Information Communication and Technology should be fully maximised in peacebuilding.",
+            "year": 2017,
+            "citationCount": 2,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "0acbb3f7f4fa0092fbdccb05551ba375f4fc43b5",
+            "paperId": "0acbb3f7f4fa0092fbdccb05551ba375f4fc43b5",
+            "title": "\"Putting Truth and Untruth Together\": The 2012 Zurich James Joyce Foundation Workshop, 6-11 August 2012.",
+            "abstract": "It seems that, sooner or later, all Joycean roads lead to Zurich. Dating back to the Foundation\u2019s establishment, the annual summer workshops held in the city are so well known within the Joyce world that one sometimes suspects it would be impossible to find a seasoned Joycean without at least one workshop story to tell. Numerous reports in this journal over the years have expressed the unique appeal of these week-long gatherings, where participants are invited to speak on the conditions that each presentation remains open to interruption and reading from scripts is discouraged in the strongest terms. These rules make the workshop an exceptionally discursive environment, allowing the attendant scholars to develop ideas in dialogue and resulting in an atmosphere distinct from that of similar events. As the attending scholars of the 2012 workshop entitled \u201cLying: Putting Truth and Untruth Together\u201d gathered at the Foundation for the first night\u2019s welcome dinner, the subject turned, perhaps inevitably, to rumors from the Joyce world (of which no account shall be given here). While the conversation developed and participants tried to sort fact from fiction, questions began to emerge that would be asked again\u2014under more scholarly conditions\u2014later in the week: how does one ascertain what the truth is? How do gossip and rumor, which reside somewhere on the outskirts of truth, function? And how \u201ctruthful\u201d should we expect fiction in general to be? As one scholar put it: \u201cit\u2019s not telling a lie to twist the facts, it\u2019s just . . . telling a story.\u201d After an evening of talk, wine, and Fritz Senn\u2019s famous potato salad, the workshop proper opened the following morning with a discussion of lies and falsehood in Dubliners, A Portrait, and Ulysses, as, first, Senn and then Sabrina Alonso invited us to examine notable extracts. We began with Senn guiding us through several instances of lying in Dubliners, using key passages to establish from the outset the general uncertainty involved in reading Joyce, \u201ca great writer for telling us how little we know in general.\u201d This led to some discussion regarding the nature of truth in Joyce\u2019s works, a topic that arose repeatedly over the week, prompting one participant to observe that \u201cthe most simple statements are often the most dubious.\u201d Moving on to Ulysses, Senn led us in analyzing the deceptions in Molly and Bloom\u2019s marriage, an instance where the reader may believe each is well aware of the other\u2019s tacit deceptions. The next morning, Alonso continued the analysis of Ulysses by focusing on Molly specifically, discussing both her language and actions. Particularly interesting",
+            "year": 2013,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "3052810bd325017125f157c53f59c4b1711e11f3",
+            "paperId": "3052810bd325017125f157c53f59c4b1711e11f3",
+            "title": "Artificial intelligence : methodology, systems, and applications : 8th International Conference, AIMSA'98, Sozopol, Bulgaria, September 21-23, 1998 : proceedings",
+            "abstract": "The gain of failures: Using side-effects of anaphora resolution for term consistency checks.- An agent model for NL dialog interfaces.- Constraint solving in Logic Programming and in Automated Deduction: A comparison.- An extension of SATPLAN for planning with constraints.- Reasoning about generalized intervals.- Formalizing belief reports - The approach and a case study.- Extension calculus and query answering in prioritized default logic.- Study of symmetry in qualitative temporal interval networks.- A blackboard architecture for guiding interactive proofs.- Combining nonmonotonic reasoning and belief revision: A practical approach.- Modelling uncertainty with kripke's semantics.- Using linear temporal logic to model and solve planning problems.- Tailorable interactive agents for scheduling meetings.- Planning diagonalization proofs.- Theories and proofs in fault diagnosis.- Nonmonotonic reasoning under uncertain evidence.- Multicontext systems with importing contexts.- Planning via model checking in determistic domains: Preliminary report.- Acquisition of useful lemma-knowledge in automated reasoning.- Constructing translations between individual vocabularies in multi-agent systems.- Belief reconstruction in cooperative dialogues.- Model theoretic semantics for information integration.- A classification learning algorithm robust to irrelevant features.- Knowledge assimilation and proof restoration through the addition of goals.- Learning multiple predicates.- Modal reasoning and rough set theory.- Overcoming incomplete information in NLP systems - Verb subcategorization.- A framework for inductive learning based on subsumption lattices.- Dynamic learning - An approach to forgetting in ART2 neural networks.- A new approach to linguistic negation of nuanced information in knowledge-based systems.- SAT-based decision procedures for normal modal logics: A theoretical framework.- Version space retraction with instance-based boundary sets.- A new abstract logic programming language and its quantifier elimination method for disjunctive logic programming.- A new approach to learning Bayesian Network classifiers from data: Using observed statistical frequencies.- Abstraction as a form of elaboration tolerance.- System architecture of a distributed expert system for the management of a national data network.- Strategy selection for automated theorem proving.- An agent system for intelligent situation assessment.- Knowledge granularity and action selection.- Towards lifetime maintenance of case base indexes for continual case based reasoning.",
+            "year": 1998,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The gain of failures: Using side-effects of anaphora resolution for term consistency checks and an agent model for NL dialog interfaces."
+            },
+            "score": 1
+        },
+        {
+            "id": "e89fb15145824b5bb71c1963c69ec9eca2bce293",
+            "paperId": "e89fb15145824b5bb71c1963c69ec9eca2bce293",
+            "title": "Multi-tiered external facilitation: the role of feedback loops and tailored interventions in supporting change in a stepped-wedge implementation trial",
+            "abstract": null,
+            "year": 2020,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A mixed methods evaluation of a trial to improve the quality of transient ischemic attack care and found external facilitators used monitoring and dialogue to intervene by facilitating redirection during challenging periods of uncertainty about project direction and feasibility for sites."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

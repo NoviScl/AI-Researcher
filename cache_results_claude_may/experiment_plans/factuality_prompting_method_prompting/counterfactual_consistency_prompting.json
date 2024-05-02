@@ -28,5 +28,1072 @@
             "Explanation": "The initial output makes a reasonable inference that Hypothesis 1 is more likely, but its reasoning overstates what can be concluded from the original observation. The revised output maintains the same conclusion but provides a more precise justification that acknowledges the limitations of what can be inferred from the observation alone. This helps avoid inconsistency with the counterfactual scenario where John hears the vase break before entering."
         },
         "Fallback Plan": "If the Counterfactual Consistency Prompting method does not yield significant improvements over the baselines, consider the following steps:\n1. Analyze the generated counterfactuals to assess their quality and diversity. If the counterfactuals are too similar to the original scenarios or do not introduce meaningful variations, refine the counterfactual generation prompt to encourage more diverse and informative counterfactuals.\n2. Examine the consistency verification step to check if the model is accurately identifying contradictions and inconsistencies. If the model struggles with this step, consider providing more explicit instructions or examples of what constitutes a contradiction.\n3. Evaluate the revised outputs to determine if they effectively resolve the identified inconsistencies. If the revisions are insufficient or introduce new inconsistencies, iterate on the revision prompt to provide clearer guidance on how to revise the output.\n4. If the method still does not show promising results, conduct an error analysis to identify common failure modes and sources of inconsistency. Use these insights to inform the development of alternative prompting strategies or refinements to the existing approach.\n5. Consider exploring variations of the method, such as generating multiple revised outputs and selecting the most consistent one, or incorporating additional prompts for the model to self-assess the consistency of its outputs.\nBy systematically analyzing the limitations of the proposed method and iterating on the approach, the project can still yield valuable insights into the challenges of improving consistency in language model outputs and guide future research directions."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"counterfactual consistency prompting language models\")",
+        "KeywordQuery(\"improving factual consistency language models\")",
+        "KeywordQuery(\"self-consistency language model prompting\")",
+        "KeywordQuery(\"counterfactual reasoning language models\")",
+        "KeywordQuery(\"Counterfactual Consistency Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "paperId": "5f19ae1135a9500940978104ec15a5b8751bc7d2",
+            "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+            "abstract": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Self-consistency leverages the intuition that a complex reasoning problem typically admits multiple different ways of thinking leading to its unique correct answer. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+            "year": 2022,
+            "citationCount": 1396,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting that first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the factual consistency of language model outputs by using counterfactual prompting to identify and resolve contradictions. The paper focuses on improving the reasoning ability of language models on complex tasks by using a self-consistency decoding strategy to sample multiple reasoning paths and select the most consistent answer.\n\nThe project proposal and the paper have different research problems and approaches:\n- The project tackles factual consistency in generated text, while the paper addresses complex reasoning tasks.\n- The project proposes a counterfactual prompting method, while the paper introduces a self-consistency decoding strategy.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "paperId": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in language generation, understanding, and few-shot learning in recent years. An extensive body of work has explored how their performance may be further improved through the tools of prompting, ranging from verification, self-consistency, or intermediate scratchpads. In this paper, we present a complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer. Our findings indicate that this approach significantly enhances mathematical and strategic reasoning across a number of tasks. We also demonstrate that our approach improves the factual validity of generated content, reducing fallacious answers and hallucinations that contemporary models are prone to. Our approach may be directly applied to existing black-box models and uses identical procedure and prompts for all tasks we investigate. Overall, our findings suggest that such\"society of minds\"approach has the potential to significantly advance the capabilities of LLMs and pave the way for further breakthroughs in language generation and understanding.",
+            "year": 2023,
+            "citationCount": 206,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer is presented, indicating that this approach significantly enhances mathematical and strategic reasoning across a number of tasks."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the factual consistency of language model outputs by using counterfactual consistency prompting, which involves generating counterfactual scenarios, verifying consistency, and revising the output to resolve inconsistencies.\n\nThe paper abstract proposes a different approach to improve factuality and reasoning in language models by having multiple model instances debate and discuss their responses over multiple rounds to arrive at a final answer.\n\nWhile both works aim to improve the factual consistency and reasoning capabilities of language models, they propose different methods. The project focuses on counterfactual prompting within a single model, while the paper explores a multi-agent debate approach using multiple model instances.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "261549439aebdda72b648ecc462448fd24857ac1",
+            "paperId": "261549439aebdda72b648ecc462448fd24857ac1",
+            "title": "Progressive-Hint Prompting Improves Reasoning in Large Language Models",
+            "abstract": "The performance of Large Language Models (LLMs) in reasoning tasks depends heavily on prompt design, with Chain-of-Thought (CoT) and self-consistency being critical methods that enhance this ability. However, these methods do not fully exploit the answers generated by the LLM to guide subsequent responses. This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers. PHP is orthogonal to CoT and self-consistency, making it easy to combine with state-of-the-art techniques to further improve performance. We conducted extensive and comprehensive experiments on seven benchmarks. The results show that PHP significantly improves accuracy while remaining highly efficient. For instance, with text-davinci-003, we observed a 4.2% improvement on GSM8K with greedy decoding compared to Complex CoT, and a 46.17% reduction in sample paths with self-consistency. With GPT-4 and PHP, we achieve state-of-the-art performances on SVAMP (89.1% ->91.9%), GSM8K (92% ->95.5%), AQuA (76.4% ->79.9%) and MATH (50.3% ->53.9%).",
+            "year": 2023,
+            "citationCount": 64,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factual consistency of language model outputs by using counterfactual prompting to identify and resolve contradictions. The paper proposes a progressive-hint prompting method that uses previously generated answers as hints to guide the model towards the correct answer in reasoning tasks.\n\nThe project focuses on improving factual consistency, while the paper focuses on improving reasoning performance. The project uses counterfactual prompting, while the paper uses progressive-hint prompting.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "5f66d1a667eec13b5d337c3fc5619bcef95092bd",
+            "paperId": "5f66d1a667eec13b5d337c3fc5619bcef95092bd",
+            "title": "Universal Self-Consistency for Large Language Model Generation",
+            "abstract": "Self-consistency with chain-of-thought prompting (CoT) has demonstrated remarkable performance gains on various challenging tasks, by utilizing multiple reasoning paths sampled from large language models (LLMs). However, self-consistency relies on the answer extraction process to aggregate multiple solutions, which is not applicable to free-form answers. In this work, we propose Universal Self-Consistency (USC), which leverages LLMs themselves to select the most consistent answer among multiple candidates. We evaluate USC on a variety of benchmarks, including mathematical reasoning, code generation, long-context summarization, and open-ended question answering. On open-ended generation tasks where the original self-consistency method is not applicable, USC effectively utilizes multiple samples and improves the performance. For mathematical reasoning, USC matches the standard self-consistency performance without requiring the answer formats to be similar. Finally, without access to execution results, USC also matches the execution-based voting performance on code generation.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Universal Self-Consistency (USC), which leverages LLMs themselves to select the most consistent answer among multiple candidates and effectively utilizes multiple samples and improves the performance on open-ended generation tasks where the original self-consistency method is not applicable."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factual consistency of language model outputs by prompting the model to consider counterfactual scenarios and revise its output. The approach is Counterfactual Consistency Prompting, which involves generating initial output, counterfactual scenarios, verifying consistency, and revising the output.\n\nThe research problem in the paper is improving the consistency of language model outputs for open-ended generation tasks. The approach is Universal Self-Consistency (USC), which uses the language model itself to select the most consistent answer among multiple candidates.\n\nWhile both works aim to improve the consistency of language model outputs, the proposal focuses specifically on factual consistency and uses counterfactual prompting, while the paper addresses consistency in open-ended generation and uses the model to select the most consistent answer. The methods are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "08a3e2c94707926fe543df69bdf6c3a9b71aab52",
+            "paperId": "08a3e2c94707926fe543df69bdf6c3a9b71aab52",
+            "title": "Ask One More Time: Self-Agreement Improves Reasoning of Language Models in (Almost) All Scenarios",
+            "abstract": "Although chain-of-thought (CoT) prompting combined with language models has achieved encouraging results on complex reasoning tasks, the naive greedy decoding used in CoT prompting usually causes the repetitiveness and local optimality. To address this shortcoming, ensemble-optimization tries to obtain multiple reasoning paths to get the final answer assembly. However, current ensemble-optimization methods either simply employ rule-based post-processing such as \\textit{self-consistency}, or train an additional model based on several task-related human annotations to select the best one among multiple reasoning paths, yet fail to generalize to realistic settings where the type of input questions is unknown or the answer format of reasoning paths is unknown. To avoid their limitations, we propose \\textbf{Self-Agreement}, a generalizable ensemble-optimization method applying in almost all scenarios where the type of input questions and the answer format of reasoning paths may be known or unknown. Self-agreement firstly samples from language model's decoder to generate a \\textit{diverse} set of reasoning paths, and subsequently prompts the language model \\textit{one more time} to determine the optimal answer by selecting the most \\textit{agreed} answer among the sampled reasoning paths. Self-agreement simultaneously achieves remarkable performance on six public reasoning benchmarks and superior generalization capabilities.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-agreement is proposed, a generalizable ensemble-optimization method applying in almost all scenarios where the type of input questions and the answer format of reasoning paths may be known or unknown, and achieves remarkable performance on six public reasoning benchmarks and superior generalization capabilities."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factual consistency of language model outputs by prompting the model to consider counterfactual scenarios and revise its output. The approach involves generating an initial output, creating counterfactuals, verifying consistency, and revising the output.\n\nThe research problem in the paper is improving the reasoning ability of language models in various scenarios. The approach involves generating multiple reasoning paths through sampling, then prompting the model to select the most agreed-upon answer among the paths.\n\nWhile both works aim to improve language model performance, the proposal focuses specifically on factual consistency and uses counterfactual prompting, while the paper addresses general reasoning ability and employs a self-agreement method based on sampling and answer selection.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "894df6e5d0f34014e6a67b2d5f43e2bde91f63e3",
+            "paperId": "894df6e5d0f34014e6a67b2d5f43e2bde91f63e3",
+            "title": "Faithful Explanations of Black-box NLP Models Using LLM-generated Counterfactuals",
+            "abstract": "Causal explanations of the predictions of NLP systems are essential to ensure safety and establish trust. Yet, existing methods often fall short of explaining model predictions effectively or efficiently and are often model-specific. In this paper, we address model-agnostic explanations, proposing two approaches for counterfactual (CF) approximation. The first approach is CF generation, where a large language model (LLM) is prompted to change a specific text concept while keeping confounding concepts unchanged. While this approach is demonstrated to be very effective, applying LLM at inference-time is costly. We hence present a second approach based on matching, and propose a method that is guided by an LLM at training-time and learns a dedicated embedding space. This space is faithful to a given causal graph and effectively serves to identify matches that approximate CFs. After showing theoretically that approximating CFs is required in order to construct faithful explanations, we benchmark our approaches and explain several models, including LLMs with billions of parameters. Our empirical results demonstrate the excellent performance of CF generation models as model-agnostic explainers. Moreover, our matching approach, which requires far less test-time resources, also provides effective explanations, surpassing many baselines. We also find that Top-K techniques universally improve every tested method. Finally, we showcase the potential of LLMs in constructing new benchmarks for model explanation and subsequently validate our conclusions. Our work illuminates new pathways for efficient and accurate approaches to interpreting NLP systems.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper addresses model-agnostic explanations, proposing two approaches for counterfactual (CF) approximation and presents a method that is guided by an LLM at training-time and learns a dedicated embedding space that effectively serves to identify matches that approximate CFs."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factual consistency of language model outputs by using counterfactual prompting to identify and resolve contradictions. The paper focuses on generating faithful explanations for black-box NLP models using counterfactual examples.\n\nWhile both works involve counterfactuals, the project proposal uses them to improve the consistency of generated text, while the paper uses them to explain model predictions. The research problems and high-level approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "c3287da21ddf6f6c87b7b328996c1cf3fec92942",
+            "paperId": "c3287da21ddf6f6c87b7b328996c1cf3fec92942",
+            "title": "Prompting Large Language Models for Counterfactual Generation: An Empirical Study",
+            "abstract": "Large language models (LLMs) have made remarkable progress in a wide range of natural language understanding and generation tasks. However, their ability to generate counterfactuals has not been examined systematically. To bridge this gap, we present a comprehensive evaluation framework on various types of NLU tasks, which covers all key factors in determining LLMs' capability of generating counterfactuals. Based on this framework, we 1) investigate the strengths and weaknesses of LLMs as the counterfactual generator, and 2) disclose the factors that affect LLMs when generating counterfactuals, including both the intrinsic properties of LLMs and prompt designing. The results show that, though LLMs are promising in most cases, they face challenges in complex tasks like RE since they are bounded by task-specific performance, entity constraints, and inherent selection bias. We also find that alignment techniques, e.g., instruction-tuning and reinforcement learning from human feedback, may potentially enhance the counterfactual generation ability of LLMs. On the contrary, simply increasing the parameter size does not yield the desired improvements. Besides, from the perspective of prompt designing, task guidelines unsurprisingly play an important role. However, the chain-of-thought approach does not always help due to inconsistency issues.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive evaluation framework on various types of NLU tasks is presented, which covers all key factors in determining LLMs' capability of generating counterfactuals and finds that alignment techniques, e.g., instruction-tuning and reinforcement learning from human feedback, may potentially enhance the counterfactual generation ability of LLMs."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve the factual consistency of language model outputs by prompting the model to generate counterfactual scenarios and verify the consistency of its outputs. The paper, on the other hand, focuses on evaluating the ability of large language models to generate counterfactuals and identifying factors that affect their performance on this task.\n\nWhile both works involve counterfactual generation, the project proposal uses counterfactuals as a means to improve factual consistency in generated outputs, whereas the paper studies the counterfactual generation capability of language models as an end in itself. The project proposal also introduces a novel prompting method, Counterfactual Consistency Prompting, which is not the focus of the paper.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "paperId": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "title": "Context-faithful Prompting for Large Language Models",
+            "abstract": "Large language models (LLMs) encode parametric knowledge about world facts and have shown remarkable performance in knowledge-driven NLP tasks. However, their reliance on parametric knowledge may cause them to overlook contextual cues, leading to incorrect predictions in context-sensitive NLP tasks (e.g., knowledge acquisition tasks). In this paper, we seek to assess and enhance LLMs' contextual faithfulness in two aspects: knowledge conflict and prediction with abstention. We demonstrate that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies. In particular, we identify opinion-based prompts and counterfactual demonstrations as the most effective methods. Opinion-based prompts reframe the context as a narrator's statement and inquire about the narrator's opinions, while counterfactual demonstrations use instances containing false facts to improve faithfulness in knowledge conflict situations. Neither technique requires additional training. We conduct experiments on three datasets of two standard NLP tasks, machine reading comprehension and relation extraction, and the results demonstrate significant improvement in faithfulness to contexts. Code and data are released at https://github.com/wzhouad/context-faithful-llm.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies, and opinion-based prompts and counterfactual demonstrations are identified as the most effective methods."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve the factual consistency of language model outputs by using counterfactual prompting to identify and resolve contradictions. The paper focuses on improving language models' faithfulness to contextual information by using opinion-based prompts and counterfactual demonstrations.\n\nProject proposal: Improving factual consistency of language model outputs using counterfactual prompting.\nPaper: Improving language models' faithfulness to contextual information using opinion-based prompts and counterfactual demonstrations.\n\nWhile both works involve using counterfactuals, the project proposal uses them to improve factual consistency of the output, while the paper uses them to improve faithfulness to the input context. The goals and techniques are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3d68522abfadfc8ee6b7ec9edaaf91f1b2f38e5e",
+            "paperId": "3d68522abfadfc8ee6b7ec9edaaf91f1b2f38e5e",
+            "title": "Large Language Models Can Be Easily Distracted by Irrelevant Context",
+            "abstract": "Large language models have achieved impressive performance on various natural language processing tasks. However, so far they have been evaluated primarily on benchmarks where all information in the input context is relevant for solving the task. In this work, we investigate the distractibility of large language models, i.e., how the model problem-solving accuracy can be influenced by irrelevant context. In particular, we introduce Grade-School Math with Irrelevant Context (GSM-IC), an arithmetic reasoning dataset with irrelevant information in the problem description. We use this benchmark to measure the distractibility of cutting-edge prompting techniques for large language models, and find that the model performance is dramatically decreased when irrelevant information is included. We also identify several approaches for mitigating this deficiency, such as decoding with self-consistency and adding to the prompt an instruction that tells the language model to ignore the irrelevant information.",
+            "year": 2023,
+            "citationCount": 212,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the distractibility of large language models, i.e., how the model problem-solving accuracy can be influenced by irrelevant context, and introduces Grade-School Math with Irrelevant Context (GSM-IC), an arithmetic reasoning dataset with irrelevant information in the problem description."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factual consistency of language model outputs by prompting the model to consider counterfactual scenarios and revise its output. The approach is a novel prompting method called Counterfactual Consistency Prompting.\n\nThe research problem in the paper is investigating the distractibility of large language models when irrelevant information is included in the input context. The approach is introducing a new dataset, Grade-School Math with Irrelevant Context (GSM-IC), to measure the distractibility and identify mitigation techniques.\n\nThe proposal focuses on improving factual consistency, while the paper studies the impact of irrelevant context on problem-solving accuracy. The methods are also different: the proposal uses a novel prompting technique, while the paper introduces a new dataset and evaluates existing techniques.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "dee83ee947ea95f54b40a3c101552b4eb447bbf6",
+            "paperId": "dee83ee947ea95f54b40a3c101552b4eb447bbf6",
+            "title": "Self-Consistency of Large Language Models under Ambiguity",
+            "abstract": "Large language models (LLMs) that do not give consistent answers across contexts are problematic when used for tasks with expectations of consistency\u2013e.g. question-answering, explanations, etc. Our work presents an evaluation benchmark for self-consistency in cases of under-specification where two or more answers can be correct. We conduct a series of behavioral experiments on the OpenAI model suite using an ambiguous integer sequence completion task. We find that average consistency ranges from 67% to 82%, far higher than would be predicted if a model\u2019s consistency was random, and increases as model capability improves. Furthermore, we show that models tend to maintain self-consistency across a series of robustness checks, including prompting speaker changes and sequence length changes. These results suggest that self-consistency arises as an emergent capability without specifically training for it. Despite this, we find that models are uncalibrated when judging their own consistency, with models displaying both over- and under-confidence. We also propose a nonparametric test for determining from token output distribution whether a model assigns non-trivial probability to alternative answers. Using this test, we find that despite increases in self-consistency, models usually place significant weight on alternative, inconsistent answers. This distribution of probability mass provides evidence that even highly self-consistent models internally compute multiple possible responses.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents an evaluation benchmark for self-consistency in cases of under-specification where two or more answers can be correct, and proposes a nonparametric test for determining from token output distribution whether a model assigns non-trivial probability to alternative answers."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the factual consistency of language model outputs by prompting the model to consider counterfactual scenarios and revise its output. The approach involves generating an initial output, creating counterfactuals, verifying consistency, and revising the output to resolve inconsistencies.\n\nThe research problem in the paper is evaluating the self-consistency of language models under ambiguity, where multiple answers can be correct. The approach involves conducting behavioral experiments on an ambiguous integer sequence completion task and analyzing the models' consistency across various robustness checks.\n\nWhile both works focus on consistency in language model outputs, the proposal aims to improve factual consistency by modifying the prompting approach, whereas the paper evaluates self-consistency under ambiguity without proposing a method to improve it. The research problems and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "f727f928e7e179307d8d4a1da2387393f2bd7915",
+            "paperId": "f727f928e7e179307d8d4a1da2387393f2bd7915",
+            "title": "Methods for Measuring, Updating, and Visualizing Factual Beliefs in Language Models",
+            "abstract": "Language models can memorize a considerable amount of factual information during pretraining that can be elicited through prompting or finetuning models on tasks like question answering. In this paper, we discuss approaches to measuring model factual beliefs, updating incorrect factual beliefs in models, and visualizing graphical relationships between factual beliefs. Our main contributions include: (1) new metrics for evaluating belief-updating methods focusing on the logical consistency of beliefs, (2) a training objective for Sequential, Local, and Generalizing updates (SLAG) that improves the performance of existing hypernetwork approaches, and (3) the introduction of the belief graph, a new form of visualization for language models that shows relationships between stored model beliefs. Our experiments suggest that models show only limited consistency between factual beliefs, but update methods can both fix incorrect model beliefs and greatly improve their consistency. Although off-the-shelf optimizers are surprisingly strong belief-updating baselines, our learned optimizers can outperform them in more difficult settings than have been considered in past work.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experiments suggest that models show only limited consistency between factual beliefs, but update methods can both fix incorrect model beliefs and greatly improve their consistency, and off-the-shelf optimizers can outperform them in more difficult settings than have been considered in past work."
+            },
+            "score": 6
+        },
+        {
+            "id": "dca6c3927ade6481a1ae080f5c24decbfeced1be",
+            "paperId": "dca6c3927ade6481a1ae080f5c24decbfeced1be",
+            "title": "Boosted Prompt Ensembles for Large Language Models",
+            "abstract": "Methods such as chain-of-thought prompting and self-consistency have pushed the frontier of language model reasoning performance with no additional training. To further improve performance, we propose a prompt ensembling method for large language models, which uses a small dataset to construct a set of few shot prompts that together comprise a ``boosted prompt ensemble''. The few shot examples for each prompt are chosen in a stepwise fashion to be ``hard'' examples on which the previous step's ensemble is uncertain. We show that this outperforms single-prompt output-space ensembles and bagged prompt-space ensembles on the GSM8k and AQuA datasets, among others. We propose both train-time and test-time versions of boosted prompting that use different levels of available annotation and conduct a detailed empirical study of our algorithm.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A prompt ensembling method for large language models, which uses a small dataset to construct a set of few shot prompts that together comprise a ``boosted prompt ensemble'' that outperforms single-prompt output-space ensembles and bagged prompt-spaceEnsemble on the GSM8k and AQuA datasets, among others."
+            },
+            "score": 6
+        },
+        {
+            "id": "3fa70115248377c3d1517c9f978791a296fbc1dd",
+            "paperId": "3fa70115248377c3d1517c9f978791a296fbc1dd",
+            "title": "Large Language Models Can Self-Improve",
+            "abstract": "Large Language Models (LLMs) have achieved excellent performances in various tasks. However, fine-tuning an LLM requires extensive supervision. Human, on the other hand, may improve their reasoning abilities by self-thinking without external inputs. In this work, we demonstrate that an LLM is also capable of self-improving with only unlabeled datasets. We use a pre-trained LLM to generate\"high-confidence\"rationale-augmented answers for unlabeled questions using Chain-of-Thought prompting and self-consistency, and fine-tune the LLM using those self-generated solutions as target outputs. We show that our approach improves the general reasoning ability of a 540B-parameter LLM (74.4%->82.1% on GSM8K, 78.2%->83.0% on DROP, 90.0%->94.4% on OpenBookQA, and 63.4%->67.9% on ANLI-A3) and achieves state-of-the-art-level performance, without any ground truth label. We conduct ablation studies and show that fine-tuning on reasoning is critical for self-improvement.",
+            "year": 2022,
+            "citationCount": 265,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work uses a pre-trained LLM to generate \"high-confidence\"rationale-augmented answers for unlabeled questions using Chain-of-Thought prompting and self-consistency, and fine-tune the LLM using those self-generated solutions as target outputs to improve the general reasoning ability."
+            },
+            "score": 6
+        },
+        {
+            "id": "dbeee4f77aefc944e8daa30d9c907f1413f830d8",
+            "paperId": "dbeee4f77aefc944e8daa30d9c907f1413f830d8",
+            "title": "Beyond Self-Consistency: Ensemble Reasoning Boosts Consistency and Accuracy of LLMs in Cancer Staging",
+            "abstract": "Advances in large language models (LLMs) have encouraged their adoption in the healthcare domain where vital clinical information is often contained in unstructured notes. Cancer staging status is available in clinical reports, but it requires natural language processing to extract the status from the unstructured text. With the advance in clinical-oriented LLMs, it is promising to extract such status without extensive efforts in training the algorithms. Prompting approaches of the pre-trained LLMs that elicit a model's reasoning process, such as chain-of-thought, may help to improve the trustworthiness of the generated responses. Using self-consistency further improves model performance, but often results in inconsistent generations across the multiple reasoning paths. In this study, we propose an ensemble reasoning approach with the aim of improving the consistency of the model generations. Using an open access clinical large language model to determine the pathologic cancer stage from real-world pathology reports, we show that the ensemble reasoning approach is able to improve both the consistency and performance of the LLM in determining cancer stage, thereby demonstrating the potential to use these models in clinical or other domains where reliability and trustworthiness are critical.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The ensemble reasoning approach is able to improve both the consistency and performance of the LLM in determining cancer stage, thereby demonstrating the potential to use these models in clinical or other domains where reliability and trustworthiness are critical."
+            },
+            "score": 6
+        },
+        {
+            "id": "3d2f9bd3f2ea1e1095e6d22e32ed8eb5fbb096f6",
+            "paperId": "3d2f9bd3f2ea1e1095e6d22e32ed8eb5fbb096f6",
+            "title": "Rationale Belief Aggregation for Self-Verified Reasoning",
+            "abstract": "Large language models such as GPT-3 [1] have a great deal of information encoded within their parameters, however, our ability to access this information is bottlenecked by how we communicate or interface with these models, namely through prompting. Chain-of-thought prompting [2] demonstrates the value of producing step-by-step reasoning chains (rationales) before answering a question, and self-consistency [3] shows that sampling multiple rationales and aggregating their outputs can allow for more robust reasoning. In this work we postulate that rationales consist of multiple beliefs, or informational phrases that the model uses as context for its reasoning (which may or may not be factual), and some inference over these beliefs. Empirically, we observe that different rationales expose different beliefs and hypothesize that performing a principled aggregation over the beliefs surfaced by different rationales would allow us to reduce internal contradictions within a language model and produce more consistent rationales to reason over. We propose two such aggregation strategies, Belief Aggregation and Belief Majority Voting, and evaluate their performance over three challenging QA datasets [4]. Our method results in modest gains in accuracy over self-consistency and greedy decoding for chain-of-thought prompting, while providing strong gains in coverage (% of questions a model is able to answer without abstaining), thereby resulting in confident reasoning over a larger set of questions.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The method results in modest gains in accuracy over self-consistency and greedy decoding for chain-of-thought prompting, while providing strong gains in coverage (% of questions a model is able to answer without abstaining), thereby resulting in confident reasoning over a larger set of questions."
+            },
+            "score": 6
+        },
+        {
+            "id": "9028fd54ecbbd58da6f3d86629b48bb95405fff2",
+            "paperId": "9028fd54ecbbd58da6f3d86629b48bb95405fff2",
+            "title": "Counterfactual reasoning: Testing language models\u2019 understanding of hypothetical scenarios",
+            "abstract": "Current pre-trained language models have enabled remarkable improvements in downstream tasks, but it remains difficult to distinguish effects of statistical correlation from more systematic logical reasoning grounded on the understanding of real world. We tease these factors apart by leveraging counterfactual conditionals, which force language models to predict unusual consequences based on hypothetical propositions. We introduce a set of tests from psycholinguistic experiments, as well as larger-scale controlled datasets, to probe counterfactual predictions from five pre-trained language models. We find that models are consistently able to override real-world knowledge in counterfactual scenarios, and that this effect is more robust in case of stronger baseline world knowledge\u2014however, we also find that for most models this effect appears largely to be driven by simple lexical cues. When we mitigate effects of both world knowledge and lexical cues to test knowledge of linguistic nuances of counterfactuals, we find that only GPT-3 shows sensitivity to these nuances, though this sensitivity is also non-trivially impacted by lexical associative factors.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that models are consistently able to override real-world knowledge in counterfactual scenarios, and that this effect is more robust in case of stronger baseline world knowledge\u2014however, it is also found that for most models this effect appears largely to be driven by simple lexical cues."
+            },
+            "score": 6
+        },
+        {
+            "id": "f8e99be4f9a01761fab74bade2c3c18de9fc686b",
+            "paperId": "f8e99be4f9a01761fab74bade2c3c18de9fc686b",
+            "title": "Reasoning or Reciting? Exploring the Capabilities and Limitations of Language Models Through Counterfactual Tasks",
+            "abstract": "The impressive performance of recent language models across a wide range of tasks suggests that they possess a degree of abstract reasoning skills. Are these skills general and transferable, or specialized to specific tasks seen during pretraining? To disentangle these effects, we propose an evaluation framework based on\"counterfactual\"task variants that deviate from the default assumptions underlying standard tasks. Across a suite of 11 tasks, we observe nontrivial performance on the counterfactual variants, but nevertheless find that performance substantially and consistently degrades compared to the default conditions. This suggests that while current LMs may possess abstract task-solving skills to an extent, they often also rely on narrow, non-transferable procedures for task-solving. These results motivate a more careful interpretation of language model performance that teases apart these aspects of behavior.",
+            "year": 2023,
+            "citationCount": 69,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An evaluation framework based on task variants that deviate from the default assumptions underlying standard tasks that suggests that while current LMs may possess abstract task-solving skills to an extent, they often also rely on narrow, non-transferable procedures for task-solving."
+            },
+            "score": 6
+        },
+        {
+            "id": "0dc6e2476005d1aae30bede8ebbae92bdc831f6a",
+            "paperId": "0dc6e2476005d1aae30bede8ebbae92bdc831f6a",
+            "title": "Counterfactual reasoning: Do Language Models need world knowledge for causal inference?",
+            "abstract": "Current pre-trained language models have enabled remarkable improvements in downstream tasks, but it remains difficult to distinguish effects of statistical correlation from more systematic logical reasoning grounded on understanding of the real world. In this paper we tease these factors apart by leveraging counterfactual conditionals , which force language models to predict unusual consequences based on hypothetical propositions. We introduce a set of tests drawn from psycholinguistic experiments, as well as larger-scale controlled datasets, to probe counterfactual predictions from a variety of popular pre-trained language models. We find that models are consistently able to override real-world knowledge in counterfactual scenarios, and that this effect is more robust in case of stronger baseline world knowledge\u2014however, we also find that for most models this effect appears largely to be driven by simple lexical cues. When we mitigate effects of both world knowledge and lexical cues to test knowledge of linguistic nuances of counterfactuals, we find that only GPT-3 shows sensitivity to these nuances, though this sensitivity is also non-trivially impacted by lexical associative factors.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that models are consistently able to override real-world knowledge in counterfactual scenarios, and that this effect is more robust in case of stronger baseline world knowledge\u2014however, it is also found that for most models this effect appears largely to be driven by simple lexical cues."
+            },
+            "score": 6
+        },
+        {
+            "id": "91a82593721c03ecffdef1c72ea55c6d87c42473",
+            "paperId": "91a82593721c03ecffdef1c72ea55c6d87c42473",
+            "title": "Counterfactual reasoning: Do language models need world knowledge for causal understanding?",
+            "abstract": "Current pre-trained language models have enabled remarkable improvements in downstream tasks, but it remains difficult to distinguish effects of statistical correlation from more systematic logical reasoning grounded on understanding of the real world. In this paper we tease these factors apart by leveraging counterfactual conditionals, which force language models to predict unusual consequences based on hypothetical propositions. We introduce a set of tests drawn from psycholinguistic experiments, as well as larger-scale controlled datasets, to probe counterfactual predictions from a variety of popular pre-trained language models. We find that models are consistently able to override real-world knowledge in counterfactual scenarios, and that this effect is more robust in case of stronger baseline world knowledge -- however, we also find that for most models this effect appears largely to be driven by simple lexical cues. When we mitigate effects of both world knowledge and lexical cues to test knowledge of linguistic nuances of counterfactuals, we find that only GPT-3 shows sensitivity to these nuances, though this sensitivity is also non-trivially impacted by lexical associative factors.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that models are consistently able to override real-world knowledge in counterfactual scenarios, and that this effect is more robust in case of stronger baseline world knowledge -- however, it is also found that for most models this effect appears largely to be driven by simple lexical cues."
+            },
+            "score": 6
+        },
+        {
+            "id": "b69ae70abf1e8519a565c40bed07ab499576a8f6",
+            "paperId": "b69ae70abf1e8519a565c40bed07ab499576a8f6",
+            "title": "Using Counterfactual Tasks to Evaluate the Generality of Analogical Reasoning in Large Language Models",
+            "abstract": "Large language models (LLMs) have performed well on several reasoning benchmarks, including ones that test analogical reasoning abilities. However, it has been debated whether they are actually performing humanlike abstract reasoning or instead employing less general processes that rely on similarity to what has been seen in their training data. Here we investigate the generality of analogy-making abilities previously claimed for LLMs (Webb, Holyoak,&Lu, 2023). We take one set of analogy problems used to evaluate LLMs and create a set of\"counterfactual\"variants-versions that test the same abstract reasoning abilities but that are likely dissimilar from any pre-training data. We test humans and three GPT models on both the original and counterfactual problems, and show that, while the performance of humans remains high for all the problems, the GPT models' performance declines sharply on the counterfactual set. This work provides evidence that, despite previously reported successes of LLMs on analogical reasoning, these models lack the robustness and generality of human analogy-making.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work takes one set of analogy problems used to evaluate LLMs and creates a set of \"counterfactual\"variants-versions that test the same abstract reasoning abilities but that are likely dissimilar from any pre-training data, providing evidence that these models lack the robustness and generality of human analogy-making."
+            },
+            "score": 6
+        },
+        {
+            "id": "e67dd9230cd4a8199ca6c9c9ebaa31ab29be23d2",
+            "paperId": "e67dd9230cd4a8199ca6c9c9ebaa31ab29be23d2",
+            "title": "Evidence from counterfactual tasks supports emergent analogical reasoning in large language models",
+            "abstract": "We recently reported evidence that large language models are capable of solving a wide range of text-based analogy problems in a zero-shot manner, indicating the presence of an emergent capacity for analogical reasoning. Two recent commentaries have challenged these results, citing evidence from so-called `counterfactual' tasks in which the standard sequence of the alphabet is arbitrarily permuted so as to decrease similarity with materials that may have been present in the language model's training data. Here, we reply to these critiques, clarifying some misunderstandings about the test materials used in our original work, and presenting evidence that language models are also capable of generalizing to these new counterfactual task variants.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 6
+        },
+        {
+            "id": "07c70ca55793984ffdf31582a05170ef3d62381a",
+            "paperId": "07c70ca55793984ffdf31582a05170ef3d62381a",
+            "title": "Prompt Consistency for Zero-Shot Task Generalization",
+            "abstract": "One of the most impressive results of recent NLP history is the ability of pre-trained language models to solve new tasks in a zero-shot setting. To achieve this, NLP tasks are framed as natural language prompts, generating a response indicating the predicted output. Nonetheless, the performance in such settings often lags far behind its supervised counterpart, suggesting a large space for potential improvement. In this paper, we explore methods to utilize unlabeled data to improve zero-shot performance. Specifically, we take advantage of the fact that multiple prompts can be used to specify a single task, and propose to regularize prompt consistency, encouraging consistent predictions over this diverse set of prompts. Our method makes it possible to fine-tune the model either with extra unlabeled training data, or directly on test input at inference time in an unsupervised manner. In experiments, our approach outperforms the state-of-the-art zero-shot learner, T0 (Sanh et al., 2022), on 9 out of 11 datasets across 4 NLP tasks by up to 10.6 absolute points in terms of accuracy. The gains are often attained with a small number of unlabeled examples.",
+            "year": 2022,
+            "citationCount": 45,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work takes advantage of the fact that multiple prompts can be used to specify a single task, and proposes to regularize prompt consistency, encouraging consistent predictions over this diverse set of prompts, to improve zero-shot performance."
+            },
+            "score": 6
+        },
+        {
+            "id": "614d51530e8d75e5a916778fe0b513aa53721daf",
+            "paperId": "614d51530e8d75e5a916778fe0b513aa53721daf",
+            "title": "Enhancing Large Language Models Against Inductive Instructions with Dual-critique Prompting",
+            "abstract": "Numerous works are proposed to align large language models (LLMs) with human intents to better fulfill instructions, ensuring they are trustful and helpful. Nevertheless, some human instructions are often malicious or misleading and following them will lead to untruthful and unsafe responses. Previous work rarely focused on understanding how LLMs manage instructions based on counterfactual premises, referred to here as \\textit{inductive instructions}, which may stem from users' false beliefs or malicious intents. In this paper, we aim to reveal the behaviors of LLMs towards \\textit{inductive instructions} and enhance their truthfulness and helpfulness accordingly. Specifically, we first introduce a benchmark of \\underline{\\textbf{Indu}}ctive {In\\underline{\\textbf{st}}ruct}ions (\\textsc{\\textbf{INDust}}), where the false knowledge is incorporated into instructions in multiple different styles. After extensive human and automatic evaluations, we uncovered a universal vulnerability among LLMs in processing inductive instructions. Additionally, we identified that different inductive styles affect the models' ability to identify the same underlying errors, and the complexity of the underlying assumptions also influences the model's performance. Motivated by these results, we propose \\textsc{Dual-critique} prompting to improve LLM robustness against inductive instructions. Our experiments demonstrate that \\textsc{Dual-critique} prompting significantly bolsters the robustness of a diverse array of LLMs, even when confronted with varying degrees of inductive instruction complexity and differing inductive styles.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that Dual-critique prompting significantly bolsters the robustness of a diverse array of LLMs, even when confronted with varying degrees of inductive instruction complexity and differing inductive styles."
+            },
+            "score": 5
+        },
+        {
+            "id": "9f859726b3d8dffd96a1f55de4122617751cc1b4",
+            "paperId": "9f859726b3d8dffd96a1f55de4122617751cc1b4",
+            "title": "Red-Teaming Large Language Models using Chain of Utterances for Safety-Alignment",
+            "abstract": "Larger language models (LLMs) have taken the world by storm with their massive multi-tasking capabilities simply by optimizing over a next-word prediction objective. With the emergence of their properties and encoded knowledge, the risk of LLMs producing harmful outputs increases, making them unfit for scalable deployment for the public. In this work, we propose a new safety evaluation benchmark RED-EVAL that carries out red-teaming. We show that even widely deployed models are susceptible to the Chain of Utterances-based (CoU) prompting, jailbreaking closed source LLM-based systems such as GPT-4 and ChatGPT to unethically respond to more than 65% and 73% of harmful queries. We also demonstrate the consistency of the RED-EVAL across 8 open-source LLMs in generating harmful responses in more than 86% of the red-teaming attempts. Next, we propose RED-INSTRUCT--An approach for the safety alignment of LLMs. It constitutes two phases: 1) HARMFULQA data collection: Leveraging CoU prompting, we collect a dataset that consists of 1.9K harmful questions covering a wide range of topics, 9.5K safe and 7.3K harmful conversations from ChatGPT; 2) SAFE-ALIGN: We demonstrate how the conversational dataset can be used for the safety alignment of LLMs by minimizing the negative log-likelihood over helpful responses and penalizing over harmful responses by gradient accent over sample loss. Our model STARLING, a fine-tuned Vicuna-7B, is observed to be more safely aligned when evaluated on RED-EVAL and HHH benchmarks while preserving the utility of the baseline models (TruthfulQA, MMLU, and BBH).",
+            "year": 2023,
+            "citationCount": 48,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that even widely deployed models are susceptible to the Chain of Utterances-based (CoU) prompting, jailbreaking closed source LLM-based systems such as GPT-4 and ChatGPT to unethically respond to more than 65% and 73% of harmful queries."
+            },
+            "score": 5
+        },
+        {
+            "id": "8936192d69bb78afd09d83f3ceafd18dea32a8fd",
+            "paperId": "8936192d69bb78afd09d83f3ceafd18dea32a8fd",
+            "title": "Self-Consistent Decoding for More Factual Open Responses",
+            "abstract": "Self-consistency has emerged as a powerful method for improving the accuracy of short answers generated by large language models. As previously defined, it only concerns the accuracy of a final answer parsed from generated text. In this work, we extend the idea to open response generation, by integrating voting into the decoding method. Each output sentence is selected from among multiple samples, conditioning on the previous selections, based on a simple token overlap score. We compare this\"Sample&Select\"method to greedy decoding, beam search, nucleus sampling, and the recently introduced hallucination avoiding decoders of DoLA, P-CRR, and S-CRR. We show that Sample&Select improves factuality by a 30% relative margin against these decoders in NLI-based evaluation on the subsets of CNN/DM and XSum used in the FRANK benchmark, while maintaining comparable ROUGE-1 F1 scores against reference summaries. We collect human verifications of the generated summaries, confirming the factual superiority of our method.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work extends the idea of self-consistency to open response generation, by integrating voting into the decoding method, and shows that Sample&Select improves factuality by a 30% relative margin against these decoders in NLI-based evaluation on the subsets of CNN/DM and XSum used in the FRANK benchmark."
+            },
+            "score": 5
+        },
+        {
+            "id": "5043a786a1db5d830dc6c51d62f58e172a96e479",
+            "paperId": "5043a786a1db5d830dc6c51d62f58e172a96e479",
+            "title": "Methods to Estimate Large Language Model Confidence",
+            "abstract": "Large Language Models have difficulty communicating uncertainty, which is a significant obstacle to applying LLMs to complex medical tasks. This study evaluates methods to measure LLM confidence when suggesting a diagnosis for challenging clinical vignettes. GPT4 was asked a series of challenging case questions using Chain of Thought and Self Consistency prompting. Multiple methods were investigated to assess model confidence and evaluated on their ability to predict the models observed accuracy. The methods evaluated were Intrinsic Confidence, SC Agreement Frequency and CoT Response Length. SC Agreement Frequency correlated with observed accuracy, yielding a higher Area under the Receiver Operating Characteristic Curve compared to Intrinsic Confidence and CoT Length analysis. SC agreement is the most useful proxy for model confidence, especially for medical diagnosis. Model Intrinsic Confidence and CoT Response Length exhibit a weaker ability to differentiate between correct and incorrect answers, preventing them from being reliable and interpretable markers for model confidence. We conclude GPT4 has a limited ability to assess its own diagnostic accuracy. SC Agreement Frequency is the most useful method to measure GPT4 confidence.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study evaluates methods to measure LLM confidence when suggesting a diagnosis for challenging clinical vignettes and concludes SC Agreement Frequency is the most useful method to measure GPT4 confidence."
+            },
+            "score": 5
+        },
+        {
+            "id": "d2a01f9b2a565070ce64ff38eb7cdc26f3ed992a",
+            "paperId": "d2a01f9b2a565070ce64ff38eb7cdc26f3ed992a",
+            "title": "Self-Discover: Large Language Models Self-Compose Reasoning Structures",
+            "abstract": "We introduce SELF-DISCOVER, a general framework for LLMs to self-discover the task-intrinsic reasoning structures to tackle complex reasoning problems that are challenging for typical prompting methods. Core to the framework is a self-discovery process where LLMs select multiple atomic reasoning modules such as critical thinking and step-by-step thinking, and compose them into an explicit reasoning structure for LLMs to follow during decoding. SELF-DISCOVER substantially improves GPT-4 and PaLM 2's performance on challenging reasoning benchmarks such as BigBench-Hard, grounded agent reasoning, and MATH, by as much as 32% compared to Chain of Thought (CoT). Furthermore, SELF-DISCOVER outperforms inference-intensive methods such as CoT-Self-Consistency by more than 20%, while requiring 10-40x fewer inference compute. Finally, we show that the self-discovered reasoning structures are universally applicable across model families: from PaLM 2-L to GPT-4, and from GPT-4 to Llama2, and share commonalities with human reasoning patterns.",
+            "year": 2024,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "SELF-DISCOVER substantially improves GPT-4 and PaLM 2's performance on challenging reasoning benchmarks such as BigBench-Hard, grounded agent reasoning, and MATH, and outperforms inference-intensive methods such as CoT-Self-Consistency by more than 20%, while requiring 10-40x fewer inference compute."
+            },
+            "score": 5
+        },
+        {
+            "id": "a7c0d9bf44045c9d4c41e329e2a87df0ae7e0af6",
+            "paperId": "a7c0d9bf44045c9d4c41e329e2a87df0ae7e0af6",
+            "title": "Federated Prompting and Chain-of-Thought Reasoning for Improving LLMs Answering",
+            "abstract": "We investigate how to enhance answer precision in frequently asked questions posed by distributed users using cloud-based Large Language Models (LLMs). Our study focuses on a typical situations where users ask similar queries that involve identical mathematical reasoning steps and problem-solving procedures. Due to the unsatisfactory accuracy of LLMs' zero-shot prompting with standalone questions, we propose to improve the distributed synonymous questions using Self-Consistency (SC) and Chain-of-Thought (CoT) techniques. Specifically, we first retrieve synonymous questions from a crowd-sourced database and create a federated question pool. We call these federated synonymous questions with the same or different parameters SP-questions or DP-questions, respectively. We refer to our methods as Fed-SP-SC and Fed-DP-CoT, which can generate significantly more accurate answers for all user queries without requiring sophisticated model-tuning. Through extensive experiments, we demonstrate that our proposed methods can significantly enhance question accuracy by fully exploring the synonymous nature of the questions and the consistency of the answers.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study proposes to improve the distributed synonymous questions using Self-Consistency (SC) and Chain-of-Thought (CoT) techniques, which can generate significantly more accurate answers for all user queries without requiring sophisticated model-tuning."
+            },
+            "score": 5
+        },
+        {
+            "id": "edbfa8e27cf1065a30e6386a7a6313607503ea7e",
+            "paperId": "edbfa8e27cf1065a30e6386a7a6313607503ea7e",
+            "title": "RELIC: Investigating Large Language Model Responses using Self-Consistency",
+            "abstract": "Large Language Models (LLMs) are notorious for blending fact with fiction and generating non-factual content, known as hallucinations. To address this challenge, we propose an interactive system that helps users gain insight into the reliability of the generated text. Our approach is based on the idea that the self-consistency of multiple samples generated by the same LLM relates to its confidence in individual claims in the generated texts. Using this idea, we design RELIC, an interactive system that enables users to investigate and verify semantic-level variations in multiple long-form responses. This allows users to recognize potentially inaccurate information in the generated text and make necessary corrections. From a user study with ten participants, we demonstrate that our approach helps users better verify the reliability of the generated text. We further summarize the design implications and lessons learned from this research for future studies of reliable human-LLM interactions.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "RELIC is an interactive system that enables users to investigate and verify semantic-level variations in multiple long-form responses and helps users better verify the reliability of the generated text."
+            },
+            "score": 5
+        },
+        {
+            "id": "20ae101289965d36dbd93e9b8c47ec9deab03ed0",
+            "paperId": "20ae101289965d36dbd93e9b8c47ec9deab03ed0",
+            "title": "What If the TV Was Off? Examining Counterfactual Reasoning Abilities of Multi-modal Language Models",
+            "abstract": "Counterfactual reasoning ability is one of the core abilities of human intelligence. This reasoning process involves the processing of alternatives to observed states or past events, and this process can improve our ability for planning and decision-making. In this work, we focus on benchmarking the counterfactual reasoning ability of multimodal large language models. We take the question and answer pairs from the VQAv2 dataset and add one counterfactual presupposition to the questions, with the answer being modified accordingly. After generating counterfactual questions and answers using ChatGPT, we manually examine all generated questions and answers to ensure correctness. This results in over 2k counterfactual question and answer pairs. We evaluate recent vision language models on our newly collected test dataset and found that all models exhibit a large performance drop compared to the results tested on questions without counterfactual presupposition. This result indicates that there still exists space for developing vision language models. We hope our proposed benchmark can help the development of future systems.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work benchmarking the counterfactual reasoning ability of multimodal large language models found that all models exhibit a large performance drop compared to the results tested on questions without counterfactual presupposition, indicating that there still exists space for developing vision language models."
+            },
+            "score": 5
+        },
+        {
+            "id": "415c594667bb94f086ea980f897c4f62f9a22d18",
+            "paperId": "415c594667bb94f086ea980f897c4f62f9a22d18",
+            "title": "Eyes Can Deceive: Benchmarking Counterfactual Reasoning Abilities of Multi-modal Large Language Models",
+            "abstract": "Counterfactual reasoning, as a crucial manifestation of human intelligence, refers to making presuppositions based on established facts and extrapolating potential outcomes. Existing multimodal large language models (MLLMs) have exhibited impressive cognitive and reasoning capabilities, which have been examined across a wide range of Visual Question Answering (VQA) benchmarks. Nevertheless, how will existing MLLMs perform when faced with counterfactual questions? To answer this question, we first curate a novel \\textbf{C}ounter\\textbf{F}actual \\textbf{M}ulti\\textbf{M}odal reasoning benchmark, abbreviated as \\textbf{CFMM}, to systematically assess the counterfactual reasoning capabilities of MLLMs. Our CFMM comprises six challenging tasks, each including hundreds of carefully human-labeled counterfactual questions, to evaluate MLLM's counterfactual reasoning capabilities across diverse aspects. Through experiments, interestingly, we find that existing MLLMs prefer to believe what they see, but ignore the counterfactual presuppositions presented in the question, thereby leading to inaccurate responses. Furthermore, we evaluate a wide range of prevalent MLLMs on our proposed CFMM. The significant gap between their performance on our CFMM and that on several VQA benchmarks indicates that there is still considerable room for improvement in existing MLLMs toward approaching human-level intelligence. On the other hand, through boosting MLLMs performances on our CFMM in the future, potential avenues toward developing MLLMs with advanced intelligence can be explored.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that existing MLLMs prefer to believe what they see, but ignore the counterfactual presuppositions presented in the question, thereby leading to inaccurate responses on the proposed CFMM."
+            },
+            "score": 5
+        },
+        {
+            "id": "dab4f70d75a04e62553e583f2450d9bb1f0ead46",
+            "paperId": "dab4f70d75a04e62553e583f2450d9bb1f0ead46",
+            "title": "CLOMO: Counterfactual Logical Modification with Large Language Models",
+            "abstract": "In this study, we delve into the realm of counterfactual reasoning capabilities of large language models (LLMs). Our primary objective is to cultivate the counterfactual thought processes within LLMs and rigorously assess these processes for their validity. Specifically, we introduce a novel task, Counterfactual Logical Modification (CLOMO), and a high-quality human-annotated benchmark. In this task, LLMs must adeptly alter a given argumentative text to uphold a predetermined logical relationship. To effectively evaluate a generation model's counterfactual capabilities, we propose an innovative evaluation metric, the LogicAware Counterfactual Score to directly evaluate the natural language output of LLMs instead of modeling the task as a multiple-choice problem. Analysis shows that the proposed automatic metric aligns well with human preference. Our experimental results show that while LLMs demonstrate a notable capacity for logical counterfactual thinking, there remains a discernible gap between their current abilities and human performance.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces a novel task, Counterfactual Logical Modification (CLOMO), and proposes an innovative evaluation metric, the LogicAware CounterfactUAL Score, to directly evaluate the natural language output of LLMs instead of modeling the task as a multiple-choice problem."
+            },
+            "score": 5
+        },
+        {
+            "id": "c3068c7947ca290496c4d0280904686ba0b2903f",
+            "paperId": "c3068c7947ca290496c4d0280904686ba0b2903f",
+            "title": "Mind the instructions: a holistic evaluation of consistency and interactions in prompt-based learning",
+            "abstract": "Finding the best way of adapting pre-trained language models to a task is a big challenge in current NLP. Just like the previous generation of task-tuned models (TT), models that are adapted to tasks via in-context-learning (ICL) or instruction tuning (IT) are robust in some setups, but not in others. Here, we present a detailed analysis of which design choices cause instabilities and inconsistencies in LLM predictions. First, we show how spurious correlations between input distributions and labels \u2013 a known issue in TT models \u2013 form only a minor problem for prompted models. Then we engage in a systematic, holistic evaluation of different factors that have been found to influence predictions in a prompting setup. We test all possible combinations of a range of factors on both vanilla and instruction-tuned LLMs of different scale, and statistically analyse the results to show which factors are the most influential, the most interactive or the most stable. From our results, we deduce which factors can be used without precautions, should be avoided or handled with care in most settings.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A detailed analysis of which design choices cause instabilities and inconsistencies in LLM predictions is presented, and which factors can be used without precautions, should be avoided or handled with care in most settings are deduced."
+            },
+            "score": 5
+        },
+        {
+            "id": "a4892359e21931231fbc4dfca8682d16d5c31510",
+            "paperId": "a4892359e21931231fbc4dfca8682d16d5c31510",
+            "title": "On What Basis? Predicting Text Preference Via Structured Comparative Reasoning",
+            "abstract": "Comparative reasoning plays a crucial role in text preference prediction; however, large language models (LLMs) often demonstrate inconsistencies in their reasoning. While approaches like Chain-of-Thought improve accuracy in many other settings, they struggle to consistently distinguish the similarities and differences of complex texts. We introduce SC, a prompting approach that predicts text preferences by generating structured intermediate comparisons. SC begins by proposing aspects of comparison, followed by generating textual comparisons under each aspect. We select consistent comparisons with a pairwise consistency comparator that ensures each aspect's comparisons clearly distinguish differences between texts, significantly reducing hallucination and improving consistency. Our comprehensive evaluations across various NLP tasks, including summarization, retrieval, and automatic rating, demonstrate that SC equips LLMs to achieve state-of-the-art performance in text preference prediction.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Comprehensive evaluations across various NLP tasks, including summarization, retrieval, and automatic rating, demonstrate that SC equips LLMs to achieve state-of-the-art performance in text preference prediction."
+            },
+            "score": 5
+        },
+        {
+            "id": "01efb3fd2d3ae4b5f4389c916c94f2c6d9c11b81",
+            "paperId": "01efb3fd2d3ae4b5f4389c916c94f2c6d9c11b81",
+            "title": "Explore Spurious Correlations at the Concept Level in Language Models for Text Classification",
+            "abstract": "Language models (LMs) have achieved notable success in numerous NLP tasks, employing both fine-tuning and in-context learning (ICL) methods. While language models demonstrate exceptional performance, they face robustness challenges due to spurious correlations arising from imbalanced label distributions in training data or ICL exemplars. Previous research has primarily concentrated on word, phrase, and syntax features, neglecting the concept level, often due to the absence of concept labels and difficulty in identifying conceptual content in input texts. This paper introduces two main contributions. First, we employ ChatGPT to assign concept labels to texts, assessing concept bias in models during fine-tuning or ICL on test data. We find that LMs, when encountering spurious correlations between a concept and a label in training or prompts, resort to shortcuts for predictions. Second, we introduce a data rebalancing technique that incorporates ChatGPT-generated counterfactual data, thereby balancing label distribution and mitigating spurious correlations. Our method's efficacy, surpassing traditional token removal approaches, is validated through extensive testing.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A data rebalancing technique is introduced that incorporates ChatGPT-generated counterfactual data, thereby balancing label distribution and mitigating spurious correlations and finding that LMs, when encountering spurious correlations between a concept and a label in training or prompts, resort to shortcuts for predictions."
+            },
+            "score": 5
+        },
+        {
+            "id": "0e0d72be9950fde9b5e8996e2147d1318f216ebb",
+            "paperId": "0e0d72be9950fde9b5e8996e2147d1318f216ebb",
+            "title": "Prompting is not a substitute for probability measurements in large language models",
+            "abstract": "Prompting is now a dominant method for evaluating the linguistic knowledge of large language models (LLMs). While other methods directly read out models' probability distributions over strings, prompting requires models to access this internal information by processing linguistic input, thereby implicitly testing a new type of emergent ability: metalinguistic judgment. In this study, we compare metalinguistic prompting and direct probability measurements as ways of measuring models' linguistic knowledge. Broadly, we find that LLMs' metalinguistic judgments are inferior to quantities directly derived from representations. Furthermore, consistency gets worse as the prompt query diverges from direct measurements of next-word probabilities. Our findings suggest that negative results relying on metalinguistic prompts cannot be taken as conclusive evidence that an LLM lacks a particular linguistic generalization. Our results also highlight the value that is lost with the move to closed APIs where access to probability distributions is limited.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": null,
+            "score": 4
+        },
+        {
+            "id": "152d9a231c00d4495c9bc4a466f42165ce2e2164",
+            "paperId": "152d9a231c00d4495c9bc4a466f42165ce2e2164",
+            "title": "Evaluating Factual Consistency of Summaries with Large Language Models",
+            "abstract": "Detecting factual errors in summaries has been an important and challenging subject in summarization research. Inspired by the emergent ability of large language models (LLMs), we explore evaluating factual consistency of summaries by directly prompting LLMs. We present a comprehensive empirical study to assess the ability of LLMs as factual consistency evaluators, which consists of (1) analyzing different LLMs such as the GPT model series and Flan-T5; (2) investigating a variety of prompting methods including vanilla prompting, chain-of-thought prompting, and a sentence-by-sentence prompting method to tackle long summaries; and (3) evaluating on diverse summaries generated by multiple summarization systems, ranging from pre-transformer methods to SOTA pretrained models. Our experiments demonstrate that prompting LLMs is able to outperform the previous best factuality systems in all settings, by up to 12.2 absolute points in terms of the binary classification accuracy on inconsistency detection.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive empirical study to assess the ability of LLMs as factual consistency evaluators, which consists of analyzing different LLMs such as the GPT model series and Flan-T5 and investigating a variety of prompting methods including vanilla prompting, chain-of-thought prompting, and a sentence-by-sentence prompting method to tackle long summaries."
+            },
+            "score": 4
+        },
+        {
+            "id": "5dd301c6b8757244e0046d8cad23399223fe4243",
+            "paperId": "5dd301c6b8757244e0046d8cad23399223fe4243",
+            "title": "Consistency-guided Prompt Learning for Vision-Language Models",
+            "abstract": "We propose Consistency-guided Prompt learning (CoPrompt), a new fine-tuning method for vision-language models. Our approach improves the generalization of large foundation models when fine-tuned on downstream tasks in a few-shot setting. The basic idea of CoPrompt is to enforce a consistency constraint in the prediction of the trainable and pre-trained models to prevent overfitting on the downstream task. Additionally, we introduce the following two components into our consistency constraint to further boost the performance: enforcing consistency on two perturbed inputs and combining two dominant paradigms of tuning, prompting and adapter. Enforcing consistency on perturbed input serves to further regularize the consistency constraint, thereby improving generalization. Moreover, the integration of adapters and prompts not only enhances performance on downstream tasks but also offers increased tuning flexibility in both input and output spaces. This facilitates more effective adaptation to downstream tasks in a few-shot learning setting. Experiments show that CoPrompt outperforms existing methods on a range of evaluation suites, including base-to-novel generalization, domain generalization, and cross-dataset evaluation. On generalization, CoPrompt improves the state-of-the-art on zero-shot tasks and the overall harmonic mean over 11 datasets. Detailed ablation studies show the effectiveness of each of the components in CoPrompt. We make our code available at https://github.com/ShuvenduRoy/CoPrompt.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The basic idea of CoPrompt is to enforce a consistency constraint in the prediction of the trainable and pre-trained models to prevent overfitting on the downstream task, and the following two components are introduced to further boost the performance: enforcing consistency on two perturbed inputs and combining two dominant paradigms of tuning, prompting and adapter."
+            },
+            "score": 4
+        },
+        {
+            "id": "2cf1f6c723006f258599fd9f000bb616ae83387a",
+            "paperId": "2cf1f6c723006f258599fd9f000bb616ae83387a",
+            "title": "Have LLMs Advanced Enough? A Challenging Problem Solving Benchmark For Large Language Models",
+            "abstract": "The performance of large language models (LLMs) on existing reasoning benchmarks has significantly improved over the past years. In response, we present JEEBench, a considerably more challenging benchmark dataset for evaluating the problem solving abilities of LLMs. We curate 515 challenging pre-engineering mathematics, physics and chemistry problems from the highly competitive IIT JEE-Advanced exam. Long-horizon reasoning on top of deep in-domain knowledge is essential for solving problems in this benchmark. Our evaluation on various open-source and proprietary models reveals that the highest performance, even after using techniques like self-consistency, self-refinement and chain-of-thought prompting, is less than 40%. The typical failure modes of GPT-4, the best model, are errors in algebraic manipulation, difficulty in grounding abstract concepts into mathematical equations accurately and failure in retrieving relevant domain-specific concepts. We also observe that by mere prompting, GPT-4 is unable to assess risk introduced by negative marking for incorrect answers. For this, we develop a post-hoc confidence-thresholding method over self-consistency, which enables effective response selection. We hope that our challenging benchmark will guide future re-search in problem-solving using LLMs.",
+            "year": 2023,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "JEEBench is presented, a considerably more challenging benchmark dataset for evaluating the problem solving abilities of LLMs, and a post-hoc confidence-thresholding method over self-consistency is developed, which enables effective response selection."
+            },
+            "score": 4
+        },
+        {
+            "id": "6ac627f57b26354ab537734d820da4a6a7dde2c6",
+            "paperId": "6ac627f57b26354ab537734d820da4a6a7dde2c6",
+            "title": "CLadder: Assessing Causal Reasoning in Language Models",
+            "abstract": "The ability to perform causal reasoning is widely considered a core feature of intelligence. In this work, we investigate whether large language models (LLMs) can coherently reason about causality. Much of the existing work in natural language processing (NLP) focuses on evaluating commonsense causal reasoning in LLMs, thus failing to assess whether a model can perform causal inference in accordance with a set of well-defined formal rules. To address this, we propose a new NLP task, causal inference in natural language, inspired by the\"causal inference engine\"postulated by Judea Pearl et al. We compose a large dataset, CLadder, with 10K samples: based on a collection of causal graphs and queries (associational, interventional, and counterfactual), we obtain symbolic questions and ground-truth answers, through an oracle causal inference engine. These are then translated into natural language. We evaluate multiple LLMs on our dataset, and we introduce and evaluate a bespoke chain-of-thought prompting strategy, CausalCoT. We show that our task is highly challenging for LLMs, and we conduct an in-depth analysis to gain deeper insights into the causal reasoning abilities of LLMs. Our data is open-sourced at https://huggingface.co/datasets/causalNLP/cladder, and our code can be found at https://github.com/causalNLP/cladder.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates whether large language models (LLMs) can coherently reason about causality, and proposes a new NLP task, causal inference in natural language, inspired by the \"causal inference engine\" proposed by Judea Pearl et al."
+            },
+            "score": 4
+        },
+        {
+            "id": "f30b720e34d405f200270a6ef2d09e98585fb4d1",
+            "paperId": "f30b720e34d405f200270a6ef2d09e98585fb4d1",
+            "title": "CLadder: A Benchmark to Assess Causal Reasoning Capabilities of Language Models",
+            "abstract": "The ability to perform causal reasoning is widely considered a core feature of intelligence. In this work, we investigate whether large language models (LLMs) can coherently reason about causality. Much of the existing work in natural language processing (NLP) focuses on evaluating commonsense causal reasoning in LLMs, thus failing to assess whether a model can perform causal inference in accordance with a set of well-defined formal rules . To address this, we propose a new NLP task, causal inference in natural language , inspired by the \u201ccausal inference engine\u201d postulated by Judea Pearl et al. We compose a large dataset, CL ADDER , with 10K samples: based on a collection of causal graphs and queries (associational, interventional, and counterfactual), we obtain symbolic questions and ground-truth answers, through an oracle causal inference engine. These are then translated into natural language. We evaluate multiple LLMs on our dataset, and we introduce and evaluate a bespoke chain-of-thought prompting strategy, C AUSAL C O T. We show that our task is highly challenging for LLMs, and we conduct an in-depth analysis to gain deeper insight into the causal reasoning abilities of LLMs. 1",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates whether large language models (LLMs) can coherently reason about causality, and proposes a new NLP task, causal inference in natural language, inspired by the \u201ccausal inference engine\u201d postulated by Judea Pearl et al."
+            },
+            "score": 4
+        },
+        {
+            "id": "172d26ba22ad996f0db54adc73d3b88af99c6c1d",
+            "paperId": "172d26ba22ad996f0db54adc73d3b88af99c6c1d",
+            "title": "Improving Factual Consistency for Knowledge-Grounded Dialogue Systems via Knowledge Enhancement and Alignment",
+            "abstract": "Pretrained language models (PLMs) based knowledge-grounded dialogue systems are prone to generate responses that are factually inconsistent with the provided knowledge source. In such inconsistent responses, the dialogue models fail to accurately express the external knowledge they rely upon. Inspired by previous work which identified that feed-forward networks (FFNs) within Transformers are responsible for factual knowledge expressions, we investigate two methods to efficiently improve the factual expression capability {of FFNs} by knowledge enhancement and alignment respectively. We first propose \\textsc{K-Dial}, which {explicitly} introduces {extended FFNs in Transformers to enhance factual knowledge expressions} given the specific patterns of knowledge-grounded dialogue inputs. Additionally, we apply the reinforcement learning for factual consistency (RLFC) method to implicitly adjust FFNs' expressions in responses by aligning with gold knowledge for the factual consistency preference. To comprehensively assess the factual consistency and dialogue quality of responses, we employ extensive automatic measures and human evaluations including sophisticated fine-grained NLI-based metrics. Experimental results on WoW and CMU\\_DoG datasets demonstrate that our methods efficiently enhance the ability of the FFN module to convey factual knowledge, validating the efficacy of improving factual consistency for knowledge-grounded dialogue systems.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results on WoW and CMU\\_DoG datasets demonstrate that the methods efficiently enhance the ability of the FFN module to convey factual knowledge, validating the efficacy of improving factual consistency for knowledge-grounded dialogue systems."
+            },
+            "score": 4
+        },
+        {
+            "id": "7cf1944c133679356afd75d735abcbe5332d76e7",
+            "paperId": "7cf1944c133679356afd75d735abcbe5332d76e7",
+            "title": "Improving Factual Consistency in Summarization with Compression-Based Post-Editing",
+            "abstract": "State-of-the-art summarization models still struggle to be factually consistent with the input text. A model-agnostic way to address this problem is post-editing the generated summaries. However, existing approaches typically fail to remove entity errors if a suitable input entity replacement is not available or may insert erroneous content. In our work, we focus on removing extrinsic entity errors, or entities not in the source, to improve consistency while retaining the summary\u2019s essential information and form. We propose to use sentence-compression data to train the post-editing model to take a summary with extrinsic entity errors marked with special tokens and output a compressed, well-formed summary with those errors removed. We show that this model improves factual consistency while maintaining ROUGE, improving entity precision by up to 30% on XSum, and that this model can be applied on top of another post-editor, improving entity precision by up to a total of 38%. We perform an extensive comparison of post-editing approaches that demonstrate trade-offs between factual consistency, informativeness, and grammaticality, and we analyze settings where post-editors show the largest improvements.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes to use sentence-compression data to train the post-editing model to take a summary with extrinsic entity errors marked with special tokens and output a compressed, well-formed summary with those errors removed, and shows that this model improves factual consistency while maintaining ROUGE."
+            },
+            "score": 4
+        },
+        {
+            "id": "4ea413e5a21a743d68c92e7f169535d0543f6051",
+            "paperId": "4ea413e5a21a743d68c92e7f169535d0543f6051",
+            "title": "On Improving Summarization Factual Consistency from Natural Language Feedback",
+            "abstract": "Despite the recent progress in language generation models, their outputs may not always meet user expectations. In this work, we study whether informational feedback in natural language can be leveraged to improve generation quality and user preference alignment. To this end, we consider factual consistency in summarization, the quality that the summary should only contain information supported by the input documents, as the user-expected preference. We collect a high-quality dataset, DeFacto, containing human demonstrations and informational natural language feedback consisting of corrective instructions, edited summaries, and explanations with respect to the factual consistency of the summary. Using our dataset, we study three natural language generation tasks: (1) editing a summary by following the human feedback, (2) generating human feedback for editing the original summary, and (3) revising the initial summary to correct factual errors by generating both the human feedback and edited summary. We show that DeFacto can provide factually consistent human-edited summaries and further insights into summarization factual consistency thanks to its informational natural language feedback. We further demonstrate that fine-tuned language models can leverage our dataset to improve the summary factual consistency, while large language models lack the zero-shot learning ability in our proposed tasks that require controllable text generation.",
+            "year": 2022,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DeFacto can provide factually consistent human-edited summaries and further insights into summarization factual consistency thanks to its informational natural language feedback, and it is demonstrated that fine-tuned language models can leverage the dataset to improve the summary factual consistency."
+            },
+            "score": 4
+        },
+        {
+            "id": "73b6de24eb0e5f6ff4f9c3bdd9257f4554faca19",
+            "paperId": "73b6de24eb0e5f6ff4f9c3bdd9257f4554faca19",
+            "title": "Measuring and Improving Consistency in Pretrained Language Models",
+            "abstract": "Abstract Consistency of a model\u2014that is, the invariance of its behavior under meaning-preserving alternations in its input\u2014is a highly desirable property in natural language processing. In this paper we study the question: Are Pretrained Language Models (PLMs) consistent with respect to factual knowledge? To this end, we create ParaRel\ud83e\udd18, a high-quality resource of cloze-style query English paraphrases. It contains a total of 328 paraphrases for 38 relations. Using ParaRel\ud83e\udd18, we show that the consistency of all PLMs we experiment with is poor\u2014 though with high variance between relations. Our analysis of the representational spaces of PLMs suggests that they have a poor structure and are currently not suitable for representing knowledge robustly. Finally, we propose a method for improving model consistency and experimentally demonstrate its effectiveness.1",
+            "year": 2021,
+            "citationCount": 226,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The creation of PARAREL, a high-quality resource of cloze-style query English paraphrases, and analysis of the representational spaces of PLMs suggest that they have a poor structure and are currently not suitable for representing knowledge in a robust way."
+            },
+            "score": 4
+        },
+        {
+            "id": "99ad11764421bfff6261c9df8526c8b5af82d794",
+            "paperId": "99ad11764421bfff6261c9df8526c8b5af82d794",
+            "title": "Improving Logical Consistency in Pre-Trained Language Models using Natural Language Inference",
+            "abstract": "Current state-of-the-art pre-trained language models (PTLMs) contain rich and vast amounts of world knowledge, demonstrating an ability to extrapolate information from contextual texts and to accurately answer questions [1]. However, the latent factual understanding captured by PTLMs can be irrational and inconsistent, causing PTLMs to be prone to generating contradictory statements [2]. We demonstrate that natural language inference (NLI) can provide additional signal about contradictory statements output by a PTLM. We explore several approaches for aggregating the entailment and contradiction probabilities acquired through NLI on a batch of PTLM predicted answers and define a scoring heuristic that balances between the NLI output and the PTLM\u2019s confidence in its answers. Predictions whose scores are below a tuned threshold are revised before outputting final answers. In addition, we investigate methods for using these NLI probabilities to define a MaxSAT problem that, when optimized, yields corrected predictions. Our results demonstrate that a system that uses either of our approaches to revise PTLM answers has better accuracy and logical consistency than a vanilla PTLM.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that natural language inference (NLI) can provide additional signal about contradictory statements output by a PTLM and that a system that uses either of these approaches to revise PTLM answers has better accuracy and logical consistency than a vanilla PTLM."
+            },
+            "score": 4
+        },
+        {
+            "id": "73eab203ccebd5d74cffb04240aa4a8a6f10e482",
+            "paperId": "73eab203ccebd5d74cffb04240aa4a8a6f10e482",
+            "title": "Synthetic Imitation Edit Feedback for Factual Alignment in Clinical Summarization",
+            "abstract": "Large Language Models (LLMs) like the GPT and LLaMA families have demonstrated exceptional capabilities in capturing and condensing critical contextual information and achieving state-of-the-art performance in the summarization task. However, community concerns about these models' hallucination issues continue to rise. LLMs sometimes generate factually hallucinated summaries, which can be extremely harmful in the clinical domain NLP tasks (e.g., clinical note summarization), where factually incorrect statements can lead to critically erroneous diagnoses. Fine-tuning LLMs using human feedback has shown the promise of aligning LLMs to be factually consistent during generation, but such training procedure requires high-quality human-annotated data, which can be extremely expensive to get in the clinical domain. In this work, we propose a new pipeline using ChatGPT instead of human experts to generate high-quality feedback data for improving factual consistency in the clinical note summarization task. We focus specifically on edit feedback because recent work discusses the shortcomings of human alignment via preference feedback in complex situations (such as clinical NLP tasks that require extensive expert knowledge), as well as some advantages of collecting edit feedback from domain experts. In addition, although GPT has reached the expert level in many clinical NLP tasks (e.g., USMLE QA), there is not much previous work discussing whether GPT can generate expert-level edit feedback for LMs in the clinical note summarization task. We hope to fill this gap. Finally, our evaluations demonstrate the potential use of GPT edits in human alignment, especially from a factuality perspective.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a new pipeline using ChatGPT instead of human experts to generate high-quality feedback data for improving factual consistency in the clinical note summarization task, and demonstrates the potential use of GPT edits in human alignment, especially from a factuality perspective."
+            },
+            "score": 4
+        },
+        {
+            "id": "d2d16333a4b0dc7e3463b280b9945e5ee6c53396",
+            "paperId": "d2d16333a4b0dc7e3463b280b9945e5ee6c53396",
+            "title": "TrueTeacher: Learning Factual Consistency Evaluation with Large Language Models",
+            "abstract": "Factual consistency evaluation is often conducted using Natural Language Inference (NLI) models, yet these models exhibit limited success in evaluating summaries. Previous work improved such models with synthetic training data. However, the data is typically based on perturbed human-written summaries, which often differ in their characteristics from real model-generated summaries and have limited coverage of possible factual errors. Alternatively, large language models (LLMs) have recently shown promising results in directly evaluating generative tasks, but are too computationally expensive for practical use. Motivated by these limitations, we introduce TrueTeacher, a method for generating synthetic data by annotating diverse model-generated summaries using a LLM. Unlike prior work, TrueTeacher does not rely on human-written summaries, and is multilingual by nature. Experiments on the TRUE benchmark show that a student model trained using our data, substantially outperforms both the state-of-the-art model with similar capacity, and the LLM teacher. In a systematic study, we compare TrueTeacher to existing synthetic data generation methods and demonstrate its superiority and robustness to domain-shift. We also show that our method generalizes to multilingual scenarios. Lastly, we release our large scale synthetic dataset (1.4M examples), generated using TrueTeacher, and a checkpoint trained on this data.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces TrueTeacher, a method for generating synthetic data by annotating diverse model-generated summaries using a LLM, which does not rely on human-written summaries, and is multilingual by nature."
+            },
+            "score": 4
+        },
+        {
+            "id": "56373d3fd0f1354a61f9e577db039cdb187d8d43",
+            "paperId": "56373d3fd0f1354a61f9e577db039cdb187d8d43",
+            "title": "Evaluating the Factual Consistency of Large Language Models Through News Summarization",
+            "abstract": "While large language models (LLMs) have proven to be effective on a large variety of tasks, they are also known to hallucinate information. To measure whether an LLM prefers factually consistent continuations of its input, we propose a new benchmark called FIB(Factual Inconsistency Benchmark) that focuses on the task of summarization. Specifically, our benchmark involves comparing the scores an LLM assigns to a factually consistent versus a factually inconsistent summary for an input news article. For factually consistent summaries, we use human-written reference summaries that we manually verify as factually consistent. To generate summaries that are factually inconsistent, we generate summaries from a suite of summarization models that we have manually annotated as factually inconsistent. A model's factual consistency is then measured according to its accuracy, i.e.\\ the proportion of documents where it assigns a higher score to the factually consistent summary. To validate the usefulness of FIB, we evaluate 23 large language models ranging from 1B to 176B parameters from six different model families including BLOOM and OPT. We find that existing LLMs generally assign a higher score to factually consistent summaries than to factually inconsistent summaries. However, if the factually inconsistent summaries occur verbatim in the document, then LLMs assign a higher score to these factually inconsistent summaries than factually consistent summaries. We validate design choices in our benchmark including the scoring method and source of distractor summaries. Our code and benchmark data can be found at https://github.com/r-three/fib.",
+            "year": 2022,
+            "citationCount": 51,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new benchmark called FIB(Factual Inconsistency Benchmark) that focuses on the task of summarization, and finds that existing LLMs generally assign a higher score to factually consistent summaries than tofactually inconsistent summaries."
+            },
+            "score": 4
+        },
+        {
+            "id": "e0e1fcdbc5b41fcd1cd15001b4861a738411c910",
+            "paperId": "e0e1fcdbc5b41fcd1cd15001b4861a738411c910",
+            "title": "SQL-PaLM: Improved Large Language Model Adaptation for Text-to-SQL",
+            "abstract": "One impressive emergent capability of large language models (LLMs) is generation of code, including Structured Query Language (SQL) for databases. For the task of converting natural language text to SQL queries, Text-to-SQL, adaptation of LLMs is of paramount importance, both in in-context learning and fine-tuning settings, depending on the amount of adaptation data used. In this paper, we propose an LLM-based Text-to-SQL model SQL-PaLM , leveraging on PaLM-2 , that pushes the state-of-the-art in both settings. Few-shot SQL-PaLM is based on an execution-based self-consistency prompting approach designed for Text-to-SQL, and achieves 77.3% in test-suite accuracy on Spider, which to our best knowledge is the first to outperform previous state-of-the-art with fine-tuning by a significant margin, 4% . Furthermore, we demonstrate that the fine-tuned SQL-PALM outperforms it further by another 1% . Towards applying SQL-PaLM to real-world scenarios we further evaluate its robustness on other challenging variants of Spider and demonstrate the superior generalization capability of SQL-PaLM . In addition, via extensive case studies, we demonstrate the impressive intelligent capabilities and various success enablers of LLM-based Text-to-SQL.",
+            "year": 2023,
+            "citationCount": 30,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An LLM-based Text-to-SQL model SQL-PaLM is proposed, leveraging on PaLM-2, that pushes the state-of-the-art in both settings and is the first to outperform previous state-of-the-art with fine-tuning by a significant margin."
+            },
+            "score": 4
+        },
+        {
+            "id": "5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4",
+            "paperId": "5e5f6e3620a9b472cfa8cb81b264f350cd77d5d4",
+            "title": "Look Before You Leap: Problem Elaboration Prompting Improves Mathematical Reasoning in Large Language Models",
+            "abstract": "Large language models (LLMs) still grapple with complex tasks like mathematical reasoning. Despite significant efforts invested in improving prefix prompts or reasoning process, the crucial role of problem context might have been neglected. Accurate recognition of inputs is fundamental for solving mathematical tasks, as ill-formed problems could potentially mislead LLM's reasoning. In this study, we propose a new approach named Problem Elaboration Prompting (PEP) to enhance the mathematical capacities of LLMs. Specifically, PEP decomposes and elucidates the problem context before reasoning, therefore enhancing the context modeling and parsing efficiency. Experiments across datasets and models demonstrate promising performances: (1) PEP demonstrates an overall enhancement in various mathematical tasks. For instance, with the GPT-3.5 model, PEP exhibits improvements of 9.93% and 8.80% on GSM8k through greedy decoding and self-consistency, respectively. (2) PEP can be easily implemented and integrated with other prompting methods. (3) PEP shows particular strength in handling distraction problems.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new approach named Problem Elaboration Prompting (PEP) is proposed to enhance the mathematical capacities of LLMs by decomposing and elucidates the problem context before reasoning, therefore enhancing the context modeling and parsing efficiency."
+            },
+            "score": 4
+        },
+        {
+            "id": "5b9bf4a82da690e738821ac0460b96c2770ed5dd",
+            "paperId": "5b9bf4a82da690e738821ac0460b96c2770ed5dd",
+            "title": "Are Large Language Models Temporally Grounded?",
+            "abstract": "Are Large language models (LLMs) temporally grounded? Since LLMs cannot perceive and interact with the environment, it is impossible to answer this question directly. Instead, we provide LLMs with textual narratives and probe them with respect to their common-sense knowledge of the structure and duration of events, their ability to order events along a timeline, and self-consistency within their temporal model (e.g., temporal relations such as after and before are mutually exclusive for any pair of events). We evaluate state-of-the-art LLMs (such as LLaMA 2 and GPT-4) on three tasks reflecting these abilities. Generally, we find that LLMs lag significantly behind both human performance as well as small-scale, specialised LMs. In-context learning, instruction tuning, and chain-of-thought prompting reduce this gap only to a limited degree. Crucially, LLMs struggle the most with self-consistency, displaying incoherent behaviour in at least 27.23% of their predictions. Contrary to expectations, we also find that scaling the model size does not guarantee positive gains in performance. To explain these results, we study the sources from which LLMs may gather temporal information: we find that sentence ordering in unlabelled texts, available during pre-training, is only weakly correlated with event ordering. Moreover, public instruction tuning mixtures contain few temporal tasks. Hence, we conclude that current LLMs lack a consistent temporal model of textual narratives. Code, datasets, and LLM outputs are available at https://github.com/yfqiu-nlp/temporal-llms.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is concluded that current LLMs lack a consistent temporal model of textual narratives, and study the sources from which LLMs may gather temporal information finds that sentence ordering in unlabelled texts is only weakly correlated with event ordering."
+            },
+            "score": 4
+        },
+        {
+            "id": "eebdf7303256f081ab1f6a36ff0ea6126e4da484",
+            "paperId": "eebdf7303256f081ab1f6a36ff0ea6126e4da484",
+            "title": "CRASS: A Novel Data Set and Benchmark to Test Counterfactual Reasoning of Large Language Models",
+            "abstract": "We introduce the CRASS (counterfactual reasoning assessment) data set and benchmark utilizing questionized counterfactual conditionals as a novel and powerful tool to evaluate large language models. We present the data set design and benchmark. We test six state-of-the-art models against our benchmark. Our results show that it poses a valid challenge for these models and opens up considerable room for their improvement.",
+            "year": 2021,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The CRASS data set and benchmark utilizing questionized counterfactual conditionals is introduced as a novel and powerful tool to evaluate large language models and poses a valid challenge for these models and opens up considerable room for their improvement."
+            },
+            "score": 4
+        },
+        {
+            "id": "10632e0a667cbc3c52cc8f11a46d8e8e9c7739e3",
+            "paperId": "10632e0a667cbc3c52cc8f11a46d8e8e9c7739e3",
+            "title": "Causal Reasoning and Large Language Models: Opening a New Frontier for Causality",
+            "abstract": "The causal capabilities of large language models (LLMs) is a matter of significant debate, with critical implications for the use of LLMs in societally impactful domains such as medicine, science, law, and policy. We further our understanding of LLMs and their causal implications, considering the distinctions between different types of causal reasoning tasks, as well as the entangled threats of construct and measurement validity. LLM-based methods establish new state-of-the-art accuracies on multiple causal benchmarks. Algorithms based on GPT-3.5 and 4 outperform existing algorithms on a pairwise causal discovery task (97%, 13 points gain), counterfactual reasoning task (92%, 20 points gain), and actual causality (86% accuracy in determining necessary and sufficient causes in vignettes). At the same time, LLMs exhibit unpredictable failure modes and we provide some techniques to interpret their robustness. Crucially, LLMs perform these causal tasks while relying on sources of knowledge and methods distinct from and complementary to non-LLM based approaches. Specifically, LLMs bring capabilities so far understood to be restricted to humans, such as using collected knowledge to generate causal graphs or identifying background causal context from natural language. We envision LLMs to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis, one of the biggest impediments to the widespread adoption of causal methods. We also see existing causal methods as promising tools for LLMs to formalize, validate, and communicate their reasoning especially in high-stakes scenarios. In capturing common sense and domain knowledge about causal mechanisms and supporting translation between natural language and formal methods, LLMs open new frontiers for advancing the research, practice, and adoption of causality.",
+            "year": 2023,
+            "citationCount": 96,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLMs are envisioned to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis, one of the biggest impediments to the widespread adoption of causal methods."
+            },
+            "score": 4
+        },
+        {
+            "id": "498d1406fc4cddb05cd46477793f2e726a6fe238",
+            "paperId": "498d1406fc4cddb05cd46477793f2e726a6fe238",
+            "title": "The Magic of IF: Investigating Causal Reasoning Abilities in Large Language Models of Code",
+            "abstract": "Causal reasoning, the ability to identify cause-and-effect relationship, is crucial in human thinking. Although large language models (LLMs) succeed in many NLP tasks, it is still challenging for them to conduct complex causal reasoning like abductive reasoning and counterfactual reasoning. Given the fact that programming code may express causal relations more often and explicitly with conditional statements like ``if``, we want to explore whether Code-LLMs acquire better causal reasoning abilities. Our experiments show that compared to text-only LLMs, Code-LLMs with code prompts are significantly better in causal reasoning. We further intervene on the prompts from different aspects, and discover that the programming structure is crucial in code prompt design, while Code-LLMs are robust towards format perturbations.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experiments show that compared to text-only LLMs, Code-LLMs with code prompts are significantly better in causal reasoning, and that the programming structure is crucial in code prompt design, while Code- LLMs are robust towards format perturbations."
+            },
+            "score": 4
+        },
+        {
+            "id": "d1eb051c6b13eba8a9b333d5ee0a55250717195d",
+            "paperId": "d1eb051c6b13eba8a9b333d5ee0a55250717195d",
+            "title": "Debiasing NLU Models via Causal Intervention and Counterfactual Reasoning",
+            "abstract": "Recent studies have shown that strong Natural Language Understanding (NLU) models are prone to relying on annotation biases of the datasets as a shortcut, which goes against the underlying mechanisms of the task of interest. To reduce such biases, several recent works introduce debiasing methods to regularize the training process of targeted NLU models. In this paper, we provide a new perspective with causal inference to find out the bias. On one hand, we show that there is an unobserved confounder for the natural language utterances and their respective classes, leading to spurious correlations from training data. To remove such confounder, the backdoor adjustment with causal intervention is utilized to find the true causal effect, which makes the training process fundamentally different from the traditional likelihood estimation. On the other hand, in inference process, we formulate the bias as the direct causal effect and remove it by pursuing the indirect causal effect with counterfactual reasoning. We conduct experiments on large-scale natural language inference and fact verification benchmarks, evaluating on bias sensitive datasets that are specifically designed to assess the robustness of models against known biases in the training data. Experimental results show that our proposed debiasing framework outperforms previous state-of-the-art debiasing methods while maintaining the original in-distribution performance.",
+            "year": 2022,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper shows that there is an unobserved confounder for the natural language utterances and their respective classes, leading to spurious correlations from training data, and provides a new perspective with causal inference to find out the bias."
+            },
+            "score": 4
+        },
+        {
+            "id": "df0db04d870e1666a64a9c92688419e7628423e5",
+            "paperId": "df0db04d870e1666a64a9c92688419e7628423e5",
+            "title": "Is Knowledge All Large Language Models Needed for Causal Reasoning?",
+            "abstract": "This paper explores the causal reasoning of large language models (LLMs) to enhance their interpretability and reliability in advancing artificial intelligence. Despite the proficiency of LLMs in a range of tasks, their potential for understanding causality requires further exploration. We propose a novel causal attribution model that utilizes\"do-operators\"for constructing counterfactual scenarios, allowing us to systematically quantify the influence of input numerical data and LLMs' pre-existing knowledge on their causal reasoning processes. Our newly developed experimental setup assesses LLMs' reliance on contextual information and inherent knowledge across various domains. Our evaluation reveals that LLMs' causal reasoning ability depends on the context and domain-specific knowledge provided, and supports the argument that\"knowledge is, indeed, what LLMs principally require for sound causal reasoning\". On the contrary, in the absence of knowledge, LLMs still maintain a degree of causal reasoning using the available numerical data, albeit with limitations in the calculations.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel causal attribution model is proposed that utilizes \"do-operators\" for constructing counterfactual scenarios, allowing to systematically quantify the influence of input numerical data and LLMs' pre-existing knowledge on their causal reasoning processes."
+            },
+            "score": 4
+        },
+        {
+            "id": "7fc8da1a277ce4a8292f6675a2f7ce2f928a283b",
+            "paperId": "7fc8da1a277ce4a8292f6675a2f7ce2f928a283b",
+            "title": "Counterfactuals of Counterfactuals: a back-translation-inspired approach to analyse counterfactual editors",
+            "abstract": "In the wake of responsible AI, interpretability methods, which attempt to provide an explanation for the predictions of neural models have seen rapid progress. In this work, we are concerned with explanations that are applicable to natural language processing (NLP) models and tasks, and we focus specifically on the analysis of counterfactual, contrastive explanations. We note that while there have been several explainers proposed to produce counterfactual explanations, their behaviour can vary significantly and the lack of a universal ground truth for the counterfactual edits imposes an insuperable barrier on their evaluation. We propose a new back translation-inspired evaluation methodology that utilises earlier outputs of the explainer as ground truth proxies to investigate the consistency of explainers. We show that by iteratively feeding the counterfactual to the explainer we can obtain valuable insights into the behaviour of both the predictor and the explainer models, and infer patterns that would be otherwise obscured. Using this methodology, we conduct a thorough analysis and propose a novel metric to evaluate the consistency of counterfactual generation approaches with different characteristics across available performance indicators.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a new back translation-inspired evaluation methodology that utilises earlier outputs of the explainer as ground truth proxies to investigate the consistency of explainers and shows that by iteratively feeding the counterfactual to the explainers the authors can obtain valuable insights into the behaviour of both the predictor and the explaining models, and infer patterns that would be otherwise obscured."
+            },
+            "score": 4
+        },
+        {
+            "id": "d7386e8859b22e05ce9c4a972613d4b1e1e44198",
+            "paperId": "d7386e8859b22e05ce9c4a972613d4b1e1e44198",
+            "title": "Prompting Large Language Models With the Socratic Method",
+            "abstract": "This paper presents a systematic approach to using the Socratic method in developing prompt templates that effectively interact with large language models, including GPT-3. Various methods are examined, and those that yield precise answers and justifications while fostering creativity and imagination to enhance creative writing are identified. Techniques such as definition, elenchus, dialectic, maieutics, generalization, and counterfactual reasoning are discussed for their application in engineering prompt templates and their connections to inductive, deductive, and abductive reasoning. Through examples, the effectiveness of these dialogue and reasoning methods is demonstrated. An interesting observation is made that when the task's goal and user intent are conveyed to GPT-3 via ChatGPT before the start of a dialogue, the large language model seems to connect to the external context expressed in the intent and perform more effectively.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An interesting observation is made that when the task's goal and user intent are conveyed to GPT-3 via ChatGPT before the start of a dialogue, the large language model seems to connect to the external context expressed in the intent and perform more effectively."
+            },
+            "score": 3
+        },
+        {
+            "id": "4b84cb46a704cc3a978758d8bf09fff25ed71a5a",
+            "paperId": "4b84cb46a704cc3a978758d8bf09fff25ed71a5a",
+            "title": "Inferring cancer disease response from radiology reports using large language models with data augmentation and prompting",
+            "abstract": "Abstract Objective To assess large language models on their ability to accurately infer cancer disease response from free-text radiology reports. Materials and Methods We assembled 10 602 computed tomography reports from cancer patients seen at a single institution. All reports were classified into: no evidence of disease, partial response, stable disease, or progressive disease. We applied transformer models, a bidirectional long short-term memory model, a convolutional neural network model, and conventional machine learning methods to this task. Data augmentation using sentence permutation with consistency loss as well as prompt-based fine-tuning were used on the best-performing models. Models were validated on a hold-out test set and an external validation set based on Response Evaluation Criteria in Solid Tumors (RECIST) classifications. Results The best-performing model was the GatorTron transformer which achieved an accuracy of 0.8916 on the test set and 0.8919 on the RECIST validation set. Data augmentation further improved the accuracy to 0.8976. Prompt-based fine-tuning did not further improve accuracy but was able to reduce the number of training reports to 500 while still achieving good performance. Discussion These models could be used by researchers to derive progression-free survival in large datasets. It may also serve as a decision support tool by providing clinicians an automated second opinion of disease response. Conclusions Large clinical language models demonstrate potential to infer cancer disease response from radiology reports at scale. Data augmentation techniques are useful to further improve performance. Prompt-based fine-tuning can significantly reduce the size of the training dataset.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Large clinical language models demonstrate potential to infer cancer disease response from radiology reports at scale by applying transformer models, a bidirectional long short-term memory model, a convolutional neural network model, and conventional machine learning methods."
+            },
+            "score": 3
+        },
+        {
+            "id": "c0be6c1d2afcdfe0e9c2004be9f7fd3b8430d5ee",
+            "paperId": "c0be6c1d2afcdfe0e9c2004be9f7fd3b8430d5ee",
+            "title": "Improving Factual Consistency of Text Summarization by Adversarially Decoupling Comprehension and Embellishment Abilities of LLMs",
+            "abstract": "Despite the recent progress in text summarization made by large language models (LLMs), they often generate summaries that are factually inconsistent with original articles, known as\"hallucinations\"in text generation. Unlike previous small models (e.g., BART, T5), current LLMs make fewer silly mistakes but more sophisticated ones, such as imposing cause and effect, adding false details, overgeneralizing, etc. These hallucinations are challenging to detect through traditional methods, which poses great challenges for improving the factual consistency of text summarization. In this paper, we propose an adversarially DEcoupling method to disentangle the Comprehension and EmbellishmeNT abilities of LLMs (DECENT). Furthermore, we adopt a probing-based efficient training to cover the shortage of sensitivity for true and false in the training process of LLMs. In this way, LLMs are less confused about embellishing and understanding; thus, they can execute the instructions more accurately and have enhanced abilities to distinguish hallucinations. Experimental results show that DECENT significantly improves the reliability of text summarization based on LLMs.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes an adversarially DEcoupling method to disentangle the Comprehension and EmbellishmeNT abilities of LLMs (DECENT) and adopts a probing-based efficient training to cover the shortage of sensitivity for true and false in the training process ofLLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "3f4bef1f909468bf7179472b9b160d5463b76e22",
+            "paperId": "3f4bef1f909468bf7179472b9b160d5463b76e22",
+            "title": "Improving Factual Consistency Between a Response and Persona Facts",
+            "abstract": "Neural models for response generation produce responses that are semantically plausible but not necessarily factually consistent with facts describing the speaker\u2019s persona. These models are trained with fully supervised learning where the objective function barely captures factual consistency. We propose to fine-tune these models by reinforcement learning and an efficient reward function that explicitly captures the consistency between a response and persona facts as well as semantic plausibility. Our automatic and human evaluations on the PersonaChat corpus confirm that our approach increases the rate of responses that are factually consistent with persona facts over its supervised counterpart while retains the language quality of responses.",
+            "year": 2021,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes to fine-tune neural models for response generation by reinforcement learning and an efficient reward function that explicitly captures the consistency between a response and persona facts as well as semantic plausibility."
+            },
+            "score": 3
+        },
+        {
+            "id": "fc2730983c05eecfc34e1f7c49c7ecfa9f054854",
+            "paperId": "fc2730983c05eecfc34e1f7c49c7ecfa9f054854",
+            "title": "Improving Factual Consistency of Dialogue Summarization with Fact-Augmentation Mechanism",
+            "abstract": "With the vigorous development of dialogue system in natural language processing fields, dialogue summarization has attracted the attention of more scholars, which aims to extract brief introduction and hit points from dialogue information for readers. As the participation of multiple roles and the trans-formation of perspectives in dialogue, one of the most difficult problems, i.e. factual consistency, is raised in the generation of dialogue summaries. It means that the summaries are usually factual wrong although with high matching metric by many methods. Previous methods improve factual consistency between source and target by incorporating knowledge. However, the role of knowledge for dialogue summarization models lacks convincing evidence. In this paper, we propose a Fact-Augmentation (FA) Mechanism based Dialogue Summarization model, called FA-DS model for dialogue summarization. Our FA-DS integrates the fact graph extracted from the dialogue into the summaries generation process, and augment the gain of the factual information through the fact-aware score penalty item. Experiments on the large-scale dialogue dataset SAMSum demonstrate that our fact-augmentation mechanism can improve the quality and factual consistency of dialogue summarization.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Fact-Augmentation (FA) Mechanism based Dialogue Summarization model, called FA-DS model for dialogue summarization, which integrates the fact graph extracted from the dialogue into the summaries generation process, and augment the gain of the factual information through the fact-aware score penalty item."
+            },
+            "score": 3
+        },
+        {
+            "id": "5149fbc5d21436b42e884278475d2eef32d52b28",
+            "paperId": "5149fbc5d21436b42e884278475d2eef32d52b28",
+            "title": "Questioning the Validity of Summarization Datasets and Improving Their Factual Consistency",
+            "abstract": "The topic of summarization evaluation has recently attracted a surge of attention due to the rapid development of abstractive summarization systems. However, the formulation of the task is rather ambiguous, neither the linguistic nor the natural language processing communities have succeeded in giving a mutually agreed-upon definition. Due to this lack of well-defined formulation, a large number of popular abstractive summarization datasets are constructed in a manner that neither guarantees validity nor meets one of the most essential criteria of summarization: factual consistency. In this paper, we address this issue by combining state-of-the-art factual consistency models to identify the problematic instances present in popular summarization datasets. We release SummFC, a filtered summarization dataset with improved factual consistency, and demonstrate that models trained on this dataset achieve improved performance in nearly all quality aspects. We argue that our dataset should become a valid benchmark for developing and evaluating summarization systems.",
+            "year": 2022,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper combines state-of-the-art factual consistency models to identify the problematic instances present in popular summarization datasets and argues that this dataset should become a valid benchmark for developing and evaluating summarization systems."
+            },
+            "score": 3
+        },
+        {
+            "id": "c6a8a38119aa2a05515cb51328e22bf4d0e2652c",
+            "paperId": "c6a8a38119aa2a05515cb51328e22bf4d0e2652c",
+            "title": "UniArk: Improving Generalisation and Consistency for Factual Knowledge Extraction through Debiasing",
+            "abstract": "Several recent papers have investigated the potential of language models as knowledge bases as well as the existence of severe biases when extracting factual knowledge. In this work, we focus on the factual probing performance over unseen prompts from tuning, and using a probabilistic view we show the inherent misalignment between pre-training and downstream tuning objectives in language models for probing knowledge. We hypothesize that simultaneously debiasing these objectives can be the key to generalisation over unseen prompts. We propose an adapter-based framework, UniArk, for generalised and consistent factual knowledge extraction through simple methods without introducing extra parameters. Extensive experiments show that UniArk can significantly improve the model's out-of-domain generalisation as well as consistency under various prompts. Additionally, we construct ParaTrex, a large-scale and diverse dataset for measuring the inconsistency and out-of-domain generation of models. Further, ParaTrex offers a reference method for constructing paraphrased datasets using large language models.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an adapter-based framework, UniArk, for generalised and consistent factual knowledge extraction through simple methods without introducing extra parameters, and shows that UniArk can significantly improve the model's out-of-domain generalisation as well as consistency under various prompts."
+            },
+            "score": 3
+        },
+        {
+            "id": "d998ff93b2e58c9b219a9103f8c2ad714a41e4b9",
+            "paperId": "d998ff93b2e58c9b219a9103f8c2ad714a41e4b9",
+            "title": "The Effect of Scaling, Retrieval Augmentation and Form on the Factual Consistency of Language Models",
+            "abstract": "Large Language Models (LLMs) make natural interfaces to factual knowledge, but their usefulness is limited by their tendency to deliver inconsistent answers to semantically equivalent questions. For example, a model might predict both\"Anne Redpath passed away in Edinburgh.\"and\"Anne Redpath's life ended in London.\"In this work, we identify potential causes of inconsistency and evaluate the effectiveness of two mitigation strategies: up-scaling and augmenting the LM with a retrieval corpus. Our results on the LLaMA and Atlas models show that both strategies reduce inconsistency while retrieval augmentation is considerably more efficient. We further consider and disentangle the consistency contributions of different components of Atlas. For all LMs evaluated we find that syntactical form and other evaluation task artifacts impact consistency. Taken together, our results provide a better understanding of the factors affecting the factual consistency of language models.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work identifies potential causes of inconsistency and evaluates the effectiveness of two mitigation strategies: up-scaling and augmenting the LM with a retrieval corpus, showing that both strategies reduce inconsistency while retrieval augmentation is considerably more efficient."
+            },
+            "score": 3
+        },
+        {
+            "id": "e96348576b682e709b2ee06ea28cd81f8bfa102b",
+            "paperId": "e96348576b682e709b2ee06ea28cd81f8bfa102b",
+            "title": "Exploring the Factual Consistency in Dialogue Comprehension of Large Language Models",
+            "abstract": "LLMs (Large Language Models) usually interact with users in the form of dialogue and generate responses following their instructions, which naturally require dialogue comprehension abilities. However, dialogue comprehension is a general language ability which is hard to be evaluated directly. In this work, we propose to perform the evaluation focusing on the factual consistency issue with the help of the dialogue summarization task. Besides evaluating and analyzing the dialogue summarization performance (DIAC-Sum) of different LLMs, we also derive factual questions from the generated summaries and use them as a more flexible measurement of dialogue comprehension (DIAC-QA). Our evaluation shows that, on average, 26.8% of the summaries generated by LLMs contain factual inconsistency. Even ChatGPT, the strongest model evaluated, has such errors in 16% of its summaries. For answering the factual questions, which is more challenging, the average error rate of all evaluated LLMs is 36.1%. Both results indicate serious deficiencies. Detailed analysis shows that the understanding of subject/object of the conversation is still challenging for LLMs. Furthermore, to stimulate and enhance the dialogue comprehension ability of LLMs, we propose a fine-tuning paradigm with auto-constructed multi-task data, which achieved a relative error rate reduction of 11% on DIAC-QA.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "To stimulate and enhance the dialogue comprehension ability of LLMs, a fine-tuning paradigm with auto-constructed multi-task data is proposed, which achieved a relative error rate reduction of 11% on DIAC-QA."
+            },
+            "score": 3
+        },
+        {
+            "id": "48a32e7f78d91da44af1424eb637ca5cb0461060",
+            "paperId": "48a32e7f78d91da44af1424eb637ca5cb0461060",
+            "title": "Team ISM at CLPsych 2024: Extracting Evidence of Suicide Risk from Reddit Posts with Knowledge Self-Generation and Output Refinement using A Large Language Model",
+            "abstract": "This paper presents our approach to the CLPsych 2024 shared task: utilizing large language models (LLMs) for finding supporting evidence about an individual\u2019s suicide risk level in Reddit posts. Our framework is constructed around an LLM with knowledge self-generation and output refinement. The knowledge self-generation process produces task-related knowledge which is generated by the LLM and leads to accurate risk predictions. The output refinement process, later, with the selected best set of LLM-generated knowledge, refines the outputs by prompting the LLM repeatedly with different knowledge instances interchangeably. We achieved highly competitive results comparing to the top-performance participants with our official recall of 93.5%, recall\u2013precision harmonic-mean of 92.3%, and mean consistency of 96.1%.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 3
+        },
+        {
+            "id": "3c55aa582a2d682eb53e9237589234854e0b92d8",
+            "paperId": "3c55aa582a2d682eb53e9237589234854e0b92d8",
+            "title": "Empirical Study of Zero-Shot NER with ChatGPT",
+            "abstract": "Large language models (LLMs) exhibited powerful capability in various natural language processing tasks. This work focuses on exploring LLM performance on zero-shot information extraction, with a focus on the ChatGPT and named entity recognition (NER) task. Inspired by the remarkable reasoning capability of LLM on symbolic and arithmetic reasoning, we adapt the prevalent reasoning methods to NER and propose reasoning strategies tailored for NER. First, we explore a decomposed question-answering paradigm by breaking down the NER task into simpler subproblems by labels. Second, we propose syntactic augmentation to stimulate the model's intermediate thinking in two ways: syntactic prompting, which encourages the model to analyze the syntactic structure itself, and tool augmentation, which provides the model with the syntactic information generated by a parsing tool. Besides, we adapt self-consistency to NER by proposing a two-stage majority voting strategy, which first votes for the most consistent mentions, then the most consistent types. The proposed methods achieve remarkable improvements for zero-shot NER across seven benchmarks, including Chinese and English datasets, and on both domain-specific and general-domain scenarios. In addition, we present a comprehensive analysis of the error types with suggestions for optimization directions. We also verify the effectiveness of the proposed methods on the few-shot setting and other LLMs.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work focuses on exploring LLM performance on zero-shot information extraction, with a focus on the ChatGPT and named entity recognition (NER) task, and proposes syntactic augmentation to stimulate the model's intermediate thinking in two ways."
+            },
+            "score": 3
+        },
+        {
+            "id": "d3637f23d15e71bc1b16948a4c29f08c90b8c772",
+            "paperId": "d3637f23d15e71bc1b16948a4c29f08c90b8c772",
+            "title": "PlaSma: Making Small Language Models Better Procedural Knowledge Models for (Counterfactual) Planning",
+            "abstract": "Procedural planning, which entails decomposing a high-level goal into a sequence of temporally ordered steps, is an important yet intricate task for machines. It involves integrating common-sense knowledge to reason about complex contextualized situations that are often counterfactual, e.g.\"scheduling a doctor's appointment without a phone\". While current approaches show encouraging results using large language models (LLMs), they are hindered by drawbacks such as costly API calls and reproducibility issues. In this paper, we advocate planning using smaller language models. We present PlaSma, a novel two-pronged approach to endow small language models with procedural knowledge and (counterfactual) planning capabilities. More concretely, we develop symbolic procedural knowledge distillation to enhance the implicit knowledge in small language models and an inference-time algorithm to facilitate more structured and accurate reasoning. In addition, we introduce a novel task, Counterfactual Planning, that requires a revision of a plan to cope with a counterfactual situation. In both the original and counterfactual setting, we show that orders-of-magnitude smaller models (770M-11B parameters) can compete and often surpass their larger teacher models' capabilities.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PlaSma is presented, a novel two-pronged approach to endow small language models with procedural knowledge and (counterfactual) planning capabilities and symbolic procedural knowledge distillation is developed to enhance the implicit knowledge insmall language models and an inference-time algorithm to facilitate more structured and accurate reasoning."
+            },
+            "score": 3
+        },
+        {
+            "id": "ff2eecb21972eb287064f98db1a4487c62bd7566",
+            "paperId": "ff2eecb21972eb287064f98db1a4487c62bd7566",
+            "title": "MenatQA: A New Dataset for Testing the Temporal Comprehension and Reasoning Abilities of Large Language Models",
+            "abstract": "Large language models (LLMs) have shown nearly saturated performance on many natural language processing (NLP) tasks. As a result, it is natural for people to believe that LLMs have also mastered abilities such as time understanding and reasoning. However, research on the temporal sensitivity of LLMs has been insufficiently emphasized. To fill this gap, this paper constructs Multiple Sensitive Factors Time QA (MenatQA), which encompasses three temporal factors (scope factor, order factor, counterfactual factor) with total 2,853 samples for evaluating the time comprehension and reasoning abilities of LLMs. This paper tests current mainstream LLMs with different parameter sizes, ranging from billions to hundreds of billions. The results show most LLMs fall behind smaller temporal reasoning models with different degree on these factors. In specific, LLMs show a significant vulnerability to temporal biases and depend heavily on the temporal information provided in questions. Furthermore, this paper undertakes a preliminary investigation into potential improvement strategies by devising specific prompts and leveraging external tools. These approaches serve as valuable baselines or references for future research endeavors.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "MenatQA constructs Multiple Sensitive Factors Time QA, which encompasses three temporal factors (scope factor, order factor, counterfactual factor) with total 2,853 samples for evaluating the time comprehension and reasoning abilities of LLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "e43e95f706762b64d4ae17a5eb72731d2bd9047a",
+            "paperId": "e43e95f706762b64d4ae17a5eb72731d2bd9047a",
+            "title": "Learning To Teach Large Language Models Logical Reasoning",
+            "abstract": "Large language models (LLMs) have gained enormous attention from both academia and industry, due to their exceptional ability in language generation and extremely powerful generalization. However, current LLMs still output unreliable content in practical reasoning tasks due to their inherent issues (e.g., hallucination). To better disentangle this problem, in this paper, we conduct an in-depth investigation to systematically explore the capability of LLMs in logical reasoning. More in detail, we first investigate the deficiency of LLMs in logical reasoning on different tasks, including event relation extraction and deductive reasoning. Our study demonstrates that LLMs are not good reasoners in solving tasks with rigorous reasoning and will produce counterfactual answers, which require us to iteratively refine. Therefore, we comprehensively explore different strategies to endow LLMs with logical reasoning ability, and thus enable them to generate more logically consistent answers across different scenarios. Based on our approach, we also contribute a synthesized dataset (LLM-LR) involving multi-hop reasoning for evaluation and pre-training. Extensive quantitative and qualitative analyses on different tasks also validate the effectiveness and necessity of teaching LLMs with logic and provide insights for solving practical tasks with LLMs in future work.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study comprehensively explore different strategies to endow LLMs with logical reasoning ability, and thus enable them to generate more logically consistent answers across different scenarios."
+            },
+            "score": 3
+        },
+        {
+            "id": "cd6d16fa15d9bfc4cff1713a13da8dcf654bfb75",
+            "paperId": "cd6d16fa15d9bfc4cff1713a13da8dcf654bfb75",
+            "title": "Smart Prompt Advisor: Multi-Objective Prompt Framework for Consistency and Best Practices",
+            "abstract": "Recent breakthroughs in Large Language Models (LLM), comprised of billions of parameters, have achieved the ability to unveil exceptional insight into a wide range of Natural Language Processing (NLP) tasks. The onus of the performance of these models lies in the sophistication and completeness of the input prompt. Minimizing the enhancement cycles of prompt with improvised keywords becomes critically important as it directly affects the time to market and cost of the developing solution. However, this process inevitably has a trade-off between the learning curve/proficiency of the user and completeness of the prompt, as generating such a solutions is an incremental process. In this paper, we have designed a novel solution and implemented it in the form of a plugin for Visual Studio Code IDE, which can optimize this trade-off, by learning the underlying prompt intent to enhance with keywords. This will tend to align with developers' collection of semantics while developing a secure code, ensuring parameter and local variable names, return expressions, simple pre and post-conditions. and basic control and data flow are met.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel solution is designed and implemented in the form of a plugin for Visual Studio Code IDE, which can optimize this trade-off between the learning curve/proficiency of the user and completeness of the prompt, by learning the underlying prompt intent to enhance with keywords."
+            },
+            "score": 3
+        },
+        {
+            "id": "31852f9fc732c0868af12d631c72693702d80521",
+            "paperId": "31852f9fc732c0868af12d631c72693702d80521",
+            "title": "Text Data Augmentation for Deep Learning",
+            "abstract": null,
+            "year": 2021,
+            "citationCount": 258,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The major motifs of Data Augmentation are summarized into strengthening local decision boundaries, brute force training, causality and counterfactual examples, and the distinction between meaning and form."
+            },
+            "score": 3
+        },
+        {
+            "id": "01bc871c0ecb7f586e54b9f67d2e50e08cbedf3d",
+            "paperId": "01bc871c0ecb7f586e54b9f67d2e50e08cbedf3d",
+            "title": "Models See Hallucinations: Evaluating the Factuality in Video Captioning",
+            "abstract": "Video captioning aims to describe events in a video with natural language. In recent years, many works have focused on improving captioning models' performance. However, like other text generation tasks, it risks introducing factual errors not supported by the input video. These factual errors can seriously affect the quality of the generated text, sometimes making it completely unusable. Although factual consistency has received much research attention in text-to-text tasks (e.g., summarization), it is less studied in the context of vision-based text generation. In this work, we conduct a detailed human evaluation of the factuality in video captioning and collect two annotated factuality datasets. We find that 57.0% of the model-generated sentences have factual errors, indicating it is a severe problem in this field. However, existing evaluation metrics are mainly based on n-gram matching and show little correlation with human factuality annotation. We further propose a weakly-supervised, model-based factuality metric FactVC, which outperforms previous metrics on factuality evaluation of video captioning. The datasets and metrics will be released to promote future research for video captioning.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work conducts a detailed human evaluation of the factuality in video captioning and collects two annotated factuality datasets and proposes a weakly-supervised, model-based factuality metric FactVC, which outperforms previous metrics on factuality evaluation ofVideo captioning."
+            },
+            "score": 2
+        },
+        {
+            "id": "264f2f04d55051a18ca45ebc06bb051c29c079b6",
+            "paperId": "264f2f04d55051a18ca45ebc06bb051c29c079b6",
+            "title": "What Have We Achieved on Text Summarization?",
+            "abstract": "Deep learning has led to significant improvement in text summarization with various methods investigated and improved ROUGE scores reported over the years. However, gaps still exist between summaries produced by automatic summarizers and human professionals. Aiming to gain more understanding of summarization systems with respect to their strengths and limits on a fine-grained syntactic and semantic level, we consult the Multidimensional Quality Metric (MQM) and quantify 8 major sources of errors on 10 representative summarization models manually. Primarily, we find that 1) under similar settings, extractive summarizers are in general better than their abstractive counterparts thanks to strength in faithfulness and factual-consistency; 2) milestone techniques such as copy, coverage and hybrid extractive/abstractive methods do bring specific improvements but also demonstrate limitations; 3) pre-training techniques, and in particular sequence-to-sequence pre-training, are highly effective for improving text summarization, with BART giving the best results.",
+            "year": 2020,
+            "citationCount": 87,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that under similar settings, extractive summarizers are in general better than their abstractive counterparts thanks to strength in faithfulness and factual-consistency, and pre-training techniques, and in particular sequence-to-sequence pre- training, are highly effective for improving text summarization, with BART giving the best results."
+            },
+            "score": 2
+        },
+        {
+            "id": "ea8a8265fc6083d9abf225581d1ae2ecfff6a8b4",
+            "paperId": "ea8a8265fc6083d9abf225581d1ae2ecfff6a8b4",
+            "title": "Automated Subjective Answer Evaluation Using NLP",
+            "abstract": ": This study has been undertaken to investigate the determinants of Natural Language Processing (NLP) is one of the important issues of concern in giving computers the ability to understand text and speech in much the same way human beings can. NLP can be used in subjective answer evaluation in various ways. One of the most common approaches is to use NLP techniques to automatically score the quality of a written response based on its language features, such as grammar, syntax, vocabulary, and coherence. This can be done by training machine learning algorithms on a large dataset of human-scored essays or short answer responses, using the language features mentioned above as input features, and the corresponding scores as target values. The trained model can then be used to automatically score new responses based on their language features. Another approach is to use NLP techniques to analyze the content and structure of the response, in order to identify key concepts and arguments and assess their relevance and coherence with the question prompt. This can be done by using techniques such as topic modelling, sentiment analysis, and text classification. Overall, NLP can be a powerful tool for subjective answer evaluation, as it can help to improve the efficiency and consistency of the grading process, while also providing valuable insights into the language and reasoning skills of the students.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Natural Language Processing can be a powerful tool for subjective answer evaluation, as it can help to improve the efficiency and consistency of the grading process, while also providing valuable insights into the language and reasoning skills of the students."
+            },
+            "score": 2
+        },
+        {
+            "id": "30dc93fea950a86cf8adab20a9b2034544fd41e8",
+            "paperId": "30dc93fea950a86cf8adab20a9b2034544fd41e8",
+            "title": "Rethinking Visual Prompt Learning as Masked Visual Token Modeling",
+            "abstract": "Prompt learning has achieved great success in efficiently exploiting large-scale pre-trained models in natural language processing (NLP). It reformulates the downstream tasks as the generative pre-training ones to achieve consistency, thus improving the performance stably. However, when transferring it to the vision area, current visual prompt learning methods are almost designed on discriminative pre-trained models, and there is also a lack of careful design to unify the forms of pre-training and downstream tasks. To explore prompt learning on the generative pre-trained visual model, as well as keeping the task consistency, we propose Visual Prompt learning as masked visual Token Modeling (VPTM) to transform the downstream visual classification into the pre-trained masked visual token prediction. In addition, we develop the prototypical verbalizer for mapping the predicted visual token with implicit semantics to explicit downstream labels. To our best knowledge, VPTM is the first visual prompt method on the generative pre-trained visual model, which achieves consistency between pre-training and downstream visual classification by task reformulation. Experiments show that VPTM outperforms other visual prompt methods and achieves excellent efficiency. Moreover, the task consistency of VPTM contributes to the robustness against prompt location, prompt length and prototype dimension, and could be deployed uniformly.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "VPTM is the first visual prompt method on the generative pre-trained visual model, which achieves consistency between pre-training and downstream visual classification by task reformulation and contributes to the robustness against prompt location, prompt length and prototype dimension, and could be deployed uniformly."
+            },
+            "score": 2
+        },
+        {
+            "id": "75493c0875c26aa602eb70d11261fd80ea7e8991",
+            "paperId": "75493c0875c26aa602eb70d11261fd80ea7e8991",
+            "title": "Experiments on Non-native Speech Assessment and its Consistency",
+            "abstract": "In this paper, we report some preliminary experiments on automated scoring of non-native English speech and the prompt spe-ci\ufb01c nature of the constructed models. We use ICNALE, a publicly available corpus of non-native speech, as well as a variety of non-proprietary speech and natural language processing (NLP) tools. Our re-sults show that while the best performing model achieves an accuracy of 73% for a 4-way classi\ufb01cation task, this performance does not transfer to a cross-prompt evaluation scenario. Our feature selection experiments show that most predictive features are related to the vocabulary aspects of speaking pro\ufb01ciency",
+            "year": 2019,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper uses ICNALE, a publicly available corpus of non-native speech, as well as a variety of non-proprietary speech and natural language processing (NLP) tools to construct models for automated scoring of non-native English speech and the prompt nature of the constructed models is reported."
+            },
+            "score": 2
+        },
+        {
+            "id": "e60761df840d1aa2b772618b4e39e59dc141f7ad",
+            "paperId": "e60761df840d1aa2b772618b4e39e59dc141f7ad",
+            "title": "Language-Driven Visual Consensus for Zero-Shot Semantic Segmentation",
+            "abstract": "The pre-trained vision-language model, exemplified by CLIP, advances zero-shot semantic segmentation by aligning visual features with class embeddings through a transformer decoder to generate semantic masks. Despite its effectiveness, prevailing methods within this paradigm encounter challenges, including overfitting on seen classes and small fragmentation in masks. To mitigate these issues, we propose a Language-Driven Visual Consensus (LDVC) approach, fostering improved alignment of semantic and visual information.Specifically, we leverage class embeddings as anchors due to their discrete and abstract nature, steering vision features toward class embeddings. Moreover, to circumvent noisy alignments from the vision part due to its redundant nature, we introduce route attention into self-attention for finding visual consensus, thereby enhancing semantic consistency within the same object. Equipped with a vision-language prompting strategy, our approach significantly boosts the generalization capacity of segmentation models for unseen classes. Experimental results underscore the effectiveness of our approach, showcasing mIoU gains of 4.5 on the PASCAL VOC 2012 and 3.6 on the COCO-Stuff 164k for unseen classes compared with the state-of-the-art methods.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Equipped with a vision-language prompting strategy, this approach significantly boosts the generalization capacity of segmentation models for unseen classes and introduces route attention into self-attention for finding visual consensus, thereby enhancing semantic consistency within the same object."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

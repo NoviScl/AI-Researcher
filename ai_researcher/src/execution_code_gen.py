@@ -56,7 +56,7 @@ if __name__ == "__main__":
         client = anthropic.Anthropic(
             api_key=ANTH_KEY,
         )
-        cache_dir = "../cache_results_claude/"
+        cache_dir = "../cache_results_claude_may/"
     else:
         client = OpenAI(
             organization=ORG_ID,

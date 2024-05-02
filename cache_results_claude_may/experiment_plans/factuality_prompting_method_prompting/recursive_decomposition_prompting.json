@@ -60,5 +60,1006 @@
             }
         },
         "Fallback Plan": "If the proposed recursive decomposition prompting does not outperform the baselines, we can conduct the following analyses to gain insights:\n1. Check the quality of the generated decomposition trees. Are the sub-problems reasonable and sufficient to solve the original problem? If not, the decomposition prompt may need improvement.\n2. Examine the sub-problem solutions. Are they correct? If not, the recursive solving prompt may be ineffective.\n3. Analyze the final answers after combination. Do the errors mainly come from incorrect decomposition, sub-problem solving, or combination? This can help identify the weak spot in the pipeline.\n4. Investigate the types of questions that the method fails on. Are there common patterns? This may inspire targeted improvements or reveal the method's limitations.\n5. Compare the reasoning steps taken by the proposed method and the baselines. Does recursive decomposition lead to more interpretable and reliable reasoning?\nBased on these analyses, we can either refine the prompts, modify the recursive solving process, or propose alternative methods. If the results are still unsatisfactory, we can focus on the insights gained from the analyses and turn the project into an informative failure report."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"recursive decomposition prompting language models\")",
+        "KeywordQuery(\"multi-hop reasoning language models\")",
+        "KeywordQuery(\"complex question answering language models\")",
+        "KeywordQuery(\"Recursive Decomposition Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "69335077fcacbff7a7cf25697da1949e6bdfa968",
+            "paperId": "69335077fcacbff7a7cf25697da1949e6bdfa968",
+            "title": "The Art of SOCRATIC QUESTIONING: Recursive Thinking with Large Language Models",
+            "abstract": "Chain-of-Thought (CoT) prompting enables large language models to solve complex reasoning problems by generating intermediate steps. However, confined by its inherent single-pass and sequential generation process, CoT heavily relies on the initial decisions, causing errors in early steps to accumulate and impact the final answers. In contrast, humans adopt recursive thinking when tackling complex reasoning problems, i.e., iteratively breaking the original problem into approachable sub-problems and aggregating their answers to resolve the original one. Inspired by the human cognitive process, we propose SOCRATIC QUESTIONING, a divide-and-conquer style algorithm that mimics the recursive thinking process. Specifically, SOCRATIC QUESTIONING leverages large language models to raise and answer sub-questions until collecting enough information to tackle the original question. Unlike CoT, SOCRATIC QUESTIONING explicitly navigates the thinking space, stimulates effective recursive thinking, and is more robust towards errors in the thinking process. Extensive experiments on several complex reasoning tasks, including MMLU, MATH, LogiQA, and visual question-answering demonstrate significant performance improvements over the state-of-the-art prompting methods, such as CoT, and Tree-of-Thought. The qualitative analysis clearly shows that the intermediate reasoning steps elicited by SOCRATIC QUESTIONING are similar to humans' recursively thinking process of complex reasoning problems.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The qualitative analysis clearly shows that the intermediate reasoning steps elicited by SOCRATIC QUESTIONING are similar to humans' recursively thinking process of complex reasoning problems."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve large language models' performance on complex multi-hop reasoning tasks by prompting them to recursively decompose the problem into sub-problems, solve them, and combine the solutions. The paper proposes SOCRATIC QUESTIONING, a divide-and-conquer algorithm that mimics the human recursive thinking process by iteratively breaking down the problem into sub-questions and aggregating their answers.\n\nBoth the project proposal and the paper address the problem of complex multi-hop reasoning in large language models and propose recursive problem decomposition as the approach.\n\nYes",
+            "novelty_judgment": "yes"
+        },
+        {
+            "id": "50b0c6ee2b3d53ba5af69d6c00b5d60888a9026f",
+            "paperId": "50b0c6ee2b3d53ba5af69d6c00b5d60888a9026f",
+            "title": "Maieutic Prompting: Logically Consistent Reasoning with Recursive Explanations",
+            "abstract": "Pre-trained language models (LMs) struggle with consistent reasoning; recently, prompting LMs to generate explanations that self-guide the inference has emerged as a promising direction to amend this. However, these approaches are fundamentally bounded by the correctness of explanations, which themselves are often noisy and inconsistent. In this work, we develop Maieutic Prompting, which aims to infer a correct answer to a question even from the unreliable generations of LM. Maieutic Prompting induces a tree of explanations abductively (e.g. X is true, because ...) and recursively, then frames the inference as a satisfiability problem over these explanations and their logical relations. We test Maieutic Prompting for true/false QA on three challenging benchmarks that require complex commonsense reasoning. Maieutic Prompting achieves up to 20% better accuracy than state-of-the-art prompting methods, and as a fully unsupervised approach, performs competitively with supervised models. We also show that Maieutic Prompting improves robustness in inference while providing interpretable rationales.",
+            "year": 2022,
+            "citationCount": 132,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Maieutic Prompting is developed, which aims to infer a correct answer to a question even from the unreliable generations of LM, and achieves up to 20% better accuracy than state-of-the-art prompting methods, and as a fully unsupervised approach, performs competitively with supervised models."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving complex multi-hop reasoning in large language models using recursive problem decomposition. The approach is to prompt the model to break down complex questions into sub-problems, solve them recursively, and combine the partial solutions.\n\nThe research problem in the paper is improving logical consistency in language model reasoning. The approach is to generate a recursive tree of explanations and frame the inference as a logical satisfiability problem over the explanations.\n\nWhile both works aim to improve reasoning in language models and use recursive techniques, the proposal focuses specifically on multi-hop question answering with explicit problem decomposition, while the paper tackles general logical consistency using abductive explanations and satisfiability. The core problems and approaches are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "13b5b69355555e0c8b702261c5de3b4172ba653c",
+            "paperId": "13b5b69355555e0c8b702261c5de3b4172ba653c",
+            "title": "The Art of SOCRATIC QUESTIONING: Zero-shot Multimodal Reasoning with Recursive Thinking and Self-Questioning",
+            "abstract": "Chain-of-Thought prompting (CoT) enables large-scale language models to solve complex reasoning problems by decomposing the problem and tackling it step-by-step. However, Chain-of-Thought is a greedy thinking process that requires the language model to come up with a starting point and generate the next step solely based on previous steps. This thinking process is different from how humans approach a complex problem e.g., we proactively raise sub-problems related to the original problem and recursively answer them. In this work, we propose S OCRATIC Q UESTIONING , a divide-and-conquer fashion algorithm that simulates the self-questioning and recursive thinking process. S OCRATIC Q UESTIONING is driven by a S ELF -Q UESTIONING module that employs a large-scale language model to propose sub-problems related to the original problem as intermediate steps and S OCRATIC Q UESTION - ING recursively backtracks and answers the sub-problems until reaches the original problem. We apply our proposed algorithm to the visual question-answering task as a case study and by evaluating it on three public benchmark datasets, we observe a significant performance improvement over all baselines on (almost) all datasets. In addition, the qualitative analysis clearly demonstrates the intermediate thinking steps elicited by S OCRATIC Q UESTIONING are similar to the human\u2019s recursively thinking process of a complex reasoning problem.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Qualitative analysis clearly demonstrates the intermediate thinking steps elicited by S OCRATIC Q UESTIONING are similar to the human\u2019s recursively thinking process of a complex reasoning problem."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve large language models' performance on complex multi-hop reasoning tasks by prompting them to recursively decompose the problem into sub-problems and solve them, similar to the human problem-solving process. The paper proposes a divide-and-conquer algorithm called SOCRATIC QUESTIONING that simulates self-questioning and recursive thinking to solve complex reasoning problems in visual question-answering.\n\nBoth the project proposal and the paper focus on improving complex multi-hop reasoning in large language models using recursive problem decomposition and solving. However, the project proposal targets general reasoning tasks and datasets like DROP and MathQA, while the paper specifically focuses on visual question-answering.\n\nYes",
+            "novelty_judgment": "yes"
+        },
+        {
+            "id": "07955e96cbd778d0ae2a68f09d073b866dd84c2a",
+            "paperId": "07955e96cbd778d0ae2a68f09d073b866dd84c2a",
+            "title": "Decomposed Prompting: A Modular Approach for Solving Complex Tasks",
+            "abstract": "Few-shot prompting is a surprisingly powerful way to use Large Language Models (LLMs) to solve various tasks. However, this approach struggles as the task complexity increases or when the individual reasoning steps of the task themselves are hard to learn, especially when embedded in more complex tasks. To address this, we propose Decomposed Prompting, a new approach to solve complex tasks by decomposing them (via prompting) into simpler sub-tasks that can be delegated to a library of prompting-based LLMs dedicated to these sub-tasks. This modular structure allows each prompt to be optimized for its specific sub-task, further decomposed if necessary, and even easily replaced with more effective prompts, trained models, or symbolic functions if desired. We show that the flexibility and modularity of Decomposed Prompting allows it to outperform prior work on few-shot prompting using GPT3. On symbolic reasoning tasks, we can further decompose sub-tasks that are hard for LLMs into even simpler solvable sub-tasks. When the complexity comes from the input length, we can recursively decompose the task into the same task but with smaller inputs. We also evaluate our approach on textual multi-step reasoning tasks: on long-context multi-hop QA task, we can more effectively teach the sub-tasks via our separate sub-tasks prompts; and on open-domain multi-hop QA, we can incorporate a symbolic information retrieval within our decomposition framework, leading to improved performance on both tasks. Datasets, Code and Prompts available at https://github.com/allenai/DecomP.",
+            "year": 2022,
+            "citationCount": 192,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that the flexibility and modularity of Decomposed Prompting allows it to outperform prior work on few-shot prompting using GPT3 and to incorporate a symbolic information retrieval within the decomposition framework, leading to improved performance on both tasks."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving large language models' performance on complex multi-hop reasoning tasks that require recursive problem decomposition. The proposed approach is recursive decomposition prompting, which prompts the model to decompose complex problems into sub-problems, recursively solve each sub-problem, and combine the partial solutions.\n\nThe research problem in the paper is solving complex tasks using few-shot prompting with large language models. The proposed approach, Decomposed Prompting, decomposes complex tasks into simpler sub-tasks via prompting and delegates them to dedicated prompt-based models.\n\nWhile both works aim to tackle complex reasoning tasks by decomposing them into sub-tasks, the proposal focuses specifically on recursive decomposition for multi-hop problems, whereas the paper proposes a more general modular approach to task decomposition. The methods differ in their decomposition strategies and the way sub-tasks are solved.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4ee96f0757e517928590a2300af5d40ba768a5a7",
+            "paperId": "4ee96f0757e517928590a2300af5d40ba768a5a7",
+            "title": "PEARL: Prompting Large Language Models to Plan and Execute Actions Over Long Documents",
+            "abstract": "Strategies such as chain-of-thought prompting improve the performance of large language models (LLMs) on complex reasoning tasks by decomposing input examples into intermediate steps. However, it remains unclear how to apply such methods to reason over long input documents, in which both the decomposition and the output of each intermediate step are non-trivial to obtain. In this work, we propose PEARL, a prompting framework to improve reasoning over long documents, which consists of three stages: action mining, plan formulation, and plan execution. More specifically, given a question about a long document, PEARL decomposes the question into a sequence of actions (e.g., SUMMARIZE, FIND_EVENT, FIND_RELATION) and then executes them over the document to obtain the answer. Each stage of PEARL is implemented via zero-shot or few-shot prompting of LLMs (in our work, GPT-4) with minimal human input. We evaluate PEARL on a challenging subset of the QuALITY dataset, which contains questions that require complex reasoning over long narrative texts. PEARL outperforms zero-shot and chain-of-thought prompting on this dataset, and ablation experiments show that each stage of PEARL is critical to its performance. Overall, PEARL is a first step towards leveraging LLMs to reason over long documents.",
+            "year": 2023,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes PEARL, a prompting framework to improve reasoning over long documents, which consists of three stages: action mining, plan formulation, and plan execution, which outperforms zero-shot and chain-of-thought prompting on a challenging subset of the QuALITY dataset."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve complex multi-hop reasoning in large language models by recursively decomposing the problem into sub-problems and solving them. The paper abstract proposes a framework called PEARL to improve reasoning over long documents by decomposing the question into a sequence of actions and executing them.\n\nWhile both works involve decomposing complex problems, the project focuses on general multi-hop reasoning tasks and recursive decomposition, while the paper specifically targets reasoning over long documents using a three-stage framework (action mining, plan formulation, and execution). The problem domains and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0725b276e351bba6b2a52ecb64f3c964b9acc2f9",
+            "paperId": "0725b276e351bba6b2a52ecb64f3c964b9acc2f9",
+            "title": "ADaPT: As-Needed Decomposition and Planning with Language Models",
+            "abstract": "Large Language Models (LLMs) are increasingly being used for interactive decision-making tasks requiring planning and adapting to the environment. Recent works employ LLMs-as-agents in broadly two ways: iteratively determining the next action (iterative executors) or generating plans and executing sub-tasks using LLMs (plan-and-execute). However, these methods struggle with task complexity, as the inability to execute any sub-task may lead to task failure. To address these shortcomings, we introduce As-Needed Decomposition and Planning for complex Tasks (ADaPT), an approach that explicitly plans and decomposes complex sub-tasks as-needed, i.e., when the LLM is unable to execute them. ADaPT recursively decomposes sub-tasks to adapt to both task complexity and LLM capability. Our results demonstrate that ADaPT substantially outperforms established strong baselines, achieving success rates up to 28.3% higher in ALFWorld, 27% in WebShop, and 33% in TextCraft -- a novel compositional dataset that we introduce. Through extensive analysis, we illustrate the importance of multilevel decomposition and establish that ADaPT dynamically adjusts to the capabilities of the executor LLM as well as to task complexity.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces As-Needed Decomposition and Planning for complex Tasks (ADaPT), an approach that explicitly plans and decomposes complex sub-tasks as-needed, i.e., when the LLM is unable to execute them."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving large language models' performance on complex multi-hop reasoning tasks by recursively decomposing the problem into sub-problems. The approach is to use prompting to guide the model to generate a decomposition tree, recursively solve the sub-problems, and combine the partial solutions.\n\nThe research problem in the paper is improving large language models' performance on interactive decision-making tasks that require planning and adapting to the environment. The approach is to recursively decompose complex sub-tasks as needed when the model is unable to execute them directly.\n\nWhile both works aim to improve large language models' reasoning capabilities through recursive problem decomposition, the proposal focuses on multi-hop question answering, while the paper tackles interactive decision-making tasks. The proposal uses prompting to guide the decomposition process, while the paper performs decomposition when the model fails to execute sub-tasks.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "a8f9be0f611af3aea17baa639d556d601be80477",
+            "paperId": "a8f9be0f611af3aea17baa639d556d601be80477",
+            "title": "Exploratory Inference Chain: Exploratorily Chaining Multi-hop Inferences with Large Language Models for Question-Answering",
+            "abstract": "Successful few-shot question-answering with large language models (LLMs) has been reported for a variety of tasks. In the usual approach, an answer is generated by a single call to an LLM, but it has been pointed out that the performance of multi-hop inference by LLMs is not sufficient. Thus, an LLM is unable to perform the complex processing necessary to get an answer, which leads to poor performance. Moreover, the inference process is opaque. Against this, approaches that call an LLM multiple times have been proposed, but many of these approaches can only be used for a limited number of effective tasks, and LLMs essentially require complex processing.To address these problems, we propose the Exploratory Inference Chain (EIC) framework that combines the implicit processing of LLMs with explicit inference chains, and this is based on the dual process theory of human cognitive processes. The EIC framework first generates the information needed to answer a multi-hop question as keywords and then performs 1-hop inference for each keyword. If the inference is not sufficient, additional inferences are performed. This process is repeated, and when sufficient inferences are obtained, they are aggregated, and the final answer is generated. This makes the information per inference by LLM simplified, and logical inference is achieved through an explicit inference chain.We conducted experiments on two multi-hop QA datasets and confirmed through a quantitative evaluation that our EIC framework performed better than existing approaches. Moreover, a qualitative evaluation confirmed that our approach can effectively perform inference so as to get closer to the answer in question-answering tasks that require knowledge. In addition, compared with existing approaches, the EIC framework improves the interpretability of the output.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Exploratory Inference Chain (EIC) framework is proposed that combines the implicit processing of LLMs with explicit inference chains, and this is based on the dual process theory of human cognitive processes and confirmed through a quantitative evaluation that the EIC framework performed better than existing approaches."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is that large language models struggle with complex multi-hop reasoning tasks that require decomposing the problem into simpler sub-problems and recursively solving them. The proposed approach is recursive decomposition prompting, which prompts the model to decompose the complex problem into sub-problems, recursively solve each sub-problem, and combine the partial solutions to derive the final answer.\n\nThe research problem in the paper is that large language models are unable to perform the complex processing necessary to answer multi-hop questions, leading to poor performance and lack of interpretability. The proposed approach is the Exploratory Inference Chain (EIC) framework, which generates the information needed to answer a multi-hop question as keywords, performs 1-hop inference for each keyword, and repeats this process until sufficient inferences are obtained to generate the final answer.\n\nWhile both works aim to improve multi-hop reasoning in large language models, the proposal focuses on recursive problem decomposition, while the paper proposes an iterative keyword-based inference approach. The methods are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "fede2b0d6f7803fb3b0d8b8d33387b7144290b80",
+            "paperId": "fede2b0d6f7803fb3b0d8b8d33387b7144290b80",
+            "title": "Structured Prompt Interrogation and Recursive Extraction of Semantics (SPIRES): a method for populating knowledge bases using zero-shot learning",
+            "abstract": "Abstract Motivation Creating knowledge bases and ontologies is a time consuming task that relies on manual curation. AI/NLP approaches can assist expert curators in populating these knowledge bases, but current approaches rely on extensive training data, and are not able to populate arbitrarily complex nested knowledge schemas. Results Here we present Structured Prompt Interrogation and Recursive Extraction of Semantics (SPIRES), a Knowledge Extraction approach that relies on the ability of Large Language Models (LLMs) to perform zero-shot learning and general-purpose query answering from flexible prompts and return information conforming to a specified schema. Given a detailed, user-defined knowledge schema and an input text, SPIRES recursively performs prompt interrogation against an LLM to obtain a set of responses matching the provided schema. SPIRES uses existing ontologies and vocabularies to provide identifiers for matched elements. We present examples of applying SPIRES in different domains, including extraction of food recipes, multi-species cellular signaling pathways, disease treatments, multi-step drug mechanisms, and chemical to disease relationships. Current SPIRES accuracy is comparable to the mid-range of existing Relation Extraction methods, but greatly surpasses an LLM\u2019s native capability of grounding entities with unique identifiers. SPIRES has the advantage of easy customization, flexibility, and, crucially, the ability to perform new tasks in the absence of any new training data. This method supports a general strategy of leveraging the language interpreting capabilities of LLMs to assemble knowledge bases, assisting manual knowledge curation and acquisition while supporting validation with publicly-available databases and ontologies external to the LLM. Availability and implementation SPIRES is available as part of the open source OntoGPT package: https://github.com/monarch-initiative/ontogpt.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This method supports a general strategy of leveraging the language interpreting capabilities of LLMs to assemble knowledge bases, assisting manual knowledge curation and acquisition while supporting validation with publicly-available databases and ontologies external to the LLM."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving complex multi-hop reasoning in large language models using recursive problem decomposition. The approach is to prompt the model to decompose complex questions into sub-problems, recursively solve the sub-problems, and combine the partial solutions.\n\nThe research problem in the paper is populating knowledge bases using zero-shot learning from large language models. The approach is to recursively extract information from LLMs using prompts that specify a knowledge schema.\n\nWhile both involve recursion and prompting LLMs, the proposal focuses on multi-hop question answering and the paper on knowledge base population, which are different problems. The methods also differ in their specifics.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "6aca408f78d26b73b3967a367bba8f942b537779",
+            "paperId": "6aca408f78d26b73b3967a367bba8f942b537779",
+            "title": "SymBa: Symbolic Backward Chaining for Multi-step Natural Language Reasoning",
+            "abstract": "Large Language Models (LLMs) have recently demonstrated remarkable reasoning ability as in Chain-of-thought prompting, but faithful multi-step reasoning remains a challenge. We specifically focus on backward chaining, where the query is recursively decomposed using logical rules until proven. To address the limitations of current backward chaining implementations, we propose SymBa (Symbolic Backward Chaining). In SymBa, the symbolic top-down solver controls the entire proof process and the LLM is called to generate a single reasoning step only when the solver encounters a dead end. By this novel solver-LLM integration, while being able to produce an interpretable, structured proof, SymBa achieves significant improvement in performance, proof faithfulness, and efficiency in diverse multi-step reasoning benchmarks (ProofWriter, Birds-Electricity, GSM8k, CLUTRR-TF, ECtHR Article 6) compared to backward chaining baselines.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "In SymBa, the symbolic top-down solver controls the entire proof process and the LLM is called to generate a single reasoning step only when the solver encounters a dead end, achieving significant improvement in performance, proof faithfulness, and efficiency in diverse multi-step reasoning benchmarks."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve complex multi-hop reasoning in large language models by recursively decomposing the problem into sub-problems using prompting. The paper proposes SymBa, a method that integrates a symbolic solver with an LLM to perform faithful multi-step reasoning via backward chaining.\n\nWhile both the project proposal and the paper address multi-step reasoning in LLMs, their approaches differ:\n- The project proposal focuses on recursive problem decomposition using prompting.\n- The paper proposes a hybrid approach that combines a symbolic solver with an LLM for backward chaining.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ba4aa83248a1d08b521392eb971e47d10b7c74e1",
+            "paperId": "ba4aa83248a1d08b521392eb971e47d10b7c74e1",
+            "title": "Boosting Logical Reasoning in Large Language Models through a New Framework: The Graph of Thought",
+            "abstract": "Recent advancements in large-scale models, such as GPT-4, have showcased remarkable capabilities in addressing standard queries. However, when facing complex problems that require multi-step logical reasoning, their accuracy dramatically decreases. Current research has explored the realm of \\textit{prompting engineering} to bolster the inferential capacities of these models. Our paper unveils a pioneering prompting technique, dubbed \\textit{Graph of Thoughts (GoT)}. Through testing on a trio of escalating challenges: the 24-point game, resolution of high-degree polynomial equations, and derivation of formulas for recursive sequences, our method outperformed GPT-4, achieving accuracy improvements of $89.7\\%$, $86\\%$, and $56\\%$ for each respective task. Moreover, when juxtaposed with the state-of-the-art (SOTA) prompting method, \\textit{Tree of Thought (ToT)}, our approach registered an average accuracy boost of $23\\%$, $24\\%$, and $15\\%$.",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper unveils a pioneering prompting technique, dubbed \\textit{Graph of Thoughts (GoT), which outperformed GPT-4 and when juxtaposed with the state-of-the-art (SOTA) prompting method, the Tree of Thought (ToT), registered an average accuracy boost."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving large language models' performance on complex multi-hop reasoning tasks by recursively decomposing the problem into sub-problems. The proposed approach is recursive decomposition prompting.\n\nThe research problem in the paper is improving large language models' logical reasoning capabilities on complex problems. The proposed approach is a new prompting technique called Graph of Thoughts (GoT).\n\nWhile both works aim to enhance large language models' reasoning abilities, the proposal focuses specifically on multi-hop reasoning via recursive problem decomposition, while the paper introduces a new general prompting technique for logical reasoning. The problem scopes and methodologies are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "8a9ede4be8458629d54451d241a8d0ae318d471b",
+            "paperId": "8a9ede4be8458629d54451d241a8d0ae318d471b",
+            "title": "Prompting with Divide-and-Conquer Program Makes Large Language Models Discerning to Hallucination and Deception",
+            "abstract": "Foundation models, such as Large language Models (LLMs), have attracted significant amount of interest due to their large number of applications. Existing works show that appropriate prompt design, such as Chain-of-Thoughts, can unlock LLM's powerful capacity in diverse areas. However, when handling tasks involving repetitive sub-tasks and/or deceptive contents, such as arithmetic calculation and article-level fake news detection, existing prompting strategies either suffers from insufficient expressive power or intermediate errors triggered by hallucination. To make LLM more discerning to such intermediate errors, we propose to guide LLM with a Divide-and-Conquer program that simultaneously ensures superior expressive power and disentangles task decomposition, sub-task resolution, and resolution assembly process. Theoretic analysis reveals that our strategy can guide LLM to extend the expressive power of fixed-depth Transformer. Experiments indicate that our proposed method can achieve better performance than typical prompting strategies in tasks bothered by intermediate errors and deceptive contents, such as large integer multiplication, hallucination detection and misinformation detection.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes to guide LLM with a Divide-and-Conquer program that simultaneously ensures superior expressive power and disentangles task decomposition, sub-task resolution, and resolution assembly process andoretic analysis reveals that this strategy can guide LLM to extend the expressive power of fixed-depth Transformer."
+            },
+            "score": 6
+        },
+        {
+            "id": "9a75e23639bfcc3a51da57a3b682a984d1d8ac0b",
+            "paperId": "9a75e23639bfcc3a51da57a3b682a984d1d8ac0b",
+            "title": "Language Models can Solve Computer Tasks",
+            "abstract": "Agents capable of carrying out general tasks on a computer can improve efficiency and productivity by automating repetitive tasks and assisting in complex problem-solving. Ideally, such agents should be able to solve new computer tasks presented to them through natural language commands. However, previous approaches to this problem require large amounts of expert demonstrations and task-specific reward functions, both of which are impractical for new tasks. In this work, we show that a pre-trained large language model (LLM) agent can execute computer tasks guided by natural language using a simple prompting scheme where the agent Recursively Criticizes and Improves its output (RCI). The RCI approach significantly outperforms existing LLM methods for automating computer tasks and surpasses supervised learning (SL) and reinforcement learning (RL) approaches on the MiniWoB++ benchmark. We compare multiple LLMs and find that RCI with the InstructGPT-3+RLHF LLM is state-of-the-art on MiniWoB++, using only a handful of demonstrations per task rather than tens of thousands, and without a task-specific reward function. Furthermore, we demonstrate RCI prompting's effectiveness in enhancing LLMs' reasoning abilities on a suite of natural language reasoning tasks, outperforming chain of thought (CoT) prompting with external feedback. We find that RCI combined with CoT performs better than either separately. Our code can be found here: https://github.com/posgnu/rci-agent.",
+            "year": 2023,
+            "citationCount": 159,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that a pre-trained large language model (LLM) agent can execute computer tasks guided by natural language using a simple prompting scheme where the agent Recursively Criticizes and Improves its output (RCI), and demonstrates RCI prompting's effectiveness in enhancing LLMs' reasoning abilities on a suite of natural language reasoning tasks."
+            },
+            "score": 6
+        },
+        {
+            "id": "0aaf7a76507248d80f65b6a49e200d2370bcb2c9",
+            "paperId": "0aaf7a76507248d80f65b6a49e200d2370bcb2c9",
+            "title": "Self-prompted Chain-of-Thought on Large Language Models for Open-domain Multi-hop Reasoning",
+            "abstract": "In open-domain question-answering (ODQA), most existing questions require single-hop reasoning on commonsense. To further extend this task, we officially introduce open-domain multi-hop reasoning (ODMR) by answering multi-hop questions with explicit reasoning steps in open-domain setting. Recently, large language models (LLMs) have found significant utility in facilitating ODQA without external corpus. Furthermore, chain-of-thought (CoT) prompting boosts the reasoning capability of LLMs to a greater extent with manual or automated paradigms. However, existing automated methods lack of quality assurance, while manual approaches suffer from limited scalability and poor diversity, hindering the capabilities of LLMs. In this paper, we propose Self-prompted Chain-of-Thought (SP-CoT), an automated framework to mass-produce high quality CoTs of LLMs, by LLMs and for LLMs. SP-CoT introduces an automated generation pipeline of high quality ODMR datasets, an adaptive sampler for in-context CoT selection and self-prompted inference via in-context learning. Extensive experiments on four multi-hop question-answering benchmarks show that our proposed SP-CoT not only significantly surpasses the previous SOTA methods on large-scale (175B) LLMs, but also nearly doubles the zero-shot performance of small-scale (13B) LLMs. Further analysis reveals the remarkable capability of SP-CoT to elicit direct and concise intermediate reasoning steps by recalling $\\sim$50\\% of intermediate answers on MuSiQue-Ans dataset.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-prompted Chain-of-Thought (SP-CoT), an automated framework to mass-produce high quality CoTs of LLMs, by LLMs and forLLMs, introduces an automated generation pipeline of high quality ODMR datasets, an adaptive sampler for in-context CoT selection and self-Prompted inference via in- context learning."
+            },
+            "score": 6
+        },
+        {
+            "id": "3ec464696db25acc2c39a6d967ec3df09e06f633",
+            "paperId": "3ec464696db25acc2c39a6d967ec3df09e06f633",
+            "title": "Multimodal Multi-Hop Question Answering Through a Conversation Between Tools and Efficiently Finetuned Large Language Models",
+            "abstract": "We employ a tool-interacting divide-and-conquer strategy enabling large language models (LLMs) to answer complex multimodal multi-hop questions. In particular, we harness the power of large language models to divide a given multimodal multi-hop question into unimodal single-hop sub-questions to be answered by the appropriate tool from a predefined set of tools. After all corresponding tools provide the LLM with their answers, the LLM generates the next relevant unimodal single-hop question. To increase the reasoning ability of LLMs, we prompt chatGPT to generate a tool-interacting divide-and-conquer dataset. This dataset is then used to efficiently finetune the corresponding LLM. To assess the effectiveness of this approach, we conduct an evaluation on two recently introduced complex question-answering datasets. The experimental analysis demonstrate substantial improvements over existing state-of-the-art solutions, indicating the efficacy and generality of our strategy",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A tool-interacting divide-and-conquer strategy enabling large language models (LLMs) to answer complex multimodal multi-hop questions, demonstrating the efficacy and generality of this approach."
+            },
+            "score": 6
+        },
+        {
+            "id": "2cf24022c8bd374909ff05a1d88aea2b021c91e6",
+            "paperId": "2cf24022c8bd374909ff05a1d88aea2b021c91e6",
+            "title": "GenDec: A robust generative Question-decomposition method for Multi-hop reasoning",
+            "abstract": "Multi-hop QA (MHQA) involves step-by-step reasoning to answer complex questions and find multiple relevant supporting facts. However, Existing large language models'(LLMs) reasoning ability in multi-hop question answering remains exploration, which is inadequate in answering multi-hop questions. Moreover, it is unclear whether LLMs follow a desired reasoning chain to reach the right final answer. In this paper, we propose a \\textbf{gen}erative question \\textbf{dec}omposition method (GenDec) from the perspective of explainable QA by generating independent and complete sub-questions based on incorporating additional extracted evidence for enhancing LLMs' reasoning ability in RAG. To demonstrate the impact, generalization, and robustness of Gendec, we conduct two experiments, the first is combining GenDec with small QA systems on paragraph retrieval and QA tasks. We secondly examine the reasoning capabilities of various state-of-the-art LLMs including GPT-4 and GPT-3.5 combined with GenDec. We experiment on the HotpotQA, 2WikihopMultiHopQA, MuSiQue, and PokeMQA datasets.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A GenDec method (GenDec) is proposed from the perspective of explainable QA by generating independent and complete sub-questions based on incorporating additional extracted evidence for enhancing LLMs' reasoning ability in RAG."
+            },
+            "score": 6
+        },
+        {
+            "id": "50019215e9a65c8c4a451ee155d839c328057f4a",
+            "paperId": "50019215e9a65c8c4a451ee155d839c328057f4a",
+            "title": "Knowledge Graph-augmented Language Models for Complex Question Answering",
+            "abstract": "Large language models have shown impressive abilities to reason over input text, however, they are prone to hallucinations. On the other hand, end-to-end knowledge graph question answering (KGQA) models output responses grounded in facts, but they still struggle with complex reasoning, such as comparison or ordinal questions. In this paper, we propose a new method for complex question answering where we combine a knowledge graph retriever based on an end-to-end KGQA model with a language model that reasons over the retrieved facts to return an answer. We observe that augmenting language model prompts with retrieved KG facts improves performance over using a language model alone by an average of 83%. In particular, we see improvements on complex questions requiring count, intersection, or multi-hop reasoning operations.",
+            "year": 2023,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new method for complex question answering where a knowledge graph retriever based on an end-to-end KGQA model with a language model that reasons over the retrieved facts to return an answer."
+            },
+            "score": 6
+        },
+        {
+            "id": "4ef6e990040e84d4830bf39f90989278e8f92219",
+            "paperId": "4ef6e990040e84d4830bf39f90989278e8f92219",
+            "title": "ReLMKG: reasoning with pre-trained language models and knowledge graphs for complex question answering",
+            "abstract": null,
+            "year": 2022,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel model, ReLMKG, is proposed that performs joint reasoning on a pre-trained language model and the associated knowledge graph, effectively utilizing both implicit and explicit knowledge for reasoning in complex question answering over knowledge bases."
+            },
+            "score": 6
+        },
+        {
+            "id": "490d8006851b1562cfd9ec1f057471f2868289d1",
+            "paperId": "490d8006851b1562cfd9ec1f057471f2868289d1",
+            "title": "Rethinking with Retrieval: Faithful Large Language Model Inference",
+            "abstract": "Despite the success of large language models (LLMs) in various natural language processing (NLP) tasks, the stored knowledge in these models may inevitably be incomplete, out-of-date, or incorrect. This motivates the need to utilize external knowledge to assist LLMs. Unfortunately, current methods for incorporating external knowledge often require additional training or fine-tuning, which can be costly and may not be feasible for LLMs. To address this issue, we propose a novel post-processing approach, rethinking with retrieval (RR), which retrieves relevant external knowledge based on the decomposed reasoning steps obtained from the chain-of-thought (CoT) prompting. This lightweight approach does not require additional training or fine-tuning and is not limited by the input length of LLMs. We evaluate the effectiveness of RR through extensive experiments with GPT-3 on three complex reasoning tasks: commonsense reasoning, temporal reasoning, and tabular reasoning. Our results show that RR can produce more faithful explanations and improve the performance of LLMs.",
+            "year": 2022,
+            "citationCount": 101,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel post-processing approach, rethinking with retrieval (RR), which retrieves relevant external knowledge based on the decomposed reasoning steps obtained from the chain-of-thought (CoT) prompting, which can produce more faithful explanations and improve the performance of LLMs."
+            },
+            "score": 6
+        },
+        {
+            "id": "0d043b0bd4a981f7e6135a79dac6d71a809af8cb",
+            "paperId": "0d043b0bd4a981f7e6135a79dac6d71a809af8cb",
+            "title": "Visual Chain of Thought: Bridging Logical Gaps with Multimodal Infillings",
+            "abstract": "Recent advances in large language models elicit reasoning in a chain-of-thought that allows models to decompose problems in a human-like fashion. Though this paradigm improves multi-step reasoning ability in language models, it is limited by being unimodal and applied mainly to question-answering tasks. We claim that incorporating visual augmentation into reasoning is essential, especially for complex, imaginative tasks. Consequently, we introduce VCoT, a novel method that leverages chain-of-thought prompting with vision-language grounding to recursively bridge the logical gaps within sequential data. Our method uses visual guidance to generate synthetic multimodal infillings that add consistent and novel information to reduce the logical gaps for downstream tasks that can benefit from temporal reasoning, as well as provide interpretability into models' multi-step reasoning. We apply VCoT to the Visual Storytelling and WikiHow summarization datasets and demonstrate through human evaluation that VCoT offers novel and consistent synthetic data augmentation beating chain-of-thought baselines, which can be used to enhance downstream performance.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces VCoT, a novel method that leverages chain-of-thought prompting with vision-language grounding to recursively bridge the logical gaps within sequential data and applies it to the Visual Storytelling and WikiHow summarization datasets."
+            },
+            "score": 6
+        },
+        {
+            "id": "6c1e1cc1e0e1f8fd026fe517607b2d4535565fa7",
+            "paperId": "6c1e1cc1e0e1f8fd026fe517607b2d4535565fa7",
+            "title": "PAL: Program-aided Language Models",
+            "abstract": "Large language models (LLMs) have recently demonstrated an impressive ability to perform arithmetic and symbolic reasoning tasks, when provided with a few examples at test time (\"few-shot prompting\"). Much of this success can be attributed to prompting methods such as\"chain-of-thought'', which employ LLMs for both understanding the problem description by decomposing it into steps, as well as solving each step of the problem. While LLMs seem to be adept at this sort of step-by-step decomposition, LLMs often make logical and arithmetic mistakes in the solution part, even when the problem is decomposed correctly. In this paper, we present Program-Aided Language models (PAL): a novel approach that uses the LLM to read natural language problems and generate programs as the intermediate reasoning steps, but offloads the solution step to a runtime such as a Python interpreter. With PAL, decomposing the natural language problem into runnable steps remains the only learning task for the LLM, while solving is delegated to the interpreter. We demonstrate this synergy between a neural LLM and a symbolic interpreter across 13 mathematical, symbolic, and algorithmic reasoning tasks from BIG-Bench Hard and other benchmarks. In all these natural language reasoning tasks, generating code using an LLM and reasoning using a Python interpreter leads to more accurate results than much larger models. For example, PAL using Codex achieves state-of-the-art few-shot accuracy on the GSM8K benchmark of math word problems, surpassing PaLM-540B which uses chain-of-thought by absolute 15% top-1. Our code and data are publicly available at http://reasonwithpal.com/ .",
+            "year": 2022,
+            "citationCount": 255,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents Program-Aided Language models (PAL): a novel approach that uses the LLM to read natural language problems and generate programs as the intermediate reasoning steps, but offloads the solution step to a runtime such as a Python interpreter."
+            },
+            "score": 5
+        },
+        {
+            "id": "755853c6b30f5a186131e23a63c68a3f2737068e",
+            "paperId": "755853c6b30f5a186131e23a63c68a3f2737068e",
+            "title": "SMART-LLM: Smart Multi-Agent Robot Task Planning using Large Language Models",
+            "abstract": "In this work, we introduce SMART-LLM, an innovative framework designed for embodied multi-robot task planning. SMART-LLM: Smart Multi-Agent Robot Task Planning using Large Language Models (LLMs), harnesses the power of LLMs to convert high-level task instructions provided as input into a multi-robot task plan. It accomplishes this by executing a series of stages, including task decomposition, coalition formation, and task allocation, all guided by programmatic LLM prompts within the few-shot prompting paradigm. We create a benchmark dataset designed for validating the multi-robot task planning problem, encompassing four distinct categories of high-level instructions that vary in task complexity. Our evaluation experiments span both simulation and real-world scenarios, demonstrating that the proposed model can achieve promising results for generating multi-robot task plans. The experimental videos, code, and datasets from the work can be found at https://sites.google.com/view/smart-llm/.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "SMART-LLM: Smart Multi-Agent Robot Task Planning using Large Language Models (LLMs), harnesses the power of LLMs to convert high-level task instructions provided as input into a multi-robot task plan by executing a series of stages."
+            },
+            "score": 5
+        },
+        {
+            "id": "49e9352f4b87efdbf09a5f3048d11cf83016d37d",
+            "paperId": "49e9352f4b87efdbf09a5f3048d11cf83016d37d",
+            "title": "Chain of Logic: Rule-Based Reasoning with Large Language Models",
+            "abstract": "Rule-based reasoning, a fundamental type of legal reasoning, enables us to draw conclusions by accurately applying a rule to a set of facts. We explore causal language models as rule-based reasoners, specifically with respect to compositional rules - rules consisting of multiple elements which form a complex logical expression. Reasoning about compositional rules is challenging because it requires multiple reasoning steps, and attending to the logical relationships between elements. We introduce a new prompting method, Chain of Logic, which elicits rule-based reasoning through decomposition (solving elements as independent threads of logic), and recomposition (recombining these sub-answers to resolve the underlying logical expression). This method was inspired by the IRAC (Issue, Rule, Application, Conclusion) framework, a sequential reasoning approach used by lawyers. We evaluate chain of logic across eight rule-based reasoning tasks involving three distinct compositional rules from the LegalBench benchmark and demonstrate it consistently outperforms other prompting methods, including chain of thought and self-ask, using open-source and commercial language models.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new prompting method is introduced, Chain of Logic, which elicits rule-based reasoning through decomposition, and recomposition, which elicits rule-based reasoning through decomposition (solving elements as independent threads of logic), and recomposition (recombining these sub-answers to resolve the underlying logical expression)."
+            },
+            "score": 5
+        },
+        {
+            "id": "fed460648303afa32247e493847e4dc73dc1a5b3",
+            "paperId": "fed460648303afa32247e493847e4dc73dc1a5b3",
+            "title": "Can We Guide a Multi-Hop Reasoning Language Model to Incrementally Learn at Each Single-Hop?",
+            "abstract": "Despite the success of state-of-the-art pre-trained language models (PLMs) on a series of multi-hop reasoning tasks, they still suffer from their limited abilities to transfer learning from simple to complex tasks and vice-versa. We argue that one step forward to overcome this limitation is to better understand the behavioral trend of PLMs at each hop over the inference chain. Our critical underlying idea is to mimic human-style reasoning: we envision the multi-hop reasoning process as a sequence of explicit single-hop reasoning steps. To endow PLMs with incremental reasoning skills, we propose a set of inference strategies on relevant facts and distractors allowing us to build automatically generated training datasets. Using the SHINRA and ConceptNet resources jointly, we empirically show the effectiveness of our proposal on multiple-choice question answering and reading comprehension, with a relative improvement in terms of accuracy of 68.4% and 16.0% w.r.t. classic PLMs, respectively.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "To endow PLMs with incremental reasoning skills, this work proposes a set of inference strategies on relevant facts and distractors allowing us to build automatically generated training datasets, and empirically shows the effectiveness of this proposal on multiple-choice question answering and reading comprehension."
+            },
+            "score": 5
+        },
+        {
+            "id": "a8ee189a6b86efeba4d0565dca10b9fc8be86835",
+            "paperId": "a8ee189a6b86efeba4d0565dca10b9fc8be86835",
+            "title": "Graph-Guided Reasoning for Multi-Hop Question Answering in Large Language Models",
+            "abstract": "Chain-of-Thought (CoT) prompting has boosted the multi-step reasoning capabilities of Large Language Models (LLMs) by generating a series of rationales before the final answer. We analyze the reasoning paths generated by CoT and find two issues in multi-step reasoning: (i) Generating rationales irrelevant to the question, (ii) Unable to compose subquestions or queries for generating/retrieving all the relevant information. To address them, we propose a graph-guided CoT prompting method, which guides the LLMs to reach the correct answer with graph representation/verification steps. Specifically, we first leverage LLMs to construct a\"question/rationale graph\"by using knowledge extraction prompting given the initial question and the rationales generated in the previous steps. Then, the graph verification step diagnoses the current rationale triplet by comparing it with the existing question/rationale graph to filter out irrelevant rationales and generate follow-up questions to obtain relevant information. Additionally, we generate CoT paths that exclude the extracted graph information to represent the context information missed from the graph extraction. Our graph-guided reasoning method shows superior performance compared to previous CoT prompting and the variants on multi-hop question answering benchmark datasets.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a graph-guided CoT prompting method, which guides the LLMs to reach the correct answer with graph representation/verification steps and shows superior performance compared to previous coT prompting and the variants on multi-hop question answering benchmark datasets."
+            },
+            "score": 5
+        },
+        {
+            "id": "4ab41d9780f1d1ac34d39fa7e527e73652507fcc",
+            "paperId": "4ab41d9780f1d1ac34d39fa7e527e73652507fcc",
+            "title": "GreaseLM: Graph REASoning Enhanced Language Models for Question Answering",
+            "abstract": "Answering complex questions about textual narratives requires reasoning over both stated context and the world knowledge that underlies it. However, pretrained language models (LM), the foundation of most modern QA systems, do not robustly represent latent relationships between concepts, which is necessary for reasoning. While knowledge graphs (KG) are often used to augment LMs with structured representations of world knowledge, it remains an open question how to effectively fuse and reason over the KG representations and the language context, which provides situational constraints and nuances. In this work, we propose GreaseLM, a new model that fuses encoded representations from pretrained LMs and graph neural networks over multiple layers of modality interaction operations. Information from both modalities propagates to the other, allowing language context representations to be grounded by structured world knowledge, and allowing linguistic nuances (e.g., negation, hedging) in the context to inform the graph representations of knowledge. Our results on three benchmarks in the commonsense reasoning (i.e., CommonsenseQA, OpenbookQA) and medical question answering (i.e., MedQA-USMLE) domains demonstrate that GreaseLM can more reliably answer questions that require reasoning over both situational constraints and structured knowledge, even outperforming models 8x larger.",
+            "year": 2022,
+            "citationCount": 126,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "GreaseLM is a new model that fuses encoded representations from pretrained LMs and graph neural networks over multiple layers of modality interaction operations, allowing language context representations to be grounded by structured world knowledge, and allowing linguistic nuances in the context to inform the graph representations of knowledge."
+            },
+            "score": 5
+        },
+        {
+            "id": "d9293bafb3b7ff2d14f69f35b681d7ce8d192e46",
+            "paperId": "d9293bafb3b7ff2d14f69f35b681d7ce8d192e46",
+            "title": "Interactive-KBQA: Multi-Turn Interactions for Knowledge Base Question Answering with Large Language Models",
+            "abstract": "This study explores the realm of knowledge-base question answering (KBQA). KBQA is considered a challenging task, particularly in parsing intricate questions into executable logical forms. Traditional semantic parsing (SP)-based methods require extensive data annotations, which result in significant costs. Recently, the advent of few-shot in-context learning, powered by large language models (LLMs), has showcased promising capabilities. Yet, fully leveraging LLMs to parse questions into logical forms in low-resource scenarios poses a substantial challenge. To tackle these hurdles, we introduce Interactive-KBQA, a framework designed to generate logical forms through direct interaction with knowledge bases (KBs). Within this framework, we have developed three generic APIs for KB interaction. For each category of complex question, we devised exemplars to guide LLMs through the reasoning processes. Our method achieves competitive results on the WebQuestionsSP, ComplexWebQuestions, KQA Pro, and MetaQA datasets with a minimal number of examples (shots). Importantly, our approach supports manual intervention, allowing for the iterative refinement of LLM outputs. By annotating a dataset with step-wise reasoning processes, we showcase our model's adaptability and highlight its potential for contributing significant enhancements to the field.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Interactive-KBQA is introduced, a framework designed to generate logical forms through direct interaction with knowledge bases (KBs) and achieves competitive results on the WebQuestionsSP, ComplexWebQuestions, KQA Pro, and MetaQA datasets with a minimal number of examples (shots)."
+            },
+            "score": 5
+        },
+        {
+            "id": "3f758a13d3703b02bdf977f9189230276064da42",
+            "paperId": "3f758a13d3703b02bdf977f9189230276064da42",
+            "title": "T-SciQ: Teaching Multimodal Chain-of-Thought Reasoning via Large Language Model Signals for Science Question Answering",
+            "abstract": "Large Language Models (LLMs) have recently demonstrated exceptional performance in various Natural Language Processing (NLP) tasks. They have also shown the ability to perform chain-of-thought (CoT) reasoning to solve complex problems. Recent studies have explored CoT reasoning in complex multimodal scenarios, such as the science question answering task, by fine-tuning multimodal models with high-quality human-annotated CoT rationales. However, collecting high-quality COT rationales is usually time-consuming and costly. Besides, the annotated rationales are hardly accurate due to the external essential information missed. To address these issues, we propose a novel method termed T-SciQ that aims at teaching science question answering with LLM signals. The T-SciQ approach generates high-quality CoT rationales as teaching signals and is advanced to train much smaller models to perform CoT reasoning in complex modalities. Additionally, we introduce a novel data mixing strategy to produce more effective teaching data samples for simple and complex science question answer problems. Extensive experimental results show that our T-SciQ method achieves a new state-of-the-art performance on the ScienceQA benchmark, with an accuracy of 96.18%. Moreover, our approach outperforms the most powerful fine-tuned baseline by 4.5%. The code is publicly available at https://github.com/T-SciQ/T-SciQ.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The T-SciQ approach generates high-quality CoT rationales as teaching signals and is advanced to train much smaller models to perform CoT reasoning in complex modalities and introduces a novel data mixing strategy to produce more effective teaching data samples."
+            },
+            "score": 5
+        },
+        {
+            "id": "5f88b907cb6b79ce22e826832f05c0471ecb095e",
+            "paperId": "5f88b907cb6b79ce22e826832f05c0471ecb095e",
+            "title": "Explainable Verbal Reasoner Plus (EVR+): A Natural Language Reasoning Framework that Supports Diverse Compositional Reasoning",
+            "abstract": "Languages models have been successfully applied to a variety of reasoning tasks in NLP, yet the language models still suffer from compositional generalization. In this paper we present Explainable Verbal Reasoner Plus (EVR+), a reasoning framework that enhances language models' compositional reasoning ability by (1) allowing the model to explicitly generate and execute symbolic operators, and (2) allowing the model to decompose a complex task into several simpler ones in a flexible manner. Compared with its predecessor Explainable Verbal Reasoner (EVR) and other previous approaches adopting similar ideas, our framework supports more diverse types of reasoning such as nested loops and different types of recursion. To evaluate our reasoning framework, we build a synthetic dataset with five tasks that require compositional reasoning. Results show that our reasoning framework can enhance the language model's compositional generalization performance on the five tasks, using a fine-tuned language model. We also discussed the possibility and the challenges to combine our reasoning framework with a few-shot prompted language model.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents Explainable Verbal Reasoner Plus (EVR+), a reasoning framework that enhances language models' compositional reasoning ability by allowing the model to explicitly generate and execute symbolic operators, and allowing themodel to decompose a complex task into several simpler ones in a flexible manner."
+            },
+            "score": 5
+        },
+        {
+            "id": "fb49e88c6bd676516898e911e42b4f8479e6f1bf",
+            "paperId": "fb49e88c6bd676516898e911e42b4f8479e6f1bf",
+            "title": "Ask Me Anything: A simple strategy for prompting language models",
+            "abstract": "Large language models (LLMs) transfer well to new tasks out-of-the-box simply given a natural language prompt that demonstrates how to perform the task and no additional training. Prompting is a brittle process wherein small modifications to the prompt can cause large variations in the model predictions, and therefore significant effort is dedicated towards designing a painstakingly\"perfect prompt\"for a task. To mitigate the high degree of effort involved in prompt-design, we instead ask whether producing multiple effective, yet imperfect, prompts and aggregating them can lead to a high quality prompting strategy. Our observations motivate our proposed prompting method, ASK ME ANYTHING (AMA). We first develop an understanding of the effective prompt formats, finding that question-answering (QA) prompts, which encourage open-ended generation (\"Who went to the park?\") tend to outperform those that restrict the model outputs (\"John went to the park. Output True or False.\"). Our approach recursively uses the LLM itself to transform task inputs to the effective QA format. We apply the collected prompts to obtain several noisy votes for the input's true label. We find that the prompts can have very different accuracies and complex dependencies and thus propose to use weak supervision, a procedure for combining the noisy predictions, to produce the final predictions for the inputs. We evaluate AMA across open-source model families (e.g., EleutherAI, BLOOM, OPT, and T0) and model sizes (125M-175B parameters), demonstrating an average performance lift of 10.2% over the few-shot baseline. This simple strategy enables the open-source GPT-J-6B model to match and exceed the performance of few-shot GPT3-175B on 15 of 20 popular benchmarks. Averaged across these tasks, the GPT-J-6B model outperforms few-shot GPT3-175B. We release our code here: https://github.com/HazyResearch/ama_prompting",
+            "year": 2022,
+            "citationCount": 117,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work develops an understanding of the effective prompt formats and proposes to use weak supervision, a procedure for combining the noisy predictions, to produce the final predictions for the inputs of a large language model."
+            },
+            "score": 4
+        },
+        {
+            "id": "40047a74b707743157051d38f76061ba5ff9aab4",
+            "paperId": "40047a74b707743157051d38f76061ba5ff9aab4",
+            "title": "Compositional Semantic Parsing with Large Language Models",
+            "abstract": "Humans can reason compositionally when presented with new tasks. Previous research shows that appropriate prompting techniques enable large language models (LLMs) to solve artificial compositional generalization tasks such as SCAN. In this work, we identify additional challenges in more realistic semantic parsing tasks with larger vocabulary and refine these prompting techniques to address them. Our best method is based on least-to-most prompting: it decomposes the problem using prompting-based syntactic parsing, then uses this decomposition to select appropriate exemplars and to sequentially generate the semantic parse. This method allows us to set a new state of the art for CFQ while requiring only 1% of the training data used by traditional approaches. Due to the general nature of our approach, we expect similar efforts will lead to new results in other tasks and domains, especially for knowledge-intensive applications.",
+            "year": 2022,
+            "citationCount": 70,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The best method is based on least-to-most prompting: it decomposes the problem using prompting-based syntactic parsing, then uses this decomposition to select appropriate exemplars and to sequentially generate the semantic parse."
+            },
+            "score": 4
+        },
+        {
+            "id": "b6e5855b6a4e425ba251a93516f2bccffe5ba403",
+            "paperId": "b6e5855b6a4e425ba251a93516f2bccffe5ba403",
+            "title": "Decomposed Prompting for Machine Translation Between Related Languages using Large Language Models",
+            "abstract": "This study investigates machine translation between related languages i.e., languages within the same family that share linguistic characteristics such as word order and lexical similarity. Machine translation through few-shot prompting leverages a small set of translation pair examples to generate translations for test sentences. This procedure requires the model to learn how to generate translations while simultaneously ensuring that token ordering is maintained to produce a fluent and accurate translation. We propose that for related languages, the task of machine translation can be simplified by leveraging the monotonic alignment characteristic of such languages. We introduce DecoMT, a novel approach of few-shot prompting that decomposes the translation process into a sequence of word chunk translations. Through automatic and human evaluation conducted on multiple related language pairs across various language families, we demonstrate that our proposed approach of decomposed prompting surpasses multiple established few-shot baseline approaches. For example, DecoMT outperforms the strong few-shot prompting BLOOM model with an average improvement of 8 chrF++ scores across the examined languages.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DecoMT is introduced, a novel approach of few-shot prompting that decomposes the translation process into a sequence of word chunk translations that outperforms the strong few- shot prompting BLOOM model with an average improvement of 8 chrF++ scores across the examined languages."
+            },
+            "score": 4
+        },
+        {
+            "id": "306a312c0bae22f30a406187ab18c5724cefb661",
+            "paperId": "306a312c0bae22f30a406187ab18c5724cefb661",
+            "title": "Memory Injections: Correcting Multi-Hop Reasoning Failures During Inference in Transformer-Based Language Models",
+            "abstract": "Answering multi-hop reasoning questions requires retrieving and synthesizing information from diverse sources. Large Language Models (LLMs) struggle to perform such reasoning consistently. Here we propose an approach to pinpoint and rectify multi-hop reasoning failures through targeted memory injections on LLM attention heads. First, we analyze the per-layer activations of GPT-2 models in response to single and multi-hop prompts. We then propose a mechanism that allows users to inject pertinent prompt-specific information, which we refer to as \u201cmemories,\u201d at critical LLM locations during inference. By thus enabling the LLM to incorporate additional relevant information during inference, we enhance the quality of multi-hop prompt completions. We show empirically that a simple, efficient, and targeted memory injection into a key attention layer can often increase the probability of the desired next token in multi-hop tasks, by up to 424%.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown empirically that a simple, efficient, and targeted memory injection into a key attention layer can often increase the probability of the desired next token in multi-hop tasks, by up to 424%."
+            },
+            "score": 4
+        },
+        {
+            "id": "c36f638781953f995eb3079f882174846b9ac16a",
+            "paperId": "c36f638781953f995eb3079f882174846b9ac16a",
+            "title": "Do Large Language Models Latently Perform Multi-Hop Reasoning?",
+            "abstract": "We study whether Large Language Models (LLMs) latently perform multi-hop reasoning with complex prompts such as\"The mother of the singer of 'Superstition' is\". We look for evidence of a latent reasoning pathway where an LLM (1) latently identifies\"the singer of 'Superstition'\"as Stevie Wonder, the bridge entity, and (2) uses its knowledge of Stevie Wonder's mother to complete the prompt. We analyze these two hops individually and consider their co-occurrence as indicative of latent multi-hop reasoning. For the first hop, we test if changing the prompt to indirectly mention the bridge entity instead of any other entity increases the LLM's internal recall of the bridge entity. For the second hop, we test if increasing this recall causes the LLM to better utilize what it knows about the bridge entity. We find strong evidence of latent multi-hop reasoning for the prompts of certain relation types, with the reasoning pathway used in more than 80% of the prompts. However, the utilization is highly contextual, varying across different types of prompts. Also, on average, the evidence for the second hop and the full multi-hop traversal is rather moderate and only substantial for the first hop. Moreover, we find a clear scaling trend with increasing model size for the first hop of reasoning but not for the second hop. Our experimental findings suggest potential challenges and opportunities for future development and applications of LLMs.",
+            "year": 2024,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Strong evidence of latent multi-hop reasoning for the prompts of certain relation types is found, with the reasoning pathway used in more than 80% of the prompts, however, the utilization is highly contextual, varying across different types of prompts."
+            },
+            "score": 4
+        },
+        {
+            "id": "eac5e5ef2bb1d158645ee8ae8f3e167767316b46",
+            "paperId": "eac5e5ef2bb1d158645ee8ae8f3e167767316b46",
+            "title": "Understanding and Improving Zero-shot Multi-hop Reasoning in Generative Question Answering",
+            "abstract": "Generative question answering (QA) models generate answers to questions either solely based on the parameters of the model (the closed-book setting) or additionally retrieving relevant evidence (the open-book setting). Generative QA models can answer some relatively complex questions, but the mechanism through which they do so is still poorly understood. We perform several studies aimed at better understanding the multi-hop reasoning capabilities of generative QA models. First, we decompose multi-hop questions into multiple corresponding single-hop questions, and find marked inconsistency in QA models\u2019 answers on these pairs of ostensibly identical question chains. Second, we find that models lack zero-shot multi-hop reasoning ability: when trained only on single-hop questions, models generalize poorly to multi-hop questions. Finally, we demonstrate that it is possible to improve models\u2019 zero-shot multi-hop reasoning capacity through two methods that approximate real multi-hop natural language (NL) questions by training on either concatenation of single-hop questions or logical forms (SPARQL). In sum, these results demonstrate that multi-hop reasoning does not emerge naturally in generative QA models, but can be encouraged by advances in training or modeling techniques. Code is available at https://github.com/jzbjyb/multihop.",
+            "year": 2022,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that multi-hop reasoning does not emerge naturally in generative QA models, but can be encouraged by advances in training or modeling techniques."
+            },
+            "score": 4
+        },
+        {
+            "id": "1f9bd8a63d292510860071847a85de83c6a3a878",
+            "paperId": "1f9bd8a63d292510860071847a85de83c6a3a878",
+            "title": "Direct Evaluation of Chain-of-Thought in Multi-hop Reasoning with Knowledge Graphs",
+            "abstract": "Large language models (LLMs) demonstrate strong reasoning abilities when prompted to generate chain-of-thought (CoT) explanations alongside answers. However, previous research on evaluating LLMs has solely focused on answer accuracy, neglecting the correctness of the generated CoT. In this paper, we delve deeper into the CoT reasoning capabilities of LLMs in multi-hop question answering by utilizing knowledge graphs (KGs). We propose a novel discriminative and generative CoT evaluation paradigm to assess LLMs' knowledge of reasoning and the accuracy of the generated CoT. Through experiments conducted on 5 different families of LLMs across 2 multi-hop question-answering datasets, we find that LLMs possess sufficient knowledge to perform reasoning. However, there exists a significant disparity between answer accuracy and faithfulness of the CoT reasoning generated by LLMs, indicating that they often arrive at correct answers through incorrect reasoning.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel discriminative and generative CoT evaluation paradigm to assess LLMs' knowledge of reasoning and the accuracy of the generated CoT, and finds that LLMs possess sufficient knowledge to perform reasoning."
+            },
+            "score": 4
+        },
+        {
+            "id": "3d3b1300c7cd6a820a6d08605248f875a3ad20b9",
+            "paperId": "3d3b1300c7cd6a820a6d08605248f875a3ad20b9",
+            "title": "Is Multi-Hop Reasoning Really Explainable? Towards Benchmarking Reasoning Interpretability",
+            "abstract": "Multi-hop reasoning has been widely studied in recent years to obtain more interpretable link prediction. However, we find in experiments that many paths given by these models are actually unreasonable, while little work has been done on interpretability evaluation for them. In this paper, we propose a unified framework to quantitatively evaluate the interpretability of multi-hop reasoning models so as to advance their development. In specific, we define three metrics, including path recall, local interpretability, and global interpretability for evaluation, and design an approximate strategy to calculate these metrics using the interpretability scores of rules. We manually annotate all possible rules and establish a benchmark. In experiments, we verify the effectiveness of our benchmark. Besides, we run nine representative baselines on our benchmark, and the experimental results show that the interpretability of current multi-hop reasoning models is less satisfactory and is 51.7% lower than the upper bound given by our benchmark. Moreover, the rule-based models outperform the multi-hop reasoning models in terms of performance and interpretability, which points to a direction for future research, i.e., how to better incorporate rule information into the multi-hop reasoning model. We will publish our codes and datasets upon acceptance.",
+            "year": 2021,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A unified framework to quantitatively evaluate the interpretability of multi-hop reasoning models so as to advance their development and design an approximate strategy to calculate three metrics, including path recall, local interpretability, and global interpretability for evaluation, is proposed."
+            },
+            "score": 4
+        },
+        {
+            "id": "d384bce6cb69071c056f8eace83d717148f85743",
+            "paperId": "d384bce6cb69071c056f8eace83d717148f85743",
+            "title": "MRKE: The Multi-hop Reasoning Evaluation of LLMs by Knowledge Edition",
+            "abstract": "Although Large Language Models (LLMs) have shown strong performance in Multi-hop Question Answering (MHQA) tasks, their real reasoning ability remains exploration. Current LLM QA evaluation benchmarks have shown limitations, including 1) data contamination, the evaluation data are potentially exposed to LLMs during the pretraining stage; and 2) ignoration of the reasoning chain evaluation. Thus we introduce an LLM MHQA evaluation benchmark, the first QA benchmark based on the new, unprecedented knowledge by editing the off-the-shelf HotpotQA dataset; Besides, we also annotate and evaluate the reasoning chain in the form of sub-questions and intermediate answers corresponding to the multi-hop questions. Specifically, based on the observation, 1) LLMs show a performance gap between the original HotpotQA and our edited data, deeming that current MHQA benchmarks have the potential risk of data contamination that hard to evaluate LLMs' performance objectively and scientifically; 2) LLMs only get a small percentage of the right reasoning chain, e.g. GPT-4 only gets 36.3\\% right reasoning chain. We believe this new Multi-hop QA evaluation benchmark and novel evaluation methods will facilitate the development of trustworthy LLM evaluation on the MHQA task.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An LLM MHQA evaluation benchmark is introduced, the first QA benchmark based on the new, unprecedented knowledge by editing the off-the-shelf HotpotQA dataset, and novel evaluation methods will facilitate the development of trustworthy LLM evaluation on the MHQA task."
+            },
+            "score": 4
+        },
+        {
+            "id": "509a5b8d52cab8c7d6a4e59d5e2086b7d05368b5",
+            "paperId": "509a5b8d52cab8c7d6a4e59d5e2086b7d05368b5",
+            "title": "Dr3: Ask Large Language Models Not to Give Off-Topic Answers in Open Domain Multi-Hop Question Answering",
+            "abstract": "Open Domain Multi-Hop Question Answering (ODMHQA) plays a crucial role in Natural Language Processing (NLP) by aiming to answer complex questions through multi-step reasoning over retrieved information from external knowledge sources. Recently, Large Language Models (LLMs) have demonstrated remarkable performance in solving ODMHQA owing to their capabilities including planning, reasoning, and utilizing tools. However, LLMs may generate off-topic answers when attempting to solve ODMHQA, namely the generated answers are irrelevant to the original questions. This issue of off-topic answers accounts for approximately one-third of incorrect answers, yet remains underexplored despite its significance. To alleviate this issue, we propose the Discriminate->Re-Compose->Re- Solve->Re-Decompose (Dr3) mechanism. Specifically, the Discriminator leverages the intrinsic capabilities of LLMs to judge whether the generated answers are off-topic. In cases where an off-topic answer is detected, the Corrector performs step-wise revisions along the reversed reasoning chain (Re-Compose->Re-Solve->Re-Decompose) until the final answer becomes on-topic. Experimental results on the HotpotQA and 2WikiMultiHopQA datasets demonstrate that our Dr3 mechanism considerably reduces the occurrence of off-topic answers in ODMHQA by nearly 13%, improving the performance in Exact Match (EM) by nearly 3% compared to the baseline method without the Dr3 mechanism.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Dr3 mechanism considerably reduces the occurrence of off-topic answers in ODMHQA by nearly 13%, improving the performance in Exact Match (EM) by nearly 3% compared to the baseline method without the Dr3 mechanism."
+            },
+            "score": 4
+        },
+        {
+            "id": "40b7a181cbd906ef0358141d4fa4f284e74cde59",
+            "paperId": "40b7a181cbd906ef0358141d4fa4f284e74cde59",
+            "title": "Benchmarking Large Language Models in Complex Question Answering Attribution using Knowledge Graphs",
+            "abstract": "The attribution of question answering is to provide citations for supporting generated statements, and has attracted wide research attention. The current methods for automatically evaluating the attribution, which are often based on Large Language Models (LLMs), are still inadequate, particularly in recognizing subtle differences between attributions, and complex relationships between citations and statements. To compare these attribution evaluation methods and develop new ones, we introduce a set of fine-grained categories (i.e., supportive, insufficient, contradictory and irrelevant) for measuring the attribution, and develop a Complex Attributed Question Answering (CAQA) benchmark by leveraging knowledge graphs (KGs) for automatically generating attributions of different categories to question-answer pairs. Our analysis reveals that existing evaluators perform poorly under fine-grained attribution settings and exhibit weaknesses in complex citation-statement reasoning. Our CAQA benchmark, validated with human annotations, emerges as a promising tool for selecting and developing LLM attribution evaluators.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A set of fine-grained categories is introduced for measuring the attribution of question answering, and a Complex Attributed Question Answering (CAQA) benchmark is developed by leveraging knowledge graphs for automatically generating attributions of different categories to question-answer pairs."
+            },
+            "score": 4
+        },
+        {
+            "id": "220cb18e8e005024a7ed1c1d41b4b6fa4774847f",
+            "paperId": "220cb18e8e005024a7ed1c1d41b4b6fa4774847f",
+            "title": "Unlocking Temporal Question Answering for Large Language Models Using Code Execution",
+            "abstract": "Large language models (LLMs) have made significant progress in natural language processing (NLP), and are utilized extensively in various applications. Recent works, such as chain-of-thought (CoT), have shown that intermediate reasoning steps can improve the performance of LLMs for complex reasoning tasks, such as math problems and symbolic question-answering tasks. However, we notice the challenge that LLMs face when it comes to temporal reasoning. Our preliminary experiments show that generating intermediate reasoning steps does not always boost the performance of complex temporal question-answering tasks. Therefore, we propose a novel framework that combines the extraction capability of LLMs and the logical reasoning capability of a Python solver to tackle this issue. Extensive experiments and analysis demonstrate the effectiveness of our framework in handling intricate time-bound reasoning tasks.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel framework that combines the extraction capability of LLMs and the logical reasoning capability of a Python solver to tackle the challenge that LLMs face when it comes to temporal reasoning."
+            },
+            "score": 4
+        },
+        {
+            "id": "ad44f2392df3c6f2c45d21fe1dbd8ec17003530d",
+            "paperId": "ad44f2392df3c6f2c45d21fe1dbd8ec17003530d",
+            "title": "Interpretable Long-Form Legal Question Answering with Retrieval-Augmented Large Language Models",
+            "abstract": "Many individuals are likely to face a legal dispute at some point in their lives, but their lack of understanding of how to navigate these complex issues often renders them vulnerable. The advancement of natural language processing opens new avenues for bridging this legal literacy gap through the development of automated legal aid systems. However, existing legal question answering (LQA) approaches often suffer from a narrow scope, being either confined to specific legal domains or limited to brief, uninformative responses. In this work, we propose an end-to-end methodology designed to generate long-form answers to any statutory law questions, utilizing a \"retrieve-then-read\" pipeline. To support this approach, we introduce and release the Long-form Legal Question Answering (LLeQA) dataset, comprising 1,868 expert-annotated legal questions in the French language, complete with detailed answers rooted in pertinent legal provisions. Our experimental results demonstrate promising performance on automatic evaluation metrics, but a qualitative analysis uncovers areas for refinement. As one of the only comprehensive, expert-annotated long-form LQA dataset, LLeQA has the potential to not only accelerate research towards resolving a significant real-world issue, but also act as a rigorous benchmark for evaluating NLP models in specialized domains. We publicly release our code, data, and models.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an end-to-end methodology designed to generate long-form answers to any statutory law questions, utilizing a \"retrieve-then-read\" pipeline, and introduces and releases the Long-form Legal Question Answering (LLeQA) dataset, comprising 1,868 expert-annotated legal questions in the French language."
+            },
+            "score": 4
+        },
+        {
+            "id": "6ea0d369103c5786fc555c0da05f81eb013392d0",
+            "paperId": "6ea0d369103c5786fc555c0da05f81eb013392d0",
+            "title": "Zero-Shot Question Answering over Financial Documents using Large Language Models",
+            "abstract": "We introduce a large language model (LLM) based approach to answer complex questions requiring multi-hop numerical reasoning over financial reports. While LLMs have exhibited remarkable performance on various natural language and reasoning tasks, complex reasoning problems often rely on few-shot prompts that require carefully crafted examples. In contrast, our approach uses novel zero-shot prompts that guide the LLM to encode the required reasoning into a Python program or a domain specific language. The generated program is then executed by a program interpreter, thus mitigating the limitations of LLM in performing accurate arithmetic calculations. We evaluate the proposed approach on three financial datasets using some of the recently developed generative pretrained transformer (GPT) models and perform comparisons with various zero-shot baselines. The experimental results demonstrate that our approach significantly improves the accuracy for all the LLMs over their respective baselines. We provide a detailed analysis of the results, generating insights to support our findings. The success of our approach demonstrates the enormous potential to extract complex domain specific numerical reasoning by designing zero-shot prompts to effectively exploit the knowledge embedded in LLMs.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed approach uses novel zero-shot prompts that guide the LLM to encode the required reasoning into a Python program or a domain specific language, thus mitigating the limitations of LLM in performing accurate arithmetic calculations."
+            },
+            "score": 4
+        },
+        {
+            "id": "b4036b0e31d43b18f196b61b69dd564ad83dd6ea",
+            "paperId": "b4036b0e31d43b18f196b61b69dd564ad83dd6ea",
+            "title": "Enhancing Textbook Question Answering Task with Large Language Models and Retrieval Augmented Generation",
+            "abstract": "Textbook question answering (TQA) is a challenging task in artificial intelligence due to the complex nature of context and multimodal data. Although previous research has significantly improved the task, there are still some limitations including the models' weak reasoning and inability to capture contextual information in the lengthy context. The introduction of large language models (LLMs) has revolutionized the field of AI, however, directly applying LLMs often leads to inaccurate answers. This paper proposes a methodology that handle the out-of-domain scenario in TQA where concepts are spread across different lessons by incorporating the retrieval augmented generation (RAG) technique and utilize transfer learning to handle the long context and enhance reasoning abilities. Through supervised fine-tuning of the LLM model Llama-2 and the incorporation of RAG, our architecture outperforms the baseline, achieving a 4.12% accuracy improvement on validation set and 9.84% on test set for non-diagram multiple-choice questions.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a methodology that handle the out-of-domain scenario in TQA where concepts are spread across different lessons by incorporating the retrieval augmented generation (RAG) technique and utilize transfer learning to handle the long context and enhance reasoning abilities."
+            },
+            "score": 4
+        },
+        {
+            "id": "d365978adf0a5c9c6028820857e015617856256b",
+            "paperId": "d365978adf0a5c9c6028820857e015617856256b",
+            "title": "MultiModalQA: Complex Question Answering over Text, Tables and Images",
+            "abstract": "When answering complex questions, people can seamlessly combine information from visual, textual and tabular sources. While interest in models that reason over multiple pieces of evidence has surged in recent years, there has been relatively little work on question answering models that reason across multiple modalities. In this paper, we present MultiModalQA(MMQA): a challenging question answering dataset that requires joint reasoning over text, tables and images. We create MMQA using a new framework for generating complex multi-modal questions at scale, harvesting tables from Wikipedia, and attaching images and text paragraphs using entities that appear in each table. We then define a formal language that allows us to take questions that can be answered from a single modality, and combine them to generate cross-modal questions. Last, crowdsourcing workers take these automatically-generated questions and rephrase them into more fluent language. We create 29,918 questions through this procedure, and empirically demonstrate the necessity of a multi-modal multi-hop approach to solve our task: our multi-hop model, ImplicitDecomp, achieves an average F1of 51.7 over cross-modal questions, substantially outperforming a strong baseline that achieves 38.2 F1, but still lags significantly behind human performance, which is at 90.1 F1",
+            "year": 2021,
+            "citationCount": 104,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper creates MMQA using a new framework for generating complex multi-modal questions at scale, harvesting tables from Wikipedia, and attaching images and text paragraphs using entities that appear in each table, and defines a formal language that allows them to take questions that can be answered from a single modality, and combine them to generate cross- modal questions."
+            },
+            "score": 4
+        },
+        {
+            "id": "bc13c9a049eee9ecd75a7ff051f91568ba92a291",
+            "paperId": "bc13c9a049eee9ecd75a7ff051f91568ba92a291",
+            "title": "Question-Directed Reasoning With Relation-Aware Graph Attention Network for Complex Question Answering Over Knowledge Graph",
+            "abstract": "Complex knowledge graph question answering (KGQA) aims at answering natural language questions by entities retrieving from a knowledge graph (KG). Recently, the relation path-based models have shown the unique advantage for complex KGQA. However, these existing models ignore the dependency between different relation paths, which leads to aimless reasoning over the KG. To resolve this issue, we propose the question-directed reasoning with relation-aware graph attention network (QRGAT) that encodes the reasoning process as a reasoning graph. The relation-aware GAT can recognize neighbor entities along with the corresponding relations for each entity. With the relation-aware GAT stacked in multiple layers, it can collaboratively capture the dependency of different relation paths for each entity. The question-directed reasoning utilizes the information learned by the relation-aware GAT to solve the aimless reasoning on the KG by constructing a reasoning graph. Extensive experiments demonstrate that our QRGAT outperforms the baseline models on both popular datasets WebQuestionsSP and ComplexWebQuestions. Compared with the strong GNN-based baseline NSM$_{+h}$, our QRGAT achieves the performance improvements of 2.3% on WebQuestionsSP and 3.6% on ComplexWebQuestions by the metric Hits@1.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The question-directed reasoning with relation-aware graph attention network (QRGAT) that encodes the reasoning process as a reasoning graph to solve the aimless reasoning on the KG by constructing a reasoning graph."
+            },
+            "score": 4
+        },
+        {
+            "id": "8d806a91e5f2166ee6823eb7e6e8e56826b6776d",
+            "paperId": "8d806a91e5f2166ee6823eb7e6e8e56826b6776d",
+            "title": "NLPBench: Evaluating Large Language Models on Solving NLP Problems",
+            "abstract": "Recent developments in large language models (LLMs) have shown promise in enhancing the capabilities of natural language processing (NLP). Despite these successes, there remains a dearth of research dedicated to the NLP problem-solving abilities of LLMs. To fill the gap in this area, we present a unique benchmarking dataset, NLPBench, comprising 378 college-level NLP questions spanning various NLP topics sourced from Yale University's prior final exams. NLPBench includes questions with context, in which multiple sub-questions share the same public information, and diverse question types, including multiple choice, short answer, and math. Our evaluation, centered on LLMs such as GPT-3.5/4, PaLM-2, and LLAMA-2, incorporates advanced prompting strategies like the chain-of-thought (CoT) and tree-of-thought (ToT). Our study reveals that the effectiveness of the advanced prompting strategies can be inconsistent, occasionally damaging LLM performance, especially in smaller models like the LLAMA-2 (13b). Furthermore, our manual assessment illuminated specific shortcomings in LLMs' scientific problem-solving skills, with weaknesses in logical decomposition and reasoning notably affecting results.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study presents a unique benchmarking dataset, NLPBench, comprising 378 college-level NLP questions spanning various NLP topics sourced from Yale University's prior final exams, and reveals that the effectiveness of the advanced prompting strategies can be inconsistent, occasionally damaging LLM performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "215ac7eeab2fdc594d1e6a7de9b92f1a3b8a6aec",
+            "paperId": "215ac7eeab2fdc594d1e6a7de9b92f1a3b8a6aec",
+            "title": "Enhancing diversity in language based models for single-step retrosynthesis",
+            "abstract": "Over the past four years, several research groups demonstrated the combination of domain-specific language representation with recent NLP architectures to accelerate innovation in a wide range of scientific fields. Chemistry is a great example. Among the various chemical challenges addressed with language models, retrosynthesis demonstrates some of the most distinctive successes and limitations. Single-step retrosynthesis, the task of identifying reactions able to decompose a complex molecule into simpler structures, can be cast as a translation problem, in which a text-based representation of the target molecule is converted into a sequence of possible precursors. A common issue is a lack of diversity in the proposed disconnection strategies. The suggested precursors typically fall in the same reaction family, which limits the exploration of the chemical space. We present a retrosynthesis Transformer model that increases the diversity of the predictions by prepending a classification token to the language representation of the target molecule. At inference, the use of these prompt tokens allows us to steer the model towards different kinds of disconnection strategies. We show that the diversity of the predictions improves consistently, which enables recursive synthesis tools to circumvent dead ends and consequently, suggests synthesis pathways for more complex molecules.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A retrosynthesis Transformer model that increases the diversity of the predictions by prepending a classification token to the language representation of the target molecule, which enables recursive synthesis tools to circumvent dead ends and consequently, suggests synthesis pathways for more complex molecules."
+            },
+            "score": 4
+        },
+        {
+            "id": "3ac5aa6ac59253611ef3cb72a95cbe21ef5dda1b",
+            "paperId": "3ac5aa6ac59253611ef3cb72a95cbe21ef5dda1b",
+            "title": "Reframing Instructional Prompts to GPTk\u2019s Language",
+            "abstract": "What kinds of instructional prompts are easier to follow for Language Models (LMs)? We study this question by conducting extensive empirical analysis that shed light on important features of successful instructional prompts. Specifically, we study several classes of reframing techniques for manual reformulation of prompts into more effective ones. Some examples include decomposing a complex task instruction into multiple simpler tasks or itemizing instructions into sequential steps. Our experiments compare the zero-shot and few-shot performance of LMs prompted with reframed instructions on 12 NLP tasks across 6 categories. Compared with original instructions, our reframed instructions lead to significant improvements across LMs with different sizes. For example, the same reframed prompts boost few-shot performance of GPT3-series and GPT2-series by 12.5% and 6.7% respectively averaged over all tasks. Furthermore, reframed instructions reduce the number of examples required to prompt LMs in the few-shot setting. We hope these empirically-driven techniques will pave the way towards more effective future prompting algorithms.",
+            "year": 2021,
+            "citationCount": 162,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work studies several classes of reframing techniques for manual reformulation of prompts into more effective ones, and hopes these empirically-driven techniques will pave the way towards more effective future prompting algorithms."
+            },
+            "score": 4
+        },
+        {
+            "id": "793d69ecc8fe11e0a41aad5e34e5764227552e24",
+            "paperId": "793d69ecc8fe11e0a41aad5e34e5764227552e24",
+            "title": "Summary Cycles: Exploring the Impact of Prompt Engineering on Large Language Models\u2019 Interaction with Interaction Log Information",
+            "abstract": "With the aim of improving work efficiency, we examine how Large Language Models (LLMs) can better support the handoff of information by summarizing user interactions in collaborative intelligence analysis communication. We experiment with interaction logs, or a record of user interactions with a system. Inspired by chain-of-thought prompting, we describe a technique to avoid API token limits with recursive summarization requests. We then apply ChatGPT over multiple iterations to extract named entities, topics, and summaries, combined with interaction sequence sentences, to generate summaries of critical events and results of analysis sessions. We quantitatively evaluate the generated summaries against human-generated ones using common accuracy metrics (e.g., ROUGE-L, BLEU, BLEURT, and TER). We also report qualitative trends and the factuality of the output. We find that manipulating the audience feature or providing single-shot examples minimally influences the model\u2019s accuracy. While our methodology successfully summarizes interaction logs, the lack of significant results raises questions about prompt engineering and summarization effectiveness generally. We call on explainable artificial intelligence research to better understand how terms and their placement may change LLM outputs, striving for more consistent prompt engineering guidelines.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work applies ChatGPT over multiple iterations to extract named entities, topics, and summaries, combined with interaction sequence sentences, to generate summaries of critical events and results of analysis sessions, finding that manipulating the audience feature or providing single-shot examples minimally influences the model\u2019s accuracy."
+            },
+            "score": 3
+        },
+        {
+            "id": "96706639ed81471fc37dc0d130b8db679a6d173c",
+            "paperId": "96706639ed81471fc37dc0d130b8db679a6d173c",
+            "title": "Look Before You Leap: A Universal Emergent Decomposition of Retrieval Tasks in Language Models",
+            "abstract": "When solving challenging problems, language models (LMs) are able to identify relevant information from long and complicated contexts. To study how LMs solve retrieval tasks in diverse situations, we introduce ORION, a collection of structured retrieval tasks spanning six domains, from text understanding to coding. Each task in ORION can be represented abstractly by a request (e.g. a question) that retrieves an attribute (e.g. the character name) from a context (e.g. a story). We apply causal analysis on 18 open-source language models with sizes ranging from 125 million to 70 billion parameters. We find that LMs internally decompose retrieval tasks in a modular way: middle layers at the last token position process the request, while late layers retrieve the correct entity from the context. After causally enforcing this decomposition, models are still able to solve the original task, preserving 70% of the original correct token probability in 98 of the 106 studied model-task pairs. We connect our macroscopic decomposition with a microscopic description by performing a fine-grained case study of a question-answering task on Pythia-2.8b. Building on our high-level understanding, we demonstrate a proof of concept application for scalable internal oversight of LMs to mitigate prompt-injection while requiring human supervision on only a single input. Our solution improves accuracy drastically (from 15.5% to 97.5% on Pythia-12b). This work presents evidence of a universal emergent modular processing of tasks across varied domains and models and is a pioneering effort in applying interpretability for scalable internal oversight of LMs.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents evidence of a universal emergent modular processing of tasks across varied domains and models and is a pioneering effort in applying interpretability for scalable internal oversight of LMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "4b56830dfe097d460482599eedee9521de450c6c",
+            "paperId": "4b56830dfe097d460482599eedee9521de450c6c",
+            "title": "Task-specific Pre-training and Prompt Decomposition for Knowledge Graph Population with Language Models",
+            "abstract": "We present a system for knowledge graph population with Language Models, evaluated on the Knowledge Base Construction from Pre-trained Language Models (LM-KBC) challenge at ISWC 2022. Our system involves task-specific pre-training to improve LM representation of the masked object tokens, prompt decomposition for progressive generation of candidate objects, among other methods for higher-quality retrieval. Our system is the winner of track 1 of the LM-KBC challenge, based on BERT LM; it achieves 55.0% F-1 score on the hidden test set of the challenge.",
+            "year": 2022,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This system is the winner of track 1 of the LM-KBC challenge, based on BERT LM; it achieves 55.0% F-1 score on the hidden test set of the challenge."
+            },
+            "score": 3
+        },
+        {
+            "id": "9a1c481a25c609fe1dbb9b9d43faf892c3c71368",
+            "paperId": "9a1c481a25c609fe1dbb9b9d43faf892c3c71368",
+            "title": "Triggering Multi-Hop Reasoning for Question Answering in Language Models using Soft Prompts and Random Walks",
+            "abstract": "Despite readily memorizing world knowledge about entities, pre-trained language models (LMs) struggle to compose together two or more facts to perform multi-hop reasoning in question-answering tasks. In this work, we propose techniques that improve upon this limitation by relying on random walks over structured knowledge graphs. Specifically, we use soft prompts to guide LMs to chain together their encoded knowledge by learning to map multi-hop questions to random walk paths that lead to the answer. Applying our methods on two T5 LMs shows substantial improvements over standard tuning approaches in answering questions that require 2-hop reasoning.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Soft prompts are used to guide LMs to chain together their encoded knowledge by learning to map multi-hop questions to random walk paths that lead to the answer."
+            },
+            "score": 3
+        },
+        {
+            "id": "066dc4d3550dce456856344acb1434a5ef46ac5d",
+            "paperId": "066dc4d3550dce456856344acb1434a5ef46ac5d",
+            "title": "Towards Robust Temporal Reasoning of Large Language Models via a Multi-Hop QA Dataset and Pseudo-Instruction Tuning",
+            "abstract": "Knowledge in the real world is being updated constantly. However, it is costly to frequently update large language models (LLMs). Therefore, it is crucial for LLMs to understand the concept of temporal knowledge. However, prior works on temporal question answering did not emphasize multi-answer and multi-hop types of temporal reasoning. In this paper, we propose a complex temporal question-answering (QA) dataset Complex-TR that focuses on multi-answer and multi-hop temporal reasoning. Besides, we also propose a novel data augmentation strategy to improve the complex temporal reasoning capability and robustness of LLMs. We conducted experiments on multiple temporal QA datasets. Experimental results show that our method is able to improve LLMs' performance on temporal QA benchmarks by significant margins.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A complex temporal question-answering (QA) dataset Complex-TR that focuses on multi-answer and multi-hop temporal reasoning and a novel data augmentation strategy to improve the complex temporal reasoning capability and robustness of LLMs is proposed."
+            },
+            "score": 3
+        },
+        {
+            "id": "7e8457393ff1b40ddd099f195af9d3b14c5a934f",
+            "paperId": "7e8457393ff1b40ddd099f195af9d3b14c5a934f",
+            "title": "Language Generation with Multi-hop Reasoning on Commonsense Knowledge Graph",
+            "abstract": "Despite the success of generative pre-trained language models on a series of text generation tasks, they still suffer in cases where reasoning over underlying commonsense knowledge is required during generation. Existing approaches that integrate commonsense knowledge into generative pre-trained language models simply transfer relational knowledge by post-training on individual knowledge triples while ignoring rich connections within the knowledge graph. We argue that exploiting both the structural and semantic information of the knowledge graph facilitates commonsense-aware text generation. In this paper, we propose Generation with Multi-Hop Reasoning Flow (GRF) that enables pre-trained models with dynamic multi-hop reasoning on multi-relational paths extracted from the external commonsense knowledge graph. We empirically show that our model outperforms existing baselines on three text generation tasks that require reasoning over commonsense knowledge. We also demonstrate the effectiveness of the dynamic multi-hop reasoning module with reasoning paths inferred by the model that provide rationale to the generation.",
+            "year": 2020,
+            "citationCount": 95,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes Generation with Multi-Hop Reasoning Flow (GRF) that enables pre-trained models with dynamic multi-hop reasoning on multi-relational paths extracted from the external commonsense knowledge graph and empirically shows that the model outperforms existing baselines on three text generation tasks that require reasoning over Commonsense knowledge."
+            },
+            "score": 3
+        },
+        {
+            "id": "2bd09677fc5d39d8ace60a704b80ecffdb2a0bfe",
+            "paperId": "2bd09677fc5d39d8ace60a704b80ecffdb2a0bfe",
+            "title": "Investigating Multi-Hop Factual Shortcuts in Knowledge Editing of Large Language Models",
+            "abstract": "Recent work has showcased the powerful capability of large language models (LLMs) in recalling knowledge and reasoning. However, the reliability of LLMs in combining these two capabilities into reasoning through multi-hop facts has not been widely explored. This paper systematically investigates the possibilities for LLMs to utilize shortcuts based on direct connections between the initial and terminal entities of multi-hop knowledge. We first explore the existence of factual shortcuts through Knowledge Neurons, revealing that: (i) the strength of factual shortcuts is highly correlated with the frequency of co-occurrence of initial and terminal entities in the pre-training corpora; (ii) few-shot prompting leverage more shortcuts in answering multi-hop questions compared to chain-of-thought prompting. Then, we analyze the risks posed by factual shortcuts from the perspective of multi-hop knowledge editing. Analysis shows that approximately 20% of the failures are attributed to shortcuts, and the initial and terminal entities in these failure instances usually have higher co-occurrences in the pre-training corpus. Finally, we propose erasing shortcut neurons to mitigate the associated risks and find that this approach significantly reduces failures in multiple-hop knowledge editing caused by shortcuts.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper systematically investigates the possibilities for LLMs to utilize shortcuts based on direct connections between the initial and terminal entities of multi-hop knowledge, and proposes erasing shortcut neurons to mitigate the associated risks."
+            },
+            "score": 3
+        },
+        {
+            "id": "b70e2ac099d1c49a3857150c6896c9f2d98f2913",
+            "paperId": "b70e2ac099d1c49a3857150c6896c9f2d98f2913",
+            "title": "Retrieval-Enhanced Knowledge Editing for Multi-Hop Question Answering in Language Models",
+            "abstract": "Large Language Models (LLMs) have shown proficiency in question-answering tasks but often struggle to integrate real-time knowledge updates, leading to potentially outdated or inaccurate responses. This problem becomes even more challenging when dealing with multi-hop questions since they require LLMs to update and integrate multiple knowledge pieces relevant to the questions. To tackle the problem, we propose the Retrieval-Augmented model Editing (RAE) framework tailored for multi-hop question answering. RAE first retrieves edited facts and then refines the language model through in-context learning. Specifically, our retrieval approach, based on mutual information maximization, leverages the reasoning abilities of LLMs to identify chain facts that na\\\"ive similarity-based searches might miss. Additionally, our framework incorporates a pruning strategy to eliminate redundant information from the retrieved facts, which enhances the editing accuracy and mitigates the hallucination problem. Our framework is supported by theoretical justification for its fact retrieval efficacy. Finally, comprehensive evaluation across various LLMs validates RAE's ability in providing accurate answers with updated knowledge.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Retrieval-Augmented model Editing (RAE) framework tailored for multi-hop question answering first retrieves edited facts and then refines the language model through in-context learning, which enhances the editing accuracy and mitigates the hallucination problem."
+            },
+            "score": 3
+        },
+        {
+            "id": "a970c8fadef8497576660b288c52c0ec8eebdc12",
+            "paperId": "a970c8fadef8497576660b288c52c0ec8eebdc12",
+            "title": "Zero-Shot Video Question Answering via Frozen Bidirectional Language Models",
+            "abstract": "Video question answering (VideoQA) is a complex task that requires diverse multi-modal data for training. Manual annotation of question and answers for videos, however, is tedious and prohibits scalability. To tackle this problem, recent methods consider zero-shot settings with no manual annotation of visual question-answer. In particular, a promising approach adapts frozen autoregressive language models pretrained on Web-scale text-only data to multi-modal inputs. In contrast, we here build on frozen bidirectional language models (BiLM) and show that such an approach provides a stronger and cheaper alternative for zero-shot VideoQA. In particular, (i) we combine visual inputs with the frozen BiLM using light trainable modules, (ii) we train such modules using Web-scraped multi-modal data, and finally (iii) we perform zero-shot VideoQA inference through masked language modeling, where the masked text is the answer to a given question. Our proposed approach, FrozenBiLM, outperforms the state of the art in zero-shot VideoQA by a significant margin on a variety of datasets, including LSMDC-FiB, iVQA, MSRVTT-QA, MSVD-QA, ActivityNet-QA, TGIF-FrameQA, How2QA and TVQA. It also demonstrates competitive performance in the few-shot and fully-supervised setting. Our code and models are publicly available at https://github.com/antoyang/FrozenBiLM.",
+            "year": 2022,
+            "citationCount": 130,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work builds on frozen bidirectional language models (BiLM) and shows that such an approach provides a stronger and cheaper alternative for zero-shot VideoQA and demonstrates competitive performance in the few-shot and fully-supervised setting."
+            },
+            "score": 3
+        },
+        {
+            "id": "bb4516ad6eb7adda97d81f09d4bb92b3ad056c42",
+            "paperId": "bb4516ad6eb7adda97d81f09d4bb92b3ad056c42",
+            "title": "Large Language Models are Temporal and Causal Reasoners for Video Question Answering",
+            "abstract": "Large Language Models (LLMs) have shown remarkable performances on a wide range of natural language understanding and generation tasks. We observe that the LLMs provide effective priors in exploiting $\\textit{linguistic shortcuts}$ for temporal and causal reasoning in Video Question Answering (VideoQA). However, such priors often cause suboptimal results on VideoQA by leading the model to over-rely on questions, $\\textit{i.e.}$, $\\textit{linguistic bias}$, while ignoring visual content. This is also known as `ungrounded guesses' or `hallucinations'. To address this problem while leveraging LLMs' prior on VideoQA, we propose a novel framework, Flipped-VQA, encouraging the model to predict all the combinations of $\\langle$V, Q, A$\\rangle$ triplet by flipping the source pair and the target label to understand their complex relationships, $\\textit{i.e.}$, predict A, Q, and V given a VQ, VA, and QA pairs, respectively. In this paper, we develop LLaMA-VQA by applying Flipped-VQA to LLaMA, and it outperforms both LLMs-based and non-LLMs-based models on five challenging VideoQA benchmarks. Furthermore, our Flipped-VQA is a general framework that is applicable to various LLMs (OPT and GPT-J) and consistently improves their performances. We empirically demonstrate that Flipped-VQA not only enhances the exploitation of linguistic shortcuts but also mitigates the linguistic bias, which causes incorrect answers over-relying on the question. Code is available at https://github.com/mlvlab/Flipped-VQA.",
+            "year": 2023,
+            "citationCount": 10,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLaMA-VQA is developed by applying Flipped-V QA to LLaMA, and it outperforms both LLMs- based and non-LLMs-based models on five challenging VideoQA benchmarks."
+            },
+            "score": 3
+        },
+        {
+            "id": "f3122c5e7524aaacc4dea5583cd876ccc53fe92a",
+            "paperId": "f3122c5e7524aaacc4dea5583cd876ccc53fe92a",
+            "title": "CarExpert: Leveraging Large Language Models for In-Car Conversational Question Answering",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable performance by following natural language instructions without fine-tuning them on domain-specific tasks and data. However, leveraging LLMs for domain-specific question answering suffers from severe limitations. The generated answer tends to hallucinate due to the training data collection time (when using off-the-shelf), complex user utterance and wrong retrieval (in retrieval-augmented generation). Furthermore, due to the lack of awareness about the domain and expected output, such LLMs may generate unexpected and unsafe answers that are not tailored to the target domain. In this paper, we propose CarExpert, an in-car retrieval-augmented conversational question-answering system leveraging LLMs for different tasks. Specifically, CarExpert employs LLMs to control the input, provide domain-specific documents to the extractive and generative answering components, and controls the output to ensure safe and domain-specific answers. A comprehensive empirical evaluation exhibits that CarExpert outperforms state-of-the-art LLMs in generating natural, safe and car-specific answers.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "CarExpert is proposed, an in-car retrieval-augmented conversational question-answering system leveraging LLMs for different tasks that outperforms state-of-the-art LLMs in generating natural, safe and car-specific answers."
+            },
+            "score": 3
+        },
+        {
+            "id": "31306a2f84da4f71a2cab9a3ffb9c9200b6dbc7e",
+            "paperId": "31306a2f84da4f71a2cab9a3ffb9c9200b6dbc7e",
+            "title": "Fine-tuning and aligning question answering models for complex information extraction tasks",
+            "abstract": "The emergence of Large Language Models (LLMs) has boosted performance and possibilities in various NLP tasks. While the usage of generative AI models like ChatGPT opens up new opportunities for several business use cases, their current tendency to hallucinate fake content strongly limits their applicability to document analysis, such as information retrieval from documents. In contrast, extractive language models like question answering (QA) or passage retrieval models guarantee query results to be found within the boundaries of an according context document, which makes them candidates for more reliable information extraction in productive environments of companies. In this work we propose an approach that uses and integrates extractive QA models for improved feature extraction of German business documents such as insurance reports or medical leaflets into a document analysis solution. We further show that fine-tuning existing German QA models boosts performance for tailored extraction tasks of complex linguistic features like damage cause explanations or descriptions of medication appearance, even with using only a small set of annotated data. Finally, we discuss the relevance of scoring metrics for evaluating information extraction tasks and deduce a combined metric from Levenshtein distance, F1-Score, Exact Match and ROUGE-L to mimic the assessment criteria from human experts.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an approach that uses and integrates extractive QA models for improved feature extraction of German business documents such as insurance reports or medical leaflets into a document analysis solution and shows that fine-tuning existing German QA Models boosts performance for tailored extraction tasks of complex linguistic features."
+            },
+            "score": 3
+        },
+        {
+            "id": "d0b5d78e562e426519469e1f4ec84ee3b34e6fbe",
+            "paperId": "d0b5d78e562e426519469e1f4ec84ee3b34e6fbe",
+            "title": "What if you said that differently?: How Explanation Formats Affect Human Feedback Efficacy and User Perception",
+            "abstract": "Eliciting feedback from end users of NLP models can be beneficial for improving models. However, how should we present model responses to users so they are most amenable to be corrected from user feedback? Further, what properties do users value to understand and trust responses? We answer these questions by analyzing the effect of rationales (or explanations) generated by QA models to support their answers. We specifically consider decomposed QA models that first extract an intermediate rationale based on a context and a question and then use solely this rationale to answer the question. A rationale outlines the approach followed by the model to answer the question. Our work considers various formats of these rationales that vary according to well-defined properties of interest. We sample rationales from language models using few-shot prompting for two datasets, and then perform two user studies. First, we present users with incorrect answers and corresponding rationales in various formats and ask them to provide natural language feedback to revise the rationale. We then measure the effectiveness of this feedback in patching these rationales through in-context learning. The second study evaluates how well different rationale formats enable users to understand and trust model answers, when they are correct. We find that rationale formats significantly affect how easy it is (1) for users to give feedback for rationales, and (2) for models to subsequently execute this feedback. In addition, formats with attributions to the context and in-depth reasoning significantly enhance user-reported understanding and trust of model outputs.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The effect of rationales generated by QA models to support their answers is analyzed and it is found that rationale formats significantly affect how easy it is for users to give feedback for rationales, and for models to subsequently execute this feedback."
+            },
+            "score": 3
+        },
+        {
+            "id": "fb38451ff87254ac1ff15e79154ef958b4efb6a6",
+            "paperId": "fb38451ff87254ac1ff15e79154ef958b4efb6a6",
+            "title": "Practical Neural Networks for NLP: From Theory to Code",
+            "abstract": "This tutorial aims to bring NLP researchers up to speed with the current techniques in deep learning and neural networks, and show them how they can turn their ideas into practical implementations. We will start with simple classification models (logistic regression and multilayer perceptrons) and cover more advanced patterns that come up in NLP such as recurrent networks for sequence tagging and prediction problems, structured networks (e.g., compositional architectures based on syntax trees), structured output spaces (sequences and trees), attention for sequence-to-sequence transduction, and feature induction for complex algorithm states. A particular emphasis will be on learning to represent complex objects as recursive compositions of simpler objects. This representation will reflect characterize standard objects in NLP, such as the composition of characters and morphemes into words, and words into sentences and documents. In addition, new opportunities such as learning to embed \"algorithm states\" such as those used in transition-based parsing and other sequential structured prediction models (for which effective features may be difficult to engineer by hand) will be covered.Everything in the tutorial will be grounded in code \u2014 we will show how to program seemingly complex neural-net models using toolkits based on the computation-graph formalism. Computation graphs decompose complex computations into a DAG, with nodes representing inputs, target outputs, parameters, or (sub)differentiable functions (e.g., \"tanh\", \"matrix multiply\", and \"softmax\"), and edges represent data dependencies. These graphs can be run \"forward\" to make predictions and compute errors (e.g., log loss, squared error) and then \"backward\" to compute derivatives with respect to model parameters. In particular we'll cover the Python bindings of the CNN library. CNN has been designed from the ground up for NLP applications, dynamically structured NNs, rapid prototyping, and a transparent data and execution model.",
+            "year": 2016,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Everything in the tutorial will be grounded in code \u2014 it will show how to program seemingly complex neural-net models using toolkits based on the computation-graph formalism, and cover the Python bindings of the CNN library."
+            },
+            "score": 3
+        },
+        {
+            "id": "082c3b929eef0a1e31389c0239d1b110c88de3f4",
+            "paperId": "082c3b929eef0a1e31389c0239d1b110c88de3f4",
+            "title": "Learning Label Modular Prompts for Text Classification in the Wild",
+            "abstract": "Machine learning models usually assume i.i.d data during training and testing, but data and tasks in real world often change over time. To emulate the transient nature of real world, we propose a challenging but practical task: text classification in-the-wild, which introduces different non-stationary training/testing stages. Decomposing a complex task into modular components can enable robust generalisation under such non-stationary environment. However, current modular approaches in NLP do not take advantage of recent advances in parameter efficient tuning of pretrained language models. To close this gap, we propose ModularPrompt, a label-modular prompt tuning framework for text classification tasks. In ModularPrompt, the input prompt consists of a sequence of soft label prompts, each encoding modular knowledge related to the corresponding class label. In two of most formidable settings, ModularPrompt outperforms relevant baselines by a large margin demonstrating strong generalisation ability. We also conduct comprehensive analysis to validate whether the learned prompts satisfy properties of a modular representation.",
+            "year": 2022,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ModularPrompt, a label-modular prompt tuning framework for text classification tasks, in which the input prompt consists of a sequence of soft label prompts, each encoding modular knowledge related to the corresponding class label."
+            },
+            "score": 3
+        },
+        {
+            "id": "7637ed79d30d0139901175ae4abedd822c217ab4",
+            "paperId": "7637ed79d30d0139901175ae4abedd822c217ab4",
+            "title": "3D-LLM: Injecting the 3D World into Large Language Models",
+            "abstract": "Large language models (LLMs) and Vision-Language Models (VLMs) have been proven to excel at multiple tasks, such as commonsense reasoning. Powerful as these models can be, they are not grounded in the 3D physical world, which involves richer concepts such as spatial relationships, affordances, physics, layout, and so on. In this work, we propose to inject the 3D world into large language models and introduce a whole new family of 3D-LLMs. Speci\ufb01cally, 3D-LLMs can take 3D point clouds and their features as input and perform a diverse set of 3D-related tasks, including captioning, dense captioning, 3D question answering, task decomposition, 3D grounding, 3D-assisted dialog, navigation, and so on. Using three types of prompting mechanisms that we design, we are able to collect over 300k 3D-language data covering these tasks. To ef\ufb01ciently train 3D-LLMs, we \ufb01rst utilize a 3D feature extractor that obtains 3D features from rendered multi-view images. Then, we use 2D VLMs as our backbones to train our 3D-LLMs. By introducing a 3D localization mechanism, 3D-LLMs can better capture 3D spatial information. Experiments on ScanQA show that our model outperforms state-of-the-art baselines by a large margin ( e.g. , the BLEU-1 score surpasses state-of-the-art score by 9%). Furthermore, experiments on our held-in datasets for 3D captioning, task composition, and 3D-assisted dialogue show that our model outperforms 2D VLMs. Qualitative examples also show that our model could perform more tasks beyond the scope of existing LLMs and VLMs. Project Page: : https:",
+            "year": 2023,
+            "citationCount": 70,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes to inject the 3D world into large language models and introduce a whole new family of 3D-LLMs, and introduces a 3D localization mechanism, which can better capture 3D spatial information."
+            },
+            "score": 2
+        },
+        {
+            "id": "86c7cb73e3a42a130c8d43ae3e26cb9c8df381a1",
+            "paperId": "86c7cb73e3a42a130c8d43ae3e26cb9c8df381a1",
+            "title": "Theory of Mind in Large Language Models: Examining Performance of 11 State-of-the-Art models vs. Children Aged 7-10 on Advanced Tests",
+            "abstract": "To what degree should we ascribe cognitive capacities to Large Language Models (LLMs), such as the ability to reason about intentions and beliefs known as Theory of Mind (ToM)? Here we add to this emerging debate by (i) testing 11 base- and instruction-tuned LLMs on capabilities relevant to ToM beyond the dominant false-belief paradigm, including non-literal language usage and recursive intentionality; (ii) using newly rewritten versions of standardized tests to gauge LLMs\u2019 robustness; (iii) prompting and scoring for open besides closed questions; and (iv) benchmarking LLM performance against that of children aged 7-10 on the same tasks. We find that instruction-tuned LLMs from the GPT family outperform other models, and often also children. Base-LLMs are mostly unable to solve ToM tasks, even with specialized prompting. We suggest that the interlinked evolution and development of language and ToM may help explain what instruction-tuning adds: rewarding cooperative communication that takes into account interlocutor and context. We conclude by arguing for a nuanced perspective on ToM in LLMs.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "2ff69c238e26c473a6d8bcbb9292ded74d7fd1c2",
+            "paperId": "2ff69c238e26c473a6d8bcbb9292ded74d7fd1c2",
+            "title": "Prompting Language-Informed Distribution for Compositional Zero-Shot Learning",
+            "abstract": "Compositional zero-shot learning (CZSL) task aims to recognize unseen compositional visual concepts, e.g., sliced tomatoes, where the model is learned only from the seen compositions, e.g., sliced potatoes and red tomatoes. Thanks to the prompt tuning on large pre-trained visual language models such as CLIP, recent literature shows impressively better CZSL performance than traditional vision-based methods. However, the key aspects that impact the generalization to unseen compositions, including the diversity and informativeness of class context, and the entanglement between visual primitives, i.e., state and object, are not properly addressed in existing CLIP-based CZSL literature. In this paper, we propose a model by prompting the language-informed distribution, aka., PLID, for the CZSL task. Specifically, the PLID leverages pre-trained large language models (LLM) to 1) formulate the language-informed class distributions which are diverse and informative, and 2) enhance the compositionality of the class embedding. Moreover, a visual-language primitive decomposition (VLPD) module and a stochastic logit mixup (SLM) strategy are proposed to dynamically fuse the decisions from the compositional and the primitive logit space. Orthogonal to the existing literature of soft, hard, or distributional prompts, our method advocates prompting the LLM-supported class distribution that leads to a better zero-shot generalization. Experimental results on MIT-States, UT-Zappos, and C-GQA datasets show the superior performance of the PLID to the prior arts.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A model by prompting the language-informed distribution, aka."
+            },
+            "score": 2
+        },
+        {
+            "id": "5d81c6e46b2d10a6b169b402d4d9806d3f18bcca",
+            "paperId": "5d81c6e46b2d10a6b169b402d4d9806d3f18bcca",
+            "title": "Dynamic Anticipation and Completion for Multi-Hop Reasoning over Sparse Knowledge Graph",
+            "abstract": "Multi-hop reasoning has been widely studied in recent years to seek an effective and interpretable method for knowledge graph (KG) completion. Most previous reasoning methods are designed for dense KGs with enough paths between entities, but cannot work well on those sparse KGs that only contain sparse paths for reasoning. On the one hand, sparse KGs contain less information, which makes it difficult for the model to choose correct paths. On the other hand, the lack of evidential paths to target entities also makes the reasoning process difficult. To solve these problems, we propose a multi-hop reasoning model named DacKGR over sparse KGs, by applying novel dynamic anticipation and completion strategies: (1) The anticipation strategy utilizes the latent prediction of embedding-based models to make our model perform more potential path search over sparse KGs. (2) Based on the anticipation information, the completion strategy dynamically adds edges as additional actions during the path search, which further alleviates the sparseness problem of KGs. The experimental results on five datasets sampled from Freebase, NELL and Wikidata show that our method outperforms state-of-the-art baselines. Our codes and datasets can be obtained from this https URL",
+            "year": 2020,
+            "citationCount": 41,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel dynamic anticipation and completion strategies are applied to a multi-hop reasoning model named DacKGR over sparse KGs that outperforms state-of-the-art baselines and alleviates the sparseness problem of KGs."
+            },
+            "score": 2
+        },
+        {
+            "id": "ba31109cbfb4d79ff192fad8e91d6757bf1836b2",
+            "paperId": "ba31109cbfb4d79ff192fad8e91d6757bf1836b2",
+            "title": "Adapting Meta Knowledge Graph Information for Multi-Hop Reasoning over Few-Shot Relations",
+            "abstract": "Multi-hop knowledge graph (KG) reasoning is an effective and explainable method for predicting the target entity via reasoning paths in query answering (QA) task. Most previous methods assume that every relation in KGs has enough triples for training, regardless of those few-shot relations which cannot provide sufficient triples for training robust reasoning models. In fact, the performance of existing multi-hop reasoning methods drops significantly on few-shot relations. In this paper, we propose a meta-based multi-hop reasoning method (Meta-KGR), which adopts meta-learning to learn effective meta parameters from high-frequency relations that could quickly adapt to few-shot relations. We evaluate Meta-KGR on two public datasets sampled from Freebase and NELL, and the experimental results show that Meta-KGR outperforms state-of-the-art methods in few-shot scenarios. In the future, our codes and datasets will also be available to provide more details.",
+            "year": 2019,
+            "citationCount": 74,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A meta-based multi-hop reasoning method (Meta-KGR), which adopts meta-learning to learn effective meta parameters from high-frequency relations that could quickly adapt to few-shot relations is proposed."
+            },
+            "score": 2
+        },
+        {
+            "id": "109bd938bdf01afeb9910e76e26c686898883b40",
+            "paperId": "109bd938bdf01afeb9910e76e26c686898883b40",
+            "title": "FanOutQA: Multi-Hop, Multi-Document Question Answering for Large Language Models",
+            "abstract": "One type of question that is commonly found in day-to-day scenarios is ``fan-out'' questions, complex multi-hop, multi-document reasoning questions that require finding information about a large number of entities. However, there exist few resources to evaluate this type of question-answering capability among large language models. To evaluate complex reasoning in LLMs more fully, we present FanOutQA, a high-quality dataset of fan-out question-answer pairs and human-annotated decompositions with English Wikipedia as the knowledge base. We formulate three benchmark settings across our dataset and benchmark 7 LLMs, including GPT-4, LLaMA 2, Claude-2.1, and Mixtral-8x7B, finding that contemporary models still have room to improve reasoning over inter-document dependencies in a long context. We provide our dataset and open-source tools to run models to encourage evaluation at https://fanoutqa.com",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents FanOutQA, a high-quality dataset of fan-out question-answer pairs and human-annotated decompositions with English Wikipedia as the knowledge base, and finds that contemporary models still have room to improve reasoning over inter-document dependencies in a long context."
+            },
+            "score": 2
+        },
+        {
+            "id": "e4701e1423b319026d1750fecada4477f2ffd49a",
+            "paperId": "e4701e1423b319026d1750fecada4477f2ffd49a",
+            "title": "Multi\u2010scale seismic reliability assessment of networks by centrality\u2010based selective recursive decomposition algorithm",
+            "abstract": "As lifeline networks such as transportation or electricity networks in modern societies are intricately interlocked, a small number of components damaged by natural or man\u2010made disasters can have a great impact on network performance. For this reason, it is essential to assure the capability of rapid assessment of network reliability to make prompt follow\u2010up measures. Despite the rapid development of various algorithms and computing power, the capability is still limited due to computational cost for analyzing the connectivity of a single origin and destination (O/D) node pair in large\u2010scale networks. Therefore, this paper introduces a new algorithm utilizing network centrality, termed \u201ccentrality\u2010based selective recursive decomposition algorithm\u201d (CS\u2010RDA). By preferentially decomposing the node which is most likely to belong to the min\u2010cut identified based on the betweenness centrality, the convergence of the bounds on the O/D connectivity can be expedited significantly. This paper also introduces a new multi\u2010scale analysis approach termed \u201cedge\u2010betweenness algorithm.\u201d The algorithm groups components such that its modularity is maximized, by sequentially removing edges that have the highest level of betweenness centrality. As a result, the reliability of large\u2010scale networks can be accurately evaluated in a short time owing to the reduced complexity of the simplified network. The proposed methods are successfully demonstrated by a hypothetical network example, the highway bridge networks in San Jose and San Diego in California, USA.",
+            "year": 2021,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new algorithm utilizing network centrality, termed \u201ccentrality\u2010based selective recursive decomposition algorithm\u201d (CS\u2010RDA), which groups components such that its modularity is maximized, by sequentially removing edges that have the highest level of betweenness centrality."
+            },
+            "score": 2
+        },
+        {
+            "id": "70ceb12b3db7211871795b9efd7cbc29c9c68636",
+            "paperId": "70ceb12b3db7211871795b9efd7cbc29c9c68636",
+            "title": "Efficient risk assessment of lifeline networks under spatially correlated ground motions using selective recursive decomposition algorithm",
+            "abstract": "For effective hazard mitigation planning and prompt\u2010but\u2010prudent post\u2010disaster responses, it is essential to evaluate the reliability of infrastructure networks accurately and efficiently. A nonsimulation\u2010based algorithm, termed as a recursive decomposition algorithm (RDA), was recently proposed to identify disjoint cut sets and link sets and to compute the network reliability. This paper introduces a \u2018selective\u2019 RDA, which preferentially identifies critical disjoint cut sets and link sets to calculate the probabilities of network disconnection events with a significantly reduced number of identified sets. To this end, the original RDA is improved by replacing the shortest path algorithm with an algorithm that identifies the most reliable path, and by using a graph decomposition scheme based on the probabilities associated with the subgraphs. The critical sets identified by the algorithm are also used to compute conditional probability\u2010based importance measures that quantify the relative importance of network components by their contributions to network disconnection events. This paper also introduces a risk assessment framework for lifeline networks based on the use of the selective RDA, which can consider both interevent and intraevent uncertainties of spatially correlated ground motions. The risk assessment framework and the selective RDA are demonstrated by a hypothetical network example, and the gas and water transmission networks of Shelby County in Tennessee, USA. The examples show that the proposed framework and the selective RDA greatly improve efficiency of risk assessment of complex lifeline networks, which are characterized by a large number of components, complex network topology, and statistical dependence between component failures. Copyright \u00a9 2012 John Wiley & Sons, Ltd.",
+            "year": 2012,
+            "citationCount": 62,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A \u2018selective\u2019 RDA is introduced, which preferentially identifies critical disjoint cut sets and link sets to calculate the probabilities of network disconnection events with a significantly reduced number of identified sets and a graph decomposition scheme based on the probabilities associated with the subgraphs."
+            },
+            "score": 2
+        },
+        {
+            "id": "998d6dd8a67c430906cda10c2651592ba1ff4ff1",
+            "paperId": "998d6dd8a67c430906cda10c2651592ba1ff4ff1",
+            "title": "On recursive proper orthogonal decomposition via perturbation theory with applications to distributed sensing in cyber-physical systems",
+            "abstract": "Distributed sensing of cyber-physical systems has become feasible with recent developments in sensor technology, wireless communication and distributed computing. Distributed sensing generates huge amounts of data from the events occurring in the physical side, which should be promptly reflected in the cyber side so that actions can be made timely by the computing systems. Due to the dense temporal-spatial distribution of the measured data, great challenges have been posed in terms of data storage, information processing and communications. The proper orthogonal decomposition (POD) method is a powerful tool to extract dominant information from distributed observational data, which has been widely used in signal processing and pattern analysis of fluid turbulence. The classical POD method implements dominant information extraction when the entire data set is known. However, in real-time measurements, new data is collected and incorporated into the historic data set at each sampling time. We propose a recursive proper orthogonal decomposition (rPOD) method based on the operator perturbation theory, where the accumulative truncation error can be controlled by a gradient search algorithm. This method is illustrated with two state-of-the-art problems governed by the heat conduction equation (1D) and the Navier-Stokes equations (2D) respectively.",
+            "year": 2010,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A recursive proper orthogonal decomposition (rPOD) method based on the operator perturbation theory, where the accumulative truncation error can be controlled by a gradient search algorithm."
+            },
+            "score": 2
+        },
+        {
+            "id": "60d51124624cffb1c1f6134c4febc5f8f1cc307b",
+            "paperId": "60d51124624cffb1c1f6134c4febc5f8f1cc307b",
+            "title": "Compressibility of Distributed Document Representations",
+            "abstract": "Contemporary natural language processing (NLP) revolves around learning from latent document representations, generated either implicitly by neural language models or explicitly by methods such as doc2vec or similar. One of the key properties of the obtained representations is their dimension. Whilst the commonly adopted dimensions of 256 and 768 offer sufficient performance on many tasks, it is many times unclear whether the default dimension is the most suitable choice for the subsequent downstream learning tasks. Furthermore, representation dimensions are seldom subject to hyperparameter tunning due to computational constraints. The purpose of this paper is to demonstrate that a surprisingly simple and efficient recursive compression procedure can be sufficient to both significantly compress the initial representation, but also potentially improve its performance when considering the task of text classification. Having smaller and less noisy representations is the desired property during deployment, as orders of magnitude smaller models can significantly reduce the computational overload and with it the deployment costs. We propose CORE, a straightforward, compression-agnostic framework suitable for representation compression. The CORE\u2019S performance is showcased and studied on a collection of 17 real-life corpora from biomedical, news, social media, and literary domains. We explored CORE\u2019S behavior when considering contextual and non-contextual document representations, different compression levels, and 9 different compression algorithms. Current results based on more than 100,000 compression experiments indicate that recursive Singular Value Decomposition offers a very good trade-off between the compression efficiency and performance, making CORE useful in many existing, representation-dependent NLP pipelines.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The purpose of this paper is to demonstrate that a surprisingly simple and efficient recursive compression procedure can be sufficient to both significantly compress the initial representation, but also potentially improve its performance when considering the task of text classification."
+            },
+            "score": 2
+        },
+        {
+            "id": "e8bf54dc59a30da55828a028dbd738eebc325342",
+            "paperId": "e8bf54dc59a30da55828a028dbd738eebc325342",
+            "title": "Unsupervised Simplification of Legal Texts",
+            "abstract": "The processing of legal texts has been developing as an emerging field in natural language processing (NLP). Legal texts contain unique jargon and complex linguistic attributes in vocabulary, semantics, syntax, and morphology. Therefore, the development of text simplification (TS) methods specific to the legal domain is of paramount importance for facilitating comprehension of legal text by ordinary people and providing inputs to high-level models for mainstream legal NLP applications. While a recent study proposed a rule-based TS method for legal text, learning-based TS in the legal domain has not been considered previously. Here we introduce an unsupervised simplification method for legal texts (USLT). USLT performs domain-specific TS by replacing complex words and splitting long sentences. To this end, USLT detects complex words in a sentence, generates candidates via a masked-transformer model, and selects a candidate for substitution based on a rank score. Afterward, USLT recursively decomposes long sentences into a hierarchy of shorter core and context sentences while preserving semantic meaning. We demonstrate that USLT outperforms state-of-the-art domain-general TS methods in text simplicity while keeping the semantics intact.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that USLT outperforms state-of-the-art domain-general TS methods in text simplicity while keeping the semantics intact."
+            },
+            "score": 2
+        },
+        {
+            "id": "d315ca681e95b73f2a6a6115d1e218dec9720d6f",
+            "paperId": "d315ca681e95b73f2a6a6115d1e218dec9720d6f",
+            "title": "QuantEase: Optimization-based Quantization for Language Models - An Efficient and Intuitive Algorithm",
+            "abstract": "With the rising popularity of Large Language Models (LLMs), there has been an increasing interest in compression techniques that enable their efficient deployment. This study focuses on the Post-Training Quantization (PTQ) of LLMs. Drawing from recent advances, our work introduces QuantEase, a layer-wise quantization framework where individual layers undergo separate quantization. The problem is framed as a discrete-structured non-convex optimization, prompting the development of algorithms rooted in Coordinate Descent (CD) techniques. These CD-based methods provide high-quality solutions to the complex non-convex layer-wise quantization problems. Notably, our CD-based approach features straightforward updates, relying solely on matrix and vector operations, circumventing the need for matrix inversion or decomposition. We also explore an outlier-aware variant of our approach, allowing for retaining significant weights (outliers) with complete precision. Our proposal attains state-of-the-art performance in terms of perplexity and zero-shot accuracy in empirical evaluations across various LLMs and datasets, with relative improvements up to 15% over methods such as GPTQ. Leveraging careful linear algebra optimizations, QuantEase can quantize models like Falcon-180B on a single NVIDIA A100 GPU in $\\sim$3 hours. Particularly noteworthy is our outlier-aware algorithm's capability to achieve near or sub-3-bit quantization of LLMs with an acceptable drop in accuracy, obviating the need for non-uniform quantization or grouping techniques, improving upon methods such as SpQR by up to two times in terms of perplexity.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Drawing from recent advances, QuantEase is introduced, a layer-wise quantization framework where individual layers undergo separate quantization, and an outlier-aware variant of this approach is explored, allowing for retaining significant weights (outliers) with complete precision."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "no"
 }

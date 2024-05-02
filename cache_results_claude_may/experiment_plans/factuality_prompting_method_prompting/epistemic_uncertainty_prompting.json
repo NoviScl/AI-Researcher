@@ -32,5 +32,1154 @@
             "Explanation": "The proposed method first prompts the model to express its uncertainty about Paris being the capital since the 12th century. It then tries to find evidence for this claim, which it successfully does from Wikipedia. The final output incorporates this evidence, improving its factuality over the baseline."
         },
         "Fallback Plan": "If the proposed uncertainty-aware prompting does not improve factuality or reduce hallucination compared to the baselines, we can analyze the failure cases to understand why. Potential issues could be: (1) The model fails to express uncertainty about its claims, either due to the prompt formulation or its overconfidence. We can try alternative prompts or uncertainty detection methods. (2) The evidence retrieval step fails to find relevant evidence, or the model hallucinates false evidence. We can analyze the quality of the retrieved evidence and try improving the evidence retrieval prompt. (3) The model fails to incorporate the retrieved evidence or rephrase the uncertain claims. We can analyze the coherence between the initial response and the final output, and experiment with different prompts for the rephrasing step. Based on the error analysis, we can either iterate on the prompting procedure, or focus the project on analyzing the model's uncertainty estimation and evidence grounding abilities."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"language models uncertainty prompting\")",
+        "KeywordQuery(\"language models hallucination reduction\")",
+        "KeywordQuery(\"language models factuality improvement\")",
+        "KeywordQuery(\"language models uncertainty awareness\")",
+        "KeywordQuery(\"Epistemic Uncertainty Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "8f7297454d7f44365b9bcda5ebb9439a43daf5e6",
+            "paperId": "8f7297454d7f44365b9bcda5ebb9439a43daf5e6",
+            "title": "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs",
+            "abstract": "Empowering large language models to accurately express confidence in their answers is essential for trustworthy decision-making. Previous confidence elicitation methods, which primarily rely on white-box access to internal model information or model fine-tuning, have become less suitable for LLMs, especially closed-source commercial APIs. This leads to a growing need to explore the untapped area of black-box approaches for LLM uncertainty estimation. To better break down the problem, we define a systematic framework with three components: prompting strategies for eliciting verbalized confidence, sampling methods for generating multiple responses, and aggregation techniques for computing consistency. We then benchmark these methods on two key tasks-confidence calibration and failure prediction-across five types of datasets (e.g., commonsense and arithmetic reasoning) and five widely-used LLMs including GPT-4 and LLaMA 2 Chat. Our analysis uncovers several key insights: 1) LLMs, when verbalizing their confidence, tend to be overconfident, potentially imitating human patterns of expressing confidence. 2) As model capability scales up, both calibration and failure prediction performance improve. 3) Employing our proposed strategies, such as human-inspired prompts, consistency among multiple responses, and better aggregation strategies can help mitigate this overconfidence from various perspectives. 4) Comparisons with white-box methods indicate that while white-box methods perform better, the gap is narrow, e.g., 0.522 to 0.605 in AUROC. Despite these advancements, none of these techniques consistently outperform others, and all investigated methods struggle in challenging tasks, such as those requiring professional knowledge, indicating significant scope for improvement. We believe this study can serve as a strong baseline and provide insights for eliciting confidence in black-box LLMs.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study defines a systematic framework with three components: prompting strategies for eliciting verbalized confidence, sampling methods for generating multiple responses, and aggregation techniques for computing consistency and believes it can serve as a strong baseline and provide insights for eliciting confidence in black-box LLMs."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve factuality and reduce hallucination in large language models by prompting them to express uncertainty and using that to guide the generation process. The paper focuses on evaluating the effectiveness of different black-box methods for eliciting confidence from LLMs and assessing their calibration and failure prediction performance.\n\nWhile both works involve uncertainty estimation in LLMs, the project proposal uses uncertainty prompting to improve the model's output factuality, while the paper evaluates various methods for eliciting confidence scores from LLMs. The goals and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0aa5940fda7c994675d08c41eca2a6909eb6d205",
+            "paperId": "0aa5940fda7c994675d08c41eca2a6909eb6d205",
+            "title": "Improving the Reliability of Large Language Models by Leveraging Uncertainty-Aware In-Context Learning",
+            "abstract": "In recent years, large-scale language models (LLMs) have gained attention for their impressive text generation capabilities. However, these models often face the challenge of\"hallucination,\"which undermines their reliability. In this study, we introduce an uncertainty-aware in-context learning framework to empower the model to enhance or reject its output in response to uncertainty. Human-defined methods for estimating uncertainty typically assume that\"uncertainty is lower when the model's response is correct compared to when it is incorrect.\"However, setting a precise threshold to distinguish correctness is challenging. Therefore, we introduce uncertainty information as an intermediary variable that implicitly influences the model's behavior. Our innovative uncertainty-aware in-context learning framework involves fine-tuning the LLM using a calibration dataset. Our aim is to improve the model's responses by filtering out answers with high uncertainty while considering the model's knowledge limitations. We evaluate the model's knowledge by examining multiple responses to the same question for the presence of a correct answer. When the model lacks relevant knowledge, the response should indicate that the question cannot be answered. Conversely, when the model has relevant knowledge, the response should provide the correct answer. Extensive experiments confirm the effectiveness of our framework, leading to two key findings. First, the logit output values of the LLM partly reflect inherent uncertainty. Second, our model autonomously recognizes uncertainty, resulting in improved responses.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces an uncertainty-aware in-context learning framework to empower the model to enhance or reject its output in response to uncertainty, and introduces uncertainty information as an intermediary variable that implicitly influences the model's behavior."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the factuality and reduce the hallucination of large language models by prompting them to express uncertainty about their generated claims and then using retrieval or rephrasing to refine the uncertain parts. The paper abstract proposes an uncertainty-aware in-context learning framework that fine-tunes the language model on a calibration dataset to improve its responses by filtering out high-uncertainty answers while considering the model's knowledge limitations.\n\nWhile both works address the problem of hallucination and unreliability in large language models, the project proposal focuses on using uncertainty-aware prompting to guide the generation process, while the paper abstract proposes fine-tuning the model using a calibration dataset for in-context learning. The approaches are different, although they both leverage the model's uncertainty estimation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7adb88771376c2a31688e3b0395b0550a35b824d",
+            "paperId": "7adb88771376c2a31688e3b0395b0550a35b824d",
+            "title": "Uncertainty Decomposition and Quantification for In-Context Learning of Large Language Models",
+            "abstract": "In-context learning has emerged as a ground-breaking ability of Large Language Models (LLMs) and revolutionized various fields by providing a few task-relevant demonstrations in the prompt. However, trustworthy issues with LLM\u2019s response, such as hallucination, have also been actively discussed. Existing works have been devoted to quantifying the uncertainty in LLM\u2019s response, but they often overlook the complex nature of LLMs and the uniqueness of in-context learning. In this work, we delve into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations (aleatoric uncertainty) and ambiguities tied to the model\u2019s configurations (epistemic uncertainty). We propose a novel formulation and corresponding estimation method to quantify both types of uncertainties. The proposed method offers an unsupervised way to understand the prediction of in-context learning in a plug-and-play fashion. Extensive experiments are conducted to demonstrate the effectiveness of the decomposition. The code and data are available at: https://github. com/lingchen0331/UQ_ICL .",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work dives into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations and ambiguities tied to the model\u2019s configurations (epistemic uncertainty)."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve the factuality and reduce hallucination in large language models by prompting them to express uncertainty and using that to guide the generation process. The paper focuses on quantifying the aleatoric and epistemic uncertainties in the in-context learning of large language models.\n\nThe project proposal is about using uncertainty-aware prompting to improve factuality, while the paper is about decomposing and quantifying uncertainties in in-context learning. They address different problems and propose different approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "be8c90bca14d59f180f40a41126b7cd8c29c5d4e",
+            "paperId": "be8c90bca14d59f180f40a41126b7cd8c29c5d4e",
+            "title": "Uncertainty Quantification for In-Context Learning of Large Language Models",
+            "abstract": "In-context learning has emerged as a groundbreaking ability of Large Language Models (LLMs) and revolutionized various fields by providing a few task-relevant demonstrations in the prompt. However, trustworthy issues with LLM's response, such as hallucination, have also been actively discussed. Existing works have been devoted to quantifying the uncertainty in LLM's response, but they often overlook the complex nature of LLMs and the uniqueness of in-context learning. In this work, we delve into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations (aleatoric uncertainty) and ambiguities tied to the model's configurations (epistemic uncertainty). We propose a novel formulation and corresponding estimation method to quantify both types of uncertainties. The proposed method offers an unsupervised way to understand the prediction of in-context learning in a plug-and-play fashion. Extensive experiments are conducted to demonstrate the effectiveness of the decomposition. The code and data are available at: https://github.com/lingchen0331/UQ_ICL.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work delve into the predictive uncertainty of LLMs associated with in-context learning, highlighting that such uncertainties may stem from both the provided demonstrations and ambiguities tied to the model's configurations (epistemic uncertainty)."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving the factuality and reducing hallucination in large language models by prompting them to express uncertainty and using that to guide the generation process. The approach is an uncertainty-aware prompting procedure that detects uncertain spans in the model's output and tries to find supporting evidence or rephrase the uncertain parts.\n\nThe research problem in the paper is quantifying the uncertainty in large language models' responses during in-context learning, considering both aleatoric uncertainty from the provided demonstrations and epistemic uncertainty from the model's configurations. The approach is a novel formulation and estimation method to quantify both types of uncertainties.\n\nWhile both works deal with uncertainty in large language models, the proposal focuses on using uncertainty to improve factuality during generation, while the paper focuses on quantifying different types of uncertainties in in-context learning. The methods proposed are also quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ad402080a4aa66ef3c57a46ce4685a47a3cc0a61",
+            "paperId": "ad402080a4aa66ef3c57a46ce4685a47a3cc0a61",
+            "title": "Quantifying Uncertainty in Natural Language Explanations of Large Language Models",
+            "abstract": "Large Language Models (LLMs) are increasingly used as powerful tools for several high-stakes natural language processing (NLP) applications. Recent prompting works claim to elicit intermediate reasoning steps and key tokens that serve as proxy explanations for LLM predictions. However, there is no certainty whether these explanations are reliable and reflect the LLMs behavior. In this work, we make one of the first attempts at quantifying the uncertainty in explanations of LLMs. To this end, we propose two novel metrics -- $\\textit{Verbalized Uncertainty}$ and $\\textit{Probing Uncertainty}$ -- to quantify the uncertainty of generated explanations. While verbalized uncertainty involves prompting the LLM to express its confidence in its explanations, probing uncertainty leverages sample and model perturbations as a means to quantify the uncertainty. Our empirical analysis of benchmark datasets reveals that verbalized uncertainty is not a reliable estimate of explanation confidence. Further, we show that the probing uncertainty estimates are correlated with the faithfulness of an explanation, with lower uncertainty corresponding to explanations with higher faithfulness. Our study provides insights into the challenges and opportunities of quantifying uncertainty in LLM explanations, contributing to the broader discussion of the trustworthiness of foundation models.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes two novel metrics -- verbalized uncertainty and probing uncertainty -- to quantify the uncertainty of generated explanations of large Language Models, and shows that the probing uncertainty estimates are correlated with the faithfulness of an explanation, with lower uncertainty corresponding to explanations with higher faithfulness."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factuality of large language models and reduce hallucination by prompting them to express uncertainty about their claims and then finding supporting evidence or rephrasing the uncertain parts. The paper focuses on quantifying the uncertainty in explanations generated by large language models using verbalized uncertainty (prompting the model to express confidence) and probing uncertainty (using sample and model perturbations).\n\nWhile both works deal with the uncertainty of language model outputs, the project proposal aims to use uncertainty prompting to guide the generation process and improve factuality, while the paper focuses on quantifying the uncertainty in generated explanations and analyzing their reliability and faithfulness. The research problems and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4b0b56be0ae9479d2bd5c2f0943db1906343c10f",
+            "paperId": "4b0b56be0ae9479d2bd5c2f0943db1906343c10f",
+            "title": "Chain-of-Verification Reduces Hallucination in Large Language Models",
+            "abstract": "Generation of plausible yet incorrect factual information, termed hallucination, is an unsolved issue in large language models. We study the ability of language models to deliberate on the responses they give in order to correct their mistakes. We develop the Chain-of-Verification (CoVe) method whereby the model first (i) drafts an initial response; then (ii) plans verification questions to fact-check its draft; (iii) answers those questions independently so the answers are not biased by other responses; and (iv) generates its final verified response. In experiments, we show CoVe decreases hallucinations across a variety of tasks, from list-based questions from Wikidata, closed book MultiSpanQA and longform text generation.",
+            "year": 2023,
+            "citationCount": 53,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Chain-of-Verification (CoVe) method is developed, whereby the model first drafts an initial response; then plans verification questions to fact-check its draft; and answers those questions independently so the answers are not biased by other responses."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is reducing hallucination and improving factuality in large language models by prompting them to express uncertainty about claims they are not confident about. The approach is to use uncertainty-aware prompting to guide the generation process, where the model is asked to find supporting evidence or rephrase uncertain claims until no more uncertainty markers are detected.\n\nThe research problem in the paper is also reducing hallucination in large language models. The approach is the Chain-of-Verification (CoVe) method, where the model first drafts an initial response, then plans verification questions to fact-check its draft, answers those questions independently, and generates a final verified response.\n\nWhile both works aim to reduce hallucination, the proposal focuses on leveraging the model's own uncertainty estimation and evidence grounding abilities through prompting, while the paper proposes a more structured approach of explicit fact-checking and verification. The methods are quite different in their specifics.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3a89e289e2dd29f5e52a2bf354a637762b661257",
+            "paperId": "3a89e289e2dd29f5e52a2bf354a637762b661257",
+            "title": "Fine-tuning Language Models for Factuality",
+            "abstract": "The fluency and creativity of large pre-trained language models (LLMs) have led to their widespread use, sometimes even as a replacement for traditional search engines. Yet language models are prone to making convincing but factually inaccurate claims, often referred to as 'hallucinations.' These errors can inadvertently spread misinformation or harmfully perpetuate misconceptions. Further, manual fact-checking of model responses is a time-consuming process, making human factuality labels expensive to acquire. In this work, we fine-tune language models to be more factual, without human labeling and targeting more open-ended generation settings than past work. We leverage two key recent innovations in NLP to do so. First, several recent works have proposed methods for judging the factuality of open-ended text by measuring consistency with an external knowledge base or simply a large model's confidence scores. Second, the direct preference optimization algorithm enables straightforward fine-tuning of language models on objectives other than supervised imitation, using a preference ranking over possible model responses. We show that learning from automatically generated factuality preference rankings, generated either through existing retrieval systems or our novel retrieval-free approach, significantly improves the factuality (percent of generated claims that are correct) of Llama-2 on held-out topics compared with RLHF or decoding strategies targeted at factuality. At 7B scale, compared to Llama-2-chat, we observe 58% and 40% reduction in factual error rate when generating biographies and answering medical questions, respectively.",
+            "year": 2023,
+            "citationCount": 56,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that learning from automatically generated factuality preference rankings, generated either through existing retrieval systems or the novel retrieval-free approach, significantly improves the factuality of Llama-2 on held-out topics compared with RLHF or decoding strategies targeted at factuality."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the factuality of language model outputs and reducing hallucination by prompting the model to express uncertainty and iteratively retrieving evidence or rephrasing uncertain claims. The paper aims to improve factuality by fine-tuning language models using automatically generated factuality preference rankings, without human labels.\n\nWhile both works share the high-level goal of improving language model factuality, their approaches differ significantly. The proposal focuses on prompting strategies to make the model express uncertainty and iteratively refine its output, while the paper proposes fine-tuning the model using factuality preference rankings generated from retrieval systems or confidence scores.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "444f3b7293b85b7d37600372941a289f9163abd1",
+            "paperId": "444f3b7293b85b7d37600372941a289f9163abd1",
+            "title": "LM-Polygraph: Uncertainty Estimation for Language Models",
+            "abstract": "Recent advancements in the capabilities of large language models (LLMs) have paved the way for a myriad of groundbreaking applications in various fields. However, a significant challenge arises as these models often\"hallucinate\", i.e., fabricate facts without providing users an apparent means to discern the veracity of their statements. Uncertainty estimation (UE) methods are one path to safer, more responsible, and more effective use of LLMs. However, to date, research on UE methods for LLMs has been focused primarily on theoretical rather than engineering contributions. In this work, we tackle this issue by introducing LM-Polygraph, a framework with implementations of a battery of state-of-the-art UE methods for LLMs in text generation tasks, with unified program interfaces in Python. Additionally, it introduces an extendable benchmark for consistent evaluation of UE techniques by researchers, and a demo web application that enriches the standard chat dialog with confidence scores, empowering end-users to discern unreliable responses. LM-Polygraph is compatible with the most recent LLMs, including BLOOMz, LLaMA-2, ChatGPT, and GPT-4, and is designed to support future releases of similarly-styled LMs.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LM-Polygraph is introduced, a framework with implementations of a battery of state-of-the-art UE methods for LLMs in text generation tasks, with unified program interfaces in Python, and introduces an extendable benchmark for consistent evaluation of UE techniques by researchers."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve the factuality of language model outputs and reduce hallucination by prompting the model to express uncertainty and iteratively retrieve evidence or rephrase uncertain claims. The paper abstract proposes LM-Polygraph, a framework for implementing uncertainty estimation methods in language models to help users discern the reliability of generated text.\n\nWhile both works address the issue of language model hallucination and the need for uncertainty estimation, the project proposal focuses on a specific prompting approach to make the model express and resolve its uncertainty, while the paper abstract introduces a general framework for implementing various uncertainty estimation methods. The project proposal is more narrowly focused on a particular method, while the paper abstract is broader in scope, aiming to provide a unified framework and benchmark for uncertainty estimation techniques.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "74c7343d91d5464c27ca407fd504b07e690363be",
+            "paperId": "74c7343d91d5464c27ca407fd504b07e690363be",
+            "title": "Combining Confidence Elicitation and Sample-based Methods for Uncertainty Quantification in Misinformation Mitigation",
+            "abstract": "Large Language Models have emerged as prime candidates to tackle misinformation mitigation. However, existing approaches struggle with hallucinations and overconfident predictions. We propose an uncertainty quantification framework that leverages both direct confidence elicitation and sampled-based consistency methods to provide better calibration for NLP misinformation mitigation solutions. We first investigate the calibration of sample-based consistency methods that exploit distinct features of consistency across sample sizes and stochastic levels. Next, we evaluate the performance and distributional shift of a robust numeric verbalization prompt across single vs. two-step confidence elicitation procedure. We also compare the performance of the same prompt with different versions of GPT and different numerical scales. Finally, we combine the sample-based consistency and verbalized methods to propose a hybrid framework that yields a better uncertainty estimation for GPT models. Overall, our work proposes novel uncertainty quantification methods that will improve the reliability of Large Language Models in misinformation mitigation applications.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an uncertainty quantification framework that leverages both direct confidence elicitation and sampled-based consistency methods to provide better calibration for NLP misinformation mitigation solutions to improve the reliability of Large Language Models in misinformation mitigation applications."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve factuality and reduce hallucination in large language models by prompting them to express uncertainty and then using retrieval or rephrasing to resolve the uncertain claims. The paper abstract proposes to combine direct confidence elicitation and sample-based consistency methods to improve uncertainty quantification for misinformation mitigation.\n\nWhile both works involve improving the reliability of language model outputs, the project proposal focuses specifically on factuality and hallucination, while the paper abstract targets the broader problem of misinformation mitigation. The methods proposed are also different - the project uses uncertainty-aware prompting and evidence retrieval, while the paper combines confidence elicitation and sample-based consistency.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ba63e1ab5b6e9d849982ae293ac0483053badaff",
+            "paperId": "ba63e1ab5b6e9d849982ae293ac0483053badaff",
+            "title": "Uncertainty in Language Models: Assessment through Rank-Calibration",
+            "abstract": "Language Models (LMs) have shown promising performance in natural language generation. However, as LMs often generate incorrect or hallucinated responses, it is crucial to correctly quantify their uncertainty in responding to given inputs. In addition to verbalized confidence elicited via prompting, many uncertainty measures ($e.g.$, semantic entropy and affinity-graph-based measures) have been proposed. However, these measures can differ greatly, and it is unclear how to compare them, partly because they take values over different ranges ($e.g.$, $[0,\\infty)$ or $[0,1]$). In this work, we address this issue by developing a novel and practical framework, termed $Rank$-$Calibration$, to assess uncertainty and confidence measures for LMs. Our key tenet is that higher uncertainty (or lower confidence) should imply lower generation quality, on average. Rank-calibration quantifies deviations from this ideal relationship in a principled manner, without requiring ad hoc binary thresholding of the correctness score ($e.g.$, ROUGE or METEOR). The broad applicability and the granular interpretability of our methods are demonstrated empirically.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel and practical framework, termed $Rank$-$Calibration$ is developed, to assess uncertainty and confidence measures for LMs, with the key tenet that higher uncertainty should imply lower generation quality, on average."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve the factuality of language model outputs and reduce hallucination by prompting the model to express uncertainty and then iteratively retrieving evidence or rephrasing uncertain claims. The paper focuses on assessing and comparing different uncertainty measures for language models using a rank-calibration framework.\n\nProject proposal: Improving factuality and reducing hallucination in language models through uncertainty-aware prompting and iterative evidence retrieval/rephrasing.\nPaper: Assessing and comparing uncertainty measures for language models using a rank-calibration framework.\n\nThe two works have different goals and approaches. The project proposal aims to directly improve the model's output, while the paper focuses on evaluating uncertainty measures. They are not directly relevant.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "5043a786a1db5d830dc6c51d62f58e172a96e479",
+            "paperId": "5043a786a1db5d830dc6c51d62f58e172a96e479",
+            "title": "Methods to Estimate Large Language Model Confidence",
+            "abstract": "Large Language Models have difficulty communicating uncertainty, which is a significant obstacle to applying LLMs to complex medical tasks. This study evaluates methods to measure LLM confidence when suggesting a diagnosis for challenging clinical vignettes. GPT4 was asked a series of challenging case questions using Chain of Thought and Self Consistency prompting. Multiple methods were investigated to assess model confidence and evaluated on their ability to predict the models observed accuracy. The methods evaluated were Intrinsic Confidence, SC Agreement Frequency and CoT Response Length. SC Agreement Frequency correlated with observed accuracy, yielding a higher Area under the Receiver Operating Characteristic Curve compared to Intrinsic Confidence and CoT Length analysis. SC agreement is the most useful proxy for model confidence, especially for medical diagnosis. Model Intrinsic Confidence and CoT Response Length exhibit a weaker ability to differentiate between correct and incorrect answers, preventing them from being reliable and interpretable markers for model confidence. We conclude GPT4 has a limited ability to assess its own diagnostic accuracy. SC Agreement Frequency is the most useful method to measure GPT4 confidence.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study evaluates methods to measure LLM confidence when suggesting a diagnosis for challenging clinical vignettes and concludes SC Agreement Frequency is the most useful method to measure GPT4 confidence."
+            },
+            "score": 6
+        },
+        {
+            "id": "bec41f0bfd3cf3d5b09a16be559543628868d412",
+            "paperId": "bec41f0bfd3cf3d5b09a16be559543628868d412",
+            "title": "Navigating Uncertainty: Optimizing API Dependency for Hallucination Reduction in Closed-Book Question Answering",
+            "abstract": "While Large Language Models (LLM) are able to accumulate and restore knowledge, they are still prone to hallucination. Especially when faced with factual questions, LLM cannot only rely on knowledge stored in parameters to guarantee truthful and correct answers. Augmenting these models with the ability to search on external information sources, such as the web, is a promising approach to ground knowledge to retrieve information. However, searching in a large collection of documents introduces additional computational/time costs. An optimal behavior would be to query external resources only when the LLM is not confident about answers. In this paper, we propose a new LLM able to self-estimate if it is able to answer directly or needs to request an external tool. We investigate a supervised approach by introducing a hallucination masking mechanism in which labels are generated using a close book question-answering task. In addition, we propose to leverage parameter-efficient fine-tuning techniques to train our model on a small amount of data. Our model directly provides answers for $78.2\\%$ of the known queries and opts to search for $77.2\\%$ of the unknown ones. This results in the API being utilized only $62\\%$ of the time.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new LLM able to self-estimate if it is able to answer directly or needs to request an external tool is proposed, and a supervised approach is investigated by introducing a hallucination masking mechanism in which labels are generated using a close book question-answering task."
+            },
+            "score": 6
+        },
+        {
+            "id": "90a51ca64fc9bb3b84eb20a8c9d68ad78b49d4b7",
+            "paperId": "90a51ca64fc9bb3b84eb20a8c9d68ad78b49d4b7",
+            "title": "Trapping LLM Hallucinations Using Tagged Context Prompts",
+            "abstract": "Recent advances in large language models (LLMs), such as ChatGPT, have led to highly sophisticated conversation agents. However, these models suffer from\"hallucinations,\"where the model generates false or fabricated information. Addressing this challenge is crucial, particularly with AI-driven platforms being adopted across various sectors. In this paper, we propose a novel method to recognize and flag instances when LLMs perform outside their domain knowledge, and ensuring users receive accurate information. We find that the use of context combined with embedded tags can successfully combat hallucinations within generative language models. To do this, we baseline hallucination frequency in no-context prompt-response pairs using generated URLs as easily-tested indicators of fabricated data. We observed a significant reduction in overall hallucination when context was supplied along with question prompts for tested generative engines. Lastly, we evaluated how placing tags within contexts impacted model responses and were able to eliminate hallucinations in responses with 98.88% effectiveness.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the use of context combined with embedded tags can successfully combat hallucinations within generative language models and is able to eliminate hallucinations in responses with 98.88% effectiveness."
+            },
+            "score": 6
+        },
+        {
+            "id": "7c1707db9aafd209aa93db3251e7ebd593d55876",
+            "paperId": "7c1707db9aafd209aa93db3251e7ebd593d55876",
+            "title": "SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models",
+            "abstract": "Generative Large Language Models (LLMs) such as GPT-3 are capable of generating highly fluent responses to a wide variety of user prompts. However, LLMs are known to hallucinate facts and make non-factual statements which can undermine trust in their output. Existing fact-checking approaches either require access to the output probability distribution (which may not be available for systems such as ChatGPT) or external databases that are interfaced via separate, often complex, modules. In this work, we propose\"SelfCheckGPT\", a simple sampling-based approach that can be used to fact-check the responses of black-box models in a zero-resource fashion, i.e. without an external database. SelfCheckGPT leverages the simple idea that if an LLM has knowledge of a given concept, sampled responses are likely to be similar and contain consistent facts. However, for hallucinated facts, stochastically sampled responses are likely to diverge and contradict one another. We investigate this approach by using GPT-3 to generate passages about individuals from the WikiBio dataset, and manually annotate the factuality of the generated passages. We demonstrate that SelfCheckGPT can: i) detect non-factual and factual sentences; and ii) rank passages in terms of factuality. We compare our approach to several baselines and show that our approach has considerably higher AUC-PR scores in sentence-level hallucination detection and higher correlation scores in passage-level factuality assessment compared to grey-box methods.",
+            "year": 2023,
+            "citationCount": 155,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes \"SelfCheckGPT\", a simple sampling-based approach that can be used to fact-check the responses of black-box models in a zero-resource fashion, i.e. without an external database, and demonstrates that it can detect non-factual and factual sentences and rank passages in terms of factuality."
+            },
+            "score": 6
+        },
+        {
+            "id": "6af460d34bfc8e955e43fbe15cedcf329b48bc19",
+            "paperId": "6af460d34bfc8e955e43fbe15cedcf329b48bc19",
+            "title": "SAC3: Reliable Hallucination Detection in Black-Box Language Models via Semantic-aware Cross-check Consistency",
+            "abstract": "Hallucination detection is a critical step toward understanding the trustworthiness of modern language models (LMs). To achieve this goal, we re-examine existing detection approaches based on the self-consistency of LMs and uncover two types of hallucinations resulting from 1) question-level and 2) model-level, which cannot be effectively identified through self-consistency check alone. Building upon this discovery, we propose a novel sampling-based method, i.e., semantic-aware cross-check consistency (SAC3) that expands on the principle of self-consistency checking. Our SAC3 approach incorporates additional mechanisms to detect both question-level and model-level hallucinations by leveraging advances including semantically equivalent question perturbation and cross-model response consistency checking. Through extensive and systematic empirical analysis, we demonstrate that SAC3 outperforms the state of the art in detecting both non-factual and factual statements across multiple question-answering and open-domain generation benchmarks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel sampling-based method, i.e., semantic-aware cross-check consistency (SAC3) that expands on the principle of self-consistency checking and demonstrates that SAC3 outperforms the state of the art in detecting both non-factual and factual statements across multiple question-answering and open-domain generation benchmarks."
+            },
+            "score": 6
+        },
+        {
+            "id": "be177300487b6d0f25e6cade9a31900454b13281",
+            "paperId": "be177300487b6d0f25e6cade9a31900454b13281",
+            "title": "FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation",
+            "abstract": "Most large language models (LLMs) are trained once and never updated; thus, they lack the ability to dynamically adapt to our ever-changing world. In this work, we perform a detailed study of the factuality of LLM-generated text in the context of answering questions that test current world knowledge. Specifically, we introduce FreshQA, a novel dynamic QA benchmark encompassing a diverse range of question and answer types, including questions that require fast-changing world knowledge as well as questions with false premises that need to be debunked. We benchmark a diverse array of both closed and open-source LLMs under a two-mode evaluation procedure that allows us to measure both correctness and hallucination. Through human evaluations involving more than 50K judgments, we shed light on limitations of these models and demonstrate significant room for improvement: for instance, all models (regardless of model size) struggle on questions that involve fast-changing knowledge and false premises. Motivated by these results, we present FreshPrompt, a simple few-shot prompting method that substantially boosts the performance of an LLM on FreshQA by incorporating relevant and up-to-date information retrieved from a search engine into the prompt. Our experiments show that FreshPrompt outperforms both competing search engine-augmented prompting methods such as Self-Ask (Press et al., 2022) as well as commercial systems such as Perplexity.AI. Further analysis of FreshPrompt reveals that both the number of retrieved evidences and their order play a key role in influencing the correctness of LLM-generated answers. Additionally, instructing the LLM to generate concise and direct answers helps reduce hallucination compared to encouraging more verbose answers. To facilitate future work, we release FreshQA at github.com/freshllms/freshqa and commit to updating it at regular intervals.",
+            "year": 2023,
+            "citationCount": 51,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A detailed study of the factuality of LLM-generated text in the context of answering questions that test current world knowledge and introduces FreshQA, a novel dynamic QA benchmark encompassing a diverse range of question and answer types, including questions that require fast-changing world knowledge as well as questions with false premises that need to be debunked."
+            },
+            "score": 6
+        },
+        {
+            "id": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "paperId": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in language generation, understanding, and few-shot learning in recent years. An extensive body of work has explored how their performance may be further improved through the tools of prompting, ranging from verification, self-consistency, or intermediate scratchpads. In this paper, we present a complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer. Our findings indicate that this approach significantly enhances mathematical and strategic reasoning across a number of tasks. We also demonstrate that our approach improves the factual validity of generated content, reducing fallacious answers and hallucinations that contemporary models are prone to. Our approach may be directly applied to existing black-box models and uses identical procedure and prompts for all tasks we investigate. Overall, our findings suggest that such\"society of minds\"approach has the potential to significantly advance the capabilities of LLMs and pave the way for further breakthroughs in language generation and understanding.",
+            "year": 2023,
+            "citationCount": 206,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer is presented, indicating that this approach significantly enhances mathematical and strategic reasoning across a number of tasks."
+            },
+            "score": 6
+        },
+        {
+            "id": "ed5020eeda1fbe8c29b1282d654b34abee22d90f",
+            "paperId": "ed5020eeda1fbe8c29b1282d654b34abee22d90f",
+            "title": "DoLa: Decoding by Contrasting Layers Improves Factuality in Large Language Models",
+            "abstract": "Despite their impressive capabilities, large language models (LLMs) are prone to hallucinations, i.e., generating content that deviates from facts seen during pretraining. We propose a simple decoding strategy for reducing hallucinations with pretrained LLMs that does not require conditioning on retrieved external knowledge nor additional fine-tuning. Our approach obtains the next-token distribution by contrasting the differences in logits obtained from projecting the later layers versus earlier layers to the vocabulary space, exploiting the fact that factual knowledge in an LLMs has generally been shown to be localized to particular transformer layers. We find that this Decoding by Contrasting Layers (DoLa) approach is able to better surface factual knowledge and reduce the generation of incorrect facts. DoLa consistently improves the truthfulness across multiple choices tasks and open-ended generation tasks, for example improving the performance of LLaMA family models on TruthfulQA by 12-17% absolute points, demonstrating its potential in making LLMs reliably generate truthful facts.",
+            "year": 2023,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DoLa consistently improves the truthfulness across multiple choices tasks and open-ended generation tasks, for example improving the performance of LLaMA family models on TruthfulQA by 12-17% absolute points, demonstrating its potential in making LLMs reliably generate truthful facts."
+            },
+            "score": 6
+        },
+        {
+            "id": "a77f498235f12be4173f87bfca503b597c00f30e",
+            "paperId": "a77f498235f12be4173f87bfca503b597c00f30e",
+            "title": "Factuality Enhanced Language Models for Open-Ended Text Generation",
+            "abstract": "Pretrained language models (LMs) are susceptible to generate text with nonfactual information. In this work, we measure and improve the factual accuracy of large-scale LMs for open-ended text generation. We design the FactualityPrompts test set and metrics to measure the factuality of LM generations. Based on that, we study the factual accuracy of LMs with parameter sizes ranging from 126M to 530B. Interestingly, we find that larger LMs are more factual than smaller ones, although a previous study suggests that larger LMs can be less truthful in terms of misconceptions. In addition, popular sampling algorithms (e.g., top-p) in open-ended text generation can harm the factuality due to the ''uniform randomness'' introduced at every sampling step. We propose the factual-nucleus sampling algorithm that dynamically adapts the randomness to improve the factuality of generation while maintaining quality. Furthermore, we analyze the inefficiencies of the standard training method in learning correct associations between entities from factual text corpus (e.g., Wikipedia). We propose a factuality-enhanced training method that uses TopicPrefix for better awareness of facts and sentence completion as the training objective, which can vastly reduce the factual errors. We release our code and FactualityPrompts benchmark at: https://github.com/nayeon7lee/FactualityPrompt.",
+            "year": 2022,
+            "citationCount": 100,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work measures and improves the factual accuracy of large-scale LMs for open-ended text generation, and proposes a factuality-enhanced training method that uses TopicPrefix for better awareness of facts and sentence completion as the training objective, which can vastly reduce the factual errors."
+            },
+            "score": 6
+        },
+        {
+            "id": "e5c72b92c48d68594b290c84a8904da7c8335554",
+            "paperId": "e5c72b92c48d68594b290c84a8904da7c8335554",
+            "title": "Check Your Facts and Try Again: Improving Large Language Models with External Knowledge and Automated Feedback",
+            "abstract": "Large language models (LLMs), such as ChatGPT, are able to generate human-like, fluent responses for many downstream tasks, e.g., task-oriented dialog and question answering. However, applying LLMs to real-world, mission-critical applications remains challenging mainly due to their tendency to generate hallucinations and their inability to use external knowledge. This paper proposes a LLM-Augmenter system, which augments a black-box LLM with a set of plug-and-play modules. Our system makes the LLM generate responses grounded in external knowledge, e.g., stored in task-specific databases. It also iteratively revises LLM prompts to improve model responses using feedback generated by utility functions, e.g., the factuality score of a LLM-generated response. The effectiveness of LLM-Augmenter is empirically validated on two types of scenarios, task-oriented dialog and open-domain question answering. LLM-Augmenter significantly reduces ChatGPT's hallucinations without sacrificing the fluency and informativeness of its responses. We make the source code and models publicly available.",
+            "year": 2023,
+            "citationCount": 222,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A LLM-Augmenter system, which augments a black-box LLM with a set of plug-and-play modules to significantly reduces ChatGPT's hallucinations without sacrificing the fluency and informativeness of its responses."
+            },
+            "score": 6
+        },
+        {
+            "id": "f78a09d0faea875cf016c69b7ea632d7b7ea3570",
+            "paperId": "f78a09d0faea875cf016c69b7ea632d7b7ea3570",
+            "title": "Uncertainty Quantification for Text Classification",
+            "abstract": "This full-day tutorial introduces modern techniques for practical uncertainty quantification specifically in the context of multi-class and multi-label text classification. First, we explain the usefulness of estimating aleatoric uncertainty and epistemic uncertainty for text classification models. Then, we describe several state-of-the-art approaches to uncertainty quantification and analyze their scalability to big text data: Virtual Ensemble in GBDT, Bayesian Deep Learning (including Deep Ensemble, Monte-Carlo Dropout, Bayes by Backprop, and their generalization Epistemic Neural Networks), Evidential Deep Learning (including Prior Networks and Posterior Networks), as well as Distance Awareness (including Spectral-normalized Neural Gaussian Process and Deep Deterministic Uncertainty). Next, we talk about the latest advances in uncertainty quantification for pre-trained language models (including asking language models to express their uncertainty, interpreting uncertainties of text classifiers built on large-scale language models, uncertainty estimation in text generation, calibration of language models, and calibration for in-context learning). After that, we discuss typical application scenarios of uncertainty quantification in text classification (including in-domain calibration, cross-domain robustness, and novel class detection). Finally, we list popular performance metrics for the evaluation of uncertainty quantification effectiveness in text classification. Practical hands-on examples/exercises are provided to the attendees for them to experiment with different uncertainty quantification methods on a few real-world text classification datasets such as CLINC150.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This full-day tutorial introduces modern techniques for practical uncertainty quantification specifically in the context of multi-class and multi-label text classification and describes several state-of-the-art approaches to uncertaintyquantification."
+            },
+            "score": 6
+        },
+        {
+            "id": "2a74fc66beea8bce542581560ca6ec5a0e1bb024",
+            "paperId": "2a74fc66beea8bce542581560ca6ec5a0e1bb024",
+            "title": "CoAnnotating: Uncertainty-Guided Work Allocation between Human and Large Language Models for Data Annotation",
+            "abstract": "Annotated data plays a critical role in Natural Language Processing (NLP) in training models and evaluating their performance. Given recent developments in Large Language Models (LLMs), models such as ChatGPT demonstrate zero-shot capability on many text-annotation tasks, comparable with or even exceeding human annotators. Such LLMs can serve as alternatives for manual annotation, due to lower costs and higher scalability. However, limited work has leveraged LLMs as complementary annotators, nor explored how annotation work is best allocated among humans and LLMs to achieve both quality and cost objectives. We propose CoAnnotating, a novel paradigm for Human-LLM co-annotation of unstructured texts at scale. Under this framework, we utilize uncertainty to estimate LLMs' annotation capability. Our empirical study shows CoAnnotating to be an effective means to allocate work from results on different datasets, with up to 21% performance improvement over random baseline. For code implementation, see https://github.com/SALT-NLP/CoAnnotating.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes CoAnnotating, a novel paradigm for Human-LLM co-annotation of unstructured texts at scale, and utilizes uncertainty to estimate LLMs' annotation capability."
+            },
+            "score": 6
+        },
+        {
+            "id": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "paperId": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "title": "Uncertainty Quantification with Pre-trained Language Models: A Large-Scale Empirical Analysis",
+            "abstract": "Pre-trained language models (PLMs) have gained increasing popularity due to their compelling prediction performance in diverse natural language processing (NLP) tasks. When formulating a PLM-based prediction pipeline for NLP tasks, it is also crucial for the pipeline to minimize the calibration error, especially in safety-critical applications. That is, the pipeline should reliably indicate when we can trust its predictions. In particular, there are various considerations behind the pipeline: (1) the choice and (2) the size of PLM, (3) the choice of uncertainty quantifier, (4) the choice of fine-tuning loss, and many more. Although prior work has looked into some of these considerations, they usually draw conclusions based on a limited scope of empirical studies. There still lacks a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline. To fill this void, we compare a wide range of popular options for each consideration based on three prevalent NLP classification tasks and the setting of domain shift. In response, we recommend the following: (1) use ELECTRA for PLM encoding, (2) use larger PLMs if possible, (3) use Temp Scaling as the uncertainty quantifier, and (4) use Focal Loss for fine-tuning.",
+            "year": 2022,
+            "citationCount": 38,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A wide range of popular options for each consideration are compared based on three prevalent NLP classification tasks and the setting of domain shift to form a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline."
+            },
+            "score": 6
+        },
+        {
+            "id": "217e436fd23fe4184828e02a2b143835d6fd3b28",
+            "paperId": "217e436fd23fe4184828e02a2b143835d6fd3b28",
+            "title": "Navigating the Grey Area: How Expressions of Uncertainty and Overconfidence Affect Language Models",
+            "abstract": "The increased deployment of LMs for real-world tasks involving knowledge and facts makes it important to understand model epistemology: what LMs think they know, and how their attitudes toward that knowledge are affected by language use in their inputs. Here, we study an aspect of model epistemology: how epistemic markers of certainty, uncertainty, or evidentiality like\"I'm sure it's\",\"I think it's\", or\"Wikipedia says it's\"affect models, and whether they contribute to model failures. We develop a typology of epistemic markers and inject 50 markers into prompts for question answering. We find that LMs are highly sensitive to epistemic markers in prompts, with accuracies varying more than 80%. Surprisingly, we find that expressions of high certainty result in a 7% decrease in accuracy as compared to low certainty expressions; similarly, factive verbs hurt performance, while evidentials benefit performance. Our analysis of a popular pretraining dataset shows that these markers of uncertainty are associated with answers on question-answering websites, while markers of certainty are associated with questions. These associations may suggest that the behavior of LMs is based on mimicking observed language use, rather than truly reflecting epistemic uncertainty.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that LMs are highly sensitive to epistemic markers in prompts, with accuracies varying more than 80%, and expressions of high certainty result in a 7% decrease in accuracy as compared to low certainty expressions; similarly, factive verbs hurt performance, while evidentials benefit performance."
+            },
+            "score": 6
+        },
+        {
+            "id": "a3cc857a10898b2eedd04ff1dd33e8b6c9b1e04c",
+            "paperId": "a3cc857a10898b2eedd04ff1dd33e8b6c9b1e04c",
+            "title": "CUE: An Uncertainty Interpretation Framework for Text Classifiers Built on Pre-Trained Language Models",
+            "abstract": "Text classifiers built on Pre-trained Language Models (PLMs) have achieved remarkable progress in various tasks including sentiment analysis, natural language inference, and question-answering. However, the occurrence of uncertain predictions by these classifiers poses a challenge to their reliability when deployed in practical applications. Much effort has been devoted to designing various probes in order to understand what PLMs capture. But few studies have delved into factors influencing PLM-based classifiers' predictive uncertainty. In this paper, we propose a novel framework, called CUE, which aims to interpret uncertainties inherent in the predictions of PLM-based models. In particular, we first map PLM-encoded representations to a latent space via a variational auto-encoder. We then generate text representations by perturbing the latent space which causes fluctuation in predictive uncertainty. By comparing the difference in predictive uncertainty between the perturbed and the original text representations, we are able to identify the latent dimensions responsible for uncertainty and subsequently trace back to the input features that contribute to such uncertainty. Our extensive experiments on four benchmark datasets encompassing linguistic acceptability classification, emotion classification, and natural language inference show the feasibility of our proposed framework. Our source code is available at: https://github.com/lijiazheng99/CUE.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework, called CUE, is proposed, which aims to interpret uncertainties inherent in the predictions of PLM-based models via a variational auto-encoder, and identifies the latent dimensions responsible for uncertainty and traces back to the input features that contribute to such uncertainty."
+            },
+            "score": 6
+        },
+        {
+            "id": "e1bc150d5d9e745a4920881c414ac9df0ea024a3",
+            "paperId": "e1bc150d5d9e745a4920881c414ac9df0ea024a3",
+            "title": "ChatGPT Prompting Cannot Estimate Predictive Uncertainty in High-Resource Languages",
+            "abstract": "ChatGPT took the world by storm for its impressive abilities. Due to its release without documentation, scientists immediately attempted to identify its limits, mainly through its performance in natural language processing (NLP) tasks. This paper aims to join the growing literature regarding ChatGPT's abilities by focusing on its performance in high-resource languages and on its capacity to predict its answers' accuracy by giving a confidence level. The analysis of high-resource languages is of interest as studies have shown that low-resource languages perform worse than English in NLP tasks, but no study so far has analysed whether high-resource languages perform as well as English. The analysis of ChatGPT's confidence calibration has not been carried out before either and is critical to learn about ChatGPT's trustworthiness. In order to study these two aspects, five high-resource languages and two NLP tasks were chosen. ChatGPT was asked to perform both tasks in the five languages and to give a numerical confidence value for each answer. The results show that all the selected high-resource languages perform similarly and that ChatGPT does not have a good confidence calibration, often being overconfident and never giving low confidence values.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper aims to join the growing literature regarding ChatGPT's abilities by focusing on its performance in high-resource languages and on its capacity to predict its answers' accuracy by giving a confidence level."
+            },
+            "score": 6
+        },
+        {
+            "id": "67fa2f2072cca1071ed2c820d6a7f50de6ea2ff3",
+            "paperId": "67fa2f2072cca1071ed2c820d6a7f50de6ea2ff3",
+            "title": "Decomposing Uncertainty for Large Language Models through Input Clarification Ensembling",
+            "abstract": "Uncertainty decomposition refers to the task of decomposing the total uncertainty of a model into data (aleatoric) uncertainty, resulting from the inherent complexity or ambiguity of the data, and model (epistemic) uncertainty, resulting from the lack of knowledge in the model. Performing uncertainty decomposition for large language models (LLMs) is an important step toward improving the reliability, trustworthiness, and interpretability of LLMs, but this research task is very challenging and remains unresolved. The existing canonical method, Bayesian Neural Network (BNN), cannot be applied to LLMs, because BNN requires training and ensembling multiple variants of models, which is infeasible or prohibitively expensive for LLMs. In this paper, we introduce an uncertainty decomposition framework for LLMs, called input clarifications ensemble, which bypasses the need to train new models. Rather than ensembling models with different parameters, our approach generates a set of clarifications for the input, feeds them into the fixed LLMs, and ensembles the corresponding predictions. We show that our framework shares a symmetric decomposition structure with BNN. Empirical evaluations demonstrate that the proposed framework provides accurate and reliable uncertainty quantification on various tasks. Code will be made publicly available at https://github.com/UCSB-NLP-Chang/llm_uncertainty .",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces an uncertainty decomposition framework for LLMs, called input clarifications ensemble, which bypasses the need to train new models, and shares a symmetric decomposition structure with BNN."
+            },
+            "score": 6
+        },
+        {
+            "id": "72fb75f7c38a83424308c8205bb36cd88995494b",
+            "paperId": "72fb75f7c38a83424308c8205bb36cd88995494b",
+            "title": "Leveraging Large Language Models for Exploiting ASR Uncertainty",
+            "abstract": "While large language models excel in a variety of natural language processing (NLP) tasks, to perform well on spoken language understanding (SLU) tasks, they must either rely on off-the-shelf automatic speech recognition (ASR) systems for transcription, or be equipped with an in-built speech modality. This work focuses on the former scenario, where LLM's accuracy on SLU tasks is constrained by the accuracy of a fixed ASR system on the spoken input. Specifically, we tackle speech-intent classification task, where a high word-error-rate can limit the LLM's ability to understand the spoken intent. Instead of chasing a high accuracy by designing complex or specialized architectures regardless of deployment costs, we seek to answer how far we can go without substantially changing the underlying ASR and LLM, which can potentially be shared by multiple unrelated tasks. To this end, we propose prompting the LLM with an n-best list of ASR hypotheses instead of only the error-prone 1-best hypothesis. We explore prompt-engineering to explain the concept of n-best lists to the LLM; followed by the finetuning of Low-Rank Adapters on the downstream tasks. Our approach using n-best lists proves to be effective on a device-directed speech detection task as well as on a keyword spotting task, where systems using n-best list prompts outperform those using 1-best ASR hypothesis; thus paving the way for an efficient method to exploit ASR uncertainty via LLMs for speech-based applications.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work tackles speech-intent classification task, where a high word-error-rate can limit the LLM's ability to understand the spoken intent, and proposes prompting theLLM with an n-best list of ASR hypotheses instead of only the error-prone 1-best hypothesis."
+            },
+            "score": 5
+        },
+        {
+            "id": "9ff92d31babb7bdaecf7220b0a81c701230d8b95",
+            "paperId": "9ff92d31babb7bdaecf7220b0a81c701230d8b95",
+            "title": "A Study on the Calibration of In-context Learning",
+            "abstract": "Accurate uncertainty quantification is crucial for the safe deployment of machine learning models, and prior research has demonstrated improvements in the calibration of modern language models (LMs). We study in-context learning (ICL), a prevalent method for adapting static LMs through tailored prompts, and examine the balance between performance and calibration across a broad spectrum of natural language understanding and reasoning tasks. Through comprehensive experiments, we observe that, with an increasing number of ICL examples, models initially exhibit increased miscalibration before achieving better calibration and miscalibration tends to arise in low-shot settings. Moreover, we find that methods aimed at improving usability, such as fine-tuning and chain-of-thought (CoT) prompting, can lead to miscalibration and unreliable natural language explanations. Furthermore, we explore recalibration techniques and find that a scaling-binning calibrator can reduce calibration errors consistently.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that methods aimed at improving usability, such as fine-tuning and chain-of-thought (CoT) prompting, can lead to miscalibration and unreliable natural language explanations."
+            },
+            "score": 5
+        },
+        {
+            "id": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "paperId": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+            "abstract": "Large Language Models (LLMs) can achieve strong performance on many tasks by producing step-by-step reasoning before giving a final output, often referred to as chain-of-thought reasoning (CoT). It is tempting to interpret these CoT explanations as the LLM's process for solving a task. This level of transparency into LLMs' predictions would yield significant safety benefits. However, we find that CoT explanations can systematically misrepresent the true reason for a model's prediction. We demonstrate that CoT explanations can be heavily influenced by adding biasing features to model inputs--e.g., by reordering the multiple-choice options in a few-shot prompt to make the answer always\"(A)\"--which models systematically fail to mention in their explanations. When we bias models toward incorrect answers, they frequently generate CoT explanations rationalizing those answers. This causes accuracy to drop by as much as 36% on a suite of 13 tasks from BIG-Bench Hard, when testing with GPT-3.5 from OpenAI and Claude 1.0 from Anthropic. On a social-bias task, model explanations justify giving answers in line with stereotypes without mentioning the influence of these social biases. Our findings indicate that CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety. Building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods.",
+            "year": 2023,
+            "citationCount": 137,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that CoT explanations can be plausible yet misleading, which risks increasing trust in LLMs without guaranteeing their safety, and building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods."
+            },
+            "score": 5
+        },
+        {
+            "id": "79429814fd4d967b9277af2805c53f370e52ebb5",
+            "paperId": "79429814fd4d967b9277af2805c53f370e52ebb5",
+            "title": "Chain of Natural Language Inference for Reducing Large Language Model Ungrounded Hallucinations",
+            "abstract": "Large language models (LLMs) can generate fluent natural language texts when given relevant documents as background context. This ability has attracted considerable interest in developing industry applications of LLMs. However, LLMs are prone to generate hallucinations that are not supported by the provided sources. In this paper, we propose a hierarchical framework to detect and mitigate such ungrounded hallucination. Our framework uses Chain of Natural Language Inference (CoNLI) for hallucination detection and hallucination reduction via post-editing. Our approach achieves state-of-the-art performance on hallucination detection and enhances text quality through rewrite, using LLMs without any fine-tuning or domain-specific prompt engineering. We show that this simple plug-and-play framework can serve as an effective choice for hallucination detection and reduction, achieving competitive performance across various contexts.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a hierarchical framework to detect and mitigate ungrounded hallucination, using Chain of Natural Language Inference (CoNLI) for hallucination detection and hallucination reduction via post-editing and shows that this simple plug-and-play framework can serve as an effective choice for hallucinations detection and reduction, achieving competitive performance across various contexts."
+            },
+            "score": 5
+        },
+        {
+            "id": "2c67ee597ed38f43ec0f123a3f1cce38cbd3b5b4",
+            "paperId": "2c67ee597ed38f43ec0f123a3f1cce38cbd3b5b4",
+            "title": "Sources of Hallucination by Large Language Models on Inference Tasks",
+            "abstract": "Large Language Models (LLMs) are claimed to be capable of Natural Language Inference (NLI), necessary for applied tasks like question answering and summarization. We present a series of behavioral studies on several LLM families (LLaMA, GPT-3.5, and PaLM) which probe their behavior using controlled experiments. We establish two biases originating from pretraining which predict much of their behavior, and show that these are major sources of hallucination in generative LLMs. First, memorization at the level of sentences: we show that, regardless of the premise, models falsely label NLI test samples as entailing when the hypothesis is attested in training data, and that entities are used as ``indices'' to access the memorized data. Second, statistical patterns of usage learned at the level of corpora: we further show a similar effect when the premise predicate is less frequent than that of the hypothesis in the training data, a bias following from previous studies. We demonstrate that LLMs perform significantly worse on NLI test samples which do not conform to these biases than those which do, and we offer these as valuable controls for future LLM evaluation.",
+            "year": 2023,
+            "citationCount": 85,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that LLMs perform significantly worse on NLI test samples which do not conform to these biases than those which do, and these are offered as valuable controls for future LLM evaluation."
+            },
+            "score": 5
+        },
+        {
+            "id": "a72975eb88eb31f193e9587e7415cb04e7bcdbee",
+            "paperId": "a72975eb88eb31f193e9587e7415cb04e7bcdbee",
+            "title": "Generating Benchmarks for Factuality Evaluation of Language Models",
+            "abstract": "Before deploying a language model (LM) within a given domain, it is important to measure its tendency to generate factually incorrect information in that domain. Existing methods for factuality evaluation of LLM generation focus on facts sampled from the LM itself, and thus do not control the set of evaluated facts and might under-represent domain specific or rare facts. We propose FACTOR: Factual Assessment via Corpus TransfORmation, a scalable approach for evaluating LM factuality. FACTOR automatically transforms a factual corpus of interest into a benchmark evaluating an LM\u2019s propensity to generate true facts from the corpus vs. similar but incorrect statements. We use our framework to create three benchmarks: Wiki-FACTOR, News-FACTOR and Expert-FACTOR. We show that: (i) our benchmark scores increase with model size and improve when the LM is augmented with retrieval; (ii) benchmark score and perplexity do not always agree on model ranking; (iii) when perplexity and benchmark score disagree, the latter better reflects factuality in open-ended generation, as measured by human annotators.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes FACTOR: Factual Assessment via Corpus TransfORmation, a scalable approach for evaluating LM factuality that automatically transforms a factual corpus of interest into a benchmark evaluating an LM\u2019s propensity to generate true facts from the corpus vs. similar but incorrect statements."
+            },
+            "score": 5
+        },
+        {
+            "id": "66b7272b9ae1fd3f7cd66b2a5c69e43a29b2660f",
+            "paperId": "66b7272b9ae1fd3f7cd66b2a5c69e43a29b2660f",
+            "title": "CLARA: Classifying and Disambiguating User Commands for Reliable Interactive Robotic Agents",
+            "abstract": "In this letter, we focus on inferring whether the given user command is clear, ambiguous, or infeasible in the context of interactive robotic agents utilizing large language models (LLMs). To tackle this problem, we first present an uncertainty estimation method for LLMs to classify whether the command is certain (i.e., clear) or not (i.e., ambiguous or infeasible). Once the command is classified as uncertain, we further distinguish it between ambiguous or infeasible commands leveraging LLMs with situational aware context prompts. For ambiguous commands, we disambiguate the command by interacting with users via question generation with LLMs. We believe that proper recognition of the given commands could lead to a decrease in malfunction and undesired actions of the robot, enhancing the reliability of interactive robot agents. We present a dataset for robotic situational awareness consisting of pairs of high-level commands, scene descriptions, and labels of command type (i.e., clear, ambiguous, or infeasible). We validate the proposed method on the collected dataset and pick-and-place tabletop simulation environment. Finally, we demonstrate the proposed approach in real-world human-robot interaction experiments.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This letter presents an uncertainty estimation method for LLMs to classify whether the given user command is certain or not, and distinguishes it between ambiguous or infeasible commands leveraging LLMs with situational aware context prompts."
+            },
+            "score": 5
+        },
+        {
+            "id": "33560c52a5a90e1074a9c341b752bd9e8ac86f7d",
+            "paperId": "33560c52a5a90e1074a9c341b752bd9e8ac86f7d",
+            "title": "AcTune: Uncertainty-Based Active Self-Training for Active Fine-Tuning of Pretrained Language Models",
+            "abstract": "Although fine-tuning pre-trained language models (PLMs) renders strong performance in many NLP tasks, it relies on excessive labeled data. Recently, researchers have resorted to active fine-tuning for enhancing the label efficiency of PLM fine-tuning, but existing methods of this type usually ignore the potential of unlabeled data. We develop AcTune, a new framework that improves the label efficiency of active PLM fine-tuning by unleashing the power of unlabeled data via self-training. AcTune switches between data annotation and model self-training based on uncertainty: the unlabeled samples of high-uncertainty are selected for annotation, while the ones from low-uncertainty regions are used for model self-training. Additionally, we design (1) a region-aware sampling strategy to avoid redundant samples when querying annotations and (2) a momentum-based memory bank to dynamically aggregate the model\u2019s pseudo labels to suppress label noise in self-training. Experiments on 6 text classification datasets show that AcTune outperforms the strongest active learning and self-training baselines and improves the label efficiency of PLM fine-tuning by 56.2% on average. Our implementation is available at https://github.com/yueyu1030/actune.",
+            "year": 2022,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "AcTune is developed, a new framework that improves the label efficiency of active PLM fine-tuning by unleashing the power of unlabeled data via self-training by switching between data annotation and model self- training based on uncertainty."
+            },
+            "score": 5
+        },
+        {
+            "id": "401ec1cf878b8846d942c2deb08e8cae146ede03",
+            "paperId": "401ec1cf878b8846d942c2deb08e8cae146ede03",
+            "title": "Re3val: Reinforced and Reranked Generative Retrieval",
+            "abstract": "Generative retrieval models encode pointers to information in a corpus as an index within the model\u2019s parameters. These models serve as part of a larger pipeline, where retrieved information conditions generation for knowledge-intensive NLP tasks. However, we identify two limitations: the generative retrieval does not account for contextual information. Secondly, the retrieval can\u2019t be tuned for the downstream readers as decoding the page title is a non-differentiable operation. This paper introduces Re3val, trained with generative reranking and reinforcement learning using limited data. Re3val leverages context acquired via Dense Passage Retrieval to rerank the retrieved page titles and utilizes REINFORCE to maximize rewards generated by constrained decoding. Additionally, we generate questions from our pre-training dataset to mitigate epistemic uncertainty and bridge the domain gap between the pre-training and fine-tuning datasets. Subsequently, we extract and rerank contexts from the KILT database using the rerank page titles. Upon grounding the top five reranked contexts, Re3val demonstrates the Top 1 KILT scores compared to all other generative retrieval models across five KILT datasets.",
+            "year": 2024,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces Re3val, trained with generative reranking and reinforcement learning using limited data, and demonstrates the Top 1 KILT scores compared to all other generative retrieval models across five KILT datasets."
+            },
+            "score": 5
+        },
+        {
+            "id": "3e14227862ae21ec691794b8586d6c695c5feb75",
+            "paperId": "3e14227862ae21ec691794b8586d6c695c5feb75",
+            "title": "RE-MOVE: An Adaptive Policy Design for Robotic Navigation Tasks in Dynamic Environments via Language-Based Feedback",
+            "abstract": "Reinforcement learning-based policies for continuous control robotic navigation tasks often fail to adapt to changes in the environment during real-time deployment, which may result in catastrophic failures. To address this limitation, we propose a novel approach called RE-MOVE (REquest help and MOVE on) to adapt already trained policy to real-time changes in the environment without re-training via utilizing a language-based feedback. The proposed approach essentially boils down to addressing two main challenges of (1) when to ask for feedback and, if received, (2) how to incorporate feedback into trained policies. RE-MOVE incorporates an epistemic uncertainty-based framework to determine the optimal time to request instructions-based feedback. For the second challenge, we employ a zero-shot learning natural language processing (NLP) paradigm with efficient, prompt design and leverage state-of-the-art GPT-3.5, Llama-2 language models. To show the efficacy of the proposed approach, we performed extensive synthetic and real-world evaluations in several test-time dynamic navigation scenarios. Utilizing RE-MOVE result in up to 80% enhancement in the attainment of successful goals, coupled with a reduction of 13.50% in the normalized trajectory length, as compared to alternative approaches, particularly in demanding real-world environments with perceptual challenges.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 5
+        },
+        {
+            "id": "b1ec3002f4c80d721fc7d975cf469dce0833fed0",
+            "paperId": "b1ec3002f4c80d721fc7d975cf469dce0833fed0",
+            "title": "DeLLMa: A Framework for Decision Making Under Uncertainty with Large Language Models",
+            "abstract": "Large language models (LLMs) are increasingly used across society, including in domains like business, engineering, and medicine. These fields often grapple with decision-making under uncertainty, a critical yet challenging task. In this paper, we show that directly prompting LLMs on these types of decision-making problems yields poor results, especially as the problem complexity increases. To overcome this limitation, we propose DeLLMa (Decision-making Large Language Model assistant), a framework designed to enhance decision-making accuracy in uncertain environments. DeLLMa involves a multi-step scaffolding procedure, drawing upon principles from decision theory and utility theory, to provide an optimal and human-auditable decision-making process. We validate our framework on decision-making environments involving real agriculture and finance data. Our results show that DeLLMa can significantly improve LLM decision-making performance, achieving up to a 40% increase in accuracy over competing methods.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DeLLMa (Decision-making Large Language Model assistant), a framework designed to enhance decision-making accuracy in uncertain environments, is proposed and validated on decision-making environments involving real agriculture and finance data."
+            },
+            "score": 4
+        },
+        {
+            "id": "e3446ef313663e30d8251dee339bca52962e7bfd",
+            "paperId": "e3446ef313663e30d8251dee339bca52962e7bfd",
+            "title": "Towards Reliable Misinformation Mitigation: Generalization, Uncertainty, and GPT-4",
+            "abstract": "Misinformation poses a critical societal challenge, and current approaches have yet to produce an effective solution. We propose focusing on generalization, uncertainty, and how to leverage recent large language models, in order to create more practical tools to evaluate information veracity in contexts where perfect classification is impossible. We first demonstrate that GPT-4 can outperform prior methods in multiple settings and languages. Next, we explore generalization, revealing that GPT-4 and RoBERTa-large exhibit differences in failure modes. Third, we propose techniques to handle uncertainty that can detect impossible examples and strongly improve outcomes. We also discuss results on other language models, temperature, prompting, versioning, explainability, and web retrieval, each one providing practical insights and directions for future research. Finally, we publish the LIAR-New dataset with novel paired English and French misinformation data and Possibility labels that indicate if there is sufficient context for veracity evaluation. Overall, this research lays the groundwork for future tools that can drive real-world progress to combat misinformation.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research demonstrates that GPT-4 can outperform prior methods in multiple settings and languages, and proposes techniques to handle uncertainty that can detect impossible examples and strongly improve outcomes."
+            },
+            "score": 4
+        },
+        {
+            "id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "paperId": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+            "abstract": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+            "year": 2022,
+            "citationCount": 3517,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "62176de125738e3b95850d1227bac81fd646b78e",
+            "paperId": "62176de125738e3b95850d1227bac81fd646b78e",
+            "title": "Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models",
+            "abstract": "Large language models (LLMs) have recently been shown to deliver impressive performance in various NLP tasks. To tackle multi-step reasoning tasks, Few-shot chain-of-thought (CoT) prompting includes a few manually crafted step-by-step reasoning demonstrations which enable LLMs to explicitly generate reasoning steps and improve their reasoning task accuracy. To eliminate the manual efforts, Zero-shot-CoT concatenates the target problem statement with \u201cLet\u2019s think step by step\u201d as an input prompt to LLMs. Despite the success of Zero-shot-CoT, it still suffers from three pitfalls: calculation errors, missing-step errors, and semantic misunderstanding errors. To address the missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists of two components: first, devising a plan to divide the entire task into smaller subtasks, and then carrying out the subtasks according to the plan. To address the calculation errors and improve the quality of generated reasoning steps, we extend PS prompting with more detailed instructions and derive PS+ prompting. We evaluate our proposed prompting strategy on ten datasets across three reasoning problems. The experimental results over GPT-3 show that our proposed zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem. The code can be found at https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting.",
+            "year": 2023,
+            "citationCount": 115,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results over GPT-3 show that the proposed zero-shot prompting consistently outperforms Zero- shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem."
+            },
+            "score": 4
+        },
+        {
+            "id": "261549439aebdda72b648ecc462448fd24857ac1",
+            "paperId": "261549439aebdda72b648ecc462448fd24857ac1",
+            "title": "Progressive-Hint Prompting Improves Reasoning in Large Language Models",
+            "abstract": "The performance of Large Language Models (LLMs) in reasoning tasks depends heavily on prompt design, with Chain-of-Thought (CoT) and self-consistency being critical methods that enhance this ability. However, these methods do not fully exploit the answers generated by the LLM to guide subsequent responses. This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers. PHP is orthogonal to CoT and self-consistency, making it easy to combine with state-of-the-art techniques to further improve performance. We conducted extensive and comprehensive experiments on seven benchmarks. The results show that PHP significantly improves accuracy while remaining highly efficient. For instance, with text-davinci-003, we observed a 4.2% improvement on GSM8K with greedy decoding compared to Complex CoT, and a 46.17% reduction in sample paths with self-consistency. With GPT-4 and PHP, we achieve state-of-the-art performances on SVAMP (89.1% ->91.9%), GSM8K (92% ->95.5%), AQuA (76.4% ->79.9%) and MATH (50.3% ->53.9%).",
+            "year": 2023,
+            "citationCount": 64,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers."
+            },
+            "score": 4
+        },
+        {
+            "id": "3fc3460c4554a28e489a0ea6ef067b79b7d301d9",
+            "paperId": "3fc3460c4554a28e489a0ea6ef067b79b7d301d9",
+            "title": "Active Prompting with Chain-of-Thought for Large Language Models",
+            "abstract": "The increasing scale of large language models (LLMs) brings emergent abilities to various complex tasks requiring reasoning, such as arithmetic and commonsense reasoning. It is known that the effective design of task-specific prompts is critical for LLMs' ability to produce high-quality answers. In particular, an effective approach for complex question-and-answer tasks is example-based prompting with chain-of-thought (CoT) reasoning, which significantly improves the performance of LLMs. However, current CoT methods rely on a fixed set of human-annotated exemplars, which are not necessarily the most effective examples for different tasks. This paper proposes a new method, Active-Prompt, to adapt LLMs to different tasks with task-specific example prompts (annotated with human-designed CoT reasoning). For this purpose, we propose a solution to the key problem of determining which questions are the most important and helpful ones to annotate from a pool of task-specific queries. By borrowing ideas from the related problem of uncertainty-based active learning, we introduce several metrics to characterize the uncertainty so as to select the most uncertain questions for annotation. Experimental results demonstrate the superiority of our proposed method, achieving state-of-the-art on eight complex reasoning tasks. Further analyses of different uncertainty metrics, pool sizes, zero-shot learning, and accuracy-uncertainty relationship demonstrate the effectiveness of our method. Our code will be available at https://github.com/shizhediao/active-prompt.",
+            "year": 2023,
+            "citationCount": 58,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new method to adapt LLMs to different tasks with task-specific example prompts (annotated with human-designed CoT reasoning), and introduces several metrics to characterize the uncertainty so as to select the most uncertain questions for annotation."
+            },
+            "score": 4
+        },
+        {
+            "id": "69619a2a47faee7a29ec596db13172e2a42ff921",
+            "paperId": "69619a2a47faee7a29ec596db13172e2a42ff921",
+            "title": "Synthetic Prompting: Generating Chain-of-Thought Demonstrations for Large Language Models",
+            "abstract": "Large language models can perform various reasoning tasks by using chain-of-thought prompting, which guides them to find answers through step-by-step demonstrations. However, the quality of the prompts depends on the demonstrations given to the models, and creating many of them by hand is costly. We introduce Synthetic prompting, a method that leverages a few handcrafted examples to prompt the model to generate more examples by itself, and selects effective demonstrations to elicit better reasoning. Our method alternates between a backward and forward process to generate new examples. The backward process generates a question that match a sampled reasoning chain, so that the question is solvable and clear. The forward process produces a more detailed reasoning chain for the question, improving the quality of the example. We evaluate our method on numerical, symbolic, and algorithmic reasoning tasks, and show that it outperforms existing prompting techniques.",
+            "year": 2023,
+            "citationCount": 41,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Synthetic prompting is introduced, a method that leverages a few handcrafted examples to prompt the model to generate more examples by itself, and selects effective demonstrations to elicit better reasoning."
+            },
+            "score": 4
+        },
+        {
+            "id": "7cfbd36c0043098589cbaf18dca2b41d8dc24abe",
+            "paperId": "7cfbd36c0043098589cbaf18dca2b41d8dc24abe",
+            "title": "Plausible May Not Be Faithful: Probing Object Hallucination in Vision-Language Pre-training",
+            "abstract": "Large-scale vision-language pre-trained (VLP) models are prone to hallucinate non-existent visual objects when generating text based on visual information. In this paper, we systematically study the object hallucination problem from three aspects. First, we examine recent state-of-the-art VLP models, showing that they still hallucinate frequently and models achieving better scores on standard metrics (e.g., CIDEr) could be more unfaithful. Second, we investigate how different types of image encoding in VLP influence hallucination, including region-based, grid-based, and patch-based. Surprisingly, we find that patch-based features perform the best and smaller patch resolution yields a non-trivial reduction in object hallucination. Third, we decouple various VLP objectives and demonstrate that token-level image-text alignment and controlled generation are crucial to reducing hallucination. Based on that, we propose a simple yet effective VLP loss named ObjMLM to further mitigate object hallucination. Results show that it reduces object hallucination by up to 17.4% when tested on two benchmarks (COCO Caption for in-domain and NoCaps for out-of-domain evaluation).",
+            "year": 2022,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a simple yet effective VLP loss named ObjMLM to further mitigate object hallucination and decouple various VLP objectives and demonstrates that token-level image-text alignment and controlled generation are crucial to reducing hallucination."
+            },
+            "score": 4
+        },
+        {
+            "id": "e0384ba36555232c587d4a80d527895a095a9001",
+            "paperId": "e0384ba36555232c587d4a80d527895a095a9001",
+            "title": "HaluEval: A Large-Scale Hallucination Evaluation Benchmark for Large Language Models",
+            "abstract": "Large language models (LLMs), such as ChatGPT, are prone to generate hallucinations, i.e., content that conflicts with the source or cannot be verified by the factual knowledge. To understand what types of content and to which extent LLMs are apt to hallucinate, we introduce the Hallucination Evaluation benchmark for Large Language Models (HaluEval), a large collection of generated and human-annotated hallucinated samples for evaluating the performance of LLMs in recognizing hallucination. To generate these samples, we propose a ChatGPT-based two-step framework, i.e., sampling-then-filtering. Besides, we also hire some human labelers to annotate the hallucinations in ChatGPT responses. The empirical results suggest that ChatGPT is likely to generate hallucinated content in specific topics by fabricating unverifiable information (i.e., about $19.5\\%$ responses). Moreover, existing LLMs face great challenges in recognizing the hallucinations in texts. However, our experiments also prove that providing external knowledge or adding reasoning steps can help LLMs recognize hallucinations. Our benchmark can be accessed at https://github.com/RUCAIBox/HaluEval.",
+            "year": 2023,
+            "citationCount": 57,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The Hallucination Evaluation benchmark for Large Language Models (HaluEval), a large collection of generated and human-annotated hallucinated samples for evaluating the performance of LLMs in recognizing hallucination, is introduced and it is proved that providing external knowledge or adding reasoning steps can help LLMs recognize hallucinations."
+            },
+            "score": 4
+        },
+        {
+            "id": "99bfe503743c5ec8e16e50ab8438159cdb533a89",
+            "paperId": "99bfe503743c5ec8e16e50ab8438159cdb533a89",
+            "title": "The Troubling Emergence of Hallucination in Large Language Models - An Extensive Definition, Quantification, and Prescriptive Remediations",
+            "abstract": "The recent advancements in Large Language Models (LLMs) have garnered widespread acclaim for their remarkable emerging capabilities. However, the issue of hallucination has parallelly emerged as a by-product, posing significant concerns. While some recent endeavors have been made to identify and mitigate different types of hallucination, there has been a limited emphasis on the nuanced categorization of hallucination and associated mitigation methods. To address this gap, we offer a fine-grained discourse on profiling hallucination based on its degree, orientation, and category, along with offering strategies for alleviation. As such, we define two overarching orientations of hallucination: (i) factual mirage (FM) and (ii) silver lining (SL). To provide a more comprehensive understanding, both orientations are further sub-categorized into intrinsic and extrinsic, with three degrees of severity - (i) mild, (ii) moderate, and (iii) alarming. We also meticulously categorize hallucination into six types: (i) acronym ambiguity, (ii) numeric nuisance, (iii) generated golem, (iv) virtual voice, (v) geographic erratum, and (vi) time wrap. Furthermore, we curate HallucInation eLiciTation (HILT), a publicly available dataset comprising of 75,000 samples generated using 15 contemporary LLMs along with human annotations for the aforementioned categories. Finally, to establish a method for quantifying and to offer a comparative spectrum that allows us to evaluate and rank LLMs based on their vulnerability to producing hallucinations, we propose Hallucination Vulnerability Index (HVI). We firmly believe that HVI holds significant value as a tool for the wider NLP community, with the potential to serve as a rubric in AI-related policy-making. In conclusion, we propose two solution strategies for mitigating hallucinations.",
+            "year": 2023,
+            "citationCount": 34,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work defines two overarching orientations of hallucination and proposes two solution strategies for mitigating hallucinations, and firmly believes that HVI holds significant value as a tool for the wider NLP community, with the potential to serve as a rubric in AI-related policy-making."
+            },
+            "score": 4
+        },
+        {
+            "id": "93c525267e93c78309a5b28a3eb0780704125744",
+            "paperId": "93c525267e93c78309a5b28a3eb0780704125744",
+            "title": "Analyzing and Mitigating Object Hallucination in Large Vision-Language Models",
+            "abstract": "Large vision-language models (LVLMs) have shown remarkable abilities in understanding visual information with human languages. However, LVLMs still suffer from object hallucination, which is the problem of generating descriptions that include objects that do not actually exist in the images. This can negatively impact many vision-language tasks, such as visual summarization and reasoning. To address this issue, we propose a simple yet powerful algorithm, LVLM Hallucination Revisor (LURE), to post-hoc rectify object hallucination in LVLMs by reconstructing less hallucinatory descriptions. LURE is grounded in a rigorous statistical analysis of the key factors underlying object hallucination, including co-occurrence (the frequent appearance of certain objects alongside others in images), uncertainty (objects with higher uncertainty during LVLM decoding), and object position (hallucination often appears in the later part of the generated text). LURE can also be seamlessly integrated with any LVLMs. We evaluate LURE on six open-source LVLMs, achieving a 23% improvement in general object hallucination evaluation metrics over the previous best approach. In both GPT and human evaluations, LURE consistently ranks at the top. Our data and code are available at https://github.com/YiyangZhou/LURE.",
+            "year": 2023,
+            "citationCount": 35,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a simple yet powerful algorithm, LVLM Hallucination Revisor (LURE), to post-hoc rectify object hallucination in LVLMs by reconstructing less hallucinatory descriptions and consistently ranks at the top in both GPT and human evaluations."
+            },
+            "score": 4
+        },
+        {
+            "id": "49b79d61ffc2db6dce8c2cd9cda06e1876ed8b4c",
+            "paperId": "49b79d61ffc2db6dce8c2cd9cda06e1876ed8b4c",
+            "title": "OPERA: Alleviating Hallucination in Multi-Modal Large Language Models via Over-Trust Penalty and Retrospection-Allocation",
+            "abstract": "Hallucination, posed as a pervasive challenge of multi-modal large language models (MLLMs), has significantly impeded their real-world usage that demands precise judgment. Existing methods mitigate this issue with either training with specific designed data or inferencing with external knowledge from other sources, incurring inevitable additional costs. In this paper, we present OPERA, a novel MLLM decoding method grounded in an Over-trust Penalty and a Retrospection-Allocation strategy, serving as a nearly free lunch to alleviate the hallucination issue without additional data, knowledge, or training. Our approach begins with an interesting observation that, most hallucinations are closely tied to the knowledge aggregation patterns manifested in the self-attention matrix, i.e., MLLMs tend to generate new tokens by focusing on a few summary tokens, but not all the previous tokens. Such partial over-trust inclination results in the neglecting of image tokens and describes the image content with hallucination. Based on the observation, OPERA introduces a penalty term on the model logits during the beam-search decoding to mitigate the over-trust issue, along with a rollback strategy that retrospects the presence of summary tokens in the previously generated tokens, and re-allocate the token selection if necessary. With extensive experiments, OPERA shows significant hallucination-mitigating performance on different MLLMs and metrics, proving its effectiveness and generality. Our code is available at: https://github.com/shikiw/OPERA.",
+            "year": 2023,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "OPERA, a novel MLLM decoding method grounded in an Over-trust Penalty and a Retrospection-Allocation strategy, serving as a nearly free lunch to alleviate the hallucination issue without additional data, knowledge, or training is presented."
+            },
+            "score": 4
+        },
+        {
+            "id": "807f336176070bd3f95b82a16f125ee99b7d2c80",
+            "paperId": "807f336176070bd3f95b82a16f125ee99b7d2c80",
+            "title": "Woodpecker: Hallucination Correction for Multimodal Large Language Models",
+            "abstract": "Hallucination is a big shadow hanging over the rapidly evolving Multimodal Large Language Models (MLLMs), referring to the phenomenon that the generated text is inconsistent with the image content. In order to mitigate hallucinations, existing studies mainly resort to an instruction-tuning manner that requires retraining the models with specific data. In this paper, we pave a different way, introducing a training-free method named Woodpecker. Like a woodpecker heals trees, it picks out and corrects hallucinations from the generated text. Concretely, Woodpecker consists of five stages: key concept extraction, question formulation, visual knowledge validation, visual claim generation, and hallucination correction. Implemented in a post-remedy manner, Woodpecker can easily serve different MLLMs, while being interpretable by accessing intermediate outputs of the five stages. We evaluate Woodpecker both quantitatively and qualitatively and show the huge potential of this new paradigm. On the POPE benchmark, our method obtains a 30.66%/24.33% improvement in accuracy over the baseline MiniGPT-4/mPLUG-Owl. The source code is released at https://github.com/BradyFU/Woodpecker.",
+            "year": 2023,
+            "citationCount": 31,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Implemented in a post-remedy manner, Woodpecker can easily serve different MLLMs, while being interpretable by accessing intermediate outputs of the five stages, and shows the huge potential of this new paradigm."
+            },
+            "score": 4
+        },
+        {
+            "id": "bb1083425517bdac8d9a6438fcf5032543acb20e",
+            "paperId": "bb1083425517bdac8d9a6438fcf5032543acb20e",
+            "title": "Evaluation and Analysis of Hallucination in Large Vision-Language Models",
+            "abstract": "Large Vision-Language Models (LVLMs) have recently achieved remarkable success. However, LVLMs are still plagued by the hallucination problem, which limits the practicality in many scenarios. Hallucination refers to the information of LVLMs' responses that does not exist in the visual input, which poses potential risks of substantial consequences. There has been limited work studying hallucination evaluation in LVLMs. In this paper, we propose Hallucination Evaluation based on Large Language Models (HaELM), an LLM-based hallucination evaluation framework. HaELM achieves an approximate 95% performance comparable to ChatGPT and has additional advantages including low cost, reproducibility, privacy preservation and local deployment. Leveraging the HaELM, we evaluate the hallucination in current LVLMs. Furthermore, we analyze the factors contributing to hallucination in LVLMs and offer helpful suggestions to mitigate the hallucination problem. Our training data and human annotation hallucination data will be made public soon.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes Hallucination Evaluation based on Large Language Models (HaELM), an LLM-based hallucination evaluation framework that achieves an approximate 95% performance comparable to ChatGPT and has additional advantages including low cost, reproducibility, privacy preservation and local deployment."
+            },
+            "score": 4
+        },
+        {
+            "id": "5e97969e3656e09dfbb879b1d448a24678289345",
+            "paperId": "5e97969e3656e09dfbb879b1d448a24678289345",
+            "title": "Revisiting text decomposition methods for NLI-based factuality scoring of summaries",
+            "abstract": "Scoring the factuality of a generated summary involves measuring the degree to which a target text contains factual information using the input document as support. Given the similarities in the problem formulation, previous work has shown that Natural Language Inference models can be effectively repurposed to perform this task. As these models are trained to score entailment at a sentence level, several recent studies have shown that decomposing either the input document or the summary into sentences helps with factuality scoring. But is fine-grained decomposition always a winning strategy? In this paper we systematically compare different granularities of decomposition - from document to sub-sentence level, and we show that the answer is no. Our results show that incorporating additional context can yield improvement, but that this does not necessarily apply to all datasets. We also show that small changes to previously proposed entailment-based scoring methods can result in better performance, highlighting the need for caution in model and methodology selection for downstream tasks.",
+            "year": 2022,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper systematically compares different granularities of decomposition - from document to sub-sentence level, and shows that the answer is no and that incorporating additional context can yield improvement, but that this does not necessarily apply to all datasets."
+            },
+            "score": 4
+        },
+        {
+            "id": "663d743272e9ab04f54d9105a3c3a3f6e22dd1dd",
+            "paperId": "663d743272e9ab04f54d9105a3c3a3f6e22dd1dd",
+            "title": "FactKB: Generalizable Factuality Evaluation using Language Models Enhanced with Factual Knowledge",
+            "abstract": "Evaluating the factual consistency of automatically generated summaries is essential for the progress and adoption of reliable summarization systems. Despite recent advances, existing factuality evaluation models are not robust, being especially prone to entity and relation errors in new domains. We propose FactKB, a simple new approach to factuality evaluation that is generalizable across domains, in particular with respect to entities and relations. FactKB is based on language models pretrained using facts extracted from external knowledge bases. We introduce three types of complementary factuality pretraining objectives based on direct entity facts, facts grounded in auxiliary knowledge about entities, and facts constructed compositionally through knowledge base walks. The resulting factuality evaluation model achieves state-of-the-art performance on two in-domain news summarization benchmarks as well as on three out-of-domain scientific literature datasets. Further analysis of FactKB shows improved ability to detect erroneous entities and relations in summaries and is robust and generalizable across domains.",
+            "year": 2023,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "FactKB is a simple new approach to factuality evaluation that is generalizable across domains, in particular with respect to entities and relations and shows improved ability to detect erroneous entities and relation in summaries."
+            },
+            "score": 4
+        },
+        {
+            "id": "0f6fe87afd1a3571f77c790893b03717e5d0422a",
+            "paperId": "0f6fe87afd1a3571f77c790893b03717e5d0422a",
+            "title": "Beyond Factuality: A Comprehensive Evaluation of Large Language Models as Knowledge Generators",
+            "abstract": "Large language models (LLMs) outperform information retrieval techniques for downstream knowledge-intensive tasks when being prompted to generate world knowledge. However, community concerns abound regarding the factuality and potential implications of using this uncensored knowledge. In light of this, we introduce CONNER, a COmpreheNsive kNowledge Evaluation fRamework, designed to systematically and automatically evaluate generated knowledge from six important perspectives -- Factuality, Relevance, Coherence, Informativeness, Helpfulness and Validity. We conduct an extensive empirical analysis of the generated knowledge from three different types of LLMs on two widely studied knowledge-intensive tasks, i.e., open-domain question answering and knowledge-grounded dialogue. Surprisingly, our study reveals that the factuality of generated knowledge, even if lower, does not significantly hinder downstream tasks. Instead, the relevance and coherence of the outputs are more important than small factual mistakes. Further, we show how to use CONNER to improve knowledge-intensive tasks by designing two strategies: Prompt Engineering and Knowledge Selection. Our evaluation code and LLM-generated knowledge with human annotations will be released to facilitate future research.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Surprisingly, the study reveals that the factuality of generated knowledge, even if lower, does not significantly hinder downstream tasks and the relevance and coherence of the outputs are more important than small factual mistakes."
+            },
+            "score": 4
+        },
+        {
+            "id": "6028780bfb3728292d37c07951e3f463fae0981e",
+            "paperId": "6028780bfb3728292d37c07951e3f463fae0981e",
+            "title": "Unsupervised Improvement of Factual Knowledge in Language Models",
+            "abstract": "Masked language modeling (MLM) plays a key role in pretraining large language models. But the MLM objective is often dominated by high-frequency words that are sub-optimal for learning factual knowledge. In this work, we propose an approach for influencing MLM pretraining in a way that can improve language model performance on a variety of knowledge-intensive tasks. We force the language model to prioritize informative words in a fully unsupervised way. Experiments demonstrate that the proposed approach can significantly improve the performance of pretrained language models on tasks such as factual recall, question answering, sentiment analysis, and natural language inference in a closed-book setting.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes an approach for influencing MLM pretraining in a way that can improve language model performance on a variety of knowledge-intensive tasks and forces the language model to prioritize informative words in a fully unsupervised way."
+            },
+            "score": 4
+        },
+        {
+            "id": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "paperId": "e7c97e953849f1a8e5d85ceb4cfcc0a5d54d2365",
+            "title": "Enabling Large Language Models to Generate Text with Citations",
+            "abstract": "Large language models (LLMs) have emerged as a widely-used tool for information seeking, but their generated outputs are prone to hallucination. In this work, our aim is to allow LLMs to generate text with citations, improving their factual correctness and verifiability. Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches. We propose ALCE, the first benchmark for Automatic LLMs' Citation Evaluation. ALCE collects a diverse set of questions and retrieval corpora and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. We develop automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrate their strong correlation with human judgements. Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement -- For example, on the ELI5 dataset, even the best models lack complete citation support 50% of the time. Our analyses further highlight promising future directions, including developing better retrievers, advancing long-context LLMs, and improving the ability to synthesize information from multiple sources.",
+            "year": 2023,
+            "citationCount": 102,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes ALCE, the first benchmark for Automatic LLMs' Citation Evaluation, and develops automatic metrics along three dimensions -- fluency, correctness, and citation quality -- and demonstrates their strong correlation with human judgements."
+            },
+            "score": 4
+        },
+        {
+            "id": "645d8c40f2a05f0b06f9338cf7635755532d747c",
+            "paperId": "645d8c40f2a05f0b06f9338cf7635755532d747c",
+            "title": "Uncertainty Awareness of Large Language Models Under Code Distribution Shifts: A Benchmark Study",
+            "abstract": "Large Language Models (LLMs) have been widely employed in programming language analysis to enhance human productivity. Yet, their reliability can be compromised by various code distribution shifts, leading to inconsistent outputs. While probabilistic methods are known to mitigate such impact through uncertainty calibration and estimation, their efficacy in the language domain remains underexplored compared to their application in image-based tasks. In this work, we first introduce a large-scale benchmark dataset, incorporating three realistic patterns of code distribution shifts at varying intensities. Then we thoroughly investigate state-of-the-art probabilistic methods applied to CodeLlama using these shifted code snippets. We observe that these methods generally improve the uncertainty awareness of CodeLlama, with increased calibration quality and higher uncertainty estimation~(UE) precision. However, our study further reveals varied performance dynamics across different criteria (e.g., calibration error vs misclassification detection) and trade-off between efficacy and efficiency, highlighting necessary methodological selection tailored to specific contexts.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work thoroughly investigate state-of-the-art probabilistic methods applied to CodeLlama using three realistic patterns of code distribution shifts at varying intensities, and observes that these methods generally improve the uncertainty awareness of CodeLlama, with increased calibration quality and higher uncertainty estimation~(UE) precision."
+            },
+            "score": 4
+        },
+        {
+            "id": "761ed225b59e34d2f5b0848beed5b1842af8cf8b",
+            "paperId": "761ed225b59e34d2f5b0848beed5b1842af8cf8b",
+            "title": "RT-LM: Uncertainty-Aware Resource Management for Real-Time Inference of Language Models",
+            "abstract": "Recent advancements in language models (LMs) have gained substantial attentions on their capability to generate human-like responses. Though exhibiting a promising future for various applications such as conversation AI, these LMs face deployment challenges on various devices due to their extreme computational cost and unpredictable inference latency. Such varied inference latency, identified as a consequence of uncertainty intrinsic to the nature of language, can lead to computational inefficiency and degrade the overall performance of LMs, especially under high-traffic workloads. Unfortunately, the bandwidth of these uncertainty sources is extensive, complicating the prediction of latency and the effects emanating from such uncertainties. To understand and mitigate the impact of uncertainty on real-time response-demanding systems, we take the first step to comprehend, quantify and optimize these uncertainty-induced latency performance variations in LMs. Specifically, we present RT-LM, an uncertainty-aware resource management ecosystem for real-time inference of LMs. RT-LM innovatively quantifies how specific input uncertainties, recognized within the NLP community, adversely affect latency, often leading to an increased output length. Exploiting these insights, we devise a lightweight yet effective method to dynamically correlate input text uncertainties with output length at runtime. Utilizing this quantification as a latency heuristic, we integrate the uncertainty information into a system-level scheduler which explores several uncertainty-induced optimization opportunities, including uncertainty-aware prioritization, dynamic consolidation, and strategic CPU offloading. Quantitative experiments across five state-of-the-art LMs on two hardware platforms demonstrates that RT-LM can significantly reduce the average response time and improve throughput while incurring a rather small runtime overhead.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "RT-LM innovatively quantifies how specific input uncertainties, recognized within the NLP community, adversely affect latency, often leading to an increased output length at runtime, and integrates the uncertainty information into a system-level scheduler which explores several uncertainty-induced optimization opportunities."
+            },
+            "score": 4
+        },
+        {
+            "id": "98829789de1b9629db0bc154e51df75f544d77fa",
+            "paperId": "98829789de1b9629db0bc154e51df75f544d77fa",
+            "title": "Efficient Uncertainty Quantification for Multilabel Text Classification",
+            "abstract": "Despite rapid advances of modern artificial intelligence (AI), there is a growing concern regarding its capacity to be explainable, transparent, and accountable. One crucial step towards such AI systems involves reliable and efficient uncertainty quantification methods. Existing approaches to uncertainty quantification in natural language processing (NLP) take a Bayesian Deep Learning approach. However, the latter is known to not be computationally efficient in testing time, thus hindering its applicability in real-life scenarios. This paper proposes a new focus on the efficiency of uncertainty quantification methods, evaluating them on four multi-label text classification tasks. Our novel methods of representing epistemic and aleatoric uncertainties enable efficient uncertainty quantification (around 13 to 45 times faster than existing approaches, depending on architecture) with posterior analysis in the (approximated) latent- and data space. We conduct extensive experiments and studies on diverse neural network architectures (LSTM, CNN and Transformer) to analyse their power. Our results prove the benefits of explicitly modelling uncertainty in neural networks.",
+            "year": 2022,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The novel methods of representing epistemic and aleatoric uncertainties enable efficient uncertainty quantification with posterior analysis in the (approximated) latent- and data space, and prove the benefits of explicitly modelling uncertainty in neural networks."
+            },
+            "score": 4
+        },
+        {
+            "id": "cb43707ebd674213afc4ed558346f751606c74b2",
+            "paperId": "cb43707ebd674213afc4ed558346f751606c74b2",
+            "title": "Disclosing the Uncertainty Associated with Prognostic Estimates in Breast Cancer",
+            "abstract": "Background. Treatment decision making is often guided by evidence-based probabilities, which may be presented to patients during consultations. These probabilities are intrinsically imperfect and embody 2 types of uncertainties: aleatory uncertainty arising from the unpredictability of future events and epistemic uncertainty arising from limitations in the reliability and accuracy of probability estimates. Risk communication experts have recommended disclosing uncertainty. We examined whether uncertainty was discussed during cancer consultations and whether and how patients perceived uncertainty. Methods. Consecutive patient consultations with medical oncologists discussing adjuvant treatment in early-stage breast cancer were audiotaped, transcribed, and coded. Patients were interviewed after the consultation to gain insight into their perceptions of uncertainty. Results. In total, 198 patients were included by 27 oncologists. Uncertainty was disclosed in 49% (97/197) of consultations. In those 97 consultations, 23 allusions to epistemic uncertainty were made and 84 allusions to aleatory uncertainty. Overall, the allusions to the precision of the probabilities were somewhat ambiguous. Interviewed patients mainly referred to aleatory uncertainty if not prompted about epistemic uncertainty. Even when specifically asked about epistemic uncertainty, 1 in 4 utterances referred to aleatory uncertainty. When talking about epistemic uncertainty, many patients contradicted themselves. In addition, 1 in 10 patients seemed not to realize that the probabilities communicated during the consultation are imperfect. Conclusions. Uncertainty is conveyed in only half of patient consultations. When uncertainty is communicated, oncologists mainly refer to aleatory uncertainty. This is also the type of uncertainty that most patients perceive and seem comfortable discussing. Given that it is increasingly common for clinicians to discuss outcome probabilities with their patients, guidance on whether and how to best communicate uncertainty is urgently needed.",
+            "year": 2017,
+            "citationCount": 39,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Advice on whether and how to best communicate uncertainty is urgently needed given that it is increasingly common for clinicians to discuss outcome probabilities with their patients."
+            },
+            "score": 4
+        },
+        {
+            "id": "8089b431b2e09c27967428fb542c0935fb95ec30",
+            "paperId": "8089b431b2e09c27967428fb542c0935fb95ec30",
+            "title": "STAR: Constraint LoRA with Dynamic Active Learning for Data-Efficient Fine-Tuning of Large Language Models",
+            "abstract": "Though Large Language Models (LLMs) have demonstrated the powerful capabilities of few-shot learning through prompting methods, supervised training is still necessary for complex reasoning tasks. Because of their extensive parameters and memory consumption, both Parameter-Efficient Fine-Tuning (PEFT) methods and Memory-Efficient Fine-Tuning methods have been proposed for LLMs. Nevertheless, the issue of large annotated data consumption, the aim of Data-Efficient Fine-Tuning, remains unexplored. One obvious way is to combine the PEFT method with active learning. However, the experimental results show that such a combination is not trivial and yields inferior results. Through probe experiments, such observation might be explained by two main reasons: uncertainty gap and poor model calibration. Therefore, in this paper, we propose a novel approach to effectively integrate uncertainty-based active learning and LoRA. Specifically, for the uncertainty gap, we introduce a dynamic uncertainty measurement that combines the uncertainty of the base model and the uncertainty of the full model during the iteration of active learning. For poor model calibration, we incorporate the regularization method during LoRA training to keep the model from being over-confident, and the Monte-Carlo dropout mechanism is employed to enhance the uncertainty estimation. Experimental results show that the proposed approach outperforms existing baseline models on three complex reasoning tasks.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel approach to effectively integrate uncertainty-based active learning and LoRA is proposed, which incorporates the regularization method during LoRA training to keep the model from being over-confident, and the Monte-Carlo dropout mechanism is employed to enhance the uncertainty estimation."
+            },
+            "score": 3
+        },
+        {
+            "id": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "paperId": "12c826f4195da172b212a529f8fcf10cc79e35da",
+            "title": "Context-faithful Prompting for Large Language Models",
+            "abstract": "Large language models (LLMs) encode parametric knowledge about world facts and have shown remarkable performance in knowledge-driven NLP tasks. However, their reliance on parametric knowledge may cause them to overlook contextual cues, leading to incorrect predictions in context-sensitive NLP tasks (e.g., knowledge acquisition tasks). In this paper, we seek to assess and enhance LLMs' contextual faithfulness in two aspects: knowledge conflict and prediction with abstention. We demonstrate that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies. In particular, we identify opinion-based prompts and counterfactual demonstrations as the most effective methods. Opinion-based prompts reframe the context as a narrator's statement and inquire about the narrator's opinions, while counterfactual demonstrations use instances containing false facts to improve faithfulness in knowledge conflict situations. Neither technique requires additional training. We conduct experiments on three datasets of two standard NLP tasks, machine reading comprehension and relation extraction, and the results demonstrate significant improvement in faithfulness to contexts. Code and data are released at https://github.com/wzhouad/context-faithful-llm.",
+            "year": 2023,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that LLMs' faithfulness can be significantly improved using carefully designed prompting strategies, and opinion-based prompts and counterfactual demonstrations are identified as the most effective methods."
+            },
+            "score": 3
+        },
+        {
+            "id": "9c20d8d5cfc60f5b9aa058ff2968563f2af33398",
+            "paperId": "9c20d8d5cfc60f5b9aa058ff2968563f2af33398",
+            "title": "Temporal Insight Enhancement: Mitigating Temporal Hallucination in Multimodal Large Language Models",
+            "abstract": "Recent advancements in Multimodal Large Language Models (MLLMs) have significantly enhanced the comprehension of multimedia content, bringing together diverse modalities such as text, images, and videos. However, a critical challenge faced by these models, especially when processing video inputs, is the occurrence of hallucinations - erroneous perceptions or interpretations, particularly at the event level. This study introduces an innovative method to address event-level hallucinations in MLLMs, focusing on specific temporal understanding in video content. Our approach leverages a novel framework that extracts and utilizes event-specific information from both the event query and the provided video to refine MLLMs' response. We propose a unique mechanism that decomposes on-demand event queries into iconic actions. Subsequently, we employ models like CLIP and BLIP2 to predict specific timestamps for event occurrences. Our evaluation, conducted using the Charades-STA dataset, demonstrates a significant reduction in temporal hallucinations and an improvement in the quality of event-related responses. This research not only provides a new perspective in addressing a critical limitation of MLLMs but also contributes a quantitatively measurable method for evaluating MLLMs in the context of temporal-related questions.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An innovative method to address event-level hallucinations in MLLMs, focusing on specific temporal understanding in video content, using a novel framework that extracts and utilizes event-specific information from both the event query and the provided video to refine MLLMs' response."
+            },
+            "score": 3
+        },
+        {
+            "id": "7751f6cdec0f4473c1733eec91699744a7d5176f",
+            "paperId": "7751f6cdec0f4473c1733eec91699744a7d5176f",
+            "title": "HALC: Object Hallucination Reduction via Adaptive Focal-Contrast Decoding",
+            "abstract": "While large vision-language models (LVLMs) have demonstrated impressive capabilities in interpreting multi-modal contexts, they invariably suffer from object hallucinations (OH). We introduce HALC, a novel decoding algorithm designed to mitigate OH in LVLMs. HALC leverages distinct fine-grained optimal visual information in vision-language tasks and operates on both local and global contexts simultaneously. Specifically, HALC integrates a robust auto-focal grounding mechanism (locally) to correct hallucinated tokens on the fly, and a specialized beam search algorithm (globally) to significantly reduce OH while preserving text generation quality. Additionally, HALC can be integrated into any LVLMs as a plug-and-play module without extra training. Extensive experimental studies demonstrate the effectiveness of HALC in reducing OH, outperforming state-of-the-arts across four benchmarks.",
+            "year": 2024,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "HALC, a novel decoding algorithm designed to mitigate OH in LVLMs, is introduced, which leverages distinct fine-grained optimal visual information in vision-language tasks and operates on both local and global contexts simultaneously."
+            },
+            "score": 3
+        },
+        {
+            "id": "206400aba5f12f734cdd2e4ab48ef6014ea60773",
+            "paperId": "206400aba5f12f734cdd2e4ab48ef6014ea60773",
+            "title": "Evaluating Object Hallucination in Large Vision-Language Models",
+            "abstract": "Inspired by the superior language abilities of large language models (LLM), large vision-language models (LVLM) have been recently explored by integrating powerful LLMs for improving the performance on complex multimodal tasks. Despite the promising progress on LVLMs, we find that LVLMs suffer from the hallucination problem, i.e. they tend to generate objects that are inconsistent with the target images in the descriptions. To investigate it, this work presents the first systematic study on object hallucination of LVLMs. We conduct the evaluation experiments on several representative LVLMs, and show that they mostly suffer from severe object hallucination issue. We further discuss that the visual instructions may influence the hallucination, and find that: objects that frequently occur in the visual instructions or co-occur with the image objects, are obviously prone to be hallucinated by LVLMs. Besides, we find that existing evaluation methods might be affected by the input instructions and generation styles of LVLMs. Thus, we further design an improved evaluation method for object hallucination by proposing a polling-based query method called POPE. Experiment results demonstrate that our POPE can evaluate the object hallucination in a more stable and flexible way. Our codes and data are publicly available at https://github.com/RUCAIBox/POPE.",
+            "year": 2023,
+            "citationCount": 172,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents the first systematic study on object hallucination of LVLMs, and designs an improved evaluation method by proposing a polling-based query method called POPE, which can evaluate the object hallucinated objects in a more stable and flexible way."
+            },
+            "score": 3
+        },
+        {
+            "id": "3b0792f6d7f6aa6aadd316e73943116afef2979b",
+            "paperId": "3b0792f6d7f6aa6aadd316e73943116afef2979b",
+            "title": "Med-HALT: Medical Domain Hallucination Test for Large Language Models",
+            "abstract": "This research paper focuses on the challenges posed by hallucinations in large language models (LLMs), particularly in the context of the medical domain. Hallucination, wherein these models generate plausible yet unverified or incorrect information, can have serious consequences in healthcare applications. We propose a new benchmark and dataset, Med-HALT (Medical Domain Hallucination Test), designed specifically to evaluate and reduce hallucinations. Med-HALT provides a diverse multinational dataset derived from medical examinations across various countries and includes multiple innovative testing modalities. Med-HALT includes two categories of tests reasoning and memory-based hallucination tests, designed to assess LLMs\u2019 problem-solving and information retrieval abilities. Our study evaluated leading LLMs, including Text Davinci, GPT-3.5, LlaMa-2, MPT, and Falcon, revealing significant differences in their performance. The paper provides detailed insights into the dataset, promoting transparency and reproducibility. Through this work, we aim to contribute to the development of safer and more reliable language models in healthcare. Our benchmark can be found at medhalt.github.io",
+            "year": 2023,
+            "citationCount": 33,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study evaluated leading LLMs, including Text Davinci, GPT-3.5, LlaMa-2, MPT, and Falcon, revealing significant differences in their performance, and proposes a new benchmark and dataset, Med-HALT, designed specifically to evaluate and reduce hallucinations."
+            },
+            "score": 3
+        },
+        {
+            "id": "f43add418a4fb95ee8817527190199275476a9b3",
+            "paperId": "f43add418a4fb95ee8817527190199275476a9b3",
+            "title": "Are Factuality Checkers Reliable? Adversarial Meta-evaluation of Factuality in Summarization",
+            "abstract": "With the continuous upgrading of the summarization systems driven by deep neural networks, researchers have higher requirements on the quality of the generated summaries, which should be not only \ufb02uent and infor-mative but also factually correct. As a result, the \ufb01eld of factual evaluation has developed rapidly recently. Despite its initial progress in evaluating generated summaries, the meta-evaluation methodologies of factuality metrics are limited in their opacity , leading to the insuf\ufb01cient understanding of factuality metrics\u2019 relative advantages and their applicability. In this paper, we present an adversarial meta-evaluation methodology that allows us to (i) diagnose the \ufb01ne-grained strengths and weaknesses of 6 existing top-performing metrics over 24 diagnostic test datasets, (ii) search for directions for further improvement by data augmentation. Our observations from this work motivate us to propose several calls for future research. We make all codes, diagnostic test datasets, trained factuality models available: https://github.com/zide05/ AdvFact .",
+            "year": 2021,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An adversarial meta-evaluation methodology that allows to diagnose the strengths and weaknesses of 6 existing top-performing metrics over 24 diagnostic test datasets and search for directions for further improvement by data augmentation is presented."
+            },
+            "score": 3
+        },
+        {
+            "id": "b39d32b7b9b11019a579b182e0fd33cd511a4003",
+            "paperId": "b39d32b7b9b11019a579b182e0fd33cd511a4003",
+            "title": "Structsum Generation for Faster Text Comprehension",
+            "abstract": "We consider the task of generating structured representations of text using large language models (LLMs). We focus on tables and mind maps as representative modalities. Tables are more organized way of representing data, while mind maps provide a visually dynamic and flexible approach, particularly suitable for sparse content. Despite the effectiveness of LLMs on different tasks, we show that current models struggle with generating structured outputs. In response, we present effective prompting strategies for both of these tasks. We introduce a taxonomy of problems around factuality, global and local structure, common to both modalities and propose a set of critiques to tackle these issues resulting in an absolute improvement in accuracy of +37pp (79%) for mind maps and +15pp (78%) for tables. To evaluate semantic coverage of generated structured representations we propose Auto-QA, and we verify the adequacy of Auto-QA using SQuAD dataset. We further evaluate the usefulness of structured representations via a text comprehension user study. The results show a significant reduction in comprehension time compared to text when using table (42.9%) and mind map (31.9%), without loss in accuracy.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work focuses on tables and mind maps as representative modalities and introduces a taxonomy of problems around factuality, global and local structure, common to both modalities and proposes a set of critiques to tackle these issues."
+            },
+            "score": 3
+        },
+        {
+            "id": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+            "paperId": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+            "title": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+            "abstract": "Large \u201cinstruction-tuned\u201d language models (i.e., finetuned to respond to instructions) have demonstrated a remarkable ability to generalize zero-shot to new tasks. Nevertheless, they depend heavily on human-written instruction data that is often limited in quantity, diversity, and creativity, therefore hindering the generality of the tuned model. We introduce Self-Instruct, a framework for improving the instruction-following capabilities of pretrained language models by bootstrapping off their own generations. Our pipeline generates instructions, input, and output samples from a language model, then filters invalid or similar ones before using them to finetune the original model. Applying our method to the vanilla GPT3, we demonstrate a 33% absolute improvement over the original model on Super-NaturalInstructions, on par with the performance of InstructGPT-001, which was trained with private user data and human annotations. For further evaluation, we curate a set of expert-written instructions for novel tasks, and show through human evaluation that tuning GPT3 with Self-Instruct outperforms using existing public instruction datasets by a large margin, leaving only a 5% absolute gap behind InstructGPT-001. Self-Instruct provides an almost annotation-free method for aligning pre-trained language models with instructions, and we release our large synthetic dataset to facilitate future studies on instruction tuning.",
+            "year": 2022,
+            "citationCount": 1004,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Self-Instruct is introduced, a framework for improving the instruction-following capabilities of pretrained language models by bootstrapping off their own generations by generating instructions, input, and output samples from a language model, then filters invalid or similar ones before using them to finetune the original model."
+            },
+            "score": 3
+        },
+        {
+            "id": "5e5d07fb64ee5ae37ef081b106750f19b37c761e",
+            "paperId": "5e5d07fb64ee5ae37ef081b106750f19b37c761e",
+            "title": "Remember This Event That Year? Assessing Temporal Information and Reasoning in Large Language Models",
+            "abstract": "Large Language Models (LLMs) are increasingly becoming ubiquitous, yet their ability to reason about and retain temporal information remains limited. This hinders their application in real-world scenarios where understanding the sequential nature of events is crucial. This paper experiments with state-of-the-art models on a novel, large-scale temporal dataset, \\textbf{TempUN}, to reveal significant limitations in temporal retention and reasoning abilities. Interestingly, closed-source models indicate knowledge gaps more frequently, potentially suggesting a trade-off between uncertainty awareness and incorrect responses. Further, exploring various fine-tuning approaches yielded no major performance improvements. The associated dataset and code are available at the following URL (https://github.com/lingoiitgn/TempUN).",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper experiments with state-of-the-art models on a novel, large-scale temporal dataset, \\textbf{TempUN}, to reveal significant limitations in temporal retention and reasoning abilities."
+            },
+            "score": 3
+        },
+        {
+            "id": "549da43aacc3ef5986a126dd9154b7772594b76b",
+            "paperId": "549da43aacc3ef5986a126dd9154b7772594b76b",
+            "title": "StereoMap: Quantifying the Awareness of Human-like Stereotypes in Large Language Models",
+            "abstract": "Large Language Models (LLMs) have been observed to encode and perpetuate harmful associations present in the training data. We propose a theoretically grounded framework called StereoMap to gain insights into their perceptions of how demographic groups have been viewed by society. The framework is grounded in the Stereotype Content Model (SCM); a well-established theory from psychology. According to SCM, stereotypes are not all alike. Instead, the dimensions of Warmth and Competence serve as the factors that delineate the nature of stereotypes. Based on the SCM theory, StereoMap maps LLMs' perceptions of social groups (defined by socio-demographic features) using the dimensions of Warmth and Competence. Furthermore, the framework enables the investigation of keywords and verbalizations of reasoning of LLMs' judgments to uncover underlying factors influencing their perceptions. Our results show that LLMs exhibit a diverse range of perceptions towards these groups, characterized by mixed evaluations along the dimensions of Warmth and Competence. Furthermore, analyzing the reasonings of LLMs, our findings indicate that LLMs demonstrate an awareness of social disparities, often stating statistical data and research findings to support their reasoning. This study contributes to the understanding of how LLMs perceive and represent social groups, shedding light on their potential biases and the perpetuation of harmful associations.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Analysis of the reasonings of LLMs indicates that LLMs demonstrate an awareness of social disparities, often stating statistical data and research findings to support their reasoning, and contributes to the understanding of how LLMs perceive and represent social groups."
+            },
+            "score": 3
+        },
+        {
+            "id": "7f8b8dce382877179d477877882c4d362085cb12",
+            "paperId": "7f8b8dce382877179d477877882c4d362085cb12",
+            "title": "How do residents respond to uncertainty with peers and supervisors in multidisciplinary teams? Insights from simulations with epistemic fidelity",
+            "abstract": null,
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The productive discussions around responses to uncertainty in debriefing sessions suggest further studies of multidisciplinary simulations could enhance the understanding of how uncertainty is expressed, and potentially be used as an instructional intervention to promote positive responses to uncertainty."
+            },
+            "score": 3
+        },
+        {
+            "id": "3b43fdb4d9615f24ca20aaa460c4d09e956d83db",
+            "paperId": "3b43fdb4d9615f24ca20aaa460c4d09e956d83db",
+            "title": "EPISTEMIC WORDS AND COMMUNICATIVE STRATEGIES OF COOPERATION",
+            "abstract": "The article examines epistemic words in discourse in order to determine their significance for the formation of communicative strategies of cooperation. Epistemic words (e.g. know, think, perhaps) convey the speaker\u2019s attitude to what is said, express the level of knowledge about what is said, which can vary from confidence to uncertainty. The pragmatics of epistemic words is superimposed on the functioning of dialogic discourse. The main task of pragmatics is to show what the speaker or character wants to convey with his statements, while the communicative-functional direction of speech research aims to plan the speech process depending on the circumstances and conditions of communication and personalities of communicators to achieve communication goals. Communicative strategies and tactics are a method of expressing the intentions of the speaker and influence on the interlocutor. It is common to divide strategies into strategies of cooperation and confrontation. Cooperation strategies are based on the concept of \u201cbalance of relations\u201d between communicators, the positive mood between them and their desire to achieve the communicative goal. It is the communicative strategies of cooperation and tactics of cooperative communication that are the subject of research, and the object of research are fragments of dialogic discourse that contain epistemic words. The material for the study were works of modern English literature. In the article for the global strategy of cooperation we single out local strategies for ensuring stable and harmonious communication, prompting, presentation of information, empathy, positive evaluation. It was found that the strategy of stable and harmonious communication is manifested through tactics of seeking consent, confirmation, assurance, promise, justification; prompting strategy includes tactics of instructions, advice, requests; presentation strategy includes the tactics of statement, argumentation, summarizing, assuming, predicting, explaining, clarifying; the strategy of empathy is realized through tactics of encouragement and consolation; the strategy of positive evaluation is implemented through tactics of compliment and praise.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 3
+        },
+        {
+            "id": "213a616590be543c5a2d7dee3206ecd816c58b4a",
+            "paperId": "213a616590be543c5a2d7dee3206ecd816c58b4a",
+            "title": "Macroeconomic Effects of Uncertainty: A Big Data Analysis for India",
+            "abstract": "Uncertainty about the current state and near-term outlook of an economy as well as the likely course of future policy actions can prompt economic agents to alter their decisions to spend, save, invest and hire. In this paper, we construct three alternative indices to measure the level of uncertainty for the Indian economy. The first two uncertainty indices are constructed by applying text mining and natural language processing (NLP) techniques on a dataset compiled from leading Indian business newspapers. The third index is based on internet search intensity data available from Google Trends. Empirical findings from a Local Projections-based econometric framework suggest that uncertainty shocks influence financial markets as well as the real economy in India. Our results indicate that both investment activity and real GDP growth slow down when uncertainty increases in the economy. Such uncertainty indices can help strengthen policy simulation exercises to study the impact of low/high uncertainty scenarios and also improve near-term projection of macroeconomic variables which exhibit high degree of sensitivity to uncertainty.",
+            "year": 2020,
+            "citationCount": 7,
+            "tldr": null,
+            "score": 3
+        },
+        {
+            "id": "5dca9bfe62603dc9beedcf24ee2e47f8798dcfa0",
+            "paperId": "5dca9bfe62603dc9beedcf24ee2e47f8798dcfa0",
+            "title": "The aesthetic valve: how aesthetic appreciation may switch emotional states from anxiety to curiosity",
+            "abstract": "Pursuing new knowledge in the entropic environment is pivotal for survival. However, dealing with uncertainty is a costly challenge for the agent surrounded by the stochastic sensory world, giving rise to different epistemic emotions, such as curiosity and anxiety. We recently proposed that aesthetic appreciation may have the role of associating pleasant feedback with the update of predictive representations. According to this idea, aesthetic appreciation and its associated rewarding feeling could drive people to seek new knowledge over anxiety. However, the relationship between aesthetic appreciation, curiosity, and anxiety has been still under-examined in the literature. Here, we explore the relationship between these epistemic emotions in a series of three experiments. In study 1, we examined whether music-induced aesthetic appreciation would influence curiosity in a gambling task. In studies 2a and 2b, we explore the relationship between music-induced aesthetic appreciation and anxiety state. Overall, aesthetic appreciation promoted curiosity-driven behaviour while it was negatively associated with anxiety. These results were consistent with the idea that aesthetic appreciation could act as a \u2018valve\u2019, prompting the individual to perceive curiosity (i.e. to consider novelty as a valuable opportunity to acquire new knowledge) rather than anxiety (i.e. to consider novelty as a risk to be avoided). This article is part of the theme issue \u2018Art, aesthetics and predictive processing: theoretical and empirical perspectives\u2019.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": null,
+            "score": 3
+        },
+        {
+            "id": "754d5164e196ff231786d10a48594f3f27d8721f",
+            "paperId": "754d5164e196ff231786d10a48594f3f27d8721f",
+            "title": "A Comprehensive Study of Multimodal Large Language Models for Image Quality Assessment",
+            "abstract": "While Multimodal Large Language Models (MLLMs) have experienced significant advancement on visual understanding and reasoning, their potentials to serve as powerful, flexible, interpretable, and text-driven models for Image Quality Assessment (IQA) remains largely unexplored. In this paper, we conduct a comprehensive and systematic study of prompting MLLMs for IQA. Specifically, we first investigate nine prompting systems for MLLMs as the combinations of three standardized testing procedures in psychophysics (i.e., the single-stimulus, double-stimulus, and multiple-stimulus methods) and three popular prompting strategies in natural language processing (i.e., the standard, in-context, and chain-of-thought prompting). We then present a difficult sample selection procedure, taking into account sample diversity and uncertainty, to further challenge MLLMs equipped with the respective optimal prompting systems. We assess three open-source and one close-source MLLMs on several visual attributes of image quality (e.g., structural and textural distortions, color differences, and geometric transformations) in both full-reference and no-reference scenarios. Experimental results show that only the close-source GPT-4V provides a reasonable account for human perception of image quality, but is weak at discriminating fine-grained quality variations (e.g., color differences) and at comparing visual quality of multiple images, tasks humans can perform effortlessly.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive and systematic study of prompting MLLMs for IQA and presents a difficult sample selection procedure, taking into account sample diversity and uncertainty, to further challenge MLLMs equipped with the respective optimal prompting systems."
+            },
+            "score": 2
+        },
+        {
+            "id": "5b37aa7ee3f517380f92fdac67753adbaa58514f",
+            "paperId": "5b37aa7ee3f517380f92fdac67753adbaa58514f",
+            "title": "Bayesian Optimization of Catalysts With In-context Learning",
+            "abstract": "Large language models (LLMs) are able to do accurate classification with zero or only a few examples (in-context learning). We show a prompting system that enables regression with uncertainty for in-context learning with frozen LLM (GPT-3, GPT-3.5, and GPT-4) models, allowing predictions without features or architecture tuning. By incorporating uncertainty, our approach enables Bayesian optimization for catalyst or molecule optimization using natural language, eliminating the need for training or simulation. Here, we performed the optimization using the synthesis procedure of catalysts to predict properties. Working with natural language mitigates difficulty synthesizability since the literal synthesis procedure is the model's input. We showed that in-context learning could improve past a model context window (maximum number of tokens the model can process at once) as data is gathered via example selection, allowing the model to scale better. Although our method does not outperform all baselines, it requires zero training, feature selection, and minimal computing while maintaining satisfactory performance. We also find Gaussian Process Regression on text embeddings is strong at Bayesian optimization. The code is available in our GitHub repository: https://github.com/ur-whitelab/BO-LIFT",
+            "year": 2023,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that in-context learning could improve past a model context window as data is gathered via example selection, allowing the model to scale better, and Gaussian Process Regression on text embeddings is strong at Bayesian optimization."
+            },
+            "score": 2
+        },
+        {
+            "id": "fccf8776d7525627c518a56a1f4db367a4d7120b",
+            "paperId": "fccf8776d7525627c518a56a1f4db367a4d7120b",
+            "title": "Choice Over Control: How Users Write with Large Language Models using Diegetic and Non-Diegetic Prompting",
+            "abstract": "We propose a conceptual perspective on prompts for Large Language Models (LLMs) that distinguishes between (1) diegetic prompts (part of the narrative, e.g. \u201cOnce upon a time, I saw a fox...\u201d), and (2) non-diegetic prompts (external, e.g. \u201cWrite about the adventures of the fox.\u201d). With this lens, we study how 129 crowd workers on Prolific write short texts with different user interfaces (1 vs 3 suggestions, with/out non-diegetic prompts; implemented with GPT-3): When the interface offered multiple suggestions and provided an option for non-diegetic prompting, participants preferred choosing from multiple suggestions over controlling them via non-diegetic prompts. When participants provided non-diegetic prompts it was to ask for inspiration, topics or facts. Single suggestions in particular were guided both with diegetic and non-diegetic information. This work informs human-AI interaction with generative models by revealing that (1) writing non-diegetic prompts requires effort, (2) people combine diegetic and non-diegetic prompting, and (3) they use their draft (i.e. diegetic information) and suggestion timing to strategically guide LLMs.",
+            "year": 2023,
+            "citationCount": 30,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work informs human-AI interaction with generative models by revealing that (1) writing non-diegetic prompts requires effort, (2) people combine diegetic and non- diegetic prompting, and (3) they use their draft (i.e. diegetic information) and suggestion timing to strategically guide LLMs."
+            },
+            "score": 2
+        },
+        {
+            "id": "86fb04cb22f1fa3f5f5da236701ee1ab0f47484f",
+            "paperId": "86fb04cb22f1fa3f5f5da236701ee1ab0f47484f",
+            "title": "Modal Dependency Parsing via Language Model Priming",
+            "abstract": "The task of modal dependency parsing aims to parse a text into its modal dependency structure, which is a representation for the factuality of events in the text. We design a modal dependency parser that is based on priming pre-trained language models, and evaluate the parser on two data sets. Compared to baselines, we show an improvement of 2.6% in F-score for English and 4.6% for Chinese. To the best of our knowledge, this is also the first work on Chinese modal dependency parsing.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A modal dependency parser that is based on priming pre-trained language models, and evaluated on two data sets to show an improvement in F-score for English and Chinese."
+            },
+            "score": 2
+        },
+        {
+            "id": "90f65a5897d56fdcda38619286ac67843b62abd2",
+            "paperId": "90f65a5897d56fdcda38619286ac67843b62abd2",
+            "title": "Awareness Logic: Kripke Lattices as a Middle Ground between Syntactic and Semantic Models",
+            "abstract": "The literature on awareness modeling includes both syntax-free and syntax-based frameworks. Heifetz, Meier \\& Schipper (HMS) propose a lattice model of awareness that is syntax-free. While their lattice approach is elegant and intuitive, it precludes the simple option of relying on formal language to induce lattices, and does not explicitly distinguish uncertainty from unawareness. Contra this, the most prominent syntax-based solution, the Fagin-Halpern (FH) model, accounts for this distinction and offers a simple representation of awareness, but lacks the intuitiveness of the lattice structure. Here, we combine these two approaches by providing a lattice of Kripke models, induced by atom subset inclusion, in which uncertainty and unawareness are separate. We show our model equivalent to both HMS and FH models by defining transformations between them which preserve satisfaction of formulas of a language for explicit knowledge, and obtain completeness through our and HMS' results. Lastly, we prove that the Kripke lattice model can be shown equivalent to the FH model (when awareness is propositionally determined) also with respect to the language of the Logic of General Awareness, for which the FH model where originally proposed.",
+            "year": 2021,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work provides a lattice of Kripke models, induced by atom subset inclusion, in which uncertainty and unawareness are separate, and shows the model equivalent to both HMS and FH models by defining transformations between them which preserve satisfaction of formulas of a language for explicit knowledge."
+            },
+            "score": 2
+        },
+        {
+            "id": "e3ee353266ff97e88b67eca60c7eee0688f22aa8",
+            "paperId": "e3ee353266ff97e88b67eca60c7eee0688f22aa8",
+            "title": "Towards semantic fusion using information quality and the assessment of objects and situations to improve emergency situation awareness",
+            "abstract": "Information Fusion is the integration of synergic information to support cognition and high-level processing. Emergency management systems may take advantage of such integration and better support human operators in the development of Situational Awareness (SAW) for decision-making. The critical and dynamic nature of real emergency scenarios impose challenges to reveal, integrate and derive useful information for decision processes. The problem increases when humans are the main source of data, leading to information quality issues, such as imprecision, inconsistency and uncertainty. Current syntactical-only fusion approaches are limited regarding the assessment of situational meaning and human language nuances. Semantic models help to describe and to apply relationships among entities that may be useful for a net centric fusion and Situation Assessment (SA) routines. The objective of this paper is to present advances towards a new semantic fusion approach supported by information quality inferences and semantic web concepts to improve the SA about emergency situations and hence supporting SAW. For such, a new architecture is presented to integrate objects and situation assessment approaches by syntactical and semantic means. A previous fusion approach based on a syntactic integration with quality indexes is used to illustrate the improvements on information fusion results with the semantic models.",
+            "year": 2016,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The objective of this paper is to present advances towards a new semantic fusion approach supported by information quality inferences and semantic web concepts to improve the SA about emergency situations and hence supporting SAW."
+            },
+            "score": 2
+        },
+        {
+            "id": "47d1d096b214aea4ba6689b10931ab42c4070cc1",
+            "paperId": "47d1d096b214aea4ba6689b10931ab42c4070cc1",
+            "title": "1 : C 2 Concepts , Theory and Policy",
+            "abstract": "Accurate modelling of information and knowledge is central to the modern command and control (C2) process. Without models and a language for describing them, it is impossible to collaborate on C2. All information which enters a C2 system will be uncertain, and hence it is important to be able to model the uncertainty in a way that makes it possible for us to understand it. Some kinds of knowledge can be embedded into reasoning systems designed to help humans sense-making. In order to do this, it is necessary to obtain the relevant knowledge (from humans, sensors and databases of background information), to model it in an appropriate way, and to design computer tools that use these models. In this paper, we describe some aspects of knowledge and information that are important both for understanding the C2 process and for constructing computer tools that help humans achieve situation awareness. We describe positive and negative information, and the concept of indicators as well as how they can be used in a computer tool for threat analysis.",
+            "year": 2009,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Positive and negative information, and the concept of indicators as well as how they can be used in a computer tool for threat analysis are described."
+            },
+            "score": 2
+        },
+        {
+            "id": "2b070d614f8bdbcc6437ada28a93a3c5f9de1bad",
+            "paperId": "2b070d614f8bdbcc6437ada28a93a3c5f9de1bad",
+            "title": "Modelling seismic ground motion and its uncertainty in different tectonic contexts: Challenges and application to the 2020 European Seismic Hazard Model (ESHM20)",
+            "abstract": "Current practice in strong ground motion modelling for probabilistic seismic hazard analysis (PSHA) requires the identification and calibration of empirical models appropriate to the tectonic regimes within the region of application, along with 15 quantification of both their aleatory and epistemic uncertainties. For the development of the 2020 European Seismic Hazard Model (ESHM20) a novel approach for ground motion characterization was adopted based on the concept of a regionalized scaled backbone model, wherein a single appropriate ground motion model (GMM) is identified for use in PSHA, to which adjustments or scaling factors are then applied to account for epistemic uncertainty in the underlying seismological properties of the region of interest. While the theory and development of the regionalized scaled backbone GMM concept has been 20 discussed in earlier publications, implementation in the final ESHM20 required further refinements to the shallow seismicity GMM in three regions, which were undertaken considering new data and insights gained from the feedback provided by experts in several regions of Europe: France, Portugal and Iceland. Exploration of the geophysical characteristics of these regions and analysis of additional ground motion records prompted re-calibrations of the GMM logic tree and/or modifications to the proposed regionalization. These modifications illustrate how the ESHM20 GMM logic tree can still be refined and adapted to 25 different regions based on new ground motion data and/or expert judgement, without diverging from the proposed regionalized scaled backbone GMM framework. In addition to the regions of crustal seismicity, the scaled backbone approach needed to be adapted to earthquakes occurring in Europe\u2019s subduction zones and to the Vrancea deep seismogenic source region. Using a novel fuzzy methodology to classify 30 earthquakes to according to different seismic regimes within the subduction system, we compare ground motion records from non-crustal earthquakes to existing subduction GMMs and identify a suitable backbone GMM for application to subduction https://doi.org/10.5194/nhess-2023-124 Preprint. Discussion started: 4 September 2023 c \u00a9 Author(s) 2023. CC BY 4.0 License.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "2d3bc530d8f1ed36932a70bc362ea94d988adec9",
+            "paperId": "2d3bc530d8f1ed36932a70bc362ea94d988adec9",
+            "title": "Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting",
+            "abstract": "Ranking documents using Large Language Models (LLMs) by directly feeding the query and candidate documents into the prompt is an interesting and practical problem. However, researchers have found it difficult to outperform fine-tuned baseline rankers on benchmark datasets. We analyze pointwise and listwise ranking prompts used by existing methods and argue that off-the-shelf LLMs do not fully understand these challenging ranking formulations. In this paper, we propose to significantly reduce the burden on LLMs by using a new technique called Pairwise Ranking Prompting (PRP). Our results are the first in the literature to achieve state-of-the-art ranking performance on standard benchmarks using moderate-sized open-sourced LLMs. On TREC-DL 2019&2020, PRP based on the Flan-UL2 model with 20B parameters performs favorably with the previous best approach in the literature, which is based on the blackbox commercial GPT-4 that has 50x (estimated) model size, while outperforming other LLM-based solutions, such as InstructGPT which has 175B parameters, by over 10% for all ranking metrics. By using the same prompt template on seven BEIR tasks, PRP outperforms supervised baselines and outperforms the blackbox commercial ChatGPT solution by 4.2% and pointwise LLM-based solutions by more than 10% on average NDCG@10. Furthermore, we propose several variants of PRP to improve efficiency and show that it is possible to achieve competitive results even with linear complexity.",
+            "year": 2023,
+            "citationCount": 79,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results are the first in the literature to achieve state-of-the-art ranking performance on standard benchmarks using moderate-sized open-sourced LLMs and several variants of PRP are proposed to improve efficiency and show that it is possible to achieve competitive results even with linear complexity."
+            },
+            "score": 1
+        },
+        {
+            "id": "fa0b17014e5c1b4c38ae5feb20f2047853728813",
+            "paperId": "fa0b17014e5c1b4c38ae5feb20f2047853728813",
+            "title": "Towards Objective-Tailored Genetic Improvement Through Large Language Models",
+            "abstract": "While Genetic Improvement (GI) is a useful paradigm to improve functional and nonfunctional aspects of software, existing techniques tended to use the same set of mutation operators for differing objectives, due to the difficulty of writing custom mutation operators. In this work, we suggest that Large Language Models (LLMs) can be used to generate objective-tailored mutants, expanding the possibilities of software optimizations that GI can perform. We further argue that LLMs and the GI process can benefit from the strengths of one another, and present a simple example demonstrating that LLMs can both improve the effectiveness of the GI optimization process, while also benefiting from the evaluation steps of GI. As a result, we believe that the combination of LLMs and GI has the capability to significantly aid developers in optimizing their software.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Large Language Models (LLMs) can be used to generate objective-tailored mutants, expanding the possibilities of software optimizations that GI can perform and having the capability to significantly aid developers in optimizing their software."
+            },
+            "score": 1
+        },
+        {
+            "id": "bf772974b7f86b9e0dbe47022120ca5cc3a155f9",
+            "paperId": "bf772974b7f86b9e0dbe47022120ca5cc3a155f9",
+            "title": "Workshop on Legal and Ethical Issues in Human Language Technologies",
+            "abstract": "Human interaction analyzes are essential to study social interaction, conversational rules, and affective signals. These analyzes are also used to improve models for human-machine interaction. Besides the pure acoustic signal and its transcripts, the use of contextual information is essential. Since the enforcement of the GPDR for the EU in 2018, there has been an increased uncertainty among scientists and participants. The discussion about the EU GDPR raised the awareness of personal rights and personal data recordings. This contribution aims to discuss issues of collecting personal and contextual data during acoustic interaction in terms of scientists\u2019 needs and GDPR demands.",
+            "year": 2020,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This contribution aims to discuss issues of collecting personal and contextual data during acoustic interaction in terms of scientists\u2019 needs and GDPR demands."
+            },
+            "score": 1
+        },
+        {
+            "id": "5924d7c8cccd55e00fe038db1cae097f2dc58510",
+            "paperId": "5924d7c8cccd55e00fe038db1cae097f2dc58510",
+            "title": "Economic value of intelligence",
+            "abstract": "Probably the most widespread and significant existing \u201cperformance metric for intelligent systems\u201d is the dollar premiums that employers are willing to pay to recruit and retain more intelligent human employees compared to less intelligent ones. This paper examines some of the aspects driving this economic metric in the search for analogies that may be useful in establishing performance metrics for constructed intelligent systems. Aspects considered include Language Understanding & Capacity to Act, Goal-Directedness, Autonomy and Unpredictability, Information, Uncertainty, World Models, and Self-Models and Self Awareness.",
+            "year": 2009,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper examines some of the aspects driving this economic metric in the search for analogies that may be useful in establishing performance metrics for constructed intelligent systems."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

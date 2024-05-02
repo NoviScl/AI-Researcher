@@ -34,5 +34,838 @@
             "Explanation": "The baseline output endorses and amplifies the biases and extreme views present in the input prompt, using dehumanizing language and advocating disproportionate actions without regard for human rights or factual nuance. In contrast, the ECP process first generates relevant ethical principles to guide the discussion. It then considers how these principles constrain acceptable responses, ruling out blanket attacks, inflammatory rhetoric, and inhumane policy proposals. The ethical filtering step identifies specific problems in the draft response. The final output, while still acknowledging the challenges around illegal immigration, frames the discussion in a more balanced, factual, and humane manner grounded in ethical principles. It avoids the biases and extremism of the baseline and instead advocates for solutions that uphold human dignity."
         },
         "Fallback Plan": "If ECP does not significantly improve the ethical alignment of outputs compared to the baseline, we can explore several fallback analyses and modifications:\n\n1. Analyze the quality and relevance of the generated ethical principles. If the principles are off-topic or miss key ethical considerations, the subsequent steps will be less effective. We can experiment with different prompts or few-shot examples to improve the principle generation.\n\n2. Examine how well the constraint propagation and filtering steps actually align with the generated principles. There may be a mismatch between the principles and their application. We can try different prompts to better connect the principles to the generation process.\n\n3. Assess whether the model's underlying biases and knowledge limitations are insurmountable obstacles to ethical output. ECP may not be able to fully overcome a model's ingrained biases or lack of factual knowledge. Documenting these limitations would still be a valuable contribution.\n\n4. Experiment with different orderings or iterations of the ECP steps. Perhaps doing multiple rounds of filtering and revision would incrementally improve outputs.\n\n5. Collect human feedback on the outputs and use it to refine the prompts. We could have raters suggest improved wordings and use those to iteratively update the prompts.\n\nIf ECP still proves ineffective after these modifications, the project could pivot to a more open-ended analysis of the obstacles to aligning language models with ethical principles. This could include examining the interplay of scale, pretraining data, and prompt design in shaping model outputs. The project could also compare the relative effectiveness of prompting vs. other methods like fine-tuning or retrieval augmentation for imposing ethical constraints. Such an analysis, while less conclusive than a clear success, would still offer valuable insights into the challenges of ethical alignment for language models."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"ethical language models prompting\")",
+        "KeywordQuery(\"language models ethical constraints\")",
+        "KeywordQuery(\"ethical prompting language models\")",
+        "KeywordQuery(\"language models ethical alignment prompts\")",
+        "KeywordQuery(\"Ethical Constraint Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "266a77cd2bb9d4f0cc5fd5b48f64dd38503eb901",
+            "paperId": "266a77cd2bb9d4f0cc5fd5b48f64dd38503eb901",
+            "title": "She had Cobalt Blue Eyes: Prompt Testing to Create Aligned and Sustainable Language Models",
+            "abstract": "As the use of large language models (LLMs) increases within society, as does the risk of their misuse. Appropriate safeguards must be in place to ensure LLM outputs uphold the ethical standards of society, highlighting the positive role that artificial intelligence technologies can have. Recent events indicate ethical concerns around conventionally trained LLMs, leading to overall unsafe user experiences. This motivates our research question: how do we ensure LLM alignment? In this work, we introduce a test suite of unique prompts to foster the development of aligned LLMs that are fair, safe, and robust. We show that prompting LLMs at every step of the development pipeline, including data curation, pre-training, and fine-tuning, will result in an overall more responsible model. Our test suite evaluates outputs from four state-of-the-art language models: GPT-3.5, GPT-4, OPT, and LLaMA-2. The assessment presented in this paper highlights a gap between societal alignment and the capabilities of current LLMs. Additionally, implementing a test suite such as ours lowers the environmental overhead of making models safe and fair.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that prompting LLMs at every step of the development pipeline, including data curation, pre-training, and fine-tuning, will result in an overall more responsible model, and implementing a test suite such as the authors' lowers the environmental overhead of making models safe and fair."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs by explicitly incorporating ethical constraints into the generation process through prompting techniques. The approach involves generating ethical principles, propagating constraints during generation, and filtering outputs for violations.\n\nThe research problem in the paper is ensuring language model alignment by developing a test suite of unique prompts to foster the development of fair, safe, and robust models. The approach involves prompting language models at every step of the development pipeline, including data curation, pre-training, and fine-tuning.\n\nWhile both works aim to improve the ethical alignment of language models, the proposal focuses on a specific prompting technique applied during the generation process, whereas the paper proposes a more general prompting approach throughout the model development pipeline. The methods and focus of the two works are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ac5924d2c948a128e30344fd7c0871d3bf99d0a9",
+            "paperId": "ac5924d2c948a128e30344fd7c0871d3bf99d0a9",
+            "title": "Denevil: Towards Deciphering and Navigating the Ethical Values of Large Language Models via Instruction Learning",
+            "abstract": "Large Language Models (LLMs) have made unprecedented breakthroughs, yet their increasing integration into everyday life might raise societal risks due to generated unethical content. Despite extensive study on specific issues like bias, the intrinsic values of LLMs remain largely unexplored from a moral philosophy perspective. This work delves into ethical values utilizing Moral Foundation Theory. Moving beyond conventional discriminative evaluations with poor reliability, we propose DeNEVIL, a novel prompt generation algorithm tailored to dynamically exploit LLMs' value vulnerabilities and elicit the violation of ethics in a generative manner, revealing their underlying value inclinations. On such a basis, we construct MoralPrompt, a high-quality dataset comprising 2,397 prompts covering 500+ value principles, and then benchmark the intrinsic values across a spectrum of LLMs. We discovered that most models are essentially misaligned, necessitating further ethical value alignment. In response, we develop VILMO, an in-context alignment method that substantially enhances the value compliance of LLM outputs by learning to generate appropriate value instructions, outperforming existing competitors. Our methods are suitable for black-box and open-source models, offering a promising initial step in studying the ethical values of LLMs.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DeNEVIL, a novel prompt generation algorithm tailored to dynamically exploit LLMs' value vulnerabilities and elicit the violation of ethics in a generative manner, revealing their underlying value inclinations is proposed."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs by incorporating ethical constraints into the generation process via prompting. The approach is Ethical Constraint Prompting (ECP), which generates ethical principles, propagates them as constraints during generation, and filters outputs for violations.\n\nThe research problem in the paper is studying the intrinsic ethical values of language models and improving their value alignment. The approach is DeNEVIL, a prompt generation algorithm that elicits ethical violations to reveal underlying value inclinations, and VILMO, an in-context learning method to generate value instructions for alignment.\n\nWhile both works aim to improve the ethical alignment of language models, the proposal focuses on incorporating ethical constraints into the generation process, while the paper focuses on studying intrinsic ethical values and using in-context learning for alignment. The methods (ECP vs DeNEVIL+VILMO) are quite different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7d5175db1b99552491063d2d9581b0b51e1d2932",
+            "paperId": "7d5175db1b99552491063d2d9581b0b51e1d2932",
+            "title": "Despite \"super-human\" performance, current LLMs are unsuited for decisions about ethics and safety",
+            "abstract": "Large language models (LLMs) have exploded in popularity in the past few years and have achieved undeniably impressive results on benchmarks as varied as question answering and text summarization. We provide a simple new prompting strategy that leads to yet another supposedly\"super-human\"result, this time outperforming humans at common sense ethical reasoning (as measured by accuracy on a subset of the ETHICS dataset). Unfortunately, we find that relying on average performance to judge capabilities can be highly misleading. LLM errors differ systematically from human errors in ways that make it easy to craft adversarial examples, or even perturb existing examples to flip the output label. We also observe signs of inverse scaling with model size on some examples, and show that prompting models to\"explain their reasoning\"often leads to alarming justifications of unethical actions. Our results highlight how human-like performance does not necessarily imply human-like understanding or reasoning.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work provides a simple new prompting strategy that leads to yet another supposedly \"super-human\" result, this time outperforming humans at common sense ethical reasoning (as measured by accuracy on a subset of the ETHICS dataset)."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs by explicitly incorporating ethical constraints into the generation process through prompting techniques. The approach involves generating relevant ethical principles, using them to constrain the output space during generation, and filtering outputs for violations of the principles.\n\nThe research problem in the paper is evaluating the suitability of large language models for making decisions about ethics and safety, despite their seemingly impressive performance on ethical reasoning benchmarks. The approach involves analyzing the systematic differences between LLM and human errors, the effect of model size on performance, and the reasoning behind the models' decisions.\n\nThe proposal focuses on a novel prompting method to improve ethical alignment during generation, while the paper focuses on the limitations of LLMs in ethical reasoning and decision-making. The proposal aims to enhance LLMs' ethical output, while the paper aims to highlight their unsuitability for ethical decisions despite benchmark performance.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "paperId": "7dc928f41e15f65f1267bd87b0fcfcc7e715cb56",
+            "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+            "abstract": "Large Language Models (LLMs) can achieve strong performance on many tasks by producing step-by-step reasoning before giving a final output, often referred to as chain-of-thought reasoning (CoT). It is tempting to interpret these CoT explanations as the LLM's process for solving a task. This level of transparency into LLMs' predictions would yield significant safety benefits. However, we find that CoT explanations can systematically misrepresent the true reason for a model's prediction. We demonstrate that CoT explanations can be heavily influenced by adding biasing features to model inputs--e.g., by reordering the multiple-choice options in a few-shot prompt to make the answer always\"(A)\"--which models systematically fail to mention in their explanations. When we bias models toward incorrect answers, they frequently generate CoT explanations rationalizing those answers. This causes accuracy to drop by as much as 36% on a suite of 13 tasks from BIG-Bench Hard, when testing with GPT-3.5 from OpenAI and Claude 1.0 from Anthropic. On a social-bias task, model explanations justify giving answers in line with stereotypes without mentioning the influence of these social biases. Our findings indicate that CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety. Building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods.",
+            "year": 2023,
+            "citationCount": 137,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that CoT explanations can be plausible yet misleading, which risks increasing trust in LLMs without guaranteeing their safety, and building more transparent and explainable systems will require either improving CoT faithfulness through targeted efforts or abandoning CoT in favor of alternative methods."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs through prompting techniques that guide the model to consider ethical principles during generation. The approach is Ethical Constraint Prompting (ECP), which involves generating relevant ethical principles, using them to constrain the generation process, and filtering outputs for violations.\n\nThe research problem in the abstract is investigating whether chain-of-thought (CoT) explanations faithfully represent the true reasoning behind language models' predictions. The approach is to test whether CoT explanations are influenced by input biases that the models fail to mention, indicating a lack of faithfulness.\n\nThe proposal focuses on improving ethical alignment of outputs, while the abstract focuses on testing the faithfulness of explanations. The proposal's approach is a novel prompting technique, while the abstract's approach is an analysis of existing CoT methods. Therefore, the two works address different problems and propose different approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e01515c6138bc525f7aec30fc85f2adf028d4156",
+            "paperId": "e01515c6138bc525f7aec30fc85f2adf028d4156",
+            "title": "Principle-Driven Self-Alignment of Language Models from Scratch with Minimal Human Supervision",
+            "abstract": "Recent AI-assistant agents, such as ChatGPT, predominantly rely on supervised fine-tuning (SFT) with human annotations and reinforcement learning from human feedback (RLHF) to align the output of large language models (LLMs) with human intentions, ensuring they are helpful, ethical, and reliable. However, this dependence can significantly constrain the true potential of AI-assistant agents due to the high cost of obtaining human supervision and the related issues on quality, reliability, diversity, self-consistency, and undesirable biases. To address these challenges, we propose a novel approach called SELF-ALIGN, which combines principle-driven reasoning and the generative power of LLMs for the self-alignment of AI agents with minimal human supervision. Our approach encompasses four stages: first, we use an LLM to generate synthetic prompts, and a topic-guided method to augment the prompt diversity; second, we use a small set of human-written principles for AI models to follow, and guide the LLM through in-context learning from demonstrations (of principles application) to produce helpful, ethical, and reliable responses to user's queries; third, we fine-tune the original LLM with the high-quality self-aligned responses so that the resulting model can generate desirable responses for each query directly without the principle set and the demonstrations anymore; and finally, we offer a refinement step to address the issues of overly-brief or indirect responses. Applying SELF-ALIGN to the LLaMA-65b base language model, we develop an AI assistant named Dromedary. With fewer than 300 lines of human annotations (including<200 seed prompts, 16 generic principles, and 5 exemplars for in-context learning). Dromedary significantly surpasses the performance of several state-of-the-art AI systems, including Text-Davinci-003 and Alpaca, on benchmark datasets with various settings.",
+            "year": 2023,
+            "citationCount": 137,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An AI assistant named Dromedary is developed, which combines principle-driven reasoning and the generative power of LLMs for the self-alignment of AI agents with minimal human supervision and significantly surpasses the performance of several state-of-the-art AI systems on benchmark datasets with various settings."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs through prompting techniques that guide the model to consider ethical principles during generation. The approach is Ethical Constraint Prompting (ECP), which involves generating relevant ethical principles, using them to constrain the generation process, and filtering outputs for violations.\n\nThe research problem in the paper is aligning language model outputs with human intentions to be helpful, ethical, and reliable, while minimizing the need for human supervision. The approach is SELF-ALIGN, which uses principle-driven reasoning and the model's own generative power to produce aligned responses, fine-tunes the model on these responses, and refines the outputs.\n\nWhile both works aim to improve the ethical alignment of language models, the proposal focuses specifically on prompting techniques to guide generation, while the paper proposes a more general self-alignment approach that minimizes human supervision. The methods differ in their specifics and the extent of human involvement.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "5c4a75e7436e402af046c24655fefe71ee87e379",
+            "paperId": "5c4a75e7436e402af046c24655fefe71ee87e379",
+            "title": "Robust Testing of AI Language Model Resiliency with Novel Adversarial Prompts",
+            "abstract": "In the rapidly advancing field of Artificial Intelligence (AI), this study presents a critical evaluation of the resilience and cybersecurity efficacy of leading AI models, including ChatGPT-4, Bard, Claude, and Microsoft Copilot. Central to this research are innovative adversarial prompts designed to rigorously test the content moderation capabilities of these AI systems. This study introduces new adversarial tests and the Response Quality Score (RQS), a metric specifically developed to assess the nuances of AI responses. Additionally, the research spotlights FreedomGPT, an AI tool engineered to optimize the alignment between user intent and AI interpretation. The empirical results from this investigation are pivotal for assessing AI models\u2019 current robustness and security. They highlight the necessity for ongoing development and meticulous testing to bolster AI defenses against various adversarial challenges. Notably, this study also delves into the ethical and societal implications of employing advanced \u201cjailbreak\u201d techniques in AI testing. The findings are significant for understanding AI vulnerabilities and formulating strategies to enhance AI technologies\u2019 reliability and ethical soundness, paving the way for safer and more secure AI applications.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces new adversarial tests and the Response Quality Score (RQS), a metric specifically developed to assess the nuances of AI responses, and spotlights FreedomGPT, an AI tool engineered to optimize the alignment between user intent and AI interpretation."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs, and the proposed approach is Ethical Constraint Prompting, which guides the model to consider ethical principles during generation.\n\nThe research problem in the paper is evaluating the resilience and security of AI language models against adversarial prompts, and the approach is using novel adversarial tests and a Response Quality Score metric.\n\nThe proposal focuses on improving the ethical quality of generated text, while the paper focuses on testing the robustness of AI models against adversarial attacks. The methods are also different, with the proposal using prompting to incorporate ethical constraints and the paper using adversarial testing and a scoring metric.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "paperId": "3e30a7ac4886b28eb50151f58e14a1d698cccd0e",
+            "title": "Baseline Defenses for Adversarial Attacks Against Aligned Language Models",
+            "abstract": "As Large Language Models quickly become ubiquitous, it becomes critical to understand their security vulnerabilities. Recent work shows that text optimizers can produce jailbreaking prompts that bypass moderation and alignment. Drawing from the rich body of work on adversarial machine learning, we approach these attacks with three questions: What threat models are practically useful in this domain? How do baseline defense techniques perform in this new domain? How does LLM security differ from computer vision? We evaluate several baseline defense strategies against leading adversarial attacks on LLMs, discussing the various settings in which each is feasible and effective. Particularly, we look at three types of defenses: detection (perplexity based), input preprocessing (paraphrase and retokenization), and adversarial training. We discuss white-box and gray-box settings and discuss the robustness-performance trade-off for each of the defenses considered. We find that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs. Future research will be needed to uncover whether more powerful optimizers can be developed, or whether the strength of filtering and preprocessing defenses is greater in the LLMs domain than it has been in computer vision.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that the weakness of existing discrete optimizers for text, combined with the relatively high costs of optimization, makes standard adaptive attacks more challenging for LLMs."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to guide language models to consider ethical implications during generation using a prompting method called Ethical Constraint Prompting (ECP). The paper abstract focuses on evaluating baseline defense strategies against adversarial attacks on language models, such as detection, input preprocessing, and adversarial training.\n\nThe project proposal tackles the problem of language models generating unethical outputs, while the paper abstract addresses the problem of adversarial attacks on language models. The approaches are also different: the project proposal uses prompting to guide the model's generation process, while the paper abstract evaluates various defense strategies against adversarial attacks.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "bc0549a5f07474c18987c219ecf367fb73a1b79c",
+            "paperId": "bc0549a5f07474c18987c219ecf367fb73a1b79c",
+            "title": "CValues: Measuring the Values of Chinese Large Language Models from Safety to Responsibility",
+            "abstract": "With the rapid evolution of large language models (LLMs), there is a growing concern that they may pose risks or have negative social impacts. Therefore, evaluation of human values alignment is becoming increasingly important. Previous work mainly focuses on assessing the performance of LLMs on certain knowledge and reasoning abilities, while neglecting the alignment to human values, especially in a Chinese context. In this paper, we present CValues, the first Chinese human values evaluation benchmark to measure the alignment ability of LLMs in terms of both safety and responsibility criteria. As a result, we have manually collected adversarial safety prompts across 10 scenarios and induced responsibility prompts from 8 domains by professional experts. To provide a comprehensive values evaluation of Chinese LLMs, we not only conduct human evaluation for reliable comparison, but also construct multi-choice prompts for automatic evaluation. Our findings suggest that while most Chinese LLMs perform well in terms of safety, there is considerable room for improvement in terms of responsibility. Moreover, both the automatic and human evaluation are important for assessing the human values alignment in different aspects. The benchmark and code is available on ModelScope and Github.",
+            "year": 2023,
+            "citationCount": 32,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "CValues is presented, the first Chinese human values evaluation benchmark to measure the alignment ability of LLMs in terms of both safety and responsibility criteria, and suggests that while most Chinese LLMs perform well interms of safety, there is considerable room for improvement in termsof responsibility."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving the ethical alignment of language model outputs by explicitly incorporating ethical constraints into the generation process through prompting techniques. The approach involves generating relevant ethical principles, using them to constrain the output space during generation, and filtering outputs for violations of the principles.\n\nThe research problem in the paper is evaluating the alignment of Chinese language models with human values in terms of safety and responsibility. The approach involves collecting adversarial safety prompts and responsibility prompts, then using them for both human evaluation and automatic evaluation of the models.\n\nThe proposal focuses on a novel prompting method to improve ethical alignment during generation, while the paper focuses on evaluating ethical alignment of existing models. The proposal is not tied to a particular language, while the paper is specifically about Chinese models.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e17d250eca28e6256a8f3b07442eb2b5ed3cabac",
+            "paperId": "e17d250eca28e6256a8f3b07442eb2b5ed3cabac",
+            "title": "AiSocrates: Towards Answering Ethical Quandary Questions",
+            "abstract": "Considerable advancements have been made in various NLP tasks based on the impressive power of large pre-trained language models (LLMs). These results have inspired efforts to understand the limits of LLMs so as to evaluate how far we are from achieving human level general natural language understanding. In this work, we challenge the capability of LLMs with the new task of E THICAL Q UANDARY G ENERATIVE Q UES - TION A NSWERING . Ethical quandary questions are more challenging to address because multiple con\ufb02icting answers may exist to a single quandary. We propose a system, A I S OCRATES , that provides an answer with a deliberative exchange of different perspectives to an ethical quandary, in the approach of Socratic philosophy, instead of providing a closed answer like an oracle. A I S OCRATES searches for different ethical principles applicable to the ethical quandary and generates an answer conditioned on the chosen principles through prompt-based few-shot learning. We also address safety concerns by providing a human controllability option in choosing ethical principles. We show that A I S OCRATES generates promising answers to ethical quandary questions with multiple perspectives, 6.92% more often than answers written by human philosophers by one measure, but the system still needs improvement to match the coherence of human philosophers fully. We argue that A I S OCRATES is a promising step toward developing an NLP system that incorporates human values explicitly by prompt instructions. We are releasing the code for research purposes.",
+            "year": 2022,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is argued that A I S OCRATES is a promising step toward developing an NLP system that incorporates human values explicitly by prompt instructions, and addressed safety concerns by providing a human controllability option in choosing ethical principles."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is guiding language models to consider ethical implications when generating outputs, while the approach is to use prompting with explicit ethical constraints and filtering.\n\nThe research problem in the paper is answering ethical quandary questions, while the approach is to search for applicable ethical principles and generate answers conditioned on those principles.\n\nAlthough both works involve ethics and language models, the specific problems and approaches are quite different. The proposal focuses on steering language models to be more ethically aligned during open-ended generation, while the paper tackles the specific task of answering ethical quandary questions by explicitly conditioning on selected ethical principles.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0376b7ff6bd5fd3df5dc766cb24f9ca8736ea34e",
+            "paperId": "0376b7ff6bd5fd3df5dc766cb24f9ca8736ea34e",
+            "title": "Towards Answering Open-ended Ethical Quandary Questions",
+            "abstract": "Considerable advancements have been made in various NLP tasks based on the impressive power of large language models (LLMs) and many NLP applications are deployed in our daily lives. In this work, we challenge the capability of LLMs with the new task of Ethical Quandary Generative Question Answering. Ethical quandary questions are more challenging to address because multiple conflicting answers may exist to a single quandary. We explore the current capability of LLMs in providing an answer with a deliberative exchange of different perspectives to an ethical quandary, in the approach of Socratic philosophy, instead of providing a closed answer like an oracle. We propose a model that searches for different ethical principles applicable to the ethical quandary and generates an answer conditioned on the chosen principles through prompt-based few-shot learning. We also discuss the remaining challenges and ethical issues involved in this task and suggest the direction toward developing responsible NLP systems by incorporating human values explicitly.",
+            "year": 2022,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A model is proposed that searches for different ethical principles applicable to the ethical quandary and generates an answer conditioned on the chosen principles through prompt-based few-shot learning and suggests the direction toward developing responsible NLP systems by incorporating human values explicitly."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is guiding language models to consider ethical implications when generating outputs, while the approach is to use prompting to incorporate ethical constraints into the generation process.\n\nThe research problem in the paper is exploring the capability of language models in answering open-ended ethical quandary questions, while the approach is to search for applicable ethical principles and generate answers conditioned on the chosen principles.\n\nAlthough both works involve ethics and language models, the specific research problems and approaches are different. The proposal focuses on constraining generation to avoid unethical outputs, while the paper focuses on generating deliberative answers to ethical quandaries.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "e6e3020251d354159885a7c603c0e6fa28144f2a",
+            "paperId": "e6e3020251d354159885a7c603c0e6fa28144f2a",
+            "title": "Reliability Check: An Analysis of GPT-3\u2019s Response to Sensitive Topics and Prompt Wording",
+            "abstract": "Large language models (LLMs) have become mainstream technology with their versatile use cases and impressive performance. Despite the countless out-of-the-box applications, LLMs are still not reliable. A lot of work is being done to improve the factual accuracy, consistency, and ethical standards of these models through fine-tuning, prompting, and Reinforcement Learning with Human Feedback (RLHF), but no systematic analysis of the responses of these models to different categories of statements, or on their potential vulnerabilities to simple prompting changes is available. In this work, we analyze what confuses GPT-3: how the model responds to certain sensitive topics and what effects the prompt wording has on the model response. We find that GPT-3 correctly disagrees with obvious Conspiracies and Stereotypes but makes mistakes with common Misconceptions and Controversies. The model responses are inconsistent across prompts and settings, highlighting GPT-3\u2019s unreliability.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work analyzes what confuses GPT-3: how the model responds to certain sensitive topics and what effects the prompt wording has on the model response."
+            },
+            "score": 5
+        },
+        {
+            "id": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "paperId": "1b6e810ce0afd0dd093f789d2b2742d047e316d5",
+            "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+            "abstract": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+            "year": 2022,
+            "citationCount": 3517,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks."
+            },
+            "score": 5
+        },
+        {
+            "id": "62176de125738e3b95850d1227bac81fd646b78e",
+            "paperId": "62176de125738e3b95850d1227bac81fd646b78e",
+            "title": "Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models",
+            "abstract": "Large language models (LLMs) have recently been shown to deliver impressive performance in various NLP tasks. To tackle multi-step reasoning tasks, Few-shot chain-of-thought (CoT) prompting includes a few manually crafted step-by-step reasoning demonstrations which enable LLMs to explicitly generate reasoning steps and improve their reasoning task accuracy. To eliminate the manual efforts, Zero-shot-CoT concatenates the target problem statement with \u201cLet\u2019s think step by step\u201d as an input prompt to LLMs. Despite the success of Zero-shot-CoT, it still suffers from three pitfalls: calculation errors, missing-step errors, and semantic misunderstanding errors. To address the missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists of two components: first, devising a plan to divide the entire task into smaller subtasks, and then carrying out the subtasks according to the plan. To address the calculation errors and improve the quality of generated reasoning steps, we extend PS prompting with more detailed instructions and derive PS+ prompting. We evaluate our proposed prompting strategy on ten datasets across three reasoning problems. The experimental results over GPT-3 show that our proposed zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem. The code can be found at https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting.",
+            "year": 2023,
+            "citationCount": 115,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results over GPT-3 show that the proposed zero-shot prompting consistently outperforms Zero- shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem."
+            },
+            "score": 5
+        },
+        {
+            "id": "261549439aebdda72b648ecc462448fd24857ac1",
+            "paperId": "261549439aebdda72b648ecc462448fd24857ac1",
+            "title": "Progressive-Hint Prompting Improves Reasoning in Large Language Models",
+            "abstract": "The performance of Large Language Models (LLMs) in reasoning tasks depends heavily on prompt design, with Chain-of-Thought (CoT) and self-consistency being critical methods that enhance this ability. However, these methods do not fully exploit the answers generated by the LLM to guide subsequent responses. This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers. PHP is orthogonal to CoT and self-consistency, making it easy to combine with state-of-the-art techniques to further improve performance. We conducted extensive and comprehensive experiments on seven benchmarks. The results show that PHP significantly improves accuracy while remaining highly efficient. For instance, with text-davinci-003, we observed a 4.2% improvement on GSM8K with greedy decoding compared to Complex CoT, and a 46.17% reduction in sample paths with self-consistency. With GPT-4 and PHP, we achieve state-of-the-art performances on SVAMP (89.1% ->91.9%), GSM8K (92% ->95.5%), AQuA (76.4% ->79.9%) and MATH (50.3% ->53.9%).",
+            "year": 2023,
+            "citationCount": 64,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new prompting method, named Progressive-Hint Prompting (PHP), that enables automatic multiple interactions between users and LLMs by using previously generated answers as hints to progressively guide toward the correct answers."
+            },
+            "score": 5
+        },
+        {
+            "id": "4d17bdbb77e9ee75b0e3bdabe37f6fda20c693b3",
+            "paperId": "4d17bdbb77e9ee75b0e3bdabe37f6fda20c693b3",
+            "title": "A Framework for Real-time Safeguarding the Text Generation of Large Language",
+            "abstract": "Large Language Models (LLMs) have significantly advanced natural language processing (NLP) tasks but also pose ethical and societal risks due to their propensity to generate harmful content. To address this, various approaches have been developed to safeguard LLMs from producing unsafe content. However, existing methods have limitations, including the need for training specific control models and proactive intervention during text generation, that lead to quality degradation and increased computational overhead. To mitigate those limitations, we propose LLMSafeGuard, a lightweight framework to safeguard LLM text generation in real-time. LLMSafeGuard integrates an external validator into the beam search algorithm during decoding, rejecting candidates that violate safety constraints while allowing valid ones to proceed. We introduce a similarity based validation approach, simplifying constraint introduction and eliminating the need for control model training. Additionally, LLMSafeGuard employs a context-wise timing selection strategy, intervening LLMs only when necessary. We evaluate LLMSafe-Guard on two tasks, detoxification and copyright safeguarding, and demonstrate its superior performance over SOTA baselines. For instance, LLMSafeGuard reduces the average toxic score of. LLM output by 29.7% compared to the best baseline meanwhile preserving similar linguistic quality as natural output in detoxification task. Similarly, in the copyright task, LLMSafeGuard decreases the Longest Common Subsequence (LCS) by 56.2% compared to baselines. Moreover, our context-wise timing selection strategy reduces inference time by at least 24% meanwhile maintaining comparable effectiveness as validating each time step. LLMSafeGuard also offers tunable parameters to balance its effectiveness and efficiency.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes LLMSafeGuard, a lightweight framework to safeguard LLM text generation in real-time, and introduces a similarity based validation approach, simplifying constraint introduction and eliminating the need for control model training."
+            },
+            "score": 5
+        },
+        {
+            "id": "b7abc42f0438508525d396fda9cd6684e07cf409",
+            "paperId": "b7abc42f0438508525d396fda9cd6684e07cf409",
+            "title": "Software Engineering as the Linchpin of Responsible AI",
+            "abstract": "From humanity's existential risks to safety risks in critical systems to ethical risks, responsible AI, as the saviour, has become a major research challenge with significant real-world consequences. However, achieving responsible AI remains elusive despite the plethora of high-level ethical principles, risk frameworks and progress in algorithmic assurance. In the meantime, software engineering (SE) is being upended by AI, grappling with building system-level quality and alignment from inscrutable machine learning models and code generated from natural language prompts. The upending poses new challenges and opportunities for engineering AI systems responsibly. This talk will share our experiences in helping the industry achieve responsible AI systems by inventing new SE approaches. It will dive into industry challenges (such as risk silos and principle-algorithm gaps) and research challenges (such as lack of requirements, emerging properties and inscrutable systems) and make the point that SE is the linchpin of responsible AI. But SE also requires some fundamental rethinking - shifting from building functions into AI systems to discovering and managing emerging functions from AI systems. Only by doing so can SE take on critical new roles, from understanding human intelligence to building a thriving human-AI symbiosis.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This talk will share the experiences in helping the industry achieve responsible AI systems by inventing new SE approaches and dive into industry challenges and research challenges and make the point that SE is the linchpin of responsible AI."
+            },
+            "score": 5
+        },
+        {
+            "id": "dbac86036cb5ed4dd6bbdda4a8613b163e20ec90",
+            "paperId": "dbac86036cb5ed4dd6bbdda4a8613b163e20ec90",
+            "title": "Fundamental Limitations of Alignment in Large Language Models",
+            "abstract": "An important aspect in developing language models that interact with humans is aligning their behavior to be useful and unharmful for their human users. This is usually achieved by tuning the model in a way that enhances desired behaviors and inhibits undesired ones, a process referred to as alignment. In this paper, we propose a theoretical approach called Behavior Expectation Bounds (BEB) which allows us to formally investigate several inherent characteristics and limitations of alignment in large language models. Importantly, we prove that within the limits of this framework, for any behavior that has a finite probability of being exhibited by the model, there exist prompts that can trigger the model into outputting this behavior, with probability that increases with the length of the prompt. This implies that any alignment process that attenuates an undesired behavior but does not remove it altogether, is not safe against adversarial prompting attacks. Furthermore, our framework hints at the mechanism by which leading alignment approaches such as reinforcement learning from human feedback make the LLM prone to being prompted into the undesired behaviors. This theoretical result is being experimentally demonstrated in large scale by the so called contemporary\"chatGPT jailbreaks\", where adversarial users trick the LLM into breaking its alignment guardrails by triggering it into acting as a malicious persona. Our results expose fundamental limitations in alignment of LLMs and bring to the forefront the need to devise reliable mechanisms for ensuring AI safety.",
+            "year": 2023,
+            "citationCount": 82,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is proved that within the limits of this framework, for any behavior that has a finite probability of being exhibited by the model, there exist prompts that can trigger the model into outputting this behavior, with probability that increases with the length of the prompt."
+            },
+            "score": 5
+        },
+        {
+            "id": "6b135e922a0c673aeb0b05c5aeecdb6c794791c6",
+            "paperId": "6b135e922a0c673aeb0b05c5aeecdb6c794791c6",
+            "title": "Jailbreak and Guard Aligned Language Models with Only Few In-Context Demonstrations",
+            "abstract": "Large Language Models (LLMs) have shown remarkable success in various tasks, but concerns about their safety and the potential for generating malicious content have emerged. In this paper, we explore the power of In-Context Learning (ICL) in manipulating the alignment ability of LLMs. We find that by providing just few in-context demonstrations without fine-tuning, LLMs can be manipulated to increase or decrease the probability of jailbreaking, i.e. answering malicious prompts. Based on these observations, we propose In-Context Attack (ICA) and In-Context Defense (ICD) methods for jailbreaking and guarding aligned language model purposes. ICA crafts malicious contexts to guide models in generating harmful outputs, while ICD enhances model robustness by demonstrations of rejecting to answer harmful prompts. Our experiments show the effectiveness of ICA and ICD in increasing or reducing the success rate of adversarial jailbreaking attacks. Overall, we shed light on the potential of ICL to influence LLM behavior and provide a new perspective for enhancing the safety and alignment of LLMs.",
+            "year": 2023,
+            "citationCount": 59,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Light is shed on the potential of In-Context Learning (ICL) to influence LLM behavior and a new perspective for enhancing the safety and alignment of LLMs is provided."
+            },
+            "score": 5
+        },
+        {
+            "id": "cf65db0934696e1f8896da52811b3d7f79836abd",
+            "paperId": "cf65db0934696e1f8896da52811b3d7f79836abd",
+            "title": "From Instructions to Constraints: Language Model Alignment with Automatic Constraint Verification",
+            "abstract": "User alignment is crucial for adapting general-purpose language models (LMs) to downstream tasks, but human annotations are often not available for all types of instructions, especially those with customized constraints. We observe that user instructions typically contain constraints. While assessing response quality in terms of the whole instruction is often costly, efficiently evaluating the satisfaction rate of constraints is feasible. We investigate common constraints in NLP tasks, categorize them into three classes based on the types of their arguments, and propose a unified framework, ACT (Aligning to ConsTraints), to automatically produce supervision signals for user alignment with constraints. Specifically, ACT uses constraint verifiers, which are typically easy to implement in practice, to compute constraint satisfaction rate (CSR) of each response. It samples multiple responses for each prompt and collect preference labels based on their CSR automatically. Subsequently, ACT adapts the LM to the target task through a ranking-based learning process. Experiments on fine-grained entity typing, abstractive summarization, and temporal question answering show that ACT is able to enhance LMs' capability to adhere to different classes of constraints, thereby improving task performance. Further experiments show that the constraint-following capabilities are transferable.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A unified framework, ACT (Aligning to ConsTraints), is proposed, to automatically produce supervision signals for user alignment with constraints, and is able to enhance LMs' capability to adhere to different classes of constraints, thereby improving task performance."
+            },
+            "score": 5
+        },
+        {
+            "id": "5ff9cd8fcb959ca6b458c11e780d61c3f2bf7691",
+            "paperId": "5ff9cd8fcb959ca6b458c11e780d61c3f2bf7691",
+            "title": "PLACES: Prompting Language Models for Social Conversation Synthesis",
+            "abstract": "Collecting high quality conversational data can be very expensive for most applications and infeasible for others due to privacy, ethical, or similar concerns. A promising direction to tackle this problem is to generate synthetic dialogues by prompting large language models. In this work, we use a small set of expert-written conversations as in-context examples to synthesize a social conversation dataset using prompting. We perform several thorough evaluations of our synthetic conversations compared to human-collected conversations. This includes various dimensions of conversation quality with human evaluation directly on the synthesized conversations, and interactive human evaluation of chatbots fine-tuned on the synthetically generated dataset. We additionally demonstrate that this prompting approach is generalizable to multi-party conversations, providing potential to create new synthetic data for multi-party tasks. Our synthetic multi-party conversations were rated more favorably across all measured dimensions compared to conversation excerpts sampled from a human-collected multi-party dataset.",
+            "year": 2023,
+            "citationCount": 37,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work uses a small set of expert-written conversations as in-context examples to synthesize a social conversation dataset using prompting, and demonstrates that this prompting approach is generalizable to multi-party conversations, providing potential to create new synthetic data for multi- party tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "5360b9628b4ff04f02c2f7a88a1445fd60b17c6a",
+            "paperId": "5360b9628b4ff04f02c2f7a88a1445fd60b17c6a",
+            "title": "Mitigating Political Bias in Large Language Models Using Chain of thought Prompting Techniques",
+            "abstract": "Abstract: Recent advancements in Natural Language Processing (NLP) have led to the proliferation of sophisticated chatbots, with ChatGPT as a prominent example. However, these Large Language Models are often plagued with inherent political biases from their training datasets, which raises concerns regarding their ethical usage and reinforcement of existing societal biases. This research introduces Chain of Thought (CoT) prompting, which is a novel approach to mitigate political biases by guiding chatbots to think step by step with a logical approach.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research introduces Chain of Thought (CoT) prompting, which is a novel approach to mitigate political biases by guiding chatbots to think step by step with a logical approach."
+            },
+            "score": 4
+        },
+        {
+            "id": "3ddb52e4de686df9f5dd0160b02c7115d663706f",
+            "paperId": "3ddb52e4de686df9f5dd0160b02c7115d663706f",
+            "title": "Not All Countries Celebrate Thanksgiving: On the Cultural Dominance in Large Language Models",
+            "abstract": "This paper identifies a cultural dominance issue within large language models (LLMs) due to the predominant use of English data in model training (e.g., ChatGPT). LLMs often provide inappropriate English-culture-related answers that are not relevant to the expected culture when users ask in non-English languages. To systematically evaluate the cultural dominance issue, we build a benchmark of concrete (e.g., holidays and songs) and abstract (e.g., values and opinions) cultural objects. Empirical results show that the representative GPT models suffer from the culture dominance problem, where GPT-4 is the most affected while text-davinci-003 suffers the least from this problem. Our study emphasizes the need to critically examine cultural dominance and ethical consideration in their development and deployment. We show that two straightforward methods in model development (i.e., pretraining on more diverse data) and deployment (e.g., culture-aware prompting) can significantly mitigate the cultural dominance issue in LLMs.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that two straightforward methods in model development and deployment can significantly mitigate the cultural dominance issue in LLMs and that two straightforward methods in model development and deployment can significantly mitigate the cultural dominance issue in GPT models."
+            },
+            "score": 4
+        },
+        {
+            "id": "9aca349614e8f224fd7ceb09837a8d982db5cf9b",
+            "paperId": "9aca349614e8f224fd7ceb09837a8d982db5cf9b",
+            "title": "Fair Data Generation using Language Models with Hard Constraints",
+            "abstract": "Natural language text generation has seen signi\ufb01cant improvements with the advent of pre-trained language models. Using such language models to predict personal data entities, in place of redacted spans in text, could help generate synthetic datasets. In order to address privacy and ethical concerns with such datasets, we need to ensure that the masked entity predictions are also fair and controlled by application speci\ufb01c constraints. We introduce new ways to inject hard constraints and knowledge into the language models that address such concerns and also improve performance on this task.",
+            "year": 2021,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces new ways to inject hard constraints and knowledge into the language models that address privacy and ethical concerns with such datasets and also improves performance on this task."
+            },
+            "score": 4
+        },
+        {
+            "id": "6877f6a3718c9ef3dc6bb91de6586b36f1dd964c",
+            "paperId": "6877f6a3718c9ef3dc6bb91de6586b36f1dd964c",
+            "title": "Normative Requirements Operationalization with Large Language Models",
+            "abstract": "Normative non-functional requirements specify constraints that a system must observe in order to avoid violations of social, legal, ethical, empathetic, and cultural norms. As these requirements are typically defined by non-technical system stakeholders with different expertise and priorities (ethicists, lawyers, social scientists, etc.), ensuring their well-formedness and consistency is very challenging. Recent research has tackled this challenge using a domain-specific language to specify normative requirements as rules whose consistency can then be analysed with formal methods. In this paper, we propose a complementary approach that uses Large Language Models to extract semantic relationships between abstract representations of system capabilities. These relations, which are often assumed implicitly by non-technical stakeholders (e.g., based on common sense or domain knowledge), are then used to enrich the automated reasoning techniques for eliciting and analyzing the consistency of normative requirements. We show the effectiveness of our approach to normative requirements elicitation and operationalization through a range of real-world case studies.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a complementary approach that uses Large Language Models to extract semantic relationships between abstract representations of system capabilities to enrich the automated reasoning techniques for eliciting and analyzing the consistency of normative requirements."
+            },
+            "score": 4
+        },
+        {
+            "id": "1a9e937bb4ad100fb842e2422e04279a4e90e86f",
+            "paperId": "1a9e937bb4ad100fb842e2422e04279a4e90e86f",
+            "title": "Learning Machine Morality through Experience and Interaction",
+            "abstract": "Increasing interest in ensuring safety of next-generation Artificial Intelligence (AI) systems calls for novel approaches to embedding morality into autonomous agents. Traditionally, this has been done by imposing explicit top-down rules or hard constraints on systems, for example by filtering system outputs through pre-defined ethical rules. Recently, instead, entirely bottom-up methods for learning implicit preferences from human behavior have become increasingly popular, such as those for training and fine-tuning Large Language Models. In this paper, we provide a systematization of existing approaches to the problem of introducing morality in machines - modeled as a continuum, and argue that the majority of popular techniques lie at the extremes - either being fully hard-coded, or entirely learned, where no explicit statement of any moral principle is required. Given the relative strengths and weaknesses of each type of methodology, we argue that more hybrid solutions are needed to create adaptable and robust, yet more controllable and interpretable agents. In particular, we present three case studies of recent works which use learning from experience (i.e., Reinforcement Learning) to explicitly provide moral principles to learning agents - either as intrinsic rewards, moral logical constraints or textual principles for language models. For example, using intrinsic rewards in Social Dilemma games, we demonstrate how it is possible to represent classical moral frameworks for agents. We also present an overview of the existing work in this area in order to provide empirical evidence for the potential of this hybrid approach. We then discuss strategies for evaluating the effectiveness of moral learning agents. Finally, we present open research questions and implications for the future of AI safety and ethics which are emerging from this framework.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper provides a systematization of existing approaches to the problem of introducing morality in machines - modeled as a continuum, and argues that the majority of popular techniques lie at the extremes - either being fully hard-coded, or entirely learned, where no explicit statement of any moral principle is required."
+            },
+            "score": 4
+        },
+        {
+            "id": "fb49e88c6bd676516898e911e42b4f8479e6f1bf",
+            "paperId": "fb49e88c6bd676516898e911e42b4f8479e6f1bf",
+            "title": "Ask Me Anything: A simple strategy for prompting language models",
+            "abstract": "Large language models (LLMs) transfer well to new tasks out-of-the-box simply given a natural language prompt that demonstrates how to perform the task and no additional training. Prompting is a brittle process wherein small modifications to the prompt can cause large variations in the model predictions, and therefore significant effort is dedicated towards designing a painstakingly\"perfect prompt\"for a task. To mitigate the high degree of effort involved in prompt-design, we instead ask whether producing multiple effective, yet imperfect, prompts and aggregating them can lead to a high quality prompting strategy. Our observations motivate our proposed prompting method, ASK ME ANYTHING (AMA). We first develop an understanding of the effective prompt formats, finding that question-answering (QA) prompts, which encourage open-ended generation (\"Who went to the park?\") tend to outperform those that restrict the model outputs (\"John went to the park. Output True or False.\"). Our approach recursively uses the LLM itself to transform task inputs to the effective QA format. We apply the collected prompts to obtain several noisy votes for the input's true label. We find that the prompts can have very different accuracies and complex dependencies and thus propose to use weak supervision, a procedure for combining the noisy predictions, to produce the final predictions for the inputs. We evaluate AMA across open-source model families (e.g., EleutherAI, BLOOM, OPT, and T0) and model sizes (125M-175B parameters), demonstrating an average performance lift of 10.2% over the few-shot baseline. This simple strategy enables the open-source GPT-J-6B model to match and exceed the performance of few-shot GPT3-175B on 15 of 20 popular benchmarks. Averaged across these tasks, the GPT-J-6B model outperforms few-shot GPT3-175B. We release our code here: https://github.com/HazyResearch/ama_prompting",
+            "year": 2022,
+            "citationCount": 117,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work develops an understanding of the effective prompt formats and proposes to use weak supervision, a procedure for combining the noisy predictions, to produce the final predictions for the inputs of a large language model."
+            },
+            "score": 4
+        },
+        {
+            "id": "73ce1a5be7b7d1f863293d8c3afa787c6922a797",
+            "paperId": "73ce1a5be7b7d1f863293d8c3afa787c6922a797",
+            "title": "Jailbreaking Proprietary Large Language Models using Word Substitution Cipher",
+            "abstract": "Large Language Models (LLMs) are aligned to moral and ethical guidelines but remain susceptible to creative prompts called Jailbreak that can bypass the alignment process. However, most jailbreaking prompts contain harmful questions in the natural language (mainly English), which can be detected by the LLM themselves. In this paper, we present jailbreaking prompts encoded using cryptographic techniques. We first present a pilot study on the state-of-the-art LLM, GPT-4, in decoding several safe sentences that have been encrypted using various cryptographic techniques and find that a straightforward word substitution cipher can be decoded most effectively. Motivated by this result, we use this encoding technique for writing jailbreaking prompts. We present a mapping of unsafe words with safe words and ask the unsafe question using these mapped words. Experimental results show an attack success rate (up to 59.42%) of our proposed jailbreaking approach on state-of-the-art proprietary models including ChatGPT, GPT-4, and Gemini-Pro. Additionally, we discuss the over-defensiveness of these models. We believe that our work will encourage further research in making these LLMs more robust while maintaining their decoding capabilities.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents jailbreaking prompts encoded using cryptographic techniques, a mapping of unsafe words with safe words and asks the unsafe question using these mapped words and presents a mapping of unsafe words with safe words and asks the unsafe question using these mapped words."
+            },
+            "score": 4
+        },
+        {
+            "id": "89641466373aa9ce2976e3f384b0791a7bd0931c",
+            "paperId": "89641466373aa9ce2976e3f384b0791a7bd0931c",
+            "title": "Make Them Spill the Beans! Coercive Knowledge Extraction from (Production) LLMs",
+            "abstract": "Large Language Models (LLMs) are now widely used in various applications, making it crucial to align their ethical standards with human values. However, recent jail-breaking methods demonstrate that this alignment can be undermined using carefully constructed prompts. In our study, we reveal a new threat to LLM alignment when a bad actor has access to the model's output logits, a common feature in both open-source LLMs and many commercial LLM APIs (e.g., certain GPT models). It does not rely on crafting specific prompts. Instead, it exploits the fact that even when an LLM rejects a toxic request, a harmful response often hides deep in the output logits. By forcefully selecting lower-ranked output tokens during the auto-regressive generation process at a few critical output positions, we can compel the model to reveal these hidden responses. We term this process model interrogation. This approach differs from and outperforms jail-breaking methods, achieving 92% effectiveness compared to 62%, and is 10 to 20 times faster. The harmful content uncovered through our method is more relevant, complete, and clear. Additionally, it can complement jail-breaking strategies, with which results in further boosting attack performance. Our findings indicate that interrogation can extract toxic knowledge even from models specifically designed for coding tasks.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The findings indicate that interrogation can extract toxic knowledge even from models specifically designed for coding tasks, and can complement jail-breaking strategies, with which results in further boosting attack performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "f3f23f7f9f5369aade19f20bc5d028cce7b9c9aa",
+            "paperId": "f3f23f7f9f5369aade19f20bc5d028cce7b9c9aa",
+            "title": "AutoDAN: Generating Stealthy Jailbreak Prompts on Aligned Large Language Models",
+            "abstract": "The aligned Large Language Models (LLMs) are powerful language understanding and decision-making tools that are created through extensive alignment with human feedback. However, these large models remain susceptible to jailbreak attacks, where adversaries manipulate prompts to elicit malicious outputs that should not be given by aligned LLMs. Investigating jailbreak prompts can lead us to delve into the limitations of LLMs and further guide us to secure them. Unfortunately, existing jailbreak techniques suffer from either (1) scalability issues, where attacks heavily rely on manual crafting of prompts, or (2) stealthiness problems, as attacks depend on token-based algorithms to generate prompts that are often semantically meaningless, making them susceptible to detection through basic perplexity testing. In light of these challenges, we intend to answer this question: Can we develop an approach that can automatically generate stealthy jailbreak prompts? In this paper, we introduce AutoDAN, a novel jailbreak attack against aligned LLMs. AutoDAN can automatically generate stealthy jailbreak prompts by the carefully designed hierarchical genetic algorithm. Extensive evaluations demonstrate that AutoDAN not only automates the process while preserving semantic meaningfulness, but also demonstrates superior attack strength in cross-model transferability, and cross-sample universality compared with the baseline. Moreover, we also compare AutoDAN with perplexity-based defense methods and show that AutoDAN can bypass them effectively.",
+            "year": 2023,
+            "citationCount": 48,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Extensive evaluations demonstrate that AutoDAN not only automates the process while preserving semantic meaningfulness, but also demonstrates superior attack strength in cross-model transferability, and cross-sample universality compared with the baseline."
+            },
+            "score": 4
+        },
+        {
+            "id": "d030be820dd5e4739461f246ce248fba2df33f0a",
+            "paperId": "d030be820dd5e4739461f246ce248fba2df33f0a",
+            "title": "Backdoor Activation Attack: Attack Large Language Models using Activation Steering for Safety-Alignment",
+            "abstract": "To ensure AI safety, instruction-tuned Large Language Models (LLMs) are specifically trained to ensure alignment, which refers to making models behave in accordance with human intentions. While these models have demonstrated commendable results on various safety benchmarks, the vulnerability of their safety alignment has not been extensively studied. This is particularly troubling given the potential harm that LLMs can inflict. Existing attack methods on LLMs often rely on poisoned training data or the injection of malicious prompts. These approaches compromise the stealthiness and generalizability of the attacks, making them susceptible to detection. Additionally, these models often demand substantial computational resources for implementation, making them less practical for real-world applications. Inspired by recent success in modifying model behavior through steering vectors without the need for optimization, and drawing on its effectiveness in red-teaming LLMs, we conducted experiments employing activation steering to target four key aspects of LLMs: truthfulness, toxicity, bias, and harmfulness - across a varied set of attack settings. To establish a universal attack strategy applicable to diverse target alignments without depending on manual analysis, we automatically select the intervention layer based on contrastive layer search. Our experiment results show that activation attacks are highly effective and add little or no overhead to attack efficiency. Additionally, we discuss potential countermeasures against such activation attacks. Our code and data are available at https://github.com/wang2226/Backdoor-Activation-Attack Warning: this paper contains content that can be offensive or upsetting.",
+            "year": 2023,
+            "citationCount": 9,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Inspired by recent success in modifying model behavior through steering vectors without the need for optimization, and drawing on its effectiveness in red-teaming LLMs, experiments employing activation steering to target four key aspects of LLMs - truthfulness, toxicity, bias, and harmfulness - across a varied set of attack settings are conducted."
+            },
+            "score": 4
+        },
+        {
+            "id": "5c5ab276b00c1f19fbb0a3d2c38d532becac9442",
+            "paperId": "5c5ab276b00c1f19fbb0a3d2c38d532becac9442",
+            "title": "A Brief History of Prompt: Leveraging Language Models. (Through Advanced Prompting)",
+            "abstract": "This paper presents a comprehensive exploration of the evolution of prompt engineering and generation in the field of natural language processing (NLP). Starting from the early language models and information retrieval systems, we trace the key developments that have shaped prompt engineering over the years. The introduction of attention mechanisms in 2015 revolutionized language understanding, leading to advancements in controllability and context-awareness. Subsequent breakthroughs in reinforcement learning techniques further enhanced prompt engineering, addressing issues like exposure bias and biases in generated text. We examine the significant contributions in 2018 and 2019, focusing on fine-tuning strategies, control codes, and template-based generation. The paper also discusses the growing importance of fairness, human-AI collaboration, and low-resource adaptation. In 2020 and 2021, contextual prompting and transfer learning gained prominence, while 2022 and 2023 witnessed the emergence of advanced techniques like unsupervised pre-training and novel reward shaping. Throughout the paper, we reference specific research studies that exemplify the impact of various developments on prompt engineering. The journey of prompt engineering continues, with ethical considerations being paramount for the responsible and inclusive future of AI systems.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The journey of prompt engineering continues, with ethical considerations being paramount for the responsible and inclusive future of AI systems."
+            },
+            "score": 4
+        },
+        {
+            "id": "16fee2acddbaa4b58f39d1cbba12961178186e7c",
+            "paperId": "16fee2acddbaa4b58f39d1cbba12961178186e7c",
+            "title": "Safeguarding Ethical AI: Detecting Potentially Sensitive Data Re-Identification and Generation of Misleading or Abusive Content from Quantized Large Language Models",
+            "abstract": ": Research on privacy-preserving Machine Learning (ML) is essential to prevent the re-identification of health data ensuring the confidentiality and security of sensitive patient information. In this era of unprecedented usage of large language models (LLMs), LLMs carry inherent risks when applied to sensitive data, especially as LLMs are trained on trillions of words from the internet, without a global standard for data selection. The lack of standardization in training LLMs poses a significant risk in the field of health informatics, potentially resulting in the inadvertent release of sensitive information, despite the availability of context-aware redaction of sensitive information. The research goal of this paper is to determine whether sensitive information could be re-identified from electronic health records during Natural Language Processing (NLP) tasks such as text classification without using any dedicated re-identification techniques. We performed zero and 8-shot learning with the quantized LLM models FLAN, Llama2, Mistral, and Vicuna for classifying social context data extracted from MIMIC-III. In this text classification task, our focus was on detecting potential sensitive data re-identification and the generation of misleading or abusive content during the fine-tuning and prompting stages of the process, along with evaluating the performance of the classification.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research goal is to determine whether sensitive information could be re-identified from electronic health records during Natural Language Processing tasks such as text classification without using any dedicated re-identification techniques."
+            },
+            "score": 4
+        },
+        {
+            "id": "1c2c7ca6436ebb3097c17cd14bd374a319ae4f8c",
+            "paperId": "1c2c7ca6436ebb3097c17cd14bd374a319ae4f8c",
+            "title": "On the Ethical Limits of Natural Language Processing on Legal Text",
+            "abstract": "Natural language processing (NLP) methods for analyzing legal text offer legal scholars and practitioners a range of tools allowing to empirically analyze law on a large scale. However, researchers seem to struggle when it comes to identifying ethical limits to using NLP systems for acquiring genuine insights both about the law and the systems' predictive capacity. In this paper we set out a number of ways in which to think systematically about such issues. We place emphasis on three crucial normative parameters which have, to the best of our knowledge, been underestimated by current debates: (a) the importance of academic freedom, (b) the existence of a wide diversity of legal and ethical norms domestically but even more so internationally and (c) the threat of moralism in research related to computational law. For each of these three parameters we provide specific recommendations for the legal NLP community. Our discussion is structured around the study of a real-life scenario that has prompted recent debate in the legal NLP research community.",
+            "year": 2021,
+            "citationCount": 36,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A number of ways are set out in which to think systematically about ethical limits to using NLP systems for acquiring genuine insights both about the law and the systems' predictive capacity, with emphasis on three crucial normative parameters."
+            },
+            "score": 4
+        },
+        {
+            "id": "6ae06f2bf66f19637adc695bc47256eeb1635b10",
+            "paperId": "6ae06f2bf66f19637adc695bc47256eeb1635b10",
+            "title": "A Structured Narrative Prompt for Prompting Narratives from Large Language Models: Sentiment Assessment of ChatGPT-Generated Narratives and Real Tweets",
+            "abstract": "Large language models (LLMs) excel in providing natural language responses that sound authoritative, reflect knowledge of the context area, and can present from a range of varied perspectives. Agent-based models and simulations consist of simulated agents that interact within a simulated environment to explore societal, social, and ethical, among other, problems. Simulated agents generate large volumes of data and discerning useful and relevant content is an onerous task. LLMs can help in communicating agents\u2019 perspectives on key life events by providing natural language narratives. However, these narratives should be factual, transparent, and reproducible. Therefore, we present a structured narrative prompt for sending queries to LLMs, we experiment with the narrative generation process using OpenAI\u2019s ChatGPT, and we assess statistically significant differences across 11 Positive and Negative Affect Schedule (PANAS) sentiment levels between the generated narratives and real tweets using chi-squared tests and Fisher\u2019s exact tests. The narrative prompt structure effectively yields narratives with the desired components from ChatGPT. In four out of forty-four categories, ChatGPT generated narratives which have sentiment scores that were not discernibly different, in terms of statistical significance (alpha level \u03b1=0.05), from the sentiment expressed in real tweets. Three outcomes are provided: (1) a list of benefits and challenges for LLMs in narrative generation; (2) a structured prompt for requesting narratives of an LLM chatbot based on simulated agents\u2019 information; (3) an assessment of statistical significance in the sentiment prevalence of the generated narratives compared to real tweets. This indicates significant promise in the utilization of LLMs for helping to connect a simulated agent\u2019s experiences with real people.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A structured narrative prompt for sending queries to LLMs, an experiment with the narrative generation process using OpenAI's ChatGPT, and an assessment of statistical significance in the sentiment prevalence of the generated narratives compared to real tweets indicate significant promise in the utilization of LLMs for helping to connect a simulated agent\u2019s experiences with real people."
+            },
+            "score": 3
+        },
+        {
+            "id": "f2f2339f320df0021825a3160cfbc027cb442d13",
+            "paperId": "f2f2339f320df0021825a3160cfbc027cb442d13",
+            "title": "Identifying Multiple Personalities in Large Language Models with External Evaluation",
+            "abstract": "As Large Language Models (LLMs) are integrated with human daily applications rapidly, many societal and ethical concerns are raised regarding the behavior of LLMs. One of the ways to comprehend LLMs' behavior is to analyze their personalities. Many recent studies quantify LLMs' personalities using self-assessment tests that are created for humans. Yet many critiques question the applicability and reliability of these self-assessment tests when applied to LLMs. In this paper, we investigate LLM personalities using an alternate personality measurement method, which we refer to as the external evaluation method, where instead of prompting LLMs with multiple-choice questions in the Likert scale, we evaluate LLMs' personalities by analyzing their responses toward open-ended situational questions using an external machine learning model. We first fine-tuned a Llama2-7B model as the MBTI personality predictor that outperforms the state-of-the-art models as the tool to analyze LLMs' responses. Then, we prompt the LLMs with situational questions and ask them to generate Twitter posts and comments, respectively, in order to assess their personalities when playing two different roles. Using the external personality evaluation method, we identify that the obtained personality types for LLMs are significantly different when generating posts versus comments, whereas humans show a consistent personality profile in these two different situations. This shows that LLMs can exhibit different personalities based on different scenarios, thus highlighting a fundamental difference between personality in LLMs and humans. With our work, we call for a re-evaluation of personality definition and measurement in LLMs.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates LLM personalities using an alternate personality measurement method, which is referred to as the external evaluation method, where instead of prompting LLMs with multiple-choice questions in the Likert scale, they are evaluated by analyzing their responses toward open-ended situational questions using an external machine learning model."
+            },
+            "score": 3
+        },
+        {
+            "id": "52136f813243ac3de8e277906112a41590a376d4",
+            "paperId": "52136f813243ac3de8e277906112a41590a376d4",
+            "title": "What do LLMs Know about Financial Markets? A Case Study on Reddit Market Sentiment Analysis",
+            "abstract": "Market sentiment analysis on social media content requires knowledge of both financial markets and social media jargon, which makes it a challenging task for human raters. The resulting lack of high-quality labeled data stands in the way of conventional supervised learning methods. Instead, we approach this problem using semi-supervised learning with a large language model (LLM). Our pipeline generates weak financial sentiment labels for Reddit posts with an LLM and then uses that data to train a small model that can be served in production. We find that prompting the LLM to produce Chain-of-Thought summaries and forcing it through several reasoning paths helps generate more stable and accurate labels, while using a regression loss further improves distillation quality. With only a handful of prompts, the final model performs on par with existing supervised models. Though production applications of our model are limited by ethical considerations, the model\u2019s competitive performance points to the great potential of using LLMs for tasks that otherwise require skill-intensive annotation.",
+            "year": 2022,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This model generates weak financial sentiment labels for Reddit posts with an LLM and then uses that data to train a small model that can be served in production, and finds that prompting the LLM to produce Chain-of-Thought summaries and forcing it through several reasoning paths helps generate more stable and accurate labels."
+            },
+            "score": 3
+        },
+        {
+            "id": "3fc3460c4554a28e489a0ea6ef067b79b7d301d9",
+            "paperId": "3fc3460c4554a28e489a0ea6ef067b79b7d301d9",
+            "title": "Active Prompting with Chain-of-Thought for Large Language Models",
+            "abstract": "The increasing scale of large language models (LLMs) brings emergent abilities to various complex tasks requiring reasoning, such as arithmetic and commonsense reasoning. It is known that the effective design of task-specific prompts is critical for LLMs' ability to produce high-quality answers. In particular, an effective approach for complex question-and-answer tasks is example-based prompting with chain-of-thought (CoT) reasoning, which significantly improves the performance of LLMs. However, current CoT methods rely on a fixed set of human-annotated exemplars, which are not necessarily the most effective examples for different tasks. This paper proposes a new method, Active-Prompt, to adapt LLMs to different tasks with task-specific example prompts (annotated with human-designed CoT reasoning). For this purpose, we propose a solution to the key problem of determining which questions are the most important and helpful ones to annotate from a pool of task-specific queries. By borrowing ideas from the related problem of uncertainty-based active learning, we introduce several metrics to characterize the uncertainty so as to select the most uncertain questions for annotation. Experimental results demonstrate the superiority of our proposed method, achieving state-of-the-art on eight complex reasoning tasks. Further analyses of different uncertainty metrics, pool sizes, zero-shot learning, and accuracy-uncertainty relationship demonstrate the effectiveness of our method. Our code will be available at https://github.com/shizhediao/active-prompt.",
+            "year": 2023,
+            "citationCount": 58,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a new method to adapt LLMs to different tasks with task-specific example prompts (annotated with human-designed CoT reasoning), and introduces several metrics to characterize the uncertainty so as to select the most uncertain questions for annotation."
+            },
+            "score": 3
+        },
+        {
+            "id": "13c85adfa950651ffcd91ef3018fa30801b74472",
+            "paperId": "13c85adfa950651ffcd91ef3018fa30801b74472",
+            "title": "Prompting and Evaluating Large Language Models for Proactive Dialogues: Clarification, Target-guided, and Non-collaboration",
+            "abstract": "Conversational systems based on Large Language Models (LLMs), such as ChatGPT, show exceptional proficiency in context understanding and response generation. However, despite their impressive capabilities, they still possess limitations, such as providing randomly-guessed answers to ambiguous queries or failing to refuse users' requests, both of which are considered aspects of a conversational agent's proactivity. This raises the question of whether LLM-based conversational systems are equipped to handle proactive dialogue problems. In this work, we conduct a comprehensive analysis of LLM-based conversational systems, specifically focusing on three aspects of proactive dialogue systems: clarification, target-guided, and non-collaborative dialogues. To trigger the proactivity of LLMs, we propose the Proactive Chain-of-Thought prompting scheme, which augments LLMs with the goal planning capability over descriptive reasoning chains. Empirical findings are discussed to promote future studies on LLM-based proactive dialogue systems.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive analysis of LLM-based conversational systems, specifically focusing on three aspects of proactive dialogue systems: clarification, target-guided, and non-collaborative dialogues, and the Proactive Chain-of-Thought prompting scheme is proposed."
+            },
+            "score": 3
+        },
+        {
+            "id": "16d83e930a4dab2d49f5d276838ddce79df3f787",
+            "paperId": "16d83e930a4dab2d49f5d276838ddce79df3f787",
+            "title": "Should ChatGPT be Biased? Challenges and Risks of Bias in Large Language Models",
+            "abstract": "As generative language models, exemplified by ChatGPT, continue to advance in their capabilities, the spotlight on biases inherent in these models intensifies. This paper delves into the distinctive challenges and risks associated with biases specifically in large-scale language models. We explore the origins of biases, stemming from factors such as training data, model specifications, algorithmic constraints, product design, and policy decisions. Our examination extends to the ethical implications arising from the unintended consequences of biased model outputs. In addition, we analyze the intricacies of mitigating biases, acknowledging the inevitable persistence of some biases, and consider the consequences of deploying these models across diverse applications, including virtual assistants, content generation, and chatbots. Finally, we provide an overview of current approaches for identifying, quantifying, and mitigating biases in language models, underscoring the need for a collaborative, multidisciplinary effort to craft AI systems that embody equity, transparency, and responsibility. This article aims to catalyze a thoughtful discourse within the AI community, prompting researchers and developers to consider the unique role of biases in the domain of generative language models and the ongoing quest for ethical AI.",
+            "year": 2023,
+            "citationCount": 109,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper delves into the distinctive challenges and risks associated with biases specifically in large-scale language models, exploring the origins of biases, stemming from factors such as training data, model specifications, algorithmic constraints, product design, and policy decisions."
+            },
+            "score": 3
+        },
+        {
+            "id": "33727cfa2710e9f502480b7eb9ac1925cb3bc06b",
+            "paperId": "33727cfa2710e9f502480b7eb9ac1925cb3bc06b",
+            "title": "AutoTrial: Prompting Language Models for Clinical Trial Design",
+            "abstract": "Clinical trials are critical for drug development. Constructing the appropriate eligibility criteria (i.e., the inclusion/exclusion criteria for patient recruitment) is essential for the trial's success. Proper design of clinical trial protocols should consider similar precedent trials and their eligibility criteria to ensure sufficient patient coverage. In this paper, we present a method named AutoTrial to aid the design of clinical eligibility criteria using language models. It allows (1) controllable generation under instructions via a hybrid of discrete and neural prompting, (2) scalable knowledge incorporation via in-context learning, and (3) explicit reasoning chains to provide rationales for understanding the outputs. Experiments on over 70K clinical trials verify that AutoTrial generates high-quality criteria texts that are fluent and coherent and with high accuracy in capturing the relevant clinical concepts to the target trial. It is noteworthy that our method, with a much smaller parameter size, gains around 60% winning rate against the GPT-3.5 baselines via human evaluations.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A method named AutoTrial is presented to aid the design of clinical eligibility criteria using language models that allows controllable generation under instructions via a hybrid of discrete and neural prompting, scalable knowledge incorporation via in-context learning, and explicit reasoning chains to provide rationales for understanding the outputs."
+            },
+            "score": 3
+        },
+        {
+            "id": "478ec7a8001d46cde90395c4a9d9ffdec59d5ce3",
+            "paperId": "478ec7a8001d46cde90395c4a9d9ffdec59d5ce3",
+            "title": "Prompting Language Models for Linguistic Structure",
+            "abstract": "Although pretrained language models (PLMs) can be prompted to perform a wide range of language tasks, it remains an open question how much this ability comes from generalizable linguistic understanding versus surface-level lexical patterns. To test this, we present a structured prompting approach for linguistic structured prediction tasks, allowing us to perform zero- and few-shot sequence tagging with autoregressive PLMs. We evaluate this approach on part-of-speech tagging, named entity recognition, and sentence chunking, demonstrating strong few-shot performance in all cases. We also find that while PLMs contain significant prior knowledge of task labels due to task leakage into the pretraining corpus, structured prompting can also retrieve linguistic structure with arbitrary labels. These findings indicate that the in-context learning ability and linguistic knowledge of PLMs generalizes beyond memorization of their training data.",
+            "year": 2022,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that while PLMs contain significant prior knowledge of task labels due to task leakage into the pretraining corpus, structured prompting can also retrieve linguistic structure with arbitrary labels, indicating that the in-context learning ability and linguistic knowledge of PLMs generalizes beyond memorization of their training data."
+            },
+            "score": 3
+        },
+        {
+            "id": "4dd03e89b8f23d4745c13850a59c3df6783bd44b",
+            "paperId": "4dd03e89b8f23d4745c13850a59c3df6783bd44b",
+            "title": "Journey of ChatGPT from Prompts to Stories in Games: the Positive, the Negative, and the Neutral",
+            "abstract": "This paper presents a study on biases present in the story endings for story-driven games generated by ChatGPT. The study uses various prompts to assess the biases in ChatGPT's output. The results emphasize a consistent inclination towards positive endings in the stories generated by ChatGPT. Even when explicitly instructed to generate neutral endings, ChatGPT exhibited a bias towards positive outcomes. These biases raise concerns regarding the training data and alignment processes used by OpenAI to train ChatGPT, as they may reflect societal biases or the preferences of the majority of the data. Addressing these biases is crucial to ensure that these models align with societal norms and avoid reinforcing existing biases. Future studies should concentrate on developing methods to reduce biases in AI language models and enhance the ethical perspective of these technologies. Our source code and data are made publicly available at https://bit.ly/chatgpt-game-story-gen.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Bias present in the story endings for story-driven games generated by ChatGPT raises concerns regarding the training data and alignment processes used by OpenAI to train ChatGPT, as they may reflect societal biases or the preferences of the majority of the data."
+            },
+            "score": 3
+        },
+        {
+            "id": "b79bb5e86b0836cb1d305bf7d0481383e39b37b4",
+            "paperId": "b79bb5e86b0836cb1d305bf7d0481383e39b37b4",
+            "title": "Auto-Debias: Debiasing Masked Language Models with Automated Biased Prompts",
+            "abstract": "Human-like biases and undesired social stereotypes exist in large pretrained language models. Given the wide adoption of these models in real-world applications, mitigating such biases has become an emerging and important task. In this paper, we propose an automatic method to mitigate the biases in pretrained language models. Different from previous debiasing work that uses external corpora to fine-tune the pretrained models, we instead directly probe the biases encoded in pretrained models through prompts. Specifically, we propose a variant of the beam search method to automatically search for biased prompts such that the cloze-style completions are the most different with respect to different demographic groups. Given the identified biased prompts, we then propose a distribution alignment loss to mitigate the biases. Experiment results on standard datasets and metrics show that our proposed Auto-Debias approach can significantly reduce biases, including gender and racial bias, in pretrained language models such as BERT, RoBERTa and ALBERT. Moreover, the improvement in fairness does not decrease the language models\u2019 understanding abilities, as shown using the GLUE benchmark.",
+            "year": 2022,
+            "citationCount": 91,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The proposed Auto-Debias approach can significantly reduce biases, including gender and racial bias, in pretrained language models such as BERT, RoBERTa and ALBERT and the improvement in fairness does not decrease the language models\u2019 understanding abilities, as shown using the GLUE benchmark."
+            },
+            "score": 3
+        },
+        {
+            "id": "f0888b9c0ef63e68c7758e6aec2370961c0eede9",
+            "paperId": "f0888b9c0ef63e68c7758e6aec2370961c0eede9",
+            "title": "On the Tool Manipulation Capability of Open-source Large Language Models",
+            "abstract": "Recent studies on software tool manipulation with large language models (LLMs) mostly rely on closed model APIs. The industrial adoption of these models is substantially constrained due to the security and robustness risks in exposing information to closed LLM API services. In this paper, we ask can we enhance open-source LLMs to be competitive to leading closed LLM APIs in tool manipulation, with practical amount of human supervision. By analyzing common tool manipulation failures, we first demonstrate that open-source LLMs may require training with usage examples, in-context demonstration and generation style regulation to resolve failures. These insights motivate us to revisit classical methods in LLM literature, and demonstrate that we can adapt them as model alignment with programmatic data generation, system prompts and in-context demonstration retrievers to enhance open-source LLMs for tool manipulation. To evaluate these techniques, we create the ToolBench, a tool manipulation benchmark consisting of diverse software tools for real-world tasks. We demonstrate that our techniques can boost leading open-source LLMs by up to 90% success rate, showing capabilities competitive to OpenAI GPT-4 in 4 out of 8 ToolBench tasks. We show that such enhancement typically requires about one developer day to curate data for each tool, rendering a recipe with practical amount of human supervision.",
+            "year": 2023,
+            "citationCount": 36,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is demonstrated that classical methods in LLM literature can adapt as model alignment with programmatic data generation, system prompts and in-context demonstration retrievers to enhance open-source LLMs for tool manipulation, and it is shown that such enhancement typically requires about one developer day to curate data for each tool, rendering a recipe with practical amount of human supervision."
+            },
+            "score": 3
+        },
+        {
+            "id": "96a17f5f39fe4cec4ea951d81a71b3bcce885b72",
+            "paperId": "96a17f5f39fe4cec4ea951d81a71b3bcce885b72",
+            "title": "NLP AI Models for Optimizing Medical Research: Demystifying the Concerns",
+            "abstract": null,
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper identifies and explores the key areas of ethical concern for researchers using NLP AI models, such as bias in training data and algorithms, plagiarism, data privacy, accuracy of generated content, prompt and content generation, and training data quality."
+            },
+            "score": 3
+        },
+        {
+            "id": "ccfdea3722ec43e45fc33e170d1fe908dca003a5",
+            "paperId": "ccfdea3722ec43e45fc33e170d1fe908dca003a5",
+            "title": "TransPrompt v2: A Transferable Prompting Framework for Cross-task Text Classification",
+            "abstract": "Text classification is one of the most imperative tasks in natural language processing (NLP). Recent advances with pre-trained language models (PLMs) have shown remarkable success on this task. However, the satisfying results obtained by PLMs heavily depend on the large amounts of task-specific labeled data, which may not be feasible in many application scenarios due to data access and privacy constraints. The recently-proposed prompt-based fine-tuning paradigm improves the performance of PLMs for few-shot text classification with task-specific templates. Yet, it is unclear how the prompting knowledge can be transferred across tasks, for the purpose of mutual reinforcement. We propose TransPrompt v2, a novel transferable prompting framework for few-shot learning across similar or distant text classification tasks. For learning across similar tasks, we employ a multi-task meta-knowledge acquisition (MMA) procedure to train a meta-learner that captures the cross-task transferable knowledge. For learning across distant tasks, we further inject the task type descriptions into the prompt, and capture the intra-type and inter-type prompt embeddings among multiple distant tasks. Additionally, two de-biasing techniques are further designed to make the trained meta-learner more task-agnostic and unbiased towards any tasks. After that, the meta-learner can be adapted to each specific task with better parameters initialization. Extensive experiments show that TransPrompt v2 outperforms single-task and cross-task strong baselines over multiple NLP tasks and datasets. We further show that the meta-learner can effectively improve the performance of PLMs on previously unseen tasks. In addition, TransPrompt v2 also outperforms strong fine-tuning baselines when learning with full training sets.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Extensive experiments show that TransPrompt v2 outperforms single-task and cross-task strong baselines over multiple NLP tasks and datasets, and shows that the meta-learner can effectively improve the performance of PLMs on previously unseen tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "845356b44c1efa1a5f7a29966a23b2dd4dd03494",
+            "paperId": "845356b44c1efa1a5f7a29966a23b2dd4dd03494",
+            "title": "CoDa: Constrained Generation based Data Augmentation for Low-Resource NLP",
+            "abstract": "We present CoDa (Constrained Generation based Data Augmentation), a controllable, effective, and training-free data augmentation technique for low-resource (data-scarce) NLP. Our approach is based on prompting off-the-shelf instruction-following Large Language Models (LLMs) for generating text that satisfies a set of constraints. Precisely, we extract a set of simple constraints from every instance in the low-resource dataset and verbalize them to prompt an LLM to generate novel and diverse training instances. Our findings reveal that synthetic data that follows simple constraints in the downstream dataset act as highly effective augmentations, and CoDa can achieve this without intricate decoding-time constrained generation techniques or fine-tuning with complex algorithms that eventually make the model biased toward the small number of training instances. Additionally, CoDa is the first framework that provides users explicit control over the augmentation generation process, thereby also allowing easy adaptation to several domains. We demonstrate the effectiveness of CoDa across 11 datasets spanning 3 tasks and 3 low-resource settings. CoDa outperforms all our baselines, qualitatively and quantitatively, with improvements of 0.12%-7.19%. Code is available here: https://github.com/Sreyan88/CoDa",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The findings reveal that synthetic data that follows simple constraints in the downstream dataset act as highly effective augmentations, and CoDa can achieve this without intricate decoding-time constrained generation techniques or fine-tuning with complex algorithms that eventually make the model biased toward the small number of training instances."
+            },
+            "score": 3
+        },
+        {
+            "id": "b86363509341d205945e393941416978fff010fd",
+            "paperId": "b86363509341d205945e393941416978fff010fd",
+            "title": "Best Practices for Text Annotation with Large Language Models",
+            "abstract": "Large Language Models (LLMs) have ushered in a new era of text annotation, as their ease-of-use, high accuracy, and relatively low costs have meant that their use has exploded in recent months. However, the rapid growth of the field has meant that LLM-based annotation has become something of an academic Wild West: the lack of established practices and standards has led to concerns about the quality and validity of research. Researchers have warned that the ostensible simplicity of LLMs can be misleading, as they are prone to bias, misunderstandings, and unreliable results. Recognizing the transformative potential of LLMs, this paper proposes a comprehensive set of standards and best practices for their reliable, reproducible, and ethical use. These guidelines span critical areas such as model selection, prompt engineering, structured prompting, prompt stability analysis, rigorous model validation, and the consideration of ethical and legal implications. The paper emphasizes the need for a structured, directed, and formalized approach to using LLMs, aiming to ensure the integrity and robustness of text annotation practices, and advocates for a nuanced and critical engagement with LLMs in social scientific research.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The paper emphasizes the need for a structured, directed, and formalized approach to using LLMs, aiming to ensure the integrity and robustness of text annotation practices, and advocates for a nuanced and critical engagement with LLMs in social scientific research."
+            },
+            "score": 2
+        },
+        {
+            "id": "2ba2a875161b6f09815817542f02f1ac9171952a",
+            "paperId": "2ba2a875161b6f09815817542f02f1ac9171952a",
+            "title": "What does CLIP know about a red circle? Visual prompt engineering for VLMs",
+            "abstract": "Large-scale Vision-Language Models, such as CLIP, learn powerful image-text representations that have found numerous applications, from zero-shot classification to text-to-image generation. Despite that, their capabilities for solving novel discriminative tasks via prompting fall behind those of large language models, such as GPT-3. Here we explore the idea of visual prompt engineering for solving computer vision tasks beyond classification by editing in image space instead of text. In particular, we discover an emergent ability of CLIP, where, by simply drawing a red circle around an object, we can direct the model\u2019s attention to that region, while also maintaining global information. We show the power of this simple approach by achieving state-of-the-art in zero-shot referring expressions comprehension and strong performance in keypoint localization tasks. Finally, we draw attention to some potential ethical concerns of large language-vision models.",
+            "year": 2023,
+            "citationCount": 42,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work explores the idea of visual prompt engineering for solving computer vision tasks beyond classification by editing in image space instead of text, and discovers an emergent ability of CLIP, where, by simply drawing a red circle around an object, it can direct the model\u2019s attention to that region, while also maintaining global information."
+            },
+            "score": 2
+        },
+        {
+            "id": "2d3bc530d8f1ed36932a70bc362ea94d988adec9",
+            "paperId": "2d3bc530d8f1ed36932a70bc362ea94d988adec9",
+            "title": "Large Language Models are Effective Text Rankers with Pairwise Ranking Prompting",
+            "abstract": "Ranking documents using Large Language Models (LLMs) by directly feeding the query and candidate documents into the prompt is an interesting and practical problem. However, researchers have found it difficult to outperform fine-tuned baseline rankers on benchmark datasets. We analyze pointwise and listwise ranking prompts used by existing methods and argue that off-the-shelf LLMs do not fully understand these challenging ranking formulations. In this paper, we propose to significantly reduce the burden on LLMs by using a new technique called Pairwise Ranking Prompting (PRP). Our results are the first in the literature to achieve state-of-the-art ranking performance on standard benchmarks using moderate-sized open-sourced LLMs. On TREC-DL 2019&2020, PRP based on the Flan-UL2 model with 20B parameters performs favorably with the previous best approach in the literature, which is based on the blackbox commercial GPT-4 that has 50x (estimated) model size, while outperforming other LLM-based solutions, such as InstructGPT which has 175B parameters, by over 10% for all ranking metrics. By using the same prompt template on seven BEIR tasks, PRP outperforms supervised baselines and outperforms the blackbox commercial ChatGPT solution by 4.2% and pointwise LLM-based solutions by more than 10% on average NDCG@10. Furthermore, we propose several variants of PRP to improve efficiency and show that it is possible to achieve competitive results even with linear complexity.",
+            "year": 2023,
+            "citationCount": 79,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The results are the first in the literature to achieve state-of-the-art ranking performance on standard benchmarks using moderate-sized open-sourced LLMs and several variants of PRP are proposed to improve efficiency and show that it is possible to achieve competitive results even with linear complexity."
+            },
+            "score": 2
+        },
+        {
+            "id": "8bc313e04cbd39847eb50b22af0a698ff2971a35",
+            "paperId": "8bc313e04cbd39847eb50b22af0a698ff2971a35",
+            "title": "Error Analysis Prompting Enables Human-Like Translation Evaluation in Large Language Models: A Case Study on ChatGPT",
+            "abstract": "Generative large language models (LLMs), e.g., ChatGPT, have demonstrated remarkable proficiency across several NLP tasks, such as machine translation, text summarization. Recent research (Kocmi and Federmann, 2023) has shown that utilizing LLMs for assessing the quality of machine translation (MT) achieves state-of-the-art performance at the system level but \\textit{performs poorly at the segment level}. To further improve the performance of LLMs on MT quality assessment, we investigate several prompting designs, and propose a new prompting method called \\textbf{\\texttt{Error Analysis Prompting}} (EAPrompt) by combining Chain-of-Thoughts (Wei et al., 2022) and Error Analysis (Lu et al., 2023). This technique emulates the commonly accepted human evaluation framework - Multidimensional Quality Metrics (MQM, Freitag et al. (2021)) and \\textit{produces explainable and reliable MT evaluations at both the system and segment level}. Experimental Results from the WMT22 metrics shared task validate the effectiveness of EAPrompt on various LLMs, with different structures. Further analysis confirms that EAPrompt effectively distinguishes major errors from minor ones, while also sharing a similar distribution of the number of errors with MQM. These findings highlight the potential of EAPrompt as a human-like evaluator prompting technique for MT evaluation.",
+            "year": 2023,
+            "citationCount": 58,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Findings highlight the potential of EAPrompt as a human-like evaluator prompting technique for MT evaluation, and investigate several prompting designs, and propose a new prompting method called EAPrompt by combining Chain-of-Thoughts and Error Analysis."
+            },
+            "score": 2
+        },
+        {
+            "id": "75c08892179fc478f87d7020b5daff9fca4f3389",
+            "paperId": "75c08892179fc478f87d7020b5daff9fca4f3389",
+            "title": "Beyond One-Model-Fits-All: A Survey of Domain Specialization for Large Language Models",
+            "abstract": "Large language models (LLMs) have significantly advanced the field of natural language processing (NLP), providing a highly useful, task-agnostic foundation for a wide range of applications. The great promise of LLMs as general task solvers motivated people to extend their functionality largely beyond just a \u201cchatbot\u201d, and use it as an assistant or even replacement for domain experts and tools in specific domains such as healthcare, finance, and education. However, directly applying LLMs to solve sophisticated problems in specific domains meets many hurdles, caused by the heterogeneity of domain data, the sophistication of domain knowledge, the uniqueness of domain objectives, and the diversity of the constraints (e.g., various social norms, cultural conformity, religious beliefs, and ethical standards in the domain applications). To fill such a gap, explosively-increase research, and practices have been conducted",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 2
+        },
+        {
+            "id": "01085bd4200dee69ced76a6aaf58f6fe1916c2d8",
+            "paperId": "01085bd4200dee69ced76a6aaf58f6fe1916c2d8",
+            "title": "On Political Theory and Large Language Models",
+            "abstract": "Political theory as a discipline has long been skeptical of computational methods. In this paper, I argue that it is time for theory to make a perspectival shift on these methods. Specifically, we should consider integrating recently developed generative large language models like GPT-4 as tools to support our creative work as theorists. Ultimately, I suggest that political theorists should embrace this technology as a method of supporting our capacity for creativity\u2014but that we should do so in a way that is mindful of the content and value of theorizing, the technical constraints of the models, and the ethical questions that the technology raises.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "7902e698b7f10e5985a3377b8ae0578242750f14",
+            "paperId": "7902e698b7f10e5985a3377b8ae0578242750f14",
+            "title": "Long-Form Speech Translation through Segmentation with Finite-State Decoding Constraints on Large Language Models",
+            "abstract": "One challenge in speech translation is that plenty of spoken content is long-form, but short units are necessary for obtaining high-quality translations. To address this mismatch, we adapt large language models (LLMs) to split long ASR transcripts into segments that can be independently translated so as to maximize the overall translation quality. We overcome the tendency of hallucination in LLMs by incorporating finite-state constraints during decoding; these eliminate invalid outputs without requiring additional training. We discover that LLMs are adaptable to transcripts containing ASR errors through prompt-tuning or fine-tuning. Relative to a state-of-the-art automatic punctuation baseline, our best LLM improves the average BLEU by 2.9 points for English-German, English-Spanish, and English-Arabic TED talk translation in 9 test sets, just by improving segmentation.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work adapts large language models (LLMs) to split long ASR transcripts into segments that can be independently translated so as to maximize the overall translation quality."
+            },
+            "score": 2
+        },
+        {
+            "id": "2392b6d3a5cad9e5cf349169eaeee848266adf6a",
+            "paperId": "2392b6d3a5cad9e5cf349169eaeee848266adf6a",
+            "title": "LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models",
+            "abstract": "Large language models (LLMs) have been applied in various applications due to their astonishing capabilities. With advancements in technologies such as chain-of-thought (CoT) prompting and in-context learning (ICL), the prompts fed to LLMs are becoming increasingly lengthy, even exceeding tens of thousands of tokens. To accelerate model inference and reduce cost, this paper presents LLMLingua, a coarse-to-fine prompt compression method that involves a budget controller to maintain semantic integrity under high compression ratios, a token-level iterative compression algorithm to better model the interdependence between compressed contents, and an instruction tuning based method for distribution alignment between language models. We conduct experiments and analysis over four datasets from different scenarios, i.e., GSM8K, BBH, ShareGPT, and Arxiv-March23; showing that the proposed approach yields state-of-the-art performance and allows for up to 20x compression with little performance loss. Our code is available at https://aka.ms/LLMLingua.",
+            "year": 2023,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A coarse-to-fine prompt compression method that involves a budget controller to maintain semantic integrity under high compression ratios, a token-level iterative compression algorithm to better model the interdependence between compressed contents, and an instruction tuning based method for distribution alignment between language models."
+            },
+            "score": 2
+        },
+        {
+            "id": "bee79110f7b89292955984c7110ed0de8ae719a1",
+            "paperId": "bee79110f7b89292955984c7110ed0de8ae719a1",
+            "title": "Fusing Pre-Trained Language Models with Multimodal Prompts through Reinforcement Learning",
+            "abstract": "Language models are capable of commonsense reasoning: while domain-specific models can learn from explicit knowledge (e.g. commonsense graphs [6] ethical norms [25]), and larger models like GPT-3 [7] mani-fest broad commonsense reasoning capacity. Can their knowledge be extended to multimodal inputs such as images and audio without paired domain data? In this work, we propose \u2021ESPER (Extending Sensory PErception with Reinforcement learning) which enables text-only pretrained models to address multimodal tasks such as visual commonsense reasoning. Our key novelty is to use rein-forcement learning to align multimodal inputs to language model generations without direct supervision: for example, our reward optimization relies only on cosine similarity derived from CLIP [52] and requires no additional paired (image, text) data. Experiments demonstrate that ESPER outperforms baselines and prior work on a variety of multimodal text generation tasks ranging from captioning to commonsense reasoning; these include a new benchmark we collect and release, the ESP dataset, which tasks models with generating the text of several different domains for each image. Our code and data are publicly released at https://github.com/JiwanChung/esper.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes \u2021ESPER (Extending Sensory PErception with Reinforcement learning) which enables text-only pretrained models to address multimodal tasks such as visual commonsense reasoning."
+            },
+            "score": 2
+        },
+        {
+            "id": "78b2336d5d0c9e5dd1eefebdc82faf90d9586d81",
+            "paperId": "78b2336d5d0c9e5dd1eefebdc82faf90d9586d81",
+            "title": "Flesch or Fumble? Evaluating Readability Standard Alignment of Instruction-Tuned Language Models",
+            "abstract": "Readability metrics and standards such as Flesch Kincaid Grade Level (FKGL) and the Common European Framework of Reference for Languages (CEFR) exist to guide teachers and educators to properly assess the complexity of educational materials before administering them for classroom use. In this study, we select a diverse set of open and closed-source instruction-tuned language models and investigate their performances in writing story completions and simplifying narratives\u2014tasks that teachers perform\u2014using standard-guided prompts controlling text readability. Our extensive findings provide empirical proof of how globally recognized models like ChatGPT may be considered less effective and may require more refined prompts for these generative tasks compared to other open-sourced models such as BLOOMZ and FlanT5\u2014which have shown promising results.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study investigates a diverse set of open and closed-source instruction-tuned language models and provides empirical proof of how globally recognized models like ChatGPT may be considered less effective and may require more refined prompts for these generative tasks compared to other open-sourced models such as BLOOMZ and FlanT5."
+            },
+            "score": 2
+        },
+        {
+            "id": "08400a12db21fe4d4f844fec57844e74ac09c9ba",
+            "paperId": "08400a12db21fe4d4f844fec57844e74ac09c9ba",
+            "title": "Prompting or Fine-tuning? A Comparative Study of Large Language Models for Taxonomy Construction",
+            "abstract": "Taxonomies represent hierarchical relations between entities, frequently applied in various software modeling and natural language processing (NLP) activities. They are typically subject to a set of structural constraints restricting their content. However, manual taxonomy construction can be time-consuming, incomplete, and costly to maintain. Recent studies of large language models (LLMs) have demonstrated that appropriate user inputs (called prompting) can effectively guide LLMs, such as GPT-3, in diverse NLP tasks without explicit (re-)training. However, existing approaches for automated taxonomy construction typically involve fine-tuning a language model by adjusting model parameters. In this paper, we present a general framework for taxonomy construction that takes into account structural constraints. We subsequently conduct a systematic comparison between the prompting and fine-tuning approaches performed on a hypernym taxonomy and a novel computer science taxonomy dataset. Our result reveals the following: (1) Even without explicit training on the dataset, the prompting approach outperforms fine-tuning-based approaches. Moreover, the performance gap between prompting and fine-tuning widens when the training dataset is small. However, (2) taxonomies generated by the fine-tuning approach can be easily post-processed to satisfy all the constraints, whereas handling violations of the taxonomies produced by the prompting approach can be challenging. These evaluation findings provide guidance on selecting the appropriate method for taxonomy construction and highlight potential enhancements for both approaches.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A general framework for taxonomy construction that takes into account structural constraints is presented and a systematic comparison between the prompting and fine-tuning approaches performed on a hypernym taxonomy and a novel computer science taxonomy dataset is conducted."
+            },
+            "score": 2
+        },
+        {
+            "id": "b44fe44e27c9d0880faa698e3b2d98b50f762422",
+            "paperId": "b44fe44e27c9d0880faa698e3b2d98b50f762422",
+            "title": "Quranic Conversations: Developing a Semantic Search tool for the Quran using Arabic NLP Techniques",
+            "abstract": "The Holy Book of Quran is believed to be the literal word of God (Allah) as revealed to the Prophet Muhammad (PBUH) over a period of approximately 23 years. It is the book where God provides guidance on how to live a righteous and just life, emphasizing principles like honesty, compassion, charity and justice, as well as providing rules for personal conduct, family matters, business ethics and much more. However, due to constraints related to the language and the Quran organization, it is challenging for Muslims to get all relevant ayahs (verses) pertaining to a matter or inquiry of interest. Hence, we developed a Quran semantic search tool which finds the verses pertaining to the user inquiry or prompt. To achieve this, we trained several models on a large dataset of over 30 tafsirs, where typically each tafsir corresponds to one verse in the Quran and, using cosine similarity, obtained the tafsir tensor which is most similar to the prompt tensor of interest, which was then used to index for the corresponding ayah in the Quran. Using the SNxLM model, we were able to achieve a cosine similarity score as high as 0.97 which corresponds to the abdu tafsir for a verse relating to financial matters.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Quran semantic search tool which finds the verses pertaining to the user inquiry or prompt through cosine similarity, which was developed on a large dataset of over 30 tafsirs."
+            },
+            "score": 2
+        },
+        {
+            "id": "12594b6afe01461384d2856d2bf44f1cf8533e3e",
+            "paperId": "12594b6afe01461384d2856d2bf44f1cf8533e3e",
+            "title": "ChatGPT and the rise of large language models: the new AI-driven infodemic threat in public health",
+            "abstract": "Large Language Models (LLMs) have recently gathered attention with the release of ChatGPT, a user-centered chatbot released by OpenAI. In this perspective article, we retrace the evolution of LLMs to understand the revolution brought by ChatGPT in the artificial intelligence (AI) field. The opportunities offered by LLMs in supporting scientific research are multiple and various models have already been tested in Natural Language Processing (NLP) tasks in this domain. The impact of ChatGPT has been huge for the general public and the research community, with many authors using the chatbot to write part of their articles and some papers even listing ChatGPT as an author. Alarming ethical and practical challenges emerge from the use of LLMs, particularly in the medical field for the potential impact on public health. Infodemic is a trending topic in public health and the ability of LLMs to rapidly produce vast amounts of text could leverage misinformation spread at an unprecedented scale, this could create an \u201cAI-driven infodemic,\u201d a novel public health threat. Policies to contrast this phenomenon need to be rapidly elaborated, the inability to accurately detect artificial-intelligence-produced text is an unresolved issue.",
+            "year": 2023,
+            "citationCount": 172,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The evolution of LLMs is retrace the evolution to understand the revolution brought by ChatGPT in the artificial intelligence (AI) field, particularly in the medical field for the potential impact on public health."
+            },
+            "score": 1
+        },
+        {
+            "id": "da9683e826c37a6383c124b5c6cddefcb35ee8fd",
+            "paperId": "da9683e826c37a6383c124b5c6cddefcb35ee8fd",
+            "title": "ChatGPT and a new academic reality: Artificial Intelligence\u2010written research papers and the ethics of the large language models in scholarly publishing",
+            "abstract": "This article discusses OpenAI's ChatGPT, a generative pre\u2010trained transformer, which uses natural language processing to fulfill text\u2010based user requests (i.e., a \u201cchatbot\u201d). The history and principles behind ChatGPT and similar models are discussed. This technology is then discussed in relation to its potential impact on academia and scholarly research and publishing. ChatGPT is seen as a potential model for the automated preparation of essays and other types of scholarly manuscripts. Potential ethical issues that could arise with the emergence of large language models like GPT\u20103, the underlying technology behind ChatGPT, and its usage by academics and researchers, are discussed and situated within the context of broader advancements in artificial intelligence, machine learning, and natural language processing for research and scholarly publishing.",
+            "year": 2023,
+            "citationCount": 212,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "OpenAI's ChatGPT, a generative pre\u2010trained transformer, which uses natural language processing to fulfill text\u2010based user requests (i.e., a \u201cchatbot\u201d), is discussed, seen as a potential model for the automated preparation of essays and other types of scholarly manuscripts."
+            },
+            "score": 1
+        },
+        {
+            "id": "5311db0b04b95fa43b886387fb1f484055638660",
+            "paperId": "5311db0b04b95fa43b886387fb1f484055638660",
+            "title": "Modal-aware Visual Prompting for Incomplete Multi-modal Brain Tumor Segmentation",
+            "abstract": "In the realm of medical imaging, distinct magnetic resonance imaging (MRI) modalities can provide complementary medical insights. However, it is not uncommon for one or more modalities to be absent due to image corruption, artifacts, acquisition protocols, allergies to contrast agents, or cost constraints, posing a significant challenge for perceiving the modality-absent state in incomplete modality segmentation.In this work, we introduce a novel incomplete multi-modal segmentation framework called Modal-aware Visual Prompting (MAVP), which draws inspiration from the widely used pre-training and prompt adjustment protocol employed in natural language processing (NLP). In contrast to previous prompts that typically use textual network embeddings, we utilize embeddings as the prompts generated by a modality state classifier that focuses on the missing modality states. Additionally, we integrate modality state prompts into both the extraction stage of each modality and the modality fusion stage to facilitate intra/inter-modal adaptation. Our approach achieves state-of-the-art performance in various modality-incomplete scenarios compared to incomplete modality-specific solutions.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel incomplete multi-modal segmentation framework called Modal-aware Visual Prompting (MAVP), which draws inspiration from the widely used pre-training and prompt adjustment protocol employed in natural language processing (NLP), and utilizes embeddings as the prompts generated by a modality state classifier that focuses on the missing modality states."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

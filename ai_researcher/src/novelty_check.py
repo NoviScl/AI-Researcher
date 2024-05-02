@@ -169,52 +169,56 @@ if __name__ == "__main__":
         idea = idea_file["full_experiment_plan"]
         topic_description = idea_file["topic_description"]
         
-        if args.retrieve:
-            print ("Retrieving related works...")
-            paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, client, args.engine, args.seed)
-            output = format_papers_for_printing(paper_bank[ : 10])
-            print ("Top 10 papers: ")
-            print (output)
-            print ("Total cost: ", total_cost)
+        try:
+            if args.retrieve:
+                print ("Retrieving related works...")
+                paper_bank, total_cost, all_queries = get_related_works(idea_name, idea, topic_description, client, args.engine, args.seed)
+                output = format_papers_for_printing(paper_bank[ : 10])
+                print ("Top 10 papers: ")
+                print (output)
+                print ("Total cost: ", total_cost)
 
-            ## save the paper bank
-            if not os.path.exists(cache_dir + "experiment_plans/" + args.cache_name + "/"):
-                os.makedirs(cache_dir + "experiment_plans/" + args.cache_name + "/")
-            idea_file["novelty_queries"] = all_queries
-            idea_file["novelty_papers"] = paper_bank
-            cache_output(idea_file, cache_file)
-        
-        if args.novelty: 
-            with open(cache_file, "r") as f:
-                idea_file = json.load(f)
-
-            topic_description = idea_file["topic_description"]
-            plan_json = idea_file["full_experiment_plan"]
-            related_papers = idea_file["novelty_papers"]
-            # idea_file["novelty_check_papers"] = related_papers[ : args.check_n].copy()
-
-            novel = True 
-            print ("checking through top {} papers".format(str(args.check_n)))
-            for i in range(args.check_n):
-                prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
-                idea_file["novelty_papers"][i]["novelty_score"] = response.strip()
-                final_judgment = response.strip().split()[-1].lower()
-                # print ("novelty judgment: ", final_judgment)
-                # print ("\n\n")
-                
-                if final_judgment == "yes":
-                    novel = False
-                idea_file["novelty_papers"][i]["novelty_judgment"] = final_judgment
-                
-                # print (format_papers_for_printing([related_papers[i]]))
-                # print (response)
-                # print (cost)
+                ## save the paper bank
+                if not os.path.exists(cache_dir + "experiment_plans/" + args.cache_name + "/"):
+                    os.makedirs(cache_dir + "experiment_plans/" + args.cache_name + "/")
+                idea_file["novelty_queries"] = all_queries
+                idea_file["novelty_papers"] = paper_bank
+                cache_output(idea_file, cache_file)
             
-            idea_file["novelty"] = "yes" if novel else "no"
-            if idea_file["novelty"] == "yes":
-                novel_idea += 1
-            cache_output(idea_file, cache_file)
-            print ("Novelty judgment: ", idea_file["novelty"])
+            if args.novelty: 
+                with open(cache_file, "r") as f:
+                    idea_file = json.load(f)
+
+                topic_description = idea_file["topic_description"]
+                plan_json = idea_file["full_experiment_plan"]
+                related_papers = idea_file["novelty_papers"]
+                # idea_file["novelty_check_papers"] = related_papers[ : args.check_n].copy()
+
+                novel = True 
+                print ("checking through top {} papers".format(str(args.check_n)))
+                for i in range(args.check_n):
+                    prompt, response, cost = novelty_score(plan_json, related_papers[i], client, args.engine, args.seed)
+                    idea_file["novelty_papers"][i]["novelty_score"] = response.strip()
+                    final_judgment = response.strip().split()[-1].lower()
+                    # print ("novelty judgment: ", final_judgment)
+                    # print ("\n\n")
+                    
+                    if final_judgment == "yes":
+                        novel = False
+                    idea_file["novelty_papers"][i]["novelty_judgment"] = final_judgment
+                    
+                    # print (format_papers_for_printing([related_papers[i]]))
+                    # print (response)
+                    # print (cost)
+                
+                idea_file["novelty"] = "yes" if novel else "no"
+                if idea_file["novelty"] == "yes":
+                    novel_idea += 1
+                cache_output(idea_file, cache_file)
+                print ("Novelty judgment: ", idea_file["novelty"])
+        except:
+            print ("Error in processing: ", filename)
+            continue 
 
     if args.novelty:
         print ("Novelty rate: {} / {} = {}%".format(novel_idea, len(filenames), novel_idea / len(filenames) * 100))

@@ -84,5 +84,993 @@
             }
         },
         "Fallback Plan": "If the proposed Bayesian Prompt Fusion method does not lead to improved confidence calibration or accuracy compared to the baselines, we will conduct additional analyses to understand the reasons behind its failure. These analyses could include:\n1. Examining the quality and diversity of the prompts used in the experiments. If the prompts are too similar or do not effectively probe different aspects of the model's knowledge and reasoning, the method may not provide significant benefits over using a single prompt.\n2. Investigating the appropriateness of the chosen prior distributions and likelihood functions. If these components do not accurately capture the model's uncertainty or the relationship between confidence scores and accuracy, the resulting posterior distributions may not be informative.\n3. Analyzing the consistency and reliability of the model's confidence scores across different prompts and responses. If the confidence scores are highly variable or do not align with the model's actual performance, the effectiveness of Bayesian Prompt Fusion may be limited.\n4. Comparing the performance of Bayesian Prompt Fusion across different models and datasets. If the method works well for some models or tasks but not others, it may indicate limitations in its generalizability or robustness.\nBased on the findings from these analyses, we will consider alternative approaches or modifications to the Bayesian Prompt Fusion method. These could include:\n1. Developing techniques for automatically generating diverse and informative prompts, rather than relying on manually designed prompts.\n2. Exploring different probability distributions or confidence scoring mechanisms to better capture the model's uncertainty.\n3. Incorporating additional sources of information, such as the model's internal representations or attention weights, to inform the confidence estimation process.\n4. Investigating the use of alternative inference techniques, such as variational inference or expectation propagation, to approximate the posterior distribution more efficiently or accurately.\nIf the proposed method and its variations still do not yield satisfactory results, we will focus on analyzing and understanding the factors that contribute to the model's uncertainty and the limitations of confidence calibration using prompting-based methods. This could involve conducting ablation studies, analyzing the model's behavior on specific types of questions or prompts, or comparing the effectiveness of prompting-based calibration across different model architectures and sizes. The insights gained from these analyses could inform the development of new methods for confidence calibration or highlight the need for alternative approaches, such as fine-tuning or post-processing techniques."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"bayesian prompt fusion language models\")",
+        "KeywordQuery(\"uncertainty quantification language models multiple prompts\")",
+        "KeywordQuery(\"confidence calibration language models bayesian inference\")",
+        "KeywordQuery(\"Bayesian Prompt Fusion NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "8744f24547e2a9053e7a0e71fd6c6fe3fa141927",
+            "paperId": "8744f24547e2a9053e7a0e71fd6c6fe3fa141927",
+            "title": "A Bayesian approach for prompt optimization in pre-trained language models",
+            "abstract": "A prompt is a sequence of symbol or tokens, selected from a vocabulary according to some rule, which is prepended/concatenated to a textual query. A key problem is how to select the sequence of tokens: in this paper we formulate it as a combinatorial optimization problem. The high dimensionality of the token space com-pounded by the length of the prompt sequence requires a very efficient solution. In this paper we propose a Bayesian optimization method, executed in a continuous em-bedding of the combinatorial space. In this paper we focus on hard prompt tuning (HPT) which directly searches for discrete tokens to be added to the text input with-out requiring access to the large language model (LLM) and can be used also when LLM is available only as a black-box. This is critically important if LLMs are made available in the Model as a Service (MaaS) manner as in GPT-4. The current manu-script is focused on the optimization of discrete prompts for classification tasks. The discrete prompts give rise to difficult combinatorial optimization problem which easily become intractable given the dimension of the token space in realistic applications. The optimization method considered in this paper is Bayesian optimization (BO) which has become the dominant approach in black-box optimization for its sample efficiency along with its modular structure and versatility. In this paper we use BoTorch, a library for Bayesian optimization research built on top of pyTorch. Albeit preliminary and obtained using a 'vanilla' version of BO, the experiments on RoB-ERTa on six benchmarks, show a good performance across a variety of tasks and enable an analysis of the tradeoff between size of the search space, accuracy and wall clock time.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper focuses on hard prompt tuning (HPT) which directly searches for discrete tokens to be added to the text input with-out requiring access to the large language model (LLM) and can be used also when LLM is available only as a black-box."
+            },
+            "score": 7,
+            "novelty_score": "The project proposal aims to improve confidence calibration in language models by combining responses from multiple prompts using Bayesian inference. The paper focuses on optimizing discrete prompts for classification tasks using Bayesian optimization in a continuous embedding space.\n\nThe project proposal addresses the problem of confidence calibration in language models, while the paper tackles the problem of prompt optimization for classification tasks. The approaches are also different: the proposal uses Bayesian inference to combine responses from multiple prompts, whereas the paper employs Bayesian optimization to search for optimal discrete prompts.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "1fa4469e5bc5d096572902fe14b0d66078a24c47",
+            "paperId": "1fa4469e5bc5d096572902fe14b0d66078a24c47",
+            "title": "Navigating the Grey Area: Expressions of Overconfidence and Uncertainty in Language Models",
+            "abstract": "Despite increasingly \ufb02uent, relevant, and coherent language generation, major gaps remain between how humans and machines use language. We argue that a key dimension that is missing from our understanding of language models (LMs) is the model\u2019s ability to interpret and generate expressions of uncertainty . Whether it be the weatherperson announcing a chance of rain or a doctor giving a diagnosis, information is often not black-and-white and expressions of uncertainty provide nuance to support human-decision making. The increasing deployment of LMs in the wild motivates us to investigate whether LMs are capable of interpreting expressions of uncertainty and how LMs\u2019 behaviors change when learning to emit their own expressions of uncertainty. When injecting expressions of uncertainty into prompts (e.g., \"I think the answer is...\"), we discover that GPT3\u2019s generations vary upwards of 80% in accuracy based on the expression used. We analyze the linguistic characteristics of these expressions and \ufb01nd a drop in accuracy when naturalistic expressions of certainty are present. We \ufb01nd similar effects when teaching models to emit their own expressions of uncertainty, where model calibration suffers when teaching models to emit certainty rather than un certainty. Together, these results highlight the challenges of building LMs that interpret and generate trustworthy expressions of uncertainty.",
+            "year": 2023,
+            "citationCount": 54,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that GPT3\u2019s generations vary upwards of 80% in accuracy based on the expression used, and the challenges of building LMs that interpret and generate trustworthy expressions of uncertainty are highlighted."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is quantifying uncertainty in language models through multi-prompt inference, while the approach is using Bayesian inference to combine responses from different prompts. The research problem in the paper is investigating language models' ability to interpret and generate expressions of uncertainty, while the approach is injecting expressions of uncertainty into prompts and analyzing the impact on model behavior.\n\nThe proposal focuses on improving confidence calibration by combining responses from multiple prompts using Bayesian inference, whereas the paper studies how language models handle expressions of uncertainty in input prompts and generated outputs, without proposing a specific method for confidence calibration.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "67fa2f2072cca1071ed2c820d6a7f50de6ea2ff3",
+            "paperId": "67fa2f2072cca1071ed2c820d6a7f50de6ea2ff3",
+            "title": "Decomposing Uncertainty for Large Language Models through Input Clarification Ensembling",
+            "abstract": "Uncertainty decomposition refers to the task of decomposing the total uncertainty of a model into data (aleatoric) uncertainty, resulting from the inherent complexity or ambiguity of the data, and model (epistemic) uncertainty, resulting from the lack of knowledge in the model. Performing uncertainty decomposition for large language models (LLMs) is an important step toward improving the reliability, trustworthiness, and interpretability of LLMs, but this research task is very challenging and remains unresolved. The existing canonical method, Bayesian Neural Network (BNN), cannot be applied to LLMs, because BNN requires training and ensembling multiple variants of models, which is infeasible or prohibitively expensive for LLMs. In this paper, we introduce an uncertainty decomposition framework for LLMs, called input clarifications ensemble, which bypasses the need to train new models. Rather than ensembling models with different parameters, our approach generates a set of clarifications for the input, feeds them into the fixed LLMs, and ensembles the corresponding predictions. We show that our framework shares a symmetric decomposition structure with BNN. Empirical evaluations demonstrate that the proposed framework provides accurate and reliable uncertainty quantification on various tasks. Code will be made publicly available at https://github.com/UCSB-NLP-Chang/llm_uncertainty .",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces an uncertainty decomposition framework for LLMs, called input clarifications ensemble, which bypasses the need to train new models, and shares a symmetric decomposition structure with BNN."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is quantifying uncertainty in language models through multi-prompt inference, while the paper aims to decompose uncertainty in large language models into data and model uncertainty. The approach in the proposal is to use Bayesian inference to combine responses from multiple prompts, whereas the paper proposes an input clarification ensemble method that generates clarifications for the input and ensembles the corresponding predictions.\n\nThe proposal focuses on improving confidence calibration by leveraging multiple prompts, while the paper addresses the challenge of uncertainty decomposition for large language models. Although both deal with uncertainty quantification, the specific research problems and approaches differ.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "217e436fd23fe4184828e02a2b143835d6fd3b28",
+            "paperId": "217e436fd23fe4184828e02a2b143835d6fd3b28",
+            "title": "Navigating the Grey Area: How Expressions of Uncertainty and Overconfidence Affect Language Models",
+            "abstract": "The increased deployment of LMs for real-world tasks involving knowledge and facts makes it important to understand model epistemology: what LMs think they know, and how their attitudes toward that knowledge are affected by language use in their inputs. Here, we study an aspect of model epistemology: how epistemic markers of certainty, uncertainty, or evidentiality like\"I'm sure it's\",\"I think it's\", or\"Wikipedia says it's\"affect models, and whether they contribute to model failures. We develop a typology of epistemic markers and inject 50 markers into prompts for question answering. We find that LMs are highly sensitive to epistemic markers in prompts, with accuracies varying more than 80%. Surprisingly, we find that expressions of high certainty result in a 7% decrease in accuracy as compared to low certainty expressions; similarly, factive verbs hurt performance, while evidentials benefit performance. Our analysis of a popular pretraining dataset shows that these markers of uncertainty are associated with answers on question-answering websites, while markers of certainty are associated with questions. These associations may suggest that the behavior of LMs is based on mimicking observed language use, rather than truly reflecting epistemic uncertainty.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that LMs are highly sensitive to epistemic markers in prompts, with accuracies varying more than 80%, and expressions of high certainty result in a 7% decrease in accuracy as compared to low certainty expressions; similarly, factive verbs hurt performance, while evidentials benefit performance."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is quantifying uncertainty in language models through multi-prompt inference, and the proposed approach is Bayesian Prompt Fusion, which treats responses to different prompts as independent evidence sources and combines them using Bayesian inference.\n\nThe research problem in the paper is studying how epistemic markers of certainty, uncertainty, or evidentiality affect language models and their performance, and the approach is injecting these markers into prompts for question answering and analyzing the results.\n\nThe two works have different research problems and approaches. The proposal focuses on quantifying uncertainty using multi-prompt inference, while the paper studies the effect of epistemic markers on language model performance.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "55b88be46c22232a5923ce20c745d99bb9562325",
+            "paperId": "55b88be46c22232a5923ce20c745d99bb9562325",
+            "title": "Bayesian Multi-Task Transfer Learning for Soft Prompt Tuning",
+            "abstract": "Prompt tuning, in which prompts are optimized to adapt large-scale pre-trained language models to downstream tasks instead of fine-tuning the full model parameters, has been shown to be particularly effective when the prompts are trained in a multi-task transfer learning setting. These methods generally involve individually training prompts for each source task and then aggregating them to provide the initialization of the prompt for the target task. However, this approach critically ignores the fact that some of the source tasks could be negatively or positively interfering with each other. We argue that when we extract knowledge from source tasks via training source prompts, we need to consider this correlation among source tasks for better transfer to target tasks. To this end, we propose a Bayesian approach where we work with the posterior distribution of prompts across source tasks. We obtain representative source prompts corresponding to the samples from the posterior utilizing Stein Variational Gradient Descent, which are then aggregated to constitute the initial target prompt. We show extensive experimental results on the standard benchmark NLP tasks, where our Bayesian multi-task transfer learning approach outperforms the state-of-the-art methods in many settings. Furthermore, our approach requires no auxiliary models other than the prompt itself, achieving a high degree of parameter efficiency.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Bayesian approach where the posterior distribution of prompts across source tasks is worked with, and obtains representative source prompts corresponding to the samples from the posterior utilizing Stein Variational Gradient Descent, which are then aggregated to constitute the initial target prompt."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is quantifying uncertainty in language models through multi-prompt inference, and the proposed approach is Bayesian Prompt Fusion, which treats responses to different prompts as independent evidence sources and combines them using Bayesian inference.\n\nThe research problem in the paper is improving prompt tuning in a multi-task transfer learning setting, and the proposed approach is a Bayesian method that works with the posterior distribution of prompts across source tasks and aggregates representative source prompts to initialize the target prompt.\n\nWhile both the proposal and the paper use Bayesian methods and involve prompts, the research problems and approaches are different. The proposal focuses on quantifying uncertainty in language models, while the paper aims to improve multi-task transfer learning for prompt tuning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "cc0adc6d571c90fbbe0bb5a2a3a6c37db4abb7b2",
+            "paperId": "cc0adc6d571c90fbbe0bb5a2a3a6c37db4abb7b2",
+            "title": "Prompt Optimization in Large Language Models",
+            "abstract": "Prompt optimization is a crucial task for improving the performance of large language models for downstream tasks. In this paper, a prompt is a sequence of n-grams selected from a vocabulary. Consequently, the aim is to select the optimal prompt concerning a certain performance metric. Prompt optimization can be considered as a combinatorial optimization problem, with the number of possible prompts (i.e., the combinatorial search space) given by the size of the vocabulary (i.e., all the possible n-grams) raised to the power of the length of the prompt. Exhaustive search is impractical; thus, an efficient search strategy is needed. We propose a Bayesian Optimization method performed over a continuous relaxation of the combinatorial search space. Bayesian Optimization is the dominant approach in black-box optimization for its sample efficiency, along with its modular structure and versatility. We use BoTorch, a library for Bayesian Optimization research built on top of PyTorch. Specifically, we focus on Hard Prompt Tuning, which directly searches for an optimal prompt to be added to the text input without requiring access to the Large Language Model, using it as a black-box (such as for GPT-4 which is available as a Model as a Service). Albeit preliminary and based on \u201cvanilla\u201d Bayesian Optimization algorithms, our experiments with RoBERTa as a large language model, on six benchmark datasets, show good performances when compared against other state-of-the-art black-box prompt optimization methods and enable an analysis of the trade-off between the size of the search space, accuracy, and wall-clock time.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper focuses on Hard Prompt Tuning, which directly searches for an optimal prompt to be added to the text input without requiring access to the Large Language Model, using it as a black-box (such as for GPT-4 which is available as a Model as a Service)."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to quantify uncertainty in language models through Bayesian fusion of multiple prompts, while the paper focuses on optimizing a single prompt for downstream tasks using Bayesian optimization.\n\nProject proposal: Quantifying uncertainty in language models through Bayesian fusion of multiple prompts.\nPaper: Optimizing a single prompt for downstream tasks using Bayesian optimization.\n\nThe two works address different problems and propose different approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "3d7d385d9ee75a286e8da27f7d3cf9f12651c899",
+            "paperId": "3d7d385d9ee75a286e8da27f7d3cf9f12651c899",
+            "title": "Model ensemble instead of prompt fusion: a sample-specific knowledge transfer method for few-shot prompt tuning",
+            "abstract": "Prompt tuning approaches, which learn task-specific soft prompts for a downstream task conditioning on frozen pre-trained models, have attracted growing interest due to its parameter efficiency. With large language models and sufficient training data, prompt tuning performs comparably to full-model tuning. However, with limited training samples in few-shot settings, prompt tuning fails to match the performance of full-model fine-tuning. In this work, we focus on improving the few-shot performance of prompt tuning by transferring knowledge from soft prompts of source tasks. Recognizing the good generalization capabilities of ensemble methods in low-data regime, we first experiment and show that a simple ensemble of model predictions based on different source prompts, outperforms existing multi-prompt knowledge transfer approaches such as source prompt fusion in the few-shot setting. Motivated by this observation, we further investigate model ensembles and propose Sample-specific Ensemble of Source Models (SESoM). SESoM learns to adjust the contribution of each source model for each target sample separately when ensembling source model outputs. Through this way, SESoM inherits the superior generalization of model ensemble approaches and simultaneously captures the sample-specific competence of each source prompt. We conduct experiments across a diverse set of eight NLP tasks using models of different scales (T5-{base, large, XL}) and find that SESoM consistently outperforms the existing models of the same as well as larger parametric scale by a large margin.",
+            "year": 2022,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates model ensembles and proposes Sample-specific Ensemble of Source Models (SESoM), a simple ensemble of model predictions based on different source prompts that consistently outperforms the existing models of the same as well as larger parametric scale by a large margin."
+            },
+            "score": 6,
+            "novelty_score": "The project proposal aims to improve confidence calibration for language models by combining responses from multiple prompts using Bayesian inference. The paper focuses on improving the few-shot performance of prompt tuning by transferring knowledge from soft prompts of source tasks and using sample-specific model ensembles.\n\nThe project proposal and the paper address different research problems and propose different approaches. The project proposal tackles confidence calibration, while the paper aims to improve few-shot prompt tuning performance. The project uses Bayesian inference to combine multiple prompts, whereas the paper employs sample-specific model ensembles for knowledge transfer.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ad934a9344f68fcc0b9aa704102aa48c39c5b591",
+            "paperId": "ad934a9344f68fcc0b9aa704102aa48c39c5b591",
+            "title": "Generating with Confidence: Uncertainty Quantification for Black-box Large Language Models",
+            "abstract": "Large language models (LLMs) specializing in natural language generation (NLG) have recently started exhibiting promising capabilities across a variety of domains. However, gauging the trustworthiness of responses generated by LLMs remains an open challenge, with limited research on uncertainty quantification (UQ) for NLG. Furthermore, existing literature typically assumes white-box access to language models, which is becoming unrealistic either due to the closed-source nature of the latest LLMs or computational constraints. In this work, we investigate UQ in NLG for black-box LLMs. We first differentiate uncertainty vs confidence: the former refers to the\"dispersion\"of the potential predictions for a fixed input, and the latter refers to the confidence on a particular prediction/generation. We then propose and compare several confidence/uncertainty metrics, applying them to selective NLG where unreliable results could either be ignored or yielded for further assessment. Experiments were carried out with several popular LLMs on question-answering datasets (for evaluation purposes). Results reveal that a simple metric for the semantic dispersion can be a reliable predictor of the quality of LLM responses, providing valuable insights for practitioners on uncertainty management when adopting LLMs. The code to replicate our experiments is available at https://github.com/zlin7/UQ-NLG.",
+            "year": 2023,
+            "citationCount": 37,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results reveal that a simple metric for the semantic dispersion can be a reliable predictor of the quality of LLM responses, providing valuable insights for practitioners on uncertainty management when adopting LLMs."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is confidence calibration for language models using multiple prompts, while the paper focuses on uncertainty quantification for black-box language models in natural language generation. The proposed approach in the proposal is Bayesian Prompt Fusion, which combines responses from multiple prompts using Bayesian inference, whereas the paper proposes and compares several confidence/uncertainty metrics for selective natural language generation.\n\nThe proposal and the paper address different research problems and propose different approaches.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "paperId": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "title": "Uncertainty Quantification with Pre-trained Language Models: A Large-Scale Empirical Analysis",
+            "abstract": "Pre-trained language models (PLMs) have gained increasing popularity due to their compelling prediction performance in diverse natural language processing (NLP) tasks. When formulating a PLM-based prediction pipeline for NLP tasks, it is also crucial for the pipeline to minimize the calibration error, especially in safety-critical applications. That is, the pipeline should reliably indicate when we can trust its predictions. In particular, there are various considerations behind the pipeline: (1) the choice and (2) the size of PLM, (3) the choice of uncertainty quantifier, (4) the choice of fine-tuning loss, and many more. Although prior work has looked into some of these considerations, they usually draw conclusions based on a limited scope of empirical studies. There still lacks a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline. To fill this void, we compare a wide range of popular options for each consideration based on three prevalent NLP classification tasks and the setting of domain shift. In response, we recommend the following: (1) use ELECTRA for PLM encoding, (2) use larger PLMs if possible, (3) use Temp Scaling as the uncertainty quantifier, and (4) use Focal Loss for fine-tuning.",
+            "year": 2022,
+            "citationCount": 38,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A wide range of popular options for each consideration are compared based on three prevalent NLP classification tasks and the setting of domain shift to form a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration for language models by combining responses from multiple prompts using Bayesian inference. The approach is to treat each prompt as a separate evidence source and combine their confidence scores using Bayesian inference to obtain a more robust estimate of the model's uncertainty.\n\nThe research problem in the paper is improving the calibration of pre-trained language model-based prediction pipelines. The approach is to compare various options for the choice and size of the pre-trained language model, the uncertainty quantifier, and the fine-tuning loss to find the best combination for well-calibrated predictions.\n\nWhile both works aim to improve the calibration of language models, the proposal focuses specifically on using multiple prompts and Bayesian inference, while the paper explores different aspects of the prediction pipeline, such as the choice of the pre-trained model and fine-tuning loss. The methods proposed in the two works are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "5424e311319c58847b4c690d5c91090e3b6a4ac3",
+            "paperId": "5424e311319c58847b4c690d5c91090e3b6a4ac3",
+            "title": "Shifting Attention to Relevance: Towards the Uncertainty Estimation of Large Language Models",
+            "abstract": "While Large Language Models (LLMs) have demonstrated remarkable potential in natural language generation and instruction following, a persistent challenge lies in their susceptibility to\"hallucinations\", which erodes trust in their outputs. Although Uncertainty Quantification (UQ) presents a promising solution, its accurate implementation within the context of LLMs remains a significant hurdle. To address this critical roadblock, our research originates from a fundamental heuristic insight: tokens within auto-regressive LLM-generated text do not equally reflect the underlying meaning. Some tokens carry greater relevance and representativeness than others, owing to the phenomenon of\"linguistic redundancy\", wherein a select few keywords suffice to convey the essence of lengthy sentences. Regrettably, existing methodologies treat all tokens with equal importance when estimating uncertainty, disregarding these inherent generative inequalities. Our analysis reveals a significant issue with state-of-the-art: numerous tokens (and sentences) of limited semantic significance receive equal or even excessive weighting during uncertainty estimation. To rectify this bias, we propose to jointly Shifting Attention to more Relevant (SAR) components, at both the token- and the sentence-levels for accurate uncertainty estimation. We conduct extensive experiments involving a range of popular\"off-the-shelf\"LLMs, including instruction-tuned LLMs such as Vicuna, WizardLM, and LLaMA-2-chat, as well as pretrained LLMs like OPT and LLaMA, with model sizes extending up to 33B parameters. We carry out evaluation across various free-form question-answering tasks, encompassing domains such as reading comprehension, science Q&A, and medical Q&A. Our experimental results demonstrate the superior performance of SAR in addressing the challenges of uncertainty estimation within the realm of LLMs.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results demonstrate the superior performance of SAR in addressing the challenges of uncertainty estimation within the realm of LLMs, and propose to jointly Shifting Attention to more Relevant (SAR) components, at both the token- and the sentence-levels for accurate uncertainty estimation."
+            },
+            "score": 6,
+            "novelty_score": "The research problem in the proposal is improving confidence calibration for language models by combining responses from multiple prompts using Bayesian inference. The approach is to treat each prompt as a separate evidence source and combine their confidence scores using Bayesian inference to obtain a more robust estimate of the model's uncertainty.\n\nThe research problem in the paper is improving uncertainty estimation for large language models by focusing on more relevant components at both token and sentence levels. The approach is to jointly shift attention to more relevant components during uncertainty estimation to address the issue of equal weighting of tokens and sentences with limited semantic significance.\n\nThe proposal focuses on improving confidence calibration using multiple prompts, while the paper focuses on improving uncertainty estimation by weighting relevant components. The approaches are different, as the proposal uses Bayesian inference to combine confidence scores from multiple prompts, while the paper shifts attention to relevant components during uncertainty estimation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "paperId": "ab4ce5dda7ad4d9032995c9c049a89d65723c6aa",
+            "title": "Just Ask for Calibration: Strategies for Eliciting Calibrated Confidence Scores from Language Models Fine-Tuned with Human Feedback",
+            "abstract": "A trustworthy real-world prediction system should produce well-calibrated confidence scores; that is, its confidence in an answer should be indicative of the likelihood that the answer is correct, enabling deferral to an expert in cases of low-confidence predictions. Recent studies have shown that unsupervised pre-training produces large language models (LMs) whose conditional probabilities are remarkably well-calibrated. However, the most widely-used LMs are fine-tuned with reinforcement learning from human feedback (RLHF-LMs), and some studies have suggested that RLHF-LMs produce conditional probabilities that are very poorly calibrated. In light of this perceived weakness, we conduct a broad evaluation of methods for extracting confidence scores from RLHF-LMs. For RLHF-LMs such as ChatGPT, GPT-4, and Claude, we find that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%.",
+            "year": 2023,
+            "citationCount": 96,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "For RLHF-LMs such as ChatGPT, GPT-4, and Claude, it is found that verbalized confidences emitted as output tokens are typically better-calibrated than the model's conditional probabilities on the TriviaQA, SciQ, and TruthfulQA benchmarks, often reducing the expected calibration error by a relative 50%."
+            },
+            "score": 6
+        },
+        {
+            "id": "326d8eb214385bcec485b4d9004e3b0ac1a06ba2",
+            "paperId": "326d8eb214385bcec485b4d9004e3b0ac1a06ba2",
+            "title": "Make Prompts Adaptable: Bayesian Modeling for Vision-Language Prompt Learning with Data-Dependent Prior",
+            "abstract": "Recent vision-language pre-trained (VLP) models have become the backbone for many downstream tasks, but they are utilized as frozen model without learning. Prompt learning is a method to improve the pre-trained VLP model by adding a learnable context vector to the inputs of the text encoder. In a few-shot learning scenario of the downstream task, MLE training can lead the context vector to over-fit dominant image features in the training data. This overfitting can potentially harm the generalization ability, especially in the presence of a distribution shift between the training and test dataset. This paper presents a Bayesian-based framework of prompt tuning, which could alleviate the over-fitting issues on few-shot learning application and increase the adaptability of prompts on unobserved instances. Specifically, modeling data-dependent prior enhances the adaptability of text features for both seen and unseen image features without the trade-off of performance between them. Based on the Bayesian framework, we utilize the Wasserstein gradient flow in the estimation of our target posterior distribution, which enables our prompt to be flexible in capturing the complex modes of image features. We demonstrate the effectiveness of our method on benchmark datasets for several experiments by showing statistically significant improvements on performance compared to existing methods.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Bayesian-based framework of prompt tuning is presented, which could alleviate the over-fitting issues on few-shot learning application and increase the adaptability of prompts on unobserved instances and modeling data-dependent prior enhances the adaptability of text features for both seen and unseen image features without the trade-off of performance between them."
+            },
+            "score": 5
+        },
+        {
+            "id": "3864b52902f8315f21385c4a6d3ce6c0193e1ab9",
+            "paperId": "3864b52902f8315f21385c4a6d3ce6c0193e1ab9",
+            "title": "Conformal Prediction with Large Language Models for Multi-Choice Question Answering",
+            "abstract": "As large language models continue to be widely developed, robust uncertainty quantification techniques will become crucial for their safe deployment in high-stakes scenarios. In this work, we explore how conformal prediction can be used to provide uncertainty quantification in language models for the specific task of multiple-choice question-answering. We find that the uncertainty estimates from conformal prediction are tightly correlated with prediction accuracy. This observation can be useful for downstream applications such as selective classification and filtering out low-quality predictions. We also investigate the exchangeability assumption required by conformal prediction to out-of-subject questions, which may be a more realistic scenario for many practical applications. Our work contributes towards more trustworthy and reliable usage of large language models in safety-critical situations, where robust guarantees of error rate are required.",
+            "year": 2023,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work explores how conformal prediction can be used to provide uncertainty quantification in language models for the specific task of multiple-choice question-answering and finds that the uncertainty estimates from conformal Prediction are tightly correlated with prediction accuracy."
+            },
+            "score": 5
+        },
+        {
+            "id": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "paperId": "6920de816acd201aadc0de51cf0fa62fa92bb0cc",
+            "title": "On the Calibration of Large Language Models and Alignment",
+            "abstract": "As large language models attract increasing attention and find widespread application, concurrent challenges of reliability also arise at the same time. Confidence calibration, an effective analysis method for gauging the reliability of deep models, serves as a crucial tool for assessing and improving their reliability. However, such investigation has been comparatively underexplored. In this work, we conduct a systematic examination of the calibration of aligned language models throughout the entire construction process, including pretraining and alignment training. At each stage, we investigate how different training settings, such as parameter scales and training data, affect model calibration. To thoroughly assess model calibration, we evaluate models on three most concerned aspects: generation, factuality and understanding. Our work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work sheds light on whether popular LLMs are well-calibrated and how the training process influences model calibration, as well as how different training settings affect model calibration."
+            },
+            "score": 5
+        },
+        {
+            "id": "3533423879166fd723c4ef239aed25882b600ea9",
+            "paperId": "3533423879166fd723c4ef239aed25882b600ea9",
+            "title": "PPM: prompt-free prompt-tuning for multi-task learning",
+            "abstract": "The cost of fine-tuning has increased significantly in recent years as the size of language model parameters has increased. Prompt-tuning and adapters have made it possible to train models with a small number of parameters to obtain results similar to those of fine-tuning methods. However, most of the current prompt-tuning methods require the help of hand-crafted templates and verbalizers to achieve outstanding results in few-shot learning. In this work, we propose PPM, Prompt-free prompt-tuning for multi-task learning. First, we insert the task-specific adapter into the pre-trained language model to replace the hand-designed external template. Then, we train each adapter separately on different tasks and adjust the parameters of each adapter layer. Next, we combine the different adapters and draw on their valid knowledge by tuning the parameters of the fusion part to get the smallest loss function in the process of extracting knowledge from different adapters. To boost the training speed, we use Post-LN to replace Pre-LN, which switched the position of the Laynorm layer in the model from after the two Addition layers to before the FFN layer and the Multi-head Attention layer. Experimental results on different NLP tasks show that our model has better synergistic effects on diverse types of downstream tasks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "PPM, Prompt-free prompt-tuning for multi-task learning, which inserts the task-specific adapter into the pre-trained language model to replace the hand-designed external template and combines the different adapters to draw on their valid knowledge."
+            },
+            "score": 5
+        },
+        {
+            "id": "9cef5a098486aeab6ed3700c5e3d29488488d16f",
+            "paperId": "9cef5a098486aeab6ed3700c5e3d29488488d16f",
+            "title": "Exploring Effective Factors for Improving Visual In-Context Learning",
+            "abstract": "The In-Context Learning (ICL) is to understand a new task via a few demonstrations (aka. prompt) and predict new inputs without tuning the models. While it has been widely studied in NLP, it is still a relatively new area of research in computer vision. To reveal the factors influencing the performance of visual in-context learning, this paper shows that prompt selection and prompt fusion are two major factors that have a direct impact on the inference performance of visual context learning. Prompt selection is the process of identifying the most appropriate prompt or example to help the model understand new tasks. This is important because providing the model with relevant prompts can help it learn more effectively and efficiently. Prompt fusion involves combining knowledge from different positions within the large-scale visual model. By doing this, the model can leverage the diverse knowledge stored in different parts of the model to improve its performance on new tasks. Based these findings, we propose a simple framework prompt-SelF for visual in-context learning. Specifically, we first use the pixel-level retrieval method to select a suitable prompt, and then use different prompt fusion methods to activate all the knowledge stored in the large-scale model, and finally ensemble the prediction results obtained from different prompt fusion methods to obtain the final prediction results. And we conduct extensive experiments on single-object segmentation and detection tasks to demonstrate the effectiveness of prompt-SelF. Remarkably, the prompt-SelF has outperformed OSLSM based meta-learning in 1-shot segmentation for the first time. This indicated the great potential of visual in-context learning. The source code and models will be available at \\url{https://github.com/syp2ysy/prompt-SelF}.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper shows that prompt selection and prompt fusion are two major factors that have a direct impact on the inference performance of visual context learning and proposes a simple framework prompt-SelF for visual in-context learning."
+            },
+            "score": 5
+        },
+        {
+            "id": "2ff3c110c477438d4c8b3a1a3c60021e52fe3c04",
+            "paperId": "2ff3c110c477438d4c8b3a1a3c60021e52fe3c04",
+            "title": "Multiple Prompt Fusion for Zero-Shot Lesion Detection Using Vision-Language Models",
+            "abstract": null,
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": null,
+            "score": 4
+        },
+        {
+            "id": "32ef1b5d81af1ca4335f5e2c33cd98ca8c64f658",
+            "paperId": "32ef1b5d81af1ca4335f5e2c33cd98ca8c64f658",
+            "title": "Bayesian Prompt Learning for Image-Language Model Generalization",
+            "abstract": "Foundational image-language models have generated considerable interest due to their efficient adaptation to downstream tasks by prompt learning. Prompt learning treats part of the language model input as trainable while freezing the rest, and optimizes an Empirical Risk Mini-mization objective. However, Empirical Risk Minimization is known to suffer from distributional shifts which hurt gen-eralizability to prompts unseen during training. By leveraging the regularization ability of Bayesian methods, we frame prompt learning from the Bayesian perspective and formulate it as a variational inference problem. Our approach regularizes the prompt space, reduces overfitting to the seen prompts and improves the prompt generalization on unseen prompts. Our framework is implemented by modeling the input prompt space in a probabilistic manner, as an a priori distribution which makes our proposal compatible with prompt learning approaches that are unconditional or conditional on the image. We demonstrate empirically on 15 benchmarks that Bayesian prompt learning provides an appropriate coverage of the prompt space, prevents learning spurious features, and exploits transferable invariant features. This results in better generalization of unseen prompts, even across different datasets and domains.Code available at: https://github.com/saic-fi/Bayesian-Prompt-Learning",
+            "year": 2022,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work frames prompt learning from the Bayesian perspective and formulate it as a variational inference problem, and demonstrates empirically on 15 benchmarks that Bayesian prompt learning provides an appropriate coverage of the prompt space, prevents learning spurious features, and exploits transferable invariant features."
+            },
+            "score": 4
+        },
+        {
+            "id": "5c7f3e8b4e07e1d1ad9e708b4219b18de5e798e9",
+            "paperId": "5c7f3e8b4e07e1d1ad9e708b4219b18de5e798e9",
+            "title": "Beyond prompting: Making Pre-trained Language Models Better Zero-shot Learners by Clustering Representations",
+            "abstract": "Recent work has demonstrated that pre-trained language models (PLMs) are zero-shot learners. However, most existing zero-shot methods involve heavy human engineering or complicated self-training pipelines, hindering their application to new situations. In this work, we show that zero-shot text classification can be improved simply by clustering texts in the embedding spaces of PLMs. Specifically, we fit the unlabeled texts with a Bayesian Gaussian Mixture Model after initializing cluster positions and shapes using class names. Despite its simplicity, this approach achieves superior or comparable performance on both topic and sentiment classification datasets and outperforms prior works significantly on unbalanced datasets. We further explore the applicability of our clustering approach by evaluating it on 14 datasets with more diverse topics, text lengths, and numbers of classes. Our approach achieves an average of 20% absolute improvement over prompt-based zero-shot learning. Finally, we compare different PLM embedding spaces and find that texts are well-clustered by topics even if the PLM is not explicitly pre-trained to generate meaningful sentence embeddings. This work indicates that PLM embeddings can categorize texts without task-specific fine-tuning, thus providing a new way to analyze and utilize their knowledge and zero-shot learning ability.",
+            "year": 2022,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that zero-shot text classification can be improved simply by clustering texts in the embedding spaces of PLMs, indicating that PLM embeddings can categorize texts without task-specific fine-tuning, thus providing a new way to analyze and utilize their knowledge and zero- shot learning ability."
+            },
+            "score": 4
+        },
+        {
+            "id": "a4929de687f3c6937dabbf733258af635781d3c4",
+            "paperId": "a4929de687f3c6937dabbf733258af635781d3c4",
+            "title": "StudentEval: A Benchmark of Student-Written Prompts for Large Language Models of Code",
+            "abstract": "Code LLMs are being rapidly deployed and there is evidence that they can make professional programmers more productive. Current benchmarks for code generation measure whether models generate correct programs given an expert prompt. In this paper, we present a new benchmark containing multiple prompts per problem, written by a specific population of non-expert prompters: beginning programmers. StudentEval contains 1,749 prompts for 48 problems, written by 80 students who have only completed one semester of Python programming. Our students wrote these prompts while working interactively with a Code LLM, and we observed very mixed success rates. We use StudentEval to evaluate 5 Code LLMs and find that StudentEval is a better discriminator of model performance than existing benchmarks. We analyze the prompts and find significant variation in students' prompting techniques. We also find that nondeterministic LLM sampling could mislead students into thinking that their prompts are more (or less) effective than they actually are, which has implications for how to teach with Code LLMs.",
+            "year": 2023,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a new benchmark containing multiple prompts per problem, written by a specific population of non-expert prompters: beginning programmers, and finds that StudentEval is a better discriminator of model performance than existing benchmarks."
+            },
+            "score": 4
+        },
+        {
+            "id": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "paperId": "4780d0a027c5c5a8e01d7cf697f6296880ffc945",
+            "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in language generation, understanding, and few-shot learning in recent years. An extensive body of work has explored how their performance may be further improved through the tools of prompting, ranging from verification, self-consistency, or intermediate scratchpads. In this paper, we present a complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer. Our findings indicate that this approach significantly enhances mathematical and strategic reasoning across a number of tasks. We also demonstrate that our approach improves the factual validity of generated content, reducing fallacious answers and hallucinations that contemporary models are prone to. Our approach may be directly applied to existing black-box models and uses identical procedure and prompts for all tasks we investigate. Overall, our findings suggest that such\"society of minds\"approach has the potential to significantly advance the capabilities of LLMs and pave the way for further breakthroughs in language generation and understanding.",
+            "year": 2023,
+            "citationCount": 206,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A complementary approach to improve language responses where multiple language model instances propose and debate their individual responses and reasoning processes over multiple rounds to arrive at a common final answer is presented, indicating that this approach significantly enhances mathematical and strategic reasoning across a number of tasks."
+            },
+            "score": 4
+        },
+        {
+            "id": "4f480bae3196dbbc27ab383bce33478ea963f9b3",
+            "paperId": "4f480bae3196dbbc27ab383bce33478ea963f9b3",
+            "title": "LLM-Eval: Unified Multi-Dimensional Automatic Evaluation for Open-Domain Conversations with Large Language Models",
+            "abstract": "We propose LLM-Eval, a unified multi-dimensional automatic evaluation method for open-domain conversations with large language models (LLMs). Existing evaluation methods often rely on human annotations, ground-truth responses, or multiple LLM prompts, which can be expensive and time-consuming. To address these issues, we design a single prompt-based evaluation method that leverages a unified evaluation schema to cover multiple dimensions of conversation quality in a single model call. We extensively evaluate the performance of LLM-Eval on various benchmark datasets, demonstrating its effectiveness, efficiency, and adaptability compared to state-of-the-art evaluation methods. Our analysis also highlights the importance of choosing suitable LLMs and decoding strategies for accurate evaluation results. LLM-Eval offers a versatile and robust solution for evaluating open-domain conversation systems, streamlining the evaluation process and providing consistent performance across diverse scenarios.",
+            "year": 2023,
+            "citationCount": 38,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LLM-Eval is proposed, a single prompt-based evaluation method that leverages a unified evaluation schema to cover multiple dimensions of conversation quality in a single model call and offers a versatile and robust solution for evaluating open-domain conversation systems."
+            },
+            "score": 4
+        },
+        {
+            "id": "6049f92e687e5db4ea509a83df4372099c516fd8",
+            "paperId": "6049f92e687e5db4ea509a83df4372099c516fd8",
+            "title": "Improving Open Information Extraction with Large Language Models: A Study on Demonstration Uncertainty",
+            "abstract": "Open Information Extraction (OIE) task aims at extracting structured facts from unstructured text, typically in the form of (subject, relation, object) triples. Despite the potential of large language models (LLMs) like ChatGPT as a general task solver, they lag behind state-of-the-art (supervised) methods in OIE tasks due to two key issues. First, LLMs struggle to distinguish irrelevant context from relevant relations and generate structured output due to the restrictions on fine-tuning the model. Second, LLMs generates responses autoregressively based on probability, which makes the predicted relations lack confidence. In this paper, we assess the capabilities of LLMs in improving the OIE task. Particularly, we propose various in-context learning strategies to enhance LLM's instruction-following ability and a demonstration uncertainty quantification module to enhance the confidence of the generated relations. Our experiments on three OIE benchmark datasets show that our approach holds its own against established supervised methods, both quantitatively and qualitatively.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Various in-context learning strategies to enhance LLM's instruction-following ability and a demonstration uncertainty quantification module to enhance the confidence of the generated relations are proposed."
+            },
+            "score": 4
+        },
+        {
+            "id": "585be5e23a04b33630f37ce37a86f4b03911e840",
+            "paperId": "585be5e23a04b33630f37ce37a86f4b03911e840",
+            "title": "KnowledgeVIS: Interpreting Language Models by Comparing Fill-in-the-Blank Prompts",
+            "abstract": "Recent growth in the popularity of large language models has led to their increased usage for summarizing, predicting, and generating text, making it vital to help researchers and engineers understand how and why they work. We present KnowledgeVIS, a human-in-the-loop visual analytics system for interpreting language models using fill-in-the-blank sentences as prompts. By comparing predictions between sentences, KnowledgeVIS reveals learned associations that intuitively connect what language models learn during training to natural language tasks downstream, helping users create and test multiple prompt variations, analyze predicted words using a novel semantic clustering technique, and discover insights using interactive visualizations. Collectively, these visualizations help users identify the likelihood and uniqueness of individual predictions, compare sets of predictions between prompts, and summarize patterns and relationships between predictions across all prompts. We demonstrate the capabilities of KnowledgeVIS with feedback from six NLP experts as well as three different use cases: (1) probing biomedical knowledge in two domain-adapted models; and (2) evaluating harmful identity stereotypes and (3) discovering facts and relationships between three general-purpose models.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "KnowledgeVIS, a human-in-the-loop visual analytics system for interpreting language models using fill-in-the-blank sentences as prompts, reveals learned associations that intuitively connect what language models learn during training to natural language tasks downstream."
+            },
+            "score": 4
+        },
+        {
+            "id": "a2c8d1c5470435176185bf891c76711a9b44808a",
+            "paperId": "a2c8d1c5470435176185bf891c76711a9b44808a",
+            "title": "PromptAid: Prompt Exploration, Perturbation, Testing and Iteration using Visual Analytics for Large Language Models",
+            "abstract": "Large Language Models (LLMs) have gained widespread popularity due to their ability to perform ad-hoc Natural Language Processing (NLP) tasks with a simple natural language prompt. Part of the appeal for LLMs is their approachability to the general public, including individuals with no prior technical experience in NLP techniques. However, natural language prompts can vary significantly in terms of their linguistic structure, context, and other semantics. Modifying one or more of these aspects can result in significant differences in task performance. Non-expert users may find it challenging to identify the changes needed to improve a prompt, especially when they lack domain-specific knowledge and lack appropriate feedback. To address this challenge, we present PromptAid, a visual analytics system designed to interactively create, refine, and test prompts through exploration, perturbation, testing, and iteration. PromptAid uses multiple, coordinated visualizations which allow users to improve prompts by using the three strategies: keyword perturbations, paraphrasing perturbations, and obtaining the best set of in-context few-shot examples. PromptAid was designed through an iterative prototyping process involving NLP experts and was evaluated through quantitative and qualitative assessments for LLMs. Our findings indicate that PromptAid helps users to iterate over prompt template alterations with less cognitive overhead, generate diverse prompts with help of recommendations, and analyze the performance of the generated prompts while surpassing existing state-of-the-art prompting interfaces in performance.",
+            "year": 2023,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The findings indicate that PromptAid helps users to iterate over prompt template alterations with less cognitive overhead, generate diverse prompts with help of recommendations, and analyze the performance of the generated prompts while surpassing existing state-of-the-art prompting interfaces in performance."
+            },
+            "score": 4
+        },
+        {
+            "id": "88500fd35ad3cd52096a6ca2672ca5979b82f7eb",
+            "paperId": "88500fd35ad3cd52096a6ca2672ca5979b82f7eb",
+            "title": "Enabling Calibration In The Zero-Shot Inference of Large Vision-Language Models",
+            "abstract": "Calibration of deep learning models is crucial to their trustworthiness and safe usage, and as such, has been extensively studied in supervised classification models, with methods crafted to decrease miscalibration. However, there has yet to be a comprehensive study of the calibration of vision-language models that are used for zero-shot inference, like CLIP. We measure calibration across relevant variables like prompt, dataset, and architecture, and find that zero-shot inference with CLIP is miscalibrated. Furthermore, we propose a modified version of temperature scaling that is aligned with the common use cases of CLIP as a zero-shot inference model, and show that a single learned temperature generalizes for each specific CLIP model (defined by a chosen pre-training dataset and architecture) across inference dataset and prompt choice.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a modified version of temperature scaling that is aligned with the common use cases of CLIP as a zero-shot inference model, and shows that a single learned temperature generalizes for each specific CLIP model across inference dataset and prompt choice."
+            },
+            "score": 4
+        },
+        {
+            "id": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "paperId": "05f6628948f79d0cce8664cc8146fd459d53e9d5",
+            "title": "On the Calibration of Pre-trained Language Models using Mixup Guided by Area Under the Margin and Saliency",
+            "abstract": "A well-calibrated neural model produces confidence (probability outputs) closely approximated by the expected accuracy. While prior studies have shown that mixup training as a data augmentation technique can improve model calibration on image classification tasks, little is known about using mixup for model calibration on natural language understanding (NLU) tasks. In this paper, we explore mixup for model calibration on several NLU tasks and propose a novel mixup strategy for pre-trained language models that improves model calibration further. Our proposed mixup is guided by both the Area Under the Margin (AUM) statistic (Pleiss et al., 2020) and the saliency map of each sample (Simonyan et al., 2013). Moreover, we combine our mixup strategy with model miscalibration correction techniques (i.e., label smoothing and temperature scaling) and provide detailed analyses of their impact on our proposed mixup. We focus on systematically designing experiments on three NLU tasks: natural language inference, paraphrase detection, and commonsense reasoning. Our method achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy.",
+            "year": 2022,
+            "citationCount": 27,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper systematically designs experiments on three NLU tasks and proposes a novel mixup strategy for pre-trained language models that improves model calibration further and achieves the lowest expected calibration error compared to strong baselines on both in-domain and out-of-domain test samples while maintaining competitive accuracy."
+            },
+            "score": 4
+        },
+        {
+            "id": "c11810fa8887b678facea62da4607c4898360308",
+            "paperId": "c11810fa8887b678facea62da4607c4898360308",
+            "title": "Training Language Models with Language Feedback at Scale",
+            "abstract": "Pretrained language models often generate outputs that are not in line with human preferences, such as harmful text or factually incorrect summaries. Recent work approaches the above issues by learning from a simple form of human feedback: comparisons between pairs of model-generated outputs. However, comparison feedback only conveys limited information about human preferences. In this paper, we introduce Imitation learning from Language Feedback (ILF), a new approach that utilizes more informative language feedback. ILF consists of three steps that are applied iteratively: first, conditioning the language model on the input, an initial LM output, and feedback to generate refinements. Second, selecting the refinement incorporating the most feedback. Third, finetuning the language model to maximize the likelihood of the chosen refinement given the input. We show theoretically that ILF can be viewed as Bayesian Inference, similar to Reinforcement Learning from human feedback. We evaluate ILF's effectiveness on a carefully-controlled toy task and a realistic summarization task. Our experiments demonstrate that large language models accurately incorporate feedback and that finetuning with ILF scales well with the dataset size, even outperforming finetuning on human summaries. Learning from both language and comparison feedback outperforms learning from each alone, achieving human-level summarization performance.",
+            "year": 2023,
+            "citationCount": 67,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Imitation learning from Language Feedback (ILF), a new approach that utilizes more informative language feedback, is introduced and it is shown theoretically that ILF can be viewed as Bayesian Inference, similar to Reinforcement Learning from human feedback."
+            },
+            "score": 4
+        },
+        {
+            "id": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "paperId": "92746dfa09dcad92ecf1e6272ebb300c1112b7eb",
+            "title": "Automatic Calibration and Error Correction for Large Language Models via Pareto Optimal Self-Supervision",
+            "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities out of box for a wide range of applications, yet accuracy still remains a major growth area, especially in mission-critical domains such as biomedicine. An effective method to calibrate the con\ufb01dence level on LLM responses is essential to automatically detect errors and facilitate human-in-the-loop veri\ufb01cation. An important source of calibration signals stems from expert-stipulated programmatic super-vision, which is often available at low cost but has its own limitations such as noise and coverage. In this paper, we introduce a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts. This is accomplished by learning a harmonizer model to align LLM output with other available supervision sources, which would assign higher risk scores to more uncertain LLM responses and facilitate error correction. Experiments on standard relation extraction tasks in biomedical and general domains demonstrate the promise of this approach, with our proposed risk scores highly correlated with the real error rate of LLMs. For the most uncertain test instances, dynamic prompting based on our proposed risk scores results in signi\ufb01cant accuracy improvement for off-the-shelf LLMs, boosting GPT-3 results past state-of-the-art (SOTA) weak supervision and GPT-4 results past SOTA supervised results on challenging evaluation datasets.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces a Pareto optimal self-supervision framework that can leverage available programmatic supervision to systematically calibrate LLM responses by producing a risk score for every response, without any additional manual efforts."
+            },
+            "score": 4
+        },
+        {
+            "id": "48fb667125298cf724f7b652d521686180412351",
+            "paperId": "48fb667125298cf724f7b652d521686180412351",
+            "title": "A Close Look into the Calibration of Pre-trained Language Models",
+            "abstract": "Pre-trained language models (PLMs) may fail in giving reliable estimates of their predictive uncertainty. We take a close look into this problem, aiming to answer two questions: (1) Do PLMs learn to become calibrated in the training process? (2) How effective are existing calibration methods? For the first question, we conduct fine-grained control experiments to study the dynamic change in PLMs\u2019 calibration performance in training. We consider six factors as control variables, including dataset difficulty, available training samples, training steps, the number of tunable parameters, model scale, and pretraining. We observe a consistent change in calibration performance across six factors. We find that PLMs don\u2019t learn to become calibrated in training, evidenced by the continual increase in confidence, no matter whether the predictions are correct or not. We highlight that our finding somewhat contradicts two established conclusions: (a) Larger PLMs are more calibrated; (b) Pretraining improves model calibration. Next, we study the effectiveness of existing calibration methods in mitigating the overconfidence issue. Besides unlearnable calibration methods (e.g., label smoothing), we adapt and extend two recently proposed learnable methods that directly collect data to train models to have reasonable confidence estimations. Experimental results show that learnable methods significantly reduce PLMs\u2019 confidence in wrong predictions.",
+            "year": 2022,
+            "citationCount": 22,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that pre-trained language models don\u2019t learn to become calibrated in training, evidenced by the continual increase in confidence, no matter whether the predictions are correct or not."
+            },
+            "score": 4
+        },
+        {
+            "id": "a2b89d2196b4cc88797d4907ce7458bb7584f6b6",
+            "paperId": "a2b89d2196b4cc88797d4907ce7458bb7584f6b6",
+            "title": "On the Calibration of Massively Multilingual Language Models",
+            "abstract": "Massively Multilingual Language Models (MMLMs) have recently gained popularity due to their surprising effectiveness in cross-lingual transfer. While there has been much work in evaluating these models for their performance on a variety of tasks and languages, little attention has been paid on how well calibrated these models are with respect to the confidence in their predictions. We first investigate the calibration of MMLMs in the zero-shot setting and observe a clear case of miscalibration in low-resource languages or those which are typologically diverse from English. Next, we empirically show that calibration methods like temperature scaling and label smoothing do reasonably well in improving calibration in the zero-shot scenario. We also find that few-shot examples in the language can further help reduce calibration errors, often substantially. Overall, our work contributes towards building more reliable multilingual models by highlighting the issue of their miscalibration, understanding what language and model-specific factors influence it, and pointing out the strategies to improve the same.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates the calibration of MMLMs in the zero-shot setting and observes a clear case of miscalibration in low-resource languages or those which are typologically diverse from English, and empirically shows that calibration methods like temperature scaling and label smoothing do reasonably well in improving calibration in thezero-shot scenario."
+            },
+            "score": 4
+        },
+        {
+            "id": "7baaaa623d2c3011a52e2bb515e030825fa6e36c",
+            "paperId": "7baaaa623d2c3011a52e2bb515e030825fa6e36c",
+            "title": "An Enhanced Prompt-Based LLM Reasoning Scheme via Knowledge Graph-Integrated Collaboration",
+            "abstract": "While Large Language Models (LLMs) demonstrate exceptional performance in a multitude of Natural Language Processing (NLP) tasks, they encounter challenges in practical applications, including issues with hallucinations, inadequate knowledge updating, and limited transparency in the reasoning process. To overcome these limitations, this study innovatively proposes a collaborative training-free reasoning scheme involving tight cooperation between Knowledge Graph (KG) and LLMs. This scheme first involves using LLMs to iteratively explore KG, selectively retrieving a task-relevant knowledge subgraph to support reasoning. The LLMs are then guided to further combine inherent implicit knowledge to reason on the subgraph while explicitly elucidating the reasoning process. Through such a cooperative approach, our scheme achieves more reliable knowledge-based reasoning and facilitates the tracing of the reasoning results. Experimental results show that our scheme significantly progressed across multiple datasets, notably achieving over a 10% improvement on the QALD10 dataset compared to the best baseline and the fine-tuned state-of-the-art (SOTA) work. Building on this success, this study hopes to offer a valuable reference for future research in the fusion of KG and LLMs, thereby enhancing LLMs' proficiency in solving complex issues.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study innovatively proposes a collaborative training-free reasoning scheme involving tight cooperation between Knowledge Graph (KG) and LLMs that achieves more reliable knowledge-based reasoning and facilitates the tracing of the reasoning results."
+            },
+            "score": 4
+        },
+        {
+            "id": "f3f15752944ab0f983501f4bf2c9c6e3c1dd4bec",
+            "paperId": "f3f15752944ab0f983501f4bf2c9c6e3c1dd4bec",
+            "title": "Uncertainty Method Based on Dynamic Multi-Sensor Information Fusion in Power System",
+            "abstract": "This paper proposes a multi-sensor information fusion method under uncertainty. Firstly, this paper proposes the method of relative proximity measurement for multi-sensor dynamic clustering under uncertainty. An optimal fusion mode for the same group of multi-sensor information fusion based on Bayesian estimation technology and compatibility measurement is proposed. In this paper, a new model for dynamic multi-sensor fusion system is described. The efficient fusion of information from different sources enables the system to respond promptly to the uncertain environment. The experimental results show that the model has high sensitivity and practicability, especially in the uncertain environment of intelligent system.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new model for dynamic multi-sensor fusion system based on Bayesian estimation technology and compatibility measurement is described, which has high sensitivity and practicability, especially in the uncertain environment of intelligent system."
+            },
+            "score": 4
+        },
+        {
+            "id": "5311db0b04b95fa43b886387fb1f484055638660",
+            "paperId": "5311db0b04b95fa43b886387fb1f484055638660",
+            "title": "Modal-aware Visual Prompting for Incomplete Multi-modal Brain Tumor Segmentation",
+            "abstract": "In the realm of medical imaging, distinct magnetic resonance imaging (MRI) modalities can provide complementary medical insights. However, it is not uncommon for one or more modalities to be absent due to image corruption, artifacts, acquisition protocols, allergies to contrast agents, or cost constraints, posing a significant challenge for perceiving the modality-absent state in incomplete modality segmentation.In this work, we introduce a novel incomplete multi-modal segmentation framework called Modal-aware Visual Prompting (MAVP), which draws inspiration from the widely used pre-training and prompt adjustment protocol employed in natural language processing (NLP). In contrast to previous prompts that typically use textual network embeddings, we utilize embeddings as the prompts generated by a modality state classifier that focuses on the missing modality states. Additionally, we integrate modality state prompts into both the extraction stage of each modality and the modality fusion stage to facilitate intra/inter-modal adaptation. Our approach achieves state-of-the-art performance in various modality-incomplete scenarios compared to incomplete modality-specific solutions.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work introduces a novel incomplete multi-modal segmentation framework called Modal-aware Visual Prompting (MAVP), which draws inspiration from the widely used pre-training and prompt adjustment protocol employed in natural language processing (NLP), and utilizes embeddings as the prompts generated by a modality state classifier that focuses on the missing modality states."
+            },
+            "score": 4
+        },
+        {
+            "id": "68ae4b28fab8ff641deca48e0d340483d1c691ec",
+            "paperId": "68ae4b28fab8ff641deca48e0d340483d1c691ec",
+            "title": "Exploring Fine-tuning ChatGPT for News Recommendation",
+            "abstract": "News recommendation systems (RS) play a pivotal role in the current digital age, shaping how individuals access and engage with information. The fusion of natural language processing (NLP) and RS, spurred by the rise of large language models such as the GPT and T5 series, blurs the boundaries between these domains, making a tendency to treat RS as a language task. ChatGPT, renowned for its user-friendly interface and increasing popularity, has become a prominent choice for a wide range of NLP tasks. While previous studies have explored ChatGPT on recommendation tasks, this study breaks new ground by investigating its fine-tuning capability, particularly within the news domain. In this study, we design two distinct prompts: one designed to treat news RS as the ranking task and another tailored for the rating task. We evaluate ChatGPT's performance in news recommendation by eliciting direct responses through the formulation of these two tasks. More importantly, we unravel the pivotal role of fine-tuning data quality in enhancing ChatGPT's personalized recommendation capabilities, and illustrates its potential in addressing the longstanding challenge of the\"cold item\"problem in RS. Our experiments, conducted using the Microsoft News dataset (MIND), reveal significant improvements achieved by ChatGPT after fine-tuning, especially in scenarios where a user's topic interests remain consistent, treating news RS as a ranking task. This study illuminates the transformative potential of fine-tuning ChatGPT as a means to advance news RS, offering more effective news consumption experiences.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study illuminates the transformative potential of fine-tuning ChatGPT as a means to advance news RS, offering more effective news consumption experiences and illustrates its potential in addressing the longstanding challenge of the\"cold item\"problem in RS."
+            },
+            "score": 4
+        },
+        {
+            "id": "70681838bb42c766fbdb3f4c9b8b4e7ad03c1dba",
+            "paperId": "70681838bb42c766fbdb3f4c9b8b4e7ad03c1dba",
+            "title": "Belief theoretic methods for soft and hard data fusion",
+            "abstract": "In many contexts, one is confronted with the problem of extracting information from large amounts of different types soft data (e.g., text) and hard data (from e.g., physics-based sensing systems). In handling hard data, signal and data processing offers a wealth of methods related to modeling, estimation, tracking, and inference tasks. However, soft data present several challenges that necessitate the development of new data processing methods. For example, with suitable statistical natural language processing (NLP) methods, text can be converted into logic statements that are associated with various forms of associated uncertainty related to the credibility of the statement, the reliability of the text source, and so forth. In combining or fusing soft data with either soft or hard data, one must deploy methods that can suitably preserve and update the uncertainty associated with the data, thereby providing uncertainty bounds related to any inferences regarding semantics. Since standard Bayesian probabilistic approaches have problems with suitably handling uncertain logic statements, there is an emerging need for new methods for processing heterogeneous data. In this paper, we describe a framework for fusing soft and hard data based on the Dempster-Shafer (DS) belief theoretic approach which is well-suited to the task of capturing the types of models and uncertain rules that are more typical of soft data. Since the effectiveness of traditional DS methods has been hampered by high computational requirements, we base the processing framework on our new conditional approach to DS theoretic evidence updating and fusion. We address the issue of laying the foundation for a theoretically justifiable, and computationally efficient framework for fusing soft and hard data taking into account the inherent data uncertainty such as reliability and credibility. Moreover, we present an illustrative example that highlights the potential for the DS conditional approach for fusing heterogeneous data.",
+            "year": 2011,
+            "citationCount": 34,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper describes a framework for fusing soft and hard data based on the Dempster-Shafer (DS) belief theoretic approach which is well-suited to the task of capturing the types of models and uncertain rules that are more typical of soft data."
+            },
+            "score": 4
+        },
+        {
+            "id": "f7c21f11dca84d443304e8909c9b87eebda0017c",
+            "paperId": "f7c21f11dca84d443304e8909c9b87eebda0017c",
+            "title": "Patch-Token Aligned Bayesian Prompt Learning for Vision-Language Models",
+            "abstract": "For downstream applications of vision-language pre-trained models, there has been significant interest in constructing effective prompts. Existing works on prompt engineering, which either require laborious manual designs or optimize the prompt tuning as a point estimation problem, may fail to describe diverse characteristics of categories and limit their applications. We introduce a Bayesian probabilistic resolution to prompt learning, where the label-specific stochastic prompts are generated hierarchically by first sampling a latent vector from an underlying distribution and then employing a lightweight generative model. Importantly, we semantically regularize prompt learning with the visual knowledge and view images and the corresponding prompts as patch and token sets under optimal transport, which pushes the prompt tokens to faithfully capture the label-specific visual concepts, instead of overfitting the training categories. Moreover, the proposed model can also be straightforwardly extended to the conditional case where the instance-conditional prompts are generated to improve the generalizability. Extensive experiments on 15 datasets show promising transferability and generalization performance of our proposed model.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Bayesian probabilistic resolution to prompt learning, where the label-specific stochastic prompts are generated hierarchically by first sampling a latent vector from an underlying distribution and then employing a lightweight generative model."
+            },
+            "score": 3
+        },
+        {
+            "id": "d6fb1c21a46fb8b0f3f4383fd467b21e5b58c55f",
+            "paperId": "d6fb1c21a46fb8b0f3f4383fd467b21e5b58c55f",
+            "title": "InstructZero: Efficient Instruction Optimization for Black-Box Large Language Models",
+            "abstract": "Large language models~(LLMs) are instruction followers, but it can be challenging to find the best instruction for different situations, especially for black-box LLMs on which backpropagation is forbidden. Instead of directly optimizing the discrete instruction, we optimize a low-dimensional soft prompt applied to an open-source LLM to generate the instruction for the black-box LLM. On each iteration of the proposed method, which we call InstructZero, a soft prompt is converted into an instruction using the open-source LLM, which is then submitted to the black-box LLM for zero-shot evaluation, and the performance is sent to Bayesian optimization to produce new soft prompts improving the zero-shot performance. We evaluate InstructZero on different combinations of open-source LLMs and APIs including Vicuna and ChatGPT. Our results show that InstructZero outperforms SOTA auto-instruction methods across a variety of downstream tasks. Our code and data are publicly available at https://github.com/Lichang-Chen/InstructZero.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work optimized a low-dimensional soft prompt applied to an open-source LLM to generate the instruction for the black-box LLM, showing that InstructZero outperforms SOTA auto-instruction methods across a variety of downstream tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "958e6c0a8a4f8da1cf835803f498e7ca7c525c35",
+            "paperId": "958e6c0a8a4f8da1cf835803f498e7ca7c525c35",
+            "title": "MuDPT: Multi-modal Deep-symphysis Prompt Tuning for Large Pre-trained Vision-Language Models",
+            "abstract": "Prompt tuning, like CoOp, has recently shown promising vision recognizing and transfer learning ability on various downstream tasks with the emergence of large pre-trained vision-language models like CLIP. However, we identify that existing uni-modal prompt tuning approaches may result in sub-optimal performance since this uni-modal design breaks the original alignment of textual and visual representations in the pre-trained model. Inspired by the nature of pre-trained vision-language models, we aim to achieve completeness in prompt tuning and propose a novel approach called Multi-modal Deep-symphysis Prompt Tuning, dubbed as MuDPT, which extends independent multi-modal prompt tuning by additionally learning a model-agnostic transformative network to allow deep hierarchical bi-directional prompt fusion. We evaluate the effectiveness of MuDPT on few-shot vision recognition and out-of-domain generalization tasks. Compared with the state-of-the-art methods, MuDPT achieves better recognition and generalization ability with an apparent margin thanks to synergistic alignment of textual and visual representations. Our code is available at: https://github.com/Mechrev0/MuDPT.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a novel approach called Multi-modal Deep-symphysis Prompt Tuning, dubbed as MuDPT, which extends independent multi- modal prompt tuning by additionally learning a model-agnostic transformative network to allow deep hierarchical bi-directional prompt fusion."
+            },
+            "score": 3
+        },
+        {
+            "id": "c94f0acf00530dbf9f275dad8515e23dc30666d3",
+            "paperId": "c94f0acf00530dbf9f275dad8515e23dc30666d3",
+            "title": "Prompting Large Language Models for Zero-Shot Domain Adaptation in Speech Recognition",
+            "abstract": "The integration of Language Models (LMs) has proven to be an effective way to address domain shifts in speech recognition. However, these approaches usually require a significant amount of target domain text data for the training of LMs. Different from these methods, in this work, with only a domain-specific text prompt, we propose two zero-shot ASR domain adaptation methods using LLaMA, a 7-billionparameter large language model (LLM). LLM is used in two ways: 1) second-pass rescoring: reranking N-best hypotheses of a given ASR system with LLaMA; 2) deep LLM-fusion: incorporating LLM into the decoder of an encoder-decoder based ASR system. Experiments show that, with only one domain prompt, both methods can effectively reduce word error rates (WER) on out-of-domain TedLium-2 and SPGISpeech datasets. Especially, the deep LLM-fusion has the advantage of better recall of entity and out-of-vocabulary words.",
+            "year": 2023,
+            "citationCount": 17,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Two zero-shot ASR domain adaptation methods using LLaMA, a 7-billionparameter large language model (LLM) are proposed, which can effectively reduce word error rates on out-of-domain TedLium-2 and SPGISpeech datasets."
+            },
+            "score": 3
+        },
+        {
+            "id": "43ec80eeb6f22431ae741796996b25ca3b6bf3e2",
+            "paperId": "43ec80eeb6f22431ae741796996b25ca3b6bf3e2",
+            "title": "Adapting Pre-trained Language Models to Vision-Language Tasks via Dynamic Visual Prompting",
+            "abstract": "Pre-trained language models (PLMs) have played an increasing role in multimedia research. In terms of vision-language (VL) tasks, they often serve as a language encoder and still require an additional fusion network for VL reasoning, resulting in excessive memory overhead. In this paper, we focus on exploring PLMs as a stand-alone model for VL reasoning tasks. Inspired by the recently popular prompt tuning, we first prove that the processed visual features can be also projected onto the semantic space of PLMs and act as prompt tokens to bridge the gap between single- and multi-modal learning. However, this solution exhibits obvious redundancy in visual information and model inference, and the placement of prompt tokens also greatly affects the final performance. Based on these observations, we further propose a novel transfer learning approach for PLMs, termed Dynamic Visual Prompting (DVP). Concretely, DVP first deploys a cross-attention module to obtain text-related and compact visual prompt tokens, thereby greatly reducing the input length of PLMs. To obtain the optimal placement, we also equip DVP with a reinforcement-learning based search algorithm, which can automatically merge DVP with PLMs for different VL tasks via a very short search process. In addition, we also experiment DVP with the recently popular adapter approach to keep the most parameters of PLMs intact when adapting to VL tasks, helping PLMs achieve a quick shift between single- and multi-modal tasks. We apply DVP to two representative PLMs, namely BERT and T5, and conduct extensive experiments on a set of VL reasoning benchmarks including VQA2.0, GQA and SNLIVE. The experimental results not only show the advantage of DVP on efficiency and performance, but also confirm its superiority in adapting pre-trained language models to VL tasks.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results not only show the advantage of DVP on efficiency and performance, but also confirm its superiority in adapting pre-trained language models to VL tasks."
+            },
+            "score": 3
+        },
+        {
+            "id": "c202f2679dfc8fc4af0967d1a801d72109761763",
+            "paperId": "c202f2679dfc8fc4af0967d1a801d72109761763",
+            "title": "Pipeline Chain-of-Thought: A Prompt Method for Large Language Model Relation Extraction",
+            "abstract": "The development of language models has been influencing approaches to relation extraction (RE) problems. Although large language models (LLMs) have demonstrated breakthrough potential in certain aspects, they are still in the exploratory stage for RE tasks. Currently, the mainstream approach to improving the RE performance of LLMs is through prompt fine-tuning, but most methods require providing entity information in the prompt, which effectively only allows the LLMs to perform relationship classification tasks. We propose the Pipeline Chain-of-Thought (Pipeline-COT), which breaks down the RE task into steps and transforms it into reasoning tasks that have flat scaling curves, thereby enabling the use of Chain-of-Thought (COT) to enhance model inference. In addition, our method utilizes n-shot samples to provide signals for the Bayesian inference of the model by prompting the LLMs to focus on specific concepts to generate answers. We evaluated pipeline-COT on the Chinese dataset DuIE2.0, and compared with baseline methods that require including entity information in the prompt, our method still shows competitive performance.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes the Pipeline Chain-of-Thought (Pipeline-COT), which breaks down the RE task into steps and transforms it into reasoning tasks that have flat scaling curves, thereby enabling the use of Chain- of-Th thought (COT) to enhance model inference."
+            },
+            "score": 3
+        },
+        {
+            "id": "62877098e34d5783960ac02ac8b76dbe729ea174",
+            "paperId": "62877098e34d5783960ac02ac8b76dbe729ea174",
+            "title": "In-Context Learning of Large Language Models Explained as Kernel Regression",
+            "abstract": "Large language models (LLMs) have initiated a paradigm shift in transfer learning. In contrast to the classic pretraining-then-\ufb01netuning procedure, in order to use LLMs for downstream prediction tasks, one only needs to provide a few demonstrations, known as in-context examples, without adding more or updating existing model parameters. This in-context learning (ICL) capabilities of LLMs is intriguing, and it is not yet fully understood how pretrained LLMs acquire such capabilities. In this paper, we investigate the reason why a transformer-based language model can accomplish in-context learning after pre-training on a general language corpus by proposing one hypothesis that LLMs can simulate kernel regression algorithms when faced with in-context examples. More concretely, we \ufb01rst prove that Bayesian inference on in-context prompts can be asymptotically understood as kernel regression \u02c6 y = (cid:80) i y i K ( x,x i ) (cid:80) i K ( x,x i ) as the number of in-context demonstrations grows. Then, we empirically investigate the in-context behaviors of language models. We \ufb01nd that during ICL, the attentions and hidden features in LLMs match the behaviors of a kernel regression. Finally, our theory provides insights on multiple phenomena observed in ICL \ufb01eld: why retrieving demonstrative samples similar to test sample can help, why ICL performance is sensitive to the output formats, and why ICL accuracy bene\ufb01ts from selecting in-distribuion and representative samples. We will make our code available to the research community following publication.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates the reason why a transformer-based language model can accomplish in- Context learning after pre-training on a general language corpus by proposing one hypothesis that LLMs can simulate kernel regression algorithms when faced with in-context examples and empirically investigates the in- context behaviors of language models."
+            },
+            "score": 3
+        },
+        {
+            "id": "70ece7b4ba8f3b67f5a797daed544fb6a0b627bf",
+            "paperId": "70ece7b4ba8f3b67f5a797daed544fb6a0b627bf",
+            "title": "A Latent Space Theory for Emergent Abilities in Large Language Models",
+            "abstract": "Languages are not created randomly but rather to communicate information. There is a strong association between languages and their underlying meanings, resulting in a sparse joint distribution that is heavily peaked according to their correlations. Moreover, these peak values happen to match with the marginal distribution of languages due to the sparsity. With the advent of LLMs trained on big data and large models, we can now precisely assess the marginal distribution of languages, providing a convenient means of exploring the sparse structures in the joint distribution for effective inferences. In this paper, we categorize languages as either unambiguous or {\\epsilon}-ambiguous and present quantitative results to demonstrate that the emergent abilities of LLMs, such as language understanding, in-context learning, chain-of-thought prompting, and effective instruction fine-tuning, can all be attributed to Bayesian inference on the sparse joint distribution of languages.",
+            "year": 2023,
+            "citationCount": 19,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper categorize languages as either unambiguous or {\\epsilon}-ambiguous and presents quantitative results to demonstrate that the emergent abilities of LLMs, such as language understanding, in-context learning, chain-of-thought prompting, and effective instruction fine-tuning can all be attributed to Bayesian inference on the sparse joint distribution of languages."
+            },
+            "score": 3
+        },
+        {
+            "id": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "paperId": "77d6d7482d1a32ad147c39993758b6c63816f5c0",
+            "title": "PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts",
+            "abstract": "The increasing reliance on Large Language Models (LLMs) across academia and industry necessitates a comprehensive understanding of their robustness to prompts. In response to this vital need, we introduce PromptBench, a robustness benchmark designed to measure LLMs' resilience to adversarial prompts. This study uses a plethora of adversarial textual attacks targeting prompts across multiple levels: character, word, sentence, and semantic. The adversarial prompts, crafted to mimic plausible user errors like typos or synonyms, aim to evaluate how slight deviations can affect LLM outcomes while maintaining semantic integrity. These prompts are then employed in diverse tasks, such as sentiment analysis, natural language inference, reading comprehension, machine translation, and math problem-solving. Our study generates 4788 adversarial prompts, meticulously evaluated over 8 tasks and 13 datasets. Our findings demonstrate that contemporary LLMs are not robust to adversarial prompts. Furthermore, we present comprehensive analysis to understand the mystery behind prompt robustness and its transferability. We then offer insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users. Code is available at: https://github.com/microsoft/promptbench.",
+            "year": 2023,
+            "citationCount": 111,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study generates 4788 adversarial prompts and presents comprehensive analysis to understand the mystery behind prompt robustness and its transferability, and offers insightful robustness analysis and pragmatic recommendations for prompt composition, beneficial to both researchers and everyday users."
+            },
+            "score": 3
+        },
+        {
+            "id": "fccf8776d7525627c518a56a1f4db367a4d7120b",
+            "paperId": "fccf8776d7525627c518a56a1f4db367a4d7120b",
+            "title": "Choice Over Control: How Users Write with Large Language Models using Diegetic and Non-Diegetic Prompting",
+            "abstract": "We propose a conceptual perspective on prompts for Large Language Models (LLMs) that distinguishes between (1) diegetic prompts (part of the narrative, e.g. \u201cOnce upon a time, I saw a fox...\u201d), and (2) non-diegetic prompts (external, e.g. \u201cWrite about the adventures of the fox.\u201d). With this lens, we study how 129 crowd workers on Prolific write short texts with different user interfaces (1 vs 3 suggestions, with/out non-diegetic prompts; implemented with GPT-3): When the interface offered multiple suggestions and provided an option for non-diegetic prompting, participants preferred choosing from multiple suggestions over controlling them via non-diegetic prompts. When participants provided non-diegetic prompts it was to ask for inspiration, topics or facts. Single suggestions in particular were guided both with diegetic and non-diegetic information. This work informs human-AI interaction with generative models by revealing that (1) writing non-diegetic prompts requires effort, (2) people combine diegetic and non-diegetic prompting, and (3) they use their draft (i.e. diegetic information) and suggestion timing to strategically guide LLMs.",
+            "year": 2023,
+            "citationCount": 30,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work informs human-AI interaction with generative models by revealing that (1) writing non-diegetic prompts requires effort, (2) people combine diegetic and non- diegetic prompting, and (3) they use their draft (i.e. diegetic information) and suggestion timing to strategically guide LLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "b73a4e21c894c7d1f8eabbc7d5b4e9b4e86f2e08",
+            "paperId": "b73a4e21c894c7d1f8eabbc7d5b4e9b4e86f2e08",
+            "title": "Towards Robust Prompts on Vision-Language Models",
+            "abstract": "With the advent of vision-language models (VLMs) that can perform in-context and prompt-based learning, how can we design prompting approaches that robustly generalize to distribution shift and can be used on novel classes outside the support set of the prompts? In this work, we first define two types of robustness to distribution shift on VLMs, namely, robustness on base classes (the classes included in the support set of prompts) and robustness on novel classes. Then, we study the robustness of existing in-context learning and prompt learning approaches, where we find that prompt learning performs robustly on test images from base classes, while it does not generalize well on images from novel classes. We propose robust prompt learning by integrating multiple-scale image features into the prompt, which improves both types of robustness. Comprehensive experiments are conducted to study the defined robustness on six benchmarks and show the effectiveness of our proposal.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes robust prompt learning by integrating multiple-scale image features into the prompt, which improves both types of robustness of existing in-context and prompt learning approaches."
+            },
+            "score": 3
+        },
+        {
+            "id": "c58325547156a70cb27c148e5b57738ca9ce79aa",
+            "paperId": "c58325547156a70cb27c148e5b57738ca9ce79aa",
+            "title": "Testing the General Deductive Reasoning Capacity of Large Language Models Using OOD Examples",
+            "abstract": "Given the intractably large size of the space of proofs, any model that is capable of general deductive reasoning must generalize to proofs of greater complexity. Recent studies have shown that large language models (LLMs) possess some abstract deductive reasoning ability given chain-of-thought prompts. However, they have primarily been tested on proofs using modus ponens or of a specific size, and from the same distribution as the in-context examples. To measure the general deductive reasoning ability of LLMs, we test on a broad set of deduction rules and measure their ability to generalize to more complex proofs from simpler demonstrations from multiple angles: depth-, width-, and compositional generalization. To facilitate systematic exploration, we construct a new synthetic and programmable reasoning dataset that enables control over deduction rules and proof complexity. Our experiments on four LLMs of various sizes and training objectives show that they are able to generalize to compositional proofs. However, they have difficulty generalizing to longer proofs, and they require explicit demonstrations to produce hypothetical subproofs, specifically in proof by cases and proof by contradiction.",
+            "year": 2023,
+            "citationCount": 25,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A new synthetic and programmable reasoning dataset is constructed that enables control over deduction rules and proof complexity and shows that large language models have difficulty generalizing to longer proofs, but are able to generalize to compositional proofs."
+            },
+            "score": 3
+        },
+        {
+            "id": "f8b9929fde93c170fd284b17ea812a9031be8858",
+            "paperId": "f8b9929fde93c170fd284b17ea812a9031be8858",
+            "title": "EPA: Easy Prompt Augmentation on Large Language Models via Multiple Sources and Multiple Targets",
+            "abstract": "Large language models (LLMs) have shown promising performance on various NLP tasks via task prompting. And their performance can be further improved by appending task demonstrations to the head of the prompt. And usually, a better performance can be achieved with more demonstrations. However, asking the users to write the demonstrations can be cumbersome. As a simple yet cost-effective workaround, this paper proposes a novel method called EPA (\\textbf{E}asy \\textbf{P}rompt \\textbf{A}ugmentation)\\footnote{While this paper considers augmenting prompts via demonstrations, we name it EPA as the name EDA is already taken by a well-known NLP method \\citep{wei-zou-2019-eda}.} that effectively minimizes user efforts in writing demonstrations while improving the model performance at the same time. EPA achieves these goals by automatically augmenting the demonstrations with multiple sources/targets, where each of them paraphrases each other. This is well motivated as augmenting data via paraphrasing effectively improves neural language models. EPA thus employs paraphrasing as an augmentation method for in-context learning. Extensive experiments indicate that EPA effectively improves both NLU and NLG tasks, covering from natural language inference to machine translation in translating tens of languages.\\footnote{Code and data will be released upon publication.}",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel method called EPA that effectively minimizes user efforts in writing demonstrations while improving the model performance at the same time, and automatically augmenting the demonstrations with multiple sources/targets, where each of them paraphrasing each other."
+            },
+            "score": 3
+        },
+        {
+            "id": "8a7d7bded4478916180ae018c99d1f06d57228ef",
+            "paperId": "8a7d7bded4478916180ae018c99d1f06d57228ef",
+            "title": "On Performance and Calibration of Natural Gradient Langevin Dynamics",
+            "abstract": "Producing deep neural network (DNN) models with calibrated confidence is essential for applications in many fields, such as medical image analysis, natural language processing, and robotics. Modern neural networks have been reported to be poorly calibrated compared with those from a decade ago. The stochastic gradient Langevin dynamics (SGLD) algorithm offers a tractable approximate Bayesian inference applicable to DNN, providing a principled method for learning the uncertainty. A recent benchmark study showed that SGLD could produce a more robust model to covariate shifts than other competing methods. However, vanilla SGLD is also known to be slow, and preconditioning can improve SGLD efficacy. This paper proposes eigenvalue-corrected Kronecker factorization (EKFAC) preconditioned SGLD (EKSGLD), in which a novel second-order gradient approximation is employed as a preconditioner for the SGLD algorithm. This approach is expected to bring together the advantages of both second-order optimization and the approximate Bayesian method. Experiments were conducted to compare the performance of EKSGLD with existing preconditioning methods and showed that it could achieve higher predictive accuracy and better calibration on the validation set. EKSGLD improved the best accuracy by 3.06% on CIFAR-10 and 4.15% on MNIST, improved the best negative log-likelihood by 16.2% on CIFAR-10 and 11.4% on MNIST, and improved the best thresholded adaptive calibration error by 4.05% on CIFAR-10.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Eigenvalue-corrected Kronecker factorization (EKFAC) preconditioned SGLD (EKSGLD) is proposed, in which a novel second-order gradient approximation is employed as a preconditionser for the S GLD algorithm, to bring together the advantages of both second- order optimization and the approximate Bayesian method."
+            },
+            "score": 3
+        },
+        {
+            "id": "d50f023fe0921cabdd6d053c377cdd26c715994c",
+            "paperId": "d50f023fe0921cabdd6d053c377cdd26c715994c",
+            "title": "Tabi: An Efficient Multi-Level Inference System for Large Language Models",
+            "abstract": "Today's trend of building ever larger language models (LLMs), while pushing the performance of natural language processing, adds significant latency to the inference stage. We observe that due to the diminishing returns of adding parameters to LLMs, a smaller model could make the same prediction as a costly LLM for a majority of queries. Based on this observation, we design Tabi, an inference system with a multi-level inference engine that serves queries using small models and optional LLMs for demanding applications. Tabi is optimized for discriminative models (i.e., not generative LLMs) in a serving framework. Tabi uses the calibrated confidence score to decide whether to return the accurate results of small models extremely fast or re-route them to LLMs. For re-routed queries, it uses attention-based word pruning and weighted ensemble techniques to offset the system overhead and accuracy loss. We implement and evaluate Tabi with multiple tasks and models. Our result shows that Tabi achieves 21%-40% average latency reduction (with comparable tail latency) over the state-of-the-art while meeting LLM-grade high accuracy targets.",
+            "year": 2023,
+            "citationCount": 14,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Tabi is an inference system with a multi-level inference engine that serves queries using small models and optional LLMs for demanding applications that achieves 21%-40% average latency reduction over the state-of-the-art while meeting LLM-grade high accuracy targets."
+            },
+            "score": 3
+        },
+        {
+            "id": "1effda8ce21573ed864eadfdc7b233aac39b8fe6",
+            "paperId": "1effda8ce21573ed864eadfdc7b233aac39b8fe6",
+            "title": "Amortizing intractable inference in large language models",
+            "abstract": "Autoregressive large language models (LLMs) compress knowledge from their training data through next-token conditional distributions. This limits tractable querying of this knowledge to start-to-end autoregressive sampling. However, many tasks of interest -- including sequence continuation, infilling, and other forms of constrained generation -- involve sampling from intractable posterior distributions. We address this limitation by using amortized Bayesian inference to sample from these intractable posteriors. Such amortization is algorithmically achieved by fine-tuning LLMs via diversity-seeking reinforcement learning algorithms: generative flow networks (GFlowNets). We empirically demonstrate that this distribution-matching paradigm of LLM fine-tuning can serve as an effective alternative to maximum-likelihood training and reward-maximizing policy optimization. As an important application, we interpret chain-of-thought reasoning as a latent variable modeling problem and demonstrate that our approach enables data-efficient adaptation of LLMs to tasks that require multi-step rationalization and tool use.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work interprets chain-of-thought reasoning as a latent variable modeling problem and demonstrates that this distribution-matching paradigm of LLM fine-tuning can serve as an effective alternative to maximum-likelihood training and reward-maximizing policy optimization."
+            },
+            "score": 3
+        },
+        {
+            "id": "1882849855895456fe842203f245ffaf66b72eff",
+            "paperId": "1882849855895456fe842203f245ffaf66b72eff",
+            "title": "Bayesian low-rank adaptation for large language models",
+            "abstract": "Low-rank adaptation (LoRA) has emerged as a new paradigm for cost-efficient fine-tuning of large language models (LLMs). However, fine-tuned LLMs often become overconfident especially when fine-tuned on small datasets. Bayesian methods, with their inherent ability to estimate uncertainty, serve as potent tools to mitigate overconfidence and enhance calibration. In this work, we introduce Laplace-LoRA, which applies a Bayesian approach to the LoRA parameters. Specifically, Laplace-LoRA applies a Laplace approximation to the posterior over the LoRA parameters, considerably improving the calibration of fine-tuned LLMs.",
+            "year": 2023,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Laplace-LoRA applies a Laplace approximation to the posterior over the LoRA parameters, considerably improving the calibration of fine-tuned LLMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "29bd550d0ab53296790ceba31dfe0a06754bcdde",
+            "paperId": "29bd550d0ab53296790ceba31dfe0a06754bcdde",
+            "title": "Large Language Models Are Latent Variable Models: Explaining and Finding Good Demonstrations for In-Context Learning",
+            "abstract": "In recent years, pre-trained large language models (LLMs) have demonstrated remarkable efficiency in achieving an inference-time few-shot learning capability known as in-context learning. However, existing literature has highlighted the sensitivity of this capability to the selection of few-shot demonstrations. Current understandings of the underlying mechanisms by which this capability arises from regular language model pretraining objectives remain disconnected from the real-world LLMs. This study aims to examine the in-context learning phenomenon through a Bayesian lens, viewing real-world LLMs as latent variable models. On this premise, we propose an algorithm to select optimal demonstrations from a set of annotated data with a small LM, and then directly generalize the selected demonstrations to larger LMs. We demonstrate significant improvement over baselines, averaged over eight GPT models on eight real-world text classification datasets. We also demonstrate the real-world usefulness of our algorithm on GSM8K, a math word problem dataset. Our empirical findings support our hypothesis that LLMs implicitly infer a latent variable containing task information.",
+            "year": 2023,
+            "citationCount": 28,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The empirical findings support the hypothesis that LLMs implicitly infer a latent variable containing task information, and propose an algorithm to select optimal demonstrations from a set of annotated data with a small LM, and then directly generalize the selected demonstrations to larger LMs."
+            },
+            "score": 3
+        },
+        {
+            "id": "564855d475ed9197dd7516594557ff886ff623e5",
+            "paperId": "564855d475ed9197dd7516594557ff886ff623e5",
+            "title": "Fast and Robust Early-Exiting Framework for Autoregressive Language Models with Synchronized Parallel Decoding",
+            "abstract": "To tackle the high inference latency exhibited by autoregressive language models, previous studies have proposed an early-exiting framework that allocates adaptive computation paths for each token based on the complexity of generating the subsequent token. However, we observed several shortcomings, including performance degradation caused by a state copying mechanism or numerous exit paths, and sensitivity to exit confidence thresholds. Consequently, we propose a Fast and Robust Early-Exiting (FREE) framework, which incorporates a shallow-deep module and a synchronized parallel decoding. Our framework enables faster inference by synchronizing the decoding process of the current token with previously stacked early-exited tokens. Furthermore, as parallel decoding allows us to observe predictions from both shallow and deep models, we present a novel adaptive threshold estimator that exploits a Beta mixture model to determine suitable confidence thresholds. We empirically demonstrated the superiority of our proposed framework on extensive generation tasks.",
+            "year": 2023,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a Fast and Robust Early-Exiting (FREE) framework, which incorporates a shallow-deep module and a synchronized parallel decoding that enables faster inference by synchronizing the decoding process of the current token with previously stacked early-exited tokens."
+            },
+            "score": 3
+        },
+        {
+            "id": "743ef79c79c3f998ddc20d87d7e44213451b954e",
+            "paperId": "743ef79c79c3f998ddc20d87d7e44213451b954e",
+            "title": "Quantitative fusion of NLP, fMRI, and EEG data : A mathematical model for decoding semantic processing in the brain",
+            "abstract": "This research introduces a novel mathematical model designed to integrate Natural Language Processing (NLP), functional Magnetic Resonance Imaging (fMRI), and Electroencephalography (EEG) data, aiming to decode the complex neural mechanisms of semantic processing in the human brain. By leveraging the complementary strengths of each modality\u2014NLP\u2019s linguistic analysis, fMRI\u2019s spatial resolution, and EEG\u2019s temporal precision\u2014the model provides a groundbreaking approach to understanding how semantic information is processed across different brain regions and over time. The core of the proposed model is a dynamic, multi-layered framework that utilizes advanced statistical methods and machine learning algorithms. At its foundation, the model employs vector space representations from NLP to quantify semantic similarity and contextuality in language. These representations are then mapped onto neural activation patterns captured by fMRI and EEG, using a series of transformation matrices that are optimized through machine learning techniques. The model uniquely incorporates time-series analysis to account for the temporal dynamics of EEG data, while spatial patterns from fMRI data are analyzed through convolutional neural networks, ensuring a comprehensive integration of multimodal neuroimaging data. Key to proposed approach is the application of Bayesian inference methods to fuse these diverse data sources, allowing for the probabilistic modeling of semantic processing pathways in the brain. This enables the prediction of neural responses to linguistic stimuli with unprecedented accuracy and detail. Theoretical implications of our model suggest significant advances in understanding the neural basis of language comprehension, offering new insights into the dynamic interplay between linguistic structures and neural processes.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": null
+            },
+            "score": 3
+        },
+        {
+            "id": "3be93f8b6b8690b266273f0faa1cb060b4296506",
+            "paperId": "3be93f8b6b8690b266273f0faa1cb060b4296506",
+            "title": "A Novel Approach for Improving the Security of IoT\u2013Medical Data Systems Using an Enhanced Dynamic Bayesian Network",
+            "abstract": "IoT (Internet of Things) devices are increasingly being used in healthcare to collect and transmit patient data, which can improve patient outcomes and reduce costs. However, this also creates new challenges for data security and privacy. Thus, the major demand for secure and efficient data-sharing solutions has prompted significant attention due to the increasing volume of shared sensor data. Leveraging a data-fusion-based paradigm within the realm of IoT-protected healthcare systems enabled the collection and analysis of patient data from diverse sources, encompassing medical devices, electronic health records (EHRs), and wearables. This innovative approach holds the potential to yield immediate benefits in terms of enhancing patient care, including more precise diagnoses and treatment plans. It empowers healthcare professionals to devise personalized treatment regimens by amalgamating data from multiple origins. Moreover, it has the capacity to alleviate financial burdens, elevate healthcare outcomes, and augment patient satisfaction. Furthermore, this concept extends to fortifying patient records against unauthorized access and potential misuse. In this study, we propose a novel approach for secure transmission of healthcare data, amalgamating the improved context-aware data-fusion method with an emotional-intelligence-inspired enhanced dynamic Bayesian network (EDBN). The findings indicated that F1 score, accuracy, precision, recall, and ROC-AUC score using DCNN were 89.3%, 87.4%, 91.4%, 92.1%, and 0.56, respectively, which was second-highest to the proposed method. On the other hand, the F1 score, accuracy, precision, recall, and ROC-AUC scores of FRCNN and CNN were low in accuracy at 83.2% and 84.3%, respectively. Our experimental investigation demonstrated superior performance compared with existing methods, as evidenced by various performance metrics, including recall, precision, F measures, and accuracy.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel approach for secure transmission of healthcare data is proposed, amalgamating the improved context-aware data-fusion method with an emotional-intelligence-inspired enhanced dynamic Bayesian network (EDBN), which demonstrated superior performance compared with existing methods, as evidenced by various performance metrics, including recall, precision, F measures, and accuracy."
+            },
+            "score": 3
+        },
+        {
+            "id": "53697c71771d04cbc601bc55dc550885e6e9d2b5",
+            "paperId": "53697c71771d04cbc601bc55dc550885e6e9d2b5",
+            "title": "SCALABLE IMPACT DETECTION AND LOCALIZATION USING DEEP LEARNING AND INFORMATION FUSION",
+            "abstract": "Due to their unpredictable nature, many impact events (e.g., overheight vehicles striking on low-clearance bridges) go unnoticed or get reported hours or days later. However, they can induce structural damage or even failure. Therefore, prompt impact detection and localization strategies are essential for early warning of impact events and rapid inspection of structures. Most existing strategies are developed for aircraft composites panels utilizing high rate synchronized measurement from densely deployed sensors. Limited efforts are made for other applications, such as infrastructure systems or extraterrestrial human habitats, which require large-scale measurement and scalable detection strategies. Particularly in harsh environments, structural impact localization must be robust to limited number of sensors and multi-source errors. In this study, an effective impact localization strategy is proposed to identify impact locations using limited number of vibration measurements. Convolutional neural networks are trained for each sensor node and are fused using Bayesian theory to improve the accuracy of impact localization. Special considerations are paid to address both measurement and modeling errors. The proposed strategy is illustrated using a 1D structure, and numerically validated for a 2D dome-shaped structure. The results demonstrate that the proposed method detects and localizes impact events accurately and robustly.",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An effective impact localization strategy is proposed to identify impact locations using limited number of vibration measurements and Convolutional neural networks are trained for each sensor node and are fused using Bayesian theory to improve the accuracy of impact localization."
+            },
+            "score": 3
+        },
+        {
+            "id": "43c64bd55c715e9453be48a27132f46cd395d421",
+            "paperId": "43c64bd55c715e9453be48a27132f46cd395d421",
+            "title": "A Sensor Fusion-Based Framework for Floor Localization",
+            "abstract": "Floor localization is at the heart of indoor positioning systems (IPSs) in multi-storey buildings with a variety of commercial, industrial, and health and safety applications. The prevalence of wireless technologies along with the integration of micro-electro-mechanical sensors (e.g., barometers) in handheld devices and wearable gadgets of current vintage has prompted a surge in research and development efforts in the IPS area. Received signal strength (RSS) and barometric altimetry (BA) are two well-known methods of floor localization; however, RSS-based methods lack the required accuracy and BA-based methods are prone to random errors due to local changes in the air pressure, e.g., from approaching weather systems. Fusion of BA and RSS is a viable solution for floor localization; nevertheless, available fusion algorithms are rather heuristic. In this paper, a theoretical framework is developed for fusing BA and Wi-Fi RSS measurements. The proposed framework involves a novel Monte Carlo Bayesian inference algorithm, for processing RSS measurements, and then fusion with BA using a Kalman Filter scheme. As demonstrated by our experimental results, the proposed sensor fusion algorithm achieves >99% floor localization accuracy. The algorithm does not require new infrastructure and has low computational complexity, hence, can be readily integrated into various state-of-the-art mobile devices.",
+            "year": 2019,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A theoretical framework is developed for fusing BA and Wi-Fi RSS measurements using a novel Monte Carlo Bayesian inference algorithm and a Kalman Filter scheme, and the proposed sensor fusion algorithm achieves >99% floor localization accuracy."
+            },
+            "score": 3
+        },
+        {
+            "id": "6f4144ac51a5490c8276cace13a3e639befd44b9",
+            "paperId": "6f4144ac51a5490c8276cace13a3e639befd44b9",
+            "title": "A Bayesian NETWORKS approach for dialog modeling: The fusion BN",
+            "abstract": "Bayesian Networks, BNs, are suitable for mixed-initiative dialog modeling allowing a more flexible and natural spoken interaction. This solution can be applied to identify the intention of the user considering the concepts extracted from the last utterance and the dialog context. Subsequently, in order to make a correct decision regarding how the dialog should continue, unnecessary, missing, wrong, optional and required concepts have to be detected according to the inferred goals. This information is useful to properly drive the dialog prompting for missing concepts, clarifying for wrong concepts, ignoring unnecessary concepts and retrieving those required and optional. This paper presents a novel BNs approach where a single BN is obtained from N goal-specific BNs through a fusion process. The new fusion BN enables a single concept analysis which is more consistent with the whole dialog context.",
+            "year": 2009,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents a novel BNs approach where a single BN is obtained from N goal-specific BNs through a fusion process which enables a single concept analysis which is more consistent with the whole dialog context."
+            },
+            "score": 3
+        },
+        {
+            "id": "4ff95b5ccafb939894414109487976d5e270c200",
+            "paperId": "4ff95b5ccafb939894414109487976d5e270c200",
+            "title": "Improving serious illness conversations in oncology: A machine learning approach that integrates natural language processing for mortality prediction.",
+            "abstract": "590 Background: ML-based mortality prediction tools in oncology can optimize clinical decisions and prompt end-of-life care discussions. Patients with advanced cancer who have engaged in Goals of Care (GoC) conversations report improved quality of life and better care alignment. However, oncologists often have overly optimistic prognoses and miss timely GoC discussions. Clinical notes are a valuable source of information, but processing and extracting data from them is time-consuming and labor-intensive. To address this issue, we have developed a machine learning application that ingests clinical notes and structured data from electronic health records (EHRs) to generate a 180-day mortality risk, prompting oncologists for GoC conversations. Methods: A predictive machine learning model was developed using data from cancer patients aged 21 and above, diagnosed between January 2016 and December 2021. Data was collected from various sources, including cancer and death registry and the EHR. By analyzing structured and unstructured data from ambulatory progress notes, a clinical profile was created for each patient. The model utilized Spark-NLP for preprocessing, applying word2vec embedding and pre-trained NER models to extract information on diseases, symptoms, procedures, treatments, and medications. Feature engineering techniques were used to select the best NLP features, combined with structured data. The model was trained using 894 patients, employing Random Forest Classifier with 10-fold cross-validation, and tested on a separate set of 43,274 patients. Performance evaluation included ROC AUC, PR AUC, and F1 Score metrics. Results: After the fine tuning, the best model showed an AUC-ROC of 0.88 on the train set and 0.75 on the test set. At a threshold of 0.44, the model achieved a balanced performance with a sensitivity of 0.70 and specificity of 0.71 on the testing set. Conclusions: Our team pioneered the development of an automated multi-modality pipeline that combines unstructured real-world data with structured data, allowing for training and testing of a fusion model. This automation opens doors for scaling and dissemination, to enhance mortality prediction. Future works will involve qualitative analysis of implementation and acceptance in clinical practice.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A machine learning application is developed that ingests clinical notes and structured data from electronic health records to generate a 180-day mortality risk, prompting oncologists for GoC conversations, and opens doors for scaling and dissemination, to enhance mortality prediction."
+            },
+            "score": 3
+        },
+        {
+            "id": "b6afdd0c790adab1a2575d3077fd185a8eb33a36",
+            "paperId": "b6afdd0c790adab1a2575d3077fd185a8eb33a36",
+            "title": "Semantic-Aware Frame-Event Fusion based Pattern Recognition via Large Vision-Language Models",
+            "abstract": "Pattern recognition through the fusion of RGB frames and Event streams has emerged as a novel research area in recent years. Current methods typically employ backbone networks to individually extract the features of RGB frames and event streams, and subsequently fuse these features for pattern recognition. However, we posit that these methods may suffer from key issues like sematic gaps and small-scale backbone networks. In this study, we introduce a novel pattern recognition framework that consolidates the semantic labels, RGB frames, and event streams, leveraging pre-trained large-scale vision-language models. Specifically, given the input RGB frames, event streams, and all the predefined semantic labels, we employ a pre-trained large-scale vision model (CLIP vision encoder) to extract the RGB and event features. To handle the semantic labels, we initially convert them into language descriptions through prompt engineering, and then obtain the semantic features using the pre-trained large-scale language model (CLIP text encoder). Subsequently, we integrate the RGB/Event features and semantic features using multimodal Transformer networks. The resulting frame and event tokens are further amplified using self-attention layers. Concurrently, we propose to enhance the interactions between text tokens and RGB/Event tokens via cross-attention. Finally, we consolidate all three modalities using self-attention and feed-forward layers for recognition. Comprehensive experiments on the HARDVS and PokerEvent datasets fully substantiate the efficacy of our proposed SAFE model. The source code will be made available at https://github.com/Event-AHU/SAFE_LargeVLM.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces a novel pattern recognition framework that consolidates the semantic labels, RGB frames, and event streams, leveraging pre-trained large-scale vision-language models and consolidates all three modalities using self-attention and feed-forward layers for recognition."
+            },
+            "score": 2
+        },
+        {
+            "id": "10158879cdb64ce7d3f7bb5572c4617ea808602e",
+            "paperId": "10158879cdb64ce7d3f7bb5572c4617ea808602e",
+            "title": "Receive, Reason, and React: Drive as You Say with Large Language Models in Autonomous Vehicles",
+            "abstract": "The fusion of human-centric design and artificial intelligence (AI) capabilities has opened up new possibilities for next-generation autonomous vehicles that go beyond transportation. These vehicles can dynamically interact with passengers and adapt to their preferences. This paper proposes a novel framework that leverages Large Language Models (LLMs) to enhance the decision-making process in autonomous vehicles. By utilizing LLMs' linguistic and contextual understanding abilities with specialized tools, we aim to integrate the language and reasoning capabilities of LLMs into autonomous vehicles. Our research includes experiments in HighwayEnv, a collection of environments for autonomous driving and tactical decision-making tasks, to explore LLMs' interpretation, interaction, and reasoning in various scenarios. We also examine real-time personalization, demonstrating how LLMs can influence driving behaviors based on verbal commands. Our empirical results highlight the substantial advantages of utilizing chain-of-thought prompting, leading to improved driving decisions, and showing the potential for LLMs to enhance personalized driving experiences through ongoing verbal feedback. The proposed framework aims to transform autonomous vehicle operations, offering personalized support, transparent decision-making, and continuous learning to enhance safety and effectiveness. We achieve user-centric, transparent, and adaptive autonomous driving ecosystems supported by the integration of LLMs into autonomous vehicles.",
+            "year": 2023,
+            "citationCount": 18,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper proposes a novel framework that leverages Large Language Models (LLMs) to enhance the decision-making process in autonomous vehicles, and achieves user-centric, transparent, and adaptive autonomous driving ecosystems supported by the integration of LLMs into autonomous vehicles."
+            },
+            "score": 2
+        },
+        {
+            "id": "27cf91b7847bd179e579099ea272d8bdbec8488f",
+            "paperId": "27cf91b7847bd179e579099ea272d8bdbec8488f",
+            "title": "Multi-view Vision-Prompt Fusion Network: Can 2D Pre-trained Model Boost 3D Point Cloud Data-scarce Learning?",
+            "abstract": "Point cloud based 3D deep model has wide applications in many applications such as autonomous driving, house robot, and so on. Inspired by the recent prompt learning in natural language processing, this work proposes a novel Multi-view Vision-Prompt Fusion Network (MvNet) for few-shot 3D point cloud classification. MvNet investigates the possibility of leveraging the off-the-shelf 2D pre-trained models to achieve the few-shot classification, which can alleviate the over-dependence issue of the existing baseline models towards the large-scale annotated 3D point cloud data. Specifically, MvNet first encodes a 3D point cloud into multi-view image features for a number of different views. Then, a novel multi-view prompt fusion module is developed to effectively fuse information from different views to bridge the gap between 3D point cloud data and 2D pre-trained models. A set of 2D image prompts can then be derived to better describe the suitable prior knowledge for a large-scale pre-trained image model for few-shot 3D point cloud classification. Extensive experiments on ModelNet, ScanObjectNN, and ShapeNet datasets demonstrate that MvNet achieves new state-of-the-art performance for 3D few-shot point cloud image classification. The source code of this work will be available soon.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "MvNet investigates the possibility of leveraging the off-the-shelf 2D pre-trained models to achieve the few-shot classification, which can alleviate the over-dependence issue of the existing baseline models towards the large-scale annotated 3D point cloud data."
+            },
+            "score": 2
+        },
+        {
+            "id": "69eeb4dfcc971b30119b9f0dcffdac3b4f9c1c98",
+            "paperId": "69eeb4dfcc971b30119b9f0dcffdac3b4f9c1c98",
+            "title": "On-the-Fly Fusion of Large Language Models and Machine Translation",
+            "abstract": "We propose the on-the-fly ensembling of a machine translation model with an LLM, prompted on the same task and input. We perform experiments on 4 language pairs (both directions) with varying data amounts. We find that a slightly weaker-at-translation LLM can improve translations of a NMT model, and ensembling with an LLM can produce better translations than ensembling two stronger MT models. We combine our method with various techniques from LLM prompting, such as in context learning and translation context.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes the on-the-fly ensembling of a machine translation model with an LLM, prompted on the same task and input, and finds that a slightly weaker-at-translation LLM can improve translations of a NMT model, and ensembleling with anLLM can produce better translations than ensembled two stronger MT models."
+            },
+            "score": 2
+        },
+        {
+            "id": "718eeca371e1f533614f8b530a40cfdfcab9c330",
+            "paperId": "718eeca371e1f533614f8b530a40cfdfcab9c330",
+            "title": "Instruction Fusion: Advancing Prompt Evolution through Hybridization",
+            "abstract": "The fine-tuning of Large Language Models (LLMs) specialized in code generation has seen notable advancements through the use of open-domain coding queries. Despite the successes, existing methodologies like Evol-Instruct encounter performance limitations, impeding further enhancements in code generation tasks. This paper examines the constraints of existing prompt evolution techniques and introduces a novel approach, Instruction Fusion (IF). IF innovatively combines two distinct prompts through a hybridization process, thereby enhancing the evolution of training prompts for code LLMs. Our experimental results reveal that the proposed novel method effectively addresses the shortcomings of prior methods, significantly improving the performance of Code LLMs across five code generation benchmarks, namely HumanEval, HumanEval+, MBPP, MBPP+ and MultiPL-E, which underscore the effectiveness of Instruction Fusion in advancing the capabilities of LLMs in code generation.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results reveal that the proposed novel method effectively addresses the shortcomings of prior methods, significantly improving the performance of Code LLMs across five code generation benchmarks, which underscore the effectiveness of Instruction Fusion in advancing the capabilities of LLMs in code generation."
+            },
+            "score": 2
+        },
+        {
+            "id": "8cf9b49698fdb1b754df2556576412a7b44929f6",
+            "paperId": "8cf9b49698fdb1b754df2556576412a7b44929f6",
+            "title": "SmoothLLM: Defending Large Language Models Against Jailbreaking Attacks",
+            "abstract": "Despite efforts to align large language models (LLMs) with human values, widely-used LLMs such as GPT, Llama, Claude, and PaLM are susceptible to jailbreaking attacks, wherein an adversary fools a targeted LLM into generating objectionable content. To address this vulnerability, we propose SmoothLLM, the first algorithm designed to mitigate jailbreaking attacks on LLMs. Based on our finding that adversarially-generated prompts are brittle to character-level changes, our defense first randomly perturbs multiple copies of a given input prompt, and then aggregates the corresponding predictions to detect adversarial inputs. SmoothLLM reduces the attack success rate on numerous popular LLMs to below one percentage point, avoids unnecessary conservatism, and admits provable guarantees on attack mitigation. Moreover, our defense uses exponentially fewer queries than existing attacks and is compatible with any LLM. Our code is publicly available at the following link: https://github.com/arobey1/smooth-llm.",
+            "year": 2023,
+            "citationCount": 59,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes SmoothLLM, the first algorithm designed to mitigate jailbreaking attacks on LLMs, which first randomly perturbs multiple copies of a given input prompt, and then aggregates the corresponding predictions to detect adversarial inputs."
+            },
+            "score": 2
+        },
+        {
+            "id": "82817b85081ee075975f4a69039314b7741a979f",
+            "paperId": "82817b85081ee075975f4a69039314b7741a979f",
+            "title": "Large Language Models can be Guided to Evade AI-Generated Text Detection",
+            "abstract": "Large language models (LLMs) have shown remarkable performance in various tasks and have been extensively utilized by the public. However, the increasing concerns regarding the misuse of LLMs, such as plagiarism and spamming, have led to the development of multiple detectors, including fine-tuned classifiers and statistical methods. In this study, we equip LLMs with prompts, rather than relying on an external paraphraser, to evaluate the vulnerability of these detectors. We propose a novel Substitution-based In-Context example Optimization method (SICO) to automatically construct prompts for evading the detectors. SICO is cost-efficient as it requires only 40 human-written examples and a limited number of LLM inferences to generate a prompt. Moreover, once a task-specific prompt has been constructed, it can be universally used against a wide range of detectors. Extensive experiments across three real-world tasks demonstrate that SICO significantly outperforms the paraphraser baselines and enables GPT-3.5 to successfully evade six detectors, decreasing their AUC by 0.5 on average. Furthermore, a comprehensive human evaluation as well as a validation experiment in the wild show that the SICO-generated text achieves human-level readability and task completion rates. Finally, the strong performance of SICO exhibits its potential as a reliable evaluation tool for future detectors. The codes and data are located on https://github.com/ColinLu50/Evade-GPT-Detector.",
+            "year": 2023,
+            "citationCount": 21,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel Substitution-based In-Context example Optimization method (SICO) is proposed to automatically construct prompts for evading the detectors of large language models, which significantly outperforms the paraphraser baselines and enables GPT-3.5 to successfully evade six detectors."
+            },
+            "score": 2
+        },
+        {
+            "id": "6bf34b4a1937ca5ae692594eda880ff671b8ee57",
+            "paperId": "6bf34b4a1937ca5ae692594eda880ff671b8ee57",
+            "title": "Practical Membership Inference Attacks against Fine-tuned Large Language Models via Self-prompt Calibration",
+            "abstract": "Membership Inference Attacks (MIA) aim to infer whether a target data record has been utilized for model training or not. Prior attempts have quantified the privacy risks of language models (LMs) via MIAs, but there is still no consensus on whether existing MIA algorithms can cause remarkable privacy leakage on practical Large Language Models (LLMs). Existing MIAs designed for LMs can be classified into two categories: reference-free and reference-based attacks. They are both based on the hypothesis that training records consistently strike a higher probability of being sampled. Nevertheless, this hypothesis heavily relies on the overfitting of target models, which will be mitigated by multiple regularization methods and the generalization of LLMs. The reference-based attack seems to achieve promising effectiveness in LLMs, which measures a more reliable membership signal by comparing the probability discrepancy between the target model and the reference model. However, the performance of reference-based attack is highly dependent on a reference dataset that closely resembles the training dataset, which is usually inaccessible in the practical scenario. Overall, existing MIAs are unable to effectively unveil privacy leakage over practical fine-tuned LLMs that are overfitting-free and private. We propose a Membership Inference Attack based on Self-calibrated Probabilistic Variation (SPV-MIA). Specifically, since memorization in LLMs is inevitable during the training process and occurs before overfitting, we introduce a more reliable membership signal, probabilistic variation, which is based on memorization rather than overfitting. Furthermore, we introduce a self-prompt approach, which constructs the dataset to fine-tune the reference model by prompting the target LLM itself. In this manner, the adversary can collect a dataset with a similar distribution from public APIs.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Membership Inference Attack based on Self-calibrated Probabilistic Variation (SPV-MIA), which introduces a more reliable membership signal, probabilistic variation, which is based on memorization rather than overfitting in LLMs."
+            },
+            "score": 2
+        },
+        {
+            "id": "3e9c60f683d0fd959d9d5b303dfb79dc335eacf9",
+            "paperId": "3e9c60f683d0fd959d9d5b303dfb79dc335eacf9",
+            "title": "Dynamic Calibration of Nonlinear Sensors with Time-Drifts and Delays by Bayesian Inference",
+            "abstract": "Most sensor calibrations rely on the linearity and steadiness of their response characteristics, but practical sensors are nonlinear, and their response drifts with time, restricting their choices for adoption. To broaden the realm of sensors to allow nonlinearity and time-drift in the underlying dynamics, a Bayesian inference-based nonlinear, non-causal dynamic calibration method is introduced, where the sensed value is estimated as a posterior conditional mean given a finite-length sequence of the sensor measurements and the elapsed time. Additionally, an algorithm is proposed to adjust an already learned calibration map online whenever new data arrives. The effectiveness of the proposed method is validated on continuous-glucose-monitoring (CGM) data from an alive rat equipped with an in-house optical glucose sensor. To allow flexibility in choice, the validation is also performed on a synthetic blood glucose level (BGL) dataset generated using FDA-approved virtual diabetic patient models together with an illustrative CGM sensor model.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A Bayesian inference-based nonlinear, non-causal dynamic calibration method is introduced, where the sensed value is estimated as a posterior conditional mean given a finite-length sequence of the sensor measurements and the elapsed time."
+            },
+            "score": 2
+        },
+        {
+            "id": "cfd0e6fa00b672c5b89195af76edc8a3bbf54dd5",
+            "paperId": "cfd0e6fa00b672c5b89195af76edc8a3bbf54dd5",
+            "title": "Design of Computer-Aided Translation System Based on Naive Bayesian Algorithm",
+            "abstract": "With the progress of society and the rapid development of science and technology, computer translation technology has become an important auxiliary tool in the fields of software localization and technical translation. This realistic demand has prompted translators to pay more attention to computer translation and have made some useful explorations on this basis. This paper aims to study and discuss computer-aided translation systems based on the fusion of naive Bayesian algorithms. This paper theoretically analyzes some key technologies in computer-aided translation. Computer-aided translation refers to helping translators to translate texts with a series of tools and then proposes a Bayesian classification algorithm. Translation memory technology can solve many practical problems, especially in the machinery manufacturing industry, processing some sentences in documents, which can reduce repetitive labor, unify vocabulary, and make translation styles more coordinated. The experimental results of this paper show that applying the naive Bayes method to the computer-aided translation system can better classify the documents in the translation system, thereby improving the ability of computer-aided translation. When the proportion of professional terms in the article reaches 85%, computer-aided translation has an auxiliary role for the translator. When the proportion of professional terms in the article reaches about 95%, computer-assisted translation can efficiently speed up the work speed and quality of translators. Due to the prosperity of computer translation systems, the duplication of labor for translators has been significantly reduced, and this ensures the consistency of terminology and translation style, so that the fruits of labor are fully utilized.",
+            "year": 2022,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results of this paper show that applying the naive Bayes method to the computer-aided translation system can better classify the documents in the translation system, thereby improving the ability of computer- aided translation."
+            },
+            "score": 2
+        },
+        {
+            "id": "390dbeb57d9618384de3eff4058cb336037a518b",
+            "paperId": "390dbeb57d9618384de3eff4058cb336037a518b",
+            "title": "Advanced Social Media Toxic Comments Detection System Using AI",
+            "abstract": "Abstract: In the contemporary digital landscape, social media platforms have evolved into essential components of our daily lives, fostering connections, idea sharing, and meaningful conversations. Nevertheless, the escalating volume of online interactions has ushered in a concerning rise in toxic comments and cyberbullying, casting a shadow over the potential for a healthy onlineenvironment. Toxic comments, spanning hate speech, harassment, and offensive content, not only inflict harm on individuals but also detrimentally affect the overall user experience. This project seeks to address this pressing issue through the development of a cutting-edge Toxic Comment Detection system, leveraging the power of Natural Language Processing (NLP) and Machine Learning (ML) techniques. The primary objective of this endeavor is to create an automated system capable of identifying and flagging toxic comments in realtime across various social media platforms. By employing advanced NLP algorithms and ML models, the system aims to analyze textual content swiftly and accurately, pinpointing instances of toxicity. Once identified, the system will promptly notify moderators, enabling swift intervention and potential removal of the harmful content. By implementing this technological solution, the project aspires to contribute significantly to fostering a safer and more inclusive online environment where users can engage without fear of encountering toxic behavior. Through the fusion of NLP and ML, this endeavor aims to exemplify the transformative potential of technology in mitigating the challenges posed by toxic comments in the digital age.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The development of a cutting-edge Toxic Comment Detection system, leveraging the power of Natural Language Processing (NLP) and Machine Learning (ML) techniques, to create an automated system capable of identifying and flagging toxic comments in realtime across various social media platforms."
+            },
+            "score": 2
+        },
+        {
+            "id": "1b4ef3e5a783a18de6439f345af20831dcdcf29e",
+            "paperId": "1b4ef3e5a783a18de6439f345af20831dcdcf29e",
+            "title": "Activity recognition from on-body sensors by classifier fusion: sensor scalability and robustness",
+            "abstract": "Activity recognition from on-body sensors is affected by sensor degradation, interconnections failures, and jitter in sensor placement and orientation. We investigate how this may be balanced by exploiting redundant sensors distributed on the body. We recognize activities by a meta-classifier that fuses the information of simple classifiers operating on individual sensors. We investigate the robustness to faults and sensor scalability which follows from classifier fusion. We compare a reference majority voting and a naive Bayesian fusion scheme. We validate this approach by recognizing a set of 10 activities carried out by workers in the quality assurance checkpoint of a car assembly line. Results show that classification accuracy greatly increases with additional sensors (50% with 1 sensor, 80% and 98% with 3 and 57 sensors), and that sensor fusion implicitly allows to compensate for typical faults up to high fault rates. These results highlight the benefit of large on- body sensor network rather than a minimum set of sensors for activity recognition and prompts further investigation.",
+            "year": 2007,
+            "citationCount": 131,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results show that classification accuracy greatly increases with additional sensors, and that sensor fusion implicitly allows to compensate for typical faults up to high fault rates, which highlights the benefit of large on- body sensor network rather than a minimum set of sensors for activity recognition and prompts further investigation."
+            },
+            "score": 2
+        },
+        {
+            "id": "29fb9e80920c30465d2084ae312623289245e36f",
+            "paperId": "29fb9e80920c30465d2084ae312623289245e36f",
+            "title": "Quantifying tissue growth, shape and collision via continuum models and Bayesian inference",
+            "abstract": "Although tissues are usually studied in isolation, this situation rarely occurs in biology, as cells, tissues and organs coexist and interact across scales to determine both shape and function. Here, we take a quantitative approach combining data from recent experiments, mathematical modelling and Bayesian parameter inference, to describe the self-assembly of multiple epithelial sheets by growth and collision. We use two simple and well-studied continuum models, where cells move either randomly or following population pressure gradients. After suitable calibration, both models prove to be practically identifiable, and can reproduce the main features of single tissue expansions. However, our findings reveal that whenever tissue\u2013tissue interactions become relevant, the random motion assumption can lead to unrealistic behaviour. Under this setting, a model accounting for population pressure from different cell populations is more appropriate and shows a better agreement with experimental measurements. Finally, we discuss how tissue shape and pressure affect multi-tissue collisions. Our work thus provides a systematic approach to quantify and predict complex tissue configurations with applications in the design of tissue composites and more generally in tissue engineering.",
+            "year": 2023,
+            "citationCount": 7,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A quantitative approach is taken combining data from recent experiments, mathematical modelling and Bayesian parameter inference, to describe the self-assembly of multiple epithelial sheets by growth and collision, which provides a systematic approach to quantify and predict complex tissue configurations with applications in the design of tissue composites and more generally in tissue engineering."
+            },
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }

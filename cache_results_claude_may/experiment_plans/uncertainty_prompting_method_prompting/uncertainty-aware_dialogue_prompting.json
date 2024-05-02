@@ -47,5 +47,864 @@
             }
         },
         "Fallback Plan": "If the proposed UADP method does not significantly improve the consistency and user satisfaction of the generated responses compared to the baselines, consider the following alternative approaches:\n1. Analyze the generated uncertainty scores and clarification questions to determine if they are appropriate and relevant to the user's input. If not, adjust the prompts or explore alternative methods for estimating uncertainty and generating clarification questions.\n2. Experiment with different uncertainty thresholds and dialogue strategies, such as adjusting the number of turns or incorporating user feedback in a different way.\n3. Investigate the impact of using different language models or fine-tuning the models on specific dialogue tasks to improve their ability to handle uncertainty and generate more consistent responses.\n4. Conduct a thorough error analysis to identify common failure modes and sources of inconsistency in the generated responses. Use these insights to inform further improvements to the UADP method or develop new approaches to address these challenges."
-    }
+    },
+    "novelty_queries": [
+        "KeywordQuery(\"uncertainty aware dialogue language models\")",
+        "KeywordQuery(\"language models clarification questions uncertainty\")",
+        "KeywordQuery(\"calibrated language model responses uncertainty\")",
+        "KeywordQuery(\"Uncertainty-Aware Dialogue Prompting NLP\")"
+    ],
+    "novelty_papers": [
+        {
+            "id": "7154e7f42e35a7e5f0795f5d674a8a5356584c04",
+            "paperId": "7154e7f42e35a7e5f0795f5d674a8a5356584c04",
+            "title": "CLAM: Selective Clarification for Ambiguous Questions with Generative Language Models",
+            "abstract": "Users often ask dialogue systems ambiguous questions that require clarification. We show that current language models rarely ask users to clarify ambiguous questions and instead provide incorrect answers. To address this, we introduce CLAM: a framework for getting language models to selectively ask for clarification about ambiguous user questions. In particular, we show that we can prompt language models to detect whether a given question is ambiguous, generate an appropriate clarifying question to ask the user, and give a final answer after receiving clarification. We also show that we can simulate users by providing language models with privileged information. This lets us automatically evaluate multi-turn clarification dialogues. Finally, CLAM significantly improves language models' accuracy on mixed ambiguous and unambiguous questions relative to SotA.",
+            "year": 2022,
+            "citationCount": 11,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work shows that it can prompt language models to detect whether a given question is ambiguous, generate an appropriate clarifying question to ask the user, and give a final answer after receiving clarification and significantly improves language models' accuracy on mixed ambiguous and unambiguous questions relative to SotA."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving dialogue consistency and user trust in language models by making them express uncertainty and ask for clarification. The approach is to prompt the model to generate responses with uncertainty scores and ask clarifying questions when the score is above a threshold.\n\nThe research problem in the paper is getting language models to ask for clarification when given ambiguous questions. The approach is to prompt language models to detect ambiguous questions, generate clarifying questions, and provide answers after receiving clarification.\n\nWhile both works aim to improve language models' ability to handle ambiguous or uncertain situations through clarification, the proposal focuses more on expressing the model's own uncertainty to improve consistency and trust, while the paper focuses specifically on detecting and clarifying ambiguous user questions.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "4ca1057d642caf8a7b817c4aeb6198801bc69758",
+            "paperId": "4ca1057d642caf8a7b817c4aeb6198801bc69758",
+            "title": "CLAM: Selective Clarification for Ambiguous Questions with Large Language Models",
+            "abstract": "State-of-the-art language models are often accurate on many question-answering benchmarks with well-de\ufb01ned questions. Yet, in real settings questions are often unanswerable without asking the user for clarifying information. We show that current SotA models often do not ask the user for clari\ufb01cation when presented with imprecise questions and instead provide incorrect answers or \u2018hallucinate\u2019. To address this, we introduce CLAM, a framework that \ufb01rst uses the model to detect ambiguous questions, and if an ambiguous question is detected, prompts the model to ask the user for clari\ufb01cation. Furthermore, we show how to construct a scalable and cost-effective automatic evaluation protocol using an oracle language model with privileged information to provide clarifying information. We show that our method achieves a 20.15 percentage point accuracy improvement over SotA on a novel ambiguous question-answering answering data set derived from TriviaQA.",
+            "year": 2022,
+            "citationCount": 6,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "CLAM is introduced, a framework that first uses the model to detect ambiguous questions, and if an ambiguous question is detected, prompts themodel to ask the user for clari\ufb01cation, and how to construct a scalable and cost-effective automatic evaluation protocol using an oracle language model with privileged information to provide clarifying information is shown."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve dialogue consistency and user trust in large language models by prompting the model to express uncertainty, seek clarification, and provide calibrated responses based on its confidence level. The paper focuses on detecting ambiguous questions and prompting the model to ask for clarification to avoid incorrect or hallucinated answers.\n\nWhile both the proposal and the paper address the issue of handling ambiguous or uncertain inputs in language models, the project proposal focuses on dialogue systems and improving user trust, while the paper specifically targets question-answering tasks and improving accuracy. The approaches also differ, with the proposal using uncertainty scores and multi-turn dialogues, and the paper using a framework to detect ambiguous questions and prompt for clarification.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "ad934a9344f68fcc0b9aa704102aa48c39c5b591",
+            "paperId": "ad934a9344f68fcc0b9aa704102aa48c39c5b591",
+            "title": "Generating with Confidence: Uncertainty Quantification for Black-box Large Language Models",
+            "abstract": "Large language models (LLMs) specializing in natural language generation (NLG) have recently started exhibiting promising capabilities across a variety of domains. However, gauging the trustworthiness of responses generated by LLMs remains an open challenge, with limited research on uncertainty quantification (UQ) for NLG. Furthermore, existing literature typically assumes white-box access to language models, which is becoming unrealistic either due to the closed-source nature of the latest LLMs or computational constraints. In this work, we investigate UQ in NLG for black-box LLMs. We first differentiate uncertainty vs confidence: the former refers to the\"dispersion\"of the potential predictions for a fixed input, and the latter refers to the confidence on a particular prediction/generation. We then propose and compare several confidence/uncertainty metrics, applying them to selective NLG where unreliable results could either be ignored or yielded for further assessment. Experiments were carried out with several popular LLMs on question-answering datasets (for evaluation purposes). Results reveal that a simple metric for the semantic dispersion can be a reliable predictor of the quality of LLM responses, providing valuable insights for practitioners on uncertainty management when adopting LLMs. The code to replicate our experiments is available at https://github.com/zlin7/UQ-NLG.",
+            "year": 2023,
+            "citationCount": 37,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Results reveal that a simple metric for the semantic dispersion can be a reliable predictor of the quality of LLM responses, providing valuable insights for practitioners on uncertainty management when adopting LLMs."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving dialogue consistency and user trust in large language models by prompting them to express uncertainty and seek clarification. The approach is to use uncertainty-aware dialogue prompting, where the model generates responses along with uncertainty scores and asks for clarification when needed.\n\nThe research problem in the paper is quantifying uncertainty in natural language generation for black-box large language models. The approach is to propose and compare several confidence/uncertainty metrics for selective generation, where unreliable results are ignored or yielded for further assessment.\n\nWhile both works deal with uncertainty in large language models, the proposal focuses on dialogue systems and improving consistency and trust through prompting techniques, while the paper focuses on quantifying uncertainty in general language generation and selective generation based on confidence metrics. The specific problems and approaches are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "c01c7c1f903dfaa78812fb20a6cb2db25e4712e3",
+            "paperId": "c01c7c1f903dfaa78812fb20a6cb2db25e4712e3",
+            "title": "Quantifying Uncertainty in Answers from any Language Model and Enhancing their Trustworthiness",
+            "abstract": "We introduce BSDetector, a method for detecting bad and speculative answers from a pretrained Large Language Model by estimating a numeric confidence score for any output it generated. Our uncertainty quantification technique works for any LLM accessible only via a black-box API, whose training data remains unknown. By expending a bit of extra computation, users of any LLM API can now get the same response as they would ordinarily, as well as a confidence estimate that cautions when not to trust this response. Experiments on both closed and open-form Question-Answer benchmarks reveal that BSDetector more accurately identifies incorrect LLM responses than alternative uncertainty estimation procedures (for both GPT-3 and ChatGPT). By sampling multiple responses from the LLM and considering the one with the highest confidence score, we can additionally obtain more accurate responses from the same LLM, without any extra training steps. In applications involving automated evaluation with LLMs, accounting for our confidence scores leads to more reliable evaluation in both human-in-the-loop and fully-automated settings (across both GPT 3.5 and 4).",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "BSDetector is introduced, a method for detecting bad and speculative answers from a pretrained Large Language Model by estimating a numeric confidence score for any output it generated by sampling multiple responses from the LLM and considering the one with the highest confidence score."
+            },
+            "score": 8,
+            "novelty_score": "The project proposal aims to improve dialogue consistency and user trust in language models by prompting the model to engage in uncertainty-aware dialogue, actively seeking clarification when needed. The paper introduces a method for quantifying uncertainty in language model outputs to identify incorrect or speculative responses and enhance their trustworthiness.\n\nWhile both works address the issue of language model uncertainty, the project proposal focuses on improving dialogue systems through an interactive, multi-turn approach, while the paper proposes a post-hoc uncertainty estimation technique for any given language model output.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "8f7297454d7f44365b9bcda5ebb9439a43daf5e6",
+            "paperId": "8f7297454d7f44365b9bcda5ebb9439a43daf5e6",
+            "title": "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs",
+            "abstract": "Empowering large language models to accurately express confidence in their answers is essential for trustworthy decision-making. Previous confidence elicitation methods, which primarily rely on white-box access to internal model information or model fine-tuning, have become less suitable for LLMs, especially closed-source commercial APIs. This leads to a growing need to explore the untapped area of black-box approaches for LLM uncertainty estimation. To better break down the problem, we define a systematic framework with three components: prompting strategies for eliciting verbalized confidence, sampling methods for generating multiple responses, and aggregation techniques for computing consistency. We then benchmark these methods on two key tasks-confidence calibration and failure prediction-across five types of datasets (e.g., commonsense and arithmetic reasoning) and five widely-used LLMs including GPT-4 and LLaMA 2 Chat. Our analysis uncovers several key insights: 1) LLMs, when verbalizing their confidence, tend to be overconfident, potentially imitating human patterns of expressing confidence. 2) As model capability scales up, both calibration and failure prediction performance improve. 3) Employing our proposed strategies, such as human-inspired prompts, consistency among multiple responses, and better aggregation strategies can help mitigate this overconfidence from various perspectives. 4) Comparisons with white-box methods indicate that while white-box methods perform better, the gap is narrow, e.g., 0.522 to 0.605 in AUROC. Despite these advancements, none of these techniques consistently outperform others, and all investigated methods struggle in challenging tasks, such as those requiring professional knowledge, indicating significant scope for improvement. We believe this study can serve as a strong baseline and provide insights for eliciting confidence in black-box LLMs.",
+            "year": 2023,
+            "citationCount": 97,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study defines a systematic framework with three components: prompting strategies for eliciting verbalized confidence, sampling methods for generating multiple responses, and aggregation techniques for computing consistency and believes it can serve as a strong baseline and provide insights for eliciting confidence in black-box LLMs."
+            },
+            "score": 8,
+            "novelty_score": "The research problem in the proposal is improving dialogue consistency and user trust in large language models by having the model express uncertainty and seek clarification. The approach is to prompt the model to generate responses along with uncertainty scores, and if the uncertainty is high, generate clarification questions to get more information from the user.\n\nThe research problem in the paper is evaluating how well large language models can express their uncertainty, especially in a black-box setting. The approach is to define a framework for eliciting verbalized confidence, generating multiple responses, and aggregating consistency.\n\nWhile both works involve the uncertainty of language models, the proposal focuses on using uncertainty estimation to improve dialogue systems, while the paper focuses on evaluating the ability of language models to express uncertainty. The methods and goals are different.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "2a3c0ffbe70b4aa4b5d118cc0da365fe2a04f262",
+            "paperId": "2a3c0ffbe70b4aa4b5d118cc0da365fe2a04f262",
+            "title": "Deal, or no deal (or who knows)? Forecasting Uncertainty in Conversations using Large Language Models",
+            "abstract": "Effective interlocutors account for the uncertain goals, beliefs, and emotions of others. But even the best human conversationalist cannot perfectly anticipate the trajectory of a dialogue. How well can language models represent inherent uncertainty in conversations? We propose FortUne Dial, an expansion of the long-standing\"conversation forecasting\"task: instead of just accuracy, evaluation is conducted with uncertainty-aware metrics, effectively enabling abstention on individual instances. We study two ways in which language models potentially represent outcome uncertainty (internally, using scores and directly, using tokens) and propose fine-tuning strategies to improve calibration of both representations. Experiments on eight difficult negotiation corpora demonstrate that our proposed fine-tuning strategies (a traditional supervision strategy and an off-policy reinforcement learning strategy) can calibrate smaller open-source models to compete with pre-trained models 10x their size.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes FortUne Dial, an expansion of the long-standing conversation forecasting task, where instead of just accuracy, evaluation is conducted with uncertainty-aware metrics, effectively enabling abstention on individual instances."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving dialogue consistency and user trust in language models by making them express uncertainty and seek clarification. The approach is to prompt the model to generate responses with uncertainty scores and ask clarification questions when the score is above a threshold.\n\nThe research problem in the paper is forecasting uncertainty in conversations using language models. The approach is to study how language models represent outcome uncertainty and propose fine-tuning strategies to improve the calibration of these representations.\n\nWhile both works involve modeling uncertainty in conversations, the proposal focuses on improving dialogue consistency and user trust, while the paper focuses on forecasting uncertainty. The methods are also different, with the proposal using prompting and the paper using fine-tuning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "0aa5940fda7c994675d08c41eca2a6909eb6d205",
+            "paperId": "0aa5940fda7c994675d08c41eca2a6909eb6d205",
+            "title": "Improving the Reliability of Large Language Models by Leveraging Uncertainty-Aware In-Context Learning",
+            "abstract": "In recent years, large-scale language models (LLMs) have gained attention for their impressive text generation capabilities. However, these models often face the challenge of\"hallucination,\"which undermines their reliability. In this study, we introduce an uncertainty-aware in-context learning framework to empower the model to enhance or reject its output in response to uncertainty. Human-defined methods for estimating uncertainty typically assume that\"uncertainty is lower when the model's response is correct compared to when it is incorrect.\"However, setting a precise threshold to distinguish correctness is challenging. Therefore, we introduce uncertainty information as an intermediary variable that implicitly influences the model's behavior. Our innovative uncertainty-aware in-context learning framework involves fine-tuning the LLM using a calibration dataset. Our aim is to improve the model's responses by filtering out answers with high uncertainty while considering the model's knowledge limitations. We evaluate the model's knowledge by examining multiple responses to the same question for the presence of a correct answer. When the model lacks relevant knowledge, the response should indicate that the question cannot be answered. Conversely, when the model has relevant knowledge, the response should provide the correct answer. Extensive experiments confirm the effectiveness of our framework, leading to two key findings. First, the logit output values of the LLM partly reflect inherent uncertainty. Second, our model autonomously recognizes uncertainty, resulting in improved responses.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study introduces an uncertainty-aware in-context learning framework to empower the model to enhance or reject its output in response to uncertainty, and introduces uncertainty information as an intermediary variable that implicitly influences the model's behavior."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving the consistency and user trust of dialogue systems by handling uncertainty in large language models. The proposed approach is uncertainty-aware dialogue prompting, where the model actively expresses uncertainty, seeks clarification, and provides calibrated responses based on its confidence level.\n\nThe research problem in the paper is improving the reliability of large language models by addressing the issue of hallucination. The proposed approach is uncertainty-aware in-context learning, where the model is fine-tuned using a calibration dataset to enhance or reject its output based on uncertainty.\n\nWhile both the proposal and the paper aim to improve the reliability of large language models by addressing uncertainty, the proposal focuses specifically on dialogue systems and user trust, while the paper has a broader scope of improving general language model reliability. Additionally, the proposed approaches differ: the proposal uses dialogue prompting, while the paper uses in-context learning.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "d32764d479f338e0a1897cc3c35630f4ed0a39bf",
+            "paperId": "d32764d479f338e0a1897cc3c35630f4ed0a39bf",
+            "title": "SelectIT: Selective Instruction Tuning for Large Language Models via Uncertainty-Aware Self-Reflection",
+            "abstract": "Instruction tuning (IT) is crucial to tailoring large language models (LLMs) towards human-centric interactions. Recent advancements have shown that the careful selection of a small, high-quality subset of IT data can significantly enhance the performance of LLMs. Despite this, common approaches often rely on additional models or data sets, which increases costs and limits widespread adoption. In this work, we propose a novel approach, termed SelectIT, that capitalizes on the foundational capabilities of the LLM itself. Specifically, we exploit the intrinsic uncertainty present in LLMs to more effectively select high-quality IT data, without the need for extra resources. Furthermore, we introduce a novel IT dataset, the Selective Alpaca, created by applying SelectIT to the Alpaca-GPT4 dataset. Empirical results demonstrate that IT using Selective Alpaca leads to substantial model ability enhancement. The robustness of SelectIT has also been corroborated in various foundation models and domain-specific tasks. Our findings suggest that longer and more computationally intensive IT data may serve as superior sources of IT, offering valuable insights for future research in this area. Data, code, and scripts are freely available at https://github.com/Blue-Raincoat/SelectIT.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work exploits the intrinsic uncertainty present in LLMs to more effectively select high-quality IT data, without the need for extra resources, and introduces a novel IT dataset, the Selective Alpaca, created by applying SelectIT to the Alpaca-GPT4 dataset."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the project proposal is improving dialogue consistency and user trust in large language models by handling uncertainty in dialogue systems. The proposed approach is Uncertainty-Aware Dialogue Prompting (UADP), which prompts the LLM to engage in a multi-turn dialogue with the user, actively expressing uncertainty and seeking clarification when needed.\n\nThe research problem in the paper is enhancing the performance of large language models through selective instruction tuning. The proposed approach is SelectIT, which exploits the intrinsic uncertainty present in LLMs to more effectively select high-quality instruction tuning data without the need for extra resources.\n\nWhile both the project proposal and the paper aim to improve large language models, they focus on different aspects. The project proposal addresses uncertainty in dialogue systems to improve consistency and user trust, while the paper focuses on selective instruction tuning to enhance model performance. The approaches, UADP and SelectIT, are also different in their methods and objectives.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "8c7e3a7e395258513bf205472457736812d88248",
+            "paperId": "8c7e3a7e395258513bf205472457736812d88248",
+            "title": "Uncertainty-aware Language Modeling for Selective Question Answering",
+            "abstract": "We present an automatic large language model (LLM) conversion approach that produces uncertainty-aware LLMs capable of estimating uncertainty with every prediction. Our approach is model- and data-agnostic, is computationally-efficient, and does not rely on external models or systems. We evaluate converted models on the selective question answering setting -- to answer as many questions as possible while maintaining a given accuracy, forgoing providing predictions when necessary. As part of our results, we test BERT and Llama 2 model variants on the SQuAD extractive QA task and the TruthfulQA generative QA task. We show that using the uncertainty estimates provided by our approach to selectively answer questions leads to significantly higher accuracy over directly using model probabilities.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "An automatic large language model (LLM) conversion approach that produces uncertainty-aware LLMs capable of estimating uncertainty with every prediction is presented, which shows that using the uncertainty estimates provided by the approach to selectively answer questions leads to significantly higher accuracy over directly using model probabilities."
+            },
+            "score": 7,
+            "novelty_score": "The research problem in the proposal is improving dialogue consistency and user trust in large language models by having the model express uncertainty and seek clarification. The approach is to prompt the model to generate responses along with uncertainty scores, and if the uncertainty is high, generate clarification questions to get more information from the user.\n\nThe research problem in the paper is selective question answering, where the goal is to answer as many questions as possible while maintaining a given accuracy. The approach is to convert language models to be uncertainty-aware, so they can estimate uncertainty with each prediction and selectively answer questions.\n\nWhile both works involve uncertainty estimation in language models, the research problems and approaches are different. The proposal focuses on dialogue consistency and user trust, while the paper focuses on selective question answering. The proposal uses prompting to generate uncertainty-aware dialogues, while the paper converts models to be inherently uncertainty-aware.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "f20cb14a079b3a7304c97f16fa03c5ee6df41713",
+            "paperId": "f20cb14a079b3a7304c97f16fa03c5ee6df41713",
+            "title": "Developing an Uncertainty-Aware Empathetic Conversational System",
+            "abstract": "This document is a model and instructions for LATEX. Natural empathetic dialogue requires an understanding of emotion, intention, and context. In empathetic conversational systems, accurate classification of emotion, intention, and understanding of context contribute to a more natural and effective dialogue between the system and the user. However, due to the subjective nature of these concepts and the lack of contextual cues, the resulting models are susceptible to uncertain outputs, causing misunderstanding and inappropriate response generation in empathetic conversational systems. This research proposal aims to address this issue by proposing the use of Bayesian inference methods to estimate and reduce uncertainty in emotion, intention, and context modeling tasks. By incorporating uncertainty estimates into the downstream task of response generation, the proposed uncertainty-aware approach is expected to improve the performance of empathetic dialogue generation tasks significantly. The potential impact of this research is providing a more natural, effective, and engaging user experience in conversational systems, with applications in areas such as mental health, customer service, and education.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This research proposal aims to address the issue by proposing the use of Bayesian inference methods to estimate and reduce uncertainty in emotion, intention, and context modeling tasks by incorporating uncertainty estimates into the downstream task of response generation."
+            },
+            "score": 7,
+            "novelty_score": "The research proposal aims to improve dialogue consistency and user trust in conversational systems by prompting the language model to engage in an uncertainty-aware dialogue with the user, actively seeking clarification and providing calibrated responses based on its confidence level.\n\nThe paper abstract proposes using Bayesian inference methods to estimate and reduce uncertainty in emotion, intention, and context modeling tasks, with the goal of improving the performance of empathetic dialogue generation and providing a more engaging user experience.\n\nWhile both the proposal and the abstract focus on improving conversational systems by addressing uncertainty, the proposal emphasizes dialogue consistency and user trust, while the abstract focuses on empathetic dialogue generation. Additionally, the proposed methods differ: the proposal uses uncertainty-aware dialogue prompting, while the abstract suggests Bayesian inference for uncertainty estimation.\n\nNo",
+            "novelty_judgment": "no"
+        },
+        {
+            "id": "49a605392a58ca776404fd130942d79fc5ff329d",
+            "paperId": "49a605392a58ca776404fd130942d79fc5ff329d",
+            "title": "Aligning Predictive Uncertainty with Clarification Questions in Grounded Dialog",
+            "abstract": "Asking for clarification is fundamental to effective collaboration. An interactive artificial agent must know when to ask a human instructor for more information in order to ascertain their goals. Previous work bases the timing of questions on supervised models learned from interactions between humans. Instead of a supervised classification task, we wish to ground the need for questions in the acting agent\u2019s predictive uncertainty. In this work, we investigate if ambiguous linguistic instructions can be aligned with uncertainty in neural models. We train an agent using the T5 encoder-decoder architecture to solve the Minecraft Collaborative Building Task and identify uncertainty metrics that achieve better distributional separation between clear and ambiguous instructions. We further show that well-calibrated prediction probabilities benefit the detection of ambiguous instructions. Lastly, we provide a novel empirical analysis on the relationship between uncertainty and dialog history length and highlight an important property that poses a difficulty for detection.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work training an agent using the T5 encoder-decoder architecture to solve the Minecraft Collaborative Building Task and identifying uncertainty metrics that achieve better distributional separation between clear and ambiguous instructions, shows that well-calibrated prediction probabilities benefit the detection of ambiguous instructions."
+            },
+            "score": 7
+        },
+        {
+            "id": "d989f59ef6a54a933b40ece2bedfbdc6bb9c178d",
+            "paperId": "d989f59ef6a54a933b40ece2bedfbdc6bb9c178d",
+            "title": "Asking the Right Question at the Right Time: Human and Model Uncertainty Guidance to Ask Clarification Questions",
+            "abstract": "Clarification questions are an essential dialogue tool to signal misunderstanding, ambiguities, and under-specification in language use. While humans are able to resolve uncertainty by asking questions since childhood, modern dialogue systems struggle to generate effective questions. To make progress in this direction, in this work we take a collaborative dialogue task as a testbed and study how model uncertainty relates to human uncertainty\u2014an as yet under-explored problem. We show that model uncertainty does not mirror human clarification-seeking behavior, which suggests that using human clarification questions as supervision for deciding when to ask may not be the most effective way to resolve model uncertainty. To address this issue, we propose an approach to generating clarification questions based on model uncertainty estimation, compare it to several alternatives, and show that it leads to significant improvements in terms of task success. Our findings highlight the importance of equipping dialogue systems with the ability to assess their own uncertainty and exploit in interaction.",
+            "year": 2024,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that model uncertainty does not mirror human clarification-seeking behavior, which suggests that using human clarification questions as supervision for deciding when to ask may not be the most effective way to resolve model uncertainty."
+            },
+            "score": 7
+        },
+        {
+            "id": "47eb0468ba7b6457d32b6aa0ee15ad269c04864d",
+            "paperId": "47eb0468ba7b6457d32b6aa0ee15ad269c04864d",
+            "title": "Confidently Wrong: Exploring the Calibration and Expression of (Un)Certainty of Large Language Models in a Multilingual Setting",
+            "abstract": "While the fluency and coherence of Large Language Models (LLMs) in text generation have seen significant improvements, their competency in generating appropriate expressions of uncertainty remains limited.Using a multilingual closed-book QA task and GPT-3.5, we explore how well LLMs are calibrated and express certainty across a diverse set of languages, including low-resource settings. Our results reveal strong performance in high-resource languages but a marked decline in performance in lower-resource languages. Across all, we observe an exaggerated expression of confidence in the model, which does not align with the correctness or likelihood of its responses. Our findings highlight the need for further research into accurate calibration of LLMs especially in a multilingual setting.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using a multilingual closed-book QA task and GPT-3.5, how well LLMs are calibrated and express certainty across a diverse set of languages, including low-resource settings is explored."
+            },
+            "score": 7
+        },
+        {
+            "id": "02b1b4594a79dafe57ac3411cda5e83c35e22b91",
+            "paperId": "02b1b4594a79dafe57ac3411cda5e83c35e22b91",
+            "title": "CONFLARE: CONFormal LArge language model REtrieval",
+            "abstract": "Retrieval-augmented generation (RAG) frameworks enable large language models (LLMs) to retrieve relevant information from a knowledge base and incorporate it into the context for generating responses. This mitigates hallucinations and allows for the updating of knowledge without retraining the LLM. However, RAG does not guarantee valid responses if retrieval fails to identify the necessary information as the context for response generation. Also, if there is contradictory content, the RAG response will likely reflect only one of the two possible responses. Therefore, quantifying uncertainty in the retrieval process is crucial for ensuring RAG trustworthiness. In this report, we introduce a four-step framework for applying conformal prediction to quantify retrieval uncertainty in RAG frameworks. First, a calibration set of questions answerable from the knowledge base is constructed. Each question's embedding is compared against document embeddings to identify the most relevant document chunks containing the answer and record their similarity scores. Given a user-specified error rate ({\\alpha}), these similarity scores are then analyzed to determine a similarity score cutoff threshold. During inference, all chunks with similarity exceeding this threshold are retrieved to provide context to the LLM, ensuring the true answer is captured in the context with a (1-{\\alpha}) confidence level. We provide a Python package that enables users to implement the entire workflow proposed in our work, only using LLMs and without human intervention.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A four-step framework for applying conformal prediction to quantify retrieval uncertainty in RAG frameworks is introduced and a Python package is provided that enables users to implement the entire workflow proposed in this work, only using LLMs and without human intervention."
+            },
+            "score": 7
+        },
+        {
+            "id": "761ed225b59e34d2f5b0848beed5b1842af8cf8b",
+            "paperId": "761ed225b59e34d2f5b0848beed5b1842af8cf8b",
+            "title": "RT-LM: Uncertainty-Aware Resource Management for Real-Time Inference of Language Models",
+            "abstract": "Recent advancements in language models (LMs) have gained substantial attentions on their capability to generate human-like responses. Though exhibiting a promising future for various applications such as conversation AI, these LMs face deployment challenges on various devices due to their extreme computational cost and unpredictable inference latency. Such varied inference latency, identified as a consequence of uncertainty intrinsic to the nature of language, can lead to computational inefficiency and degrade the overall performance of LMs, especially under high-traffic workloads. Unfortunately, the bandwidth of these uncertainty sources is extensive, complicating the prediction of latency and the effects emanating from such uncertainties. To understand and mitigate the impact of uncertainty on real-time response-demanding systems, we take the first step to comprehend, quantify and optimize these uncertainty-induced latency performance variations in LMs. Specifically, we present RT-LM, an uncertainty-aware resource management ecosystem for real-time inference of LMs. RT-LM innovatively quantifies how specific input uncertainties, recognized within the NLP community, adversely affect latency, often leading to an increased output length. Exploiting these insights, we devise a lightweight yet effective method to dynamically correlate input text uncertainties with output length at runtime. Utilizing this quantification as a latency heuristic, we integrate the uncertainty information into a system-level scheduler which explores several uncertainty-induced optimization opportunities, including uncertainty-aware prioritization, dynamic consolidation, and strategic CPU offloading. Quantitative experiments across five state-of-the-art LMs on two hardware platforms demonstrates that RT-LM can significantly reduce the average response time and improve throughput while incurring a rather small runtime overhead.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "RT-LM innovatively quantifies how specific input uncertainties, recognized within the NLP community, adversely affect latency, often leading to an increased output length at runtime, and integrates the uncertainty information into a system-level scheduler which explores several uncertainty-induced optimization opportunities."
+            },
+            "score": 6
+        },
+        {
+            "id": "fa8b5cb63b67a348599632f5c007f6c4d520a12d",
+            "paperId": "fa8b5cb63b67a348599632f5c007f6c4d520a12d",
+            "title": "A C T UNE : Uncertainty-Aware Active Self-Training for Active Fine-Tuning of Pretrained Language Models",
+            "abstract": "Although \ufb01ne-tuning pre-trained language 001 models (PLMs) renders strong performance in 002 many NLP tasks, it relies on excessive labeled 003 data. Recently, researchers have resorted to 004 active \ufb01ne-tuning for enhancing the label ef\ufb01-005 ciency of PLM \ufb01ne-tuning, but existing meth-006 ods of this type usually ignore the potential of 007 unlabeled data. We develop A C T UNE , a new 008 framework that improves the label ef\ufb01ciency 009 of active PLM \ufb01ne-tuning by unleashing the 010 power of unlabeled data via self training. A C - 011 T UNE switches between data annotation and 012 model self-training based on uncertainty: the 013 unlabeled samples of high-uncertainty are se-014 lected for annotation, while the ones from low-015 uncertainty regions are used for model self-016 training. Additionally, we design (1) a region-017 aware sampling strategy to avoid redundant 018 samples when querying annotations and (2) 019 a momentum-based memory bank to dynam-020 ically aggregate the model\u2019s pseudo labels to 021 suppress label noise in self-training. Exper-022 iments on 6 text classi\ufb01cation datasets show 023 that A C T UNE outperforms the strongest active 024 learning and self-training baselines and im-025 proves the label ef\ufb01ciency of PLM \ufb01ne-tuning 026 by 56.2% on average. 027",
+            "year": 2022,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A C T UNE is developed, a new 008 framework that improves the label ef\ufb01ciency 009 of active PLM \ufb01ne-tuning by unleashing the 010 power of unlabeled data via self training by unleashing the 010 power of unlabeled data via self training."
+            },
+            "score": 6
+        },
+        {
+            "id": "0a51afdcd7cf4f33987d766082a7d3f174936c8a",
+            "paperId": "0a51afdcd7cf4f33987d766082a7d3f174936c8a",
+            "title": "Uncertainty of Thoughts: Uncertainty-Aware Planning Enhances Information Seeking in Large Language Models",
+            "abstract": "In the face of uncertainty, the ability to seek information is of fundamental importance. In many practical applications, such as medical diagnosis and troubleshooting, the information needed to solve the task is not initially given, and has to be actively sought by asking follow-up questions (for example, a doctor asking a patient for more details about their symptoms). In this work, we introduce Uncertainty of Thoughts (UoT), an algorithm to augment large language models with the ability to actively seek information by asking effective questions. UoT combines 1) an uncertainty-aware simulation approach which enables the model to simulate possible future scenarios and how likely they are to occur, 2) uncertainty-based rewards motivated by information gain which incentivizes the model to seek information, and 3) a reward propagation scheme to select the optimal question to ask in a way that maximizes the expected reward. In experiments on medical diagnosis, troubleshooting and the '20 Questions' game, UoT achieves an average performance improvement of 57.8% in the rate of successful task completion across multiple LLMs compared with direct prompting, and also improves efficiency (i.e., the number of questions needed to complete the task).",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Uncertainty of Thoughts is introduced, an algorithm to augment large language models with the ability to actively seek information by asking effective questions and achieves an average performance improvement of 57.8% in the rate of successful task completion across multiple LLMs compared with direct prompting."
+            },
+            "score": 6
+        },
+        {
+            "id": "5e7274bcda47b704b6797bb14be8b7a61c047a61",
+            "paperId": "5e7274bcda47b704b6797bb14be8b7a61c047a61",
+            "title": "Uncertainty-Aware Evaluation for Vision-Language Models",
+            "abstract": "Vision-Language Models like GPT-4, LLaVA, and CogVLM have surged in popularity recently due to their impressive performance in several vision-language tasks. Current evaluation methods, however, overlook an essential component: uncertainty, which is crucial for a comprehensive assessment of VLMs. Addressing this oversight, we present a benchmark incorporating uncertainty quantification into evaluating VLMs. Our analysis spans 20+ VLMs, focusing on the multiple-choice Visual Question Answering (VQA) task. We examine models on 5 datasets that evaluate various vision-language capabilities. Using conformal prediction as an uncertainty estimation approach, we demonstrate that the models' uncertainty is not aligned with their accuracy. Specifically, we show that models with the highest accuracy may also have the highest uncertainty, which confirms the importance of measuring it for VLMs. Our empirical findings also reveal a correlation between model uncertainty and its language model part.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that models with the highest accuracy may also have the highest uncertainty, which confirms the importance of measuring it for VLMs, and a correlation between model uncertainty and its language model part is revealed."
+            },
+            "score": 6
+        },
+        {
+            "id": "7dc93d32613e8277eca1fdd8f414703f8969c132",
+            "paperId": "7dc93d32613e8277eca1fdd8f414703f8969c132",
+            "title": "Model Uncertainty-Aware Knowledge Amalgamation for Pre-Trained Language Models",
+            "abstract": "As many fine-tuned pre-trained language models~(PLMs) with promising performance are generously released, investigating better ways to reuse these models is vital as it can greatly reduce the retraining computational cost and the potential environmental side-effects. In this paper, we explore a novel model reuse paradigm, Knowledge Amalgamation~(KA) for PLMs. Without human annotations available, KA aims to merge the knowledge from different teacher-PLMs, each of which specializes in a different classification problem, into a versatile student model. The achieve this, we design a Model Uncertainty--aware Knowledge Amalgamation~(MUKA) framework, which identifies the potential adequate teacher using Monte-Carlo Dropout for approximating the golden supervision to guide the student. Experimental results demonstrate that MUKA achieves substantial improvements over baselines on benchmark datasets. Further analysis shows that MUKA can generalize well under several complicate settings with multiple teacher models, heterogeneous teachers, and even cross-dataset teachers.",
+            "year": 2021,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel model reuse paradigm, Knowledge Amalgamation~(KA) for PLMs, which aims to merge the knowledge from different teacher-PLMs, each of which specializes in a different classification problem, into a versatile student model."
+            },
+            "score": 6
+        },
+        {
+            "id": "d4695ae2a7eef298ba1dce5cc79eb3dbff1ba0e1",
+            "paperId": "d4695ae2a7eef298ba1dce5cc79eb3dbff1ba0e1",
+            "title": "AcTune: Uncertainty-aware Active Self-Training for Semi-Supervised Active Learning with Pretrained Language Models",
+            "abstract": "While pre-trained language model (PLM) fine-tuning has achieved strong performance in many NLP tasks, the fine-tuning stage can be still demanding in labeled data. Recent works have resorted to active fine-tuning to improve the label efficiency of PLM fine-tuning, but none of them investigate the potential of unlabeled data. We propose {\\ours}, a new framework that leverages unlabeled data to improve the label efficiency of active PLM fine-tuning. AcTune switches between data annotation and model self-training based on uncertainty: it selects high-uncertainty unlabeled samples for active annotation and low-uncertainty ones for model self-training. Under this framework, we design (1) a region-aware sampling strategy that reduces redundancy when actively querying for annotations and (2) a momentum-based memory bank that dynamically aggregates the model's pseudo labels to suppress label noise in self-training. Experiments on 6 text classification datasets show that AcTune outperforms the strongest active learning and self-training baselines and improves the label efficiency of PLM fine-tuning by 56.2\\% on average. Our implementation will be available at \\url{https://github.com/yueyu1030/actune}.",
+            "year": 2021,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experiments show that AcTune outperforms the strongest active learning and self-training baselines and improves the label efficiency of PLM fine-tuning by 56.2\\% on average."
+            },
+            "score": 6
+        },
+        {
+            "id": "09edb6a96b5af0d1ad1abb4e192e953844718628",
+            "paperId": "09edb6a96b5af0d1ad1abb4e192e953844718628",
+            "title": "Uncertainty-aware Parameter-Efficient Self-training for Semi-supervised Language Understanding",
+            "abstract": "The recent success of large pre-trained language models (PLMs) heavily hinges on massive labeled data, which typically produces inferior performance in low-resource scenarios. To remedy this dilemma, we study self-training as one of the predominant semi-supervised learning (SSL) approaches, which utilizes large-scale unlabeled data to generate synthetic examples. However, too many noisy labels will hurt the model performance, and the self-training procedure requires multiple training iterations making it more expensive if all the model parameters of the PLM are updated. This paper presents UPET, a novel Uncertainty-aware Parameter-Efficient self-Training framework to effectively and efficiently address the labeled data scarcity issue. Specifically, we incorporate Monte Carlo (MC) dropout in Bayesian neural network (BNN) to perform uncertainty estimation for the teacher model and then judiciously select reliable pseudo-labeled examples based on confidence and certainty. During the student training, we introduce multiple parameter-efficient learning (PEL) paradigms that allow the optimization of only a small percentage of parameters. We also propose a novel Easy-Hard Contrastive Tuning to enhance the robustness and generalization. Extensive experiments over multiple downstream tasks demonstrate that UPET achieves a substantial improvement in terms of performance and efficiency. Our codes and data are released at https: //github.com/wjn1996/UPET.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper presents UPET, a novel Uncertainty-aware Parameter-Efficient self-Training framework to effectively and efficiently address the labeled data scarcity issue and incorporates Monte Carlo dropout in Bayesian neural network to perform uncertainty estimation for the teacher model."
+            },
+            "score": 6
+        },
+        {
+            "id": "33560c52a5a90e1074a9c341b752bd9e8ac86f7d",
+            "paperId": "33560c52a5a90e1074a9c341b752bd9e8ac86f7d",
+            "title": "AcTune: Uncertainty-Based Active Self-Training for Active Fine-Tuning of Pretrained Language Models",
+            "abstract": "Although fine-tuning pre-trained language models (PLMs) renders strong performance in many NLP tasks, it relies on excessive labeled data. Recently, researchers have resorted to active fine-tuning for enhancing the label efficiency of PLM fine-tuning, but existing methods of this type usually ignore the potential of unlabeled data. We develop AcTune, a new framework that improves the label efficiency of active PLM fine-tuning by unleashing the power of unlabeled data via self-training. AcTune switches between data annotation and model self-training based on uncertainty: the unlabeled samples of high-uncertainty are selected for annotation, while the ones from low-uncertainty regions are used for model self-training. Additionally, we design (1) a region-aware sampling strategy to avoid redundant samples when querying annotations and (2) a momentum-based memory bank to dynamically aggregate the model\u2019s pseudo labels to suppress label noise in self-training. Experiments on 6 text classification datasets show that AcTune outperforms the strongest active learning and self-training baselines and improves the label efficiency of PLM fine-tuning by 56.2% on average. Our implementation is available at https://github.com/yueyu1030/actune.",
+            "year": 2022,
+            "citationCount": 24,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "AcTune is developed, a new framework that improves the label efficiency of active PLM fine-tuning by unleashing the power of unlabeled data via self-training by switching between data annotation and model self- training based on uncertainty."
+            },
+            "score": 6
+        },
+        {
+            "id": "8c323ad00bb4540bff87ea17bdb97fedc103cd0f",
+            "paperId": "8c323ad00bb4540bff87ea17bdb97fedc103cd0f",
+            "title": "MAP: Modality-Agnostic Uncertainty-Aware Vision-Language Pre-training Model",
+            "abstract": "Multimodal semantic understanding often has to deal with uncertainty, which means the obtained message tends to refer to multiple targets. Such uncertainty is problematic for our interpretation, including intra-modal and inter-modal uncertainty. Little effort studies the modeling of this uncertainty, particularly in pre-training on unlabeled datasets and \ufb01ne-tuning in task-speci\ufb01c downstream tasks. To address this, we project the representations of all modalities as probabilistic distributions via a Probability Distribution Encoder (PDE) by utilizing rich multimodal semantic information. Furthermore, we integrate uncertainty modeling with popular pre-training frameworks and propose suitable pre-training tasks: Distribution-based Vision-Language Con-trastive learning (D-VLC), Distribution-based Masked Language Modeling (D-MLM), and Distribution-based Image-Text Matching (D-ITM). The \ufb01ne-tuned models are applied to challenging downstream tasks, including image-text retrieval, visual question answering, visual reasoning, and visual entailment, and achieve state-of-the-art results. Code is released at https://github.com/IIGROUP/MAP .",
+            "year": 2022,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work projects the representations of all modalities as probabilistic distributions via a Probability Distribution Encoder (PDE) by utilizing rich multimodal semantic information by utilizing rich multimodal semantic information."
+            },
+            "score": 6
+        },
+        {
+            "id": "5cb6133ad611ceefddc5192e578bfb7a1e8b2aee",
+            "paperId": "5cb6133ad611ceefddc5192e578bfb7a1e8b2aee",
+            "title": "R-U-SURE? Uncertainty-Aware Code Suggestions By Maximizing Utility Across Random User Intents",
+            "abstract": "Large language models show impressive results at predicting structured text such as code, but also commonly introduce errors and hallucinations in their output. When used to assist software developers, these models may make mistakes that users must go back and fix, or worse, introduce subtle bugs that users may miss entirely. We propose Randomized Utility-driven Synthesis of Uncertain REgions (R-U-SURE), an approach for building uncertainty-aware suggestions based on a decision-theoretic model of goal-conditioned utility, using random samples from a generative model as a proxy for the unobserved possible intents of the end user. Our technique combines minimum-Bayes-risk decoding, dual decomposition, and decision diagrams in order to efficiently produce structured uncertainty summaries, given only sample access to an arbitrary generative model of code and an optional AST parser. We demonstrate R-U-SURE on three developer-assistance tasks, and show that it can be applied different user interaction patterns without retraining the model and leads to more accurate uncertainty estimates than token-probability baselines. We also release our implementation as an open-source library at https://github.com/google-research/r_u_sure.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes Randomized Utility-driven Synthesis of Uncertain REgions (R-U-SURE), an approach for building uncertainty-aware suggestions based on a decision-theoretic model of goal-conditioned utility, using random samples from a generative model as a proxy for the unobserved possible intents of the end user."
+            },
+            "score": 6
+        },
+        {
+            "id": "67fa2f2072cca1071ed2c820d6a7f50de6ea2ff3",
+            "paperId": "67fa2f2072cca1071ed2c820d6a7f50de6ea2ff3",
+            "title": "Decomposing Uncertainty for Large Language Models through Input Clarification Ensembling",
+            "abstract": "Uncertainty decomposition refers to the task of decomposing the total uncertainty of a model into data (aleatoric) uncertainty, resulting from the inherent complexity or ambiguity of the data, and model (epistemic) uncertainty, resulting from the lack of knowledge in the model. Performing uncertainty decomposition for large language models (LLMs) is an important step toward improving the reliability, trustworthiness, and interpretability of LLMs, but this research task is very challenging and remains unresolved. The existing canonical method, Bayesian Neural Network (BNN), cannot be applied to LLMs, because BNN requires training and ensembling multiple variants of models, which is infeasible or prohibitively expensive for LLMs. In this paper, we introduce an uncertainty decomposition framework for LLMs, called input clarifications ensemble, which bypasses the need to train new models. Rather than ensembling models with different parameters, our approach generates a set of clarifications for the input, feeds them into the fixed LLMs, and ensembles the corresponding predictions. We show that our framework shares a symmetric decomposition structure with BNN. Empirical evaluations demonstrate that the proposed framework provides accurate and reliable uncertainty quantification on various tasks. Code will be made publicly available at https://github.com/UCSB-NLP-Chang/llm_uncertainty .",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper introduces an uncertainty decomposition framework for LLMs, called input clarifications ensemble, which bypasses the need to train new models, and shares a symmetric decomposition structure with BNN."
+            },
+            "score": 6
+        },
+        {
+            "id": "c49fd6cac5382cdbc2bc31be195e42bc28dc615d",
+            "paperId": "c49fd6cac5382cdbc2bc31be195e42bc28dc615d",
+            "title": "Tree of Clarifications: Answering Ambiguous Questions with Retrieval-Augmented Large Language Models",
+            "abstract": "Questions in open-domain question answering are often ambiguous, allowing multiple interpretations. One approach to handling them is to identify all possible interpretations of the ambiguous question (AQ) and to generate a long-form answer addressing them all, as suggested by Stelmakh et al., (2022). While it provides a comprehensive response without bothering the user for clarification, considering multiple dimensions of ambiguity and gathering corresponding knowledge remains a challenge. To cope with the challenge, we propose a novel framework, Tree of Clarifications (ToC): It recursively constructs a tree of disambiguations for the AQ -- via few-shot prompting leveraging external knowledge -- and uses it to generate a long-form answer. ToC outperforms existing baselines on ASQA in a few-shot setup across the metrics, while surpassing fully-supervised baselines trained on the whole training set in terms of Disambig-F1 and Disambig-ROUGE. Code is available at https://github.com/gankim/tree-of-clarifications.",
+            "year": 2023,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel framework, Tree of Clarifications (ToC), recursively constructs a tree of disambiguations for the AQ -- via few-shot prompting leveraging external knowledge -- and uses it to generate a long-form answer."
+            },
+            "score": 6
+        },
+        {
+            "id": "13c85adfa950651ffcd91ef3018fa30801b74472",
+            "paperId": "13c85adfa950651ffcd91ef3018fa30801b74472",
+            "title": "Prompting and Evaluating Large Language Models for Proactive Dialogues: Clarification, Target-guided, and Non-collaboration",
+            "abstract": "Conversational systems based on Large Language Models (LLMs), such as ChatGPT, show exceptional proficiency in context understanding and response generation. However, despite their impressive capabilities, they still possess limitations, such as providing randomly-guessed answers to ambiguous queries or failing to refuse users' requests, both of which are considered aspects of a conversational agent's proactivity. This raises the question of whether LLM-based conversational systems are equipped to handle proactive dialogue problems. In this work, we conduct a comprehensive analysis of LLM-based conversational systems, specifically focusing on three aspects of proactive dialogue systems: clarification, target-guided, and non-collaborative dialogues. To trigger the proactivity of LLMs, we propose the Proactive Chain-of-Thought prompting scheme, which augments LLMs with the goal planning capability over descriptive reasoning chains. Empirical findings are discussed to promote future studies on LLM-based proactive dialogue systems.",
+            "year": 2023,
+            "citationCount": 23,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A comprehensive analysis of LLM-based conversational systems, specifically focusing on three aspects of proactive dialogue systems: clarification, target-guided, and non-collaborative dialogues, and the Proactive Chain-of-Thought prompting scheme is proposed."
+            },
+            "score": 6
+        },
+        {
+            "id": "8210cef990b8e5cddbc95000e46309bdd25337f7",
+            "paperId": "8210cef990b8e5cddbc95000e46309bdd25337f7",
+            "title": "Asking Clarification Questions for Code Generation in General-Purpose Programming Language",
+            "abstract": "Code generation from text requires understanding the user\u2019s intent from a natural language description (NLD) and generating an executable program code snippet that satis\ufb01es this intent. While recent pretrained language models (PLMs) demonstrate remarkable performance for this task, these models fail when the given NLD is ambiguous due to the lack of enough speci\ufb01cations for generating a high-quality code snippet. In this work, we introduce a novel and more realistic setup for this task. We hypothesize that ambiguities in the speci\ufb01cations of an NLD are resolved by asking clari\ufb01cation questions (CQs). Therefore, we collect and introduce a new dataset named CodeClarQA containing NLD-Code pairs with created CQAs. We evaluate the performance of PLMs for code generation on our dataset. The empirical results support our hypothesis that clari\ufb01cations result in more precise generated code, as shown by an improvement of 17.52 in BLEU, 12.72 in CodeBLEU, and 7.7% in the exact match. Alongside this, our task and dataset introduce new challenges to the community, including when and what CQs should be asked.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The hypothesis that ambiguities in the speci\ufb01cations of an NLD are resolved by asking clari\ufb01cation questions (CQs) is hypothesized and a new dataset named CodeClarQA containing NLD-Code pairs with created CQAs is introduced."
+            },
+            "score": 6
+        },
+        {
+            "id": "2479fe3a646762c24230e6d97270bac4de2da600",
+            "paperId": "2479fe3a646762c24230e6d97270bac4de2da600",
+            "title": "LitCab: Lightweight Language Model Calibration over Short- and Long-form Responses",
+            "abstract": "A model is considered well-calibrated when its probability estimate aligns with the actual likelihood of the output being correct. Calibrating language models (LMs) is crucial, as it plays a vital role in detecting and mitigating hallucinations of LMs as well as building more trustworthy models. However, standard calibration techniques may not be suited for LM calibration. For instance, post-processing methods such as temperature scaling do not reorder the candidate generations. On the other hand, training-based methods require fine-tuning the entire model, which is impractical for LMs of large scale. We present LitCab, a lightweight calibration mechanism consisting of a single linear layer that takes the input text representation and predicts a bias term, which is then added to the LM output logits. LitCab improves model calibration by only adding<2% of the original model parameters. For evaluation, we construct CaT, a benchmark consisting of eight text generation tasks, covering responses ranging from short phrases to paragraphs. We test LitCab with Llama2-7B, where it improves calibration across all tasks, reducing the average ECE score by as large as 30%. We further conduct a comprehensive evaluation with multiple popular open-sourced LMs from GPT and LLaMA families, yielding the following key findings: (i) Larger models within the same family exhibit better calibration on tasks with short generation tasks, but not necessarily for longer ones. (ii) GPT-family models show superior calibration compared to LLaMA, Llama2, and Vicuna models, despite having much fewer parameters. (iii) Fine-tuning pretrained model (e.g., LLaMA) with samples of limited purpose (e.g., conversations) may lead to worse calibration, highlighting the importance of fine-tuning setups for calibrating LMs.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "LitCab is presented, a lightweight calibration mechanism consisting of a single linear layer that takes the input text representation and predicts a bias term, which is then added to the LM output logits, which improves model calibration by only adding<2% of the original model parameters."
+            },
+            "score": 6
+        },
+        {
+            "id": "8cc394a1cc1ce4e2a32302294af7fffb7de2f46d",
+            "paperId": "8cc394a1cc1ce4e2a32302294af7fffb7de2f46d",
+            "title": "Consistency and Uncertainty: Identifying Unreliable Responses From Black-Box Vision-Language Models for Selective Visual Question Answering",
+            "abstract": "The goal of selective prediction is to allow an a model to abstain when it may not be able to deliver a reliable prediction, which is important in safety-critical contexts. Existing approaches to selective prediction typically require access to the internals of a model, require retraining a model or study only unimodal models. However, the most powerful models (e.g. GPT-4) are typically only available as black boxes with inaccessible internals, are not retrainable by end-users, and are frequently used for multimodal tasks. We study the possibility of selective prediction for vision-language models in a realistic, black-box setting. We propose using the principle of \\textit{neighborhood consistency} to identify unreliable responses from a black-box vision-language model in question answering tasks. We hypothesize that given only a visual question and model response, the consistency of the model's responses over the neighborhood of a visual question will indicate reliability. It is impossible to directly sample neighbors in feature space in a black-box setting. Instead, we show that it is possible to use a smaller proxy model to approximately sample from the neighborhood. We find that neighborhood consistency can be used to identify model responses to visual questions that are likely unreliable, even in adversarial settings or settings that are out-of-distribution to the proxy model.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is found that neighborhood consistency can be used to identify model responses to visual questions that are likely unreliable, even in adversarial settings or settings that are out-of-distribution to the proxy model."
+            },
+            "score": 6
+        },
+        {
+            "id": "b8314938e7ad221c234f3d2458aea08c4efc93b1",
+            "paperId": "b8314938e7ad221c234f3d2458aea08c4efc93b1",
+            "title": "Uncertain about ChatGPT: enabling the uncertainty evaluation of large language models",
+            "abstract": "ChatGPT, OpenAI\u2019s chatbot, has gained consider-able attention since its launch in November 2022, owing to its ability to formulate articulated responses to text queries and comments relating to seemingly any conceivable subject. As impressive as the majority of interactions with ChatGPT are, this large language model has a number of acknowledged shortcomings, which in several cases, may be directly related to how ChatGPT handles uncertainty. The objective of this paper is to pave the way to formal analysis of ChatGPT uncertainty handling. To this end, the ability of the Uncertainty Representation and Reasoning Framework (URREF) ontology is assessed, to support such analysis. Elements of structured experiments for reproducible results are identified. The dataset built varies Information Criteria of Correctness, Non-specificity, Self-confidence, Relevance and Inconsistency, and the Source Criteria of Reliability, Competency and Type. ChatGPT\u2019s answers are analyzed along Information Criteria of Correctness, Non-specificity and Self-confidence. Both generic and singular information are sequentially provided. The outcome of this preliminary study is twofold: Firstly, we validate that the experimental setup is efficient in capturing aspects of ChatGPT uncertainty handling. Secondly, we identify possible modifications to the URREF ontology that will be discussed and eventually implemented in URREF ontology Version 4.0 under development.",
+            "year": 2023,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The ability of the Uncertainty Representation and Reasoning Framework (URREF) ontology is assessed, to support formal analysis of ChatGPT uncertainty handling and possible modifications to the URREF ontology are identified."
+            },
+            "score": 6
+        },
+        {
+            "id": "6049f92e687e5db4ea509a83df4372099c516fd8",
+            "paperId": "6049f92e687e5db4ea509a83df4372099c516fd8",
+            "title": "Improving Open Information Extraction with Large Language Models: A Study on Demonstration Uncertainty",
+            "abstract": "Open Information Extraction (OIE) task aims at extracting structured facts from unstructured text, typically in the form of (subject, relation, object) triples. Despite the potential of large language models (LLMs) like ChatGPT as a general task solver, they lag behind state-of-the-art (supervised) methods in OIE tasks due to two key issues. First, LLMs struggle to distinguish irrelevant context from relevant relations and generate structured output due to the restrictions on fine-tuning the model. Second, LLMs generates responses autoregressively based on probability, which makes the predicted relations lack confidence. In this paper, we assess the capabilities of LLMs in improving the OIE task. Particularly, we propose various in-context learning strategies to enhance LLM's instruction-following ability and a demonstration uncertainty quantification module to enhance the confidence of the generated relations. Our experiments on three OIE benchmark datasets show that our approach holds its own against established supervised methods, both quantitatively and qualitatively.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Various in-context learning strategies to enhance LLM's instruction-following ability and a demonstration uncertainty quantification module to enhance the confidence of the generated relations are proposed."
+            },
+            "score": 6
+        },
+        {
+            "id": "5043a786a1db5d830dc6c51d62f58e172a96e479",
+            "paperId": "5043a786a1db5d830dc6c51d62f58e172a96e479",
+            "title": "Methods to Estimate Large Language Model Confidence",
+            "abstract": "Large Language Models have difficulty communicating uncertainty, which is a significant obstacle to applying LLMs to complex medical tasks. This study evaluates methods to measure LLM confidence when suggesting a diagnosis for challenging clinical vignettes. GPT4 was asked a series of challenging case questions using Chain of Thought and Self Consistency prompting. Multiple methods were investigated to assess model confidence and evaluated on their ability to predict the models observed accuracy. The methods evaluated were Intrinsic Confidence, SC Agreement Frequency and CoT Response Length. SC Agreement Frequency correlated with observed accuracy, yielding a higher Area under the Receiver Operating Characteristic Curve compared to Intrinsic Confidence and CoT Length analysis. SC agreement is the most useful proxy for model confidence, especially for medical diagnosis. Model Intrinsic Confidence and CoT Response Length exhibit a weaker ability to differentiate between correct and incorrect answers, preventing them from being reliable and interpretable markers for model confidence. We conclude GPT4 has a limited ability to assess its own diagnostic accuracy. SC Agreement Frequency is the most useful method to measure GPT4 confidence.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study evaluates methods to measure LLM confidence when suggesting a diagnosis for challenging clinical vignettes and concludes SC Agreement Frequency is the most useful method to measure GPT4 confidence."
+            },
+            "score": 6
+        },
+        {
+            "id": "8e8f2081007a0380856774444d5ea18cb5096351",
+            "paperId": "8e8f2081007a0380856774444d5ea18cb5096351",
+            "title": "Uncertainty-Aware Explainable Recommendation with Large Language Models",
+            "abstract": "Providing explanations within the recommendation system would boost user satisfaction and foster trust, especially by elaborating on the reasons for selecting recommended items tailored to the user. The predominant approach in this domain revolves around generating text-based explanations, with a notable emphasis on applying large language models (LLMs). However, refining LLMs for explainable recommendations proves impractical due to time constraints and computing resource limitations. As an alternative, the current approach involves training the prompt rather than the LLM. In this study, we developed a model that utilizes the ID vectors of user and item inputs as prompts for GPT-2. We employed a joint training mechanism within a multi-task learning framework to optimize both the recommendation task and explanation task. This strategy enables a more effective exploration of users' interests, improving recommendation effectiveness and user satisfaction. Through the experiments, our method achieving 1.59 DIV, 0.57 USR and 0.41 FCR on the Yelp, TripAdvisor and Amazon dataset respectively, demonstrates superior performance over four SOTA methods in terms of explainability evaluation metric. In addition, we identified that the proposed model is able to ensure stable textual quality on the three public datasets.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A model is developed that utilizes the ID vectors of user and item inputs as prompts for GPT-2 and is able to ensure stable textual quality on the three public datasets, demonstrating superior performance over four SOTA methods in terms of explainability evaluation metric."
+            },
+            "score": 5
+        },
+        {
+            "id": "1b3bef1524bb89e844e882dfe206210264556049",
+            "paperId": "1b3bef1524bb89e844e882dfe206210264556049",
+            "title": "Uncertainty-Aware Unlikelihood Learning Improves Generative Aspect Sentiment Quad Prediction",
+            "abstract": "Recently, aspect sentiment quad prediction has received widespread attention in the field of aspect-based sentiment analysis. Existing studies extract quadruplets via pre-trained generative language models to paraphrase the original sentence into a templated target sequence. However, previous works only focus on what to generate but ignore what not to generate. We argue that considering the negative samples also leads to potential benefits. In this work, we propose a template-agnostic method to control the token-level generation, which boosts original learning and reduces mistakes simultaneously. Specifically, we introduce Monte Carlo dropout to understand the built-in uncertainty of pre-trained language models, acquiring the noises and errors. We further propose marginalized unlikelihood learning to suppress the uncertainty-aware mistake tokens. Finally, we introduce minimization entropy to balance the effects of marginalized unlikelihood learning. Extensive experiments on four public datasets demonstrate the effectiveness of our approach on various generation templates.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work proposes a template-agnostic method to control the token-level generation, which boosts original learning and reduces mistakes simultaneously, and introduces minimization entropy to balance the effects of marginalized unlikelihood learning."
+            },
+            "score": 5
+        },
+        {
+            "id": "81ebda8a734ff917681c6d73c179f6614b281818",
+            "paperId": "81ebda8a734ff917681c6d73c179f6614b281818",
+            "title": "Context-Aware Language Modeling for Goal-Oriented Dialogue Systems",
+            "abstract": "Goal-oriented dialogue systems face a trade-off between fluent language generation and task-specific control. While supervised learning with large language models is capable of producing realistic text, how to steer such responses towards completing a specific task without sacrificing language quality remains an open question. In this work, we formulate goal-oriented dialogue as a partially observed Markov decision process, interpreting the language model as a representation of both the dynamics and the policy. This view allows us to extend techniques from learning-based control, such as task relabeling, to derive a simple and effective method to finetune language models in a goal-aware way, leading to significantly improved task performance. We additionally introduce a number of training strategies that serve to better focus the model on the task at hand. We evaluate our method, Context-Aware Language Models (CALM), on a practical flight-booking task using AirDialogue. Empirically, CALM outperforms the state-of-the-art method by 7% in terms of task success, matching human-level task performance.",
+            "year": 2022,
+            "citationCount": 16,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work forms goal-oriented dialogue as a partially observed Markov decision process, interpreting the language model as a representation of both the dynamics and the policy, allowing a simple and effective method to finetune language models in a goal-aware way, leading to significantly improved task performance."
+            },
+            "score": 5
+        },
+        {
+            "id": "c22bfecc684be370bc22611deb8737d65466a390",
+            "paperId": "c22bfecc684be370bc22611deb8737d65466a390",
+            "title": "Knowledge of Knowledge: Exploring Known-Unknowns Uncertainty with Large Language Models",
+            "abstract": "This paper investigates the capabilities of Large Language Models (LLMs) in the context of understanding their own knowledge and measuring their uncertainty. We argue this is an important feature for mitigating hallucinations. Specifically, we focus on addressing \\textit{known-unknown} questions, characterized by high uncertainty due to the absence of definitive answers. To facilitate our study, we collect a dataset with new Known-Unknown Questions (KUQ) and propose a novel categorization scheme to elucidate the sources of uncertainty. Subsequently, we assess the LLMs' ability to differentiate between known and unknown questions and classify them accordingly. Moreover, we evaluate the quality of their answers in an Open-Ended QA setting. To quantify the uncertainty expressed in the answers, we create a semantic evaluation method that measures the model's accuracy in expressing uncertainty between known vs unknown questions.",
+            "year": 2023,
+            "citationCount": 5,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper investigates the capabilities of Large Language Models in the context of understanding their own knowledge and measuring their uncertainty, and creates a semantic evaluation method that measures the model's accuracy in expressing uncertainty between known vs unknown questions."
+            },
+            "score": 5
+        },
+        {
+            "id": "eb971944bccf9793ac463c3e2f4d4251d4e8e071",
+            "paperId": "eb971944bccf9793ac463c3e2f4d4251d4e8e071",
+            "title": "Do Large Language Models Know What They Don't Know?",
+            "abstract": "Large language models (LLMs) have a wealth of knowledge that allows them to excel in various Natural Language Processing (NLP) tasks. Current research focuses on enhancing their performance within their existing knowledge. Despite their vast knowledge, LLMs are still limited by the amount of information they can accommodate and comprehend. Therefore, the ability to understand their own limitations on the unknows, referred to as self-knowledge, is of paramount importance. This study aims to evaluate LLMs' self-knowledge by assessing their ability to identify unanswerable or unknowable questions. We introduce an automated methodology to detect uncertainty in the responses of these models, providing a novel measure of their self-knowledge. We further introduce a unique dataset, SelfAware, consisting of unanswerable questions from five diverse categories and their answerable counterparts. Our extensive analysis, involving 20 LLMs including GPT-3, InstructGPT, and LLaMA, discovering an intrinsic capacity for self-knowledge within these models. Moreover, we demonstrate that in-context learning and instruction tuning can further enhance this self-knowledge. Despite this promising insight, our findings also highlight a considerable gap between the capabilities of these models and human proficiency in recognizing the limits of their knowledge.",
+            "year": 2023,
+            "citationCount": 58,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This study aims to evaluate large language models' self-knowledge by assessing their ability to identify unanswerable or unknowable questions, and introduces an automated methodology to detect uncertainty in the responses of these models, providing a novel measure of their self- knowledge."
+            },
+            "score": 5
+        },
+        {
+            "id": "10a08b2bfbc32d9151770ac345ac177af68bb50d",
+            "paperId": "10a08b2bfbc32d9151770ac345ac177af68bb50d",
+            "title": "Learning to Ask Clarification Questions with Spatial Reasoning",
+            "abstract": "Asking clarifying questions has become a key element of various conversational systems, allowing for an effective resolution of ambiguity and uncertainty through natural language questions. Despite the extensive applications of spatial information grounded dialogues, it remains an understudied area on learning to ask clarification questions with the capability of spatial reasoning. In this work, we propose a novel method, named SpatialCQ, for this problem. Specifically, we first align the representation space between textual and spatial information by encoding spatial states with textual descriptions. Then a multi-relational graph is constructed to capture the spatial relations and enable spatial reasoning with relational graph attention networks. Finally, a unified encoder is adopted to fuse the multimodal information for asking clarification questions. Experimental results on the latest IGLU dataset show the superiority of the proposed method over existing approaches.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A novel method is proposed, named SpatialCQ, to align the representation space between textual and spatial information by encoding spatial states with textual descriptions and fuse the multimodal information for asking clarification questions."
+            },
+            "score": 5
+        },
+        {
+            "id": "7621b86f7be6ae5a6ef4a8a5069d57f9e6fa2d08",
+            "paperId": "7621b86f7be6ae5a6ef4a8a5069d57f9e6fa2d08",
+            "title": "The Language Model Understood the Prompt was Ambiguous: Probing Syntactic Uncertainty Through Generation",
+            "abstract": "Temporary syntactic ambiguities arise when the beginning of a sentence is compatible with multiple syntactic analyses. We inspect to which extent neural language models (LMs) exhibit uncertainty over such analyses when processing temporarily ambiguous inputs, and how that uncertainty is modulated by disambiguating cues. We probe the LM\u2019s expectations by generating from it: we use stochastic decoding to derive a set of sentence completions, and estimate the probability that the LM assigns to each interpretation based on the distribution of parses across completions. Unlike scoring-based methods for targeted syntactic evaluation, this technique makes it possible to explore completions that are not hypothesized in advance by the researcher. We apply this method to study the behavior of two LMs (GPT2 and an LSTM) on three types of temporary ambiguity, using materials from human sentence processing experiments. We find that LMs can track multiple analyses simultaneously; the degree of uncertainty varies across constructions and contexts. As a response to disambiguating cues, the LMs often select the correct interpretation, but occasional errors point to potential areas of improvement",
+            "year": 2021,
+            "citationCount": 15,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work probes the LM\u2019s expectations by generating from it: it uses stochastic decoding to derive a set of sentence completions, and estimates the probability that the LM assigns to each interpretation based on the distribution of parses across completions."
+            },
+            "score": 5
+        },
+        {
+            "id": "7f6d48d7b1641d3d2fd4ee06c434a73af8fce07b",
+            "paperId": "7f6d48d7b1641d3d2fd4ee06c434a73af8fce07b",
+            "title": "Density-Softmax: Scalable and Calibrated Uncertainty Estimation under Distribution Shifts",
+            "abstract": "Prevalent deterministic deep-learning models suffer from significant over-confidence under distribution shifts. Probabilistic approaches can reduce this problem but struggle with computational efficiency. In this paper, we propose Density-Softmax, a fast and lightweight deterministic method to improve calibrated uncertainty estimation via a combination of density function with the softmax layer. By using the latent representation's likelihood value, our approach produces more uncertain predictions when test samples are distant from the training samples. Theoretically, we show that Density-Softmax can produce high-quality uncertainty estimation with neural networks, as it is the solution of minimax uncertainty risk and is distance-aware, thus reducing the over-confidence of the standard softmax. Empirically, our method enjoys similar computational efficiency as a single forward pass deterministic with standard softmax on the shifted toy, vision, and language datasets across modern deep-learning architectures. Notably, Density-Softmax uses 4 times fewer parameters than Deep Ensembles and 6 times lower latency than Rank-1 Bayesian Neural Network, while obtaining competitive predictive performance and lower calibration errors under distribution shifts.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Density-Softmax is proposed, a fast and lightweight deterministic method to improve calibrated uncertainty estimation via a combination of density function with the softmax layer, which enjoys similar computational efficiency as a single forward pass deterministic with standard softmax on the shifted toy, vision, and language datasets across modern deep-learning architectures."
+            },
+            "score": 5
+        },
+        {
+            "id": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "paperId": "551b05734eb2181c4ca009a411144e8447ed1606",
+            "title": "Uncertainty Quantification with Pre-trained Language Models: A Large-Scale Empirical Analysis",
+            "abstract": "Pre-trained language models (PLMs) have gained increasing popularity due to their compelling prediction performance in diverse natural language processing (NLP) tasks. When formulating a PLM-based prediction pipeline for NLP tasks, it is also crucial for the pipeline to minimize the calibration error, especially in safety-critical applications. That is, the pipeline should reliably indicate when we can trust its predictions. In particular, there are various considerations behind the pipeline: (1) the choice and (2) the size of PLM, (3) the choice of uncertainty quantifier, (4) the choice of fine-tuning loss, and many more. Although prior work has looked into some of these considerations, they usually draw conclusions based on a limited scope of empirical studies. There still lacks a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline. To fill this void, we compare a wide range of popular options for each consideration based on three prevalent NLP classification tasks and the setting of domain shift. In response, we recommend the following: (1) use ELECTRA for PLM encoding, (2) use larger PLMs if possible, (3) use Temp Scaling as the uncertainty quantifier, and (4) use Focal Loss for fine-tuning.",
+            "year": 2022,
+            "citationCount": 38,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "A wide range of popular options for each consideration are compared based on three prevalent NLP classification tasks and the setting of domain shift to form a holistic analysis on how to compose a well-calibrated PLM-based prediction pipeline."
+            },
+            "score": 5
+        },
+        {
+            "id": "f4bec7f8c6adb9abf4c17b03bf6f499055707d45",
+            "paperId": "f4bec7f8c6adb9abf4c17b03bf6f499055707d45",
+            "title": "XDAI: A Tuning-free Framework for Exploiting Pre-trained Language Models in Knowledge Grounded Dialogue Generation",
+            "abstract": "Large-scale pre-trained language models (PLMs) have shown promising advances on various downstream tasks, among which dialogue is one of the most concerned. However, there remain challenges for individual developers to create a knowledge-grounded dialogue system upon such big models because of the expensive cost of collecting the knowledge resources for supporting the system as well as tuning these large models for the task. To tackle these obstacles, we propose XDAI, a knowledge-grounded dialogue system that is equipped with the prompt-aware tuning-free PLM exploitation and supported by the ready-to-use open-domain external knowledge resources plus the easy-to-change domain-specific mechanism. With XDAI, the developers can leverage the PLMs without any fine-tuning cost to quickly create the open-domain dialogue systems as well as easily customize their own domain-specific systems. Extensive experiments including human evaluation, Turing test, and online evaluation have demonstrated the competitive performance of XDAI compared with the state-of-the-art general PLMs and specific PLMs for dialogue. XDAI pilots studies on the exploitation of PLMs and made intriguing findings which could be inspiring for the future research on other PLM-based applications. Developers and related researchers can get access to our repository at https://github.com/THUDM/XDAI, which presents a series of APIs, incremental toolkits and chatbot service of XDAI platform.",
+            "year": 2022,
+            "citationCount": 13,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "XDAI is proposed, a knowledge-grounded dialogue system that is equipped with the prompt-aware tuning-free PLM exploitation and supported by the ready-to-use open-domain external knowledge resources plus the easy- to-change domain-specific mechanism."
+            },
+            "score": 4
+        },
+        {
+            "id": "d84743b91541907e830f902c59fcf2fd65b94069",
+            "paperId": "d84743b91541907e830f902c59fcf2fd65b94069",
+            "title": "Role Play Dialogue Aware Language Models Based on Conditional Hierarchical Recurrent Encoder-Decoder",
+            "abstract": "We propose role play dialogue-aware language models (RPDA-LMs) that can leverage interactive contexts in role play multi-turn dialogues for estimating the generative probability of words. Our motivation is to improve automatic speech recognition (ASR) performance in role play dialogues such as contact center dialogues and service center dialogues. Although long short-term memory recurrent neural network based language models (LSTM-RNN-LMs) can capture long-range contexts within an utterance, they cannot utilize sequential interactive information between speakers in multi-turn dialogues. Our idea is to explicitly leverage speakers\u2019 roles of individual utterances, which are often available in role play dialogues, for neural language modeling. The RPDA-LMs are represented as a generative model conditioned by a role sequence of a target role play dialogue. We compose the RPDA-LMs by extending hierarchical recurrent encoder-decoder modeling so as to handle the role information. Our ASR evaluation in a contact center dialogue demonstrates that RPDA-LMs outperform LSTM-RNN-LMs and document-context LMs in terms of perplexity and word error rate. In addition, we verify the effectiveness of explicitly taking interactive contexts into consideration.",
+            "year": 2018,
+            "citationCount": 8,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The idea is to explicitly leverage speakers\u2019 roles of individual utterances, which are often available in role play dialogues, for neural language modeling, and compose the RPDA-LMs by extending hierarchical recurrent encoder-decoder modeling so as to handle the role information."
+            },
+            "score": 4
+        },
+        {
+            "id": "28fbbf98bac1bb941162df553ca034d600cb59a6",
+            "paperId": "28fbbf98bac1bb941162df553ca034d600cb59a6",
+            "title": "Rephrase, Augment, Reason: Visual Grounding of Questions for Vision-Language Models",
+            "abstract": "An increasing number of vision-language tasks can be handled with little to no training, i.e., in a zero and few-shot manner, by marrying large language models (LLMs) to vision encoders, resulting in large vision-language models (LVLMs). While this has huge upsides, such as not requiring training data or custom architectures, how an input is presented to an LVLM can have a major impact on zero-shot model performance. In particular, inputs phrased in an underspecified way can result in incorrect answers due to factors like missing visual information, complex implicit reasoning, or linguistic ambiguity. Therefore, adding visually-grounded information to the input as a preemptive clarification should improve model performance by reducing underspecification, e.g., by localizing objects and disambiguating references. Similarly, in the VQA setting, changing the way questions are framed can make them easier for models to answer. To this end, we present Rephrase, Augment and Reason (RepARe), a gradient-free framework that extracts salient details about the image using the underlying LVLM as a captioner and reasoner, in order to propose modifications to the original question. We then use the LVLM's confidence over a generated answer as an unsupervised scoring function to select the rephrased question most likely to improve zero-shot performance. Focusing on three visual question answering tasks, we show that RepARe can result in a 3.85% (absolute) increase in zero-shot accuracy on VQAv2, 6.41%, and 7.94% points increase on A-OKVQA, and VizWiz respectively. Additionally, we find that using gold answers for oracle question candidate selection achieves a substantial gain in VQA accuracy by up to 14.41%. Through extensive analysis, we demonstrate that outputs from RepARe increase syntactic complexity, and effectively utilize vision-language interaction and the frozen LLM.",
+            "year": 2023,
+            "citationCount": 3,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Rephrase, Augment and Reason (RepARe), a gradient-free framework that extracts salient details about the image using the underlying LVLM as a captioner and reasoner, in order to propose modifications to the original question, is presented."
+            },
+            "score": 4
+        },
+        {
+            "id": "a1e8a8842888c7cffecce53a87a800729e90c36d",
+            "paperId": "a1e8a8842888c7cffecce53a87a800729e90c36d",
+            "title": "R-Tuning: Teaching Large Language Models to Refuse Unknown Questions",
+            "abstract": "Large language models (LLMs) have revolutionized numerous domains with their impressive performance but still face their challenges. A predominant issue is the propensity for these models to generate non-existent facts, a concern termed hallucination. Our research is motivated by the observation that previous instruction tuning methods force the model to complete a sentence no matter whether the model knows the knowledge or not. When the question is out of the parametric knowledge, it will try to make up something and fail to indicate when it lacks knowledge. In this paper, we present a new approach called Refusal-Aware Instruction Tuning (R-Tuning). This approach is formalized by first identifying the knowledge gap between parametric knowledge and the instruction tuning data. Then, we construct the refusal-aware data based on the knowledge intersection, to tune LLMs to refrain from responding to questions beyond its parametric knowledge. Experimental results demonstrate this new instruction tuning approach effectively improves a model's ability to answer known questions and refrain from answering unknown questions. Furthermore, when tested on out-of-domain datasets, the refusal ability was found to be a meta-skill that could be generalized to other tasks. Further analysis surprisingly finds that learning the uncertainty during training displays a better ability to estimate uncertainty than uncertainty-based testing. Our code will be released at https://github.com/shizhediao/R-Tuning.",
+            "year": 2023,
+            "citationCount": 20,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Experimental results demonstrate this new instruction tuning approach effectively improves a model's ability to answer known questions and refrain from answering unknown questions, and surprisingly finds that learning the uncertainty during training displays a better ability to estimate uncertainty than uncertainty-based testing."
+            },
+            "score": 4
+        },
+        {
+            "id": "5424e311319c58847b4c690d5c91090e3b6a4ac3",
+            "paperId": "5424e311319c58847b4c690d5c91090e3b6a4ac3",
+            "title": "Shifting Attention to Relevance: Towards the Uncertainty Estimation of Large Language Models",
+            "abstract": "While Large Language Models (LLMs) have demonstrated remarkable potential in natural language generation and instruction following, a persistent challenge lies in their susceptibility to\"hallucinations\", which erodes trust in their outputs. Although Uncertainty Quantification (UQ) presents a promising solution, its accurate implementation within the context of LLMs remains a significant hurdle. To address this critical roadblock, our research originates from a fundamental heuristic insight: tokens within auto-regressive LLM-generated text do not equally reflect the underlying meaning. Some tokens carry greater relevance and representativeness than others, owing to the phenomenon of\"linguistic redundancy\", wherein a select few keywords suffice to convey the essence of lengthy sentences. Regrettably, existing methodologies treat all tokens with equal importance when estimating uncertainty, disregarding these inherent generative inequalities. Our analysis reveals a significant issue with state-of-the-art: numerous tokens (and sentences) of limited semantic significance receive equal or even excessive weighting during uncertainty estimation. To rectify this bias, we propose to jointly Shifting Attention to more Relevant (SAR) components, at both the token- and the sentence-levels for accurate uncertainty estimation. We conduct extensive experiments involving a range of popular\"off-the-shelf\"LLMs, including instruction-tuned LLMs such as Vicuna, WizardLM, and LLaMA-2-chat, as well as pretrained LLMs like OPT and LLaMA, with model sizes extending up to 33B parameters. We carry out evaluation across various free-form question-answering tasks, encompassing domains such as reading comprehension, science Q&A, and medical Q&A. Our experimental results demonstrate the superior performance of SAR in addressing the challenges of uncertainty estimation within the realm of LLMs.",
+            "year": 2023,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The experimental results demonstrate the superior performance of SAR in addressing the challenges of uncertainty estimation within the realm of LLMs, and propose to jointly Shifting Attention to more Relevant (SAR) components, at both the token- and the sentence-levels for accurate uncertainty estimation."
+            },
+            "score": 4
+        },
+        {
+            "id": "04365f0f1db4c659c3297cb8e70c39b38ed3b487",
+            "paperId": "04365f0f1db4c659c3297cb8e70c39b38ed3b487",
+            "title": "Self-Evaluation Improves Selective Generation in Large Language Models",
+            "abstract": "Safe deployment of large language models (LLMs) may benefit from a reliable method for assessing their generated content to determine when to abstain or to selectively generate. While likelihood-based metrics such as perplexity are widely employed, recent research has demonstrated the limitations of using sequence-level probability estimates given by LLMs as reliable indicators of generation quality. Conversely, LLMs have demonstrated strong calibration at the token level, particularly when it comes to choosing correct answers in multiple-choice questions or evaluating true/false statements. In this work, we reformulate open-ended generation tasks into token-level prediction tasks, and leverage LLMs' superior calibration at the token level. We instruct an LLM to self-evaluate its answers, employing either a multi-way comparison or a point-wise evaluation approach, with the option to include a ``None of the above'' option to express the model's uncertainty explicitly. We benchmark a range of scoring methods based on self-evaluation and evaluate their performance in selective generation using TruthfulQA and TL;DR. Through experiments with PaLM-2 and GPT-3, we demonstrate that self-evaluation based scores not only improve accuracy, but also correlate better with the overall quality of generated content.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work reformulates open-ended generation tasks into token-level prediction tasks, and leverage LLMs' superior calibration at the token level, and demonstrates that self-evaluation based scores not only improve accuracy, but also correlate better with the overall quality of generated content."
+            },
+            "score": 4
+        },
+        {
+            "id": "b950f402f642711d4ec978fbadb95752efdd9b15",
+            "paperId": "b950f402f642711d4ec978fbadb95752efdd9b15",
+            "title": "Likelihood Annealing: Fast Calibrated Uncertainty for Regression",
+            "abstract": "Recent advances in deep learning have shown that uncertainty estimation is becoming increasingly important in applications such as medical imaging, natural language processing, and autonomous systems. However, accurately quantifying uncertainty remains a challenging problem, especially in regression tasks where the output space is continuous. Deep learning approaches that allow uncertainty estimation for regression problems often converge slowly and yield poorly calibrated uncertainty estimates that can not be effectively used for quantification. Recently proposed post hoc calibration techniques are seldom applicable to regression problems and often add overhead to an already slow model training phase. This work presents a fast calibrated uncertainty estimation method for regression tasks called Likelihood Annealing, that consistently improves the convergence of deep regression models and yields calibrated uncertainty without any post hoc calibration phase. Unlike previous methods for calibrated uncertainty in regression that focus only on low-dimensional regression problems, our method works well on a broad spectrum of regression problems, including high-dimensional regression.Our empirical analysis shows that our approach is generalizable to various network architectures, including multilayer perceptrons, 1D/2D convolutional networks, and graph neural networks, on five vastly diverse tasks, i.e., chaotic particle trajectory denoising, physical property prediction of molecules using 3D atomistic representation, natural image super-resolution, and medical image translation using MRI.",
+            "year": 2023,
+            "citationCount": 1,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents a fast calibrated uncertainty estimation method for regression tasks called Likelihood Annealing, that consistently improves the convergence of deep regression models and yields calibrated uncertainty without any post hoc calibration phase."
+            },
+            "score": 4
+        },
+        {
+            "id": "df51f2071f05756c25cf53c6a6b9e2ced228858a",
+            "paperId": "df51f2071f05756c25cf53c6a6b9e2ced228858a",
+            "title": "Towards Robots That Know When They Need Help: Affordance-Based Uncertainty for Large Language Model Planners",
+            "abstract": "Large language models (LLMs) showcase many desirable traits for intelligent and helpful robots. However, they are also known to hallucinate predictions. This issue is exacerbated in consumer robotics where LLM hallucinations may result in robots confidently executing plans that are contrary to user goals, relying more frequently on human assistance, or preventing the robot from asking for help at all. In this work, we present LAP, a novel approach for utilizing off-the-shelf LLM's, alongside scene and object Affordances, in robotic Planners that minimize harmful hallucinations and know when to ask for help. Our key finding is that calculating and leveraging a scene affordance score, a measure of whether a given action is possible in the provided scene, helps to mitigate hallucinations in LLM predictions and better align the LLM's confidence measure with the probability of success. We specifically propose and test three different affordance scores, which can be used independently or in tandem to improve performance across different use cases. The most successful of these individual scores involves prompting an LLM to determine if a given action is possible and safe in the given scene and uses the LLM's response to compute the score. Through experiments in both simulation and the real world, on tasks with a variety of ambiguities, we show that LAP significantly increases success rate and decreases the amount of human intervention required relative to prior art. For example, in our real-world testing paradigm, LAP decreases the human help rate of previous methods by over 33% at a success rate of 70%.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work presents LAP, a novel approach for utilizing off-the-shelf LLM's, alongside scene and object Affordances, in robotic Planners that minimize harmful hallucinations and know when to ask for help."
+            },
+            "score": 4
+        },
+        {
+            "id": "8d4b9420bf3c8d81d2edbc5c8c4425e30033685f",
+            "paperId": "8d4b9420bf3c8d81d2edbc5c8c4425e30033685f",
+            "title": "C-TPT: Calibrated Test-Time Prompt Tuning for Vision-Language Models via Text Feature Dispersion",
+            "abstract": "In deep learning, test-time adaptation has gained attention as a method for model fine-tuning without the need for labeled data. A prime exemplification is the recently proposed test-time prompt tuning for large-scale vision-language models such as CLIP. Unfortunately, these prompts have been mainly developed to improve accuracy, overlooking the importance of calibration, which is a crucial aspect for quantifying prediction uncertainty. However, traditional calibration methods rely on substantial amounts of labeled data, making them impractical for test-time scenarios. To this end, this paper explores calibration during test-time prompt tuning by leveraging the inherent properties of CLIP. Through a series of observations, we find that the prompt choice significantly affects the calibration in CLIP, where the prompts leading to higher text feature dispersion result in better-calibrated predictions. Introducing the Average Text Feature Dispersion (ATFD), we establish its relationship with calibration error and present a novel method, Calibrated Test-time Prompt Tuning (C-TPT), for optimizing prompts during test-time with enhanced calibration. Through extensive experiments on different CLIP architectures and datasets, we show that C-TPT can effectively improve the calibration of test-time prompt tuning without needing labeled data. The code is publicly accessible at https://github.com/hee-suk-yoon/C-TPT.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "It is shown that C-TPT can effectively improve the calibration of test-time prompt tuning without needing labeled data, and introduced the Average Text Feature Dispersion (ATFD), a novel method for optimizing prompts during test-time with enhanced calibration."
+            },
+            "score": 4
+        },
+        {
+            "id": "3864b52902f8315f21385c4a6d3ce6c0193e1ab9",
+            "paperId": "3864b52902f8315f21385c4a6d3ce6c0193e1ab9",
+            "title": "Conformal Prediction with Large Language Models for Multi-Choice Question Answering",
+            "abstract": "As large language models continue to be widely developed, robust uncertainty quantification techniques will become crucial for their safe deployment in high-stakes scenarios. In this work, we explore how conformal prediction can be used to provide uncertainty quantification in language models for the specific task of multiple-choice question-answering. We find that the uncertainty estimates from conformal prediction are tightly correlated with prediction accuracy. This observation can be useful for downstream applications such as selective classification and filtering out low-quality predictions. We also investigate the exchangeability assumption required by conformal prediction to out-of-subject questions, which may be a more realistic scenario for many practical applications. Our work contributes towards more trustworthy and reliable usage of large language models in safety-critical situations, where robust guarantees of error rate are required.",
+            "year": 2023,
+            "citationCount": 29,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work explores how conformal prediction can be used to provide uncertainty quantification in language models for the specific task of multiple-choice question-answering and finds that the uncertainty estimates from conformal Prediction are tightly correlated with prediction accuracy."
+            },
+            "score": 3
+        },
+        {
+            "id": "f9143d68be6475cac4d5d2096edcf1691c8f0356",
+            "paperId": "f9143d68be6475cac4d5d2096edcf1691c8f0356",
+            "title": "\"I'm Not Sure, But...\": Examining the Impact of Large Language Models' Uncertainty Expression on User Reliance and Trust",
+            "abstract": "Widely deployed large language models (LLMs) can produce convincing yet incorrect outputs, potentially misleading users who may rely on them as if they were correct. To reduce such overreliance, there have been calls for LLMs to communicate their uncertainty to end users. However, there has been little empirical work examining how users perceive and act upon LLMs' expressions of uncertainty. We explore this question through a large-scale, pre-registered, human-subject experiment (N=404) in which participants answer medical questions with or without access to responses from a fictional LLM-infused search engine. Using both behavioral and self-reported measures, we examine how different natural language expressions of uncertainty impact participants' reliance, trust, and overall task performance. We find that first-person expressions (e.g.,\"I'm not sure, but...\") decrease participants' confidence in the system and tendency to agree with the system's answers, while increasing participants' accuracy. An exploratory analysis suggests that this increase can be attributed to reduced (but not fully eliminated) overreliance on incorrect answers. While we observe similar effects for uncertainty expressed from a general perspective (e.g.,\"It's not clear, but...\"), these effects are weaker and not statistically significant. Our findings suggest that using natural language expressions of uncertainty may be an effective approach for reducing overreliance on LLMs, but that the precise language used matters. This highlights the importance of user testing before deploying LLMs at scale.",
+            "year": 2024,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "Using natural language expressions of uncertainty may be an effective approach for reducing overreliance on LLMs, but that the precise language used matters, which highlights the importance of user testing before deploying LLMs at scale."
+            },
+            "score": 3
+        },
+        {
+            "id": "9a8d0f0ace05d3795a9a58f94675710b89006941",
+            "paperId": "9a8d0f0ace05d3795a9a58f94675710b89006941",
+            "title": "Relying on the Unreliable: The Impact of Language Models' Reluctance to Express Uncertainty",
+            "abstract": "As natural language becomes the default interface for human-AI interaction, there is a critical need for LMs to appropriately communicate uncertainties in downstream applications. In this work, we investigate how LMs incorporate confidence about their responses via natural language and how downstream users behave in response to LM-articulated uncertainties. We examine publicly deployed models and find that LMs are unable to express uncertainties when answering questions even when they produce incorrect responses. LMs can be explicitly prompted to express confidences, but tend to be overconfident, resulting in high error rates (on average 47%) among confident responses. We test the risks of LM overconfidence by running human experiments and show that users rely heavily on LM generations, whether or not they are marked by certainty. Lastly, we investigate the preference-annotated datasets used in RLHF alignment and find that humans have a bias against texts with uncertainty. Our work highlights a new set of safety harms facing human-LM interactions and proposes design recommendations and mitigating strategies moving forward.",
+            "year": 2024,
+            "citationCount": 12,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This work investigates how LMs incorporate confidence about their responses via natural language and how downstream users behave in response to LM-articulated uncertainties, and examines publicly deployed models to find that LMs are unable to express uncertainties when answering questions even when they produce incorrect responses."
+            },
+            "score": 3
+        },
+        {
+            "id": "82edb6443926611f7fd6de9f5d179136e19f5457",
+            "paperId": "82edb6443926611f7fd6de9f5d179136e19f5457",
+            "title": "Discrete-Direct Model Calibration and Uncertainty Propagation Method Confirmed on Multi-Parameter Plasticity Model Calibrated to Sparse Random Field Data",
+            "abstract": "\n A discrete direct (DD) model calibration and uncertainty propagation approach is explained and demonstrated on a 4-parameter Johnson-Cook (J-C) strain-rate dependent material strength model for an aluminum alloy. The methodology's performance is characterized in many trials involving four random realizations of strain-rate dependent material-test data curves per trial, drawn from a large synthetic population. The J-C model is calibrated to particular combinations of the data curves to obtain calibration parameter sets which are then propagated to \u201cCan Crush\u201d structural model predictions to produce samples of predicted response variability. These are processed with appropriate sparse-sample uncertainty quantification (UQ) methods to estimate various statistics of response with an appropriate level of conservatism. This is tested on 16 output quantities (von Mises stresses and equivalent plastic strains) and it is shown that important statistics of the true variabilities of the 16 quantities are bounded with a high success rate that is reasonably predictable and controllable. The DD approach has several advantages over other calibration-UQ approaches like Bayesian inference for capturing and utilizing the information obtained from typically small numbers of replicate experiments in model calibration situations\u2014especially when sparse replicate functional data are involved like force\u2013displacement curves from material tests. The DD methodology is straightforward and efficient for calibration and propagation problems involving aleatory and epistemic uncertainties in calibration experiments, models, and procedures.",
+            "year": 2021,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "The DD approach has several advantages over other calibration-UQ approaches like Bayesian inference for capturing and utilizing the information obtained from typically small numbers of replicate experiments in model calibration situations\u2014especially when sparse replicate functional data are involved like force\u2013displacement curves from material tests."
+            },
+            "score": 3
+        },
+        {
+            "id": "5d2b77ae8508e277fe9b840a471b7dfb00e806ff",
+            "paperId": "5d2b77ae8508e277fe9b840a471b7dfb00e806ff",
+            "title": "Large Language Models are Complex Table Parsers",
+            "abstract": "With the Generative Pre-trained Transformer 3.5 (GPT-3.5) exhibiting remarkable reasoning and comprehension abilities in Natural Language Processing (NLP), most Question Answering (QA) research has primarily centered around general QA tasks based on GPT, neglecting the specific challenges posed by Complex Table QA. In this paper, we propose to incorporate GPT-3.5 to address such challenges, in which complex tables are reconstructed into tuples and specific prompt designs are employed for dialogues. Specifically, we encode each cell's hierarchical structure, position information, and content as a tuple. By enhancing the prompt template with an explanatory description of the meaning of each tuple and the logical reasoning process of the task, we effectively improve the hierarchical structure awareness capability of GPT-3.5 to better parse the complex tables. Extensive experiments and results on Complex Table QA datasets, i.e., the open-domain dataset HiTAB and the aviation domain dataset AIT-QA show that our approach significantly outperforms previous work on both datasets, leading to state-of-the-art (SOTA) performance.",
+            "year": 2023,
+            "citationCount": 4,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper enhances the prompt template with an explanatory description of the meaning of each tuple and the logical reasoning process of the task, which effectively improves the hierarchical structure awareness capability of GPT-3.5 to better parse the complex tables."
+            },
+            "score": 3
+        },
+        {
+            "id": "3eb19d21b4265d0262a1cccc28de5513a0929218",
+            "paperId": "3eb19d21b4265d0262a1cccc28de5513a0929218",
+            "title": "Synthesis of healthy-structure model responses for damage quantification",
+            "abstract": "Structural Health Monitoring faces several challenges. Among them, especially for the quantification of damage, are (1) the uncertainty in the boundary conditions, (2) the need for a calibrated numerical model, or measurements, of the structure in its healthy state, (3) the variability in the structure properties and boundary conditions due to environmental and operational conditions and (4) the possibility of damage in the virgin structure due to construction defects. Based on the sparsity condition of structural damage, this work presents a method that tackles these challenges simultaneously. The method consists in synthesising the response of a healthy-structure model, which is valid in the current environmental and operational conditions, only inside a region of interest (ROI) that excludes the boundaries and the rest of the full structure. This is accomplished by means of a robust regression of the solution of an analytical model of the healthy structure, and its loading, only using testing data of the (possibly) damaged structure in that ROI. Under ideal conditions, the method showed to be exact in detecting, locating and quantifying damage, in some cases much better than using measurements of the virgin structure. Finally, the method was tested by numerical simulations and using experimental data, under realistic conditions, which evidences its practical applicability.",
+            "year": 2022,
+            "citationCount": 2,
+            "tldr": null,
+            "score": 2
+        },
+        {
+            "id": "f03a39ca791a94b53e03b44831e17a5c171e120e",
+            "paperId": "f03a39ca791a94b53e03b44831e17a5c171e120e",
+            "title": "PPPG-DialoGPT: A Prompt-based and Personality-aware Framework For Conversational Recommendation Systems",
+            "abstract": "Conversational Recommendation Systems (CRSs) are multi-turn dialogue softwares that support recommendation goals. Having a CRS that generates personalized recommen-dations for its users is one of the challenging topics in the recommendation research field. This is due to the diversity of preferences that a user might have within a recommendation session. Recent CRS frameworks are still not really able to effectively provide items of interest to their users, as they do not consider the individuals' personality traits during the recommendation process. These traits are the enduring character-istics and behaviors that comprise a person's unique adjustment and distinguish him from other persons. Thus, considering them during the recommendation process could significantly boost the model performance. In this paper, we propose a personality-aware and prompt-based CRS framework named PPPG-DialoGPT \u201cA Personality and Preference-aware Prompt-based Goal-oriented DialoGPT model\u201d. Our proposed approach aims to benefit from the significant impact that personality traits and prompt-based learning frameworks have on improving the performance of different Natural Language Processing (NLP) and one-shot recommendation tasks. To the best of our knowledge, this paper is the first to employ both individual personality traits and prompts templates during a dialogue-based recommendation session in the field of conversational recommendation system. Experiments and results show that the use of the users' person-ality traits leads to an improvement in the performance of both recommendation and response generation tasks on the movie-based TG- Redial dataset.",
+            "year": 2023,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This paper is the first to employ both individual personality traits and prompts templates during a dialogue-based recommendation session in the field of conversational recommendation system and results show that the use of the users' person-ality traits leads to an improvement in the performance of both recommendation and response generation tasks on the movie-based TG- Redial dataset."
+            },
+            "score": 2
+        },
+        {
+            "id": "87c1e8eff9f2a2f2374b5eac4791d34b30477619",
+            "paperId": "87c1e8eff9f2a2f2374b5eac4791d34b30477619",
+            "title": "Clinical Natural Language Processing in Languages Other Than English",
+            "abstract": "Natural Language Processing (NLP) of clinical free-text has received a lot of attention from the scientific community. Clinical documents are routinely created across health care providing institutions and are generally written in the official language(s) of the country these institutions are located in. As a result, free-text clinical information is written in a large variety of languages. While most of the efforts for clinical NLP have focused on English, there is a strong need to extend this work to other languages, for instance in order to gain medical information about patient cohorts in geographical areas where English is not an official language. Furthermore, adapting current NLP methods developed for English to other languages may provide useful insight on the generalizability of algorithms and lead to increased robustness. This panel aims to provide an overview of clinical NLP for languages other than English, as for example French, Swedish and Japanese and discuss future methodological advances of clinical NLP in a context that encompasses English as well as other languages. General Description of the Panel The goal of this panel is to engage the medical informatics and clinical Natural Language Processing community in a discussion about ways to advance research through languages other than English. We will provide an overview the current state of clinical NLP in a variety of European and non-European languages as well as focused reports on French, Swedish and Bulgarian. We will motivate the need for developing clinical NLP in languages other than English by the potential for methodological and medical advances. Finally, we will propose strategies to contribute to advance work on languages other than English and integrate it in a state-of-the art platform. Clinical NLP in languages other than English Natural Language Processing (NLP) of clinical free-text has received a lot of attention from the scientific community, demonstrating its potential to provide the means to analyze large quantities of documents rapidly and accurately (Demner-Fushman et al. 2010). Prime clinical applications for NLP include assisting healthcare professionals with restrospective studies and clinical decision making. The ability to analyze clinical text in languages other than English opens access to important medical data concerning cohorts of patients who are treated in countries where English is not the official language. Recently, Kohane et al. (2012) also showed the impact of methods allowing an aggregated exploitation of clinical data. In this context, data extracted from clinical texts in languages other than English adds another dimension to data aggregation. As the importance of clinical NLP gains recognition, clinical corpora become available to researchers in languages other than English, prompting work that sometimes builds on methods validated for English. Adapting systems that work well for English to another language is a difficult task that may be carried out with varying level of success depending on the task and language (Grouin et al., 2009; Velupillai et al. 2014; T\u00e4ckstr\u00f6m et al., 2012). For nonEuropean languages, approaches that account for entirely different word and sentence structures sometimes need to be developped (Shinohara et al. 2013), and cultural differences between clinical narrative styles accounted for (Wu et al. 2013). Access to terminologies and corpora in languages other than English can also be challenging (Schulz et al. 2013; Xu et al. 2013). These experiments prompt a reflexion on how to carry out clinical NLP in a more global context: should methods be developed for one language and then ported to other languages? Can the source language method benefit from the porting? Can algorithms be more robust if they are designed with a multilanguage perspective from the start? French is widely spoken around the world and benefits from one of the largest coverage in the UMLS. Automatic de-identification is becoming quite advanced for French (Grouin & N\u00e9v\u00e9ol, 2013), leading to good results for targeted clinical information extraction tasks (Del\u00e9ger et al. 2010; Grouin et al. 2011). Recent efforts from the French biomedical Informatics community have addressed rules and regulations to improve the access of NLP researchers to clinical corpus. Furthermore, the success of initiatives such as that reported by Grouin et al. (2011) increased the awareness of the potential implication of clinical NLP in clinical practice and contributed to making the timing ripe for making clinical corpus available for annotation and NLP tool development. On-going efforts currently address the annotation of clinical corpora for entity, modality and relations. Tools are being designed for information extraction as well as semantic indexing, information retrieval and clinical data visualization. Much of the research in Swedish clinical NLP has used the Stockholm EPR Corpus, (Dalianis 2012), that contains more than one million patient records encompassing the years 2006-2010, from over 550 clinical units origin from Karolinska University Hospital. Part of this corpus has been manually annotated for Protected Health Information, negations, uncertainty levels, symptoms, diseases, drugs, body parts and abbreviations. The annotated corpora have been used both for training of machine learning systems and evaluation. Some applications are explorative as comorbidity networks, warning and reporting systems detecting hospital acquired infections or adverse drug events, but also work on text simplification of patient record content for the layman patient, (Dalianis 2012). Tools that have been developed for this is an adaptation of NegEx for Swedish (Skeppstedt 2012), a system for classifying terms into six levels of assertion levels pyConTextSwe, (Velupillai et al. 2014), abbreviation detection, (Isenius et al. 2012) and machine learning system based on CRF++ that recognizes named clinical entities as symptoms, diseases, drugs and body, (Skeppstedt et al. 2014). Integrating languages other than English in Apache cTAKES Apache cTAKES (ctakes.apache.org) has been quite successful in assembling and sustaining a global community of developers and users of state-of-the-art English language clinical NLP. Because these techniques involve computational machine learning methods, datasets from the targeted language are needed to train and evaluate the algorithms on. We will discuss what types and size of data were used to build the various cTAKES components \u2013 sentence boundary detector, tokenizer, part of speech tagger, syntactic parser, event and temporal expression detector, temporal relation modules, general relation module. We will also discuss what types of gold standard labels (and how much of each type) are needed to port cTAKES components to other language within the light of some use cases such as porting the temporal expression discovery and normalization module originally developed for English (Bethard, 2013) to Swedish. We will outline available resources in other languages such as Swedish, Finnish, Bulgarian. This is a step towards globalization of information extraction from the clinical narrative.",
+            "year": 2014,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "This panel aims to provide an overview of clinical NLP for languages other than English, as for example French, Swedish and Japanese and discuss future methodological advances of clinical NLP in a context that encompasses English as well as other languages."
+            },
+            "score": 2
+        },
+        {
+            "id": "ff7f82ac0daef7e775d2becd4fc87107f9700ff7",
+            "paperId": "ff7f82ac0daef7e775d2becd4fc87107f9700ff7",
+            "title": "Talking About Responsible Quantum: \u201cAwareness Is the Absolute Minimum that \u2026 We Need to Do\u201d",
+            "abstract": null,
+            "year": 2021,
+            "citationCount": 9,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "17b1c0630b9044e4b6dc70f8064e1600e5101c76",
+            "paperId": "17b1c0630b9044e4b6dc70f8064e1600e5101c76",
+            "title": "PHILOSOPHERS IN THE REPUBLIC",
+            "abstract": "bend. (The fact that W. is keenly aware of this keeps it from breaking.) As previously mentioned, W. presents dialectic again and again as a superior form of human activity, a position that has allowed him continually to submit myth to the rule of dialectic. Yet, given W.\u2019s insistence of the playfulness of Plato\u2019s texts, this would mean that the description in the palinode of a purely noetic \u2018discourse\u2019 in which one would somehow overcome or transcend the limitations of one\u2019s human condition is itself made within a context of play. Why, then, take it seriously as a goal or ideal to be attained? And why use such a description, as W. does, as a pivot upon which to support a Platonic system in which dialectic stands as the highest expression of human intellectual achievement? The playfulness of Plato\u2019s text undermines the apparent seriousness of the celebration of dialectic that occurs therein: and although W. at one point insists upon the mythological character of the entirety of the Phaedrus (and therefore, it seems to follow, of the privileging of dialectic that occurs therein), he stops short of asking if the entirety of the Phaedrus \u2013 including its apparent privileging of dialectic \u2013 is playful. This is an avenue that must be explored given W.\u2019s own otherwise excellent analysis of play. W. concludes with an honest and admirable self-reflection upon the scope and uncertainty of his own interpretation, as well as a concise meditation on what it means to encounter a Platonic text. For W., the Phaedrus is not meant to provide us with prepackaged and easily-digestible philosophical \u2018truths\u2019, but rather to prompt us into philosophical inquiry and debate: to draw us, as Socrates attempts to do to Phaedrus in the dialogue that bears his name, into philosophical conversation. W. hopes that his book will do the same. In this, and much more, it is certainly a success: for, in offering a careful and textually-based interpretation that clarifies and problematises the Phaedrus, it will doubtlessly invite the sort of scholarly consideration and criticism that all outstanding interpretations deserve.",
+            "year": 2014,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "0acbb3f7f4fa0092fbdccb05551ba375f4fc43b5",
+            "paperId": "0acbb3f7f4fa0092fbdccb05551ba375f4fc43b5",
+            "title": "\"Putting Truth and Untruth Together\": The 2012 Zurich James Joyce Foundation Workshop, 6-11 August 2012.",
+            "abstract": "It seems that, sooner or later, all Joycean roads lead to Zurich. Dating back to the Foundation\u2019s establishment, the annual summer workshops held in the city are so well known within the Joyce world that one sometimes suspects it would be impossible to find a seasoned Joycean without at least one workshop story to tell. Numerous reports in this journal over the years have expressed the unique appeal of these week-long gatherings, where participants are invited to speak on the conditions that each presentation remains open to interruption and reading from scripts is discouraged in the strongest terms. These rules make the workshop an exceptionally discursive environment, allowing the attendant scholars to develop ideas in dialogue and resulting in an atmosphere distinct from that of similar events. As the attending scholars of the 2012 workshop entitled \u201cLying: Putting Truth and Untruth Together\u201d gathered at the Foundation for the first night\u2019s welcome dinner, the subject turned, perhaps inevitably, to rumors from the Joyce world (of which no account shall be given here). While the conversation developed and participants tried to sort fact from fiction, questions began to emerge that would be asked again\u2014under more scholarly conditions\u2014later in the week: how does one ascertain what the truth is? How do gossip and rumor, which reside somewhere on the outskirts of truth, function? And how \u201ctruthful\u201d should we expect fiction in general to be? As one scholar put it: \u201cit\u2019s not telling a lie to twist the facts, it\u2019s just . . . telling a story.\u201d After an evening of talk, wine, and Fritz Senn\u2019s famous potato salad, the workshop proper opened the following morning with a discussion of lies and falsehood in Dubliners, A Portrait, and Ulysses, as, first, Senn and then Sabrina Alonso invited us to examine notable extracts. We began with Senn guiding us through several instances of lying in Dubliners, using key passages to establish from the outset the general uncertainty involved in reading Joyce, \u201ca great writer for telling us how little we know in general.\u201d This led to some discussion regarding the nature of truth in Joyce\u2019s works, a topic that arose repeatedly over the week, prompting one participant to observe that \u201cthe most simple statements are often the most dubious.\u201d Moving on to Ulysses, Senn led us in analyzing the deceptions in Molly and Bloom\u2019s marriage, an instance where the reader may believe each is well aware of the other\u2019s tacit deceptions. The next morning, Alonso continued the analysis of Ulysses by focusing on Molly specifically, discussing both her language and actions. Particularly interesting",
+            "year": 2013,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        },
+        {
+            "id": "f9610f02cbbfa3e7f527f908c3b26eee8df544e5",
+            "paperId": "f9610f02cbbfa3e7f527f908c3b26eee8df544e5",
+            "title": "PatientDoctor",
+            "abstract": "On a recent visit to New York City, as I was taking a 15-block walk in midtown Manhattan, I was thinking about how fortunate I have been. In 1998 I underwent a transluminal coronary angioplasty with stent placement and subsequently I received anticoagulant therapy, which resulted in painless hematuria. This led to the discovery of renal-cell carcinoma, for which I had a radical nephrectomy. This experience has prompted me to share with you my perspective as a patient for 44 years, now facing the added uncertainty that a cancer patient has to live with. You see, I have had arthritis since age 12, and my physician at the time, the chief of orthopedic surgery at the local university hospital, treated me with frequent bed rests and hospitalizations. There were no rheumatologists in Pakistan in those days. He at one point prescribed 1 full year of antituberculous treatment (streptomycin injections, isoniazid, and para-aminosalicylic acid), without any resultant clinical benefit. Later on, he treated me intravenously with honey imported from West Germany. By then I was 16 years old and had just become a medical student. Two years later, during my first clinical rotation in medical school, I spoke to my teacher, a professor in the department of medicine, about my symptoms. He examined me and diagnosed my disease as ankylosing spondylitis. It primarily involved my back, hip joints, and, to a lesser extent, my neck and shoulders. He prescribed phenylbutazone, a nonsteroidal anti-inflammatory drug, to relieve my pain and stiffness, and it worked effectively. Soon after I graduated from medical school in 1965, when I was 21, Pakistan was attacked by its neighbor, and I decided to enlist in the Pakistan Army Medical Corps. In my zeal to serve the nation in its hour of needa nation that had accepted me as a 3-year-old refugee and had provided me with almost free medical educationI did not reveal my illness. My service in the Pakistani Armed Forces was a great experience. In 1967, when I had just left the army, I received a call for assistance from the very professor from medical school who had diagnosed my ankylosing spondylitis. This professor wanted me to treat his best friend, a prominent local businessman, who had just experienced an acute myocardial infarction. I provided the necessary care, including, later that day, successfully resuscitating the patient when he experienced cardiac arrest. (He would go on to live for another 28 years and help build a hospital for the needy, but that is another story entirely.) I arrived in London in the summer of 1967 to begin my postgraduate medical studiesdespite my arthritis, which never ceased to plague mein an effort to pursue my goal of an academic career in medicine. Cardiology was my initial choice for a medical subspecialty, but I felt that the anticipated progressive decrease of my spinal mobility, as well as having limited chest expansion due to my ankylosing spondylitis, might one day impair my ability to resuscitate patients. During the required 1 year of residency training, I chose orthopedics as my surgical elective. While assisting the surgeons in various orthopedic procedures, including total hip arthroplasty, I was keenly aware that the tables would someday be turned and I would be the one at the receiving end of the operation. I came to the United States in the summer of 1969 and have successfully pursued an academic career in rheumatology. Knowing what it feels like to be an arthritis sufferer, and therefore having a special empathy for patients with this condition, my choice of subspecialty was an easy one to make. Not surprisingly, my primary research interests have included ankylosing spondylitis and related spondyloarthropathies, along with the associated genetic marker HLA-B27. Inevitably, the tables did turn, and I experienced the following: bilateral total hip joint replacement; revision hip arthroplasty; fracture of the cervical spine; nonunion of the fracture, despite 5 months of wearing a halo with vest immobilization; surgical fusion of the fracture and another 3 months of immobilization; recurrent episodes of acute anterior uveitis; hypertension and coronary artery disease; coronary transluminal balloon angioplasties on three separate occasions; and, most recently, right radical nephrectomy. Perhaps you will agree that my many encounters as a patient serve as sufficient qualifications, if we can call them that, to assert my own viewpoint. I am very grateful to modern medicine for keeping me going. In some ways, I consider myself a bionic man. My ankylosing spondylitis, however, has resulted in a complete fusion of my whole spine, including the neck. I cannot turn or even nod my head, and I have to bend at my hip joints to give an impression of a nod. I need to grab onto something to pull myself up from a squatting position. I have virtually no chest expansion. One can imagine what might happen to me if I were to have the misfortune of being in an accident or needing cardiac resuscitation; the probability would be high that, inadvertently, my death would be hastened because of a possible neck fracture or broken ribs. Although I have always sought the best care possible for myself, I have been unlucky on many occasions in not receiving optimum medical care. However, being a perpetual optimist, I am thankful that I am still alive. I sometimes like to give the analogy of the old Timex watch commercial, because I keep on ticking. But if my personal experiences as a patient were extrapolated to the population at large, they would unfortunately highlight many deficiencies in the current practices of medicine, even here in the United States: the unreceptive receptionists, the allied health professionals who lack empathy for their clients, and the physicians for whom time is such a precious commodity that they start looking at their wrist watches just minutes into the history-taking to signal their impatience. We physicians frequently do not acquire the skills of a good communicator, and we often neglect patient education. The word doctor, as I understand it, means an educator or communicator. Yet some physicians apparently lack the traits required to be a good communicator, and some claim that they simply have no time for it, anyway. In such situations, an allied health professional, such as a nurse practitioner, could better handle communications with the patients. Better physicianpatient communication is certainly needed. I underwent bilateral hip arthroplasty as a single surgical procedure at a hospital that specializes in such surgeries. A few years later, I had to undergo a revision hip arthroplasty. Before I left the hospital, I noticed that one leg was now shorter than the other by about a half inch, but my surgeon would not acknowledge this. I still, to this day, wear a shoe lift to minimize my limp. My first transluminal coronary angioplasty resulted in an extensive intimal tear. When I subsequently had restenosis of the involved artery, I was advised by an independent consultant to have a stent inserted at the time of the revision angioplasty. I had my second angioplasty performed at a highly rated medical center and, although I had requested a stent placement, none was given, and my angina symptoms recurred shortly thereafter. When I fractured my neck, I was treated with the placement of a halo and a vest to immobilize the fracture. I pointed out to my surgeon on numerous occasions that the fracture was not fully immobilized, as was most noticeable when I leaned back or tried to lie on my back. I voiced my concern that the back plate of the vest was not properly conforming to my thoracic kyphosis, but the surgeon repeatedly reassured me that everything was fine. I had to sleep sitting upright. After 3 months, a radiograph revealed nonunion of the fracture. Subsequently, the vest was changed, but precious time had already been wasted; because months of further immobilization did not heal the fracture, I ultimately needed a surgical fusion. I have never sued anyone. My forgiving and nonlitigious nature tells me that as patients we should always give our physicians the benefit of the doubt, just as we physicians, likewise, should always show respect for our patients and give them some degree of latitude. But in our current health care system, there is an obvious need for a more open dialogue between physicians and their patients. During the 7-month period in which I wore a halo that was screwed into my skull and attached to a vest that surrounded my chest (just imagine trying to sleep at night wearing all that hardware!), I continued to care for my patients. I found myself in ever greater awe at the power we, as physicians, hold as healers. On one occasion, a new patient came to see me, and after our initial handshake, I noticed that his face was turning pale. I immediately had him lie down on the examination table just before he fainted. When he felt better the patient started to laugh, and said, Doc, I had been hurting and waiting to see you for 2 weeks, but with one look at you all my pains are gone! One morning, a few days later, I was walking by the emergency room on my way to the office and had not yet donned my white coat. A young child noticed my halo and asked, What happened? I had an accident, I replied. Having surmised that I was en route to the emergency room for acute medical attention, the child inquired, Is that the steering wheel of your car that is stuck around your head? I have enjoyed every bit of my life, with all its humor, hardships, hurdles, and dramatics that could even appeal to the Hollywood movie moguls. And I continue to enjoy my walks. After all, my doctor has instructed me to get daily exercise.",
+            "year": 2000,
+            "citationCount": 0,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "In 1998 I underwent a transluminal coronary angioplasty with stent placement and subsequently I received anticoagulant therapy, which resulted in painless hematuria, which led to the discovery of renal-cell carcinoma, for which I had a radical nephrectomy."
+            },
+            "score": 1
+        },
+        {
+            "id": "4a13a2656f93a6f230660a51a613f6fd78d9baee",
+            "paperId": "4a13a2656f93a6f230660a51a613f6fd78d9baee",
+            "title": "Medical rhetoric and rhetoric medicine",
+            "abstract": "Throughout its history, medicine has benefited from technological advances that have gradually but profoundly reshaped practice, leading to faster and more accurate diagnosis and management. These changes seem to operate to the detriment of clinical skills, resulting in a situation that has been termed \u2018hyposkillia\u2019 of clinicians. But on the contrary, increasingly complex technological approaches demand parallel refinement of clinical abilities. For example, recent improvements in DNA testing require careful assessment of the phenotype in order to indicate appropriate customised gene panel screening or effectively interpret the significance of the many variants inevitably identified through whole-exome sequencing. Technological development should therefore, hopefully, lead to renewed enhancement of clinical examination skills. Yet, such developments urgently call for the solidity of an even older pillar supporting medical practice alongside the clinical and paraclinical ones, namely excellence in reasoning and in communication with the patient, which in our field extends from the child to his or her family. This pillar is rhetoric. Because health care teaching has long forsaken humanistic education, many of us may not be aware that we constantly, if clumsily, utilise a range of devices that have been identified, classified and refined since Greek antiquity under the discipline of rhetoric. The most obvious aspect of rhetoric relates to persuasion, which is no less useful in health care practice when prescribing investigations or a management plan today than it was in Hippocrates\u2019s time. It is also essential to this type of publication. Aristotle\u2019s On Rhetoric presented persuasion as a form of demonstration that can be achieved by three different modes. The first of these, ethos, stems from the speaker\u2019s personal credibility. In the case of DMCN, ethos is exemplified by the Journal\u2019s reputation, Impact Factor, editorial board, etc. The second mode of persuasion, pathos, calls on the emotional effect on the hearer. In this Journal\u2019s case, where the hearer corresponds to the readership, pathos may appear as occasional emphasis on shared ethical values, the odd passionate letter or claim that a matter is unjust. However, DMCN\u2019s main asset is undoubtedly the third mode of persuasion, logos, providing arguments that prove a truth or an apparent truth. This is the very substance of the Journal, as contributing authors describe facts and figures that support original theses. It can be noted that the appeal of such logos in turn enhances DMCN\u2019s ethos. All three modes of persuasion have also been at play throughout the long history of the practitioner-patient relationship. In an extreme example, Plato ridiculed the indispensability of persuasive medical rhetoric by staging a contradictor of Socrates who boasted about talking to patients \u2018who refused to take a drug or submit to surgery or cauterisation by the doctor, and though the doctor was unable to persuade [them, he] did, by means of no other craft than rhetoric\u2019. Still, there is much more to rhetoric than the art of persuasion. The discipline\u2019s emphasis on observable signs, facts and empirical data, and its commerce with incomplete knowledge, conjecture and situational judgement bear striking similarities with our own daily challenges. Ours too is a practical art that requires the practitioner to deal with contingencies, complexities, and singularities of individual cases. In both rhetoric and clinical practice, the practitioner is faced with uncertainty, yet he or she must aim for the best in every case while running the risk of failure because of reliance on practical judgement. While stretching the limits of knowledge, practitioners must learn from their own experience and others\u2019, whether successful or not. Admittedly, medical application of the hypothetico-deductive method and Bayesian analysis has attracted increasing interest, but indeed all forms of inference, from deduction, induction and abduction to their variants, are actually involved in the diagnosis process, which lies at the basis of management planning in paediatric neurology and developmental medicine, as in all branches of health care practice. The enhanced possibilities afforded by technology have been recognised to result in increased responsibility of clinicians. This should prompt us to resume dialogue with the humanities in order to cultivate a modern, fertile field of interdisciplinarity, where medicine and allied disciplines, human and social sciences, such as anthropology, sociology, history, arts, philosophy, and of course rhetoric, meet in order to promote applications for improved teaching and practice of our professions. And also to further strengthen the development of this Journal.",
+            "year": 2014,
+            "citationCount": 2,
+            "tldr": {
+                "model": "tldr@v2.0.0",
+                "text": "DMCN\u2019s main asset is undoubtedly the third mode of persuasion, logos, providing arguments that prove a truth or an apparent truth in the diagnosis process, which lies at the basis of management planning in paediatric neurology and developmental medicine, as in all branches of health care practice."
+            },
+            "score": 1
+        },
+        {
+            "id": "3309b6140f84e258e9589d6b16872f27029290ec",
+            "paperId": "3309b6140f84e258e9589d6b16872f27029290ec",
+            "title": "Re: growth - a spatial agitation",
+            "abstract": "This paper discusses an urban design proposal that investigates how interventions can activate residual space through a spatial form of agitation. Agitation is discussed in relation to architecture and spatial practices, and it is proposed that agitation can occur not only through people, in the role as agitators, but also through inanimate space, artefacts, networks of people, spaces and things. Residual spaces are defined as spaces of obsolescence; unproductive, dysfunctional, urban territories that do not any longer meet conventional, aesthetic and economic expectations. It is these spaces that require agitation in order to be highlighted, and to provoke the public and local authorities into considering alternative forms of redevelopment and occupation. The illustrated proposal, re: growth, is an installation involving a performative spatiotemporal event at a residual site in the City of Wellington, New Zealand. The ensuing agitation, it is proposed, will grow awareness about how the site can grow back into \u2018existence\u2019, how and in what form it can be folded back into urban life. In that way the design of the space performs a subtle form of agitation, politically, physically and emotionally. Re: growth a spatial agitation Jeffrey Inaba and Mark Wigley in a recent issue of Volume, both argue that architecture has lost its potential role for agitation and describe the current discourse as suffering from a \u2018profound agitation deficit\u2019. Agitation, they say, is needed to provoke dissent over spatial issues and to generate discussion, debate and engagement amongst the professionals, clients and the public. We are interested in how an intervention can activate residual space through a spatial form of agitation. We have defined residual spaces as spaces of obsolescence; unproductive, dysfunctional, urban territories that do not any longer meet conventional, aesthetic and economic expectations. The spatial design / art proposal described and illustrated in this paper responds to the conditions of such a residual space located within the City of Wellington, New Zealand. It addresses in particular how the public can be made aware of such unused and forgotten spaces. The aim of the proposal is to provoke people to think about alternative urban redevelopment and occupation possibilities, by engaging them in the dialogue of such renewal practices. The proposal demonstrates an application of performance based design agitation strategies that acknowledge and intervene with the social, economic and political systems that have created such residual spaces. Agitation leads to action Inaba distinguishes three forms of agitation when translated into the practice of architecture, \u201ca physical technique, an emotion, and a form of politics\u201d. Both Inaba and Wigley observe that the current culture of architectural debate is impoverished, and that Re: growth a spatial agitation Proceedings of the Conference held at the Occupation: Negotiations with University of Brighton 2 to 4 July 2009 Constructed Space 2 there is little lively disagreement or challenging of established values. They suggest that this might be due to a growing suspicion about agitation, that when negatively applied it means that someone is dissenting with the establishment, with a political authority. Therefore they are regarded as disturbers, no more than dissenting trouble-makers and naysayers. More so, Wigley actually identifies the role of the architect as the one that can calm and handle the turbulent confusion of forces, from private clients to \u201cthe cauldron of the technical, legal, social, economic and psychological factors impacting a public project\u201d in order for projects to be designed and built. He suggests that the architect has been assigned a calming, ordering role in order to find a process through this agitated state associated with the process of building, as opposed to the role of questioning and instigating debate. But it is really this cauldron of confusion, as Wigley calls it, consisting of a network of stakeholders and the forces of the market logic that requires careful attention and a good degree of agitation. It is exactly within that realm where public projects, their spaces and forms of occupation are determined, come into being. It is the realm where a good degree of dialogue should occur. Too often the processes involved in designing and managing public space, is characterised by a lack of transparency and guided by a path of least resistance by avoiding potential difficulties, debate, and political confrontations. In recent modern history, agitation came to prominence through its use during postrevolutionary Soviet Union as Agitprop. This was subsequently taken up and practiced by communist and socialist political systems of states in Eastern Europe such as in the former GDR, the socialist based German Democratic Republic. Agitation and Propaganda were the two main mechanisms through which the key ideas of Eastern Germany\u2019s political leadership were communicated to the masses. While Propaganda provided the definitions of the key ideas, Agitation disseminated and clarified the ideas on a community level. This was done by official party members that were referred to as \u2018agitators\u2019. Agitation, and agitators, regarded in this way, perform and act out their role to persuade the individual, and community, thereby leading to action by others. What if such an agitator is a spatial intervention, a spatial experience, instead of a person? This is a central question this paper explores. We are putting forward that agitation in our design proposal is not only a person, but that it is part spatial experience, part physical form, part emotion, part network of stakeholders and systems. Event and Performativity It is useful, in this case, to comprehend space as an \u2018event\u2019, a term developed by Bernard Tschumi, and which aligns architecture with people\u2019s actions in space. He identifies a disjunction between the form of space and use of space, which he seeks to transcend through his notion of the event. He describes the form of space as ideal space, a conceptual cognitive aspect of space that is in disjunction with real, inhabited or practiced space. Space as a concept therefore becomes a live, site-specific place through the inhabitation of its users. The actions are based on social and cultural spatial practices, which are about \u201cthe everyday social/spatial patterns of people in particular places\u201d. These practices describe habitation patterns based on our customs and routines. By Re: growth a spatial agitation Proceedings of the Conference held at the Occupation: Negotiations with University of Brighton 2 to 4 July 2009 Constructed Space 3 acting out these practices, the occupant of space is making the space a specific place. This is a continuous event of locating through performative acts. This idea frames spatial experience as one that is informed by past experiences, current interests and values, habitual behaviour and actual sensory perception. To conceive of spatial design as event, can emphasise a visitor\u2019s role in interpreting space or displayed work such as in our proposal described shortly, and the inherent uncertainty of meaning that is created in this process. A visitor\u2019s role then is performative by emphasising their presence, by them being there. The performance paradigm however also regards cultural artefacts as performative. They are active, rather than descriptive, and this paradigm therefore expands into inanimate places and things which are, and I quote from the recent publication Performance Design edited by Dorita Hannah and Olav Harslof \u201cinextricably bound to performance through notions of embodiment, action and event\u201d. The two notions, event and performativity, help acknowledge the significance of the actions of the network-like involvement of people over time, that constitutes a key part of the process in making a public space. At the same time event and performativity, recognise the role that the inanimate can play for understanding and experiencing a place. These various constituent parts all play a role for agitation, and become agitators themselves. The design proposes an intervention that uses agitation as its strategy, to increase people\u2019s awareness of publicly owned residual spaces that exist in urban environments. It seeks to set into motion actions that involve people and processes, spanning from the general public to the local authority and the media, to begin a dialogue on issues of urban redevelopment. The art / design strategy for this proposal is to provide a deliberately queer, off centre and unconventional spatial experience to prompt contemplation about other ways of occupying urban space and how space can perform. Re: growth At the beginning of this project, several sites were indentified and tested for a potential intervention and ranged from sunny alleyways and unoccupied buildings to various locations within the Wellington Town Belt. The following site, an enclosed bridge / walkway, was eventually chosen for its prominent, public location, a still intact architecture, but significantly too, because of a perceived lack of redevelopment action by the managing council administration. The bridge was originally designed to link the Wellington Town Hall building complex and Convention Centre on the north side of Wakefield Street with a car parking building and a public access way on its south side (fig.1-2). It was built in 1988 in concrete, steel and glass. The bridge has been shut off from public use for several years now due to increasing vandalism and crime during the time when it was accessible. Due to its 1980s aesthetic it is perceived as lacking charm and of having little or no architectural value and it has been unused for so long that it has virtually become invisible to the general public. These conditions make it a difficult and awkward site that doesn\u2019t fit into typical or normal real estate redevelopment",
+            "year": 2009,
+            "citationCount": 0,
+            "tldr": null,
+            "score": 1
+        }
+    ],
+    "novelty": "yes"
 }
