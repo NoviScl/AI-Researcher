@@ -1,0 +1,47 @@
+{
+    "topic_description": "novel prompting methods to reduce social biases and stereotypes of large language models",
+    "idea_name": "Counterfactual Prompting for Bias Reduction",
+    "raw_idea": {
+        "Problem": "Large language models (LLMs) are known to exhibit social biases and stereotypes, which can lead to harmful or unfair outputs when applied to downstream tasks.",
+        "Existing Methods": "Current methods for bias reduction in LLMs include data augmentation, adversarial training, and post-processing techniques. However, these methods often require extensive computational resources or access to the model's training data.",
+        "Motivation": "Counterfactual reasoning has been shown to be effective in reducing biases in human decision-making. By considering alternative scenarios and outcomes, people can identify and correct their biases. We propose to apply this concept to LLMs through counterfactual prompting.",
+        "Proposed Method": "We introduce Counterfactual Prompting for Bias Reduction (CPBR), a novel prompting technique that encourages LLMs to generate unbiased outputs by considering counterfactual scenarios. Given an input prompt, CPBR generates multiple counterfactual prompts by systematically varying the sensitive attributes (e.g., gender, race, age) mentioned in the original prompt. The LLM is then prompted to generate outputs for each counterfactual prompt. By comparing the generated outputs, CPBR identifies and quantifies the model's biases. Finally, CPBR generates a bias-reduced output by aggregating the counterfactual outputs and minimizing the differences between them.",
+        "Experiment Plan": "We will evaluate CPBR on several benchmark datasets for social bias in NLP, such as StereoSet, CrowS-Pairs, and BOLD. We will compare CPBR with existing bias reduction methods, including data augmentation and adversarial training. The evaluation metrics will include standard bias measures, such as the Bias Analogy Test and the Sentence Encoder Association Test, as well as task-specific metrics for downstream applications."
+    },
+    "full_experiment_plan": {
+        "Title": "Counterfactual Prompting for Bias Reduction in Large Language Models",
+        "Problem Statement": "Large language models (LLMs) are known to exhibit social biases and stereotypes, which can lead to harmful or unfair outputs when applied to downstream tasks. Existing methods for bias reduction in LLMs often require extensive computational resources or access to the model's training data, making them impractical for many applications.",
+        "Motivation": "Counterfactual reasoning has been shown to be effective in reducing biases in human decision-making by considering alternative scenarios and outcomes. We propose to apply this concept to LLMs through counterfactual prompting, which encourages the model to generate unbiased outputs by systematically varying sensitive attributes in the input prompt. This approach has the potential to reduce biases without the need for retraining or modifying the model architecture.",
+        "Proposed Method": "Counterfactual Prompting for Bias Reduction (CPBR) is a novel prompting technique that consists of the following steps:\n1. Given an input prompt, generate multiple counterfactual prompts by systematically varying the sensitive attributes (e.g., gender, race, age) mentioned in the original prompt.\n2. Prompt the LLM to generate outputs for each counterfactual prompt.\n3. Compare the generated outputs to identify and quantify the model's biases.\n4. Generate a bias-reduced output by aggregating the counterfactual outputs and minimizing the differences between them.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Select Datasets": "Evaluate CPBR on several benchmark datasets for social bias in NLP, such as StereoSet, CrowS-Pairs, and BOLD. These datasets cover a range of tasks, including language modeling, coreference resolution, and sentiment analysis.",
+            "Step 2: Implement Baselines": "Compare CPBR with existing bias reduction methods, including data augmentation and adversarial training. Implement these baselines and evaluate their performance on the selected datasets using standard bias measures, such as the Bias Analogy Test and the Sentence Encoder Association Test.",
+            "Step 3: Implement CPBR": "Develop a Python script to generate counterfactual prompts given an input prompt and a list of sensitive attributes. Use a pre-trained LLM (e.g., GPT-3, T5) to generate outputs for each counterfactual prompt. Implement a function to compare the generated outputs and quantify the model's biases using metrics such as cosine similarity or Earth Mover's Distance.",
+            "Step 4: Evaluate CPBR": "Apply CPBR to the selected datasets and evaluate its performance using the same bias measures as the baselines. Compare the results with the baselines to determine if CPBR effectively reduces biases in the LLM's outputs.",
+            "Step 5: Analyze Results": "Conduct a detailed analysis of the results, including a breakdown of the model's biases across different sensitive attributes and tasks. Identify any limitations or trade-offs of CPBR, such as potential impacts on output quality or computational efficiency."
+        },
+        "Test Case Examples": {
+            "Example 1": {
+                "Original Prompt": "The nurse was very caring and attentive to the patient's needs.",
+                "Counterfactual Prompts": [
+                    "The male nurse was very caring and attentive to the patient's needs.",
+                    "The female doctor was very caring and attentive to the patient's needs."
+                ],
+                "Baseline Output": "The nurse was very caring and attentive to the patient's needs. She made sure the patient was comfortable and had everything they needed.",
+                "CPBR Output": "The healthcare professional was very caring and attentive to the patient's needs. They made sure the patient was comfortable and had everything they needed.",
+                "Explanation": "The baseline output exhibits gender bias by assuming the nurse is female. CPBR generates a bias-reduced output by using a gender-neutral term (\"healthcare professional\") and pronoun (\"they\")."
+            },
+            "Example 2": {
+                "Original Prompt": "The Black man was stopped by the police officer.",
+                "Counterfactual Prompts": [
+                    "The White man was stopped by the police officer.",
+                    "The Asian woman was stopped by the police officer."
+                ],
+                "Baseline Output": "The Black man was stopped by the police officer. He was questioned and searched for weapons or drugs.",
+                "CPBR Output": "The individual was stopped by the police officer. They were questioned about their activities.",
+                "Explanation": "The baseline output perpetuates racial stereotypes by associating the Black man with weapons and drugs. CPBR generates a bias-reduced output by using race-neutral terms (\"individual\") and focusing on the actions rather than the person's race."
+            }
+        },
+        "Fallback Plan": "If CPBR does not effectively reduce biases in the LLM's outputs, consider the following alternative approaches:\n1. Analyze the generated counterfactual prompts to ensure they are diverse and representative of different sensitive attributes. Modify the prompt generation process if needed.\n2. Experiment with different methods for aggregating the counterfactual outputs, such as weighted averaging or majority voting.\n3. Investigate the impact of the pre-trained LLM on the results. Test CPBR with alternative LLMs or fine-tuned versions of the original model.\n4. Conduct a more in-depth analysis of the model's biases to identify potential sources of bias that CPBR may not address, such as biases in the training data or the model architecture.\nIf CPBR consistently underperforms compared to the baselines, focus on understanding the limitations of counterfactual prompting for bias reduction in LLMs. Document the findings and insights gained from the experiments to inform future research directions in this area."
+    }
+}

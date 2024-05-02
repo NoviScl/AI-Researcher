@@ -10,7 +10,7 @@ from tqdm import tqdm
 import random 
 random.seed(2024)
 
-# @retry.retry(tries=3, delay=2)
+@retry.retry(tries=3, delay=2)
 def plan_generation_method(method, idea, demo_examples, topic_description, openai_client, model, seed):
     ## forumate an idea from a paragraph into a full experiment plan based on our template
 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
         client = anthropic.Anthropic(
             api_key=ANTH_KEY,
         )
-        cache_dir = "../cache_results_claude/"
+        cache_dir = "../cache_results_claude_may/"
     else:
         client = OpenAI(
             organization=ORG_ID,
@@ -74,36 +74,40 @@ if __name__ == "__main__":
         with open("prompts/experiment_plan_examples_finetuning.txt", "r") as f:
             demo_examples = f.read().strip()
     
+    with open(cache_dir + "ideas/" + args.cache_name + ".json") as f:
+        idea_file = json.load(f)
+    topic_description = idea_file["topic_description"]
+    all_ideas = idea_file["ideas"]
+
     if args.idea_name == "all":
-        filenames = os.listdir(os.path.join(cache_dir, "experiment_plans", args.cache_name))
+        idea_names = list(all_ideas.keys())
     else:
-        filenames = ['_'.join(args.idea_name.lower().split()) + ".json"]
-
-    for filename in tqdm(filenames):
-        # try:
-        print ("working on idea: ", filename)
-        cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
+        idea_names = [args.idea_name]
+    
+    for idea_name in tqdm(idea_names):
+        cache_file = os.path.join(cache_dir + "experiment_plans/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
         
-        ## load the idea 
-        with open(cache_file, "r") as f:
-            ideas = json.load(f)
-        # idea = ideas[args.idea_name]
-        idea = ideas["raw_idea"]
-        topic_description = ideas["topic_description"]
-        
-        # if ideas["novelty"] == "yes":
-        prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
-        print (response)
-        print ("Total cost: ", cost)
-        experiment_plan = json.loads(response.strip())
-        ideas["full_experiment_plan"] = experiment_plan
+        try:            
+            idea_file = {}
+            idea_file["topic_description"] = topic_description
+            idea_file["idea_name"] = idea_name
+            idea_file["raw_idea"] = all_ideas[idea_name]
 
-        ## save the cache
-        cache_output(ideas, cache_file)
+            print ("working on: ", idea_name)
+            idea = all_ideas[idea_name]
+            
+            prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
+            print (response)
+            print ("Total cost: ", cost)
+            experiment_plan = json.loads(response.strip())
+            idea_file["full_experiment_plan"] = experiment_plan
 
-        # else:
-        #     print ("idea not novel, skipped...")
-        # except: 
-        #     print ("error in generating experiment plan for idea")
+            if not os.path.exists(cache_dir + "experiment_plans/" + args.cache_name + "/"):
+                os.makedirs(cache_dir + "experiment_plans/" + args.cache_name + "/")
+            
+            cache_output(idea_file, cache_file)
+
+        except: 
+            print ("error in generating experiment plan for idea")
 
     
