@@ -1,0 +1,77 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Uncertainty-Driven Verification Prompting",
+    "raw_idea": {
+        "Problem": "Large language models often generate overconfident responses, even when they are uncertain or incorrect. This leads to unreliable outputs that can be misleading to users.",
+        "Existing Methods": "Current methods for uncertainty estimation in LLMs include using model perplexity, ensemble disagreement, or calibration techniques. However, these methods often rely on access to model internals or multiple model instances.",
+        "Motivation": "We propose leveraging the language generation capabilities of LLMs themselves to probe for uncertainty and verify the correctness of generated responses. By prompting the model to reflect on its own responses and generate targeted verification questions, we can surface areas of uncertainty and potential inconsistencies.",
+        "Proposed Method": "Our method, Uncertainty-Driven Verification Prompting (UDVP), consists of the following steps: 1) Given an input query, prompt the LLM to generate an initial response. 2) Prompt the LLM to reflect on its response and generate a set of verification questions that probe for potential uncertainties or inconsistencies. 3) For each verification question, prompt the LLM to generate a response and a confidence score. 4) If the confidence score for any verification response falls below a threshold, prompt the LLM to refine its original response considering the uncertain areas. 5) Repeat steps 2-4 until all verification responses have high confidence or a maximum number of iterations is reached.",
+        "Experiment Plan": "We will evaluate UDVP on a range of question-answering and fact-checking tasks, comparing against baselines such as direct prompting and calibrated confidence scoring. Metrics will include accuracy, calibration error, and uncertainty-error correlation. We will also conduct human evaluations to assess the usefulness of the generated verification questions and refined responses."
+    },
+    "full_experiment_plan": {
+        "Title": "Uncertainty-Driven Verification Prompting for Calibrating Language Model Confidence",
+        "Problem Statement": "Large language models often generate overconfident responses, even when they are uncertain or incorrect. This leads to unreliable outputs that can be misleading to users.",
+        "Motivation": "Current methods for uncertainty estimation in LLMs, such as using model perplexity, ensemble disagreement, or calibration techniques, often rely on access to model internals or multiple model instances. We propose leveraging the language generation capabilities of LLMs themselves to probe for uncertainty and verify the correctness of generated responses. By prompting the model to reflect on its own responses and generate targeted verification questions, we can surface areas of uncertainty and potential inconsistencies. This approach does not require access to model internals or training multiple models, making it more broadly applicable.",
+        "Proposed Method": "Our method, Uncertainty-Driven Verification Prompting (UDVP), consists of the following steps:\n1. Given an input query, prompt the LLM to generate an initial response.\n2. Prompt the LLM to reflect on its response and generate a set of verification questions that probe for potential uncertainties or inconsistencies.\n3. For each verification question, prompt the LLM to generate a response and a confidence score.\n4. If the confidence score for any verification response falls below a threshold, prompt the LLM to refine its original response considering the uncertain areas.\n5. Repeat steps 2-4 until all verification responses have high confidence or a maximum number of iterations is reached.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Gather Datasets": "We will evaluate UDVP on a range of question-answering and fact-checking datasets, such as Natural Questions, TriviaQA, and FEVER. These datasets cover a variety of domains and question types, allowing us to assess the effectiveness of UDVP in different settings.",
+            "Step 2: Construct Prompts": "1. Initial Response Prompt: The input query is used as the prompt to generate the initial response.\n2. Verification Question Prompt: The initial response is appended to the input query, along with an instruction like \"Please generate 3 verification questions to check for potential uncertainties or inconsistencies in the above response.\"\n3. Verification Response Prompt: Each verification question is individually appended to the input query, along with an instruction like \"Please answer the following question and provide a confidence score between 0 and 1.\"\n4. Refinement Prompt: If any verification response has low confidence, the input query is appended with the initial response, the verification questions, and the low-confidence responses, along with an instruction like \"Please refine the original response considering the uncertainties identified in the verification questions and responses.\"",
+            "Step 3: Select Models": "We will use GPT-3.5 (text-davinci-003) and GPT-4 via the OpenAI API to test UDVP on models of different sizes and capabilities.",
+            "Step 4: Implement UDVP": "1. For each example in the evaluation datasets, generate an initial response using the Initial Response Prompt.\n2. Generate verification questions using the Verification Question Prompt.\n3. For each verification question, generate a response and confidence score using the Verification Response Prompt.\n4. If any verification response has a confidence score below a threshold (e.g., 0.7), generate a refined response using the Refinement Prompt.\n5. Repeat steps 2-4 until all verification responses have high confidence or a maximum number of iterations (e.g., 3) is reached.\n6. Record the initial response, verification questions and responses, and the final refined response for each example.",
+            "Step 5: Evaluate Results": "1. Compute the accuracy of the initial responses and the final refined responses for each dataset.\n2. Analyze the calibration of the confidence scores by binning the responses based on their confidence and computing the accuracy within each bin. Well-calibrated confidence scores should align with the actual accuracy.\n3. Measure the uncertainty-error correlation by computing the correlation between the lowest confidence score among the verification responses and the correctness of the initial response. A strong negative correlation indicates that UDVP effectively identifies uncertain or incorrect responses.\n4. Conduct human evaluation on a subset of examples to assess the quality and usefulness of the generated verification questions and refined responses."
+        },
+        "Test Case Examples": {
+            "Example 1": {
+                "Input": "Who was the first president of the United States?",
+                "Initial Response": "The first president of the United States was George Washington.",
+                "Verification Questions": [
+                    "In what year did George Washington become president?",
+                    "How long did George Washington serve as president?",
+                    "Who was the second president of the United States?"
+                ],
+                "Verification Responses": [
+                    {
+                        "Response": "George Washington became president in 1789.",
+                        "Confidence": 0.95
+                    },
+                    {
+                        "Response": "George Washington served as president for two terms, from 1789 to 1797.",
+                        "Confidence": 0.92
+                    },
+                    {
+                        "Response": "The second president of the United States was John Adams.",
+                        "Confidence": 0.97
+                    }
+                ],
+                "Final Response": "The first president of the United States was George Washington. He took office in 1789 and served for two terms until 1797. John Adams succeeded him as the second president.",
+                "Explanation": "The initial response is correct, and the verification questions and responses further confirm its accuracy. The final response incorporates additional details from the verification process, enhancing the overall quality of the answer."
+            },
+            "Example 2": {
+                "Input": "What is the capital of Australia?",
+                "Initial Response": "The capital of Australia is Sydney.",
+                "Verification Questions": [
+                    "Is Sydney the most populous city in Australia?",
+                    "Does the Australian government convene in Sydney?",
+                    "What is the purpose-built capital city of Australia?"
+                ],
+                "Verification Responses": [
+                    {
+                        "Response": "Yes, Sydney is the most populous city in Australia.",
+                        "Confidence": 0.85
+                    },
+                    {
+                        "Response": "No, the Australian government does not convene in Sydney. It convenes in Canberra.",
+                        "Confidence": 0.78
+                    },
+                    {
+                        "Response": "The purpose-built capital city of Australia is Canberra.",
+                        "Confidence": 0.93
+                    }
+                ],
+                "Final Response": "I apologize for my previous response. While Sydney is the most populous city in Australia, it is not the capital. The capital of Australia is Canberra, a purpose-built city where the Australian government convenes.",
+                "Explanation": "The initial response is incorrect, but the verification questions and responses identify the error. The low confidence scores for the verification responses trigger a refinement of the original answer, leading to a correct final response that acknowledges the mistake and provides accurate information."
+            }
+        },
+        "Fallback Plan": "If the proposed UDVP method does not significantly improve performance over the baselines, we can conduct additional analyses to understand the limitations and inform potential improvements:\n1. Analyze the quality and relevance of the generated verification questions to identify if they are effectively probing for uncertainties and inconsistencies.\n2. Examine the calibration of the confidence scores for the verification responses to determine if they are reliable indicators of uncertainty.\n3. Investigate the refinement process to assess if the model is effectively incorporating the information from the verification responses to improve its answers.\n4. Conduct error analysis to identify common patterns or types of questions where UDVP struggles, which can guide the development of more targeted prompting strategies.\n5. Explore variations of the prompting templates and instructions to optimize the performance of UDVP.\n6. Consider incorporating additional techniques, such as retrieval-augmented generation or ensemble methods, to complement UDVP in addressing uncertainty and improving response quality."
+    }
+}

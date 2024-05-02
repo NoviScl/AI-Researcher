@@ -1,0 +1,51 @@
+{
+    "topic_description": "novel prompting methods for large language models to improve mathematical problem solving",
+    "idea_name": "Commonsense Grounding Prompting",
+    "raw_idea": {
+        "Problem": "Math word problems often require understanding commonsense relations between quantities and entities, but large language models may lack such understanding and generate nonsensical solutions.",
+        "Existing Methods": "Current methods focus on generating solutions with in-context exemplars or chain-of-thought prompting, but do not explicitly incorporate commonsense knowledge.",
+        "Motivation": "Humans draw upon commonsense knowledge to sanity-check the plausibility of solutions to math word problems. For example, the height of a person should be greater than that of a cat. Language models can be augmented with such commonsense comparisons to improve the quality of generated solutions.",
+        "Proposed Method": "We propose Commonsense Grounding Prompting (CGP), where the model is prompted to: 1) Extract all entities and quantities from the problem. 2) Generate commonsense comparisons between pairs of quantities based on general knowledge (e.g., \"a person is typically taller than a cat\"). 3) Generate a solution to the problem and extract the computed quantities. 4) Verify the commonsense consistency of the computed quantities and refine if needed (e.g., rejecting a solution where a cat's height is greater than a person's). The prompts will instruct the model to follow these commonsense reasoning steps.",
+        "Experiment Plan": "Evaluate CGP on the GSM-IC benchmark with irrelevant/inconsistent context and the ASDiv benchmark requiring commonsense. Compare to chain-of-thought prompting. Analyze the generated commonsense comparisons and consistency refinements."
+    },
+    "full_experiment_plan": {
+        "Title": "Commonsense Grounding Prompting for Improving Mathematical Problem Solving in Large Language Models",
+        "Problem Statement": "Math word problems often require understanding commonsense relations between quantities and entities, but large language models may lack such understanding and generate nonsensical solutions.",
+        "Motivation": "Current methods for mathematical problem solving with large language models, such as in-context exemplars or chain-of-thought prompting, focus on generating solutions directly without explicitly incorporating commonsense knowledge. However, humans draw upon commonsense knowledge to sanity-check the plausibility of solutions to math word problems. For example, the height of a person should be greater than that of a cat. Augmenting language models with such commonsense comparisons could improve the quality of generated solutions by allowing the model to refine solutions that violate commonsense.",
+        "Proposed Method": "We propose Commonsense Grounding Prompting (CGP), where the model is prompted to: 1) Extract all entities and quantities from the problem. 2) Generate commonsense comparisons between pairs of quantities based on general knowledge (e.g., \"a person is typically taller than a cat\"). 3) Generate a solution to the problem and extract the computed quantities. 4) Verify the commonsense consistency of the computed quantities and refine if needed (e.g., rejecting a solution where a cat's height is greater than a person's). The prompts will instruct the model to follow these commonsense reasoning steps.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Gather Datasets": "Evaluate CGP on the GSM8K dataset for grade school math word problems and the ASDiv dataset for more diverse math word problems requiring commonsense reasoning.",
+            "Step 2: Construct Prompts": "We compare CGP to two baselines: 1) Direct prompting, where the model is given the math word problem and asked to generate a solution directly. 2) Chain-of-thought (CoT) prompting, where the model is given the problem and prompted to generate a step-by-step solution.\nFor CGP, we construct a multi-step prompt:\n1) Entity and Quantity Extraction: Prompt the model to extract all entities and quantities mentioned in the problem, e.g., \"Extract all entities (e.g., person, cat) and quantities (e.g., height, age) from the following problem: [Problem]\".\n2) Commonsense Comparison Generation: Prompt the model to generate commonsense comparisons between pairs of quantities whenever possible based on general knowledge, e.g., \"Generate commonsense comparisons between quantities from the following entities and quantities: [Entities & Quantities]. Example: a person is typically taller than a cat.\".\n3) Solution Generation: Prompt the model to generate a solution to the original problem, e.g., \"Solve the following problem step-by-step: [Problem]\".\n4) Commonsense Verification and Refinement: Prompt the model to verify the commonsense consistency of quantities computed in the solution against the generated commonsense comparisons, and refine the solution if needed, e.g., \"Verify the commonsense consistency of the solution by comparing computed quantities against the following commonsense comparisons: [Comparisons]. Refine the solution if needed.\".",
+            "Step 3: Select Models": "Evaluate CGP and the baselines using GPT-3.5 (text-davinci-003) and GPT-4 via the OpenAI API.",
+            "Step 4: Get Results": "For each dataset, generate solutions using direct prompting, CoT prompting, and CGP. Compute the percentage of problems solved correctly for each method.",
+            "Step 5: Analyze Results": "Compare the performance of CGP to the baselines. Analyze the generated commonsense comparisons and refinements to understand how often they help improve the solution. Qualitatively examine cases where CGP outperforms the baselines."
+        },
+        "Test Case Examples": {
+            "Test Case 1": {
+                "Problem": "A cat has a height of 24 cm. A person has a height 168 cm. How many times taller is the person than the cat?",
+                "Direct Prompting": "The person is 7 times taller than the cat.",
+                "CoT Prompting": "The person's height is 168 cm. The cat's height is 24 cm. To find how many times taller the person is, divide the person's height by the cat's height: 168 cm / 24 cm = 7. Therefore, the person is 7 times taller than the cat.",
+                "CGP": {
+                    "Entity and Quantity Extraction": "Entities: cat, person. Quantities: cat height (24 cm), person height (168 cm).",
+                    "Commonsense Comparison Generation": "A person is typically taller than a cat.",
+                    "Solution Generation": "The person's height is 168 cm. The cat's height is 24 cm. To find how many times taller the person is, divide the person's height by the cat's height: 168 cm / 24 cm = 7. Therefore, the person is 7 times taller than the cat.",
+                    "Commonsense Verification and Refinement": "The solution is consistent with the commonsense comparison that a person is typically taller than a cat. No refinement needed."
+                },
+                "Explanation": "All methods generate the correct solution for this simple problem. CGP explicitly verifies that the solution is consistent with commonsense."
+            },
+            "Test Case 2": {
+                "Problem": "A cat has a height of 34 cm. A person has a height 28 cm. How many times taller is the cat than the person?",
+                "Direct Prompting": "The cat is 1.21 times taller than the person.",
+                "CoT Prompting": "The cat's height is 34 cm. The person's height is 28 cm. To find how many times taller the cat is, divide the cat's height by the person's height: 34 cm / 28 cm = 1.21. Therefore, the cat is 1.21 times taller than the person.",
+                "CGP": {
+                    "Entity and Quantity Extraction": "Entities: cat, person. Quantities: cat height (34 cm), person height (28 cm).",
+                    "Commonsense Comparison Generation": "A person is typically taller than a cat.",
+                    "Solution Generation": "The cat's height is 34 cm. The person's height is 28 cm. To find how many times taller the cat is, divide the cat's height by the person's height: 34 cm / 28 cm = 1.21. Therefore, the cat is 1.21 times taller than the person.",
+                    "Commonsense Verification and Refinement": "The solution is inconsistent with the commonsense comparison that a person is typically taller than a cat. The problem statement is likely incorrect, as it is highly unlikely for a cat to be taller than a person. No meaningful solution can be provided without correcting the problem statement."
+                },
+                "Explanation": "The direct prompting and CoT methods generate nonsensical solutions, as they blindly compute the requested quantity without considering the implausibility of a cat being taller than a person. CGP recognizes this commonsense inconsistency and flags the problem as likely incorrect, rather than generating a solution."
+            }
+        },
+        "Fallback Plan": "If CGP does not outperform the baselines, we can: 1) Analyze the generated commonsense comparisons to see if they are relevant and correct. Fine-tune the commonsense comparison prompt if needed. 2) Analyze the refinement step to see if the model accurately identifies commonsense inconsistencies and refines the solution appropriately. Fine-tune the refinement prompt if needed. 3) If the model struggles to generate accurate commonsense comparisons, consider using an external commonsense knowledge base to retrieve relevant comparisons instead. 4) If the model struggles to refine solutions based on commonsense comparisons, consider using a separate model or module specifically trained for this task. 5) If the above steps do not improve performance, the results can be turned into an analysis of the limitations of using commonsense prompting for this task, which could inform the design of alternative methods such as explicitly encoding commonsense knowledge into the model's architecture or training process."
+    }
+}

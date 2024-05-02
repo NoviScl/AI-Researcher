@@ -1,0 +1,59 @@
+{
+    "topic_description": "novel prompting methods to improve large language models' robustness against adversarial attacks and improve their security and privacy",
+    "idea_name": "Parallel Prompting",
+    "raw_idea": {
+        "Problem": "Adversaries can craft prompts that are specially engineered to induce inconsistent or contradictory behaviors from a language model. For example, an adversary might discover a set of semantically equivalent prompts that lead to very different outputs. These inconsistencies can be exploited to degrade the model's performance or elicit harmful behaviors.",
+        "Existing Methods": "Existing consistency defense methods for language models often focus on the training process, e.g., using consistency regularization or contrastive learning. However, these methods can be computationally expensive and may not fully protect against adversaries who craft inconsistencies at the prompting stage.",
+        "Motivation": "We propose a novel prompting strategy called Parallel Prompting that can defend against inconsistency attacks at inference time. The key idea is to prompt the model with multiple paraphrased versions of the same input, and then cross-check the outputs for consistency. Any inconsistencies found can then be resolved through a consensus mechanism.",
+        "Proposed Method": "Our Parallel Prompting system works as follows: 1) Prompt Paraphrasing: Given an input prompt, we generate a set of k paraphrased versions. These paraphrases should capture the same semantic meaning as the original, but with variations in wording and syntax. This can be done using another language model trained for paraphrasing. 2) Parallel Generation: We feed each of the k paraphrased prompts independently to the language model, generating k parallel outputs. 3) Consistency Checking: We use a consistency scoring function to measure the semantic similarity of the k outputs. If the consistency score falls below a certain threshold, we flag a potential inconsistency attack. 4) Consensus Resolution: In case of detected inconsistencies, we can either alert the user, or try to resolve a consensus output, e.g., by taking a majority vote or averaging the embeddings of the outputs.",
+        "Experiment Plan": "We can evaluate Parallel Prompting on adversarial datasets that are designed to induce inconsistencies, like the ANLI dataset. Metrics include the system's ability to detect and resolve inconsistencies, as well as the quality of the final consensus outputs."
+    },
+    "full_experiment_plan": {
+        "Title": "Parallel Prompting: Defending Against Inconsistency Attacks in Large Language Models",
+        "Problem Statement": "Adversaries can craft prompts that are specially engineered to induce inconsistent or contradictory behaviors from a language model. For example, an adversary might discover a set of semantically equivalent prompts that lead to very different outputs. These inconsistencies can be exploited to degrade the model's performance or elicit harmful behaviors.",
+        "Motivation": "Existing consistency defense methods for language models often focus on the training process, e.g., using consistency regularization or contrastive learning. However, these methods can be computationally expensive and may not fully protect against adversaries who craft inconsistencies at the prompting stage. Inspired by ensemble methods in machine learning that can improve robustness and consistency, we propose a novel prompting strategy called Parallel Prompting that can defend against inconsistency attacks at inference time. The key idea is to prompt the model with multiple paraphrased versions of the same input, and then cross-check the outputs for consistency. Any inconsistencies found can then be resolved through a consensus mechanism.",
+        "Proposed Method": "Our Parallel Prompting system works as follows:\n1. Prompt Paraphrasing: Given an input prompt, we generate a set of k paraphrased versions. These paraphrases should capture the same semantic meaning as the original, but with variations in wording and syntax. This can be done using another language model trained for paraphrasing.\n2. Parallel Generation: We feed each of the k paraphrased prompts independently to the language model, generating k parallel outputs.\n3. Consistency Checking: We use a consistency scoring function to measure the semantic similarity of the k outputs. If the consistency score falls below a certain threshold, we flag a potential inconsistency attack.\n4. Consensus Resolution: In case of detected inconsistencies, we can either alert the user, or try to resolve a consensus output, e.g., by taking a majority vote or averaging the embeddings of the outputs.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Gather Datasets": "We can evaluate Parallel Prompting on adversarial datasets that are designed to induce inconsistencies, like the Adversarial NLI (ANLI) dataset. We can also test on regular NLP benchmarks like GLUE and SuperGLUE to ensure the method does not degrade performance on clean data. Metrics include the system's ability to detect and resolve inconsistencies (e.g., precision, recall, F1 score), as well as the quality of the final consensus outputs (e.g., accuracy, BLEU, ROUGE).",
+            "Step 2: Implement Prompt Paraphraser": "We need a module to generate semantically equivalent paraphrases of the input prompt. We can use a pre-trained paraphrasing model like Pegasus or T5. Fine-tune it on paraphrase datasets like Quora Question Pairs or PAWS. Experiment with different values of k (number of paraphrases).",
+            "Step 3: Implement Parallel Generator": "For each of the k paraphrased prompts, query the target language model to generate k outputs. We can use APIs like OpenAI or Anthropic to access the model. Log the generated outputs for consistency checking.",
+            "Step 4: Implement Consistency Checker": "We need a module to score the semantic similarity of the k generated outputs. Options include using an NLI model to check if the outputs entail each other, or using a semantic textual similarity model like SentenceBERT to embed the outputs and calculate cosine similarities. Experiment with different consistency thresholds.",
+            "Step 5: Implement Consensus Resolver": "If an inconsistency is detected, we need to resolve it. Implement several strategies: (a) Majority vote: take the majority output as the consensus; (b) Embedding averaging: average the embeddings of the outputs to get a centroid and then decode it; (c) Prompt the model to resolve the inconsistency by showing it the conflicting outputs and asking it to judge.",
+            "Step 6: Evaluate on Adversarial Datasets": "Run the full Parallel Prompting pipeline on adversarial test sets like ANLI. Report the system's precision and recall in detecting inconsistencies. For detected inconsistencies, report the quality of the resolved consensus output.",
+            "Step 7: Evaluate on Regular Datasets": "Run the full pipeline on standard NLP benchmarks to measure any drop in performance. The consensus output should be the final output. Compare the scores with and without Parallel Prompting."
+        },
+        "Test Case Examples": {
+            "Test Case 1": {
+                "Input": "Premise: I just bought a new car. Hypothesis: I don't have a car.",
+                "Baseline Output": "Entailment",
+                "Paraphrased Prompts": [
+                    "Premise: I recently purchased a new vehicle. Hypothesis: I don't own an automobile.",
+                    "Premise: I have just acquired a new motor vehicle. Hypothesis: I am without a car."
+                ],
+                "Parallel Outputs": [
+                    "Contradiction",
+                    "Contradiction"
+                ],
+                "Consistency Score": "0.9",
+                "Consensus Output": "Contradiction",
+                "Explanation": "The baseline NLI model was fooled by the lexical variation between 'bought' and 'have'. Parallel Prompting generated consistent outputs of 'Contradiction' for the paraphrased prompts, allowing it to resolve the inconsistency."
+            },
+            "Test Case 2": {
+                "Input": "Translate the following sentence to French: I love eating apples.",
+                "Baseline Output": "J'aime manger des pommes.",
+                "Paraphrased Prompts": [
+                    "Translate this sentence into French: I enjoy consuming apples.",
+                    "Please translate to French: I am fond of eating apples."
+                ],
+                "Parallel Outputs": [
+                    "J'aime manger des pommes.",
+                    "J'adore manger des pommes."
+                ],
+                "Consistency Score": "0.8",
+                "Consensus Output": "J'aime manger des pommes.",
+                "Explanation": "The baseline and Parallel Prompting outputs are consistent and correct. Parallel Prompting does not degrade performance on benign inputs."
+            }
+        },
+        "Fallback Plan": "If the proposed Parallel Prompting method does not effectively defend against inconsistency attacks, we can conduct additional analyses to understand why:\n1. Check the quality of the generated paraphrases. Are they semantically equivalent to the original prompt? Experiment with different paraphrasing models and datasets.\n2. Analyze the consistency checker. Is it able to reliably detect semantic inconsistencies? Try different consistency scoring functions and thresholds.\n3. Examine the consensus resolution strategies. Do majority voting or embedding averaging produce good consensus outputs? Experiment with prompting the model to directly resolve inconsistencies.\n4. Investigate the types of inconsistency attacks that Parallel Prompting fails on. Are there certain linguistic phenomena or adversarial patterns that are particularly challenging? This can inform the design of new defense methods.\nIf Parallel Prompting still underperforms after these analyses, we can pivot the project to be an empirical study on the challenges of defending against inconsistency attacks in language models. The analyses above can yield insights into the strengths and limitations of prompting-based defense methods, and suggest directions for future work, such as combining prompting with other defense paradigms like adversarial training."
+    }
+}

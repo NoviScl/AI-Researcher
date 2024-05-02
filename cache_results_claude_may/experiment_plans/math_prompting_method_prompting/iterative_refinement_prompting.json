@@ -1,0 +1,71 @@
+{
+    "topic_description": "novel prompting methods for large language models to improve mathematical problem solving",
+    "idea_name": "Iterative Refinement Prompting",
+    "raw_idea": {
+        "Problem": "Large language models often struggle with complex multi-step mathematical problem solving, especially when the problem requires a long chain of reasoning steps. Existing methods like chain-of-thought prompting can help, but still fall short on more difficult problems.",
+        "Existing Methods": "Benchmarks like MATH and GSM8K test mathematical reasoning abilities. Baselines include chain-of-thought prompting and self-consistency.",
+        "Motivation": "Human mathematicians often solve problems through an iterative process, where an initial solution attempt is refined and improved over multiple passes. We hypothesize that prompting a language model to engage in a similar iterative refinement process, where it critiques and improves its own solution over multiple steps, can lead to more robust and accurate mathematical reasoning.",
+        "Proposed Method": "We propose Iterative Refinement Prompting (IRP), where the model is prompted to generate an initial solution, then critique that solution and identify areas for improvement, then generate an updated solution based on its own feedback. This is repeated for multiple iterations. The prompt at each step encourages the model to focus on different aspects, like checking calculations, validating the overall logic, considering alternative approaches, etc. The final output is the solution from the last iteration.",
+        "Experiment Plan": "We will evaluate IRP on the MATH and GSM8K benchmarks, comparing to chain-of-thought prompting and self-consistency baselines. The key metric is solution accuracy. We will also report the distribution of how many refinement iterations were needed. Qualitative analysis will examine how the solutions evolved over iterations on representative examples."
+    },
+    "full_experiment_plan": {
+        "Title": "Iterative Refinement Prompting: Improving Mathematical Problem Solving in Large Language Models",
+        "Problem Statement": "Large language models often struggle with complex multi-step mathematical problem solving, especially when the problem requires a long chain of reasoning steps. Existing methods like chain-of-thought prompting can help, but still fall short on more difficult problems.",
+        "Motivation": "Human mathematicians often solve problems through an iterative process, where an initial solution attempt is refined and improved over multiple passes. We hypothesize that prompting a language model to engage in a similar iterative refinement process, where it critiques and improves its own solution over multiple steps, can lead to more robust and accurate mathematical reasoning. This approach is inspired by the human problem-solving process and aims to leverage the model's own knowledge to guide the refinement process without requiring additional training or external resources.",
+        "Proposed Method": "We propose Iterative Refinement Prompting (IRP), where the model is prompted to generate an initial solution, then critique that solution and identify areas for improvement, then generate an updated solution based on its own feedback. This is repeated for multiple iterations. The prompt at each step encourages the model to focus on different aspects, like checking calculations, validating the overall logic, considering alternative approaches, etc. The final output is the solution from the last iteration.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Gather Datasets": "We will evaluate IRP on the MATH and GSM8K benchmarks, which test mathematical reasoning abilities. These datasets contain a variety of mathematical word problems that require multiple reasoning steps to solve.",
+            "Step 2: Construct Prompts": "We will compare IRP to several baselines:\n1. Direct prompting: The model is given the problem and asked to provide a solution directly.\n2. Chain-of-thought (CoT) prompting: The model is prompted to break down its reasoning into a series of steps before providing the final answer.\n3. Self-consistency: Multiple solutions are generated using CoT prompting, and the most consistent solution is selected as the output.\nFor IRP, we will use a multi-step prompt template:\n1. Initial solution: \"Provide a solution to the following problem: [PROBLEM]\"\n2. Critique: \"Critique the solution above, focusing on [ASPECT]. Identify any errors or areas for improvement.\"\n3. Refinement: \"Refine the solution based on the critique above. Updated solution: \"\nWe will experiment with different values for [ASPECT], such as \"calculation accuracy\", \"logical consistency\", \"alternative approaches\", etc.",
+            "Step 3: Select Models": "We will evaluate IRP using GPT-4 via the OpenAI API, as it is currently the most capable publicly available language model for mathematical reasoning tasks.",
+            "Step 4: Run Experiments": "For each problem in the MATH and GSM8K datasets:\n1. Generate a solution using each of the baseline methods (direct prompting, CoT prompting, self-consistency).\n2. Generate an initial solution using IRP.\n3. For each iteration of IRP:\n   a. Generate a critique of the current solution, focusing on a specific aspect.\n   b. Generate a refined solution based on the critique.\n   c. Repeat for a fixed number of iterations (e.g., 3-5) or until the model indicates no further improvements can be made.\n4. Record the final solution from each method.",
+            "Step 5: Evaluate Results": "1. Calculate the overall accuracy of each method on the MATH and GSM8K datasets.\n2. For IRP, report the distribution of the number of iterations needed to reach the final solution.\n3. Perform a qualitative analysis comparing the solutions generated by each method on a subset of representative problems. Examine how the solutions evolve over iterations in the IRP approach."
+        },
+        "Test Case Examples": {
+            "Example 1": {
+                "Problem": "A factory has a production target of 1200 units per day. If each worker can produce 40 units per hour and works an 8-hour shift, how many workers are needed to meet the daily target?",
+                "Baseline Solutions": {
+                    "Direct Prompting": "To calculate the number of workers needed, we can divide the daily target by the number of units each worker can produce in a day.\nEach worker produces 40 units/hour * 8 hours/day = 320 units/day\n1200 units/day \u00f7 320 units/worker/day = 3.75 workers\nRounding up, the factory needs 4 workers to meet the daily target.",
+                    "CoT Prompting": "To find the number of workers needed, let's break it down step-by-step:\n1. Calculate the number of units each worker can produce in a day:\n   - Each worker produces 40 units per hour\n   - Each worker works an 8-hour shift\n   - So, each worker produces 40 * 8 = 320 units per day\n2. Divide the daily target by the number of units each worker can produce:\n   - Daily target is 1200 units\n   - Each worker produces 320 units per day\n   - 1200 \u00f7 320 = 3.75\n3. Round up the result, since we can't have a fractional number of workers:\n   - 3.75 rounds up to 4\nTherefore, the factory needs 4 workers to meet the daily production target.",
+                    "Self-Consistency": "The self-consistency method generates multiple solutions using CoT prompting and selects the most consistent one. In this case, the solutions are likely to be similar, so the final output would be the same as the CoT prompting solution, i.e., 4 workers."
+                },
+                "IRP Solution": {
+                    "Iteration 1": {
+                        "Solution": "To calculate the number of workers needed:\n- Each worker produces 40 units/hour\n- Working 8 hours/day, each worker produces 40 * 8 = 320 units/day\n- To meet the 1200 units/day target, we need 1200 \u00f7 320 = 3.75 workers\n- Rounding up, we need 4 workers.",
+                        "Critique": "The calculation looks correct, but let's double-check the units and make sure the rounding makes sense in this context.",
+                        "Refinement": "Checking the units:\n- 40 units/hour * 8 hours/day = 320 units/day per worker (correct)\n- 1200 units/day \u00f7 320 units/worker/day = 3.75 workers (correct)\nRounding up to 4 workers makes sense, since we can't have a fractional number of workers. The factory will need to hire 4 full-time workers to meet the target."
+                    },
+                    "Iteration 2": {
+                        "Solution": "The solution looks good after double-checking the units and rounding. No further improvements needed.",
+                        "Critique": "N/A",
+                        "Refinement": "N/A"
+                    },
+                    "Final Solution": "The factory needs to hire 4 workers to meet the daily production target of 1200 units, given that each worker can produce 40 units per hour and works an 8-hour shift."
+                },
+                "Explanation": "In this example, the baseline methods provide correct solutions, but IRP adds an extra layer of verification by double-checking the units and confirming that the rounding makes sense in the context of the problem. This additional step can help catch potential errors and improve the overall robustness of the solution."
+            },
+            "Example 2": {
+                "Problem": "A rectangular garden has a length that is 3 meters longer than its width. If the perimeter of the garden is 26 meters, find the area of the garden.",
+                "Baseline Solutions": {
+                    "Direct Prompting": "Let the width of the garden be x meters.\nThen, the length of the garden is (x + 3) meters.\nThe perimeter of the garden is 2(length + width) = 2(x + x + 3) = 26\n2(2x + 3) = 26\n4x + 6 = 26\n4x = 20\nx = 5\nThe width of the garden is 5 meters, and the length is 5 + 3 = 8 meters.\nThe area of the garden is length * width = 8 * 5 = 40 square meters.",
+                    "CoT Prompting": "Let's solve this step by step:\n1. Let the width of the garden be x meters.\n2. The length of the garden is 3 meters longer than the width, so it is (x + 3) meters.\n3. The perimeter of the garden is 2(length + width):\n   - Perimeter = 2(x + x + 3) = 26\n   - 2(2x + 3) = 26\n   - 4x + 6 = 26\n   - 4x = 20\n   - x = 5\n4. The width of the garden is 5 meters, and the length is 5 + 3 = 8 meters.\n5. The area of the garden is length * width = 8 * 5 = 40 square meters.\nTherefore, the area of the garden is 40 square meters.",
+                    "Self-Consistency": "The self-consistency method generates multiple solutions using CoT prompting and selects the most consistent one. In this case, the solutions are likely to be similar, so the final output would be the same as the CoT prompting solution, i.e., 40 square meters."
+                },
+                "IRP Solution": {
+                    "Iteration 1": {
+                        "Solution": "Let the width of the garden be x meters.\nThe length is 3 meters longer than the width, so it is (x + 3) meters.\nThe perimeter is 2(length + width):\n- 2(x + x + 3) = 26\n- 2(2x + 3) = 26\n- 4x + 6 = 26\n- 4x = 20\n- x = 5\nThe width is 5 meters, and the length is 5 + 3 = 8 meters.\nThe area is length * width = 8 * 5 = 40 square meters.",
+                        "Critique": "The solution looks correct, but let's make sure the algebra is correct and that the final answer makes sense.",
+                        "Refinement": "Checking the algebra:\n- 2(x + x + 3) = 2(2x + 3) (correct)\n- 2(2x + 3) = 26 (given)\n- 4x + 6 = 26 (correct)\n- 4x = 20 (correct)\n- x = 5 (correct)\nThe width (5 meters) and length (8 meters) add up to 13 meters, which is half the perimeter (26 meters), so the dimensions make sense.\nThe area (40 square meters) is also reasonable for a garden with these dimensions."
+                    },
+                    "Iteration 2": {
+                        "Solution": "The algebra is correct, and the final answer makes sense. No further improvements needed.",
+                        "Critique": "N/A",
+                        "Refinement": "N/A"
+                    },
+                    "Final Solution": "The area of the rectangular garden is 40 square meters, given that its length is 3 meters longer than its width and the perimeter is 26 meters."
+                },
+                "Explanation": "In this example, the baseline methods provide correct solutions, but IRP adds an extra layer of verification by checking the algebra and confirming that the final answer makes sense in the context of the problem. This additional step can help catch potential errors and improve the overall robustness of the solution."
+            }
+        },
+        "Fallback Plan": "If the proposed IRP method does not outperform the baselines, we can consider the following alternative approaches:\n1. Analyze the critiques generated by the model to determine if they are identifying relevant areas for improvement. If not, we can experiment with different prompts or techniques to encourage more effective critiques.\n2. Examine the refined solutions to see if they are incorporating the feedback from the critiques. If not, we can modify the prompts to encourage the model to more explicitly address the identified issues.\n3. Experiment with different numbers of iterations or stopping criteria to determine if the refinement process is terminating too early or too late.\n4. Conduct an error analysis to identify common patterns in the problems where IRP fails to improve over the baselines. This can inform the development of targeted prompts or strategies to address specific types of errors.\n5. If IRP consistently underperforms the baselines, we can pivot to an analysis of why iterative refinement is not effective in this context, potentially exploring factors such as the model's ability to critique its own reasoning, the limitations of prompt-based approaches, or the inherent complexity of the mathematical problems."
+    }
+}

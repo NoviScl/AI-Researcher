@@ -1,0 +1,89 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Confidence-Aware Prompting",
+    "raw_idea": {
+        "Problem": "Large Language Models (LLMs) often struggle to accurately assess their own confidence in generated responses, leading to overconfident incorrect answers or underconfident correct answers.",
+        "Existing Methods": "Current methods for confidence estimation in LLMs include using the model's output probabilities, generating multiple responses and measuring agreement, or fine-tuning the model with labeled confidence data.",
+        "Motivation": "We propose a novel prompting approach that encourages the LLM to introspect on its own knowledge and reasoning process to better calibrate its confidence. By explicitly prompting the model to consider factors that influence its confidence, we aim to improve the alignment between expressed confidence and response accuracy.",
+        "Proposed Method": "Our Confidence-Aware Prompting (CAP) method consists of the following steps: 1) Initial Response Generation: Given a question, prompt the LLM to generate an initial response. 2) Confidence Factor Identification: Prompt the LLM to identify factors that influence its confidence in the initial response, such as the specificity of relevant knowledge, the complexity of the reasoning process, and the presence of ambiguity or uncertainty. 3) Confidence Estimation: Based on the identified confidence factors, prompt the LLM to estimate its confidence level in the initial response on a scale from 0 to 1. 4) Confidence-Based Response Refinement: If the confidence estimate is below a certain threshold, prompt the LLM to refine its response by gathering additional relevant information or simplifying its reasoning process. 5) Final Response Generation: Generate the final response, along with a verbalized confidence score based on the estimated confidence level.",
+        "Experiment Plan": "Evaluate the effectiveness of CAP on a diverse set of question-answering datasets, comparing it against baseline methods such as direct prompting and prompting with self-consistency. Measure the calibration between expressed confidence and response accuracy using metrics such as Expected Calibration Error (ECE) and Brier Score. Additionally, conduct human evaluation to assess the quality and trustworthiness of the generated responses and confidence scores."
+    },
+    "full_experiment_plan": {
+        "Title": "Confidence-Aware Prompting: Improving Calibration and Uncertainty Estimation in Large Language Models",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to accurately assess their own confidence in generated responses, leading to overconfident incorrect answers or underconfident correct answers.",
+        "Motivation": "Current methods for confidence estimation in LLMs, such as using output probabilities, generating multiple responses, or fine-tuning with labeled data, have limitations. Output probabilities may not always align with accuracy, generating multiple responses can be computationally expensive, and fine-tuning requires labeled data. We propose a novel prompting approach that encourages the LLM to introspect on its own knowledge and reasoning process to better calibrate its confidence. By explicitly prompting the model to consider factors that influence its confidence, we aim to improve the alignment between expressed confidence and response accuracy without the need for additional training or data.",
+        "Proposed Method": "Our Confidence-Aware Prompting (CAP) method consists of the following steps:\n1. Initial Response Generation: Given a question, prompt the LLM to generate an initial response.\n2. Confidence Factor Identification: Prompt the LLM to identify factors that influence its confidence in the initial response, such as the specificity of relevant knowledge, the complexity of the reasoning process, and the presence of ambiguity or uncertainty.\n3. Confidence Estimation: Based on the identified confidence factors, prompt the LLM to estimate its confidence level in the initial response on a scale from 0 to 1.\n4. Confidence-Based Response Refinement: If the confidence estimate is below a certain threshold, prompt the LLM to refine its response by gathering additional relevant information or simplifying its reasoning process.\n5. Final Response Generation: Generate the final response, along with a verbalized confidence score based on the estimated confidence level.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Gather Datasets": "Evaluate the effectiveness of CAP on a diverse set of question-answering datasets, such as SQuAD, TriviaQA, NaturalQuestions, and HotpotQA. These datasets cover a range of domains and difficulty levels, allowing for a comprehensive assessment of the method's performance.",
+            "Step 2: Construct Prompts": "Design prompts for each step of the CAP method:\n1. Initial Response Generation: \"Please answer the following question: [question]\"\n2. Confidence Factor Identification: \"Considering your previous response, identify factors that influence your confidence in the answer. Consider aspects such as the specificity of your knowledge, the complexity of the reasoning process, and any ambiguity or uncertainty.\"\n3. Confidence Estimation: \"Based on the factors you identified, estimate your confidence level in your initial response on a scale from 0 (not at all confident) to 1 (extremely confident).\"\n4. Confidence-Based Response Refinement: \"If your confidence level is below 0.7, please refine your response by gathering additional relevant information or simplifying your reasoning process.\"\n5. Final Response Generation: \"Please provide your final answer to the question, along with a verbalized confidence score based on your estimated confidence level.\"",
+            "Step 3: Select Models": "Evaluate CAP using state-of-the-art LLMs, such as GPT-3.5 (text-davinci-002) and GPT-4 from OpenAI. These models have demonstrated strong performance across a wide range of natural language tasks.",
+            "Step 4: Implement Baselines": "Compare CAP against the following baseline methods:\n1. Direct Prompting: Prompt the LLM to generate a response without any confidence estimation.\n2. Output Probability: Use the LLM's output probabilities as a measure of confidence.\n3. Multiple Response Generation: Generate multiple responses and measure confidence based on the agreement between the responses.\n4. Fine-tuning with Labeled Data: Fine-tune the LLM using a labeled dataset with confidence scores and evaluate its performance on the test set.",
+            "Step 5: Evaluate Performance": "Measure the performance of CAP and the baseline methods using the following metrics:\n1. Accuracy: Calculate the percentage of correctly answered questions.\n2. Calibration: Assess the alignment between expressed confidence and accuracy using metrics such as Expected Calibration Error (ECE) and Maximum Calibration Error (MCE).\n3. Uncertainty Estimation: Evaluate the quality of uncertainty estimates using metrics such as Brier Score and Negative Log-Likelihood (NLL).",
+            "Step 6: Analyze Results": "Compare the performance of CAP against the baseline methods across the different datasets and metrics. Investigate the effectiveness of each step in the CAP method and identify areas for further improvement. Conduct error analysis to understand the types of questions and scenarios where CAP performs well or struggles.",
+            "Step 7: Conduct Human Evaluation": "In addition to automatic evaluation, conduct a human evaluation to assess the quality and trustworthiness of the generated responses and confidence scores. Have human annotators rate the responses based on factors such as relevance, coherence, and the alignment between the expressed confidence and their own judgment of the response's accuracy."
+        },
+        "Test Case Examples": {
+            "Test Case 1": {
+                "Question": "What is the capital of France?",
+                "Baseline (Direct Prompting)": {
+                    "Prompt": "What is the capital of France?",
+                    "Expected Output": "The capital of France is Paris."
+                },
+                "CAP": {
+                    "Step 1: Initial Response Generation": {
+                        "Prompt": "Please answer the following question: What is the capital of France?",
+                        "Expected Output": "The capital of France is Paris."
+                    },
+                    "Step 2: Confidence Factor Identification": {
+                        "Prompt": "Considering your previous response, identify factors that influence your confidence in the answer. Consider aspects such as the specificity of your knowledge, the complexity of the reasoning process, and any ambiguity or uncertainty.",
+                        "Expected Output": "Factors influencing confidence:\n1. High specificity of knowledge: Paris is a well-known fact as the capital of France.\n2. Simple reasoning process: No complex reasoning is required to answer the question.\n3. No ambiguity or uncertainty: The question is straightforward, and there is only one correct answer."
+                    },
+                    "Step 3: Confidence Estimation": {
+                        "Prompt": "Based on the factors you identified, estimate your confidence level in your initial response on a scale from 0 (not at all confident) to 1 (extremely confident).",
+                        "Expected Output": "Confidence level: 0.95"
+                    },
+                    "Step 4: Confidence-Based Response Refinement": {
+                        "Prompt": "If your confidence level is below 0.7, please refine your response by gathering additional relevant information or simplifying your reasoning process.",
+                        "Expected Output": "No refinement needed, as the confidence level is above 0.7."
+                    },
+                    "Step 5: Final Response Generation": {
+                        "Prompt": "Please provide your final answer to the question, along with a verbalized confidence score based on your estimated confidence level.",
+                        "Expected Output": "The capital of France is Paris. I am highly confident in this answer, with a confidence score of 0.95."
+                    }
+                },
+                "Explanation": "In this test case, the question is straightforward, and the model has high confidence in its answer. The CAP method generates a response similar to the baseline but with an additional confidence score, which accurately reflects the model's certainty in its answer."
+            },
+            "Test Case 2": {
+                "Question": "What is the largest planet in our solar system?",
+                "Baseline (Direct Prompting)": {
+                    "Prompt": "What is the largest planet in our solar system?",
+                    "Expected Output": "The largest planet in our solar system is Jupiter."
+                },
+                "CAP": {
+                    "Step 1: Initial Response Generation": {
+                        "Prompt": "Please answer the following question: What is the largest planet in our solar system?",
+                        "Expected Output": "The largest planet in our solar system is Saturn."
+                    },
+                    "Step 2: Confidence Factor Identification": {
+                        "Prompt": "Considering your previous response, identify factors that influence your confidence in the answer. Consider aspects such as the specificity of your knowledge, the complexity of the reasoning process, and any ambiguity or uncertainty.",
+                        "Expected Output": "Factors influencing confidence:\n1. Moderate specificity of knowledge: I know that Saturn is one of the largest planets in our solar system, but I'm not certain if it is the largest.\n2. Simple reasoning process: The question requires recalling a fact rather than complex reasoning.\n3. Some uncertainty: I am not completely sure if Saturn is the largest planet or if there might be another planet larger than Saturn."
+                    },
+                    "Step 3: Confidence Estimation": {
+                        "Prompt": "Based on the factors you identified, estimate your confidence level in your initial response on a scale from 0 (not at all confident) to 1 (extremely confident).",
+                        "Expected Output": "Confidence level: 0.6"
+                    },
+                    "Step 4: Confidence-Based Response Refinement": {
+                        "Prompt": "If your confidence level is below 0.7, please refine your response by gathering additional relevant information or simplifying your reasoning process.",
+                        "Expected Output": "After further consideration, I realized that Jupiter is actually the largest planet in our solar system, not Saturn. Jupiter has a radius of about 69,911 kilometers, while Saturn's radius is about 58,232 kilometers."
+                    },
+                    "Step 5: Final Response Generation": {
+                        "Prompt": "Please provide your final answer to the question, along with a verbalized confidence score based on your estimated confidence level.",
+                        "Expected Output": "The largest planet in our solar system is Jupiter, not Saturn as I initially stated. I have a high confidence level of 0.9 in this revised answer."
+                    }
+                },
+                "Explanation": "In this test case, the model initially provides an incorrect answer with moderate confidence. Through the CAP process, the model identifies its uncertainty, gathers additional information, and revises its answer to the correct one with high confidence. This demonstrates the effectiveness of the CAP method in improving the model's calibration and uncertainty estimation."
+            }
+        },
+        "Fallback Plan": "If the proposed CAP method does not significantly improve the calibration and uncertainty estimation of LLMs compared to the baselines, consider the following fallback plans:\n1. Analyze the generated confidence factors and confidence scores to identify potential weaknesses in the prompts or the model's reasoning process. Refine the prompts based on these insights to better guide the model's introspection.\n2. Investigate the impact of different confidence thresholds in the Confidence-Based Response Refinement step. Adjust the threshold values and observe how they affect the model's performance and calibration.\n3. Explore alternative methods for confidence estimation, such as using the model's attention weights or leveraging ensemble methods to combine multiple LLMs' predictions and confidence scores.\n4. Conduct a more in-depth error analysis to identify specific types of questions or domains where the CAP method struggles. Use these insights to develop targeted improvements or domain-specific prompts.\n5. If the CAP method fails to provide significant improvements, focus on analyzing the strengths and limitations of the baseline methods. Investigate why certain baselines perform better than others and identify potential areas for improvement in existing confidence estimation techniques.\n6. Consider extending the study to include a wider range of LLMs and datasets to assess the generalizability of the findings. This can help identify if the limitations of the CAP method are specific to certain models or domains.\nBy implementing these fallback plans, the project can still provide valuable insights into the challenges and opportunities of improving calibration and uncertainty estimation in LLMs, even if the proposed CAP method does not meet the initial expectations."
+    }
+}

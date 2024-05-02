@@ -1,0 +1,63 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Counterfactual Confidence Prompting",
+    "raw_idea": {
+        "Type": "prompting",
+        "Problem": "LLMs often struggle to distinguish between instances where they are confident due to strong evidence and those where they are confident due to spurious correlations or biases in the training data.",
+        "Existing Methods": "Existing methods for confidence calibration in LLMs include temperature scaling, ensembling, and post-hoc calibration using additional models.",
+        "Motivation": "We propose using counterfactual prompting to assess the model's confidence in a more robust and interpretable manner, by comparing the model's predictions under different perturbations of the input.",
+        "Proposed Method": "Counterfactual Confidence Prompting (CCP) involves the following steps: 1) Original Prediction: Prompt the LLM to generate a prediction for the original input. 2) Counterfactual Generation: Generate a set of counterfactual inputs by perturbing the original input in ways that should not affect the correct answer (e.g., paraphrasing, synonym substitution, or adding irrelevant context). 3) Counterfactual Prediction: Prompt the LLM to generate predictions for each of the counterfactual inputs. 4) Confidence Estimation: Estimate the model's confidence based on the consistency of its predictions across the original and counterfactual inputs, assigning higher confidence when the predictions are consistent and lower confidence when they differ.",
+        "Experiment Plan": "Evaluate CCP on tasks where LLMs are prone to over-confidence, such as natural language inference, sentiment analysis, and fact verification. Compare the calibration performance of CCP against baseline methods using metrics like expected calibration error (ECE) and maximum calibration error (MCE)."
+    },
+    "full_experiment_plan": {
+        "Title": "Counterfactual Confidence Prompting: Assessing Language Model Uncertainty through Input Perturbations",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to distinguish between instances where they are confident due to strong evidence and those where they are confident due to spurious correlations or biases in the training data. This can lead to overconfident predictions and hinder the reliability of LLMs in real-world applications.",
+        "Motivation": "Existing methods for confidence calibration in LLMs, such as temperature scaling, ensembling, and post-hoc calibration using additional models, often require access to the model's internal representations or additional training data. We propose a novel approach, Counterfactual Confidence Prompting (CCP), which assesses the model's confidence by comparing its predictions under different perturbations of the input. This method is inspired by the human ability to reason about counterfactuals and assess the robustness of their beliefs. By generating counterfactual inputs that should not affect the correct answer and comparing the model's predictions, we can estimate the model's confidence in a more interpretable and robust manner.",
+        "Proposed Method": "Counterfactual Confidence Prompting (CCP) involves the following steps:\n1. Original Prediction: Prompt the LLM to generate a prediction for the original input.\n2. Counterfactual Generation: Generate a set of counterfactual inputs by perturbing the original input in ways that should not affect the correct answer (e.g., paraphrasing, synonym substitution, or adding irrelevant context).\n3. Counterfactual Prediction: Prompt the LLM to generate predictions for each of the counterfactual inputs.\n4. Confidence Estimation: Estimate the model's confidence based on the consistency of its predictions across the original and counterfactual inputs, assigning higher confidence when the predictions are consistent and lower confidence when they differ.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Selection": "Evaluate CCP on tasks where LLMs are prone to over-confidence, such as natural language inference (e.g., SNLI, MNLI), sentiment analysis (e.g., SST-2, IMDB), and fact verification (e.g., FEVER). These datasets contain examples where the input can be perturbed without changing the correct label, making them suitable for testing the effectiveness of CCP.",
+            "Step 2: Counterfactual Generation": "Implement methods for generating counterfactual inputs, such as:\na) Paraphrasing: Use a paraphrasing model (e.g., T5, Pegasus) to generate semantically equivalent variations of the original input.\nb) Synonym Substitution: Replace words in the original input with their synonyms using a lexical database (e.g., WordNet).\nc) Irrelevant Context Addition: Append or prepend irrelevant sentences to the original input, ensuring that the added context does not affect the correct answer.",
+            "Step 3: Prompting and Prediction": "a) Original Prediction: Prompt the LLM with the original input and generate a prediction.\nb) Counterfactual Prediction: For each counterfactual input, prompt the LLM and generate a prediction.\nExample Prompt:\nOriginal Input: The movie was terrible. I hated every minute of it.\nCounterfactual Input: The film was awful. I despised every second of it.\nQuestion: What is the sentiment of the review?\nAnswer:",
+            "Step 4: Confidence Estimation": "Estimate the model's confidence based on the consistency of its predictions across the original and counterfactual inputs. Assign higher confidence when the predictions are consistent and lower confidence when they differ. For example, you can calculate the percentage of counterfactual predictions that match the original prediction and use this as a confidence score.",
+            "Step 5: Evaluation": "Compare the calibration performance of CCP against baseline methods, such as:\na) Uncalibrated: Use the model's raw output probabilities as confidence scores.\nb) Temperature Scaling: Calibrate the model's output probabilities using temperature scaling.\nc) Ensembling: Combine the predictions of multiple models to estimate confidence.\nUse metrics like Expected Calibration Error (ECE) and Maximum Calibration Error (MCE) to assess the calibration performance of each method.",
+            "Step 6: Ablation Studies": "Conduct ablation studies to understand the impact of different components of CCP, such as:\na) Counterfactual Generation Methods: Compare the effectiveness of different counterfactual generation methods (e.g., paraphrasing, synonym substitution, irrelevant context addition).\nb) Number of Counterfactuals: Vary the number of counterfactual inputs generated for each original input and analyze its effect on calibration performance.\nc) Confidence Estimation Metrics: Explore alternative methods for estimating confidence based on the consistency of predictions, such as using the variance or entropy of the counterfactual predictions."
+        },
+        "Test Case Examples": {
+            "Example 1": {
+                "Original Input": "The movie was terrible. I hated every minute of it.",
+                "Baseline Prediction": "Negative",
+                "Baseline Confidence": "0.95",
+                "Counterfactual Inputs": [
+                    "The film was awful. I despised every second of it.",
+                    "I disliked the movie. It was a terrible experience.",
+                    "The movie was great. I hated every minute of it."
+                ],
+                "Counterfactual Predictions": [
+                    "Negative",
+                    "Negative",
+                    "Positive"
+                ],
+                "CCP Confidence": "0.67",
+                "Explanation": "The baseline method assigns high confidence to the prediction based on the strong negative sentiment in the input. However, CCP reveals that the model's prediction is not robust to perturbations, as it changes when an irrelevant sentence (\"The movie was great.\") is added. This suggests that the model's confidence should be lower, as reflected in the CCP confidence score."
+            },
+            "Example 2": {
+                "Original Input": "The acting was superb, and the plot kept me engaged throughout the movie.",
+                "Baseline Prediction": "Positive",
+                "Baseline Confidence": "0.90",
+                "Counterfactual Inputs": [
+                    "The performances were excellent, and the story kept me interested from start to finish.",
+                    "The acting was top-notch, and the narrative kept me captivated throughout the film.",
+                    "The acting was superb, and the plot kept me engaged throughout the movie. The popcorn was stale."
+                ],
+                "Counterfactual Predictions": [
+                    "Positive",
+                    "Positive",
+                    "Positive"
+                ],
+                "CCP Confidence": "1.00",
+                "Explanation": "The baseline method assigns high confidence to the prediction based on the positive sentiment in the input. CCP confirms that the model's prediction is robust to perturbations, as it remains consistent across all counterfactual inputs, including the one with an irrelevant sentence (\"The popcorn was stale.\"). This suggests that the model's confidence is well-calibrated, as reflected in the high CCP confidence score."
+            }
+        },
+        "Fallback Plan": "If the proposed CCP method does not significantly improve the calibration performance compared to the baselines, consider the following alternative approaches:\n1. Analyze the quality of the generated counterfactual inputs to ensure they are semantically equivalent to the original input and do not introduce any biases or errors. Refine the counterfactual generation methods if necessary.\n2. Explore alternative methods for estimating confidence based on the consistency of predictions, such as using the variance or entropy of the counterfactual predictions. These methods may capture different aspects of the model's uncertainty and provide better calibration.\n3. Investigate the impact of the LLM's architecture and training data on its calibration performance. Some models may be inherently better calibrated than others, and the effectiveness of CCP may vary across different models.\n4. Consider combining CCP with other calibration methods, such as temperature scaling or ensembling, to leverage their complementary strengths and achieve better calibration performance.\nIf the proposed method and alternative approaches do not yield satisfactory results, focus on analyzing the factors that contribute to the model's overconfidence and the limitations of the CCP approach. This analysis can provide valuable insights into the challenges of calibrating LLMs and guide future research directions in this area."
+    }
+}

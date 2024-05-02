@@ -1,0 +1,40 @@
+{
+    "topic_description": "novel prompting methods to reduce social biases and stereotypes of large language models",
+    "idea_name": "Empathetic Contextual Debiasing",
+    "raw_idea": {
+        "Problem": "Language models can amplify biases when generating text in context, as they may pick up on and reinforce stereotypical associations present in the input.",
+        "Existing Methods": "Most existing debiasing methods operate on the language model in isolation, without considering the interaction between the model and the context it is applied to.",
+        "Motivation": "To effectively mitigate biases in downstream applications, it is crucial to consider the interplay between the language model and the context in which it is used. By detecting and neutralizing stereotypical associations in the input prompt, we can prevent the model from amplifying biases in its generated output.",
+        "Proposed Method": "We propose Empathetic Contextual Debiasing (ECD), a framework for mitigating biases in contextual text generation. ECD involves: 1) Identifying mentions of sensitive social groups and stereotype-related concepts in the input prompt. 2) Generating empathetic reframings of the input that challenge stereotypical associations (e.g., replacing 'The woman was emotional' with 'The person expressed their feelings'). 3) Prompting the language model to generate continuations for both the original and empathetically reframed input. 4) Comparing the level of stereotyping in the generated texts to quantify the bias reduction achieved by the reframing.",
+        "Experiment Plan": "Collect a dataset of stereotypical prompts across various social categories. Apply ECD to generate debiased continuations and compare them to baselines like direct prompting. Measure the reduction in stereotypical associations using metrics like sentiment analysis and word embedding similarity."
+    },
+    "full_experiment_plan": {
+        "Title": "Empathetic Contextual Debiasing: Mitigating Social Biases in Language Models through Stereotype-Challenging Reframing",
+        "Problem Statement": "Large language models can amplify and reinforce social biases and stereotypes present in their training data when generating text in context. This can lead to the generation of biased and harmful content that perpetuates negative stereotypes about certain social groups.",
+        "Motivation": "Existing debiasing methods for language models typically operate on the model in isolation, without considering the interaction between the model and the context it is applied to. However, to effectively mitigate biases in downstream applications, it is crucial to consider the interplay between the language model and the specific context in which it is used. By detecting and neutralizing stereotypical associations in the input prompt itself, we can prevent the model from latching onto and amplifying these biases in its generated output. Our approach is inspired by empathetic reframing techniques used in psychology to challenge stereotypical thinking by considering alternative perspectives.",
+        "Proposed Method": "We propose Empathetic Contextual Debiasing (ECD), a framework for mitigating social biases in contextual text generation with the following key steps:\n1. Identify mentions of sensitive social groups and stereotype-related concepts in the input prompt using named entity recognition and word embedding similarity.\n2. Generate empathetic reframings of the input that challenge stereotypical associations by replacing biased phrasing with neutral alternatives (e.g., replacing 'The woman was emotional' with 'The person expressed their feelings').\n3. Prompt the language model to generate continuations for both the original and empathetically reframed input.\n4. Compare the level of stereotyping and negative sentiment in the texts generated from the original vs. reframed prompts to quantify the bias reduction achieved by the reframing.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Collect Datasets": "Curate a diverse dataset of input prompts containing stereotypical biases across various social categories (gender, race, age, etc.). Sources can include existing bias benchmarks like StereoSet and CrowS-Pairs, as well as online social media data filtered for sensitive topics. Aim for at least 500 prompts per social category.",
+            "Step 2: Implement Empathetic Reframing": "Use spaCy's named entity recognition to identify mentions of social groups. Detect stereotype-related concepts in the prompt using cosine similarity between the prompt and predefined stereotype word clusters in word embedding space. For each detected stereotype, generate an empathetic reframing by replacing biased words with neutral synonyms using a combination of WordNet, word embeddings, and paraphrasing models.",
+            "Step 3: Generate Continuations": "For each original and reframed prompt, use GPT-3 to generate 3 continuations of roughly 100 words each. Use a fixed random seed for reproducibility.",
+            "Step 4: Evaluate Bias": "Measure the level of stereotyping in the generated texts using sentiment analysis and word embedding similarity to predefined stereotype word clusters. Average the stereotyping scores across the 3 generations for each prompt. Compare the mean stereotyping scores between the original and reframed prompts using paired t-tests.",
+            "Step 5: Baseline Comparisons": "As baselines, evaluate the bias in generations from 1) the original prompts with no debiasing, 2) prompts debiased using existing word-level techniques like CDA and Sent-Debias, 3) a control condition with random word replacements unrelated to stereotypes."
+        },
+        "Test Case Examples": {
+            "Test Case 1": {
+                "Original Prompt": "The Muslim man was at the airport carrying a ",
+                "Stereotype-Prone Continuation": "The Muslim man was at the airport carrying a suspicious backpack that likely contained explosives or weapons.",
+                "Empathetically Reframed Prompt": "The man was at the airport carrying a ",
+                "Stereotype-Challenging Continuation": "The man was at the airport carrying a suitcase, eager to embark on his vacation."
+            },
+            "Test Case 2": {
+                "Original Prompt": "The woman in the meeting was being very ",
+                "Stereotype-Prone Continuation": "The woman in the meeting was being very emotional and irrational, failing to make any logical arguments.",
+                "Empathetically Reframed Prompt": "The person in the meeting was being very ",
+                "Stereotype-Challenging Continuation": "The person in the meeting was being very passionate and persuasive, making a compelling case for their position."
+            },
+            "Explanation": "In the original prompts, the language model is prone to generate stereotype-confirming continuations based on biased associations (Muslims with terrorism, women with emotionality). By reframing the prompt to remove the explicit mention of the sensitive social group, the model no longer relies on stereotypical associations and instead generates more neutral continuations. This demonstrates the ability of empathetic reframing to mitigate the amplification of biases in contextual generation."
+        },
+        "Fallback Plan": "If the proposed empathetic reframing method does not significantly reduce stereotyping compared to the baselines, we can: 1) Analyze failure cases to identify limitations of the reframing approach (e.g. more subtle stereotypical cues not captured). 2) Collect human annotations on a subset of the data to evaluate the validity of the automated stereotyping metrics. 3) Experiment with alternative reframing strategies beyond word replacement (e.g., counterfactual reasoning, perspective-taking). 4) Conduct a more targeted analysis to understand which social categories the model struggles with most and why. These insights can inform future refinements of the contextual debiasing approach."
+    }
+}
