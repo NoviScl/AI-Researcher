@@ -24,7 +24,7 @@ def execution_generation_method(experiment_plan, demo_experiment_plan, demo_exec
     prompt += "4. Evaluation metrics: you should implement two evaluator functions. The style evaluator checks if the proposed method is producing all the desired intermediate components. The output evaluator checks if the final answers match the reference answers. For most tasks, you can ask for a binary yes/no judgment for the answer correctness. For generation tasks, you can change to score on a scale of 1 - 10 and compute average scores of the baseline and proposed methods.\n\n"
     prompt += "Directly output the full Python code without any prefix or suffix (e.g., do not prepend \"```python\").\n"
     
-    print (prompt)
+    # print (prompt)
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=4096, seed=seed, json_output=False)
     return prompt, response, cost
@@ -72,27 +72,28 @@ if __name__ == "__main__":
 
     # print (filenames)
     for filename in tqdm(filenames):
-        # try:
-        print ("working on idea: ", filename)
-        cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
-        
-        ## load the idea 
-        with open(cache_file, "r") as f:
-            ideas = json.load(f)
-        experiment_plan = ideas["full_experiment_plan"]
-        if ideas["novelty"] == "yes":
-            prompt, response, cost = execution_generation_method(experiment_plan, demo_experiment_plan, demo_execution_code, client, args.engine, args.seed)
-            execution_code = clean_code_output(response.strip())
-            print (execution_code)
-            print ("Total cost: ", cost)
+        try:
+            print ("working on idea: ", filename)
+            cache_file = os.path.join(cache_dir, "experiment_plans", args.cache_name, filename)
             
-            ## save the cache
-            with open(cache_file.replace("experiment_plans", "execution").replace(".json", ".py"), "w") as f:
-                f.write(execution_code + "\n")
-            
-            # cache_output(ideas, cache_file.replace("experiment_plans", "execution").replace(".json", ".py"))
-        else:
-            print ("idea not novel, skipped...")
-        # except: 
-        #     print ("error in generating code for idea")
+            ## load the idea 
+            with open(cache_file, "r") as f:
+                ideas = json.load(f)
+            experiment_plan = ideas["full_experiment_plan"]
+            if ideas["novelty"] == "yes":
+                prompt, response, cost = execution_generation_method(experiment_plan, demo_experiment_plan, demo_execution_code, client, args.engine, args.seed)
+                execution_code = clean_code_output(response.strip())
+                print (execution_code)
+                print ("Total cost: ", cost)
+                
+                ## save the cache
+                if not os.path.exists(os.path.join(cache_dir, "execution", args.cache_name)):
+                    os.makedirs(os.path.join(cache_dir, "execution", args.cache_name))
+                with open(cache_file.replace("experiment_plans", "execution").replace(".json", ".py"), "w") as f:
+                    f.write(execution_code + "\n")
+                
+            else:
+                print ("idea not novel, skipped...")
+        except: 
+            print ("error in generating code for idea")
 
