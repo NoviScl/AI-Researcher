@@ -1,0 +1,17 @@
+simulated 5 test examples for evaluation.
+using model:  claude-3-opus-20240229
+  0%|          | 0/5 [00:00<?, ?it/s] 20%|██        | 1/5 [00:21<01:25, 21.28s/it] 40%|████      | 2/5 [00:41<01:02, 20.82s/it] 40%|████      | 2/5 [00:58<01:27, 29.16s/it]
+Traceback (most recent call last):
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/counterfactual_prompt_augmentation.py", line 166, in <module>
+    baseline_correctness, proposed_correctness, style_check = run_experiment(client, model_name, seed, testset)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/counterfactual_prompt_augmentation.py", line 143, in run_experiment
+    proposed_prediction_final, proposed_prediction_intermediate = proposed_method(client, model_name, seed, prompt)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/counterfactual_prompt_augmentation.py", line 88, in proposed_method
+    final_output, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/cache_results_claude_may/execution/safety_prompting_method_prompting/utils.py", line 31, in call_api
+    response = message.content[0].text
+               ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range

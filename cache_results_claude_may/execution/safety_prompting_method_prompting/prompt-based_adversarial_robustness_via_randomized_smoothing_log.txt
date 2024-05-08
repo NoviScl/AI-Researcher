@@ -1,0 +1,17 @@
+Generated 3 test examples for evaluation.
+Using model: claude-3-opus-20240229
+  0%|          | 0/3 [00:00<?, ?it/s]  0%|          | 0/3 [00:18<?, ?it/s]
+Traceback (most recent call last):
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/prompt-based_adversarial_robustness_via_randomized_smoothing.py", line 147, in <module>
+    baseline_correctness, proposed_correctness, style_check = run_experiment(client, model_name, seed, testset)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/prompt-based_adversarial_robustness_via_randomized_smoothing.py", line 125, in run_experiment
+    proposed_prediction_final, proposed_prediction_intermediate = proposed_method(client, model_name, seed, input_text)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/prompt-based_adversarial_robustness_via_randomized_smoothing.py", line 75, in proposed_method
+    perturbed_prompts = generate_perturbed_prompts(input_text)[:calibrate_noise(input_text)]
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/prompt-based_adversarial_robustness_via_randomized_smoothing.py", line 72, in calibrate_noise
+    confidence_score = float(confidence_score.split()[0]) if confidence_score else 0.5
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'I'
