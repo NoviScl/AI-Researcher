@@ -11,24 +11,20 @@ random.seed(2024)
 def generate_testset():
     test_data = [
         {
-            "input": "The Eiffel Tower is the tallest building in Paris.",
-            "output": "REFUTES"
+            "input": "Did Elon Musk found Tesla?",
+            "output": "Yes, Elon Musk founded Tesla in 2003 with the goal of accelerating the world's transition to sustainable energy."
         },
         {
-            "input": "The Great Wall of China is visible from space.",
-            "output": "REFUTES"
+            "input": "Who invented the telephone?",
+            "output": "The telephone was invented by Alexander Graham Bell in 1876."
         },
         {
-            "input": "The capital of Australia is Sydney.",
-            "output": "REFUTES"
+            "input": "When was the first iPhone released?",
+            "output": "The first iPhone was released on June 29, 2007."
         },
         {
-            "input": "The Earth is the third planet from the Sun.",
-            "output": "SUPPORTS"
-        },
-        {
-            "input": "The Mona Lisa was painted by Leonardo da Vinci.",
-            "output": "SUPPORTS"
+            "input": "Who wrote the novel 'To Kill a Mockingbird'?",
+            "output": "The novel 'To Kill a Mockingbird' was written by Harper Lee."
         }
     ]
 
@@ -37,9 +33,8 @@ def generate_testset():
 
 ## Step 2: Implement the baseline method 
 def baseline_method(client, model_name, seed, question):
-    ## self-consistency scoring
-    prompt = "Given the following statement: {}\n".format(question)
-    prompt += "Please verify the factual accuracy of the statement. Provide a score from 1 to 5, where 1 means the statement is completely inaccurate and 5 means the statement is completely accurate. Explain your reasoning."
+    ## direct prompting
+    prompt = "Answer the following question: {}\n".format(question)
     prompt_messages = [{"role": "user", "content": prompt}]
     response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
     return response.strip()
@@ -52,53 +47,49 @@ def proposed_method(client, model_name, seed, question, print_all=False):
     if print_all:
         print ("question:\n", question)
 
-    ## debate round 1: initial statement
-    prompt = "Consider the following statement: {}\n".format(question)
-    prompt += "Please provide your perspective on the accuracy of this statement."
+    ## step 1: initial response
+    prompt = "Please provide a response to the following query: {}".format(question)
     prompt_messages = [{"role": "user", "content": prompt}]
-    model_a_output, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
-    intermediate_outputs += "Model A's Initial Statement:\n" + model_a_output + "\n\n"
+    initial_response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "initial response:\n" + initial_response + "\n"
     if print_all:
-        print ("Model A's Initial Statement:\n", model_a_output)
+        print ("initial response:\n", initial_response)
 
-    ## debate round 2: critique
-    prompt = "Consider the following statement: {}\n".format(model_a_output)
-    prompt += "Please identify any factual inaccuracies or inconsistencies in the statement. Provide evidence to support your arguments."
+    ## step 2: counterfactual generation
+    prompt = "Generate a counterfactual version of the response that is similar but contains a false fact: {}".format(initial_response)
     prompt_messages = [{"role": "user", "content": prompt}]
-    model_b_output, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
-    intermediate_outputs += "Model B's Critique:\n" + model_b_output + "\n\n"
+    counterfactual_response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "counterfactual response:\n" + counterfactual_response + "\n"
     if print_all:
-        print ("Model B's Critique:\n", model_b_output)
+        print ("counterfactual response:\n", counterfactual_response)
 
-    ## debate round 3: rebuttal
-    prompt = "Consider the following critique: {}\n".format(model_b_output)
-    prompt += "Please defend the factual accuracy of your original statement in light of these counterarguments. Provide evidence to support your defense."
+    ## step 3: counterfactual analysis  
+    prompt = "Compare the original response and the counterfactual response. Explain why the counterfactual response is false:\n[Original Response] {}\n[Counterfactual Response] {}".format(initial_response, counterfactual_response)
     prompt_messages = [{"role": "user", "content": prompt}]
-    model_a_rebuttal, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
-    intermediate_outputs += "Model A's Rebuttal:\n" + model_a_rebuttal + "\n\n"
+    counterfactual_analysis, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    intermediate_outputs += "counterfactual analysis:\n" + counterfactual_analysis + "\n"
     if print_all:
-        print ("Model A's Rebuttal:\n", model_a_rebuttal)
+        print ("counterfactual analysis:\n", counterfactual_analysis)
 
-    ## debate outcome
-    prompt = "Given the following debate:\n\nInitial Statement: {}\nCritique: {}\nRebuttal: {}\n\n".format(model_a_output, model_b_output, model_a_rebuttal)
-    prompt += "Please provide a final verdict on whether the original statement is SUPPORTED or REFUTED based on the arguments presented in the debate."
+    ## final prompt
+    prompt = "{}\n[Initial Response] {}\n[Counterfactual Analysis] {}".format(question, initial_response, counterfactual_analysis)
     prompt_messages = [{"role": "user", "content": prompt}]
-    debate_outcome, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
-    intermediate_outputs += "Debate Outcome:\n" + debate_outcome
+    final_response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
     if print_all:
-        print ("Debate Outcome:\n", debate_outcome)
+        print ("final response:\n", final_response)
 
-    return debate_outcome.strip(), intermediate_outputs
+    return final_response.strip(), intermediate_outputs
 
 
 ## Step 4: Define the style evaluator
 def style_evaluator(client, model_name, seed, question, baseline_prediction, proposed_prediction):
+    ## check if the proposed method's output contains all the desired components
     prompt = "Given the task: {}\n".format(question)
     prompt += "The baseline method produced the following output:\n{}\n\n".format(baseline_prediction)
     prompt += "The proposed new method produced the following output:\n{}\n\n".format(proposed_prediction)
     prompt += "Now determine if the proposed method is better by checking if it has satisfied the following criteria:\n"
-    prompt += "1. The proposed method's output should include all the key debate components: initial statement, critique, rebuttal, and final outcome.\n"
-    prompt += "2. The proposed method should provide a more comprehensive analysis of the statement's accuracy compared to the baseline method.\n"
+    prompt += "1. The proposed method's output should contain the initial response, counterfactual response, and counterfactual analysis.\n"
+    prompt += "2. The proposed method should provide a more detailed and comprehensive answer than the baseline method.\n"
     prompt += "Just tell me 'yes' or 'no' for whether the criteria are met, nothing else is needed."
     prompt_messages = [{"role": "user", "content": prompt}]
     response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
@@ -112,7 +103,8 @@ def style_evaluator(client, model_name, seed, question, baseline_prediction, pro
 
 ## Step 5: Define the output evaluator
 def output_evaluator(client, model_name, seed, question, gold_label, prediction):
-    prompt = "Given the following statement and the debate outcome, determine if the debate outcome is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nStatement: {}\n\nDebate Outcome: {}\n\nGround Truth: {}\n\n".format(question, prediction, gold_label)
+    ## check if the prediction is correct given the gold label
+    prompt = "Given the following question and reference answer, determine if the prediction is correct. Just tell me 'yes' or 'no', nothing else is needed.\n\nQuestion: {}\n\nReference Answer: {}\n\nPrediction: {}\n\n".format(question, gold_label, prediction)
     prompt_messages = [{"role": "user", "content": prompt}]
     response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
     
