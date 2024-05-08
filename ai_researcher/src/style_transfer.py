@@ -50,10 +50,10 @@ if __name__ == "__main__":
         )
     
     with open("prompts/machine_idea.txt", "r") as f:
-        machine_ideas = f.read() 
+        machine_idea = f.read() 
     with open("prompts/human_idea.txt", "r") as f:
-        human_ideas = f.read()
+        human_idea = f.read()
 
-    prompt, response, cost = style_transfer(model_idea, human_idea, openai_client, args.engine, args.seed)
+    prompt, response, cost = style_transfer(machine_idea, human_idea, client, args.engine, args.seed)
     print (response)
 
