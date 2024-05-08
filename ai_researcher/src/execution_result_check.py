@@ -1,6 +1,6 @@
 import os 
 
-cache_dir = '../cache_results_claude_may/execution/safety_prompting_method_prompting/'
+cache_dir = '../cache_results_claude_may/execution/factuality_prompting_method_prompting/'
 filenames = os.listdir(os.path.join(cache_dir))
 
 def parse_log_file(log_file):

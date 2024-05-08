@@ -1,0 +1,17 @@
+simulated 5 test examples for evaluation.
+using model:  claude-3-opus-20240229
+  0%|          | 0/5 [00:00<?, ?it/s]  0%|          | 0/5 [01:13<?, ?it/s]
+Traceback (most recent call last):
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/cognitive_dissonance_prompting.py", line 155, in <module>
+    baseline_correctness, proposed_correctness, style_check = run_experiment(client, model_name, seed, testset)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/cognitive_dissonance_prompting.py", line 139, in run_experiment
+    style_check.append(style_evaluator(client, model_name, seed, question, baseline_prediction, proposed_prediction_intermediate))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/cognitive_dissonance_prompting.py", line 92, in style_evaluator
+    response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/cache_results_claude_may/execution/factuality_prompting_method_prompting/utils.py", line 31, in call_api
+    response = message.content[0].text
+               ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range

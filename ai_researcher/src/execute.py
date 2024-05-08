@@ -3,7 +3,7 @@ import os
 from tqdm import tqdm 
 
 # The path to the python program you want to run
-cache_dir = '../cache_results_claude_may/execution/safety_prompting_method_prompting/'
+cache_dir = '../cache_results_claude_may/execution/factuality_prompting_method_prompting/'
 filenames = os.listdir(os.path.join(cache_dir))
 
 if "utils.py" not in filenames:

@@ -1,0 +1,20 @@
+simulated 3 test examples for evaluation.
+using model:  claude-3-opus-20240229
+  0%|          | 0/3 [00:00<?, ?it/s]  0%|          | 0/3 [00:21<?, ?it/s]
+Traceback (most recent call last):
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/entailment_tree_prompting.py", line 141, in <module>
+    baseline_scores, proposed_scores, style_check = run_experiment(client, model_name, seed, testset)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/entailment_tree_prompting.py", line 119, in run_experiment
+    proposed_prediction_final, proposed_prediction_intermediate = proposed_method(client, model_name, seed, context)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/entailment_tree_prompting.py", line 74, in proposed_method
+    entailment_tree = generate_entailment_tree(sentences)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/entailment_tree_prompting.py", line 62, in generate_entailment_tree
+    score = score_entailment(sentences, candidate)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/entailment_tree_prompting.py", line 55, in score_entailment
+    return int(response.strip())
+           ^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'The'
