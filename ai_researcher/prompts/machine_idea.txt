@@ -1,0 +1,40 @@
+- **Title**: Contrastive Uncertainty Prompting: Quantifying Language Model Uncertainty through Contrastive Explanations
+    1. **Problem Statement**: Large language models often struggle to accurately assess their own uncertainty or confidence in generated outputs, leading to overconfident predictions even when incorrect. This can be problematic in high-stakes applications where reliable uncertainty estimates are crucial.
+    2. **Motivation**: Existing methods for uncertainty estimation in LLMs, such as model calibration, dropout-based methods, or training separate models to predict uncertainty, often require additional training or architectural changes. In contrast, prompting-based methods are appealing as they can be applied to any off-the-shelf LLM without further training. Contrastive learning has shown great success in representation learning by encouraging models to learn more robust and informative features. We hypothesize that by prompting LLMs to generate contrastive explanations for both correct and incorrect answers, they can better learn to distinguish between certain and uncertain predictions.
+    3. **Proposed Method**: We propose Contrastive Uncertainty Prompting (CUP), a novel prompting method for quantifying LLM uncertainty. Given an input question, we first prompt the LLM to generate multiple candidate answers. For each candidate answer, we then prompt the LLM to generate two contrastive explanations - one assuming the answer is correct, and one assuming it is incorrect. We then compare the language model perplexity of the two explanations. If the 'correct' explanation has much lower perplexity than the 'incorrect' one, it suggests the model is confident in its prediction. However, if the explanations have similar perplexity, it indicates uncertainty. We can aggregate these pairwise uncertainty scores across the candidate answers to derive an overall uncertainty measure for the model's output.
+    4. **Step-by-Step Experiment Plan**: 
+        1. Gather Datasets: Evaluate CUP on benchmark datasets for QA uncertainty estimation, such as SQuAD-UQ and Natural Questions-UQ. These datasets contain questions, answers, and human annotations of uncertainty. We can use the original test splits for evaluation
+        2. Construct Prompts: For each question, prompt the LLM to generate 5 candidate answers using a standard QA prompt. Then, for each candidate answer, generate two contrastive explanations using prompts like: 'Assuming the answer "<answer>" is correct, explain why this is the case based on the information provided.' and 'Assuming the answer "<answer>" is incorrect, explain why this is not the right answer based on the information provided.' Calculate the perplexity of each explanation under the LLM.
+        3. Calculate Uncertainty Scores: For each candidate answer, calculate the uncertainty score as: uncertainty = 1 - (perplexity_incorrect - perplexity_correct) / (perplexity_incorrect + perplexity_correct). This normalizes the score between 0 and 1, with higher values indicating greater uncertainty. Aggregate the uncertainty scores across the candidate answers by taking the average to get the final uncertainty score for the question.
+        4. Evaluate Performance: Calculate the Spearman rank correlation between the predicted uncertainty scores and the human annotations of uncertainty. Also calculate the Area Under the Receiver Operating Characteristic curve (AUROC) by treating the task as a binary classification problem of identifying uncertain questions based on a threshold. Compare the performance of CUP to baselines like using the LLM's output probability, MC dropout, or a separate calibration model.
+        5. Analyze Results: Examine the qualitative examples to understand the behavior of CUP. For highly certain questions, we expect the 'correct' explanation to have much lower perplexity than the 'incorrect' one. For highly uncertain questions, we expect the explanations to have similar perplexity. Visualize and interpret the generated explanations to gain insight into the LLM's reasoning process.
+    5. **Test Case Examples**:
+        1. Question: When did the American Civil War end?
+
+            Candidate Answer: April 9, 1865
+            
+            Correct Explanation Prompt: Assuming the answer "April 9, 1865" is correct, explain why this is the case based on the information provided.
+            
+            Correct Explanation: The American Civil War ended on April 9, 1865, when Confederate General Robert E. Lee surrendered to Union General Ulysses S. Grant at Appomattox Court House, Virginia. This marked the effective end of the Confederacy and the war, although some smaller battles and skirmishes continued for a few months after.
+            
+            Incorrect Explanation Prompt: Assuming the answer "April 9, 1865" is incorrect, explain why this is not the right answer based on the information provided.
+            
+            Incorrect Explanation: While April 9, 1865 marked a major turning point in the American Civil War with Lee's surrender to Grant, it was not the official end date of the war. The last major battle was fought at Palmito Ranch, Texas on May 12-13, 1865. President Andrew Johnson formally declared a virtual end to the war on May 9, 1865. So while April 9 was highly significant, it is not quite accurate to say the war ended on that exact date.
+            
+            Explanation: The 'correct' explanation has much lower perplexity (more fluent and coherent) compared to the 'incorrect' explanation, indicating high confidence in the answer. The uncertainty score would be low.
+            
+        2. Question: What is the capital of Australia?
+            
+            Candidate Answer: Sydney
+            
+            Correct Explanation Prompt: Assuming the answer "Sydney" is correct, explain why this is the case based on the information provided.
+            
+            Correct Explanation: Sydney is a major city in Australia known for its iconic Opera House and Harbour Bridge. As the largest city in Australia and the capital of the state of New South Wales, it is sometimes assumed to be the capital of the entire country as well. However, this is a common misconception.
+            
+            Incorrect Explanation Prompt: Assuming the answer "Sydney" is incorrect, explain why this is not the right answer based on the information provided.
+            
+            Incorrect Explanation: While Sydney is the largest city in Australia, it is not the capital of the country. Many people mistakenly believe this, but the actual capital of Australia is Canberra. Canberra was chosen as a compromise capital city located between rivals Sydney and Melbourne. As a planned city, it was built in the early 20th century to serve as the seat of government.
+            
+            Explanation: The 'incorrect' explanation is much more fluent and coherent compared to the 'correct' explanation, indicating that the model is not very confident in the answer 'Sydney'. The uncertainty score would be high, accurately reflecting the model's uncertainty in this incorrect prediction.
+            
+    6. **Fallback Plan**: If the proposed CUP method does not outperform baselines, we can conduct additional analysis to understand why. Some ideas: (1) Examine the generated explanations to see if they accurately capture reasons for correctness/incorrectness. If not, the perplexity scores may not be meaningful. (2) Try different prompts for eliciting the explanations to see if the results are sensitive to prompt wording. (3) Analyze the failure cases to see if there are any systematic patterns, such as questions with certain characteristics causing issues. (4) Experiment with different uncertainty score aggregation methods beyond simple averaging. (5) Collect human annotations on the generated explanations to see if they align with human judgments of uncertainty. These analyses could provide insights into the limitations of CUP and suggest potential improvements or alternative approaches.

@@ -1,0 +1,59 @@
+- **Title**: Uncertainty Estimation via Consistency in Self-Generated References in Large Language Models
+    1. **Problem Statement**: This research aims to develop a method for estimating uncertainty in the outputs of LLMs in an unsupervised manner. By associating each output with a confidence score, this method intends to enhance hallucination detection and its subsequent mitigation.
+    2. **Background and Motivation**: With the assumption of black-box LLM (with only access to inference), the majority of the method for uncertainty estimation can be undivided into two categories: consistency-based and verbalised-based. Overall speaking, consistency-based methods are favoured for their robustness but typically focus solely on the consistency across multiple outputs. It could be problematic since when LLM is hallucinating, there could be some specific statements of high likelihood in the pure language context (this will result in relatively high consistency). To address this, we propose a novel approach where the LLM generates a reference for its claims, allowing us to evaluate the consistency between the generated claim and its cited reference. This method, which we term "Self-referential Consistency," seeks to ground the LLM's outputs in data resembling that from its training corpus, making it difficult for the model to maintain consistency when producing hallucinated content.
+    3. **Proposed Method**: Our overall process, which we call Self-Referential Consistency, performs the following steps:
+        - Generation Baseline Response: Given a query, generate the response using the LLM. (We assume single-claim generation here since we could potentially break them into claims and estimate uncertainty for claims if it's a multi-claim long generation).
+        - Reference Asking: We prompt the LLM to give us a reference that the generation is based on, and get (generation, reference) pair.
+        - Confidence Score via Generator-Validator consistency: Prompt the LLM whether each reference is supporting the generation or not. Here are several options to get the confidence score: e.g.
+        - (Grey-box assumption) using the P(true) method (making the prompt into a True/False question and using the likelihood of True)
+        - Do the reference asking n times to get the (claim, reference_i) where i from 1 to n, and counting the portion of LLM response True (reference_i is supporting claim).
+    4. **Step-by-Step Experiment Plan**:
+        
+        Step 1: Generate Baseline Response: 
+        
+        For each query in the dataset, generate a response from the LLM using a straightforward, left-to-right generation approach without special constraints.
+        
+        Claim Separation (if applicable): If the response contains multiple claims, segment these into individual claims for focused verification.
+        
+        Step 2: Reference Generation: For each claim generated in Step 2, prompt the LLM to provide a reference or source that the claim is based on, generating a (claim, reference) pair.
+        
+        Multiple References: Optionally, repeat this step multiple times (n times) to gather several references per claim, which can be useful for a robust assessment of each claim.
+        
+        Step 3: Generator-Validator Consistency Score: For each reference, prompt the LLM with a True/False question to determine whether the reference actually supports the claim. The question can be formatted like, "Does this reference support the claim?" where the LLM must assess the validity of the reference in context.
+        
+        Step 4: Scoring Method:
+        
+        1. P(true) Method: Use the probability assigned to "True" by the LLM to quantify the confidence in the claim’s support.
+        2. Consensus Counting: Count the proportion of references that are deemed supportive by the LLM (i.e., where the response to the True/False question is "True") and calculate a confidence score based on this proportion.
+        
+        Step 5: Select Models: We test GPT-3.5-turbo and GPT-4-turbo from the OpenAI API, Claude-3-Opus/Sonnet/Haiku as well as the open-source LLaMA-3-70B-instruct.
+        
+        Step 6: Get Results: Get uncertainty score, get and annotate generations from the models on these datasets with both the baselines and proposed method.
+        
+        Step 7: Analyze Results: Compare whether the new method improves the performance of LLMs in these tasks as compared to the baselines.
+        
+    5. **Test Case Examples**:
+    - Proposed Prompt Input (Self-Referential Consistency Prompting; Step 1: Generate Response): Tell me one fact about Sam Altman.
+    - Proposed Prompt Expected Output (Self-Referential Consistency Prompting; Step 1: Generate Response): Sam Altman is an American entrepreneur, investor, and programmer who is best known for being the former president of Y Combinator, a prominent startup accelerator.
+    - Proposed Prompt Input (Self-Referential Consistency Prompting; Step 2: Reference Generation):
+        
+        Give me a source of reference that supports the statement: Sam Altman is an American entrepreneur, investor, and programmer who is best known for being the former president of Y Combinator, a prominent startup accelerator.
+        
+    - Proposed Prompt Expected Output (Self-Referential Consistency Prompting; Step 2: Reference Generation):
+        
+        One source that supports this statement is Sam Altman's own LinkedIn profile, which mentions his background and experience as an entrepreneur, investor, and former president of Y Combinator.
+        
+    - Proposed Prompt Input (Self-Referential Consistency Prompting; Step 3: Generator-Validator Consistency):
+        
+        Does the information in Sam Altman's own LinkedIn profile support the following statement?
+        
+        Sam Altman is an American entrepreneur, investor, and programmer who is best known for being the former president of Y Combinator, a prominent startup accelerator.
+        
+        Answer True or False.
+        
+    - Proposed Prompt Expected Output (Self-Referential Consistency Prompting; Step 3: Generator-Validator Consistency):
+        
+        True
+        
+    - Explanation: In traditional self-consistency method, a large language model with direct prompting generates several baseline responses and elicits the consistency score. To improve this, Self-Referential Consistency asks for reference and checks the generator-validator consistency, which transforms it into a harder consistency task that is non-trivial to maintain if the model is hallucinating.
+    1. **Fallback Plan**: If the proposed method does not help as compared to the baseline, analyze each step to see if the reference makes sense, if the consistency checking is good, and whether the consistency score correlated with the factuality. This can help us debug the proposed method or turn this into an interesting analysis on the model's ability to verify and correct its own responses.

@@ -48,6 +48,12 @@ if __name__ == "__main__":
             organization=ORG_ID,
             api_key=OAI_KEY
         )
-
     
+    with open("prompts/machine_idea.txt", "r") as f:
+        machine_ideas = f.read() 
+    with open("prompts/human_idea.txt", "r") as f:
+        human_ideas = f.read()
+
+    prompt, response, cost = style_transfer(model_idea, human_idea, openai_client, args.engine, args.seed)
+    print (response)
 
