@@ -83,7 +83,7 @@ python3 src/lit_review.py \
 ## safety
 python3 src/lit_review.py \
  --engine "claude-3-opus-20240229" \
- --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks and improve their security and privacy" \
+ --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy" \
  --cache_name "safety_prompting" \
  --track "method" \
  --max_paper_bank_size 70 \
