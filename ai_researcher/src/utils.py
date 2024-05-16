@@ -112,19 +112,42 @@ def clean_code_output(code_output):
         code_output = code_output[:-len("```")].strip()
     return code_output
 
+def concat_reviews(paper_json):
+    review_str = ""
+    meta_review = paper_json["meta_review"]
+    all_reviews = paper_json["reviews"]
+
+    review_str += "Meta Review:\n" + meta_review + "\n\n"
+    for idx, review in enumerate(all_reviews):
+        review_str += "Reviewer #{}:\n".format(idx+1) + "\n"
+        for key, value in review.items():
+            if key in ["summary", "soundness", "contribution", "strengths", "weaknesse", "questions", "rating", "confidence"]:
+                review_str += key + ": " + value["value"] + "\n"
+        review_str += "\n"
+
+    return review_str
+
+def avg_score(scores):
+    scores = [int(s[0]) for s in scores]
+    return sum(scores) / len(scores)
+
 if __name__ == "__main__":
-    filename = "/Users/clsi/Desktop/AI-Researcher/cache_results_claude/lit_review/uncertainty_prompting_method.json"
-    # print_idea_json(filename)
-    with open(filename, "r") as f:
-        ideas = json.load(f)
-    # print ("Excitement Ranking: ")
-    # print (ideas["excitement_rationale"])
-    # print (ideas["excitement_score"])
+    # filename = "/Users/clsi/Desktop/AI-Researcher/cache_results_claude/lit_review/uncertainty_prompting_method.json"
+    # # print_idea_json(filename)
+    # with open(filename, "r") as f:
+    #     ideas = json.load(f)
+    # # print ("Excitement Ranking: ")
+    # # print (ideas["excitement_rationale"])
+    # # print (ideas["excitement_score"])
     
-    for i in range(10):
-        paper = ideas["paper_bank"][i]
-        print (i+1)
-        print ("Title: " + paper["title"])
-        print ("Abstract: " + paper["abstract"])
-        print ("\n\n")
+    # for i in range(10):
+    #     paper = ideas["paper_bank"][i]
+    #     print (i+1)
+    #     print ("Title: " + paper["title"])
+    #     print ("Abstract: " + paper["abstract"])
+    #     print ("\n\n")
+
+    with open("/Users/clsi/Desktop/AI-Researcher/openreview_benchmark/paper_0.json", "r") as f:
+        paper = json.load(f)
+    print (concat_reviews(paper))
 
