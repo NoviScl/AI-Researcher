@@ -15,7 +15,8 @@ def get_paper_ids():
 
     for year in [2024]:
         # print(year, end=': ')
-        for query in ['submission', 'Submission', 'Blind_Submission', 'Rejected_Submission', '']:
+        # for query in ['submission', 'Submission', 'Blind_Submission', 'Rejected_Submission', '']:
+        for query in ['Rejected_Submission', '']:
             
             if year <= 2017:
                 if query == '':
@@ -56,8 +57,8 @@ def get_paper_ids():
                     if "language model" not in all_fields.lower():
                         continue 
 
-                    if index % 500 == 0:
-                        print (paper_dict)
+                    # if index % 500 == 0:
+                    #     print (paper_dict)
                                         
                     if 'Rejected_Submission' in query:
                         papers_rejected.append(paper_dict)
@@ -72,28 +73,31 @@ def get_reviews(client, forum_id):
     meta_review = None 
     scores = [] 
     reviews = []
+    all_replies = []
 
     # Fetch all replies (reviews, comments, etc.)
     all_reviews = client.get_notes(forum=forum_id)
 
-    for review in tqdm(all_reviews):
+    for review in all_reviews:
         if not isinstance(review, dict):
             review = review.to_json()
-        # print (review)
-        # print ("\n\n")
+        
         content = review["content"]
+        # print (content)
+        # print ("\n\n")
         
         if "decision" in content:
             decision = content["decision"]["value"].strip()
-        elif "metareview" in content:
+        if "metareview" in content:
             meta_review = content["metareview"]["value"].strip() + "\n"
             meta_review += "Justification for why not higher score: " + content["justification_for_why_not_higher_score"]["value"].strip() + "\n"
             meta_review += "Justification for why not lower score: " + content["justification_for_why_not_lower_score"]["value"].strip()
-        elif "summary" in content:
+        if "summary" in content:
             scores.append(content["rating"]["value"])
-            reviews.append(review)
+            reviews.append(content)
+        all_replies.append(review)
     
-    return decision, meta_review, scores, reviews
+    return decision, meta_review, scores, reviews, all_replies
     
 
 def download_and_extract_text_from_pdf(pdf_url):
@@ -112,7 +116,7 @@ def download_and_extract_text_from_pdf(pdf_url):
         text += page.extract_text()
 
     # Step 3: Return the extracted text
-    return text
+    return text.strip()
 
 
 if __name__ == "__main__":
@@ -125,16 +129,22 @@ if __name__ == "__main__":
         password=keys["openreview_password"]
     )
 
-    # papers_accepted, papers_rejected = get_paper_ids()
-    # print (f"Number of accepted papers: {len(papers_accepted)}")
-    # print (f"Number of rejected papers: {len(papers_rejected)}")
+    papers_accepted, papers_rejected = get_paper_ids()
+    print (f"Number of accepted papers: {len(papers_accepted)}")
+    print (f"Number of rejected papers: {len(papers_rejected)}")
 
-    decision, meta_review, scores, reviews = get_reviews(client, "3fEKavFsnv")
-    print ("decision: ", decision, "\n")
-    print ("meta_review: ", meta_review, "\n")
-    print ("scores: ", scores, "\n")
-    print ("reviews: ", reviews, "\n")
+    for idx, paper in tqdm(enumerate(papers_accepted + papers_rejected)):
+        forum_id = paper["forum_id"]
+        decision, meta_review, scores, reviews, all_replies = get_reviews(client, forum_id)
+        full_text = download_and_extract_text_from_pdf(f"https://openreview.net/pdf?id={forum_id}")
+        if decision and meta_review and len( scores) > 1 and len(reviews) > 1 and len(all_replies) > 1 and full_text and len(full_text) > 500:
+            paper["decision"] = decision
+            paper["meta_review"] = meta_review
+            paper["scores"] = scores
+            paper["reviews"] = reviews
+            paper["all_replies"] = all_replies
+            paper["full_text"] = full_text
+            with open(f"openreview_benchmark/paper_{idx}.json", "w") as f:
+                json.dump(paper, f, indent=4)
 
-    # pdf_url = "https://openreview.net/pdf?id=3fEKavFsnv"
-    # text = download_and_extract_text_from_pdf(pdf_url)
-    # print(text)
+
