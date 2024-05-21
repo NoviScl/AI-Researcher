@@ -147,7 +147,12 @@ if __name__ == "__main__":
     #     print ("Abstract: " + paper["abstract"])
     #     print ("\n\n")
 
-    with open("/Users/clsi/Desktop/AI-Researcher/openreview_benchmark/paper_0.json", "r") as f:
-        paper = json.load(f)
-    print (concat_reviews(paper))
+    # with open("/Users/clsi/Desktop/AI-Researcher/openreview_benchmark/paper_0.json", "r") as f:
+    #     paper = json.load(f)
+    # print (concat_reviews(paper))
+
+    with open("/Users/clsi/Desktop/AI-Researcher/cache_results_claude_may/experiment_plans/factuality_prompting_method_prompting/adaptive_prompting.json", "r") as f:
+        paper_json = json.load(f)
+    
+    print (format_plan_json(paper_json["full_experiment_plan"]))
 
