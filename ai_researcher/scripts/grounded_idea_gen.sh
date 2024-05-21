@@ -20,7 +20,7 @@
 # done 
 
 
-cache_names=("factuality_prompting_method" "safety_prompting_method" "uncertainty_prompting_method" "math_prompting_method" "coding_prompting_method" "bias_prompting_method")
+cache_names=("uncertainty_prompting_method")
 
 # Number of ideas to generate
 ideas_n=5
@@ -29,8 +29,20 @@ ideas_n=5
 seeds=(12 42 102 512 1024 2022 2023 2024)
 methods=("prompting")
 
-# Iterate over each seed
-for seed in "${seeds[@]}"; do
+# # Iterate over each seed
+# for seed in "${seeds[@]}"; do
+#     # Iterate over each cache name 
+#     for cache_name in "${cache_names[@]}"; do
+#         # Iterate over each method 
+#         for method in "${methods[@]}"; do
+#             echo "Running grounded_idea_gen.py with cache_name: $cache_name"
+#             python3 src/grounded_idea_gen.py --engine "claude-3-opus-20240229" --cache_name "$cache_name" --grounding_k 10 --method "$method" --ideas_n $ideas_n --seed $seed
+#         done
+#     done
+# done 
+
+# Iterate over each seed from 1 to 1000
+for seed in {1..1000}; do
     # Iterate over each cache name 
     for cache_name in "${cache_names[@]}"; do
         # Iterate over each method 
@@ -39,6 +51,4 @@ for seed in "${seeds[@]}"; do
             python3 src/grounded_idea_gen.py --engine "claude-3-opus-20240229" --cache_name "$cache_name" --grounding_k 10 --method "$method" --ideas_n $ideas_n --seed $seed
         done
     done
-done 
-
-
+done
