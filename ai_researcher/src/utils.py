@@ -76,22 +76,17 @@ def print_idea_json(filename):
             print ('- ' + k)
             print (v.strip() + '\n')
 
-def format_plan_json(experiment_plan_json):
+def format_plan_json(experiment_plan_json, indent_level=0):
     output_str = ""
-    for k,v in experiment_plan_json.items():
+    indent = "  " * indent_level
+    for k, v in experiment_plan_json.items():
         if isinstance(v, str):
-            output_str += k + ": " + v.strip() + "\n\n"
+            output_str += f"{indent}{k}: {v.strip()}\n"
         else:
-            output_str += k + ": " + "\n"
-            for sub_k, sub_v in v.items():
-                if isinstance(sub_v, str):
-                    output_str += "  - " + sub_k + ": " + sub_v.strip() + "\n"
-                else:
-                    output_str += "  - " + sub_k + ": " + "\n"
-                    for sub_sub_k, sub_sub_v in sub_v.items():
-                        output_str += "    - " + sub_sub_k + ": " + sub_sub_v.strip() + "\n"
-            output_str += "\n"
+            output_str += f"{indent}{k}:\n"
+            output_str += format_plan_json(v, indent_level + 1)
     return output_str
+
 
 def shuffle_dict_and_convert_to_string(input_dict):
     # Convert dict items to a list and shuffle
