@@ -112,16 +112,16 @@ if __name__ == "__main__":
     print ("idea generation cost: ", cost)
 
     response = json.loads(response.strip())
-    ideas = {"topic_description": topic_description, "ideas": response}
+    ideas = {"topic_description": topic_description, "ideas": [response]}
     
     ## if the idea_cache already exists, directly add to the current list
     if os.path.exists(ideas_file):
         with open(ideas_file, "r") as f:
             ideas_cache = json.load(f)
-        ideas_cache["ideas"].update(response)
+        ideas_cache["ideas"].append(response)
         ideas = ideas_cache
     
-    print ("ideas generated so far: ", len(ideas["ideas"]))
+    print ("#ideas generated so far: ", sum(len(d) for d in ideas["ideas"]))
 
     ## save the cache
     if not os.path.exists(cache_dir):
