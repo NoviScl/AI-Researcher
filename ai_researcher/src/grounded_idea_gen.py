@@ -86,7 +86,8 @@ if __name__ == "__main__":
         with open(ideas_file, "r") as f:
             ideas_cache = json.load(f)
         if "ideas" in ideas_cache:
-            existing_ideas = list(ideas_cache["ideas"].keys())
+            existing_ideas = [key for idea in ideas_cache["ideas"] for key in idea.keys()]
+            existing_ideas = list(set(existing_ideas))
             existing_ideas = "; ".join(existing_ideas)
     
     if args.method == "prompting":
