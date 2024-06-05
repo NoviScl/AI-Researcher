@@ -2,7 +2,7 @@ import nltk
 from nltk.corpus import stopwords
 import string
 import json 
-
+from tqdm import tqdm 
 import matplotlib.pyplot as plt
 from collections import Counter
 
@@ -49,9 +49,28 @@ def process_text(input_text):
     return processed_text
 
 if __name__ == "__main__":
-    with open("../cache_results_claude_may/ideas_1k/uncertainty_prompting_method_prompting.json", "r") as f:
+    track = "uncertainty"
+    with open("../cache_results_claude_may/ideas_1k/{}_prompting_method_prompting.json".format(track), "r") as f:
         ideas_json = json.load(f)
-    ideas_lst = [process_text(idea) for lst in ideas_json["ideas"] for idea in lst]
-    print (len(ideas_lst))
+
+    topic = ideas_json["topic_description"]
+    ideas_lst = ideas_json["ideas"]
+    print ("Original #ideas: ", len(ideas_lst) * 5)
+
+    dedup_dict = {}
+    dedup_dict["topic_description"] = topic
+    dedup_dict["ideas"] = {}
+
+    for ideas_dict in tqdm(ideas_lst):
+        for idea_k, idea_v in ideas_dict.items():
+            title = process_text(idea_k)
+            if title not in dedup_dict["ideas"]:
+                dedup_dict["ideas"][idea_k] = idea_v
+    
+    print ("Dedup'ed #ideas: ", len(dedup_dict["ideas"]))
+
+    with open("../cache_results_claude_may/ideas_1k_dedup/{}_prompting_method_prompting.json".format(track), "w") as f:
+        json.dump(dedup_dict, f, indent=4)
+
 
 
