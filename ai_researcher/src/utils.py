@@ -77,15 +77,21 @@ def print_idea_json(filename):
             print (v.strip() + '\n')
 
 def format_plan_json(experiment_plan_json, indent_level=0):
-    output_str = ""
-    indent = "  " * indent_level
-    for k, v in experiment_plan_json.items():
-        if isinstance(v, str):
-            output_str += f"{indent}{k}: {v.strip()}\n"
-        else:
-            output_str += f"{indent}{k}:\n"
-            output_str += format_plan_json(v, indent_level + 1)
-    return output_str
+    try:
+        output_str = ""
+        indent = "  " * indent_level
+        for k, v in experiment_plan_json.items():
+            if k == "score":
+                continue
+            if isinstance(v, str):
+                output_str += f"{indent}{k}: {v.strip()}\n"
+            else:
+                output_str += f"{indent}{k}:\n"
+                output_str += format_plan_json(v, indent_level + 1)
+        return output_str
+    except:
+        print ("Error in formatting experiment plan json: ", experiment_plan_json)
+        return ""
 
 
 def shuffle_dict_and_convert_to_string(input_dict):
