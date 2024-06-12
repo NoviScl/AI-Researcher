@@ -26,7 +26,7 @@ def next_query(topic_description, openai_client, model, seed, grounding_papers, 
     prompt += "(3) GetReferences(\"paperId\"): get the list of papers referenced in the given paper (as specified by the paperId).\n"
     prompt += "Right now you have already collected the following relevant papers:\n" + grounding_papers_str + "\n"
     prompt += "You can formulate new search queries based on these papers. And you have already asked the following queries:\n" + "\n".join(past_queries) + "\n"
-    prompt += "Please formulate a new query to expand our paper collection with more diverse and relevant papers (you can do so by diversifying the types of queries to generate and minimize repeating previous queries; e.g., try to only use KeywordSearch twice in total). Directly give me your new query without any explanation or additional text, just the query itself:"
+    prompt += "Please formulate a new query to expand our paper collection with more diverse and relevant papers (you can do so by diversifying the types of queries to generate and minimize the overlap with previous queries). Directly give me your new query without any explanation or additional text, just the query itself:"
     
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=100, seed=seed, json_output=False)
@@ -38,7 +38,7 @@ def paper_scoring_method(paper_lst, topic_description, openai_client, model, see
     prompt = "You are a helpful literature review assistant whose job is to read the below set of papers and score each paper. The criteria for scoring are:\n"
     prompt += "(1) The paper is relevant to the topic of: " + topic_description.strip() + ". Note that it should be specific to solve the problem of focus, rather than just generic methods. "
     if "prompting" in topic_description:
-        prompt += "The proposed method should be about new prompting methods, rather than other techniques like finetuning.\n"
+        prompt += "The proposed method should be about new prompting methods, rather than other techniques like finetuning or pretraining.\n"
     elif "finetuning" in topic_description:
         prompt += "The proposed method should be about new finetuning methods, rather than other techniques like prompting.\n"
     else:
