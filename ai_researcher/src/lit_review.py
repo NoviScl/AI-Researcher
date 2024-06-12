@@ -200,9 +200,9 @@ if __name__ == "__main__":
     print ("Total cost: ", total_cost)
 
     if "claude" in args.engine:
-        cache_dir = "../cache_results_claude_may/lit_review"
+        cache_dir = "../cache_results_claude_may/lit_review_new"
     else:
-        cache_dir = "../cache_results_gpt4/lit_review"
+        cache_dir = "../cache_results_gpt4/lit_review_new"
 
     if args.cache_name:
         if not os.path.exists(cache_dir):

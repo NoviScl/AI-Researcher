@@ -1,3 +1,13 @@
+## safety
+python3 src/lit_review.py \
+ --engine "claude-3-opus-20240229" \
+ --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy" \
+ --cache_name "safety_prompting" \
+ --track "method" \
+ --max_paper_bank_size 100 \
+ --print_all
+ 
+
 ## coding
 python3 src/lit_review.py \
  --engine "claude-3-opus-20240229" \
@@ -69,13 +79,5 @@ python3 src/lit_review.py \
  --print_all
 
 
-## safety
-python3 src/lit_review.py \
- --engine "claude-3-opus-20240229" \
- --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy" \
- --cache_name "safety_prompting" \
- --track "method" \
- --max_paper_bank_size 100 \
- --print_all
 
  
