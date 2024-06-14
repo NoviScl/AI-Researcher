@@ -83,14 +83,21 @@ def format_plan_json(experiment_plan_json, indent_level=0):
         for k, v in experiment_plan_json.items():
             if k == "score":
                 continue
-            if isinstance(v, str):
-                output_str += f"{indent}{k}: {v.strip()}\n"
+            if isinstance(v, str) or isinstance(v, int):
+                output_str += f"{indent}{k}: {v}\n"
+            elif isinstance(v, list):
+                output_str += f"{indent}{k}:\n"
+                for item in v:
+                    if isinstance(item, dict):
+                        output_str += format_plan_json(item, indent_level + 1)
+                    else:
+                        output_str += f"{indent}  - {item}\n"
             else:
                 output_str += f"{indent}{k}:\n"
                 output_str += format_plan_json(v, indent_level + 1)
         return output_str
-    except:
-        print ("Error in formatting experiment plan json: ", experiment_plan_json)
+    except Exception as e:
+        print("Error in formatting experiment plan json: ", e)
         return ""
 
 
@@ -131,6 +138,14 @@ def concat_reviews(paper_json):
 def avg_score(scores):
     scores = [int(s[0]) for s in scores]
     return sum(scores) / len(scores)
+
+def max_score(scores):
+    scores = [int(s[0]) for s in scores]
+    return max(scores)
+
+def min_score(scores):
+    scores = [int(s[0]) for s in scores]
+    return min(scores)
 
 if __name__ == "__main__":
     # filename = "/Users/clsi/Desktop/AI-Researcher/cache_results_claude/lit_review/uncertainty_prompting_method.json"
