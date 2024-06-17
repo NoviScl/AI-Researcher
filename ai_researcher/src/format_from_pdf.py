@@ -60,11 +60,14 @@ if __name__ == "__main__":
     filenames = os.listdir("../{}".format(args.cache_name))
 
     ## sample a subset 
-    filenames = [f for f in filenames if f.endswith(".json") and '5' in f]
+    filenames = [f for f in filenames if f.endswith(".json")]
 
     for filename in tqdm(filenames):
         with open("../{}/{}".format(args.cache_name, filename), "r") as f:
             paper = json.load(f)
+        
+        if "structured_summary" in paper:
+            continue
         
         try:
             title = paper["title"].strip()

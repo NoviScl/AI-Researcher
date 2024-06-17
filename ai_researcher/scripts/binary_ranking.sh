@@ -1,0 +1,1 @@
+python3 src/binary_ranking.py --cache_name ORB_easy >> logs/orb_easy_claude_fewshot_cot.log 2>&1

@@ -3,6 +3,8 @@ import os
 from utils import avg_score, min_score, max_score
 import numpy as np
 import matplotlib.pyplot as plt
+import random 
+random.seed(2024)
 
 def plot_score_buckets(scores):
     # Create bins for score ranges
@@ -24,9 +26,10 @@ def plot_score_buckets(scores):
 if __name__ == "__main__":
     cache_name = "openreview_benchmark"
     filenames = os.listdir("../{}".format(cache_name))
-    filenames = [f for f in filenames if f.endswith(".json") and '5' in f]
+    filenames = [f for f in filenames if f.endswith(".json")]
     # filenames = [f for f in filenames]
     all_scores = []
+    all_papers = []
     pos_papers = []
     neg_papers = []
 
@@ -37,6 +40,7 @@ if __name__ == "__main__":
         scores = paper["scores"]
         mean_score = avg_score(scores)
         all_scores.append(mean_score)
+        all_papers.append(paper)
 
         if mean_score > 6 and min_score(scores) >= 6:
             pos_papers.append(paper)
@@ -48,12 +52,38 @@ if __name__ == "__main__":
     # print (pos, neg)
 
     # plot_score_buckets(all_scores)
+    
+    '''
     pos_papers = [paper for paper in pos_papers if "structured_summary" in paper and isinstance(paper["structured_summary"], dict) and "scores" in paper]
     neg_papers = [paper for paper in neg_papers if "structured_summary" in paper and isinstance(paper["structured_summary"], dict) and "scores" in paper]
-    
+    random.shuffle(pos_papers)
+    random.shuffle(neg_papers)
+
     print (len(pos_papers), len(neg_papers))
 
-    with open("../openreview_binary/pos_papers.json", "w") as f:
+    with open("../ORB_full/pos_papers.json", "w") as f:
         json.dump(pos_papers, f, indent=4)
-    with open("../openreview_binary/neg_papers.json", "w") as f:
+    with open("../ORB_full/neg_papers.json", "w") as f:
+        json.dump(neg_papers, f, indent=4)
+    '''
+
+    sorted_indices = sorted(range(len(all_scores)), key=lambda i: all_scores[i])
+    lowest_indices = sorted_indices[:50]
+    highest_indices = sorted_indices[-50:]
+
+    neg_papers = [all_papers[i] for i in lowest_indices]
+    pos_papers = [all_papers[i] for i in highest_indices]
+
+    neg_scores = [all_scores[i] for i in lowest_indices]
+    pos_scores = [all_scores[i] for i in highest_indices]
+
+    print (np.mean(neg_scores), np.std(neg_scores))
+    print (np.mean(pos_scores), np.std(pos_scores))
+
+    random.shuffle(pos_papers)
+    random.shuffle(neg_papers)
+
+    with open("../ORB_easy/pos_papers.json", "w") as f:
+        json.dump(pos_papers, f, indent=4)
+    with open("../ORB_easy/neg_papers.json", "w") as f:
         json.dump(neg_papers, f, indent=4)

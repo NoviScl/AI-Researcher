@@ -65,7 +65,7 @@ if __name__ == "__main__":
         )
 
     if "claude" in args.engine:
-        with open(os.path.join("../cache_results_claude_may/lit_review", args.cache_name + ".json"), "r") as f:
+        with open(os.path.join("../cache_results_claude_may/lit_review_new", args.cache_name + ".json"), "r") as f:
             lit_review = json.load(f)
     else:
         with open(os.path.join("../cache_results_gpt4/lit_review", args.cache_name + ".json"), "r") as f:

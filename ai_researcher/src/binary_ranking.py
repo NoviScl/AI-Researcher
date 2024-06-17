@@ -23,15 +23,26 @@ def overall_score(experiment_plan, criteria, openai_client, model, seed):
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2, seed=seed, json_output=False)
     return prompt, response, cost
 
-def better_idea(idea_1, idea_2, openai_client, model, seed):
+def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_demos=None):
     prompt = "You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by the top AI conference and the other one is rejected. Your task is to identify the one that has been accepted.\n"
-    prompt += "The two project proposals are:\n\n" 
-    prompt += "1.\n" + format_plan_json(idea_1) + "\n\n"
-    prompt += "2.\n" + format_plan_json(idea_2) + "\n\n"
-    prompt += "\nYou should consider factors like novelty, soundness, and potential impact.\n"
-    # prompt += "Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.\n"
-    # prompt += "Now decide which one is the accepted idea. First imagine you are a reviewer and give a review to both ideas analyzing their strengths and weaknesses. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea and nothing else.\n"
-    prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea to end the response."
+    if method != "few_shot_review_cot":
+        prompt += "The two project proposals are:\n\n" 
+        prompt += "paper 1:\n" + format_plan_json(idea_1) + "\n\n"
+        prompt += "paper 2:\n" + format_plan_json(idea_2) + "\n\n"
+        prompt += "\nYou should consider factors like novelty, soundness, and potential impact.\n"
+    if method == "zero_shot":
+        prompt += "Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.\n"
+    elif method == "zero_shot_review_cot":
+        prompt += "Now decide which one is the accepted idea. First imagine you are a reviewer and give a review to both ideas analyzing their strengths and weaknesses. Then start a new line and directly return a number 1 or 2 to indicate the accepted idea and nothing else.\n"
+    elif method == "zero_shot_compare_cot":
+        prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea to end the response."
+    elif method == "few_shot_review_cot":
+        prompt += "Here are some examples:\n" + few_shot_demos
+        prompt += "\n\nThe two project proposals given to you are:\n\n" 
+        prompt += "paper 1:\n" + format_plan_json(idea_1) + "\n\n"
+        prompt += "paper 2:\n" + format_plan_json(idea_2) + "\n\n"
+        prompt += "\nYou should consider factors like novelty, soundness, and potential impact.\n"
+        prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea to end the response."
 
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
@@ -90,7 +101,8 @@ def tournament_ranking(idea_lst, openai_client, model, seed):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='claude-3-opus-20240229', help='api engine; https://openai.com/api/')
-    parser.add_argument('--cache_name', type=str, default="openreview_binary", help='cache file name for the retrieved papers')
+    parser.add_argument('--cache_name', type=str, default="ORB_small", help='cache file name for the retrieved papers')
+    parser.add_argument('--method', type=str, default="few_shot_review_cot", help='cache file name for the retrieved papers')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
@@ -116,6 +128,8 @@ if __name__ == "__main__":
         pos_papers = json.load(f)
     with open("../{}/neg_papers.json".format(args.cache_name), "r") as f:
         neg_papers = json.load(f)
+    with open("prompts/binary_ranking_examples.txt", "r") as f:
+        few_shot_demos = f.read()
 
     n_pos = len(pos_papers)
     n_neg = len(neg_papers)
@@ -130,14 +144,14 @@ if __name__ == "__main__":
         label = random.randint(1, 2)
 
         if label == 1:
-            prompt, response, cost = better_idea(pos_idea["structured_summary"], neg_idea["structured_summary"], client, args.engine, args.seed)
+            prompt, response, cost = better_idea(pos_idea["structured_summary"], neg_idea["structured_summary"], args.method, client, args.engine, args.seed, few_shot_demos)
         else:
-            prompt, response, cost = better_idea(neg_idea["structured_summary"], pos_idea["structured_summary"], client, args.engine, args.seed)
+            prompt, response, cost = better_idea(neg_idea["structured_summary"], pos_idea["structured_summary"], args.method, client, args.engine, args.seed, few_shot_demos)
         
         # print (prompt)
         print ("predicted: ", response)
         print ("label: ", label)
-        # print (cost)
+        print (cost)
 
         if response.strip().split()[-1] == str(label):
             correct += 1
