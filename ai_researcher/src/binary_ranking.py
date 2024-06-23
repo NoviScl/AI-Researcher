@@ -23,6 +23,7 @@ def overall_score(experiment_plan, criteria, openai_client, model, seed):
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2, seed=seed, json_output=False)
     return prompt, response, cost
 
+@retry.retry(tries=3, delay=2)
 def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_demos=None):
     prompt = "You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by the top AI conference and the other one is rejected. Your task is to identify the one that has been accepted.\n"
     if method != "few_shot_review_cot":
@@ -35,7 +36,7 @@ def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_dem
     elif method == "zero_shot_review_cot":
         prompt += "Now decide which one is the accepted idea. First imagine you are a reviewer and give a review to both ideas analyzing their strengths and weaknesses. Then start a new line and directly return a number 1 or 2 to indicate the accepted idea and nothing else.\n"
     elif method == "zero_shot_compare_cot":
-        prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea to end the response."
+        prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea and end the response."
     elif method == "few_shot_review_cot":
         prompt += "Here are some examples:\n" + few_shot_demos
         prompt += "\n\nThe two project proposals given to you are:\n\n" 
@@ -103,6 +104,7 @@ if __name__ == "__main__":
     parser.add_argument('--engine', type=str, default='claude-3-opus-20240229', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default="ORB_small", help='cache file name for the retrieved papers')
     parser.add_argument('--method', type=str, default="few_shot_review_cot", help='cache file name for the retrieved papers')
+    parser.add_argument('--sc_n', type=int, default=10, help="number of sampling for self-consistency")
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 

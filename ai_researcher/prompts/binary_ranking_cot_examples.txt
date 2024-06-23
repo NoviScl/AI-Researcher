@@ -41,6 +41,30 @@ Thought Propagation:
 
 
 
+paper 1 meta review:
+ All reviewers are quite negative on this paper. They have raised a series of concerns. Many parts in the work are not clearly presented. Some important related and recent works are missing. The experimental comparisons are also not fair. No rebuttal is provided by the authors. Thus, the AC recommends rejection for this paper.
+Justification for why not higher score: There are many weaknesses in this paper, in terms of clarity, comparisons and experiments.
+Justification for why not lower score: N/A
+
+paper 1 score:  2.5
+
+
+
+paper 2 meta review:
+ This paper proposes a new approach called Thought Propagation (TP) for leveraging LLMs for solving reasoning tasks. TP takes three sequential steps: (1) prompting LLMs to first generate multiple problems similar to the target problem; (2) prompting LLMs for solving the similar, generated problems and then (3)  using LLMs to combine the generated answers to create a final answer to the target problem.
+
+TP is shown to outperform state-of-the-art methods (Tree of Thoughts and Chain of Thoughts) on most tested benchmarks. However, the downside raised by some reviewers (`39VY`, `yu29`) and that the authors agree to is that TP is substantially slower than ToT and CoT.
+
+The authors did a satisfactory job in answering the rebuttal questions from all three reviewers and requests for additional results.
+
+I vote for the paper to be `Accepted` given its extensive experiments, large quantitative improvement (especially in 0-shot and lower-shot settings) compared to previous methods.
+However, I'd request the authors to include the computation details/disadvantages in the Appendix and refer to it from a Limitation discussion in the main text.
+Justification for why not higher score: Despite being more accurate, TP is also substantially more computationally expensive compared to prior methods.
+Justification for why not lower score: The paper has extensive experiments showing its superior accuracy compared to baselines.
+
+paper 2 score:  6.7
+
+
 accepted paper:  2
 
 
@@ -79,6 +103,25 @@ Learning Customized Human Preferences:
 
 
 
+paper 1 meta review:
+ This well written paper has been assessed by three knowledgeable reviewers who voted for its acceptance (one full accept and two marginal accepts). The reviewers liked the originality and potential impact of the showcased work in healthcare, yet had minor concerns about generality of the conclusion since the method was demonstrated on only one publicly available dataset. But in summary, this work meets the requirements for acceptance at ICLR 2024.
+Justification for why not higher score: This is a good paper with some residual limitations, very well suited for a poster session.
+Justification for why not lower score: This paper is above the ICLR acceptance threshold.
+
+paper 1 score:  6.7
+
+
+
+paper 2 meta review:
+ The authors address the task of developing personalized reward models for language model alignment, highlighting the importance of customized reward models tailored to individual user preferences. The main contributions are the introduction of a novel synthetic preference dataset specifically designed for the customization of reward models, and a baseline training methodology employing multi-stage fine-tuning. The authors also explore the impact of different configurations of the baseline training methodology on the performance of these customized reward models.
+
+Although the reviewers agree that the paper is interesting and makes a step in the right direction, they also raise a number of critical comments and concerns, including the limited novelty of the baseline approach, the synthetic nature and possible bias of the dataset, the lack of baselines and alternatives, the lack of policy-level evaluation, the insufficient discussion on personalisation, and questions regarding generalisation. In the discussion between authors and reviewers, some of these points could be resolved but other not. Eventually, there was a consensus that the paper does not yet reach the level expected for a top-venue such as ICLR.
+Justification for why not higher score: Quality is not good enough.
+Justification for why not lower score: N/A
+
+paper 2 score:  4.3
+
+
 accepted paper:  1
 
 
@@ -112,6 +155,29 @@ Future Language Modeling from Temporal Document History:
     Step 5: Human Evaluation: Conduct a human evaluation by randomly evaluating 100 generated abstracts for each approach. Evaluate the abstracts with six criteria: Topic (clear and correct), Topic New (new topic), Problem (clear and correct), Problem New (new problem), Method (clear and correct), and Method New (new method). Each criterion score is binary (0 or 1).
     Step 6: Analyze Results: Compare the performance of the proposed methods against the baselines using both automatic and human evaluation metrics. Analyze whether the proposed methods generate content that is more related to future texts and whether they improve the fluency and adequacy of the generated abstracts.
 
+
+
+paper 1 meta review:
+ The paper proposes an Uncertainty-Aware Prompt Meta-learning (UAPML) framework, which improves the efficiency of gradient-based meta-learning by focusing on meta-knowledge extraction for few-shot tasks instead of computationally expensive meta-knowledge adaption. The soft and hard modulation techniques are developed to automatically generate task-specific prompts while considering the shared and task specific information among the few-shot tasks.  Experiments are conducted in various settings to demonstrate the effectiveness of the proposed UAPML framework. 
+
+As pointed out by the reviewers, some key pieces of the proposed methodology are not clearly described, which lead to confusions around several important technical components. The evaluation results are not totally convincing as the improvements in the computation time are less significant compared to the baselines and experiments on large backbones are also missing. The paper should also more clearly highlight the distinctions from important related works (as pointed by the reviewers) to better justify the technical novelty.
+Justification for why not higher score: The evaluation results are not entirely convincing and there are confusions about some key technical components, making it difficult to assess the overall contribution and novelty.
+Justification for why not lower score: N/A
+
+paper 1 score:  4.3
+
+
+
+paper 2 meta review:
+ This paper introduces the task of future language modeling and propose future language models. The proposed models are evaluated on the future abstract prediction task, and it outperforms the baseline non-temporal language models across all automatic evaluation metrics and human evaluation on generating content related to the future text based on temporal historical documents.
+ 
+The task of future language modeling is new and interesting. The proposed language models sound reasonable and the results are promising. The paper is easy to follow. 
+ 
+The weaknesses of this paper lie in the evaluation part. First, only one single artificial task (i.e. future abstract prediction) is used in the experiments, which is not sufficient. Additional experiments and evaluation on real downstream tasks need to be performed. Second, only GPT-2 (which is old) is used as the base model in the experiments.  It would be better to test the robustness to include a few more base models with larger sizes.
+Justification for why not higher score: The evaluation is not very strong, and only one single artificial task is used for evaluation. The usability and effectiveness of the proposed model in real applications/tasks are not demonstrated.
+Justification for why not lower score: The problem investigated in this pape is very ininteresting and the idea is new.
+
+paper 2 score:  7.3
 
 
 accepted paper:  2
@@ -148,6 +214,25 @@ LLM Censorship: The Problem and its Limitations:
     Step 6: Get Results: Collect and analyze the results of the experiments. Evaluate the effectiveness of the security-based censorship mechanisms and the success rate of 'Mosaic Prompts' in bypassing censorship.
     Step 7: Analyze Results: Compare the performance of the proposed security-based censorship mechanisms with existing methods. Assess the limitations and potential risks associated with each approach. Provide insights and recommendations for improving censorship in LLMs.
 
+
+
+paper 1 meta review:
+ The authors tackle the problem of multi-agent cooperation focusing on the creation of a modular approach to agent construction that has explicit modules for every aspect of planning including communication. Overall reviewers were happy with the work though admit that it is a rather complex piece to evaluate.  They appreciate the modular framework, the experiments design and analysis, and the use of open LLMs.  Importantly, the work does include ablations to make the contributions of all modules clear in performance.
+Justification for why not higher score: The reviewers are positive yet overall still cautious.  There are likely several reasons for this -- from the impact of each model/module to the complexity of experimental conditions, choices of environment.  It is difficult to fully disentangle the impacts of each decision/component.
+Justification for why not lower score: Everyone is in agreement that the motivation is clear and that this is an interesting/important area for the community to tackle.  Nobody votes for rejection.
+
+paper 1 score:  6.5
+
+
+
+paper 2 meta review:
+ The paper studies the problem of LLM censorship, which is to use an algorithm, potentially implemented by another LLM, to determine whether a string is permissible. The paper provides an interesting theoretical argument: LLM censorship is actually an “undecidable” problem, which means that no algorithm exists to fulfill this goal. 
+The paper then presents a “Mosaic Prompts” method to bypass the LLM censorship, which decomposes an impermissible program into permissible components.
+Finally, the paper argues that LLM censorship should be dealt with by security approaches instead of ML approaches.
+Justification for why not higher score: The main reason that the reviewers reject this paper is due to limited contributions. The theorems are mostly from direct implications of existing ones. The paper also lacks sufficient evaluations to support the proposed Mosaic Prompts approach, which by far seems more like a proof of concept. While the paper's ideas are generally very interesting, as pointed out by one reviewer, it feels more like a "position" paper instead of a scientific contribution suitable for ICLR.
+Justification for why not lower score: N/A
+
+paper 2 score:  4.5
 
 
 accepted paper:  1
@@ -192,6 +277,23 @@ Zero-Shot Robustification of Zero-Shot Models:
     Step 4: Get Results: Evaluate the performance of RoboShot on the selected datasets by comparing the average accuracy and worst-group accuracy against zero-shot baselines and group prompt zero-shot baselines.
     Step 5: Analyze Results: Compare the improvements in average accuracy and worst-group accuracy. Analyze the impact of removing harmful components and boosting helpful components in the embeddings. Additionally, evaluate the compatibility of RoboShot with different pretrained and language models.
 
+
+
+paper 1 meta review:
+ All the reviewers have concerns about the paper and are not in favor of acceptance. Most prominently, the comparison with Kirchenbauer et al. (2023a). The rebuttal period did not clear out the concerns.
+Justification for why not higher score: All the reviewers are negative about the paper.
+Justification for why not lower score: N/A
+
+paper 1 score:  3.7
+
+
+
+paper 2 meta review:
+ This paper presents RoboShot, an innovative method that improves the robustness of pretrained model embeddings in a fully zero-shot fashion by leveraging insights from large language models to refine embeddings and address inherited biases. The theoretical framework provided characterizes the conditions under which RoboShot can outperform existing methods in zero-shot learning. The experimental evaluation is well-structured and rigorous, demonstrating consistent improvements over several zero-shot baselines across multiple datasets and model architectures. Additionally, the paper is clearly written and accessible, making it a valuable contribution to the field. Based on these strengths, I recommend acceptance of this paper.
+Justification for why not higher score: I think this is definitely a solild paper and a great contribution to the community. However, I think in terms of the methodology side, it doesn't sound super exciting (it can be similiar to a lot of methods using LMs recently). Therefore, I recommend the current score.
+Justification for why not lower score: n/a
+
+paper 2 score:  7.5
 
 
 accepted paper:  2
@@ -244,6 +346,27 @@ Benchmarking and Improving Generator-Validator Consistency of Language Models:
     Step 6: Evaluate GV-Consistency: Evaluate the GV-consistency of the finetuned model across the six tasks. Measure the percentage of consistent generator-validator pairs.
     Step 7: Analyze Results: Compare the GV-consistency, generator quality, and validator accuracy of the finetuned model against the baseline models. Assess the improvements in consistency and performance across both seen and unseen tasks and domains.
 
+
+
+paper 1 meta review:
+ The paper studies an interesting topic, i.e., the strategic reasoning ability of LLMs by letting the play in competitive games. This is a very interesting question. The AC appreciated and acknowledges the effort the authors put during the rebuttal to improve their manuscript based on the reviewers comments. However it seems that the reviewers (unanimously) were not convinced that the paper is above the bar for ICLR due to the limitations of the experiments.
+Justification for why not higher score: The reviewers unanimously believe that the paper is below the bar and that further revisions are needed (with more experiments).
+Justification for why not lower score: Not applicable
+
+paper 1 score:  3.0
+
+
+
+paper 2 meta review:
+ This paper finds the inconsistency between generating and validating an answer is prevalent in language models (LMs), i.e., a violation of GV-consistency, and proposes a framework for measuring the GV-consistency of LLMs. To improve consistency, it proposes consistency fine-tuning. The effectiveness of consistency fine-tuning is validated across 6 tasks. 
+
+The problem investigated in this paper is interesting and the proposed framework is useful for future researches. The proposed consistency fine-tuning method is reasonable and effective. 
+
+Weaknesses: The work is very empirical and lacks theoretical depth. The dataset and experiments need more analyses and explanations.
+Justification for why not higher score: see the meta-review.
+Justification for why not lower score: see the meta-review.
+
+paper 2 score:  6.7
 
 
 accepted paper:  2
