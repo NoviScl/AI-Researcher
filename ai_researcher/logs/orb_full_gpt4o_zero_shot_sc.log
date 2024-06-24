@@ -1,0 +1,192 @@
+#pos:  219 #neg:  126 N:  126
+  0%|          | 0/126 [00:00<?, ?it/s]You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by a top AI conference (like ICLR or ACL) and the other one is rejected. Your task is to identify the one that has been accepted.
+The two project proposals are:
+
+paper 1:
+Multi-Vision Multi-Prompt for Few-Shot Learning in Vision-Language Model:
+  Title: Multi-Vision Multi-Prompt for Few-Shot Learning in Vision-Language Model
+  Problem Statement: In vision-language models like CLIP, prompt learning is used to adapt to specific tasks in few-shot learning. However, existing methods often rely on a single prompt, which may not accurately distinguish between different categories, especially when a category has multiple features and contextual connections. This limitation affects the model's accuracy and efficiency.
+  Motivation: Existing methods such as meta-learning or image augmentation can improve few-shot learning performance but often at the cost of increased computational complexity and reduced accuracy. Single-prompt methods fail to capture the diverse features and contextual nuances of different categories. The proposed Multi-Vision Multi-Prompt (MVMP) method aims to address these issues by using multiple prompts at different stages of the training process and averaging the predictions, thereby enhancing the model's performance without increasing the number of model parameters.
+  Proposed Method: MVMP employs multiple prompts at different stages of the training process and averages the predictions to improve accuracy. It also introduces a mixed self-augmentation framework and text distillation to enhance the model's performance. The method involves three key techniques: (a) Multi-prompt: Using multiple prompts at different training stages and performing information fusion through average weighting. (b) Mixed self-augmentation: Creating new virtual images by replacing region pixels with pixels from another image region to enhance image diversity. (c) Text distillation: Using multiple fixed prompts to acquire diverse text features, thereby improving the alignment between image and text.
+  Step-by-Step Experiment Plan:
+    Step 1: Gather Datasets: Use 11 different visual categorization datasets including ImageNet, OxfordPets, StanfordCars, Caltech101, DTD, EuroSAT, FGVCAircraft, Flowers102, Food101, SUN397, and UCF101. These datasets cover a wide range of tasks from large-scale image classification to more specialized and fine-grained tasks.
+    Step 2: Construct Prompts: For the proposed method, use multiple prompts stored in a prompt memory bank. During training, update the memory bank with prompts from different stages and apply Gaussian weights to high-layer prompts. For text distillation, use 10 pre-defined manual prompts to distill frozen CLIP text features.
+    Step 3: Select Models: Use the pre-trained CLIP model with VIT-B/16 as the image encoder. The text encoder and image encoder of CLIP are frozen, and only the embedded text and image prompts are trained.
+    Step 4: Training Process: Train the model for 50 epochs with a batch size of 16. Use a learning rate of 0.002 and set weights of the loss function as λ1=2, λ2=15, λ3=5. For each training epoch, update the prompt memory bank and apply Gaussian weights to high-layer prompts. Use mixed self-augmentation to create new virtual samples and apply consistency loss to stabilize the model.
+    Step 5: Inference Process: During inference, sample prompts from the memory bank and use them to obtain text feature diversity. Calculate the prediction distribution for each image by averaging the predictions from multiple prompts and the fixed text features.
+    Step 6: Get Results: Evaluate the model on the test sets of the 11 datasets for few-shot learning tasks with 1, 2, 4, 8, and 16 shots. Compare the performance of MVMP with state-of-the-art prompt learning methods and traditional few-shot learning data augmentation methods.
+    Step 7: Analyze Results: Compare the accuracy of MVMP with other methods on each dataset. Analyze the improvements in performance, especially in scenarios with minimal training samples. Evaluate the generalization performance of MVMP in cross-dataset experiments and base-to-new experiments.
+
+
+paper 2:
+Thought Propagation:
+  Title: THOUGHT PROPAGATION: AN ANALOGICAL APPROACH TO COMPLEX REASONING WITH LARGE LANGUAGE MODELS
+  Problem Statement: Large Language Models (LLMs) have achieved remarkable success in reasoning tasks with the development of prompting methods. However, existing prompting approaches cannot reuse insights from solving similar problems and suffer from accumulated errors in multi-step reasoning, as they prompt LLMs to reason from scratch.
+  Motivation: Existing methods prompt LLMs to reason from scratch, which leads to two main issues: 1) They cannot reuse insights from solving similar problems, which could ease the difficulty of solving complex problems and develop new solutions. 2) They are sensitive to errors made in intermediate stages during multi-step reasoning, leading to accumulated errors and invalid outcomes. The inspiration behind the new proposed method, Thought Propagation (TP), is to explore analogous problems and leverage their solutions to enhance the complex reasoning ability of LLMs. By propagating insights from solving previous analogous problems, TP aims to inspire new problem-solving and address the limitations of reasoning from scratch.
+  Proposed Method: Thought Propagation (TP) involves three main modules: LLM Propose, LLM Solve, and LLM Aggregate. TP first prompts LLMs to propose and solve a set of analogous problems related to the input one. Then, TP reuses the results of analogous problems to directly yield a new solution or derive a knowledge-intensive plan for execution to amend the initial solution obtained from scratch. TP is compatible with existing prompting approaches, allowing plug-and-play generalization and enhancement in a wide range of tasks without much labor in task-specific prompt engineering.
+  Step-by-Step Experiment Plan:
+    Step 1: Gather Datasets: We use three challenging tasks to evaluate the proposed method: Shortest-Path Reasoning, Creative Writing, and LLM-Agent Planning. For Shortest-Path Reasoning, we generate 100 non-trivial shortest-path problems. For Creative Writing, we use a dataset with 100 writing problems. For LLM-Agent Planning, we use the ALFWorld game suite with 134 environments.
+    Step 2: Construct Prompts:
+      Shortest-Path Reasoning:
+        LLM Propose: The undirected graph is represented as a node set, an edge set. Given an input node, find its neighborhood nodes and save them in a list. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Input Node: 4 Answer: The neighborhood node list of the input node is [1, 2, 3].
+        LLM Solve: Find the shortest path from a source node to a target node in an undirected graph. The undirected graph is represented as a node set, an edge set, and an edge distance set. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Edge distance set: [2, 3, 5, 3] Source Node: 0 Target Node: 4 Answer: The shortest path from the source node to the target node is [0, 3, 4]. The shortest distance is 5.
+        LLM Aggregate: The undirected graph is represented as a node set, an edge set and an edge distance set. The edges in the edge set are reversible. We have hints of one or several intermediate paths from the source node to some intermediate nodes. Please use these hints to find the shortest path from the source node the the target node. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Edge distance set: [2, 3, 5, 3] The hints are: The shortest path from the source node 0 to the intermediate node 3 is [0, 3]. The shortest distance is 2. The shortest path from the source node 0 to the intermediate node 1 is [0, 3, 4, 1]. The shortest distance is 8. The shortest path from the source node 0 to the intermediate node 2 is [0, 3, 4, 2]. The shortest distance is 10. Use the above hint to find the shortest path from the source node 0 to the target node 4. Answer: Using the above hints, the shortest path from the source node 0 to the target node 4 is [0, 3, 4]. The shortest distance is 5.
+      Creative Writing:
+        LLM Propose: Please rephrase the input sentences but do not change their order or meaning. The input sentences are: {input} Your output should be in the following format: Output: Your sentences here.
+        LLM Solve: Make a writing plan for a coherent passage of 4 short paragraphs. The end sentence of each paragraph must be: {input} The plan contains a one-sentence description in each paragraph. Your output should be in the following format: Plan: Your plan here.
+        LLM Aggregate: Given several writing plans, decide which writing plan is the most promising. Analyze each writing plan in detail, then conclude in the last line 'The best choice is s', where s is the integer id of the choice.
+      LLM-Agent Planning:
+        LLM Propose: Evaluate the similarity score between these two cases. The similarity score should be an integer between 0 and 10. 0 indicates the least similarity and 10 indicates the most similarity. Case 1: {current task description } Case 2: {proposed task description } The output format should be: The similarity score is:
+        LLM Solve: You will be given a successful case where you successfully complete the task. Then you will be given a failure case where you fail to complete the task. Do not summarize these two cases, but rather use the successful case to think about the strategy and path you took to attempt to complete the task in the failure case. Devise a concise, new plan of action that accounts for your mistake with reference to specific actions that you should have taken. For example, if you tried A and B but forgot C, then devise a plan to achieve C with environment-specific actions. You will need this later to solve the failure case. Give your plan after 'Plan'. Success Case: {success case } Failure Case: {failure case } Plan:
+        LLM Aggregate: You once fail to accomplish the following task. The task is: {task} Here are several plans to accomplish the task: {several plans } Output the most promising plan to accomplish the task, but do not output any irrelevant messages. Your answer goes after Plan: Plan:
+    Step 3: Select Models: We use three main strong base LLMs across all tasks: PaLM-2 (Bison), GPT-3.5, and GPT-4.
+    Step 4: Get Results: Get answer predictions from the models on these datasets with both the baselines and proposed method.
+    Step 5: Analyze Results: Compare whether the new method improves the performance of LLMs in these tasks.
+
+
+Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.
+
+You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by a top AI conference (like ICLR or ACL) and the other one is rejected. Your task is to identify the one that has been accepted.
+The two project proposals are:
+
+paper 1:
+Multi-Vision Multi-Prompt for Few-Shot Learning in Vision-Language Model:
+  Title: Multi-Vision Multi-Prompt for Few-Shot Learning in Vision-Language Model
+  Problem Statement: In vision-language models like CLIP, prompt learning is used to adapt to specific tasks in few-shot learning. However, existing methods often rely on a single prompt, which may not accurately distinguish between different categories, especially when a category has multiple features and contextual connections. This limitation affects the model's accuracy and efficiency.
+  Motivation: Existing methods such as meta-learning or image augmentation can improve few-shot learning performance but often at the cost of increased computational complexity and reduced accuracy. Single-prompt methods fail to capture the diverse features and contextual nuances of different categories. The proposed Multi-Vision Multi-Prompt (MVMP) method aims to address these issues by using multiple prompts at different stages of the training process and averaging the predictions, thereby enhancing the model's performance without increasing the number of model parameters.
+  Proposed Method: MVMP employs multiple prompts at different stages of the training process and averages the predictions to improve accuracy. It also introduces a mixed self-augmentation framework and text distillation to enhance the model's performance. The method involves three key techniques: (a) Multi-prompt: Using multiple prompts at different training stages and performing information fusion through average weighting. (b) Mixed self-augmentation: Creating new virtual images by replacing region pixels with pixels from another image region to enhance image diversity. (c) Text distillation: Using multiple fixed prompts to acquire diverse text features, thereby improving the alignment between image and text.
+  Step-by-Step Experiment Plan:
+    Step 1: Gather Datasets: Use 11 different visual categorization datasets including ImageNet, OxfordPets, StanfordCars, Caltech101, DTD, EuroSAT, FGVCAircraft, Flowers102, Food101, SUN397, and UCF101. These datasets cover a wide range of tasks from large-scale image classification to more specialized and fine-grained tasks.
+    Step 2: Construct Prompts: For the proposed method, use multiple prompts stored in a prompt memory bank. During training, update the memory bank with prompts from different stages and apply Gaussian weights to high-layer prompts. For text distillation, use 10 pre-defined manual prompts to distill frozen CLIP text features.
+    Step 3: Select Models: Use the pre-trained CLIP model with VIT-B/16 as the image encoder. The text encoder and image encoder of CLIP are frozen, and only the embedded text and image prompts are trained.
+    Step 4: Training Process: Train the model for 50 epochs with a batch size of 16. Use a learning rate of 0.002 and set weights of the loss function as λ1=2, λ2=15, λ3=5. For each training epoch, update the prompt memory bank and apply Gaussian weights to high-layer prompts. Use mixed self-augmentation to create new virtual samples and apply consistency loss to stabilize the model.
+    Step 5: Inference Process: During inference, sample prompts from the memory bank and use them to obtain text feature diversity. Calculate the prediction distribution for each image by averaging the predictions from multiple prompts and the fixed text features.
+    Step 6: Get Results: Evaluate the model on the test sets of the 11 datasets for few-shot learning tasks with 1, 2, 4, 8, and 16 shots. Compare the performance of MVMP with state-of-the-art prompt learning methods and traditional few-shot learning data augmentation methods.
+    Step 7: Analyze Results: Compare the accuracy of MVMP with other methods on each dataset. Analyze the improvements in performance, especially in scenarios with minimal training samples. Evaluate the generalization performance of MVMP in cross-dataset experiments and base-to-new experiments.
+
+
+paper 2:
+Thought Propagation:
+  Title: THOUGHT PROPAGATION: AN ANALOGICAL APPROACH TO COMPLEX REASONING WITH LARGE LANGUAGE MODELS
+  Problem Statement: Large Language Models (LLMs) have achieved remarkable success in reasoning tasks with the development of prompting methods. However, existing prompting approaches cannot reuse insights from solving similar problems and suffer from accumulated errors in multi-step reasoning, as they prompt LLMs to reason from scratch.
+  Motivation: Existing methods prompt LLMs to reason from scratch, which leads to two main issues: 1) They cannot reuse insights from solving similar problems, which could ease the difficulty of solving complex problems and develop new solutions. 2) They are sensitive to errors made in intermediate stages during multi-step reasoning, leading to accumulated errors and invalid outcomes. The inspiration behind the new proposed method, Thought Propagation (TP), is to explore analogous problems and leverage their solutions to enhance the complex reasoning ability of LLMs. By propagating insights from solving previous analogous problems, TP aims to inspire new problem-solving and address the limitations of reasoning from scratch.
+  Proposed Method: Thought Propagation (TP) involves three main modules: LLM Propose, LLM Solve, and LLM Aggregate. TP first prompts LLMs to propose and solve a set of analogous problems related to the input one. Then, TP reuses the results of analogous problems to directly yield a new solution or derive a knowledge-intensive plan for execution to amend the initial solution obtained from scratch. TP is compatible with existing prompting approaches, allowing plug-and-play generalization and enhancement in a wide range of tasks without much labor in task-specific prompt engineering.
+  Step-by-Step Experiment Plan:
+    Step 1: Gather Datasets: We use three challenging tasks to evaluate the proposed method: Shortest-Path Reasoning, Creative Writing, and LLM-Agent Planning. For Shortest-Path Reasoning, we generate 100 non-trivial shortest-path problems. For Creative Writing, we use a dataset with 100 writing problems. For LLM-Agent Planning, we use the ALFWorld game suite with 134 environments.
+    Step 2: Construct Prompts:
+      Shortest-Path Reasoning:
+        LLM Propose: The undirected graph is represented as a node set, an edge set. Given an input node, find its neighborhood nodes and save them in a list. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Input Node: 4 Answer: The neighborhood node list of the input node is [1, 2, 3].
+        LLM Solve: Find the shortest path from a source node to a target node in an undirected graph. The undirected graph is represented as a node set, an edge set, and an edge distance set. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Edge distance set: [2, 3, 5, 3] Source Node: 0 Target Node: 4 Answer: The shortest path from the source node to the target node is [0, 3, 4]. The shortest distance is 5.
+        LLM Aggregate: The undirected graph is represented as a node set, an edge set and an edge distance set. The edges in the edge set are reversible. We have hints of one or several intermediate paths from the source node to some intermediate nodes. Please use these hints to find the shortest path from the source node the the target node. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Edge distance set: [2, 3, 5, 3] The hints are: The shortest path from the source node 0 to the intermediate node 3 is [0, 3]. The shortest distance is 2. The shortest path from the source node 0 to the intermediate node 1 is [0, 3, 4, 1]. The shortest distance is 8. The shortest path from the source node 0 to the intermediate node 2 is [0, 3, 4, 2]. The shortest distance is 10. Use the above hint to find the shortest path from the source node 0 to the target node 4. Answer: Using the above hints, the shortest path from the source node 0 to the target node 4 is [0, 3, 4]. The shortest distance is 5.
+      Creative Writing:
+        LLM Propose: Please rephrase the input sentences but do not change their order or meaning. The input sentences are: {input} Your output should be in the following format: Output: Your sentences here.
+        LLM Solve: Make a writing plan for a coherent passage of 4 short paragraphs. The end sentence of each paragraph must be: {input} The plan contains a one-sentence description in each paragraph. Your output should be in the following format: Plan: Your plan here.
+        LLM Aggregate: Given several writing plans, decide which writing plan is the most promising. Analyze each writing plan in detail, then conclude in the last line 'The best choice is s', where s is the integer id of the choice.
+      LLM-Agent Planning:
+        LLM Propose: Evaluate the similarity score between these two cases. The similarity score should be an integer between 0 and 10. 0 indicates the least similarity and 10 indicates the most similarity. Case 1: {current task description } Case 2: {proposed task description } The output format should be: The similarity score is:
+        LLM Solve: You will be given a successful case where you successfully complete the task. Then you will be given a failure case where you fail to complete the task. Do not summarize these two cases, but rather use the successful case to think about the strategy and path you took to attempt to complete the task in the failure case. Devise a concise, new plan of action that accounts for your mistake with reference to specific actions that you should have taken. For example, if you tried A and B but forgot C, then devise a plan to achieve C with environment-specific actions. You will need this later to solve the failure case. Give your plan after 'Plan'. Success Case: {success case } Failure Case: {failure case } Plan:
+        LLM Aggregate: You once fail to accomplish the following task. The task is: {task} Here are several plans to accomplish the task: {several plans } Output the most promising plan to accomplish the task, but do not output any irrelevant messages. Your answer goes after Plan: Plan:
+    Step 3: Select Models: We use three main strong base LLMs across all tasks: PaLM-2 (Bison), GPT-3.5, and GPT-4.
+    Step 4: Get Results: Get answer predictions from the models on these datasets with both the baselines and proposed method.
+    Step 5: Analyze Results: Compare whether the new method improves the performance of LLMs in these tasks.
+
+
+Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.
+
+You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by a top AI conference (like ICLR or ACL) and the other one is rejected. Your task is to identify the one that has been accepted.
+The two project proposals are:
+
+paper 1:
+Multi-Vision Multi-Prompt for Few-Shot Learning in Vision-Language Model:
+  Title: Multi-Vision Multi-Prompt for Few-Shot Learning in Vision-Language Model
+  Problem Statement: In vision-language models like CLIP, prompt learning is used to adapt to specific tasks in few-shot learning. However, existing methods often rely on a single prompt, which may not accurately distinguish between different categories, especially when a category has multiple features and contextual connections. This limitation affects the model's accuracy and efficiency.
+  Motivation: Existing methods such as meta-learning or image augmentation can improve few-shot learning performance but often at the cost of increased computational complexity and reduced accuracy. Single-prompt methods fail to capture the diverse features and contextual nuances of different categories. The proposed Multi-Vision Multi-Prompt (MVMP) method aims to address these issues by using multiple prompts at different stages of the training process and averaging the predictions, thereby enhancing the model's performance without increasing the number of model parameters.
+  Proposed Method: MVMP employs multiple prompts at different stages of the training process and averages the predictions to improve accuracy. It also introduces a mixed self-augmentation framework and text distillation to enhance the model's performance. The method involves three key techniques: (a) Multi-prompt: Using multiple prompts at different training stages and performing information fusion through average weighting. (b) Mixed self-augmentation: Creating new virtual images by replacing region pixels with pixels from another image region to enhance image diversity. (c) Text distillation: Using multiple fixed prompts to acquire diverse text features, thereby improving the alignment between image and text.
+  Step-by-Step Experiment Plan:
+    Step 1: Gather Datasets: Use 11 different visual categorization datasets including ImageNet, OxfordPets, StanfordCars, Caltech101, DTD, EuroSAT, FGVCAircraft, Flowers102, Food101, SUN397, and UCF101. These datasets cover a wide range of tasks from large-scale image classification to more specialized and fine-grained tasks.
+    Step 2: Construct Prompts: For the proposed method, use multiple prompts stored in a prompt memory bank. During training, update the memory bank with prompts from different stages and apply Gaussian weights to high-layer prompts. For text distillation, use 10 pre-defined manual prompts to distill frozen CLIP text features.
+    Step 3: Select Models: Use the pre-trained CLIP model with VIT-B/16 as the image encoder. The text encoder and image encoder of CLIP are frozen, and only the embedded text and image prompts are trained.
+    Step 4: Training Process: Train the model for 50 epochs with a batch size of 16. Use a learning rate of 0.002 and set weights of the loss function as λ1=2, λ2=15, λ3=5. For each training epoch, update the prompt memory bank and apply Gaussian weights to high-layer prompts. Use mixed self-augmentation to create new virtual samples and apply consistency loss to stabilize the model.
+    Step 5: Inference Process: During inference, sample prompts from the memory bank and use them to obtain text feature diversity. Calculate the prediction distribution for each image by averaging the predictions from multiple prompts and the fixed text features.
+    Step 6: Get Results: Evaluate the model on the test sets of the 11 datasets for few-shot learning tasks with 1, 2, 4, 8, and 16 shots. Compare the performance of MVMP with state-of-the-art prompt learning methods and traditional few-shot learning data augmentation methods.
+    Step 7: Analyze Results: Compare the accuracy of MVMP with other methods on each dataset. Analyze the improvements in performance, especially in scenarios with minimal training samples. Evaluate the generalization performance of MVMP in cross-dataset experiments and base-to-new experiments.
+
+
+paper 2:
+Thought Propagation:
+  Title: THOUGHT PROPAGATION: AN ANALOGICAL APPROACH TO COMPLEX REASONING WITH LARGE LANGUAGE MODELS
+  Problem Statement: Large Language Models (LLMs) have achieved remarkable success in reasoning tasks with the development of prompting methods. However, existing prompting approaches cannot reuse insights from solving similar problems and suffer from accumulated errors in multi-step reasoning, as they prompt LLMs to reason from scratch.
+  Motivation: Existing methods prompt LLMs to reason from scratch, which leads to two main issues: 1) They cannot reuse insights from solving similar problems, which could ease the difficulty of solving complex problems and develop new solutions. 2) They are sensitive to errors made in intermediate stages during multi-step reasoning, leading to accumulated errors and invalid outcomes. The inspiration behind the new proposed method, Thought Propagation (TP), is to explore analogous problems and leverage their solutions to enhance the complex reasoning ability of LLMs. By propagating insights from solving previous analogous problems, TP aims to inspire new problem-solving and address the limitations of reasoning from scratch.
+  Proposed Method: Thought Propagation (TP) involves three main modules: LLM Propose, LLM Solve, and LLM Aggregate. TP first prompts LLMs to propose and solve a set of analogous problems related to the input one. Then, TP reuses the results of analogous problems to directly yield a new solution or derive a knowledge-intensive plan for execution to amend the initial solution obtained from scratch. TP is compatible with existing prompting approaches, allowing plug-and-play generalization and enhancement in a wide range of tasks without much labor in task-specific prompt engineering.
+  Step-by-Step Experiment Plan:
+    Step 1: Gather Datasets: We use three challenging tasks to evaluate the proposed method: Shortest-Path Reasoning, Creative Writing, and LLM-Agent Planning. For Shortest-Path Reasoning, we generate 100 non-trivial shortest-path problems. For Creative Writing, we use a dataset with 100 writing problems. For LLM-Agent Planning, we use the ALFWorld game suite with 134 environments.
+    Step 2: Construct Prompts:
+      Shortest-Path Reasoning:
+        LLM Propose: The undirected graph is represented as a node set, an edge set. Given an input node, find its neighborhood nodes and save them in a list. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Input Node: 4 Answer: The neighborhood node list of the input node is [1, 2, 3].
+        LLM Solve: Find the shortest path from a source node to a target node in an undirected graph. The undirected graph is represented as a node set, an edge set, and an edge distance set. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Edge distance set: [2, 3, 5, 3] Source Node: 0 Target Node: 4 Answer: The shortest path from the source node to the target node is [0, 3, 4]. The shortest distance is 5.
+        LLM Aggregate: The undirected graph is represented as a node set, an edge set and an edge distance set. The edges in the edge set are reversible. We have hints of one or several intermediate paths from the source node to some intermediate nodes. Please use these hints to find the shortest path from the source node the the target node. Input: Node set: [0, 1, 2, 3, 4] Edge set: [[0, 3], [1, 4], [2, 4], [3, 4]] Edge distance set: [2, 3, 5, 3] The hints are: The shortest path from the source node 0 to the intermediate node 3 is [0, 3]. The shortest distance is 2. The shortest path from the source node 0 to the intermediate node 1 is [0, 3, 4, 1]. The shortest distance is 8. The shortest path from the source node 0 to the intermediate node 2 is [0, 3, 4, 2]. The shortest distance is 10. Use the above hint to find the shortest path from the source node 0 to the target node 4. Answer: Using the above hints, the shortest path from the source node 0 to the target node 4 is [0, 3, 4]. The shortest distance is 5.
+      Creative Writing:
+        LLM Propose: Please rephrase the input sentences but do not change their order or meaning. The input sentences are: {input} Your output should be in the following format: Output: Your sentences here.
+        LLM Solve: Make a writing plan for a coherent passage of 4 short paragraphs. The end sentence of each paragraph must be: {input} The plan contains a one-sentence description in each paragraph. Your output should be in the following format: Plan: Your plan here.
+        LLM Aggregate: Given several writing plans, decide which writing plan is the most promising. Analyze each writing plan in detail, then conclude in the last line 'The best choice is s', where s is the integer id of the choice.
+      LLM-Agent Planning:
+        LLM Propose: Evaluate the similarity score between these two cases. The similarity score should be an integer between 0 and 10. 0 indicates the least similarity and 10 indicates the most similarity. Case 1: {current task description } Case 2: {proposed task description } The output format should be: The similarity score is:
+        LLM Solve: You will be given a successful case where you successfully complete the task. Then you will be given a failure case where you fail to complete the task. Do not summarize these two cases, but rather use the successful case to think about the strategy and path you took to attempt to complete the task in the failure case. Devise a concise, new plan of action that accounts for your mistake with reference to specific actions that you should have taken. For example, if you tried A and B but forgot C, then devise a plan to achieve C with environment-specific actions. You will need this later to solve the failure case. Give your plan after 'Plan'. Success Case: {success case } Failure Case: {failure case } Plan:
+        LLM Aggregate: You once fail to accomplish the following task. The task is: {task} Here are several plans to accomplish the task: {several plans } Output the most promising plan to accomplish the task, but do not output any irrelevant messages. Your answer goes after Plan: Plan:
+    Step 3: Select Models: We use three main strong base LLMs across all tasks: PaLM-2 (Bison), GPT-3.5, and GPT-4.
+    Step 4: Get Results: Get answer predictions from the models on these datasets with both the baselines and proposed method.
+    Step 5: Analyze Results: Compare whether the new method improves the performance of LLMs in these tasks.
+
+
+Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.
+  0%|          | 0/126 [00:12<?, ?it/s]
+
+Traceback (most recent call last):
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/src/binary_ranking.py", line 126, in <module>
+    prompt, response, cost = self_consistency(neg_idea["structured_summary"], pos_idea["structured_summary"], args.method, client, args.engine, args.seed, args.sc_n, few_shot_demos)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/src/binary_ranking.py", line 55, in self_consistency
+    prompt, response, cost = better_idea(idea_1, idea_2, new_method, openai_client, model, seed, few_shot_demos, temperature=0.5)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nlp/scr/clsi/miniconda3/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/retry-0.9.2-py3.11.egg/retry/api.py", line 73, in retry_decorator
+    return __retry_internal(partial(f, *args, **kwargs), exceptions, tries, delay, max_delay, backoff, jitter,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/retry-0.9.2-py3.11.egg/retry/api.py", line 33, in __retry_internal
+    return f()
+           ^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/src/binary_ranking.py", line 46, in better_idea
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=temperature, max_tokens=3000, seed=seed, json_output=False)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/src/utils.py", line 32, in call_api
+    completion = client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_utils/_utils.py", line 271, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/resources/chat/completions.py", line 659, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 1200, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 889, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 965, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 1013, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 965, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 1013, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/sailhome/clsi/.local/lib/python3.11/site-packages/openai-1.11.1-py3.11.egg/openai/_base_client.py", line 980, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}

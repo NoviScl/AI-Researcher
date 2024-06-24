@@ -11,101 +11,65 @@ import retry
 from collections import defaultdict
 random.seed(2024)
 
-@retry.retry(tries=3, delay=2)
-def overall_score(experiment_plan, criteria, openai_client, model, seed):
-    prompt = "You are a professor specialized in Natural Language Processing and Large Language Models. You are given a project proposal and you need to score it.\n"
-    prompt += "The project proposal is:\n\n" 
-    prompt += format_plan_json(experiment_plan)
-    prompt += "\n\nYour should follow the scoring rubrics:\n" + criteria + "\n"
-    prompt += "Now directly provide me with a final score between 1 and 10, no other explanation needed.\n"
-
-    prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2, seed=seed, json_output=False)
-    return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
-def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_demos=None):
-    prompt = "You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by the top AI conference and the other one is rejected. Your task is to identify the one that has been accepted.\n"
-    if method != "few_shot_review_cot":
+def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_demos=None, temperature=0.):
+    prompt = "You are a reviewer specialized in Natural Language Processing and Large Language Models. You are given two project summaries. One of them is accepted by a top AI conference (like ICLR or ACL) and the other one is rejected. Your task is to identify the one that has been accepted.\n"
+    
+    ## zero-shot methods
+    if "zero_shot" in method:
         prompt += "The two project proposals are:\n\n" 
         prompt += "paper 1:\n" + format_plan_json(idea_1) + "\n\n"
         prompt += "paper 2:\n" + format_plan_json(idea_2) + "\n\n"
-        prompt += "\nYou should consider factors like novelty, soundness, and potential impact.\n"
-    if method == "zero_shot":
-        prompt += "Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.\n"
-    elif method == "zero_shot_review_cot":
-        prompt += "Now decide which one is the accepted idea. First imagine you are a reviewer and give a review to both ideas analyzing their strengths and weaknesses. Then start a new line and directly return a number 1 or 2 to indicate the accepted idea and nothing else.\n"
-    elif method == "zero_shot_compare_cot":
-        prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea and end the response."
-    elif method == "few_shot_review_cot":
+        # prompt += "\nYou can consider factors like novelty, soundness, excitement, and potential impact.\n"
+    
+        if method == "zero_shot":
+            prompt += "Now decide which one is the accepted idea. Directly return a number 1 or 2 and nothing else.\n"
+        elif method == "zero_shot_cot":
+            prompt += "Now decide which one is the accepted idea. Think step by step by writing a meta-review to compare the strengths and weaknesses of both ideas and explain why one idea is better than the other. After the meta-review, start a new line and directly return a number 1 or 2 to indicate the accepted idea and end the response.\n"
+    
+    ## few-shot methods
+    elif "few_shot" in method:
         prompt += "Here are some examples:\n" + few_shot_demos
-        prompt += "\n\nThe two project proposals given to you are:\n\n" 
+        prompt += "\n\nThe two project summaries given to you are:\n\n" 
         prompt += "paper 1:\n" + format_plan_json(idea_1) + "\n\n"
         prompt += "paper 2:\n" + format_plan_json(idea_2) + "\n\n"
-        prompt += "\nYou should consider factors like novelty, soundness, and potential impact.\n"
-        prompt += "Now decide which one is the accepted idea. Write a meta-review to explain why one idea is better than the other first. Then start a new line and directly return a number 1 or 2 to indicate the accpted idea to end the response."
+        # prompt += "\nYou should consider factors like novelty, soundness, excitement,and potential impact.\n"
+        
+        if method == "few_shot":
+            prompt += "Now decide which one is the accepted idea. Follow the above examples: return a number 1 or 2 and nothing else.\n"
+        elif method == "few_shot_cot":
+            prompt += "Now decide which one is the accepted idea. Follow the above examples: give a meta-review and score to each paper, and then start a new line and directly return a number 1 or 2 to indicate the accepted idea and end the response.\n"
 
+    print (prompt)
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2000, seed=seed, json_output=False)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=temperature, max_tokens=3000, seed=seed, json_output=False)
     return prompt, response, cost
 
 
-def tournament_ranking(idea_lst, openai_client, model, seed):
-    # Initialize scores for each idea using the first 200 characters as keys
-    scores = defaultdict(int)
-    decision_correct = 0
-    decision_all = 0
+def self_consistency(idea_1, idea_2, method, openai_client, model, seed, sc_n=10, few_shot_demos=None):
+    predictions = []
+    costs = 0
+    for i in range(sc_n):
+        new_method = method.replace("_sc", "")
+        prompt, response, cost = better_idea(idea_1, idea_2, new_method, openai_client, model, seed, few_shot_demos, temperature=0.7)
+        predictions.append(response.strip().split()[-1])
+        costs += cost
     
-    # Helper function to conduct a single round of the tournament
-    def single_round(ideas, decision_correct=0, decision_all=0):
-        winners = []
-        for i in tqdm(range(0, len(ideas), 2)):
-            if i + 1 < len(ideas):
-                prompt, result, cost = better_idea(ideas[i], ideas[i+1], openai_client, model, seed)
-                # print (prompt, result, cost)
-                if result.strip() == '1':
-                    winners.append(ideas[i])
-                    scores[format_plan_json(ideas[i])[:200]] += 1
-                    if ideas[i]["score"] >= ideas[i+1]["score"]:
-                        decision_correct += 1
-                else:
-                    winners.append(ideas[i+1])
-                    scores[format_plan_json(ideas[i+1])[:200]] += 1
+    print ("all predictions: ", predictions)
 
-                    if ideas[i]["score"] <= ideas[i+1]["score"]:
-                        decision_correct += 1
-
-                decision_all += 1
-            else:
-                # If there is an odd number of ideas, the last one automatically wins this round
-                winners.append(ideas[i])
-                scores[format_plan_json(ideas[i])[:200]] += 1
-        return winners, decision_correct, decision_all
+    ## take majority vote
+    response = max(set(predictions), key=predictions.count)
     
-    # Conduct the tournament rounds until only one idea remains
-    current_round = idea_lst[:]
-    while len(current_round) > 1:
-        print ("Current round #ideas: ", len(current_round))
-        current_round, decision_correct, decision_all = single_round(current_round, decision_correct, decision_all)
-        print ("Currect decision accuracy: {} / {} = {}".format(decision_correct, decision_all, decision_correct / decision_all))
-    
-    # The final winner
-    final_winner = current_round[0]
-    
-    # Convert scores to a list matching the order of the original idea list
-    final_scores = [scores[format_plan_json(idea)[:200]] for idea in idea_lst]
-    
-    return final_winner, final_scores, decision_correct, decision_all
-
-
+    return prompt, response, costs
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='claude-3-opus-20240229', help='api engine; https://openai.com/api/')
-    parser.add_argument('--cache_name', type=str, default="ORB_small", help='cache file name for the retrieved papers')
-    parser.add_argument('--method', type=str, default="few_shot_review_cot", help='cache file name for the retrieved papers')
+    parser.add_argument('--cache_name', type=str, default="ORB_full", help='cache file name for the retrieved papers')
+    parser.add_argument('--method', type=str, default="few_shot_cot", help='methods: {zero_shot, zero_shot_cot, few_shot, few_shot_cot} x {normal, sc}')
     parser.add_argument('--sc_n', type=int, default=10, help="number of sampling for self-consistency")
-    parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
+    parser.add_argument('--seed', type=int, default=2024, help="seed")
     args = parser.parse_args()
 
     with open("../keys.json", "r") as f:
@@ -130,8 +94,13 @@ if __name__ == "__main__":
         pos_papers = json.load(f)
     with open("../{}/neg_papers.json".format(args.cache_name), "r") as f:
         neg_papers = json.load(f)
-    with open("prompts/binary_ranking_examples.txt", "r") as f:
-        few_shot_demos = f.read()
+    
+    if "cot" in args.method:
+        with open("prompts/binary_ranking_cot_examples.txt", "r") as f:
+            few_shot_demos = f.read()
+    else:
+        with open("prompts/binary_ranking_examples.txt", "r") as f:
+            few_shot_demos = f.read()
 
     n_pos = len(pos_papers)
     n_neg = len(neg_papers)
@@ -145,15 +114,21 @@ if __name__ == "__main__":
         ## randomly sample 1 or 2
         label = random.randint(1, 2)
 
-        if label == 1:
-            prompt, response, cost = better_idea(pos_idea["structured_summary"], neg_idea["structured_summary"], args.method, client, args.engine, args.seed, few_shot_demos)
+        if "_sc" not in args.method:
+            if label == 1:
+                prompt, response, cost = better_idea(pos_idea["structured_summary"], neg_idea["structured_summary"], args.method, client, args.engine, args.seed, few_shot_demos)
+            else:
+                prompt, response, cost = better_idea(neg_idea["structured_summary"], pos_idea["structured_summary"], args.method, client, args.engine, args.seed, few_shot_demos)
         else:
-            prompt, response, cost = better_idea(neg_idea["structured_summary"], pos_idea["structured_summary"], args.method, client, args.engine, args.seed, few_shot_demos)
-        
-        # print (prompt)
-        print ("predicted: ", response)
+            if label == 1:
+                prompt, response, cost = self_consistency(pos_idea["structured_summary"], neg_idea["structured_summary"], args.method, client, args.engine, args.seed, args.sc_n, few_shot_demos)
+            else:
+                prompt, response, cost = self_consistency(neg_idea["structured_summary"], pos_idea["structured_summary"], args.method, client, args.engine, args.seed, args.sc_n, few_shot_demos)
+
+        print ("full response: ", response)
+        print ("predicted: ", response.strip().split()[-1])
         print ("label: ", label)
-        print (cost)
+        print ("cost: ", cost)
 
         if response.strip().split()[-1] == str(label):
             correct += 1

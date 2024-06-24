@@ -83,7 +83,7 @@ def format_plan_json(experiment_plan_json, indent_level=0):
         for k, v in experiment_plan_json.items():
             if k == "score":
                 continue
-            if isinstance(v, str) or isinstance(v, int):
+            if isinstance(v, (str, int, float)):  
                 output_str += f"{indent}{k}: {v}\n"
             elif isinstance(v, list):
                 output_str += f"{indent}{k}:\n"
@@ -92,7 +92,7 @@ def format_plan_json(experiment_plan_json, indent_level=0):
                         output_str += format_plan_json(item, indent_level + 1)
                     else:
                         output_str += f"{indent}  - {item}\n"
-            else:
+            elif isinstance(v, dict):
                 output_str += f"{indent}{k}:\n"
                 output_str += format_plan_json(v, indent_level + 1)
         return output_str
