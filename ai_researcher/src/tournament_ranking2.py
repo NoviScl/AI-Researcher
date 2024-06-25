@@ -111,7 +111,7 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, max_r
         for i in range(len(filename_lst)):
             score_predictions[filename_lst[i]] = final_scores[i]
         
-        with open("logs/openreview_score_predictions_swiss_round_{}_new.json".format(current_round), "w") as f:
+        with open("logs/uncertainty_score_predictions_swiss_round_{}.json".format(current_round), "w") as f:
             json.dump(score_predictions, f, indent=4)
     
     return final_scores
