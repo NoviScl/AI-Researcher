@@ -23,7 +23,20 @@ def plot_score_buckets(scores):
     # Show the plot
     plt.show()
 
+def get_top_n_and_lowest_n_papers(papers_scores, N):
+    # Sort the papers by their scores in descending order
+    sorted_papers = sorted(papers_scores.items(), key=lambda x: x[1], reverse=True)
+    
+    # Get the top N scoring papers
+    top_n_papers = sorted_papers[:N]
+    
+    # Get the lowest N scoring papers
+    lowest_n_papers = sorted_papers[-N:]
+    
+    return top_n_papers, lowest_n_papers
+
 if __name__ == "__main__":
+    '''
     cache_name = "openreview_benchmark"
     filenames = os.listdir("../{}".format(cache_name))
     filenames = [f for f in filenames if f.endswith(".json")]
@@ -54,6 +67,8 @@ if __name__ == "__main__":
     # plot_score_buckets(all_scores)
     
     '''
+
+    '''
     pos_papers = [paper for paper in pos_papers if "structured_summary" in paper and isinstance(paper["structured_summary"], dict) and "scores" in paper]
     neg_papers = [paper for paper in neg_papers if "structured_summary" in paper and isinstance(paper["structured_summary"], dict) and "scores" in paper]
     random.shuffle(pos_papers)
@@ -67,6 +82,7 @@ if __name__ == "__main__":
         json.dump(neg_papers, f, indent=4)
     '''
 
+    '''
     sorted_indices = sorted(range(len(all_scores)), key=lambda i: all_scores[i])
     lowest_indices = sorted_indices[:50]
     highest_indices = sorted_indices[-50:]
@@ -87,3 +103,27 @@ if __name__ == "__main__":
         json.dump(pos_papers, f, indent=4)
     with open("../ORB_easy/neg_papers.json", "w") as f:
         json.dump(neg_papers, f, indent=4)
+    '''
+
+    N = 10
+    with open("logs/openreview_score_predictions_swiss_round_5.json", "r") as f:
+        papers_scores = json.load(f)
+    top_n_papers, lowest_n_papers = get_top_n_and_lowest_n_papers(papers_scores, N = N)
+    top_scores = 0 
+    lowest_scores = 0
+
+    print ("Top N scoring papers:")
+    for paper in top_n_papers:
+        print (paper)
+        with open("../openreview_benchmark/{}".format(paper[0]), "r") as f:
+            paper = json.load(f)
+            top_scores += avg_score(paper["scores"])
+    print (top_scores / N)
+    
+    print ("\nLowest N scoring papers:")
+    for paper in lowest_n_papers:
+        print (paper)
+        with open("../openreview_benchmark/{}".format(paper[0]), "r") as f:
+            paper = json.load(f)
+            lowest_scores += avg_score(paper["scores"])
+    print (lowest_scores / N)

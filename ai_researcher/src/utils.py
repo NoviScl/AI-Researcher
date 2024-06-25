@@ -76,12 +76,16 @@ def print_idea_json(filename):
             print ('- ' + k)
             print (v.strip() + '\n')
 
-def format_plan_json(experiment_plan_json, indent_level=0):
+def format_plan_json(experiment_plan_json, indent_level=0, skip_test_cases=False, skip_fallback=False):
     try:
         output_str = ""
         indent = "  " * indent_level
         for k, v in experiment_plan_json.items():
             if k == "score":
+                continue
+            if skip_test_cases and k == "Test Case Example":
+                continue
+            if skip_fallback and k == "Fallback Plan":
                 continue
             if isinstance(v, (str, int, float)):  
                 output_str += f"{indent}{k}: {v}\n"
