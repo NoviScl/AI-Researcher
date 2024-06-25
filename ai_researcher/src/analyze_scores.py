@@ -106,24 +106,24 @@ if __name__ == "__main__":
     '''
 
     N = 10
-    with open("logs/openreview_score_predictions_swiss_round_10_new.json", "r") as f:
+    with open("logs/uncertainty_score_predictions_swiss_round_5.json", "r") as f:
         papers_scores = json.load(f)
     top_n_papers, lowest_n_papers = get_top_n_and_lowest_n_papers(papers_scores, N = N)
-    top_scores = 0 
-    lowest_scores = 0
+    # top_scores = 0 
+    # lowest_scores = 0
 
     print ("Top N scoring papers:")
     for paper in top_n_papers:
         print (paper)
-        with open("../openreview_benchmark/{}".format(paper[0]), "r") as f:
-            paper = json.load(f)
-            top_scores += avg_score(paper["scores"])
-    print (top_scores / N)
+    #     with open("../openreview_benchmark/{}".format(paper[0]), "r") as f:
+    #         paper = json.load(f)
+    #         top_scores += avg_score(paper["scores"])
+    # print (top_scores / N)
     
     print ("\nLowest N scoring papers:")
     for paper in lowest_n_papers:
         print (paper)
-        with open("../openreview_benchmark/{}".format(paper[0]), "r") as f:
-            paper = json.load(f)
-            lowest_scores += avg_score(paper["scores"])
-    print (lowest_scores / N)
+    #     with open("../openreview_benchmark/{}".format(paper[0]), "r") as f:
+    #         paper = json.load(f)
+    #         lowest_scores += avg_score(paper["scores"])
+    # print (lowest_scores / N)

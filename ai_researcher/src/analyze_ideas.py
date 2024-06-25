@@ -3,11 +3,12 @@ from nltk.corpus import stopwords
 import string
 import json 
 from tqdm import tqdm 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from collections import Counter
 import numpy as np
 import pandas as pd
-from sklearn.cluster import AgglomerativeClustering
+# from sklearn.cluster import AgglomerativeClustering
+import argparse
 
 def plot_string_occurrences(strings_list):
     # Count occurrences of each string
@@ -72,11 +73,21 @@ def find_top_n_papers(representative_index, similarity_matrix, n=5):
     closest_indices = np.argsort(-sims)[:n]  # Sort in descending order and get top-n
     return closest_indices
 
+def concatenate_idea(idea_k, idea_v):
+    output = ""
+    output += idea_k + "\n"
+    output += "Problem: " + idea_v["Problem"] + "\n"
+    output += "Existing Methods: " + idea_v["Existing Methods"] + "\n"
+    output += "Motivation: " + idea_v["Motivation"] + "\n"
+    output += "Proposed Method: " + idea_v["Proposed Method"] + "\n"
+    output += "Experiment Plan: " + idea_v["Experiment Plan"] + "\n"
+
+    return output
 
 if __name__ == "__main__":
-    track = "uncertainty"
-    with open("../cache_results_claude_may/ideas_1k_dedup/{}_prompting_method_prompting.json".format(track), "r") as f:
-        ideas_json = json.load(f)
+    # track = "uncertainty"
+    # with open("../cache_results_claude_may/ideas_1k_dedup/{}_prompting_method_prompting.json".format(track), "r") as f:
+    #     ideas_json = json.load(f)
 
     # topic = ideas_json["topic_description"]
     # ideas_lst = ideas_json["ideas"]
@@ -97,6 +108,7 @@ if __name__ == "__main__":
     # with open("../cache_results_claude_may/ideas_1k_dedup/{}_prompting_method_prompting.json".format(track), "w") as f:
     #     json.dump(dedup_dict, f, indent=4)
 
+    '''
     idea_names = list(ideas_json["ideas"].keys())
     abstracts = []
     for idea_name in idea_names:
@@ -124,7 +136,7 @@ if __name__ == "__main__":
         for idx in top_indices:
             print(idea_names[idx])
         # print()
-
+    '''
 
     # # bucketing
     # clusters = {i: [] for i in range(num_clusters)}
@@ -144,5 +156,58 @@ if __name__ == "__main__":
     # df_papers = pd.DataFrame(papers)
     # print(df_papers)
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--cache_name', type=str, default="bias", help='cache file name')
+    args = parser.parse_args()
 
 
+    all_ideas = []
+    with open("../cache_results_claude_may/ideas_1k/{}_prompting_method_prompting.json".format(args.cache_name), "r") as f:
+        ideas_json = json.load(f)
+        for ideas_dict in ideas_json["ideas"]:
+            for idea_k, idea_v in ideas_dict.items():
+                all_ideas.append(concatenate_idea(idea_k, idea_v))
+    
+    all_ideas = all_ideas
+    print ("#ideas: ", len(all_ideas))
+
+    similarity_matrix = []
+    for i in tqdm(range(len(all_ideas))):
+        similarity_matrix.append([])
+        for j in range(len(all_ideas)):
+            if i == j:
+                similarity_matrix[-1].append(0)
+            else:
+                similarity_matrix[-1].append(jaccard_similarity(process_text(all_ideas[i], tokenize=True), process_text(all_ideas[j], tokenize=True)))
+
+    nn_similarity = []
+    nn_similarity_idx = []
+    avg_similarity = []
+    for i in range(len(all_ideas)):
+        nn_similarity.append(np.max(similarity_matrix[i]))
+        nn_similarity_idx.append(np.argmax(similarity_matrix[i]))
+        avg_similarity.append(np.sum(similarity_matrix[i]) / (len(all_ideas) - 1))
+
+    highest_nn_similarity = np.argmax(nn_similarity)
+    print ("Idea with Highest NN Similarity:\n", all_ideas[highest_nn_similarity])
+    print ("\nMost Similar Idea:\n", all_ideas[nn_similarity_idx[highest_nn_similarity]])
+    print ("\nSimilarity: ", nn_similarity[highest_nn_similarity])
+
+    lowest_nn_similarity = np.argmin(nn_similarity)
+    print ("\nIdea with Lowest NN Similarity:\n", all_ideas[lowest_nn_similarity])
+    print ("\nMost Similar Idea:\n", all_ideas[nn_similarity_idx[lowest_nn_similarity]])
+    print ("\nSimilarity: ", nn_similarity[lowest_nn_similarity])
+
+    highest_avg_similarity = np.argmax(avg_similarity)
+    print ("\nIdea with Highest Avg Similarity:\n", all_ideas[highest_avg_similarity])
+    print ("\nMost Similar Idea:\n", all_ideas[nn_similarity_idx[highest_avg_similarity]])
+    print ("\nSimilarity: ", avg_similarity[highest_avg_similarity])
+
+    lowest_avg_similarity = np.argmin(avg_similarity)
+    print ("\nIdea with Lowest Avg Similarity:\n", all_ideas[lowest_avg_similarity])
+    print ("\nMost Similar Idea:\n", all_ideas[nn_similarity_idx[lowest_avg_similarity]])
+    print ("\nSimilarity: ", avg_similarity[lowest_avg_similarity])
+
+    print ("\n\nCorpus level metrics:")
+    print ("Avg NN Similarity: ", np.mean(nn_similarity))
+    print ("Avg Avg Similarity: ", np.mean(avg_similarity))
