@@ -10,15 +10,19 @@ import random
 import retry
 
 @retry.retry(tries=3, delay=2)
-def idea_generation_method(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed):
+def idea_generation_method(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed, RAG=True):
     ## retrieve top papers (with some randomization)
     top_papers = paper_bank[ : int(grounding_k * 2)]
     random.shuffle(top_papers)
     grounding_papers = top_papers[ : grounding_k]
 
     prompt = "You are an expert researcher in Large Language Models. Now I want you to help me brainstorm some new research project ideas on the topic of: " + topic_description + ".\n\n"
-    prompt += "Here are some relevant papers on this topic just for your background knowledge:\n" + format_papers_for_printing(grounding_papers, include_score=False, include_id=False) + "\n"
-    prompt += "You should generate {} different ideas on this topic. Try to be creative and diverse in the idea generation, and do not repeat any similar ideas. The above papers are only for inspiration and you should not cite them and just make some incremental modifications. Instead, you should make sure your ideas are novel and distinct from the prior literature. You should aim for projects that can potentially win best paper awards at top conferences like ACL and NeurIPS.\n".format(str(ideas_n))
+    if RAG:
+        prompt += "Here are some relevant papers on this topic just for your background knowledge:\n" + format_papers_for_printing(grounding_papers, include_score=False, include_id=False) + "\n"
+    prompt += "You should generate {} different ideas on this topic. Try to be creative and diverse in the idea generation, and do not repeat any similar ideas. ".format(str(ideas_n))
+    if RAG:
+        prompt += "The above papers are only for inspiration and you should not cite them and just make some incremental modifications. Instead, you should make sure your ideas are novel and distinct from the prior literature. "
+    prompt += "You should aim for projects that can potentially win best paper awards at top conferences like ACL and NeurIPS.\n"
     prompt += "Each idea should be descibed as: (1) Problem: State the problem statement, which should be closely related to the topic description and something that large language models cannot solve well yet. (2) Existing Methods: Mention some existing benchmarks and baseline methods if there are any. (3) Motivation: Explain the inspiration of the proposed method and why it would work well. (4) Proposed Method: Propose your new method and describe it in detail. The proposed method should be maximally different from all existing work and baselines, and be more advanced and effective than the baselines. You should be as creative as possible in proposing new methods, we love unhinged ideas that sound crazy. This should be the most detailed section of the proposal. (5) Experiment Plan: Specify the experiment steps, baselines, and evaluation metrics.\n"
     prompt += "You can follow these examples to get a sense of how the ideas should be formatted (but don't borrow the ideas themselves):\n" + examples + "\n"
     prompt += "You should make sure to come up with your own novel and different ideas for the specified problem: " + topic_description + ". You should try to tackle important problems that are well recognized in the field and considered challenging for current models. For example, think of novel solutions for problems with existing benchmarks and baselines. In rare cases, you can propose to tackle a new problem, but you will have to justify why it is important and how to set up proper evaluation.\n"
@@ -40,6 +44,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='claude-3-opus-20240229', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
+    parser.add_argument('--RAG', type=str, default="True", required=True, help='whether to do RAG for idea generation')
     parser.add_argument('--method', type=str, default='prompting', help='either prompting or finetuning')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers to use for grounding')
     parser.add_argument('--ideas_n', type=int, default=5, help="how many ideas to generate")
@@ -65,7 +70,7 @@ if __name__ == "__main__":
         )
 
     if "claude" in args.engine:
-        with open(os.path.join("../cache_results_claude_may/lit_review_new", args.cache_name + ".json"), "r") as f:
+        with open(os.path.join("../cache_results_claude_may/lit_review_new", args.cache_name + "_prompting_method.json"), "r") as f:
             lit_review = json.load(f)
     else:
         with open(os.path.join("../cache_results_gpt4/lit_review", args.cache_name + ".json"), "r") as f:
@@ -75,11 +80,18 @@ if __name__ == "__main__":
 
     ## cache dir and file
     if "claude" in args.engine:
-        cache_dir = "../cache_results_claude_may/ideas_1k"
+        cache_dir = "../cache_results_claude_may/ideas_1k_claude3-5"
     else:
         cache_dir = "../cache_results_gpt4/ideas"
-    ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + ".json")
-
+    
+    if args.RAG == "True":
+        ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + "_RAG.json")
+        print ("RAG is enabled for idea generation")
+    else:
+        ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + ".json")
+        print ("RAG is disabled for idea generation")
+    
+    
     ## extract existing ideas
     existing_ideas = None
     if os.path.exists(ideas_file):
@@ -100,16 +112,12 @@ if __name__ == "__main__":
             method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
     
     print ("topic: ", topic_description)
-    # print ("method: ", args.method)
     print ("existing ideas: ", existing_ideas)
     print ("\n")
     print ("generating {} ideas...".format(str(args.ideas_n)))
     
-    if "method" in args.cache_name:
-        prompt, response, cost = idea_generation_method(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
+    prompt, response, cost = idea_generation_method(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
     
-    # print ("prompt: ", prompt)
-    # print ("ideas: ", response)
     print ("idea generation cost: ", cost)
 
     response = json.loads(response.strip())
