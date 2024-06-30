@@ -3,13 +3,10 @@ from nltk.corpus import stopwords
 import string
 import json 
 from tqdm import tqdm 
-# import matplotlib.pyplot as plt
 from collections import Counter
 import numpy as np
 import pandas as pd
-# from sklearn.cluster import AgglomerativeClustering
 import argparse
-from sentence_transformers import SentenceTransformer
 
 def plot_string_occurrences(strings_list):
     # Count occurrences of each string
@@ -84,31 +81,30 @@ def concatenate_idea(idea_k, idea_v):
 
     return output
 
-
-if __name__ == "__main__": 
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--cache_name', type=str, default="bias", help='cache file name')
     args = parser.parse_args()
 
-    model = SentenceTransformer("all-MiniLM-L6-v2")
 
     all_ideas = []
-    with open("../cache_results_claude_may/ideas_1k/{}_prompting_method_prompting.json".format(args.cache_name), "r") as f:
+    with open("../cache_results_claude_may/ideas_1k_claude3-5/{}_prompting.json".format(args.cache_name), "r") as f:
         ideas_json = json.load(f)
         for ideas_dict in ideas_json["ideas"]:
             for idea_k, idea_v in ideas_dict.items():
                 all_ideas.append(concatenate_idea(idea_k, idea_v))
     
-    # all_ideas = all_ideas[:40]
+    all_ideas = all_ideas
     print ("#ideas: ", len(all_ideas))
 
-    embeddings = model.encode(all_ideas)
-    similarity_matrix = model.similarity(embeddings, embeddings)
-    similarity_matrix = similarity_matrix.numpy()
-    ## setting the diagonal to 0
-    np.fill_diagonal(similarity_matrix, 0)
-
-    # print (similarity_matrix)
+    similarity_matrix = []
+    for i in tqdm(range(len(all_ideas))):
+        similarity_matrix.append([])
+        for j in range(len(all_ideas)):
+            if i == j:
+                similarity_matrix[-1].append(0)
+            else:
+                similarity_matrix[-1].append(jaccard_similarity(process_text(all_ideas[i], tokenize=True), process_text(all_ideas[j], tokenize=True)))
 
     nn_similarity = []
     nn_similarity_idx = []
