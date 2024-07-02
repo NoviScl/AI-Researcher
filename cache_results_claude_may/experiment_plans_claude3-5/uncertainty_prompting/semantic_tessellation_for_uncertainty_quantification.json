@@ -1,0 +1,166 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Semantic Tessellation for Uncertainty Quantification",
+    "raw_idea": {
+        "Problem": "Current uncertainty quantification methods for LLMs often fail to capture the multifaceted nature of model uncertainty, especially in complex, multi-step reasoning tasks.",
+        "Existing Methods": "Existing approaches typically focus on single-dimensional uncertainty measures or rely on computationally expensive sampling techniques.",
+        "Motivation": "Drawing inspiration from tessellation in art and mathematics, we propose that model uncertainty can be more accurately represented by decomposing queries into interconnected semantic tiles, each with its own uncertainty estimate.",
+        "Proposed Method": "We introduce Semantic Tessellation for Uncertainty Quantification (STUQ), a prompting method that breaks down a given query into a network of simpler, interconnected sub-queries. The process involves: 1) Query decomposition: Prompt the model to break down the main query into constituent elements (e.g., 'Decompose this question into simpler, related sub-questions'). 2) Semantic tiling: For each sub-query, generate multiple related queries that form a 'semantic neighborhood' (e.g., 'Generate 5 closely related questions for each sub-question'). 3) Tile-level confidence estimation: Obtain confidence scores for each tile using standard elicitation methods. 4) Uncertainty aggregation: Combine tile-level uncertainties using a graph-based algorithm that accounts for tile interdependencies. This approach allows for a more granular and contextually rich uncertainty representation.",
+        "Experiment Plan": "We will evaluate STUQ against baseline methods on complex reasoning tasks from datasets like MATH and MMLU. We'll measure performance using calibration metrics, uncertainty decomposition quality (assessed by human experts), and correlation with task difficulty. Additionally, we'll analyze the method's effectiveness in identifying specific areas of model uncertainty within multi-step reasoning processes."
+    },
+    "full_experiment_plan": {
+        "Title": "Semantic Tessellation for Uncertainty Quantification (STUQ): Enhancing Confidence Calibration in Large Language Models",
+        "Problem Statement": "Current uncertainty quantification methods for Large Language Models (LLMs) often fail to capture the multifaceted nature of model uncertainty, especially in complex, multi-step reasoning tasks. This limitation hinders the reliable deployment of LLMs in critical applications where accurate uncertainty estimation is crucial.",
+        "Motivation": "Existing approaches typically focus on single-dimensional uncertainty measures or rely on computationally expensive sampling techniques. These methods often struggle to provide a nuanced representation of uncertainty across different aspects of a complex query. Drawing inspiration from tessellation in art and mathematics, we propose that model uncertainty can be more accurately represented by decomposing queries into interconnected semantic tiles, each with its own uncertainty estimate. This approach allows for a more granular and contextually rich uncertainty representation, potentially leading to better-calibrated confidence estimates in LLMs.",
+        "Proposed Method": "We introduce Semantic Tessellation for Uncertainty Quantification (STUQ), a prompting method that breaks down a given query into a network of simpler, interconnected sub-queries. The process involves four main steps: 1) Query decomposition: Prompt the model to break down the main query into constituent elements. 2) Semantic tiling: For each sub-query, generate multiple related queries that form a 'semantic neighborhood'. 3) Tile-level confidence estimation: Obtain confidence scores for each tile using standard elicitation methods. 4) Uncertainty aggregation: Combine tile-level uncertainties using a graph-based algorithm that accounts for tile interdependencies.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use complex reasoning tasks from datasets like MATH and MMLU. Select a subset of 1000 questions from each dataset, ensuring a diverse range of difficulty levels.",
+            "Step 2: Baseline Methods Implementation": "Implement three baseline methods: 1) Direct answering with confidence score, 2) Monte Carlo Dropout, and 3) Ensemble of models. Use GPT-3.5 and GPT-4 APIs for these baselines.",
+            "Step 3: STUQ Implementation": "Implement the STUQ method using the following sub-steps: a) Query decomposition: Prompt the model with 'Decompose this question into 3-5 simpler, related sub-questions:' followed by the main question. b) Semantic tiling: For each sub-question, prompt with 'Generate 3 closely related questions for the following sub-question:'. c) Tile-level confidence estimation: For each tile (original sub-question and related questions), prompt the model to answer and provide a confidence score (0-100). d) Uncertainty aggregation: Implement a graph-based algorithm that combines tile-level uncertainties, considering the relationships between tiles.",
+            "Step 4: Evaluation Metrics": "Implement the following evaluation metrics: 1) Calibration error (Expected Calibration Error and Maximum Calibration Error), 2) Brier score, 3) AUROC for detecting correct vs. incorrect predictions.",
+            "Step 5: Experiment Execution": "For each question in the datasets: a) Apply all baseline methods and record their predictions and uncertainty estimates. b) Apply STUQ and record the decomposed questions, semantic tiles, individual confidence scores, and final aggregated uncertainty estimate. c) Calculate all evaluation metrics for each method.",
+            "Step 6: Analysis": "1) Compare STUQ against baselines using the evaluation metrics. 2) Analyze the quality of query decomposition and semantic tiling (manually review a subset). 3) Investigate how STUQ performs across different types of reasoning tasks and difficulty levels. 4) Examine cases where STUQ significantly outperforms or underperforms compared to baselines."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "What is the area of a circle with a radius of 5 cm?",
+                "Direct Answer Output": "The area of a circle with a radius of 5 cm is approximately 78.54 cm\u00b2. Confidence: 95%",
+                "STUQ Output": {
+                    "Decomposition": [
+                        "What is the formula for the area of a circle?",
+                        "What is the value of pi (\u03c0) typically used in calculations?",
+                        "How do we square a number?",
+                        "What is 5 squared?",
+                        "How do we perform the final calculation?"
+                    ],
+                    "Semantic Tiles": [
+                        [
+                            "What is the formula for the area of a circle?",
+                            "How is the area of a circle related to its radius?",
+                            "What does 'A' represent in the formula A = \u03c0r\u00b2?"
+                        ],
+                        [
+                            "What is the value of pi (\u03c0) typically used in calculations?",
+                            "How many decimal places of pi are commonly used?",
+                            "Is 3.14 or 3.14159 a more accurate value for pi?"
+                        ],
+                        [
+                            "How do we square a number?",
+                            "What does it mean to raise a number to the power of 2?",
+                            "How is squaring related to multiplication?"
+                        ],
+                        [
+                            "What is 5 squared?",
+                            "What is the result of multiplying 5 by itself?",
+                            "How do we calculate 5\u00b2?"
+                        ],
+                        [
+                            "How do we perform the final calculation?",
+                            "What order of operations should we follow to calculate the area?",
+                            "How do we multiply pi by the squared radius?"
+                        ]
+                    ],
+                    "Tile Confidences": [
+                        [
+                            100,
+                            98,
+                            99
+                        ],
+                        [
+                            100,
+                            95,
+                            97
+                        ],
+                        [
+                            100,
+                            99,
+                            100
+                        ],
+                        [
+                            100,
+                            100,
+                            100
+                        ],
+                        [
+                            98,
+                            97,
+                            96
+                        ]
+                    ],
+                    "Final Answer": "The area of a circle with a radius of 5 cm is approximately 78.54 cm\u00b2. Aggregated Confidence: 98.2%"
+                },
+                "Explanation": "STUQ provides a more detailed uncertainty quantification by breaking down the problem into smaller, more manageable parts. This allows for a more nuanced understanding of where potential uncertainties lie within the reasoning process."
+            },
+            "Proposed Method Example": {
+                "Input": "In a chemical reaction, the rate doubles for every 10\u00b0C increase in temperature. If the rate is 64 mol/L\u00b7s at 20\u00b0C, what would be the rate at 50\u00b0C?",
+                "Direct Answer Output": "The rate at 50\u00b0C would be 512 mol/L\u00b7s. Confidence: 85%",
+                "STUQ Output": {
+                    "Decomposition": [
+                        "What is the temperature difference between 20\u00b0C and 50\u00b0C?",
+                        "How many times does the rate double in this temperature range?",
+                        "What is the initial rate at 20\u00b0C?",
+                        "How do we calculate the new rate after multiple doublings?",
+                        "What is the final calculation for the rate at 50\u00b0C?"
+                    ],
+                    "Semantic Tiles": [
+                        [
+                            "What is the temperature difference between 20\u00b0C and 50\u00b0C?",
+                            "How many 10\u00b0C intervals are there between 20\u00b0C and 50\u00b0C?",
+                            "What is 50 minus 20?"
+                        ],
+                        [
+                            "How many times does the rate double in this temperature range?",
+                            "What is the relationship between temperature increase and rate doubling?",
+                            "How do we determine the number of rate doublings?"
+                        ],
+                        [
+                            "What is the initial rate at 20\u00b0C?",
+                            "What are the units of the given rate?",
+                            "Is 64 mol/L\u00b7s the correct initial rate?"
+                        ],
+                        [
+                            "How do we calculate the new rate after multiple doublings?",
+                            "What mathematical operation represents doubling multiple times?",
+                            "How is exponential growth related to this problem?"
+                        ],
+                        [
+                            "What is the final calculation for the rate at 50\u00b0C?",
+                            "How do we combine the initial rate with the number of doublings?",
+                            "What is 64 multiplied by 2 raised to the power of 3?"
+                        ]
+                    ],
+                    "Tile Confidences": [
+                        [
+                            100,
+                            98,
+                            100
+                        ],
+                        [
+                            95,
+                            97,
+                            96
+                        ],
+                        [
+                            100,
+                            100,
+                            100
+                        ],
+                        [
+                            93,
+                            95,
+                            94
+                        ],
+                        [
+                            92,
+                            94,
+                            96
+                        ]
+                    ],
+                    "Final Answer": "The rate at 50\u00b0C would be 512 mol/L\u00b7s. Aggregated Confidence: 96.7%"
+                },
+                "Explanation": "STUQ breaks down the complex problem into simpler sub-questions, allowing for more accurate confidence estimation at each step. The aggregated confidence is higher than the direct answer method, reflecting a more comprehensive understanding of the problem's components."
+            }
+        },
+        "Fallback Plan": "If STUQ does not significantly outperform baseline methods, we will conduct a detailed analysis to understand why. This may include: 1) Examining the quality of query decompositions to ensure they effectively break down complex problems. 2) Analyzing the semantic tiling process to verify if it generates relevant and diverse related questions. 3) Investigating the tile-level confidence estimation to check for consistency and accuracy. 4) Reviewing the uncertainty aggregation algorithm to ensure it appropriately weighs and combines tile-level uncertainties. Based on these analyses, we may refine the STUQ method, such as by improving the prompting strategies for decomposition and tiling, or by developing a more sophisticated aggregation algorithm. Additionally, we could explore combining STUQ with other uncertainty quantification methods, such as ensemble techniques or calibration methods, to create a hybrid approach that leverages the strengths of multiple strategies. If these refinements do not yield significant improvements, we could pivot the project towards an in-depth analysis of why decomposition-based approaches struggle with certain types of problems, potentially uncovering insights about the limitations of current LLM reasoning capabilities."
+    }
+}

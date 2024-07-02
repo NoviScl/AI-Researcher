@@ -1,0 +1,39 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Confidence Spectrum Bootstrapping",
+    "raw_idea": {
+        "Problem": "Large language models often struggle to accurately quantify their uncertainty across different domains and tasks, leading to overconfidence in incorrect predictions.",
+        "Existing Methods": "Current approaches typically rely on direct prompting for confidence scores or analyzing model logits.",
+        "Motivation": "Inspired by statistical bootstrapping techniques, we can leverage the model's own diverse outputs to build a more robust uncertainty estimate.",
+        "Proposed Method": "We propose Confidence Spectrum Bootstrapping (CSB), which involves: 1) Generating multiple diverse completions for a given prompt using techniques like nucleus sampling. 2) For each completion, prompting the model to rate its own confidence and provide justification. 3) Aggregating these self-rated confidences into a spectrum, weighted by the coherence and specificity of the justifications. 4) Using this spectrum to estimate overall uncertainty, with wider spectrums indicating higher uncertainty. The prompt for self-rating would include instructions like 'Rate your confidence in your previous answer on a scale of 0-100, and explain your rating.'",
+        "Experiment Plan": "Compare CSB against baselines like direct confidence prompting and logit-based methods on diverse tasks including factual QA, commonsense reasoning, and specialized domain questions. Evaluate using calibration metrics and selective prediction performance."
+    },
+    "full_experiment_plan": {
+        "Title": "Confidence Spectrum Bootstrapping: Improving Uncertainty Quantification in Large Language Models",
+        "Problem Statement": "Large language models often struggle to accurately quantify their uncertainty across different domains and tasks, leading to overconfidence in incorrect predictions. This issue can result in unreliable outputs and potential misinformation, especially in critical applications where accurate uncertainty estimation is crucial.",
+        "Motivation": "Current approaches for uncertainty quantification in LLMs typically rely on direct prompting for confidence scores or analyzing model logits. However, these methods often fail to capture the nuanced spectrum of confidence across different aspects of a response. Inspired by statistical bootstrapping techniques, we propose leveraging the model's own diverse outputs to build a more robust uncertainty estimate. This approach aims to mimic human metacognition, where we often generate multiple potential answers and assess our confidence in each before settling on a final response.",
+        "Proposed Method": "We propose Confidence Spectrum Bootstrapping (CSB), which involves: 1) Generating multiple diverse completions for a given prompt using techniques like nucleus sampling. 2) For each completion, prompting the model to rate its own confidence and provide justification. 3) Aggregating these self-rated confidences into a spectrum, weighted by the coherence and specificity of the justifications. 4) Using this spectrum to estimate overall uncertainty, with wider spectrums indicating higher uncertainty. The prompt for self-rating would include instructions like 'Rate your confidence in your previous answer on a scale of 0-100, and explain your rating.'",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Select diverse datasets covering factual QA (e.g., TriviaQA), commonsense reasoning (e.g., CommonsenseQA), and specialized domain questions (e.g., MedQA for medical domain). Ensure a mix of questions with varying difficulty levels.",
+            "Step 2: Baseline Implementation": "Implement two baseline methods: 1) Direct confidence prompting: Append 'How confident are you in your answer on a scale of 0-100?' to each question. 2) Logit-based method: Use the softmax output of the model's logits as a confidence measure.",
+            "Step 3: CSB Implementation": "Implement the CSB method as follows: a) Generate 5 diverse completions for each question using nucleus sampling (p=0.9). b) For each completion, prompt the model to rate its confidence and provide justification. c) Implement a simple coherence scorer based on sentence similarity to weight the confidence ratings. d) Aggregate the weighted confidence ratings into a spectrum.",
+            "Step 4: Model Selection": "Use GPT-3.5 (text-davinci-003) and GPT-4 from OpenAI API for the experiments.",
+            "Step 5: Evaluation Metrics": "Implement the following evaluation metrics: a) Calibration error (Expected Calibration Error and Maximum Calibration Error). b) Brier score. c) Selective prediction performance (accuracy vs. coverage curves).",
+            "Step 6: Experiment Execution": "For each dataset and model combination: a) Run the baseline methods and CSB. b) Collect predictions and confidence estimates. c) Compute evaluation metrics.",
+            "Step 7: Analysis": "Compare CSB against baselines across different tasks and models. Analyze how the spectrum width correlates with actual accuracy. Investigate cases where CSB significantly outperforms or underperforms baselines."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: What is the capital of France?\nA: The capital of France is Paris.\nHow confident are you in your answer on a scale of 0-100?",
+                "Output": "I am 100% confident in my answer that the capital of France is Paris.",
+                "Explanation": "The baseline method directly asks for a confidence score, which often results in overconfidence for well-known facts."
+            },
+            "CSB Example": {
+                "Input": "Q: What is the capital of France?\nA: The capital of France is Paris.\nRate your confidence in your previous answer on a scale of 0-100, and explain your rating.",
+                "Output": "Confidence rating: 98/100\nExplanation: I'm highly confident in this answer because Paris being the capital of France is a widely known and established fact. It's taught in basic geography classes, featured in numerous books, movies, and cultural references. However, I'm leaving a small margin for uncertainty (hence 98 instead of 100) because there's always a tiny possibility of recent geopolitical changes or my own potential misunderstanding of the question.",
+                "Explanation": "CSB prompts for a more nuanced confidence assessment with justification, allowing for a spectrum of confidence levels even for seemingly straightforward questions."
+            }
+        },
+        "Fallback Plan": "If CSB doesn't show significant improvements over baselines, we can pivot the project in several ways. First, we could conduct an in-depth analysis of the generated confidence spectrums to understand why they might not be more informative than simple confidence scores. This could involve categorizing the types of justifications provided and their correlation with actual accuracy. Second, we could explore variations of the CSB method, such as using different sampling strategies for generating diverse completions or experimenting with alternative aggregation methods for the confidence spectrum. Finally, we could turn this into an analysis paper by investigating how different types of questions and domains affect the model's ability to accurately assess its own confidence, potentially uncovering insights about the strengths and limitations of current LLMs in metacognition tasks."
+    }
+}

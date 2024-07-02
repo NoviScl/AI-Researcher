@@ -1,0 +1,43 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Confidence-Guided Prompt Expansion",
+    "raw_idea": {
+        "Problem": "LLMs often provide confident but incorrect answers when they lack sufficient information, instead of acknowledging uncertainty and seeking additional context.",
+        "Existing Methods": "Current approaches like few-shot prompting with uncertainty labels or chain-of-thought reasoning don't actively guide the model to expand its knowledge when uncertain.",
+        "Motivation": "By dynamically expanding prompts based on model-expressed uncertainty, we can encourage LLMs to seek relevant information and refine their confidence estimates iteratively.",
+        "Proposed Method": "We propose Confidence-Guided Prompt Expansion (CGPE): 1) Initially prompt the LLM with the query and ask for an answer with a confidence estimate. 2) If confidence is below a threshold, prompt the model to generate targeted questions to gather more information. 3) Use these questions to retrieve or generate additional context. 4) Incorporate new context into an expanded prompt and repeat the process. 5) Continue until confidence exceeds the threshold or a maximum number of iterations is reached. This method allows for dynamic, uncertainty-driven information seeking and confidence refinement.",
+        "Experiment Plan": "Evaluate CGPE against static prompting and other dynamic prompting methods on open-domain QA tasks from datasets like NaturalQuestions and TriviaQA. Measure improvements in answer accuracy, calibration, and the quality of generated follow-up questions."
+    },
+    "full_experiment_plan": {
+        "Title": "Confidence-Guided Prompt Expansion: Improving LLM Uncertainty Quantification and Information Seeking",
+        "Problem Statement": "Large Language Models (LLMs) often provide confident but incorrect answers when they lack sufficient information, instead of acknowledging uncertainty and seeking additional context. This leads to unreliable outputs and potential misinformation.",
+        "Motivation": "Existing methods like few-shot prompting with uncertainty labels or chain-of-thought reasoning don't actively guide the model to expand its knowledge when uncertain. By dynamically expanding prompts based on model-expressed uncertainty, we can encourage LLMs to seek relevant information and refine their confidence estimates iteratively. This approach mimics human information-seeking behavior and could lead to more reliable and well-calibrated LLM outputs.",
+        "Proposed Method": "We propose Confidence-Guided Prompt Expansion (CGPE), a multi-step prompting method: 1) Initially prompt the LLM with the query and ask for an answer with a confidence estimate. 2) If confidence is below a threshold, prompt the model to generate targeted questions to gather more information. 3) Use these questions to retrieve or generate additional context. 4) Incorporate new context into an expanded prompt and repeat the process. 5) Continue until confidence exceeds the threshold or a maximum number of iterations is reached.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Use open-domain QA datasets like NaturalQuestions and TriviaQA. Split each dataset into train, validation, and test sets. We'll use the train set for few-shot examples and evaluate on the test set.",
+            "Step 2: Baseline Implementation": "Implement three baselines: 1) Direct prompting, 2) Few-shot prompting with 3 examples, 3) Chain-of-thought prompting. For each baseline, record the model's answer and any confidence estimate provided.",
+            "Step 3: CGPE Implementation": "Implement the CGPE method as follows:\na) Initial prompt: 'Question: {question}\\nProvide an answer and your confidence level (0-100%):\\nAnswer: \\nConfidence: '\nb) If confidence < 70%, follow-up prompt: 'To improve your answer, what additional information would you need? List up to 3 specific questions.'\nc) For each follow-up question, use the LLM to generate a plausible answer or retrieve information from a knowledge base.\nd) Expanded prompt: 'Question: {question}\\nAdditional context:\\n{generated_context}\\nNow, provide an updated answer and confidence level:\\nAnswer: \\nConfidence: '\ne) Repeat steps b-d up to 3 times or until confidence >= 90%.",
+            "Step 4: Model Selection": "Use GPT-3.5 (text-davinci-003) and GPT-4 from OpenAI's API for all experiments.",
+            "Step 5: Evaluation Metrics": "1) Answer accuracy: Compare model outputs to ground truth answers. 2) Calibration error: Measure the difference between model confidence and actual accuracy. 3) Average number of expansion iterations. 4) Relevance of generated follow-up questions (manual evaluation on a subset).",
+            "Step 6: Experiment Execution": "1) Run all baselines and CGPE on the test sets of both datasets. 2) For each method, collect model outputs, confidence estimates, and any intermediate steps (e.g., follow-up questions for CGPE). 3) Calculate evaluation metrics for each method.",
+            "Step 7: Analysis": "1) Compare CGPE performance against baselines across all metrics. 2) Analyze how answer accuracy and confidence change with each iteration of CGPE. 3) Evaluate the quality and relevance of generated follow-up questions. 4) Identify types of questions where CGPE shows the most improvement."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: What is the capital of France?",
+                "Output (Direct Prompting)": "The capital of France is Paris.",
+                "Output (Few-shot Prompting)": "The capital of France is Paris. Confidence: 95%",
+                "Output (Chain-of-Thought)": "Let's think about this step-by-step:\n1. France is a country in Western Europe.\n2. It's one of the most well-known countries in the world.\n3. Its capital city is also very famous and often associated with the Eiffel Tower.\n4. The city I'm thinking of is Paris.\nTherefore, the capital of France is Paris."
+            },
+            "CGPE Example": {
+                "Input": "Q: Who was the first person to reach the bottom of the Mariana Trench?",
+                "Step 1 Output": "Answer: Jacques Piccard and Don Walsh were the first people to reach the bottom of the Mariana Trench.\nConfidence: 60%",
+                "Step 2 Output": "To improve my answer, I need the following information:\n1. When was the first descent to the bottom of the Mariana Trench?\n2. What was the name of the vessel used for this expedition?\n3. Were there any solo descents to the bottom of the Mariana Trench?",
+                "Step 3 Output": "1. The first descent to the bottom of the Mariana Trench was on January 23, 1960.\n2. The vessel used for this expedition was the bathyscaphe Trieste.\n3. Yes, in 2012, film director James Cameron made a solo descent to the bottom of the Mariana Trench.",
+                "Step 4 Output": "Answer: The first people to reach the bottom of the Mariana Trench were Jacques Piccard and Don Walsh on January 23, 1960, using the bathyscaphe Trieste. James Cameron later made a solo descent in 2012, but he was not the first.\nConfidence: 95%",
+                "Explanation": "CGPE allows the model to acknowledge initial uncertainty, seek relevant information, and provide a more accurate and confident answer. The baseline methods might give incomplete or incorrect information without the opportunity for self-correction."
+            }
+        },
+        "Fallback Plan": "If CGPE doesn't significantly outperform baselines, we can explore several alternatives: 1) Analyze the generated follow-up questions to understand if they're truly helpful for improving answers. If not, we could experiment with different prompting strategies for question generation. 2) Investigate whether the confidence estimates are reliable and well-calibrated. If not, we could explore methods to improve confidence calibration, such as temperature scaling or ensemble methods. 3) If the method works well for some types of questions but not others, we could develop a hybrid approach that selects between CGPE and standard prompting based on question characteristics. 4) We could also explore using CGPE in combination with external knowledge retrieval methods, comparing its performance to pure retrieval-augmented generation approaches."
+    }
+}

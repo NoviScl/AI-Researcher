@@ -1,0 +1,45 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Entropy-Guided Prompt Expansion",
+    "raw_idea": {
+        "Problem": "Large language models often struggle to accurately quantify their uncertainty, especially when faced with ambiguous or out-of-distribution queries.",
+        "Existing Methods": "Current approaches like temperature scaling or ensemble methods often fail to capture fine-grained uncertainty in complex scenarios.",
+        "Motivation": "By leveraging the model's own output distribution to guide targeted prompt expansion, we can potentially uncover hidden uncertainties and refine confidence estimates.",
+        "Proposed Method": "We introduce Entropy-Guided Prompt Expansion (EGPE), a novel prompting technique that iteratively expands the input prompt based on the entropy of the model's output distribution. The process begins with a base prompt and generates an initial response. We then compute the entropy of the token-level probabilities. High-entropy regions, indicating uncertainty, trigger targeted follow-up prompts to explore those specific areas. This process repeats, with each iteration refining the prompt to probe areas of uncertainty. The final confidence estimate is derived from the aggregate entropy across all iterations, providing a more nuanced and accurate measure of the model's true uncertainty.",
+        "Experiment Plan": "Compare EGPE against standard prompting, MC Dropout, and ensemble methods on tasks like open-ended question answering and out-of-distribution detection. Evaluate using metrics such as Expected Calibration Error (ECE) and Brier score."
+    },
+    "full_experiment_plan": {
+        "Title": "Entropy-Guided Prompt Expansion for Improved Uncertainty Quantification in Large Language Models",
+        "Problem Statement": "Large language models often struggle to accurately quantify their uncertainty, especially when faced with ambiguous or out-of-distribution queries. This leads to overconfident predictions on unfamiliar inputs and unreliable confidence estimates, which can be problematic in high-stakes applications.",
+        "Motivation": "Current approaches like temperature scaling or ensemble methods often fail to capture fine-grained uncertainty in complex scenarios. By leveraging the model's own output distribution to guide targeted prompt expansion, we can potentially uncover hidden uncertainties and refine confidence estimates. This approach is inspired by active learning techniques, where the model's uncertainty is used to guide further data collection. In our case, we use the model's uncertainty to guide further prompt refinement.",
+        "Proposed Method": "We introduce Entropy-Guided Prompt Expansion (EGPE), a novel prompting technique that iteratively expands the input prompt based on the entropy of the model's output distribution. The process begins with a base prompt and generates an initial response. We then compute the entropy of the token-level probabilities. High-entropy regions, indicating uncertainty, trigger targeted follow-up prompts to explore those specific areas. This process repeats, with each iteration refining the prompt to probe areas of uncertainty. The final confidence estimate is derived from the aggregate entropy across all iterations, providing a more nuanced and accurate measure of the model's true uncertainty.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use three datasets: (1) TruthfulQA for open-ended question answering, (2) MMLU for out-of-distribution detection in multiple-choice questions, and (3) WinoGrande for commonsense reasoning tasks.",
+            "Step 2: Model Selection": "We will use GPT-3.5 (text-davinci-003) and GPT-4 from OpenAI's API for our experiments.",
+            "Step 3: Baseline Implementation": "Implement three baseline methods: (1) Standard prompting, (2) MC Dropout (approximated by multiple API calls with temperature > 0), and (3) Ensemble method (using different model sizes or prompts).",
+            "Step 4: EGPE Implementation": "Implement the EGPE method with the following sub-steps: (a) Generate initial response, (b) Compute token-level entropy, (c) Identify high-entropy regions, (d) Generate targeted follow-up prompts, (e) Repeat steps a-d for a fixed number of iterations or until convergence.",
+            "Step 5: Evaluation Metrics": "Implement evaluation metrics: (1) Expected Calibration Error (ECE), (2) Brier score, and (3) Area Under the Receiver Operating Characteristic curve (AUROC) for out-of-distribution detection.",
+            "Step 6: Experiment Execution": "Run experiments comparing EGPE against baselines on all datasets. For each dataset and model combination, perform at least 1000 evaluations to ensure statistical significance.",
+            "Step 7: Analysis": "Analyze results, focusing on: (1) Comparison of EGPE vs baselines in terms of calibration and uncertainty estimation, (2) Impact of the number of iterations in EGPE, (3) Qualitative analysis of generated follow-up prompts, (4) Performance differences across different types of questions or domains."
+        },
+        "Test Case Examples": {
+            "Example 1 (Baseline Failure)": {
+                "Input": "Q: How many moons does Venus have?",
+                "Standard Prompting Output": "Venus has no moons. Confidence: 95%",
+                "MC Dropout Output": "Venus has no moons. Confidence: 92% \u00b1 3%",
+                "Ensemble Method Output": "Venus has no moons. Confidence: 94%",
+                "Explanation": "All baseline methods show high confidence, but fail to capture the inherent uncertainty in astronomical knowledge."
+            },
+            "Example 2 (EGPE Success)": {
+                "Input": "Q: How many moons does Venus have?",
+                "EGPE Step 1": "Initial response: Venus has no moons. Initial confidence: 95%",
+                "EGPE Step 2": "Entropy analysis: High entropy detected for 'no moons' phrase.",
+                "EGPE Step 3": "Follow-up prompt: 'What is the level of certainty about Venus' lack of moons? Have there been any recent discoveries or debates about this?'",
+                "EGPE Step 4": "Refined response: While it's generally accepted that Venus has no moons, there have been some debates and unconfirmed observations in the past. The certainty is high but not absolute. Refined confidence: 85%",
+                "EGPE Final Output": "Current scientific consensus is that Venus has no moons, but there is a small degree of uncertainty due to past debates and the difficulty of observing small objects near Venus. Confidence: 85%",
+                "Explanation": "EGPE successfully identifies the potential uncertainty in the initial high-confidence answer and refines the response to reflect a more nuanced understanding of the current state of knowledge."
+            }
+        },
+        "Fallback Plan": "If EGPE doesn't significantly improve uncertainty quantification, we will conduct a detailed error analysis to understand why. This could involve examining the entropy patterns across different types of questions, analyzing the quality and relevance of generated follow-up prompts, and investigating whether the method is more effective for certain types of uncertainties (e.g., factual vs. conceptual). We might also explore variations of the method, such as using different entropy thresholds for prompt expansion or incorporating external knowledge sources to guide the expansion process. Additionally, we could pivot to a more in-depth study of how different prompting strategies affect uncertainty estimation in LLMs, potentially uncovering insights about the relationship between prompt design and model calibration."
+    }
+}

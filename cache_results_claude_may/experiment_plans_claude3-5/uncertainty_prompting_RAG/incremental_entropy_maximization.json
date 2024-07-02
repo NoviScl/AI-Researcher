@@ -1,0 +1,43 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Incremental Entropy Maximization",
+    "raw_idea": {
+        "Problem": "LLMs often struggle to express nuanced levels of uncertainty, defaulting to overconfidence or binary uncertain/certain states.",
+        "Existing Methods": "Current approaches typically rely on single-pass uncertainty estimation or basic sampling techniques.",
+        "Motivation": "Drawing inspiration from information theory, we propose that systematically increasing the entropy of the input can reveal fine-grained uncertainty levels.",
+        "Proposed Method": "We introduce Incremental Entropy Maximization (IEM), an iterative prompting technique that progressively introduces ambiguity into the query. Starting with a base prompt, IEM systematically adds ambiguous elements (e.g., 'possibly', 'it might be that') or removes specificity (e.g., replacing proper nouns with pronouns) in each iteration. The model's responses are analyzed at each step, tracking how quickly the model shifts from confidence to uncertainty. The rate of this shift and the nature of the ambiguity that triggers it provide insights into the model's uncertainty landscape. We also incorporate a 'rollback' mechanism where, upon detecting significant uncertainty, the process reverses to pinpoint the exact threshold of confident knowledge.",
+        "Experiment Plan": "Evaluate IEM against standard uncertainty estimation techniques on tasks including fact-checking, commonsense reasoning, and open-domain QA. Measure performance using calibration plots, expected calibration error, and correlations with expert-annotated uncertainty levels."
+    },
+    "full_experiment_plan": {
+        "Title": "Incremental Entropy Maximization: Quantifying Uncertainty in Large Language Models through Progressive Ambiguity",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to express nuanced levels of uncertainty, defaulting to overconfidence or binary uncertain/certain states. This limitation hinders their reliability in real-world applications where accurate uncertainty estimation is crucial.",
+        "Motivation": "Current approaches to uncertainty estimation in LLMs typically rely on single-pass uncertainty estimation or basic sampling techniques, which may not capture the full spectrum of model uncertainty. Drawing inspiration from information theory, we propose that systematically increasing the entropy of the input can reveal fine-grained uncertainty levels. This approach leverages the LLM's own capabilities to gauge its uncertainty, potentially offering a more nuanced and accurate representation of the model's confidence across various tasks.",
+        "Proposed Method": "We introduce Incremental Entropy Maximization (IEM), an iterative prompting technique that progressively introduces ambiguity into the query. The method works as follows: 1) Start with a base prompt. 2) Systematically add ambiguous elements (e.g., 'possibly', 'it might be that') or remove specificity (e.g., replacing proper nouns with pronouns) in each iteration. 3) Analyze the model's responses at each step, tracking how quickly the model shifts from confidence to uncertainty. 4) Implement a 'rollback' mechanism where, upon detecting significant uncertainty, the process reverses to pinpoint the exact threshold of confident knowledge. The rate of this shift and the nature of the ambiguity that triggers it provide insights into the model's uncertainty landscape.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Select datasets for fact-checking (e.g., FEVER), commonsense reasoning (e.g., CommonsenseQA), and open-domain QA (e.g., NaturalQuestions). Ensure a diverse set of questions with varying difficulty levels.",
+            "Step 2: Baseline Implementation": "Implement standard uncertainty estimation techniques: a) Direct prompting with confidence score request, b) Monte Carlo Dropout, c) Ensemble methods using different model checkpoints or temperatures.",
+            "Step 3: IEM Implementation": "Develop the IEM algorithm: a) Create a function to generate increasingly ambiguous versions of each question. b) Implement the iterative prompting process. c) Design a mechanism to detect and quantify shifts in model confidence. d) Implement the rollback mechanism to identify confidence thresholds.",
+            "Step 4: Model Selection": "Use GPT-3.5 (text-davinci-003) and GPT-4 via the OpenAI API for primary experiments. Include Claude API and open-source models like LLaMA-2-70B for comparison if resources allow.",
+            "Step 5: Experiment Execution": "For each dataset and model: a) Run baseline methods. b) Apply IEM, recording model outputs and confidence scores at each iteration. c) Implement the rollback mechanism when significant uncertainty is detected.",
+            "Step 6: Evaluation": "Assess performance using: a) Calibration plots comparing predicted probabilities to empirical outcomes. b) Expected Calibration Error (ECE) to quantify overall calibration. c) Correlation analysis between IEM-derived uncertainty scores and expert-annotated uncertainty levels.",
+            "Step 7: Analysis": "a) Compare IEM results with baseline methods across different task types. b) Analyze the patterns of uncertainty emergence across different question types and difficulty levels. c) Investigate the effectiveness of the rollback mechanism in pinpointing confidence thresholds."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: Who was the 16th President of the United States?\nA: Abraham Lincoln\nHow confident are you in this answer?",
+                "Expected Output": "I am very confident (95%) that Abraham Lincoln was the 16th President of the United States.",
+                "Explanation": "The baseline method directly asks for a confidence score, which may not capture nuanced uncertainty."
+            },
+            "IEM Example": {
+                "Input (Iteration 1)": "Q: Who was the 16th President of the United States?",
+                "Expected Output (Iteration 1)": "Abraham Lincoln was the 16th President of the United States.",
+                "Input (Iteration 2)": "Q: Who might have been the President numbered around 15 to 17?",
+                "Expected Output (Iteration 2)": "The President numbered around 15 to 17 was likely Abraham Lincoln, who served as the 16th President of the United States from 1861 to 1865.",
+                "Input (Iteration 3)": "Q: There's a possibility that someone held a high office in the mid-19th century. Any thoughts?",
+                "Expected Output (Iteration 3)": "In the mid-19th century, a significant figure who held high office was Abraham Lincoln. He served as the 16th President of the United States from 1861 to 1865. However, without more specific information, I can't be certain if this is the exact person or role you're referring to.",
+                "Explanation": "IEM progressively introduces ambiguity, revealing the model's uncertainty levels. The model maintains confidence about Lincoln in the first two iterations but expresses more uncertainty in the third, highly ambiguous query."
+            }
+        },
+        "Fallback Plan": "If IEM doesn't significantly outperform baselines, we can pivot to an in-depth analysis of how different types of ambiguity affect model uncertainty. We could categorize the types of ambiguity (e.g., temporal, entity-based, relational) and analyze their impact on uncertainty across different tasks. This could lead to insights about which aspects of questions contribute most to model uncertainty. Additionally, we could investigate whether the patterns of uncertainty emergence correlate with human judgments of question difficulty or ambiguity. This would transform the project into a comprehensive study of how LLMs process and respond to ambiguity, potentially informing future model development and prompting strategies."
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Probabilistic Prompt Unfolding",
+    "raw_idea": {
+        "Problem": "Current uncertainty quantification methods for LLMs often rely on single-step prompts, which may not capture the full spectrum of model uncertainty.",
+        "Existing Methods": "Existing approaches typically use direct confidence elicitation or logit-based uncertainty estimation.",
+        "Motivation": "Inspired by the concept of probabilistic graphical models, we can leverage the LLM's ability to generate multiple possible continuations to create a tree-like structure of prompts and responses, allowing for a more nuanced understanding of model uncertainty.",
+        "Proposed Method": "We introduce Probabilistic Prompt Unfolding (PPU), a multi-step prompting technique that iteratively expands a tree of possible responses. Starting with an initial prompt, the LLM generates multiple continuations. For each continuation, we prompt the model to assign a probability and generate further continuations. This process is repeated for several steps, creating a probability-weighted tree of responses. The final uncertainty estimate is derived from the distribution of probabilities across leaf nodes, capturing both local and global uncertainty patterns.",
+        "Experiment Plan": "Compare PPU with baseline methods like direct confidence elicitation and logit-based uncertainty on various tasks including open-ended generation, question-answering, and reasoning tasks. Evaluate using metrics such as calibration error, Brier score, and correlation with human judgments of uncertainty."
+    },
+    "full_experiment_plan": {
+        "Title": "Probabilistic Prompt Unfolding: A Multi-Step Approach to Quantify Uncertainty in Large Language Models",
+        "Problem Statement": "Current uncertainty quantification methods for Large Language Models (LLMs) often rely on single-step prompts, which may not capture the full spectrum of model uncertainty. This limitation can lead to overconfident or poorly calibrated predictions, potentially resulting in unreliable or misleading outputs in critical applications.",
+        "Motivation": "Existing approaches typically use direct confidence elicitation or logit-based uncertainty estimation, which may not fully leverage the LLM's reasoning capabilities. Inspired by probabilistic graphical models, we propose to leverage the LLM's ability to generate multiple possible continuations to create a tree-like structure of prompts and responses. This approach allows for a more nuanced understanding of model uncertainty by capturing both local and global uncertainty patterns across multiple reasoning steps.",
+        "Proposed Method": "We introduce Probabilistic Prompt Unfolding (PPU), a multi-step prompting technique that iteratively expands a tree of possible responses. The process begins with an initial prompt, for which the LLM generates multiple continuations. For each continuation, we prompt the model to assign a probability and generate further continuations. This process is repeated for several steps, creating a probability-weighted tree of responses. The final uncertainty estimate is derived from the distribution of probabilities across leaf nodes, capturing both local and global uncertainty patterns.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Select diverse datasets that cover various tasks: (1) Open-ended generation: Use the WritingPrompts dataset. (2) Question-answering: Use the Natural Questions dataset. (3) Reasoning tasks: Use the MMLU (Massive Multitask Language Understanding) dataset.",
+            "Step 2: Baseline Implementation": "Implement two baseline methods: (1) Direct confidence elicitation: Prompt the model to provide a confidence score along with its answer. (2) Logit-based uncertainty: Use the softmax output probabilities as a measure of uncertainty.",
+            "Step 3: PPU Implementation": "Implement the Probabilistic Prompt Unfolding method: (1) Initial prompt generation: Given an input, generate 3-5 initial continuations. (2) Probability assignment: For each continuation, prompt the model to assign a probability. (3) Further expansion: Generate 2-3 sub-continuations for each initial continuation. (4) Repeat steps 2-3 for a total of 3 levels. (5) Compute the final uncertainty estimate based on the leaf node probabilities.",
+            "Step 4: Prompt Design": "Design prompts for each step of the PPU process. For example: (1) Initial continuations: \"Given the input '[INPUT]', generate 3 possible continuations.\" (2) Probability assignment: \"Assign a probability to the following continuation: '[CONTINUATION]'.\" (3) Sub-continuations: \"Given the continuation '[CONTINUATION]', generate 2 possible next steps.\"",
+            "Step 5: Model Selection": "Use GPT-3.5 (text-davinci-003) and GPT-4 from the OpenAI API for all experiments.",
+            "Step 6: Evaluation Metrics": "Implement the following evaluation metrics: (1) Calibration error: Compare model confidence with empirical accuracy. (2) Brier score: Measure the accuracy of probabilistic predictions. (3) Correlation with human judgments: Collect human ratings of uncertainty for a subset of examples and compute correlation with model predictions.",
+            "Step 7: Experiment Execution": "For each dataset and task type: (1) Run baseline methods and collect results. (2) Run PPU method and collect results. (3) Compute evaluation metrics for both baseline and PPU methods.",
+            "Step 8: Analysis": "Compare PPU performance against baselines across different tasks and datasets. Analyze the structure of the generated probability trees to gain insights into the model's uncertainty patterns."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: What is the capital of France?",
+                "Direct Confidence Elicitation Prompt": "Q: What is the capital of France? Provide your answer and a confidence score between 0 and 1.",
+                "Direct Confidence Elicitation Output": "A: The capital of France is Paris. Confidence score: 0.98",
+                "Logit-based Uncertainty Output": "Paris (probability: 0.99)",
+                "Explanation": "Baseline methods provide a single confidence score or probability, which may not capture nuanced uncertainty."
+            },
+            "PPU Example": {
+                "Input": "Q: What is the capital of France?",
+                "Step 1 Prompt": "Given the question 'What is the capital of France?', generate 3 possible answers:",
+                "Step 1 Output": "1. Paris\n2. Lyon\n3. Marseille",
+                "Step 2 Prompt": "Assign a probability to each of the following answers to the question 'What is the capital of France?':\n1. Paris\n2. Lyon\n3. Marseille",
+                "Step 2 Output": "1. Paris: 0.95\n2. Lyon: 0.03\n3. Marseille: 0.02",
+                "Step 3 Prompt": "For the answer 'Paris' to the question 'What is the capital of France?', generate 2 possible supporting facts:",
+                "Step 3 Output": "1. Paris is located in north-central France.\n2. Paris has been the capital of France since the Middle Ages.",
+                "Final Uncertainty Estimate": "The model's uncertainty is low (0.05) based on the high probability assigned to the correct answer (Paris) and the ability to generate relevant supporting facts.",
+                "Explanation": "PPU provides a more detailed uncertainty estimate by considering multiple possible answers and their probabilities, as well as the model's ability to generate supporting information."
+            }
+        },
+        "Fallback Plan": "If the proposed PPU method does not significantly outperform baselines, we can pivot the project in several ways. First, we can conduct an in-depth analysis of the generated probability trees to understand why the method might be failing and potentially identify patterns in the model's uncertainty that could inform future research. Second, we can explore variations of the PPU method, such as adjusting the number of levels or continuations, or experimenting with different prompting strategies for probability assignment. Third, we can investigate how PPU performs on different types of tasks or domains, which could lead to insights about when and why certain uncertainty quantification methods are more effective. Finally, we could combine PPU with other uncertainty estimation techniques, such as ensemble methods or calibration techniques, to create a hybrid approach that leverages the strengths of multiple methods."
+    }
+}

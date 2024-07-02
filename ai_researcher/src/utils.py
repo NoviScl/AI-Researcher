@@ -17,7 +17,7 @@ def calc_price(model, usage):
 def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, seed=2024, json_output=False):
     if "claude" in model:
         if json_output:
-            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text. "
+            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output later)."
             prompt_messages = [{"role": "user", "content": prompt}]
         message = client.messages.create(
             model=model,

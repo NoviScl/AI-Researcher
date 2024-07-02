@@ -1,0 +1,57 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Semantic Entropy Maximization Prompting",
+    "raw_idea": {
+        "Problem": "Current uncertainty quantification methods often fail to capture the full range of semantic ambiguities and potential interpretations in LLM responses.",
+        "Existing Methods": "Existing approaches typically focus on direct confidence elicitation or limited exploration of alternative responses.",
+        "Motivation": "Inspired by the concept of entropy in information theory and the idea that higher uncertainty should correspond to a greater diversity of possible interpretations, we propose a method that actively seeks to maximize semantic entropy in the model's responses.",
+        "Proposed Method": "We introduce Semantic Entropy Maximization Prompting (SEMP). This method involves a multi-stage prompting process: 1) Initial response generation, 2) Prompting the model to generate alternative interpretations or responses that are semantically distinct from the original, 3) Iteratively encouraging the model to explore increasingly diverse semantic spaces related to the query, 4) Quantifying the semantic entropy of the generated response set using techniques such as embedding distance calculations or semantic similarity measures, 5) Using the measured semantic entropy as a proxy for uncertainty, with higher entropy indicating greater uncertainty. The prompts are designed to push the model to consider a wide range of possible interpretations and knowledge domains, thereby revealing potential areas of uncertainty or ambiguity.",
+        "Experiment Plan": "Evaluate SEMP against standard uncertainty quantification methods on tasks such as open-ended question answering, ambiguous queries, and reasoning problems. Measure the correlation between semantic entropy and human judgments of uncertainty. Analyze the diversity and relevance of the generated interpretations. Investigate the relationship between semantic entropy and traditional confidence measures."
+    },
+    "full_experiment_plan": {
+        "Title": "Semantic Entropy Maximization Prompting: Quantifying Uncertainty in Large Language Models",
+        "Problem Statement": "Current uncertainty quantification methods for large language models (LLMs) often fail to capture the full range of semantic ambiguities and potential interpretations in their responses. This limitation hinders our ability to accurately assess the model's confidence and reliability across various tasks and domains.",
+        "Motivation": "Existing approaches typically focus on direct confidence elicitation or limited exploration of alternative responses, which may not fully represent the model's uncertainty. Inspired by the concept of entropy in information theory and the idea that higher uncertainty should correspond to a greater diversity of possible interpretations, we propose a method that actively seeks to maximize semantic entropy in the model's responses. This approach aims to provide a more comprehensive and nuanced measure of uncertainty by exploring a wider range of semantically distinct interpretations.",
+        "Proposed Method": "We introduce Semantic Entropy Maximization Prompting (SEMP), a multi-stage prompting process designed to quantify uncertainty in LLM responses. The method involves: 1) Initial response generation, 2) Prompting the model to generate alternative interpretations or responses that are semantically distinct from the original, 3) Iteratively encouraging the model to explore increasingly diverse semantic spaces related to the query, 4) Quantifying the semantic entropy of the generated response set using techniques such as embedding distance calculations or semantic similarity measures, 5) Using the measured semantic entropy as a proxy for uncertainty, with higher entropy indicating greater uncertainty. The prompts are designed to push the model to consider a wide range of possible interpretations and knowledge domains, thereby revealing potential areas of uncertainty or ambiguity.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use three datasets to evaluate SEMP: 1) TruthfulQA for open-ended question answering, 2) AmbigQA for ambiguous queries, and 3) SVAMP for mathematical reasoning problems. These datasets cover a range of tasks where uncertainty quantification is crucial.",
+            "Step 2: Baseline Implementation": "Implement two baseline uncertainty quantification methods: 1) Direct confidence elicitation: Append 'How confident are you in your answer on a scale of 0-100?' to each query. 2) Monte Carlo Dropout: Use multiple forward passes with dropout enabled to estimate uncertainty.",
+            "Step 3: SEMP Implementation": "Implement the SEMP method with the following sub-steps for each query:\na) Generate initial response\nb) Generate alternative interpretations (3-5) using prompts like 'Provide a different interpretation of the question that could lead to a different answer.'\nc) For each alternative interpretation, generate a corresponding answer\nd) Prompt for additional diverse interpretations using 'Can you think of an interpretation from a completely different domain or perspective?'\ne) Repeat steps c and d for 2-3 iterations",
+            "Step 4: Semantic Entropy Calculation": "Implement two methods for calculating semantic entropy:\na) Embedding-based: Use a pre-trained sentence encoder (e.g., SBERT) to get embeddings for all responses, calculate pairwise cosine distances, and compute entropy based on these distances.\nb) LLM-based: Use GPT-3.5 or GPT-4 to rate the semantic similarity between pairs of responses on a scale of 0-10, then compute entropy based on these ratings.",
+            "Step 5: Human Evaluation Setup": "Prepare a subset of 100 queries from each dataset along with the generated responses and entropy scores. Create a survey for human annotators to rate the perceived uncertainty of the model's responses on a scale of 1-5.",
+            "Step 6: Model Selection and API Setup": "We will use GPT-3.5 (text-davinci-003) and GPT-4 from OpenAI's API for our experiments. Set up API access and implement rate limiting and error handling.",
+            "Step 7: Experiment Execution": "For each dataset and model:\na) Run baseline methods and collect uncertainty scores\nb) Run SEMP method and collect generated responses and calculated entropy scores\nc) Conduct human evaluation on the prepared subset",
+            "Step 8: Analysis": "Perform the following analyses:\na) Compare SEMP entropy scores with baseline uncertainty measures\nb) Analyze correlation between SEMP entropy and human judgments of uncertainty\nc) Evaluate the diversity and relevance of generated interpretations\nd) Investigate the relationship between semantic entropy and task performance\ne) Analyze how SEMP performs across different types of queries (e.g., factual vs. opinion-based)"
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: What is the capital of France?\nA: The capital of France is Paris.\nHow confident are you in your answer on a scale of 0-100?",
+                "Output": "I am 100% confident in my answer that the capital of France is Paris.",
+                "Explanation": "The baseline method directly elicits a confidence score, which may not capture nuanced uncertainties or potential alternative interpretations."
+            },
+            "SEMP Example": {
+                "Input": "Q: What is the capital of France?",
+                "Output": {
+                    "Initial Response": "The capital of France is Paris.",
+                    "Alternative Interpretations": [
+                        "1. What was the historical capital of France before Paris?",
+                        "2. What is considered the cultural capital of France?",
+                        "3. What is the economic capital of France?",
+                        "4. In a hypothetical future scenario, what could be a new capital of France?",
+                        "5. What is the capital of France in terms of a specific industry or sector?"
+                    ],
+                    "Corresponding Answers": [
+                        "1. Before Paris, several cities served as capitals of France at different times, including Tournai, Soissons, Paris, Orl\u00e9ans, and Reims during the Merovingian dynasty (481-751 AD).",
+                        "2. While Paris is often considered the cultural capital, other cities like Lyon or Marseille could also claim this title depending on the cultural aspect being considered.",
+                        "3. Paris is generally considered the economic capital of France, but other cities like Lyon or Toulouse are also significant economic centers.",
+                        "4. In a hypothetical future scenario, if sea levels rise significantly, a more inland city like Lyon could potentially become the new capital.",
+                        "5. For the fashion industry, Paris is undoubtedly considered the capital of France."
+                    ],
+                    "Semantic Entropy Score": 0.73
+                },
+                "Explanation": "SEMP generates multiple interpretations and answers, exploring various aspects and potential ambiguities related to the concept of a 'capital'. The semantic entropy score of 0.73 indicates a moderate level of uncertainty, reflecting the diversity of interpretations despite the initial confident answer."
+            }
+        },
+        "Fallback Plan": "If SEMP does not significantly outperform baseline methods in uncertainty quantification, we will conduct a detailed analysis to understand why. This may include examining the quality and diversity of generated interpretations, the effectiveness of our semantic entropy calculation methods, and the correlation between different uncertainty measures. We could also explore alternative approaches to maximize semantic diversity, such as using contrastive decoding techniques or incorporating external knowledge sources to guide the generation of diverse interpretations. Additionally, we might investigate whether SEMP performs better for certain types of queries or domains, which could lead to insights about when and how to apply different uncertainty quantification methods. If the results are still not promising, we could pivot the project towards an analysis paper that compares different approaches to uncertainty quantification in LLMs, including SEMP, and provides insights into the challenges and limitations of current methods."
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Adaptive Precision Confidence Estimation",
+    "raw_idea": {
+        "Problem": "LLMs often struggle to accurately estimate their confidence when faced with questions requiring varying levels of precision or specificity in the answer.",
+        "Existing Methods": "Current approaches typically use fixed confidence thresholds or static prompting strategies that don't account for the required precision of the task at hand.",
+        "Motivation": "Human experts adjust their confidence estimates based on the level of precision required for a given task. For instance, a historian might be very confident about the century in which an event occurred, but less confident about the exact year.",
+        "Proposed Method": "We propose Adaptive Precision Confidence Estimation (APCE), a dynamic prompting method that iteratively refines both the answer and the confidence estimate based on the required precision. APCE starts with a broad, low-precision query and progressively increases the specificity of the question while monitoring the model's confidence. For example, for a historical date query, APCE might start with 'Which millennium?' then 'Which century?' and so on. At each step, the model provides an answer and a confidence score. The process continues until either the required precision is reached or the confidence drops below a threshold. This approach allows for more granular and task-appropriate uncertainty quantification.",
+        "Experiment Plan": "We will evaluate APCE on a range of tasks requiring different levels of precision, including historical dating, geographical location estimation, and numerical estimation tasks. We'll compare APCE to static confidence estimation methods, measuring performance on metrics such as calibration error at different precision levels and the correlation between expressed confidence and answer correctness."
+    },
+    "full_experiment_plan": {
+        "Title": "Adaptive Precision Confidence Estimation (APCE): Calibrating LLM Confidence through Dynamic Precision-Based Prompting",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to accurately estimate their confidence when faced with questions requiring varying levels of precision or specificity in the answer. This leads to overconfidence in incorrect answers or underconfidence in correct but less precise answers, reducing the reliability and usefulness of LLM outputs in real-world applications.",
+        "Motivation": "Current approaches typically use fixed confidence thresholds or static prompting strategies that don't account for the required precision of the task at hand. These methods fail to capture the nuanced relationship between answer precision and confidence levels. Human experts, in contrast, adjust their confidence estimates based on the level of precision required for a given task. For instance, a historian might be very confident about the century in which an event occurred, but less confident about the exact year. By mimicking this human-like adaptive confidence estimation, we can potentially improve the calibration and usefulness of LLM outputs across a wide range of tasks and precision requirements.",
+        "Proposed Method": "We propose Adaptive Precision Confidence Estimation (APCE), a dynamic prompting method that iteratively refines both the answer and the confidence estimate based on the required precision. APCE starts with a broad, low-precision query and progressively increases the specificity of the question while monitoring the model's confidence. The process involves the following steps:\n1. Initial Query: Start with a broad, low-precision question.\n2. Confidence Estimation: Prompt the model to provide an answer and a confidence score (0-100%).\n3. Precision Increase: If the confidence is above a threshold and higher precision is required, reformulate the question to ask for more specific information.\n4. Iteration: Repeat steps 2-3 until either the required precision is reached or the confidence drops below a threshold.\n5. Final Output: Return the most precise answer that meets the confidence threshold, along with its precision level and confidence score.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Prepare datasets for three types of tasks: historical dating, geographical location estimation, and numerical estimation. For each task, create a set of questions with ground truth answers at multiple precision levels (e.g., millennium, century, decade, year for historical dating).",
+            "Step 2: Baseline Implementation": "Implement two baseline methods: (1) Direct prompting with confidence estimation, (2) Static Chain-of-Thought (CoT) prompting with confidence estimation.",
+            "Step 3: APCE Implementation": "Implement the APCE method as described in the 'Proposed Method' section. Create prompts for each precision level and task type.",
+            "Step 4: Model Selection": "Use GPT-4 and GPT-3.5-turbo from the OpenAI API for all experiments.",
+            "Step 5: Experiment Execution": "For each task and method:\na. Run the model on the prepared dataset.\nb. Record answers, confidence scores, and precision levels.\nc. Calculate performance metrics: accuracy, calibration error, and Brier score.",
+            "Step 6: Analysis": "Compare APCE against baselines on:\na. Overall accuracy across precision levels.\nb. Calibration error at different precision levels.\nc. Correlation between expressed confidence and answer correctness.\nd. Ability to provide useful partial information (e.g., correct century when year is unknown).",
+            "Step 7: Ablation Studies": "Conduct ablation studies to understand the impact of:\na. Different confidence thresholds for precision increases.\nb. Various formulations of the confidence estimation prompt.\nc. The number of precision levels used in the iterative process."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "When was the Declaration of Independence signed?",
+                "Output (Direct Prompting)": "The Declaration of Independence was signed on July 4, 1776. Confidence: 95%",
+                "Output (Static CoT)": "Let's approach this step-by-step:\n1. The Declaration of Independence is a key document in American history.\n2. It was adopted by the Continental Congress.\n3. The date most associated with the Declaration is July 4, 1776.\n4. However, the actual signing process took place over several weeks.\n5. Most historians agree that the bulk of the signatures were added on August 2, 1776.\n\nBased on this reasoning, I can say with confidence that the Declaration of Independence was primarily signed on August 2, 1776, although July 4, 1776 is the date officially associated with its adoption. Confidence: 90%"
+            },
+            "APCE Example": {
+                "Step 1 (Century)": {
+                    "Input": "In which century was the Declaration of Independence signed?",
+                    "Output": "The Declaration of Independence was signed in the 18th century. Confidence: 100%"
+                },
+                "Step 2 (Decade)": {
+                    "Input": "In which decade of the 18th century was the Declaration of Independence signed?",
+                    "Output": "The Declaration of Independence was signed in the 1770s. Confidence: 99%"
+                },
+                "Step 3 (Year)": {
+                    "Input": "In which year of the 1770s was the Declaration of Independence signed?",
+                    "Output": "The Declaration of Independence was signed in 1776. Confidence: 98%"
+                },
+                "Step 4 (Month)": {
+                    "Input": "In which month of 1776 was the Declaration of Independence signed?",
+                    "Output": "The Declaration of Independence is traditionally associated with July 4, 1776, but the actual signing process occurred over several weeks. The bulk of the signatures were likely added on August 2, 1776. Confidence: 85%"
+                },
+                "Final Output": "The Declaration of Independence was signed in 1776, with the bulk of signatures likely added on August 2, although it's traditionally associated with July 4. Precision: Year/Month, Confidence: 85%"
+            },
+            "Explanation": "The APCE method allows for a more nuanced and precise answer, with appropriate confidence levels at each step. It captures the complexity of the historical event better than the baseline methods, providing a more informative and calibrated response."
+        },
+        "Fallback Plan": "If APCE doesn't significantly outperform baselines, we can pivot to an analysis paper exploring why adaptive precision doesn't improve confidence calibration as expected. We could investigate: (1) How confidence changes across precision levels for different types of questions. (2) Whether certain task domains benefit more from adaptive precision than others. (3) How the model's behavior in APCE differs from human experts in similar scenarios. (4) The relationship between answer correctness, precision, and expressed confidence. This analysis could provide valuable insights into LLM reasoning and confidence estimation, potentially informing future approaches to improving model calibration."
+    }
+}

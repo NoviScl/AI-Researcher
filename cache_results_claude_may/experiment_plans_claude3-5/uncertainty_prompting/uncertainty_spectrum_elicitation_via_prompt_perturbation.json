@@ -1,0 +1,51 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Uncertainty Spectrum Elicitation via Prompt Perturbation",
+    "raw_idea": {
+        "Problem": "Current methods for uncertainty quantification in LLMs often rely on single-point estimates, which may not capture the full range of model uncertainty across different contexts and formulations of the same query.",
+        "Existing Methods": "Typical approaches include using softmax probabilities, ensemble methods, or direct confidence elicitation through prompting.",
+        "Motivation": "By systematically perturbing the input prompt, we can explore how slight changes in question formulation affect the model's confidence, potentially revealing a more nuanced picture of uncertainty.",
+        "Proposed Method": "We introduce Uncertainty Spectrum Elicitation (USE), a method that generates a spectrum of prompts for a given query by applying controlled linguistic perturbations (e.g., paraphrasing, adding/removing context, changing tone). For each perturbed prompt, we elicit a confidence score from the LLM. The distribution of these scores across perturbations forms an 'uncertainty spectrum'. We then develop metrics to analyze this spectrum, such as variance, skewness, and modality, providing a multi-dimensional view of the model's uncertainty.",
+        "Experiment Plan": "Compare USE against baseline methods like direct confidence elicitation and softmax probabilities on benchmarks such as TruthfulQA and SQuAD. Evaluate the method's ability to distinguish between high and low uncertainty queries, as well as its correlation with actual model performance."
+    },
+    "full_experiment_plan": {
+        "Title": "Uncertainty Spectrum Elicitation: Quantifying LLM Uncertainty Through Prompt Perturbations",
+        "Problem Statement": "Current methods for uncertainty quantification in Large Language Models (LLMs) often rely on single-point estimates, which may not capture the full range of model uncertainty across different contexts and formulations of the same query. This limitation can lead to overconfident or inconsistent predictions, potentially impacting the reliability and trustworthiness of LLM outputs in critical applications.",
+        "Motivation": "Existing methods like softmax probabilities, ensemble methods, or direct confidence elicitation through prompting provide limited insight into the nuanced nature of LLM uncertainty. By systematically perturbing the input prompt, we can explore how slight changes in question formulation affect the model's confidence, potentially revealing a more comprehensive picture of uncertainty. This approach is inspired by the observation that humans often rephrase questions or consider multiple perspectives when uncertain, and we aim to emulate this process in LLMs to obtain a richer understanding of their uncertainty landscape.",
+        "Proposed Method": "We introduce Uncertainty Spectrum Elicitation (USE), a method that generates a spectrum of prompts for a given query by applying controlled linguistic perturbations. The process involves: 1) Generating a set of perturbed prompts for each query using techniques such as paraphrasing, adding/removing context, and changing tone. 2) Eliciting a confidence score from the LLM for each perturbed prompt. 3) Analyzing the distribution of these scores to form an 'uncertainty spectrum'. 4) Developing metrics to analyze this spectrum, such as variance, skewness, and modality, providing a multi-dimensional view of the model's uncertainty.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Select datasets that cover a range of task types and difficulty levels. We will use TruthfulQA for assessing factual knowledge and uncertainty, and SQuAD for reading comprehension tasks. Split each dataset into development and test sets.",
+            "Step 2: Baseline Implementation": "Implement baseline methods for uncertainty quantification: a) Direct confidence elicitation: Append 'How confident are you in your answer on a scale of 0-100?' to each query. b) Softmax probabilities: For models where this is accessible, extract the softmax probabilities of the top-k tokens in the output.",
+            "Step 3: USE Implementation": "Develop the USE method: a) Create a prompt perturbation function that generates N perturbed versions of each input query (e.g., N=10). Perturbations should include paraphrasing, adding/removing context, and changing tone. b) For each perturbed prompt, elicit a confidence score from the LLM using the same method as in the direct confidence elicitation baseline. c) Implement functions to calculate spectrum metrics: variance, skewness, modality, and any other relevant statistical measures.",
+            "Step 4: Model Selection": "Choose LLMs for evaluation. We will use GPT-3.5 (text-davinci-003) and GPT-4 from OpenAI's API, and Claude from Anthropic's API.",
+            "Step 5: Experiment Execution": "For each dataset and model combination: a) Run the baseline methods on the development set. b) Run the USE method on the development set. c) Analyze results and potentially refine the USE method. d) Run final evaluations on the test set for both baseline and USE methods.",
+            "Step 6: Analysis": "Compare the performance of USE against baseline methods: a) Evaluate the correlation between uncertainty measures and actual model performance (e.g., accuracy). b) Assess the ability of each method to distinguish between high and low uncertainty queries. c) Analyze the distribution of uncertainty scores across different perturbations and task types. d) Investigate how different spectrum metrics (variance, skewness, etc.) relate to model performance and task difficulty.",
+            "Step 7: Ablation Studies": "Conduct ablation studies to understand the impact of different components of USE: a) Vary the number of perturbations (N) to find an optimal balance between performance and computational cost. b) Compare the effectiveness of different types of perturbations (paraphrasing, context modification, tone changes). c) Evaluate the impact of different spectrum metrics on the overall performance of USE."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: What is the capital of France? How confident are you in your answer on a scale of 0-100?",
+                "Expected Output": "A: The capital of France is Paris. Confidence: 100",
+                "Explanation": "The baseline method provides a single confidence score, which may not capture nuances in the model's uncertainty."
+            },
+            "USE Example": {
+                "Input": [
+                    "Q: What is the capital of France?",
+                    "Q: Can you tell me the capital city of France?",
+                    "Q: Which city serves as the capital of the French Republic?",
+                    "Q: I'm planning a trip to France and want to visit its capital. What city should I go to?",
+                    "Q: France has a famous capital known for its iconic tower. What is this city called?"
+                ],
+                "Expected Output": [
+                    "A: Paris. Confidence: 100",
+                    "A: The capital city of France is Paris. Confidence: 99",
+                    "A: Paris serves as the capital of the French Republic. Confidence: 98",
+                    "A: You should go to Paris, which is the capital of France. Confidence: 97",
+                    "A: The city you're referring to is Paris, the capital of France, known for the Eiffel Tower. Confidence: 99"
+                ],
+                "Explanation": "USE generates multiple perturbations of the same query, eliciting confidence scores for each. This allows for a more nuanced analysis of the model's uncertainty, potentially revealing variations in confidence across different phrasings or contexts."
+            }
+        },
+        "Fallback Plan": "If the proposed USE method does not significantly outperform baseline methods, we can pivot the project in several ways: 1) Conduct an in-depth analysis of how different types of perturbations affect model confidence, potentially uncovering insights into LLM behavior under various linguistic conditions. 2) Investigate whether certain types of questions or topics consistently produce wider or narrower uncertainty spectra, which could lead to a better understanding of LLM knowledge boundaries. 3) Explore the relationship between uncertainty spectra and factual correctness, potentially developing a new metric for detecting potential misinformation or hallucinations in LLM outputs. 4) Analyze how uncertainty spectra change across different model sizes or architectures, which could provide insights into the impact of scale on LLM uncertainty. These alternative directions would still yield valuable insights into LLM behavior and uncertainty, even if the original hypothesis about USE's superiority is not confirmed."
+    }
+}

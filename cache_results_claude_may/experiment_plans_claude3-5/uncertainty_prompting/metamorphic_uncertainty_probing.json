@@ -1,0 +1,55 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Metamorphic Uncertainty Probing",
+    "raw_idea": {
+        "Problem": "Current uncertainty estimation methods for LLMs often fail to capture the full range of possible interpretations or edge cases for a given input.",
+        "Existing Methods": "Most approaches focus on direct uncertainty estimation without exploring the input space thoroughly.",
+        "Motivation": "By systematically transforming the input query and observing changes in the model's responses, we can gain deeper insights into its uncertainty across a broader input distribution.",
+        "Proposed Method": "We introduce Metamorphic Uncertainty Probing: 1) Define a set of semantic-preserving transformations for the input (e.g., paraphrasing, adding/removing context). 2) Apply these transformations to generate a set of related queries. 3) Prompt the model to answer each transformed query and explain any differences in its responses. 4) Use another prompt to analyze these explanations and synthesize an uncertainty estimate that accounts for the model's sensitivity to input variations.",
+        "Experiment Plan": "Test on diverse tasks including sentiment analysis, named entity recognition, and reading comprehension. Compare against baseline uncertainty methods using metrics like Brier score and expected calibration error. Analyze the method's robustness to different types of input perturbations."
+    },
+    "full_experiment_plan": {
+        "Title": "Metamorphic Uncertainty Probing: Enhancing Confidence Calibration in Large Language Models",
+        "Problem Statement": "Current uncertainty estimation methods for Large Language Models (LLMs) often fail to capture the full range of possible interpretations or edge cases for a given input, leading to overconfident or miscalibrated predictions.",
+        "Motivation": "Existing approaches to uncertainty estimation in LLMs typically focus on direct uncertainty estimation without thoroughly exploring the input space. By systematically transforming the input query and observing changes in the model's responses, we can gain deeper insights into its uncertainty across a broader input distribution. This method leverages the model's own capabilities to probe its uncertainty, potentially offering a more comprehensive and nuanced understanding of the model's confidence levels.",
+        "Proposed Method": "We introduce Metamorphic Uncertainty Probing (MUP), a novel method consisting of four main steps: 1) Define a set of semantic-preserving transformations for the input (e.g., paraphrasing, adding/removing context). 2) Apply these transformations to generate a set of related queries. 3) Prompt the model to answer each transformed query and explain any differences in its responses. 4) Use another prompt to analyze these explanations and synthesize an uncertainty estimate that accounts for the model's sensitivity to input variations.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Select diverse datasets covering sentiment analysis (e.g., SST-2), named entity recognition (e.g., CoNLL-2003), and reading comprehension (e.g., SQuAD). Ensure each dataset has a test set with ground truth labels.",
+            "Step 2: Define Transformations": "Implement a set of semantic-preserving transformations, including: a) Paraphrasing using a separate LLM. b) Adding irrelevant context. c) Removing parts of the context. d) Changing the question format (for QA tasks). e) Substituting named entities or key terms with synonyms.",
+            "Step 3: Baseline Methods Implementation": "Implement baseline uncertainty estimation methods: a) Maximum softmax probability. b) Monte Carlo Dropout (if using open-source models). c) Ensemble methods (using different API calls or model versions).",
+            "Step 4: MUP Implementation": "For each input in the test set: a) Generate transformed inputs using the defined transformations. b) Prompt the LLM to answer each transformed input. c) Prompt the LLM to explain differences between answers. d) Use a final prompt to synthesize an uncertainty estimate based on the explanations.",
+            "Step 5: Evaluation": "Compare MUP against baselines using: a) Brier score. b) Expected Calibration Error (ECE). c) Maximum Calibration Error (MCE). d) Reliability diagrams.",
+            "Step 6: Robustness Analysis": "Analyze how MUP performs under different types of input perturbations and across different tasks.",
+            "Step 7: Ablation Studies": "Conduct ablations on: a) Number and types of transformations used. b) Prompt design for explanation generation. c) Prompt design for uncertainty synthesis."
+        },
+        "Test Case Examples": {
+            "Baseline Method Example": {
+                "Input": "Sentiment Analysis Task: 'The movie was absolutely fantastic, I loved every minute of it!'",
+                "Output": "Sentiment: Positive, Confidence: 0.95",
+                "Explanation": "The baseline method might output high confidence based solely on the strong positive words, potentially overlooking nuances or sarcasm."
+            },
+            "MUP Method Example": {
+                "Input": "Sentiment Analysis Task: 'The movie was absolutely fantastic, I loved every minute of it!'",
+                "Transformed Inputs": [
+                    "1. 'I found the film to be exceptionally good, enjoying it thoroughly.'",
+                    "2. 'The movie was absolutely fantastic, I loved every minute of it! However, the popcorn at the theater was stale.'",
+                    "3. 'The movie was fantastic, I loved it!'",
+                    "4. 'How would you describe your experience with the movie?'",
+                    "5. 'The cinema experience was absolutely fantastic, I loved every minute of it!'"
+                ],
+                "LLM Responses": [
+                    "1. Sentiment: Positive",
+                    "2. Sentiment: Mostly Positive",
+                    "3. Sentiment: Positive",
+                    "4. Unable to determine sentiment without more context",
+                    "5. Sentiment: Positive, but unclear if about the movie specifically"
+                ],
+                "Explanation Prompt": "Explain the differences in your responses to the original and transformed inputs, focusing on any changes in certainty or interpretation.",
+                "LLM Explanation": "The original input and transformations 1 and 3 clearly express positive sentiment about the movie. Transformation 2 introduces a negative element about the popcorn, slightly reducing the overall positivity. Transformation 4 changes the input to a question, making it impossible to determine sentiment without a response. Transformation 5 shifts the focus from the movie to the overall cinema experience, introducing some ambiguity about whether the sentiment is specifically about the movie.",
+                "Uncertainty Synthesis Prompt": "Based on the explanations of the differences in responses, provide an overall uncertainty estimate for the sentiment classification of the original input.",
+                "Final MUP Output": "Sentiment: Positive, Uncertainty Estimate: Low (0.2 on a scale of 0-1). While the sentiment is consistently positive across most transformations, there is a small degree of uncertainty introduced by potential ambiguity in the specific object of the sentiment (movie vs. overall experience) and the possibility of overlooking potential sarcasm or irony in strongly positive statements."
+            }
+        },
+        "Fallback Plan": "If the proposed MUP method doesn't significantly improve uncertainty estimation compared to baselines, we can pivot the project in several ways: 1) Conduct an in-depth analysis of which types of transformations are most effective at revealing model uncertainty, potentially leading to insights about LLM robustness and sensitivity. 2) Investigate how the uncertainty estimates vary across different types of tasks or input structures, which could inform task-specific uncertainty estimation strategies. 3) Explore how MUP performs with different LLMs or model sizes, potentially revealing insights about how model scale affects uncertainty awareness. 4) Analyze cases where MUP and baseline methods disagree significantly, which could lead to a hybrid approach combining strengths of multiple methods. 5) Investigate whether the explanations generated during the MUP process can be used for other purposes, such as improving model interpretability or identifying potential biases in the model's reasoning process."
+    }
+}

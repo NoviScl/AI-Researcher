@@ -1,0 +1,54 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Uncertainty Amplification via Semantic Fission",
+    "raw_idea": {
+        "Problem": "Current LLMs struggle to accurately quantify their uncertainty, especially for complex queries that involve multiple concepts or reasoning steps.",
+        "Existing Methods": "Existing approaches often rely on simple confidence scores or ensemble disagreement, which fail to capture nuanced uncertainties.",
+        "Motivation": "By breaking down complex queries into simpler sub-components and analyzing uncertainties at a granular level, we can potentially achieve more accurate and interpretable uncertainty quantification.",
+        "Proposed Method": "We propose Semantic Fission, a novel prompting technique that recursively decomposes a given query into atomic semantic units. For each unit, we prompt the LLM to generate multiple alternative formulations and assess their consistency. We then aggregate these unit-level uncertainties using a bottom-up approach, employing probabilistic graphical models to capture dependencies between units. The final uncertainty score is derived from this semantic graph, providing both an overall measure and a detailed breakdown of uncertainty sources.",
+        "Experiment Plan": "We will evaluate our method on complex reasoning tasks from datasets like MMLU and BigBench, comparing against baselines such as direct prompting, ensemble methods, and existing calibration techniques. We'll measure performance using metrics like calibration error, Brier score, and AUROC."
+    },
+    "full_experiment_plan": {
+        "Title": "Semantic Fission: Granular Uncertainty Quantification for Large Language Models",
+        "Problem Statement": "Current Large Language Models (LLMs) struggle to accurately quantify their uncertainty, especially for complex queries that involve multiple concepts or reasoning steps. This limitation hinders their reliability and interpretability in critical applications.",
+        "Motivation": "Existing approaches often rely on simple confidence scores or ensemble disagreement, which fail to capture nuanced uncertainties. By breaking down complex queries into simpler sub-components and analyzing uncertainties at a granular level, we can potentially achieve more accurate and interpretable uncertainty quantification. This method is inspired by human reasoning, where we often decompose complex problems into simpler parts to better understand our confidence in each component.",
+        "Proposed Method": "We propose Semantic Fission, a novel prompting technique that recursively decomposes a given query into atomic semantic units. For each unit, we prompt the LLM to generate multiple alternative formulations and assess their consistency. We then aggregate these unit-level uncertainties using a bottom-up approach, employing probabilistic graphical models to capture dependencies between units. The final uncertainty score is derived from this semantic graph, providing both an overall measure and a detailed breakdown of uncertainty sources.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use complex reasoning tasks from datasets like MMLU (focusing on STEM and humanities subsets) and BigBench (focusing on multi-step reasoning tasks). Prepare a subset of 1000 questions from each dataset for our experiments.",
+            "Step 2: Baseline Implementation": "Implement three baseline methods: (1) Direct prompting with confidence score, (2) Ensemble method using 5 different prompts, and (3) Monte Carlo Dropout for uncertainty estimation.",
+            "Step 3: Semantic Fission Implementation": "Implement the Semantic Fission method with the following sub-steps: (a) Query Decomposition, (b) Alternative Formulation Generation, (c) Consistency Assessment, (d) Uncertainty Aggregation.",
+            "Step 4: Prompts Design": "Design prompts for each step of Semantic Fission. For query decomposition: 'Break down this question into its fundamental semantic units:'. For alternative formulation: 'Provide 3 alternative ways to express this semantic unit:'. For consistency assessment: 'On a scale of 1-5, how consistent are these formulations?'.",
+            "Step 5: Model Selection": "Use GPT-4 as the primary model for all experiments. Also test with GPT-3.5-turbo for comparison.",
+            "Step 6: Experiment Execution": "Run experiments on the prepared datasets using both baseline methods and Semantic Fission. For each question, record the model's answer, the decomposed semantic units, alternative formulations, consistency scores, and final uncertainty score.",
+            "Step 7: Evaluation": "Evaluate performance using metrics like calibration error, Brier score, and AUROC. Compare Semantic Fission results against baselines.",
+            "Step 8: Analysis": "Perform in-depth analysis of results, focusing on: (a) Correlation between granular uncertainties and overall performance, (b) Impact of query complexity on uncertainty estimation, (c) Comparison of uncertainty patterns across different question types."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "What is the impact of increasing atmospheric CO2 on ocean acidity?",
+                "Direct Prompting Output": "Increasing atmospheric CO2 leads to higher ocean acidity. Confidence: 0.9",
+                "Ensemble Method Output": "4 out of 5 prompts agree: Increasing CO2 increases ocean acidity. Uncertainty: 0.2",
+                "Explanation": "Baselines provide a single uncertainty score without granular insights."
+            },
+            "Semantic Fission Example": {
+                "Input": "What is the impact of increasing atmospheric CO2 on ocean acidity?",
+                "Step 1 - Decomposition": [
+                    "1. Relationship between atmospheric CO2 and oceans",
+                    "2. Definition of ocean acidity",
+                    "3. Chemical process of CO2 dissolution in water",
+                    "4. Impact of dissolved CO2 on ocean pH"
+                ],
+                "Step 2 - Alternative Formulations (for unit 1)": [
+                    "How does atmospheric CO2 interact with oceans?",
+                    "What happens when atmospheric CO2 levels rise in relation to oceans?",
+                    "Describe the connection between CO2 in the air and the ocean."
+                ],
+                "Step 3 - Consistency Assessment": "Consistency score: 4/5",
+                "Step 4 - Uncertainty Aggregation": "Overall uncertainty: 0.15, Breakdown: {Relationship: 0.1, Acidity definition: 0.05, Chemical process: 0.2, pH impact: 0.1}",
+                "Final Output": "Increasing atmospheric CO2 leads to higher ocean acidity due to increased CO2 dissolution, which forms carbonic acid and lowers pH. Overall uncertainty: 0.15",
+                "Explanation": "Semantic Fission provides granular uncertainty scores for each component, allowing for more nuanced understanding of the model's confidence."
+            }
+        },
+        "Fallback Plan": "If Semantic Fission doesn't significantly outperform baselines, we will conduct a detailed error analysis to understand why. This may involve examining which types of questions or semantic units are particularly challenging for our method. We could then refine our decomposition strategy or explore alternative aggregation methods for unit-level uncertainties. Additionally, we might investigate whether certain patterns in the decomposition process correlate with accuracy, even if overall performance isn't improved. This could lead to insights about how LLMs process complex queries and potentially inform future uncertainty quantification methods. We could also explore combining Semantic Fission with other techniques, such as using it as a feature for a meta-model trained to predict uncertainty."
+    }
+}

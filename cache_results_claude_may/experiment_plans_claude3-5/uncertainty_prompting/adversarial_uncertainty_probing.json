@@ -1,0 +1,51 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Adversarial Uncertainty Probing",
+    "raw_idea": {
+        "Problem": "LLMs often exhibit overconfidence and fail to recognize the limitations of their knowledge, particularly in edge cases or adversarial scenarios.",
+        "Existing Methods": "Current uncertainty quantification methods typically focus on in-distribution examples and may not adequately capture model uncertainty in challenging or out-of-distribution cases.",
+        "Motivation": "By systematically probing the model's knowledge boundaries through adversarial questioning, we can elicit more robust and realistic expressions of uncertainty.",
+        "Proposed Method": "We introduce Adversarial Uncertainty Probing (AUP), a dynamic prompting technique that challenges the model's confidence through a series of adversarial follow-up questions. The process works as follows: 1) Initial response and confidence estimation for the original query. 2) Generate adversarial follow-up questions designed to probe the boundaries of the model's knowledge (e.g., 'Generate three follow-up questions that challenge your previous answer or explore edge cases:'). 3) Answer these follow-up questions and re-evaluate confidence. 4) Synthesize a final response and uncertainty estimate considering both the original and follow-up questions (e.g., 'Based on the original query and follow-up questions, provide your final answer and express your uncertainty, considering any weaknesses or limitations in your knowledge that were exposed.').",
+        "Experiment Plan": "Evaluate AUP against standard uncertainty quantification methods on a range of tasks, including both in-distribution and out-of-distribution examples. Create a new benchmark dataset of adversarial follow-up questions for existing QA datasets. Assess performance using calibration metrics, measures of uncertainty increase in response to adversarial probing, and human evaluation of the appropriateness of expressed uncertainties in challenging scenarios."
+    },
+    "full_experiment_plan": {
+        "Title": "Adversarial Uncertainty Probing: Improving Confidence Calibration in Large Language Models",
+        "Problem Statement": "Large Language Models (LLMs) often exhibit overconfidence and fail to recognize the limitations of their knowledge, particularly in edge cases or adversarial scenarios. This overconfidence can lead to unreliable outputs and potential misinformation, especially when dealing with complex or ambiguous queries.",
+        "Motivation": "Current uncertainty quantification methods typically focus on in-distribution examples and may not adequately capture model uncertainty in challenging or out-of-distribution cases. By systematically probing the model's knowledge boundaries through adversarial questioning, we can elicit more robust and realistic expressions of uncertainty. This approach leverages the model's own capabilities to challenge its initial responses, potentially leading to better-calibrated confidence estimates and more reliable outputs.",
+        "Proposed Method": "We introduce Adversarial Uncertainty Probing (AUP), a dynamic prompting technique that challenges the model's confidence through a series of adversarial follow-up questions. The process works as follows: 1) Initial response and confidence estimation for the original query. 2) Generate adversarial follow-up questions designed to probe the boundaries of the model's knowledge. 3) Answer these follow-up questions and re-evaluate confidence. 4) Synthesize a final response and uncertainty estimate considering both the original and follow-up questions.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Select a diverse set of tasks and datasets, including both in-distribution and out-of-distribution examples. We will use: a) TriviaQA for factual question-answering, b) MMLU for multi-domain knowledge, and c) AmbigQA for ambiguous questions. Create a new benchmark dataset of adversarial follow-up questions for these existing datasets by prompting GPT-4 to generate challenging follow-ups for a subset of questions from each dataset.",
+            "Step 2: Baseline Methods Implementation": "Implement standard uncertainty quantification methods as baselines: a) Temperature scaling, b) Ensemble methods (using different seeds or model versions), c) Monte Carlo Dropout (for open-source models).",
+            "Step 3: AUP Implementation": "Implement the AUP method with the following steps: a) Initial response generation, b) Confidence estimation, c) Adversarial question generation, d) Follow-up response generation, e) Final synthesis and uncertainty estimation. Use few-shot prompting to guide the model through these steps.",
+            "Step 4: Model Selection": "Use GPT-3.5 (text-davinci-003) and GPT-4 from OpenAI API for the main experiments. Additionally, use open-source models like LLaMA-2-70B for comparison and to test Monte Carlo Dropout.",
+            "Step 5: Evaluation": "Assess performance using: a) Calibration metrics (Expected Calibration Error, Maximum Calibration Error), b) Measures of uncertainty increase in response to adversarial probing, c) Answer accuracy on the original and follow-up questions, d) Human evaluation of the appropriateness of expressed uncertainties in challenging scenarios (on a subset of examples).",
+            "Step 6: Analysis": "Conduct in-depth analysis of: a) Types of adversarial questions generated, b) Patterns in confidence changes after probing, c) Performance differences across domains and question types, d) Comparison of AUP with baseline methods in various scenarios."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: Who was the first person to walk on the moon?",
+                "Output": "Neil Armstrong was the first person to walk on the moon. (Confidence: 95%)"
+            },
+            "AUP Example": {
+                "Step 1: Initial Response": {
+                    "Input": "Q: Who was the first person to walk on the moon?",
+                    "Output": "Neil Armstrong was the first person to walk on the moon. (Confidence: 95%)"
+                },
+                "Step 2: Generate Adversarial Questions": {
+                    "Input": "Generate three follow-up questions that challenge your previous answer or explore edge cases:",
+                    "Output": "1. Are there any conspiracy theories challenging this claim?\n2. Was there anyone else on the lunar surface at the same time as Armstrong?\n3. How certain are we about the exact timing of the first moonwalk?"
+                },
+                "Step 3: Answer Follow-up Questions": {
+                    "Input": "Please answer these follow-up questions:",
+                    "Output": "1. There are conspiracy theories claiming the moon landing was faked, but these are not supported by scientific evidence.\n2. Yes, Buzz Aldrin was the second person to walk on the moon, shortly after Armstrong.\n3. The exact timing is well-documented: Armstrong stepped onto the lunar surface on July 21, 1969, at 02:56:15 UTC."
+                },
+                "Step 4: Final Synthesis": {
+                    "Input": "Based on the original query and follow-up questions, provide your final answer and express your uncertainty, considering any weaknesses or limitations in your knowledge that were exposed.",
+                    "Output": "Neil Armstrong was indeed the first person to walk on the moon, stepping onto the lunar surface on July 21, 1969, at 02:56:15 UTC. While there are conspiracy theories challenging this fact, they lack scientific credibility. Buzz Aldrin joined Armstrong on the surface shortly after. The event is well-documented, but it's important to acknowledge that historical records can sometimes be subject to minor discrepancies or reinterpretations. (Confidence: 98%)"
+                }
+            },
+            "Explanation": "The AUP method leads to a more nuanced and comprehensive response, addressing potential challenges to the initial answer and providing additional context. The slight increase in confidence (from 95% to 98%) reflects the model's ability to withstand scrutiny on this well-established fact, while still acknowledging potential limitations in historical records."
+        },
+        "Fallback Plan": "If the proposed AUP method doesn't significantly improve confidence calibration, we can pivot the project in several ways: 1) Analyze the types of questions where AUP performs well or poorly, which could provide insights into the model's strengths and weaknesses in uncertainty estimation. 2) Investigate the relationship between the number and types of adversarial questions and the change in confidence, potentially leading to a more targeted probing strategy. 3) Explore combining AUP with other uncertainty quantification methods, such as ensemble techniques or temperature scaling, to create a hybrid approach. 4) Conduct a detailed error analysis to understand why certain adversarial questions fail to impact the model's confidence, which could inform the development of more effective probing strategies or reveal fundamental limitations in the model's uncertainty awareness."
+    }
+}

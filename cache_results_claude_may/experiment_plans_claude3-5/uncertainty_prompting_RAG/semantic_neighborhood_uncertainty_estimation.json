@@ -1,0 +1,68 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Semantic Neighborhood Uncertainty Estimation",
+    "raw_idea": {
+        "Problem": "Current uncertainty estimation methods for language models often fail to account for semantic similarities between potential answers, leading to poorly calibrated confidence scores in tasks with closely related options.",
+        "Existing Methods": "Existing approaches typically focus on output probabilities or ensemble disagreement, without considering the semantic relationships between different answer choices.",
+        "Motivation": "By exploring semantically similar alternatives to a given answer, we can better gauge the model's uncertainty, especially in cases where multiple related answers might be plausible.",
+        "Proposed Method": "We propose Semantic Neighborhood Uncertainty Estimation (SNUE), a prompting method that leverages the model's ability to generate and evaluate semantically related alternatives. The process involves: 1) Generate an initial answer, 2) Prompt the model to generate N semantically similar alternative answers, 3) For each alternative, prompt the model to compare it to the original answer and assign a similarity score and a plausibility score, 4) Calculate an uncertainty score based on the distribution of similarity and plausibility scores across the semantic neighborhood. We also introduce a 'semantic radius' parameter that controls how far the alternatives can deviate from the original answer, allowing for adaptive uncertainty estimation based on task requirements.",
+        "Experiment Plan": "We will evaluate SNUE on multiple-choice and open-ended question answering tasks from datasets like SQuAD and TriviaQA. We'll compare its performance against traditional uncertainty estimation methods, measuring calibration using ECE and AURC. We'll also conduct ablation studies to assess the impact of different semantic radius values and neighborhood sizes."
+    },
+    "full_experiment_plan": {
+        "Title": "Semantic Neighborhood Uncertainty Estimation: Calibrating Language Model Confidence through Contextual Similarity Analysis",
+        "Problem Statement": "Current uncertainty estimation methods for language models often fail to account for semantic similarities between potential answers, leading to poorly calibrated confidence scores in tasks with closely related options. This is particularly problematic in multiple-choice and open-ended question answering tasks, where the model may be overconfident in its predictions despite the presence of semantically similar alternatives.",
+        "Motivation": "Existing approaches typically focus on output probabilities or ensemble disagreement, without considering the semantic relationships between different answer choices. By exploring semantically similar alternatives to a given answer, we can better gauge the model's uncertainty, especially in cases where multiple related answers might be plausible. This approach is inspired by human cognition, where we often consider related concepts when assessing our confidence in an answer. By mimicking this process, we aim to improve the calibration of language models' confidence estimates.",
+        "Proposed Method": "We propose Semantic Neighborhood Uncertainty Estimation (SNUE), a prompting method that leverages the model's ability to generate and evaluate semantically related alternatives. The process involves four main steps: 1) Generate an initial answer, 2) Prompt the model to generate N semantically similar alternative answers, 3) For each alternative, prompt the model to compare it to the original answer and assign a similarity score and a plausibility score, 4) Calculate an uncertainty score based on the distribution of similarity and plausibility scores across the semantic neighborhood. We also introduce a 'semantic radius' parameter that controls how far the alternatives can deviate from the original answer, allowing for adaptive uncertainty estimation based on task requirements.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use the SQuAD (Stanford Question Answering Dataset) and TriviaQA datasets for our experiments. These datasets provide a diverse range of question-answering tasks suitable for evaluating our method.",
+            "Step 2: Model Selection": "We will use GPT-3.5 (text-davinci-003) and GPT-4 from the OpenAI API for our experiments. These models provide state-of-the-art performance and are suitable for complex prompting techniques.",
+            "Step 3: Baseline Implementation": "Implement traditional uncertainty estimation methods as baselines: a) Direct probability from softmax output, b) Monte Carlo Dropout, c) Ensemble disagreement (using different few-shot prompts as ensemble members).",
+            "Step 4: SNUE Implementation": "Implement the SNUE method with the following sub-steps for each question:\na) Generate initial answer\nb) Generate N semantically similar alternatives\nc) Evaluate similarity and plausibility of alternatives\nd) Calculate uncertainty score",
+            "Step 5: Prompts Design": "Design prompts for each step of SNUE:\na) Initial answer: \"Please answer the following question: [QUESTION]\"\nb) Generate alternatives: \"Generate [N] alternative answers that are semantically similar to the following answer: [INITIAL_ANSWER]. Ensure the alternatives have varying degrees of similarity and plausibility.\"\nc) Evaluate alternatives: \"On a scale of 0 to 1, rate the semantic similarity and plausibility of the following alternative answer compared to the original answer. Original answer: [INITIAL_ANSWER]. Alternative answer: [ALTERNATIVE_ANSWER]. Provide your ratings in the format: Similarity: [SCORE], Plausibility: [SCORE].\"\nd) Calculate uncertainty: This step will be done programmatically based on the scores from step c.",
+            "Step 6: Experiment Execution": "For each question in the datasets:\na) Run baseline methods and record their uncertainty estimates\nb) Run SNUE method with varying parameters (N = 3, 5, 7; semantic radius = 0.5, 0.7, 0.9)\nc) Record SNUE uncertainty estimates and intermediate outputs (alternatives, similarity scores, plausibility scores)",
+            "Step 7: Evaluation": "Evaluate the performance of SNUE compared to baselines using the following metrics:\na) Expected Calibration Error (ECE)\nb) Area Under the Risk-Coverage Curve (AURC)\nc) Brier Score\nd) Negative Log-Likelihood",
+            "Step 8: Analysis": "Perform additional analyses:\na) Ablation study on the impact of N (number of alternatives) and semantic radius\nb) Qualitative analysis of generated alternatives and their scores\nc) Error analysis focusing on cases where SNUE performs significantly better or worse than baselines\nd) Correlation analysis between uncertainty estimates and actual error rates"
+        },
+        "Test Case Examples": {
+            "Example 1 (Baseline Failure)": {
+                "Question": "What is the capital of France?",
+                "Baseline Method (Direct Probability)": {
+                    "Answer": "Paris",
+                    "Confidence": 0.99
+                },
+                "Explanation": "The baseline method assigns very high confidence to the correct answer without considering potential alternatives."
+            },
+            "Example 2 (SNUE Success)": {
+                "Question": "What is the capital of France?",
+                "SNUE Method": {
+                    "Initial Answer": "Paris",
+                    "Generated Alternatives": [
+                        "Lyon",
+                        "Marseille",
+                        "Versailles"
+                    ],
+                    "Similarity and Plausibility Scores": [
+                        {
+                            "Alternative": "Lyon",
+                            "Similarity": 0.6,
+                            "Plausibility": 0.3
+                        },
+                        {
+                            "Alternative": "Marseille",
+                            "Similarity": 0.5,
+                            "Plausibility": 0.2
+                        },
+                        {
+                            "Alternative": "Versailles",
+                            "Similarity": 0.8,
+                            "Plausibility": 0.7
+                        }
+                    ],
+                    "Uncertainty Score": 0.15
+                },
+                "Explanation": "SNUE generates semantically related alternatives and considers their similarity and plausibility, resulting in a more nuanced uncertainty estimate that accounts for the existence of plausible alternatives like Versailles."
+            }
+        },
+        "Fallback Plan": "If SNUE does not significantly outperform baseline methods, we will conduct a thorough analysis to understand the limitations. This may include: 1) Investigating the quality and diversity of generated alternatives to ensure they adequately represent the semantic neighborhood. 2) Analyzing the relationship between similarity scores, plausibility scores, and actual correctness to refine our uncertainty calculation. 3) Exploring different formulations of the uncertainty score that might better capture the information from the semantic neighborhood. 4) Considering task-specific adaptations, such as incorporating domain knowledge into the alternative generation process. Additionally, we could pivot to an analysis paper that provides insights into the semantic neighborhoods of language model outputs and their relationship to uncertainty, even if they don't directly improve calibration. This could involve clustering analysis of alternatives, visualizing semantic spaces, and studying how different types of questions lead to different semantic neighborhood structures."
+    }
+}

@@ -84,8 +84,9 @@ if __name__ == "__main__":
     else:
         idea_names = [args.idea_name]
     
+    all_costs = 0
     for idea_name in tqdm(idea_names):
-        cache_file = os.path.join(cache_dir + "experiment_plans_1k/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
+        cache_file = os.path.join(cache_dir + "experiment_plans_claude3-5/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
         
         try:            
             idea_file = {}
@@ -98,16 +99,20 @@ if __name__ == "__main__":
             
             prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
             # print (response)
-            print ("Total cost: ", cost)
+            # print ("Total cost: ", cost)
+
+            all_costs += cost
             experiment_plan = json.loads(response.strip())
             idea_file["full_experiment_plan"] = experiment_plan
 
-            if not os.path.exists(cache_dir + "experiment_plans_1k/" + args.cache_name + "/"):
-                os.makedirs(cache_dir + "experiment_plans_1k/" + args.cache_name + "/")
+            if not os.path.exists(cache_dir + "experiment_plans_claude3-5/" + args.cache_name + "/"):
+                os.makedirs(cache_dir + "experiment_plans_claude3-5/" + args.cache_name + "/")
             
             cache_output(idea_file, cache_file)
 
         except: 
             print ("error in generating experiment plan for idea: ", idea_name)
+    
+    print ("Total cost: ", all_costs)
 
     

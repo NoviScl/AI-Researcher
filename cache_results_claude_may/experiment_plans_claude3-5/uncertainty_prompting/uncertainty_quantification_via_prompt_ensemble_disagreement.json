@@ -1,0 +1,42 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Uncertainty Quantification via Prompt Ensemble Disagreement",
+    "raw_idea": {
+        "Problem": "Single prompting strategies for uncertainty quantification may be biased or inconsistent, leading to poorly calibrated confidence estimates.",
+        "Existing Methods": "Current ensemble methods for LLMs typically involve multiple model runs or parameter sets, which can be computationally expensive.",
+        "Motivation": "By using an ensemble of diverse prompting strategies within a single model, we can potentially achieve more robust uncertainty estimates without the need for multiple model instances.",
+        "Proposed Method": "We introduce Prompt Ensemble Disagreement (PED), a technique that uses multiple, diverse prompting strategies to quantify uncertainty. The method involves: 1) Generating a set of diverse prompting strategies for confidence elicitation, 2) Applying each strategy to the query and collecting confidence estimates, 3) Analyzing the disagreement among these estimates using statistical measures, 4) Synthesizing a final uncertainty estimate based on both the mean confidence and the degree of disagreement among prompting strategies. This approach can capture different aspects of uncertainty and reduce biases inherent in single prompting methods.",
+        "Experiment Plan": "Evaluate PED across a wide range of tasks, comparing it to single-prompt methods and traditional ensemble approaches. Analyze the relationship between prompt disagreement and actual model performance to validate the method's effectiveness."
+    },
+    "full_experiment_plan": {
+        "Title": "Prompt Ensemble Disagreement (PED): Robust Uncertainty Quantification for Large Language Models",
+        "Problem Statement": "Single prompting strategies for uncertainty quantification in large language models (LLMs) may be biased or inconsistent, leading to poorly calibrated confidence estimates. This problem is crucial as it affects the reliability and trustworthiness of LLM outputs in various applications.",
+        "Motivation": "Existing ensemble methods for LLMs typically involve multiple model runs or parameter sets, which can be computationally expensive. By using an ensemble of diverse prompting strategies within a single model, we can potentially achieve more robust uncertainty estimates without the need for multiple model instances. This approach leverages the model's ability to respond to different prompting strategies, potentially capturing different aspects of uncertainty and reducing biases inherent in single prompting methods.",
+        "Proposed Method": "We introduce Prompt Ensemble Disagreement (PED), a technique that uses multiple, diverse prompting strategies to quantify uncertainty. The method involves: 1) Generating a set of diverse prompting strategies for confidence elicitation, 2) Applying each strategy to the query and collecting confidence estimates, 3) Analyzing the disagreement among these estimates using statistical measures, 4) Synthesizing a final uncertainty estimate based on both the mean confidence and the degree of disagreement among prompting strategies.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use three datasets to evaluate PED: 1) TruthfulQA for factual question answering, 2) MMLU for multi-task language understanding, and 3) ARC-Challenge for scientific reasoning. These datasets cover a range of tasks and difficulty levels.",
+            "Step 2: Baseline Implementation": "Implement two baseline methods: 1) Single-prompt confidence estimation: Use a single prompt to elicit confidence estimates. 2) Monte Carlo Dropout: Apply dropout at inference time to generate multiple predictions and estimate uncertainty.",
+            "Step 3: PED Implementation": "Implement the PED method with the following sub-steps: a) Generate 5 diverse prompting strategies for confidence elicitation (e.g., 'How confident are you?', 'What's the probability your answer is correct?', 'Rate your certainty from 0 to 100', 'If you had to bet, how much would you wager on this answer?', 'Assign a confidence score to your answer'). b) Apply each strategy to every query in the datasets. c) Collect confidence estimates for each strategy. d) Calculate disagreement using standard deviation of estimates. e) Synthesize final uncertainty estimate using mean confidence and disagreement measure.",
+            "Step 4: Model Selection": "We will use GPT-3.5 (text-davinci-003) and GPT-4 from the OpenAI API for our experiments.",
+            "Step 5: Evaluation Metrics": "We will use the following metrics: 1) Calibration error: measure the difference between predicted confidence and actual accuracy. 2) Brier score: assess the accuracy of probabilistic predictions. 3) Area Under the Receiver Operating Characteristic curve (AUROC): evaluate the model's ability to distinguish between correct and incorrect predictions.",
+            "Step 6: Experiment Execution": "For each dataset and model combination: a) Run baseline methods and collect results. b) Run PED method and collect results. c) Calculate evaluation metrics for both baseline and PED methods.",
+            "Step 7: Analysis": "Compare PED performance against baselines across different datasets and models. Analyze how PED performs on different types of questions and difficulty levels. Investigate the relationship between prompt disagreement and actual model performance."
+        },
+        "Test Case Examples": {
+            "Baseline Prompt Input": "Q: What is the capital of France? How confident are you in your answer?",
+            "Baseline Prompt Expected Output": "A: The capital of France is Paris. I am 100% confident in my answer.",
+            "Proposed Prompt Input (PED; Strategy 1)": "Q: What is the capital of France? How confident are you in your answer?",
+            "Proposed Prompt Output (PED; Strategy 1)": "A: The capital of France is Paris. I am 95% confident in my answer.",
+            "Proposed Prompt Input (PED; Strategy 2)": "Q: What is the capital of France? What's the probability your answer is correct?",
+            "Proposed Prompt Output (PED; Strategy 2)": "A: The capital of France is Paris. The probability that my answer is correct is 0.98.",
+            "Proposed Prompt Input (PED; Strategy 3)": "Q: What is the capital of France? Rate your certainty from 0 to 100.",
+            "Proposed Prompt Output (PED; Strategy 3)": "A: The capital of France is Paris. My certainty rating is 97 out of 100.",
+            "Proposed Prompt Input (PED; Strategy 4)": "Q: What is the capital of France? If you had to bet, how much would you wager on this answer?",
+            "Proposed Prompt Output (PED; Strategy 4)": "A: The capital of France is Paris. If I had to bet, I would wager $90 out of $100 on this answer.",
+            "Proposed Prompt Input (PED; Strategy 5)": "Q: What is the capital of France? Assign a confidence score to your answer.",
+            "Proposed Prompt Output (PED; Strategy 5)": "A: The capital of France is Paris. I assign a confidence score of 9.6 out of 10 to this answer.",
+            "explanation": "PED uses multiple prompting strategies to elicit confidence estimates, allowing for a more robust uncertainty quantification. The disagreement among these estimates (e.g., 95%, 98%, 97%, 90%, 96%) provides additional information about the model's uncertainty, which is not captured by the single-prompt baseline."
+        },
+        "Fallback Plan": "If PED does not significantly outperform baselines, we can analyze the patterns of disagreement among different prompting strategies to gain insights into the model's behavior. We could investigate whether certain types of questions or topics consistently lead to higher disagreement, which could inform the development of more targeted uncertainty quantification methods. Additionally, we could explore the effectiveness of different combinations of prompting strategies or experiment with weighted averaging of confidence estimates based on the perceived reliability of each strategy. If the project still doesn't yield the expected improvements, we could pivot to an analysis paper that explores the limitations of prompt-based uncertainty quantification and proposes potential directions for future research in this area."
+    }
+}

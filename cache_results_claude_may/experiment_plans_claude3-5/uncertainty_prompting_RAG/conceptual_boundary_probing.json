@@ -1,0 +1,50 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Conceptual Boundary Probing",
+    "raw_idea": {
+        "Problem": "LLMs often struggle to accurately quantify their uncertainty at the boundaries of their knowledge, leading to overconfidence in edge cases or novel scenarios.",
+        "Existing Methods": "Current approaches typically focus on in-distribution uncertainty and may not effectively capture out-of-distribution or boundary case uncertainties.",
+        "Motivation": "By systematically probing the boundaries of the model's conceptual understanding, we can better map its knowledge landscape and calibrate its confidence accordingly.",
+        "Proposed Method": "Conceptual Boundary Probing consists of: 1) Concept Mapping: Identify key concepts relevant to the query. 2) Boundary Generation: For each concept, generate a series of increasingly divergent or edge case examples. 3) Response Elicitation: Prompt the model to respond to these boundary cases. 4) Consistency Analysis: Evaluate the consistency and coherence of responses across the boundary spectrum. 5) Transition Detection: Identify points where the model's responses become inconsistent or incoherent. 6) Uncertainty Calibration: Calculate an uncertainty score based on the proximity of the original query to detected conceptual boundaries.",
+        "Experiment Plan": "Test on datasets designed to challenge model robustness, such as adversarial NLI datasets, out-of-distribution detection benchmarks, and specially curated edge case datasets. Compare against traditional uncertainty quantification methods and out-of-distribution detection techniques. Evaluate using metrics like ECE, detection error, and AUC-ROC for identifying uncertain predictions."
+    },
+    "full_experiment_plan": {
+        "Title": "Conceptual Boundary Probing: Calibrating Uncertainty in Large Language Models through Systematic Knowledge Mapping",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to accurately quantify their uncertainty at the boundaries of their knowledge, leading to overconfidence in edge cases or novel scenarios. This issue is particularly pronounced in out-of-distribution or boundary case uncertainties, which are not effectively captured by current approaches that typically focus on in-distribution uncertainty.",
+        "Motivation": "Existing methods for uncertainty quantification in LLMs are primarily designed for in-distribution scenarios and may not effectively capture the nuances of model uncertainty at the boundaries of its knowledge. By systematically probing the boundaries of the model's conceptual understanding, we can better map its knowledge landscape and calibrate its confidence accordingly. This approach is inspired by cognitive science research on how humans assess their own knowledge boundaries and express uncertainty in novel situations.",
+        "Proposed Method": "We propose Conceptual Boundary Probing, a multi-step process to calibrate LLM uncertainty:\n1. Concept Mapping: Identify key concepts relevant to the query using the LLM itself.\n2. Boundary Generation: For each concept, generate a series of increasingly divergent or edge case examples.\n3. Response Elicitation: Prompt the model to respond to these boundary cases.\n4. Consistency Analysis: Evaluate the consistency and coherence of responses across the boundary spectrum.\n5. Transition Detection: Identify points where the model's responses become inconsistent or incoherent.\n6. Uncertainty Calibration: Calculate an uncertainty score based on the proximity of the original query to detected conceptual boundaries.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "Curate a diverse set of test queries from datasets designed to challenge model robustness, such as adversarial NLI datasets (e.g., ANLI), out-of-distribution detection benchmarks (e.g., WILDS), and specially curated edge case datasets (e.g., TruthfulQA).",
+            "Step 2: Baseline Implementation": "Implement traditional uncertainty quantification methods as baselines:\na) Temperature scaling\nb) Ensemble methods (e.g., Deep Ensembles)\nc) Monte Carlo Dropout\nd) Calibrated regression",
+            "Step 3: Conceptual Boundary Probing Implementation": {
+                "3.1 Concept Mapping": "For each test query, prompt the LLM to identify key concepts. Example prompt: 'Identify the key concepts relevant to answering the following question: [INSERT QUERY]'",
+                "3.2 Boundary Generation": "For each identified concept, prompt the LLM to generate a series of increasingly divergent examples. Example prompt: 'Generate 5 increasingly unusual or edge case examples related to the concept of [INSERT CONCEPT]'",
+                "3.3 Response Elicitation": "For each boundary case example, prompt the LLM to provide a response. Example prompt: 'Please respond to the following query: [INSERT BOUNDARY CASE]'",
+                "3.4 Consistency Analysis": "Implement a method to evaluate response consistency across the boundary spectrum. This could involve semantic similarity measures or prompting the LLM itself to assess consistency.",
+                "3.5 Transition Detection": "Develop an algorithm to identify points of significant change in response consistency or coherence across the boundary spectrum.",
+                "3.6 Uncertainty Calibration": "Design a function to calculate an uncertainty score based on the proximity of the original query to detected conceptual boundaries."
+            },
+            "Step 4: Model Selection": "Use GPT-3.5 (text-davinci-003) and GPT-4 from the OpenAI API for the main experiments. Additionally, test on open-source models like LLaMA-2-70B for comparison.",
+            "Step 5: Evaluation": "Compare the performance of Conceptual Boundary Probing against baseline methods using the following metrics:\na) Expected Calibration Error (ECE)\nb) Detection error\nc) AUC-ROC for identifying uncertain predictions\nd) Brier score",
+            "Step 6: Analysis": "Conduct a detailed analysis of the results, including:\na) Comparison of uncertainty estimates across different types of queries (in-distribution vs. out-of-distribution)\nb) Examination of how uncertainty estimates change across the conceptual boundary spectrum\nc) Investigation of cases where Conceptual Boundary Probing significantly outperforms or underperforms compared to baselines"
+        },
+        "Test Case Examples": {
+            "Baseline Method Example": {
+                "Input": "Q: What is the capital of France?",
+                "Output": "A: The capital of France is Paris. (Confidence: 0.98)",
+                "Explanation": "Traditional methods might assign high confidence to this in-distribution question, potentially overlooking nuanced uncertainties."
+            },
+            "Proposed Method Example": {
+                "Input": "Q: What is the capital of France?",
+                "Concept Mapping": "Key concepts: France, capital cities, European geography",
+                "Boundary Generation": "1. What was the capital of France before Paris?\n2. Are there any disputed capitals in France's history?\n3. How would France's capital change if it became a federation?\n4. What if France merged with another country?\n5. In a parallel universe where France is on another continent, what might its capital be?",
+                "Response Elicitation": "(Responses to each boundary case)",
+                "Consistency Analysis": "(Analysis of response consistency)",
+                "Transition Detection": "(Identification of consistency changes)",
+                "Uncertainty Calibration": "Final output: The capital of France is Paris. (Uncertainty score: 0.15)",
+                "Explanation": "The proposed method probes the boundaries of the model's knowledge about French capitals, revealing nuanced uncertainties that might not be captured by traditional methods. The low uncertainty score reflects high confidence in this particular answer, but the process allows for more nuanced uncertainty quantification in less clear-cut cases."
+            }
+        },
+        "Fallback Plan": "If the proposed Conceptual Boundary Probing method does not significantly outperform baselines, we can pivot the project towards an in-depth analysis of why the method failed and what it reveals about LLM knowledge boundaries. This could involve examining the generated boundary cases to understand how LLMs conceptualize knowledge boundaries, analyzing patterns in consistency breakdowns across different types of queries, or investigating how different prompting strategies for boundary generation affect the final uncertainty estimates. We could also explore combining Conceptual Boundary Probing with traditional uncertainty quantification methods to create a hybrid approach that leverages the strengths of both. Additionally, we could expand the scope to include a broader range of tasks beyond question-answering, such as text generation or classification, to see if the method's effectiveness varies across different types of language tasks."
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Counterfactual Confidence Prompting",
+    "raw_idea": {
+        "Problem": "LLMs often struggle to accurately assess their confidence when faced with subtle variations or edge cases in input queries.",
+        "Existing Methods": "Current approaches typically focus on the given input without exploring nearby counterfactuals.",
+        "Motivation": "By prompting the LLM to consider how its confidence would change under slight modifications to the input, we can obtain a more robust and context-aware estimate of uncertainty.",
+        "Proposed Method": "We propose Counterfactual Confidence Prompting (CCP), a method that involves: 1) Generating an initial answer and confidence estimate for the original query. 2) Prompting the LLM to generate a set of counterfactual queries by slightly modifying the original (e.g., changing entities, rephrasing). 3) Estimating confidence for each counterfactual. 4) Analyzing the confidence landscape across these counterfactuals to derive a final, robust confidence estimate. The prompts are designed to encourage the LLM to explore the 'confidence boundary' around the given query and identify factors that significantly impact its certainty.",
+        "Experiment Plan": "Evaluate CCP against standard confidence elicitation on tasks involving subtle distinctions or potential ambiguities (e.g., entity disambiguation, paraphrase detection). Assess improvements in calibration stability across similar inputs and the method's ability to identify edge cases where confidence should be low."
+    },
+    "full_experiment_plan": {
+        "Title": "Counterfactual Confidence Prompting: Improving Uncertainty Quantification in Large Language Models",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to accurately assess their confidence when faced with subtle variations or edge cases in input queries. This can lead to overconfident predictions on unfamiliar inputs or underconfident predictions on slightly modified familiar inputs, reducing the reliability and interpretability of LLM outputs.",
+        "Motivation": "Current approaches to confidence estimation in LLMs typically focus on the given input without exploring nearby counterfactuals. This limits their ability to capture the model's uncertainty landscape around a query. By prompting the LLM to consider how its confidence would change under slight modifications to the input, we can obtain a more robust and context-aware estimate of uncertainty. This approach leverages the LLM's own reasoning capabilities to explore the 'confidence boundary' around a given query, potentially leading to more reliable and calibrated confidence estimates.",
+        "Proposed Method": "We propose Counterfactual Confidence Prompting (CCP), a method that involves four main steps: 1) Generate an initial answer and confidence estimate for the original query. 2) Prompt the LLM to generate a set of counterfactual queries by slightly modifying the original (e.g., changing entities, rephrasing). 3) Estimate confidence for each counterfactual. 4) Analyze the confidence landscape across these counterfactuals to derive a final, robust confidence estimate. The prompts are designed to encourage the LLM to explore the 'confidence boundary' around the given query and identify factors that significantly impact its certainty.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use two datasets: 1) TruthfulQA for factual question answering, and 2) WinoGrande for commonsense reasoning. These datasets cover different types of queries where subtle variations can significantly impact model confidence.",
+            "Step 2: Baseline Implementation": "Implement two baseline methods: 1) Direct confidence estimation: Prompt the LLM to provide an answer and a confidence score (0-100) for each query. 2) Calibrated confidence estimation: Use temperature scaling to calibrate the confidence scores from the direct method.",
+            "Step 3: CCP Implementation": "Implement the Counterfactual Confidence Prompting method with the following sub-steps for each query: a) Generate initial answer and confidence. b) Generate 5 counterfactual queries. c) Estimate confidence for each counterfactual. d) Aggregate confidences to produce a final estimate.",
+            "Step 4: Prompt Design": "Design prompts for each step of CCP. For example: Initial prompt: 'Answer the following question and provide a confidence score (0-100): [QUERY]' Counterfactual generation prompt: 'Generate 5 slight variations of the following question that might change the answer or confidence: [QUERY]' Counterfactual confidence prompt: 'Answer the following question and provide a confidence score (0-100): [COUNTERFACTUAL_QUERY]' Aggregation prompt: 'Given the following confidence scores for related questions, provide a final confidence score that takes into account the variation in confidences: [LIST_OF_SCORES]'",
+            "Step 5: Model Selection": "We will use GPT-3.5 (text-davinci-003) and GPT-4 from the OpenAI API for our experiments.",
+            "Step 6: Evaluation Metrics": "We will use the following metrics to evaluate the performance of our method: 1) Expected Calibration Error (ECE) 2) Brier Score 3) Area Under the Precision-Recall Curve (AUPRC) 4) Spearman's rank correlation between confidence and correctness",
+            "Step 7: Experiment Execution": "For each dataset and model combination: a) Run the baseline methods on all queries. b) Run CCP on all queries. c) Calculate evaluation metrics for both methods.",
+            "Step 8: Analysis": "Perform the following analyses: a) Compare CCP performance against baselines using the evaluation metrics. b) Analyze how CCP performance varies with the number of counterfactuals generated. c) Examine cases where CCP significantly improves or degrades performance compared to baselines. d) Investigate the types of counterfactuals generated and their impact on final confidence estimates."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: Who was the first person to walk on the moon? Provide your answer and a confidence score from 0 to 100.",
+                "Output": "A: The first person to walk on the moon was Neil Armstrong. Confidence score: 95"
+            },
+            "CCP Example": {
+                "Step 1 - Initial Answer": {
+                    "Input": "Q: Who was the first person to walk on the moon? Provide your answer and a confidence score from 0 to 100.",
+                    "Output": "A: The first person to walk on the moon was Neil Armstrong. Confidence score: 95"
+                },
+                "Step 2 - Generate Counterfactuals": {
+                    "Input": "Generate 5 slight variations of the following question that might change the answer or confidence: Who was the first person to walk on the moon?",
+                    "Output": "1. Who was the second person to walk on the moon?\n2. Who was the first American to orbit the Earth?\n3. Who was the first person to walk in space?\n4. Who was the first woman to walk on the moon?\n5. Who was the first person to step onto the lunar surface?"
+                },
+                "Step 3 - Counterfactual Confidences": {
+                    "Input": "Answer each of the following questions and provide a confidence score from 0 to 100 for each:\n1. Who was the second person to walk on the moon?\n2. Who was the first American to orbit the Earth?\n3. Who was the first person to walk in space?\n4. Who was the first woman to walk on the moon?\n5. Who was the first person to step onto the lunar surface?",
+                    "Output": "1. A: The second person to walk on the moon was Buzz Aldrin. Confidence score: 90\n2. A: The first American to orbit the Earth was John Glenn. Confidence score: 85\n3. A: The first person to walk in space was Alexei Leonov. Confidence score: 80\n4. A: No woman has walked on the moon yet. Confidence score: 95\n5. A: The first person to step onto the lunar surface was Neil Armstrong. Confidence score: 95"
+                },
+                "Step 4 - Aggregate Confidence": {
+                    "Input": "Given the following confidence scores for related questions about space exploration, provide a final confidence score that takes into account the variation in confidences: 95, 90, 85, 80, 95, 95",
+                    "Output": "Final confidence score: 92. This score takes into account the high confidence (95) in the original answer and the similar question about stepping onto the lunar surface, while also considering the slightly lower confidences in related space exploration questions. The variation in confidences suggests a good overall knowledge of space history, but with some areas of slightly less certainty."
+                }
+            },
+            "Explanation": "The CCP method provides a more nuanced confidence estimate by considering related questions. While the baseline method gives a high confidence of 95, the CCP method slightly reduces this to 92, accounting for the model's varying confidence levels on related space exploration questions. This approach can help identify potential edge cases or areas of uncertainty that the model might not capture with a single confidence estimate."
+        },
+        "Fallback Plan": "If the proposed CCP method does not significantly improve confidence calibration over the baselines, we can pivot our analysis to understand why. We could investigate the types of counterfactuals generated and their relationship to the original query, analyzing whether they effectively probe the model's uncertainty. We might find that certain types of counterfactuals are more informative than others, leading to a refined CCP method that generates more targeted counterfactuals. Additionally, we could explore alternative aggregation methods for the counterfactual confidences, such as weighted averages based on semantic similarity to the original query. If these approaches don't yield improvements, we could shift our focus to analyzing the patterns of model uncertainty across different types of queries and counterfactuals, potentially providing insights into the limitations of current LLM confidence estimation techniques and suggesting new directions for future research."
+    }
+}

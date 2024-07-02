@@ -1,0 +1,48 @@
+{
+    "topic_description": "novel prompting methods that can better quantify uncertainty or calibrate the confidence of large language models",
+    "idea_name": "Recursive Uncertainty Amplification",
+    "raw_idea": {
+        "Problem": "LLMs often struggle to accurately assess their own uncertainty, particularly in complex reasoning tasks where errors can compound.",
+        "Existing Methods": "Current approaches like confidence scoring or uncertainty sampling often rely on a single pass through the model.",
+        "Motivation": "Inspired by recursive thinking in human problem-solving, we hypothesize that iteratively questioning and refining uncertainty estimates can lead to more accurate and nuanced assessments.",
+        "Proposed Method": "We propose Recursive Uncertainty Amplification (RUA), a multi-step prompting technique that progressively refines uncertainty estimates. The process begins with an initial response and uncertainty estimate. Then, we prompt the LLM to: 1) Identify potential sources of error in its reasoning, 2) Generate alternative perspectives or solutions, 3) Assess the relative strengths of these alternatives, and 4) Update its uncertainty estimate based on this analysis. This process is repeated for a fixed number of iterations or until convergence, with each step potentially amplifying or reducing uncertainty based on the model's deeper analysis.",
+        "Experiment Plan": "Evaluate RUA against single-pass uncertainty estimation methods on complex reasoning tasks from domains like scientific problem-solving and ethical dilemmas. Measure improvements in calibration, correlation with human expert uncertainty ratings, and the quality of uncertainty-based decision-making (e.g., knowing when to defer to human judgment)."
+    },
+    "full_experiment_plan": {
+        "Title": "Recursive Uncertainty Amplification: Improving Confidence Calibration in Large Language Models",
+        "Problem Statement": "Large Language Models (LLMs) often struggle to accurately assess their own uncertainty, particularly in complex reasoning tasks where errors can compound. This leads to overconfident predictions on incorrect answers, potentially misleading users in critical applications.",
+        "Motivation": "Current approaches like confidence scoring or uncertainty sampling often rely on a single pass through the model, which may not capture the full complexity of the task. Inspired by recursive thinking in human problem-solving, we hypothesize that iteratively questioning and refining uncertainty estimates can lead to more accurate and nuanced assessments. This approach leverages the LLM's ability to analyze its own reasoning and generate alternative perspectives, potentially uncovering sources of uncertainty that were not apparent in the initial response.",
+        "Proposed Method": "We propose Recursive Uncertainty Amplification (RUA), a multi-step prompting technique that progressively refines uncertainty estimates. The process begins with an initial response and uncertainty estimate. Then, we prompt the LLM to: 1) Identify potential sources of error in its reasoning, 2) Generate alternative perspectives or solutions, 3) Assess the relative strengths of these alternatives, and 4) Update its uncertainty estimate based on this analysis. This process is repeated for a fixed number of iterations or until convergence, with each step potentially amplifying or reducing uncertainty based on the model's deeper analysis.",
+        "Step-by-Step Experiment Plan": {
+            "Step 1: Dataset Preparation": "We will use three datasets that involve complex reasoning: 1) TruthfulQA for assessing factual knowledge and reasoning, 2) GSM8K for multi-step mathematical problem-solving, and 3) Ethical Dilemmas dataset for evaluating reasoning on ambiguous scenarios.",
+            "Step 2: Baseline Methods": "Implement three baseline methods: 1) Direct prompting with confidence scoring, 2) Monte Carlo Dropout for uncertainty estimation, and 3) Ensemble of model outputs for uncertainty quantification.",
+            "Step 3: Implement RUA": "Develop prompts for each step of the RUA process: a) Initial response generation, b) Error source identification, c) Alternative generation, d) Strength assessment, and e) Uncertainty update. Use few-shot examples to guide the model through each step.",
+            "Step 4: Model Selection": "We will use GPT-4 and GPT-3.5-turbo from OpenAI's API for our experiments. These models provide a good balance of performance and accessibility.",
+            "Step 5: Experiment Execution": "For each dataset and method (baselines and RUA): a) Generate responses and uncertainty estimates for all questions, b) Record intermediate steps for RUA, c) Collect human expert ratings for a subset of responses to assess ground truth uncertainty.",
+            "Step 6: Evaluation Metrics": "Measure performance using: a) Calibration error (comparing model confidence to accuracy), b) Brier score, c) Correlation between model uncertainty and human expert uncertainty ratings, d) Qualitative analysis of uncertainty justifications.",
+            "Step 7: Ablation Studies": "Conduct ablation studies by varying the number of RUA iterations and removing individual steps to assess their impact on performance.",
+            "Step 8: Analysis": "Compare RUA against baselines across all metrics. Analyze how uncertainty estimates change over iterations and identify patterns in error sources and alternative perspectives generated."
+        },
+        "Test Case Examples": {
+            "Baseline Example": {
+                "Input": "Q: What is the capital of France? Provide your answer and your confidence level (0-100%).",
+                "Output": "A: The capital of France is Paris. Confidence: 95%",
+                "Explanation": "The baseline method provides a direct answer with a high confidence level, but doesn't explore potential uncertainties or alternative perspectives."
+            },
+            "RUA Example": {
+                "Input": "Q: What is the capital of France? Provide your initial answer and confidence level (0-100%).",
+                "Step 1 Output": "A: The capital of France is Paris. Initial confidence: 95%",
+                "Step 2 Input": "Identify potential sources of error in your reasoning for the answer 'Paris is the capital of France.'",
+                "Step 2 Output": "Potential sources of error:\n1. Historical changes: The capital could have changed recently.\n2. Definition of 'capital': There might be multiple types of capitals (e.g., administrative, cultural).\n3. Outdated information: My knowledge cutoff might not include recent changes.",
+                "Step 3 Input": "Generate alternative answers to 'What is the capital of France?' and explain their potential validity.",
+                "Step 3 Output": "Alternative answers:\n1. Versailles: It was the seat of political power during the Ancien R\u00e9gime.\n2. Vichy: It served as the capital of the French State during World War II.\n3. Multiple cities: France could have adopted a system with multiple capitals for different branches of government.",
+                "Step 4 Input": "Assess the relative strengths of the original answer (Paris) and the alternatives.",
+                "Step 4 Output": "Assessment:\n1. Paris: Strongest case - officially recognized capital for centuries, seat of government, widely accepted.\n2. Versailles: Weak case - historically significant but not current capital.\n3. Vichy: Very weak case - only briefly and controversially considered a capital.\n4. Multiple cities: Weak case - no evidence of France adopting such a system.",
+                "Step 5 Input": "Based on this analysis, update your uncertainty estimate for the answer 'Paris is the capital of France.'",
+                "Step 5 Output": "Updated answer: The capital of France is Paris. Updated confidence: 98%\nJustification: After considering potential errors and alternatives, the evidence overwhelmingly supports Paris as the capital. The slight increase in confidence comes from ruling out strong alternatives, but a small uncertainty remains due to the possibility of very recent, unreported changes.",
+                "Explanation": "RUA prompts the model to explore potential errors, generate alternatives, and reassess its confidence. This process leads to a more nuanced and justified uncertainty estimate."
+            }
+        },
+        "Fallback Plan": "If RUA doesn't significantly improve uncertainty estimation, we can pivot to an analysis paper exploring why LLMs struggle with self-assessment of uncertainty. We would conduct a detailed error analysis of the intermediate steps in RUA, focusing on: 1) The types of error sources identified and their relevance, 2) The quality and diversity of alternative perspectives generated, 3) The model's ability to accurately assess the strengths of different options. This analysis could provide insights into the limitations of current LLMs in meta-cognitive tasks and suggest new directions for improving uncertainty estimation. Additionally, we could explore how the performance of RUA varies across different types of questions (e.g., factual vs. ethical reasoning) to identify specific areas where the method is more or less effective, potentially uncovering task-specific strategies for uncertainty estimation."
+    }
+}
