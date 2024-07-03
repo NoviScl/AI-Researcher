@@ -72,7 +72,7 @@ for seed in {1..2}; do
              --method "$method" \
              --ideas_n $ideas_n \
              --seed $seed \
-             --RAG True > logs/idea_generation_${topic}_RAG.log 2>&1
+             --RAG True >> logs/idea_generation_${topic}_RAG.log 2>&1
         done
     done
 done

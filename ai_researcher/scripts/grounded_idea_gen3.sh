@@ -1,9 +1,9 @@
-topic_names=("math_prompting_method" "factuality_prompting_method" "coding_prompting_method" "bias_prompting_method")
+topic_names=("uncertainty_prompting_method" "safety_prompting_method" "multilingual_prompting_method")
 ideas_n=5
 methods=("prompting")
 
 # Iterate over each seed from 1 to 1000
-for seed in {1..1}; do
+for seed in {1..1000}; do
     # Iterate over each cache name 
     for topic in "${topic_names[@]}"; do
         # Iterate over each method 
@@ -17,10 +17,10 @@ for seed in {1..1}; do
              --method "$method" \
              --ideas_n $ideas_n \
              --seed $seed \
-             --RAG True >> logs/idea_generation_${topic}_RAG.log 2>&1
+             --RAG False >> logs/idea_generation_${topic}.log 2>&1
         done
     done
 done
 
 
-## tmux 0 
+## tmux 7 
