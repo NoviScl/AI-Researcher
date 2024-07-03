@@ -10,7 +10,7 @@ import random
 import retry
 
 @retry.retry(tries=3, delay=2)
-def idea_generation_method(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed, RAG=True):
+def idea_generation(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed, RAG=True):
     ## retrieve top papers (with some randomization)
     top_papers = paper_bank[ : int(grounding_k * 2)]
     random.shuffle(top_papers)
@@ -43,7 +43,8 @@ def idea_generation_method(method, existing_ideas, paper_bank, grounding_k, exam
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='claude-3-opus-20240229', help='api engine; https://openai.com/api/')
-    parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
+    parser.add_argument('--paper_cache', type=str, default=None, required=True, help='cache file name for the retrieved papers')
+    parser.add_argument('--idea_cache', type=str, default=None, required=True, help='where to store the generated ideas')
     parser.add_argument('--RAG', type=str, default="True", required=True, help='whether to do RAG for idea generation')
     parser.add_argument('--method', type=str, default='prompting', help='either prompting or finetuning')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers to use for grounding')
@@ -68,29 +69,20 @@ if __name__ == "__main__":
             organization=ORG_ID,
             api_key=OAI_KEY
         )
-
-    if "claude" in args.engine:
-        with open(os.path.join("../cache_results_claude_may/lit_review_new", args.cache_name + "_prompting_method.json"), "r") as f:
-            lit_review = json.load(f)
-    else:
-        with open(os.path.join("../cache_results_gpt4/lit_review", args.cache_name + ".json"), "r") as f:
-            lit_review = json.load(f)
+    
+    with open(args.paper_cache, "r") as f:
+        lit_review = json.load(f)
+    
     topic_description = lit_review["topic_description"]
     paper_bank = lit_review["paper_bank"]
 
     ## cache dir and file
-    if "claude" in args.engine:
-        cache_dir = "../cache_results_claude_may/ideas_1k_claude3-5"
-    else:
-        cache_dir = "../cache_results_gpt4/ideas"
-    
     if args.RAG == "True":
-        ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + "_RAG.json")
+        ideas_file = args.idea_cache.replace(".json", "_RAG.json")
         print ("RAG is enabled for idea generation")
     else:
-        ideas_file = os.path.join(cache_dir, args.cache_name + '_' + args.method + ".json")
+        ideas_file = args.idea_cache
         print ("RAG is disabled for idea generation")
-    
     
     ## extract existing ideas
     existing_ideas = None
@@ -116,7 +108,7 @@ if __name__ == "__main__":
     print ("\n")
     print ("generating {} ideas...".format(str(args.ideas_n)))
     
-    prompt, response, cost = idea_generation_method(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
+    prompt, response, cost = idea_generation(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
     
     print ("idea generation cost: ", cost)
 
@@ -133,6 +125,7 @@ if __name__ == "__main__":
     print ("#ideas generated so far: ", sum(len(d) for d in ideas["ideas"]))
 
     ## save the cache
+    cache_dir = os.path.dirname(ideas_file)
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
     cache_output(ideas, ideas_file)

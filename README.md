@@ -27,7 +27,7 @@ python3 src/lit_review.py \
  --engine "claude-3-5-sonnet-20240620" \
  --mode "topic" \
  --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy" \
- --cache_name "../cache_results_claude_may/lit_review_test/safety_prompting.json" \
+ --cache_name "../cache_results_claude_may/lit_review_new/safety_prompting_method.json" \
  --max_paper_bank_size 120 \
  --print_all
 ```
@@ -39,22 +39,46 @@ python3 src/lit_review.py \
  --mode "idea" \
  --idea_cache "../cache_results_claude_may/experiment_plans_claude3-5/uncertainty_prompting" \
  --idea_name "adaptive_uncertainty_sampling.json" \
- --cache_name "../cache_results_claude_may/lit_review_test/safety_prompting.json" \
+ --cache_name "../cache_results_claude_may/lit_review_new/adaptive_uncertainty_sampling.json" \
  --max_paper_bank_size 120 \
  --print_all
 ```
 
-The `max_paper_bank_size` is a hyperparameter to control when to stop the paper search process (until the specified number of papers has been retrieved). The generated search queries as well as the ranked papers will be stored in the specified cache file. The cache file can be used as part of the input to the idea generation module.
+The `max_paper_bank_size` is a hyperparameter to control when to stop the paper search process (until the specified number of papers has been retrieved). The generated search queries as well as the ranked papers will be stored in the specified cache file. The cache file can be used as part of the input to the idea generation module. Note that we used `claude-3-opus-20240229` for the related paper search step in the paper. 
 
 
 ## Idea Generation
 
-The grounded idea generation agent takes a topic description and a list of relevant papers as input, and returns a list of generated ideas as the output. If you have done the lit review step already, just provide the cache file name to run this module.
+The idea generation module takes a topic description and optionally a list of relevant papers as input, and returns a list of generated ideas as the output. 
 
 Example usage: 
 ```
-bash grounded_idea_gen.sh
+topic_names=("uncertainty_prompting_method")
+ideas_n=5
+methods=("prompting")
+
+# Iterate over each seed from 1 to 1000
+for seed in {1..2}; do
+    # Iterate over each cache name 
+    for topic in "${topic_names[@]}"; do
+        # Iterate over each method 
+        for method in "${methods[@]}"; do
+            echo "Running grounded_idea_gen.py on: $topic"
+            python3 src/grounded_idea_gen.py \
+             --engine "claude-3-5-sonnet-20240620" \
+             --paper_cache "../cache_results_claude_may/lit_review_new/$topic.json" \
+             --idea_cache "../cache_results_claude_may/ideas_5k/$topic.json" \
+             --grounding_k 10 \
+             --method "$method" \
+             --ideas_n $ideas_n \
+             --seed $seed \
+             --RAG True > logs/idea_generation_${topic}_RAG.log 2>&1
+        done
+    done
+done
 ```
+
+Due to the max output length constraint, we recommend generating ideas in batches of 5 (`ideas_n=5`) and running the script multiple times with different seeds to collect a larger set of ideas. You can set `RAG` to either `True` or `False` to turn on or off retrieval augmentation where we ground the idea generation on retrieved papers. 
 
 ## Idea Deduplication
 
