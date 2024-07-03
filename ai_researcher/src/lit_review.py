@@ -199,7 +199,7 @@ if __name__ == "__main__":
 
     idea = {}
     if args.mode == "idea":
-        with open("../{}/{}.json".format(args.idea_cache, args.idea_name), "r") as f:
+        with open("{}/{}".format(args.idea_cache, args.idea_name), "r") as f:
             idea_json = json.load(f)
         idea = idea_json["full_experiment_plan"]
         topic_description = idea_json["topic_description"]
@@ -212,15 +212,11 @@ if __name__ == "__main__":
     print (output)
     print ("Total cost: ", total_cost)
 
-    if "claude" in args.engine:
-        cache_dir = "../cache_results_claude_may/lit_review_test"
-    else:
-        cache_dir = "../cache_results_gpt4/lit_review_new"
-
     if args.cache_name:
+        cache_dir = cache_dir = os.path.dirname(args.cache_name)
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
         output_dict = {"topic_description": args.topic_description, "all_queries": all_queries, "paper_bank": paper_bank}
-        cache_output(output_dict, os.path.join(cache_dir, args.cache_name + ".json"))
+        cache_output(output_dict, args.cache_name)
 
 
