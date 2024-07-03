@@ -1,6 +1,10 @@
-# The Stanford AI Researcher Agent
+# Research Ideation Agent
 
-This repo implements an agent that can generate research project proposals given a topic description. It consists of several modules: lit review, grounded idea generation, experiment plan generation, novelty check, and idea quality ranking. The design principle is that you can either use the whole system in an end-to-end manner to directly generate research proposals, or you can use each module separately as useful tools in your daily research pipeline. Below we introduce each module's usage, as well as the fully end-to-end pipeline.
+This repo implements an agent that can generate detailed research project proposals given a topic description. It consists of several modules: (1) Related Work Search; (2) Idea Generation; (3) Idea Deduplication; (4) Project Proposal Generation; (5) Project Proposal Reranking; (6) Project Proposal Filtering. 
+
+These modules are designed to be run sequentially as a pipeline so that the system takes a topic description as input and returns a list of project proposals as output. Each module can also be run separately as standalone research assistance tools. We describe how to run each module as well as the entire pipeline below.
+
+## Setup
 
 ## Lit Review Agent
 
