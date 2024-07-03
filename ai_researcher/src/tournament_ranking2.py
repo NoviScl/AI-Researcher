@@ -58,7 +58,7 @@ def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_dem
     return prompt, response, cost
 
 
-def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, max_round=5):
+def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache_name, max_round=5):
     # Initialize scores for each idea using the first 200 characters as keys
     scores = defaultdict(int)
     # decision_correct = 0
@@ -111,7 +111,8 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, max_r
         for i in range(len(filename_lst)):
             score_predictions[filename_lst[i]] = final_scores[i]
         
-        with open("logs/uncertainty_score_predictions_swiss_round_{}.json".format(current_round), "w") as f:
+        cache_id = cache_name.split('/')[-1]
+        with open("logs/score_predictions_{}_round_{}.json".format(cache_id, current_round), "w") as f:
             json.dump(score_predictions, f, indent=4)
     
     return final_scores
@@ -160,30 +161,8 @@ if __name__ == "__main__":
             idea_lst.append(summary)
             filename_lst.append(filename)
 
-    # idea_lst = idea_lst[:50] + idea_lst[-50:]
-    # filename_lst = filename_lst[:50] + filename_lst[-50:]
     print ("total #ideas: ", len(idea_lst))
-    final_scores = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.max_round)
+    final_scores = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.max_round)
     
-    # for i in range(len(filename_lst)):
-    #     score_predictions[filename_lst[i]] = final_scores[i]
-    
-        # print (paper["structured_summary"])
-        # print (format_plan_json(paper["structured_summary"]))
 
-    #     try:
-    #         experiment_plan = paper["structured_summary"]
-    #         prompt, response, cost = overall_score(experiment_plan, criteria, client, args.engine, args.seed)
-            
-    #         # print (prompt)
-    #         score_predictions[filename] = {"predicted_score": int(response.strip()), "actual_score": avg_score(paper["scores"])}
-    #         print ("predicted score: ", response)
-    #         print ("actual score: ", avg_score(paper["scores"]))
-    #         print (cost)
-        
-    #     except: 
-    #         continue 
-    
-    # with open("logs/openreview_score_predictions_swiss.json", "w") as f:
-    #     json.dump(score_predictions, f, indent=4)
     
