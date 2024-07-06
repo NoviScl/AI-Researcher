@@ -3,7 +3,7 @@ ideas_n=5
 methods=("prompting")
 
 # Iterate over each seed from 1 to 1000
-for seed in {1..1}; do
+for seed in {2..1000}; do
     # Iterate over each cache name 
     for topic in "${topic_names[@]}"; do
         # Iterate over each method 
