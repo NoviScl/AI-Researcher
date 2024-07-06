@@ -5,8 +5,10 @@ import json
 from tqdm import tqdm 
 from collections import Counter
 import numpy as np
+import random
 import pandas as pd
 import argparse
+import os
 from sentence_transformers import SentenceTransformer
 
 def plot_string_occurrences(strings_list):
@@ -85,28 +87,37 @@ def concatenate_idea(idea_k, idea_v):
 
 if __name__ == "__main__": 
     parser = argparse.ArgumentParser()
+    parser.add_argument('--cache_dir', type=str, default="bias", help='cache file name')
     parser.add_argument('--cache_name', type=str, default="bias", help='cache file name')
+    parser.add_argument("--save_similarity_matrix", action='store_true', help="whether to save the computed similarity matrix")
+    parser.add_argument("--load_similarity_matrix", action='store_true', help="whether to load the computed similarity matrix")
     args = parser.parse_args()
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
 
     all_ideas = []
-    with open("../cache_results_claude_may/ideas_1k_claude3-5/{}_prompting_RAG.json".format(args.cache_name), "r") as f:
+    with open(os.path.join(args.cache_dir, args.cache_name + ".json"), "r") as f:
         ideas_json = json.load(f)
         for ideas_dict in ideas_json["ideas"]:
             for idea_k, idea_v in ideas_dict.items():
-                all_ideas.append(concatenate_idea(idea_k, idea_v))
+                try:
+                    all_ideas.append(concatenate_idea(idea_k, idea_v))
+                except: 
+                    continue
     
     # all_ideas = all_ideas[:40]
     print ("#ideas: ", len(all_ideas))
 
-    embeddings = model.encode(all_ideas)
-    similarity_matrix = model.similarity(embeddings, embeddings)
-    similarity_matrix = similarity_matrix.numpy()
-    ## setting the diagonal to 0
-    np.fill_diagonal(similarity_matrix, 0)
+    if args.load_similarity_matrix:
+        similarity_matrix = np.load(os.path.join(args.cache_dir, args.cache_name + "_similarity_matrix.npy"))
+    elif args.save_similarity_matrix:
+        embeddings = model.encode(all_ideas)
+        similarity_matrix = model.similarity(embeddings, embeddings)
+        similarity_matrix = similarity_matrix.numpy()
+        ## setting the diagonal to 0
+        np.fill_diagonal(similarity_matrix, 0)
 
-    # print (similarity_matrix)
+        np.save(os.path.join(args.cache_dir, args.cache_name + "_similarity_matrix.npy"), similarity_matrix)
 
     nn_similarity = []
     nn_similarity_idx = []
@@ -139,3 +150,33 @@ if __name__ == "__main__":
     print ("\n\nCorpus level metrics:")
     print ("Avg NN Similarity: ", np.mean(nn_similarity))
     print ("Avg Avg Similarity: ", np.mean(avg_similarity))
+
+    ## print out ideas based on NN similarity intervals 
+    interval = 0.05
+    min_similarity = np.min(nn_similarity)
+    max_similarity = np.max(nn_similarity)
+
+    # Create buckets for idea pairs
+    buckets = {}
+    current_interval = min_similarity
+    while current_interval < max_similarity:
+        next_interval = current_interval + interval
+        buckets[(current_interval, next_interval)] = []
+        current_interval = next_interval
+
+    # Assign idea pairs to buckets
+    for i in range(len(all_ideas)):
+        for j in range(i + 1, len(all_ideas)):
+            similarity = similarity_matrix[i][j]
+            for bucket in buckets:
+                if bucket[0] <= similarity < bucket[1]:
+                    buckets[bucket].append((all_ideas[i], all_ideas[j], similarity))
+                    break
+
+    # Print one random idea pair from each bucket
+    print("\n\nIdea pairs by similarity interval:")
+    for bucket in buckets:
+        if buckets[bucket]:
+            sampled_pair = random.choice(buckets[bucket])
+            print(f"\nInterval {bucket[0]:.2f} - {bucket[1]:.2f}:")
+            print(f"{sampled_pair[0]}\nand\n{sampled_pair[1]}\n\nSimilarity: {sampled_pair[2]:.2f}\n")
