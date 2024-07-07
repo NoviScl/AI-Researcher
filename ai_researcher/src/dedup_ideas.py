@@ -7,6 +7,7 @@ from collections import Counter
 import numpy as np
 import pandas as pd
 import argparse
+import os
 from sentence_transformers import SentenceTransformer
 
 def plot_string_occurrences(strings_list):
@@ -85,42 +86,38 @@ def concatenate_idea(idea_k, idea_v):
 
 if __name__ == "__main__": 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cache_name', type=str, default="uncertainty_prompting", help='cache file name')
+    parser.add_argument('--cache_dir', type=str, default="bias", help='cache file name')
+    parser.add_argument('--cache_name', type=str, default="bias", help='cache file name')
+    parser.add_argument('--similarity_threshold', type=float, default=0.8, help='NN Similarity Threshold')
+    parser.add_argument('--dedup_cache_dir', type=str, default="bias", help='cache file name')
     args = parser.parse_args()
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
+    print ("Similarity Threshold: ", args.similarity_threshold)
 
     all_ideas = []
     all_idea_ks = []
     all_idea_vs = []
     topic = ""
-    with open("../cache_results_claude_may/ideas_1k_claude3-5/{}.json".format(args.cache_name), "r") as f:
+    with open(os.path.join(args.cache_dir, args.cache_name + ".json"), "r") as f:
         ideas_json = json.load(f)
         topic = ideas_json["topic_description"]
         for ideas_dict in ideas_json["ideas"]:
             for idea_k, idea_v in ideas_dict.items():
-                all_ideas.append(concatenate_idea(idea_k, idea_v))
-                all_idea_ks.append(idea_k)
-                all_idea_vs.append(idea_v)
+                try:
+                    all_ideas.append(concatenate_idea(idea_k, idea_v))
+                    all_idea_ks.append(idea_k)
+                    all_idea_vs.append(idea_v)
+                except:
+                    continue
     
     # all_ideas = all_ideas[:40]
     print ("#original ideas: ", len(all_ideas))
 
-    embeddings = model.encode(all_ideas)
-    similarity_matrix = model.similarity(embeddings, embeddings)
-    similarity_matrix = similarity_matrix.numpy()
-    np.fill_diagonal(similarity_matrix, 0)
-
-    nn_similarity = []
-    nn_similarity_idx = []
-    avg_similarity = []
-    for i in range(len(all_ideas)):
-        nn_similarity.append(np.max(similarity_matrix[i]))
-        nn_similarity_idx.append(np.argmax(similarity_matrix[i]))
-        avg_similarity.append(np.sum(similarity_matrix[i]) / (len(all_ideas) - 1))
-
-    avg_nn_similarity = np.mean(nn_similarity)
-    print ("Avg NN Similarity: ", avg_nn_similarity)
+    similarity_matrix = np.load(os.path.join(args.cache_dir, args.cache_name + "_similarity_matrix.npy"))
+    if len(similarity_matrix) != len(all_ideas):
+        print ("Error: similarity matrix size mismatch")
+        exit(0)
 
     final_ideas = {}
     filter_idx = [] ## ideas that should be filtered
@@ -131,7 +128,7 @@ if __name__ == "__main__":
 
             ## filter out similar ideas
             for j in range(i+1, len(all_ideas)):
-                if j not in filter_idx and similarity_matrix[i][j] >= avg_nn_similarity:
+                if j not in filter_idx and similarity_matrix[i][j] > args.similarity_threshold or all_idea_ks[j] == all_idea_ks[i]:
                     filter_idx.append(j)
     
     print ("#final ideas: ", len(final_ideas))
@@ -139,5 +136,7 @@ if __name__ == "__main__":
     final_json = {}
     final_json["topic_description"] = topic 
     final_json["ideas"] = final_ideas 
-    with open("../cache_results_claude_may/ideas_1k_claude3-5_dedup/{}.json".format(args.cache_name), "w") as f:
+    if not os.path.exists(args.dedup_cache_dir):
+        os.makedirs(args.dedup_cache_dir)
+    with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
         json.dump(final_json, f, indent=4)
