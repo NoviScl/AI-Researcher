@@ -1,6 +1,6 @@
 idea_cache_dir="../cache_results_claude_may/ideas_5k_dedup/"
 experiment_plan_cache_dir="../cache_results_claude_may/experiment_plans_5k_dedup/"
-cache_names=("multilingual_prompting_method" "safety_prompting_method_RAG" "safety_prompting_method" "uncertainty_prompting_method_RAG" "uncertainty_prompting_method")
+cache_names=("multilingual_prompting_method_RAG" "factuality_prompting_method_RAG" "factuality_prompting_method" "math_prompting_method_RAG" "math_prompting_method")
 
 # Seed value
 seed=2024
@@ -19,4 +19,3 @@ for cache_name in "${cache_names[@]}"; do
 done
 
 
-## tmux 8

@@ -39,7 +39,9 @@ def plan_generation_method(method, idea, demo_examples, topic_description, opena
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
-    parser.add_argument('--cache_name', type=str, default=None, required=True, help='cache file name for the retrieved papers')
+    parser.add_argument('--idea_cache_dir', type=str, default=None, required=True, help='dir that stores all the raw ideas')
+    parser.add_argument('--experiment_plan_cache_dir', type=str, default=None, required=True, help='dir to store all the generated experiment plans')
+    parser.add_argument('--cache_name', type=str, default=None, required=True, help='the specific cache (topic)')
     parser.add_argument('--idea_name', type=str, default=None, required=True, help='the specific idea to be formulated into an experiment plan')
     parser.add_argument('--method', type=str, default='prompting', help='either prompting or finetuning')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers to use for grounding')
@@ -58,13 +60,11 @@ if __name__ == "__main__":
         client = anthropic.Anthropic(
             api_key=ANTH_KEY,
         )
-        cache_dir = "../cache_results_claude_may/"
     else:
         client = OpenAI(
             organization=ORG_ID,
             api_key=OAI_KEY
         )
-        cache_dir = "../cache_results_gpt4/"
 
     ## load the demo examples
     if args.method == "prompting":
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         with open("prompts/experiment_plan_examples_finetuning.txt", "r") as f:
             demo_examples = f.read().strip()
     
-    with open(cache_dir + "ideas_1k_claude3-5_dedup/" + args.cache_name + ".json") as f:
+    with open(args.idea_cache_dir + args.cache_name + ".json") as f:
         idea_file = json.load(f)
     topic_description = idea_file["topic_description"]
     all_ideas = idea_file["ideas"]
@@ -84,9 +84,12 @@ if __name__ == "__main__":
     else:
         idea_names = [args.idea_name]
     
+    if not os.path.exists(args.experiment_plan_cache_dir + args.cache_name + "/"):
+        os.makedirs(args.experiment_plan_cache_dir + args.cache_name + "/")
+        
     all_costs = 0
     for idea_name in tqdm(idea_names):
-        cache_file = os.path.join(cache_dir + "experiment_plans_claude3-5/" + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
+        cache_file = os.path.join(args.experiment_plan_cache_dir + args.cache_name + "/" + '_'.join(idea_name.lower().split()) + ".json")
         
         try:            
             idea_file = {}
@@ -105,9 +108,6 @@ if __name__ == "__main__":
             experiment_plan = json.loads(response.strip())
             idea_file["full_experiment_plan"] = experiment_plan
 
-            if not os.path.exists(cache_dir + "experiment_plans_claude3-5/" + args.cache_name + "/"):
-                os.makedirs(cache_dir + "experiment_plans_claude3-5/" + args.cache_name + "/")
-            
             cache_output(idea_file, cache_file)
 
         except: 
