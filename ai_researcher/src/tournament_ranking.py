@@ -58,7 +58,7 @@ def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_dem
     return prompt, response, cost
 
 
-def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, max_round=5):
+def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache_name, max_round=5):
     # Initialize scores for each idea using the first 200 characters as keys
     scores = defaultdict(int)
     # decision_correct = 0
@@ -111,7 +111,10 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, max_r
         for i in range(len(filename_lst)):
             score_predictions[filename_lst[i]] = final_scores[i]
         
-        with open("logs/openreview_score_predictions_swiss_round_{}_new.json".format(current_round), "w") as f:
+        cache_file = "logs/ranking_score_predictions/{}/round_{}.json".format(cache_name, current_round)
+        if not os.path.exists(os.path.dirname(cache_file)):
+            os.makedirs(os.path.dirname(cache_file))
+        with open(cache_file, "w") as f:
             json.dump(score_predictions, f, indent=4)
     
     return final_scores
@@ -122,7 +125,8 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, max_r
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
-    parser.add_argument('--cache_name', type=str, default="openreview_benchmark", help='cache file name for the retrieved papers')
+    parser.add_argument('--experiment_plan_cache_dir', type=str, default="openreview_benchmark", help='cache file name for the experiment plans')
+    parser.add_argument('--cache_name', type=str, default="openreview_benchmark", help='name of the specific cache dir')
     parser.add_argument('--max_round', type=int, default=5, help="seed for GPT-4 generation")
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
@@ -145,7 +149,7 @@ if __name__ == "__main__":
             api_key=OAI_KEY
         )
 
-    filenames = os.listdir("../{}".format(args.cache_name))
+    filenames = os.listdir(os.path.join(args.experiment_plan_cache_dir, args.cache_name))
     filenames = [f for f in filenames if f.endswith(".json")]
 
     score_predictions = {}
@@ -153,38 +157,15 @@ if __name__ == "__main__":
     idea_lst = []
 
     for filename in filenames:
-        with open("../{}/{}".format(args.cache_name, filename), "r") as f:
+        with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
             paper = json.load(f)
-        if "structured_summary" in paper and isinstance(paper["structured_summary"], dict) and "scores" in paper:
-            summary = paper["structured_summary"]
-            summary["score"] = avg_score(paper["scores"])
+        if "full_experiment_plan" in paper and isinstance(paper["full_experiment_plan"], dict):
+            summary = paper["full_experiment_plan"]
             idea_lst.append(summary)
             filename_lst.append(filename)
 
-    # idea_lst = idea_lst[:50] + idea_lst[-50:]
-    # filename_lst = filename_lst[:50] + filename_lst[-50:]
     print ("total #ideas: ", len(idea_lst))
-    final_scores = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.max_round)
+    final_scores = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.max_round)
     
-    # for i in range(len(filename_lst)):
-    #     score_predictions[filename_lst[i]] = final_scores[i]
-    
-        # print (paper["structured_summary"])
-        # print (format_plan_json(paper["structured_summary"]))
 
-    #     try:
-    #         experiment_plan = paper["structured_summary"]
-    #         prompt, response, cost = overall_score(experiment_plan, criteria, client, args.engine, args.seed)
-            
-    #         # print (prompt)
-    #         score_predictions[filename] = {"predicted_score": int(response.strip()), "actual_score": avg_score(paper["scores"])}
-    #         print ("predicted score: ", response)
-    #         print ("actual score: ", avg_score(paper["scores"]))
-    #         print (cost)
-        
-    #     except: 
-    #         continue 
-    
-    # with open("logs/openreview_score_predictions_swiss.json", "w") as f:
-    #     json.dump(score_predictions, f, indent=4)
     
