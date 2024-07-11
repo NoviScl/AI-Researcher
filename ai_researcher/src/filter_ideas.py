@@ -43,8 +43,8 @@ def significance_score(experiment_plan, openai_client, model, seed):
     prompt = "You are a professor specialized in Natural Language Processing and Large Language Models. You are given a project proposal and you need to decide whether the problem that it is solving is significant enough.\n"
     prompt += "The project proposal is:\n\n" 
     prompt += format_plan_json(experiment_plan)
-    prompt += "\nYou should return no if the problem to be solved is not particularly important for LLMs. For example, using LLMs to perform high-precision calculation tasks is a problem that can be better solved with calculators or symbolic programs so there is no need to push LLMs to solve that, and so you should return no.\n"
-    prompt += "Only return yes if the proposed problem is either: 1) a well-recognized problem with existing benchmarks and baselines; or 2) a new problem that has been overlooked by the research community and has high significance. You should also say no to ideas that are too niche or outdated (i.e., already well solved by modern LLMs via simple prompting baselines). Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
+    prompt += "\nYou should return no if the problem to be solved is not particularly important for LLMs. For example, using LLMs to perform high-precision calculation tasks is a problem that can be better solved with calculators or symbolic programs so there is no need to push LLMs to solve that, and so you should return no. You should also say no to ideas that are just minor modification of existing approaches. For example, prompting the LLM to first identify patterns or the algorithms to be used before generating the code is essentially the same as Chain-of-Thought prompting, and so you should say no. You should also say no to ideas that are too niche or outdated (i.e., already well solved by modern LLMs via simple prompting baselines). You should also say no to ideas that are too simple or trivial, for example just adding a bunch of natural language instructions or questions to augment the prompt without proposing a new algorithmic pipeline.\n"
+    prompt += "Only return yes if the proposed problem is either: 1) a well-recognized problem with existing benchmarks and baselines; or 2) a new problem that has been overlooked by the research community and has high significance. Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
 
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3000, seed=seed, json_output=False)
@@ -96,19 +96,23 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
     
     if retrieve_novelty_check:
         print ("Performing Retrieval-Novelty Check")
-        paper_bank, total_cost, all_queries = collect_papers(topic_description, client, model, seed, grounding_k=10, max_papers=100, print_all=False, mode="idea", idea=experiment_plan)
-        print ("Top-10 Retrieved Papers:")
-        output = format_papers_for_printing(paper_bank[ : 10])
-        print (output)
-        print ("\n")
-        ## check through the top-10 papers
-        for related_paper in paper_bank[ : 10]:
-            retrieve_novelty_prompt, retrieve_novelty_response, retrieve_novelty_cost = retrieve_novelty_score(experiment_plan, related_paper, client, model, seed)
-            if retrieve_novelty_response.lower().split()[-1].strip() != "no":
-                print ("Failed Related Paper Check!")
-                print (retrieve_novelty_prompt)
-                print (retrieve_novelty_response)
-                return False
+        try:
+            paper_bank, total_cost, all_queries = collect_papers(topic_description, client, model, seed, grounding_k=10, max_papers=100, print_all=False, mode="idea", idea=experiment_plan)
+            print ("Top-10 Retrieved Papers:")
+            output = format_papers_for_printing(paper_bank[ : 10])
+            print (output)
+            print ("\n")
+            ## check through the top-10 papers
+            for related_paper in paper_bank[ : 10]:
+                retrieve_novelty_prompt, retrieve_novelty_response, retrieve_novelty_cost = retrieve_novelty_score(experiment_plan, related_paper, client, model, seed)
+                if retrieve_novelty_response.lower().split()[-1].strip() != "no":
+                    print ("Failed Related Paper Check!")
+                    print (retrieve_novelty_prompt)
+                    print (retrieve_novelty_response)
+                    return False
+        except:
+            print ("Retrieval Error. Default to failure.")
+            return False
 
     return True
 
@@ -168,7 +172,7 @@ if __name__ == "__main__":
     
     ## cache all passed ideas
     for filename, idea in zip(passed_filenames, passed_ideas):
-        print (format_plan_json(idea["full_experiment_plan"]))
+        print (format_plan_json(idea["full_experiment_plan"], indent_level=0, skip_test_cases=False, skip_fallback=False))
         print ("-"*50 + "\n")
         cache_file = os.path.join(args.passed_cache_dir, args.cache_name, filename)
         if not os.path.exists(os.path.dirname(cache_file)):

@@ -84,24 +84,27 @@ def collect_papers(topic_description, openai_client, model, seed, grounding_k = 
     total_cost += cost
     all_queries.append(query)
     paper_lst = parse_and_execute(query)
-    ## filter out those with incomplete abstracts
-    paper_lst = [paper for paper in paper_lst if paper["abstract"] and len(paper["abstract"].split()) > 50]
-    paper_bank = {paper["paperId"]: paper for paper in paper_lst}
+    if paper_lst:
+        ## filter out those with incomplete abstracts
+        paper_lst = [paper for paper in paper_lst if paper["abstract"] and len(paper["abstract"].split()) > 50]
+        paper_bank = {paper["paperId"]: paper for paper in paper_lst}
 
-    ## score each paper
-    _, response, cost = paper_score(paper_lst, topic_description, openai_client, model, seed, mode=mode, idea=idea)
-    total_cost += cost
-    response = json.loads(response.strip())
+        ## score each paper
+        _, response, cost = paper_score(paper_lst, topic_description, openai_client, model, seed, mode=mode, idea=idea)
+        total_cost += cost
+        response = json.loads(response.strip())
 
-    ## initialize all scores to 0 then fill in gpt4 scores
-    for k,v in paper_bank.items():
-        v["score"] = 0
-    for k,v in response.items():
-        try:
-            paper_bank[k]["score"] = v
-        except:
-            continue 
-    
+        ## initialize all scores to 0 then fill in gpt4 scores
+        for k,v in paper_bank.items():
+            v["score"] = 0
+        for k,v in response.items():
+            try:
+                paper_bank[k]["score"] = v
+            except:
+                continue 
+    else:
+        paper_lst = []
+
     ## print stats 
     if print_all:
         print ("initial query: ", query)

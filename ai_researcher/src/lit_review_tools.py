@@ -151,7 +151,7 @@ def parse_and_execute(output):
         if paper_id:
             return GetReferences(paper_id)
     
-    return None 
+    return None
 
 def format_papers_for_printing(paper_lst, include_abstract=True, include_score=True, include_id=True):
     ## convert a list of papers to a string for printing or as part of a prompt 

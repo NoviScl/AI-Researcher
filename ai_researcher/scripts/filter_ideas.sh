@@ -12,7 +12,7 @@ for cache_name in "${cache_names[@]}"; do
     --engine "claude-3-5-sonnet-20240620" \
     --cache_dir "$cache_dir" \
     --cache_name "$cache_name" \
-    --passed_cache_dir "passed_cache_dir" \
-    --score_file "logs/ranking_score_predictions/$cache_name/round_5.json" > logs/filter_ideas_$cache_name.log 2>&1
+    --passed_cache_dir "$passed_cache_dir" \
+    --score_file "logs/ranking_score_predictions/$cache_name/round_5.json" > logs/filter_ideas/$cache_name.log 2>&1
 done
 
