@@ -213,7 +213,7 @@ if __name__ == "__main__":
     print ("Total cost: ", total_cost)
 
     if args.cache_name:
-        cache_dir = cache_dir = os.path.dirname(args.cache_name)
+        cache_dir = os.path.dirname(args.cache_name)
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
         output_dict = {"topic_description": args.topic_description, "all_queries": all_queries, "paper_bank": paper_bank}

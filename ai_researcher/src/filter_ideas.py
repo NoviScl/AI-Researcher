@@ -31,8 +31,8 @@ def consistency_score(experiment_plan, openai_client, model, seed):
     prompt = "You are a professor specialized in Natural Language Processing and Large Language Models. You are given a project proposal and you need to decide whether it is consistent in the methodology and experiment design.\n"
     prompt += "The project proposal is:\n\n" 
     prompt += format_plan_json(experiment_plan)
-    prompt += "\nYou should return no if the proposed method is based on prompting and assumes black-box model access but proposes any step that involves white-box model access, such as: getting input embedding, training the model, applying any loss functions, constrastive learning, performing dropout on the model, extracting or modifying internal models activations, computing influence functions, and any other operations that require model weight or data access. The only exception is that finetuning a small open-source model is fine, but the proposal should explicitly mention that the model being trained is open.\n"
-    prompt += "Only return yes if the proposed method is either: 1) based only on open-source models; or 2) based on prompting black-box models (GPT, Claude, Gemini, etc.) and all steps do not require white-box model or data access as explained above. Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
+    prompt += "\nYou should return no if the proposed method is based on prompting and assumes black-box model access but proposes any step that involves white-box model access, such as: getting input embedding, training the model, applying any loss functions, constrastive learning, performing dropout on the model, extracting or modifying internal models activations, computing influence functions, and any other operations that require model weight or data access. The only exception is that finetuning a small open-source model is fine, but the proposal should explicitly mention that the model being trained is open. You should also reject ideas that involve infeasible experiments, such as generating visual aids or figures with language models (unless it is using language models to generate the code to make the plots, but not directly generate the figures).\n"
+    prompt += "Only return yes if the proposed method is either: 1) based only on open-source models; or 2) based on prompting black-box models (GPT, Claude, Gemini, etc.) and all steps do not require white-box model or data access as explained above, and all proposed experiments are indeed feasible to execute. Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
 
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3000, seed=seed, json_output=False)
@@ -44,7 +44,7 @@ def significance_score(experiment_plan, openai_client, model, seed):
     prompt += "The project proposal is:\n\n" 
     prompt += format_plan_json(experiment_plan)
     prompt += "\nYou should return no if the problem to be solved is not particularly important for LLMs. For example, using LLMs to perform high-precision calculation tasks is a problem that can be better solved with calculators or symbolic programs so there is no need to push LLMs to solve that, and so you should return no.\n"
-    prompt += "Only return yes if the proposed problem is either: 1) a well-recognized problem with existing benchmarks and baselines; or 2) a new problem that has been overlooked by the research community and has high significance. Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
+    prompt += "Only return yes if the proposed problem is either: 1) a well-recognized problem with existing benchmarks and baselines; or 2) a new problem that has been overlooked by the research community and has high significance. You should also say no to ideas that are too niche or outdated (i.e., already well solved by modern LLMs via simple prompting baselines). Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
 
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3000, seed=seed, json_output=False)
@@ -116,6 +116,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='claude-3-5-sonnet-20240620', help='api engine; https://openai.com/api/')
     parser.add_argument('--cache_dir', type=str, default="uncertainty_prompting_method_prompting", help='cache file name for the retrieved papers')
+    parser.add_argument('--cache_name', type=str, default="uncertainty_prompting_method_prompting", help='cache file name for the retrieved papers')
     parser.add_argument('--score_file', type=str, default="uncertainty_score_predictions_swiss_round_5", help='score file for reranking ideas')
     parser.add_argument('--passed_cache_dir', type=str, default="uncertainty_prompting_method_prompting", help='cache dir for all passed ideas')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
@@ -145,9 +146,10 @@ if __name__ == "__main__":
     top_ideas = sorted(scores, key=scores.get, reverse=True)
     print ("#ideas: ", len(top_ideas))
     
+    passed_filenames = []
     passed_ideas = []
     for filename in tqdm(top_ideas):
-        with open(os.path.join(args.cache_dir, filename), "r") as f:
+        with open(os.path.join(args.cache_dir, args.cache_name, filename), "r") as f:
             idea = json.load(f)
             experiment_plan = idea["full_experiment_plan"]
             topic_description = idea["topic_description"]
@@ -157,6 +159,7 @@ if __name__ == "__main__":
             print ("Idea Passed: ", filename)
             print (format_plan_json(experiment_plan, indent_level=0, skip_test_cases=False, skip_fallback=False) + "\n")
             passed_ideas.append(idea)
+            passed_filenames.append(filename)
         print ("#passed ideas: ", len(passed_ideas))
         print ("\n\n")
 
@@ -164,7 +167,7 @@ if __name__ == "__main__":
             break
     
     ## cache all passed ideas
-    for idea in passed_ideas:
+    for filename, idea in zip(passed_filenames, passed_ideas):
         print (format_plan_json(idea["full_experiment_plan"]))
         print ("-"*50 + "\n")
         cache_file = os.path.join(args.passed_cache_dir, args.cache_name, filename)
