@@ -6,6 +6,8 @@ cache_names=("multilingual_prompting_method" "multilingual_prompting_method_RAG"
 # Seed value
 seed=2024
 
+mkdir -p logs/filter_ideas
+
 # Iterate over each cache name and run the Python script
 for cache_name in "${cache_names[@]}"; do
     echo "Running filter_ideas.py with cache_name: $cache_name"
