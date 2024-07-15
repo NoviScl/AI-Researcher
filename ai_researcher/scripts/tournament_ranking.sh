@@ -1,5 +1,5 @@
 experiment_plan_cache_dir="../cache_results_claude_may/experiment_plans_5k_dedup/"
-cache_names=("math_prompting_method_RAG" "math_prompting_method" "multilingual_prompting_method" "safety_prompting_method_RAG" "safety_prompting_method" "uncertainty_prompting_method_RAG" "uncertainty_prompting_method")
+cache_names=("math_prompting_method_merged" "multilingual_prompting_method_merged" "safety_prompting_method_merged" "uncertainty_prompting_method_merged")
 
 # Seed value
 seed=2024
