@@ -1,6 +1,6 @@
 cache_dir="../cache_results_claude_may/experiment_plans_5k_dedup"
 passed_cache_dir="../cache_results_claude_may/experiment_plans_5k_dedup_passed"
-cache_names=("factuality_prompting_method" "factuality_prompting_method_RAG" "math_prompting_method" "math_prompting_method_RAG")
+cache_names=("math_prompting_method")
 
 # Seed value
 seed=2024
@@ -18,3 +18,5 @@ for cache_name in "${cache_names[@]}"; do
     --score_file "logs/ranking_score_predictions/$cache_name/round_5.json" > logs/filter_ideas/$cache_name.log 2>&1
 done
 
+
+## tmux 1

@@ -25,6 +25,17 @@ def self_novelty_score(experiment_plan, openai_client, model, seed):
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3000, seed=seed, json_output=False)
     return prompt, response, cost
 
+@retry.retry(tries=3, delay=2)
+def feasibility_score(experiment_plan, openai_client, model, seed):
+    prompt = "You are a professor specialized in Natural Language Processing and Large Language Models. You are given a project proposal and you need to decide whether it is feasible.\n"
+    prompt += "The project proposal is:\n\n" 
+    prompt += format_plan_json(experiment_plan)
+    prompt += "\nLook specifically at the dataset section: return no if the experiments need to create brand new datasets or benchmarks from scratch with manual labor, for example, \"Create a diverse dataset of mathematical problems involving sudden transitions or multiple stable states.\" -- there are no existing datasets for this specific use case and creating it from scratch is challenging, so you should say no. Return yes if the proposed experiments are based on existing datasets or benchmarks, or the new datasets can be easily obtained via transformations of existing datasets or scraping from online sources. The principle is that we cannot afford to create new datasets from scratch if it requires too much manual effort or costs.\n"
+    prompt += "Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
+
+    prompt_messages = [{"role": "user", "content": prompt}]
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3000, seed=seed, json_output=False)
+    return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
 def consistency_score(experiment_plan, openai_client, model, seed):
@@ -64,38 +75,47 @@ def retrieve_novelty_score(experiment_plan, related_paper, openai_client, model,
     return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
-def all_checks(topic_description, experiment_plan, client, model, seed, consistency_check=True, significance_check=True, self_novelty_check=False, retrieve_novelty_check=True):
+def all_checks(topic_description, experiment_plan, client, model, seed, consistency_check=True, feasibility_check=True, significance_check=True, self_novelty_check=False, retrieve_novelty_check=True):
     ## perform all the checks
 
     if consistency_check:
-        print ("Performing Consistency Check")
+        print ("\nPerforming Consistency Check")
         consistency_prompt, consistency_response, consistency_cost = consistency_score(experiment_plan, client, model, seed)
-        print (consistency_prompt)
+        # print (consistency_prompt)
         print (consistency_response)
         if consistency_response.lower().split()[-1].strip() != "yes":
             print ("Failed Consistency Check!")
-            return False
+            return False, None
+        
+    if feasibility_check:
+        print ("\nPerforming Feasibility Check")
+        feasibility_prompt, feasibility_response, feasibility_cost = feasibility_score(experiment_plan, client, model, seed)
+        # print (feasibility_prompt)
+        print (feasibility_response)
+        if feasibility_response.lower().split()[-1].strip() != "yes":
+            print ("Failed Feasibility Check!")
+            return False, None
     
     if significance_check:
-        print ("Performing Significance Check")
+        print ("\nPerforming Significance Check")
         significance_prompt, significance_response, significance_cost = significance_score(experiment_plan, client, model, seed)
-        print (significance_prompt)
+        # print (significance_prompt)
         print (significance_response)
         if significance_response.lower().split()[-1].strip() != "yes":
             print ("Failed Significance Check!")
-            return False
+            return False, None
     
     if self_novelty_check:
-        print ("Performing Self-Novelty Check")
+        print ("\nPerforming Self-Novelty Check")
         self_novelty_prompt, self_novelty_response, self_novelty_cost = self_novelty_score(experiment_plan, client, model, seed)
-        print (self_novelty_prompt)
+        # print (self_novelty_prompt)
         print (self_novelty_response)
         if self_novelty_response.lower().split()[-1].strip() != "yes":
             print ("Failed Self-Novelty Check!")
-            return False
+            return False, None
     
     if retrieve_novelty_check:
-        print ("Performing Retrieval-Novelty Check")
+        print ("\nPerforming Retrieval-Novelty Check")
         try:
             paper_bank, total_cost, all_queries = collect_papers(topic_description, client, model, seed, grounding_k=10, max_papers=100, print_all=False, mode="idea", idea=experiment_plan)
             print ("Top-10 Retrieved Papers:")
@@ -109,12 +129,12 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
                     print ("Failed Related Paper Check!")
                     print (retrieve_novelty_prompt)
                     print (retrieve_novelty_response)
-                    return False
+                    return False, None
         except:
             print ("Retrieval Error. Default to failure.")
-            return False
+            return False, None
 
-    return True
+    return True, paper_bank[ : 10]
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -158,25 +178,34 @@ if __name__ == "__main__":
             experiment_plan = idea["full_experiment_plan"]
             topic_description = idea["topic_description"]
         
-        check = all_checks(topic_description, experiment_plan, client, args.engine, args.seed)
+        check, paper_bank = all_checks(topic_description, experiment_plan, client, args.engine, args.seed)
         if check:
             print ("Idea Passed: ", filename)
-            print (format_plan_json(experiment_plan, indent_level=0, skip_test_cases=False, skip_fallback=False) + "\n")
+            print (format_plan_json(experiment_plan, indent_level=0, skip_test_cases=False, skip_fallback=False) + "\n\n")
+            
+            idea["novelty_check_papers"] = paper_bank
             passed_ideas.append(idea)
             passed_filenames.append(filename)
+
+            ## save passed ideas including the novelty check papers
+            cache_file = os.path.join(args.passed_cache_dir, args.cache_name, filename)
+            if not os.path.exists(os.path.dirname(cache_file)):
+                os.makedirs(os.path.dirname(cache_file))
+            with open(cache_file, "w") as f:
+                json.dump(idea, f, indent=4)
+        
         print ("#passed ideas: ", len(passed_ideas))
         print ("\n\n")
 
-        if len(passed_ideas) >= 20:
-            break
+        # if len(passed_ideas) >= 20:
+        #     break
     
-    ## cache all passed ideas
+    print ("#total passed ideas: ", len(passed_ideas))
+    print ("\n\nAll Passed Ideas:")
+    print ("-" * 50)
+    
+    ## print all passed ideas 
     for filename, idea in zip(passed_filenames, passed_ideas):
-        print (format_plan_json(idea["full_experiment_plan"], indent_level=0, skip_test_cases=False, skip_fallback=False))
-        print ("-"*50 + "\n")
-        cache_file = os.path.join(args.passed_cache_dir, args.cache_name, filename)
-        if not os.path.exists(os.path.dirname(cache_file)):
-            os.makedirs(os.path.dirname(cache_file))
-        with open(cache_file, "w") as f:
-            json.dump(idea, f, indent=4)
-        
+        print (filename)
+        print (format_plan_json(idea["full_experiment_plan"], indent_level=0, skip_test_cases=False, skip_fallback=False) + "\n")
+        print ("-" * 50)

@@ -1,4 +1,4 @@
-experiment_plan_cache_dir="../cache_results_claude_may/experiment_plans_5k_dedup/"
+experiment_plan_cache_dir="../cache_results_claude_may/experiment_plans_5k_merged_dedup/"
 cache_names=("math_prompting_method_merged" "multilingual_prompting_method_merged" "safety_prompting_method_merged" "uncertainty_prompting_method_merged")
 
 # Seed value
