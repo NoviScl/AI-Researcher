@@ -126,7 +126,10 @@ def collect_papers(topic_description, openai_client, model, seed, grounding_k = 
         total_cost += cost 
         if print_all:
             print ("new query: ", new_query)
-        paper_lst = parse_and_execute(new_query)
+        try:
+            paper_lst = parse_and_execute(new_query)
+        except:
+            paper_lst = None 
         
         if paper_lst:
             ## filter out papers already in paper bank 

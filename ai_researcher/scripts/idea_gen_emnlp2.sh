@@ -1,4 +1,4 @@
-topic_names=("CSS" "Dialogue" "Discourse_Pragmatics" "Low_resource" "Ethics_Bias_Fairness" "Information_Extraction" "Information_Retrieval_Text_Mining" "Interpretability_Analysis")
+topic_names=("Machine_Translation" "Multilinguality_Language_Diversity" "Multimodality_Language_Grounding" "Question_Answering" "Semantics" "Sentiment_Stylistic_Argument" "Speech_processing" "Summarization" "Efficiency_Model_Algorithms")
 ideas_n=5
 methods=("prompting")
 
@@ -23,4 +23,4 @@ for seed in {1..200}; do
 done
 
 
-## tmux 1
+## tmux 2

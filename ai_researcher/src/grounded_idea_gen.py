@@ -78,7 +78,8 @@ if __name__ == "__main__":
 
     ## cache dir and file
     if args.RAG == "True":
-        ideas_file = args.idea_cache.replace(".json", "_RAG.json")
+        # ideas_file = args.idea_cache.replace(".json", "_RAG.json")
+        ideas_file = args.idea_cache
         print ("RAG is enabled for idea generation")
     else:
         ideas_file = args.idea_cache

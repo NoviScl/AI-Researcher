@@ -80,20 +80,24 @@
 
 
 # safety
-python3 src/lit_review.py \
- --engine "claude-3-opus-20240229" \
- --mode "topic" \
- --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy" \
- --cache_name "../cache_results_claude_may/lit_review_test/safety_prompting.json" \
- --max_paper_bank_size 20 \
- --print_all > logs/lit_review_test_safety.log 2>&1
+# python3 src/lit_review.py \
+#  --engine "claude-3-opus-20240229" \
+#  --mode "topic" \
+#  --topic_description "novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy" \
+#  --cache_name "../cache_results_claude_may/lit_review_test/safety_prompting.json" \
+#  --max_paper_bank_size 20 \
+#  --print_all > logs/lit_review_test_safety.log 2>&1
  
 
-python3 src/lit_review.py \
- --engine "claude-3-opus-20240229" \
- --mode "idea" \
- --idea_cache "../cache_results_claude_may/experiment_plans_claude3-5/uncertainty_prompting" \
- --idea_name "adaptive_uncertainty_sampling.json" \
- --cache_name "../cache_results_claude_may/lit_review_test/safety_prompting.json" \
- --max_paper_bank_size 120 \
- --print_all > logs/lit_review_test_safety.log 2>&1
+# python3 src/lit_review.py \
+#  --engine "claude-3-opus-20240229" \
+#  --mode "idea" \
+#  --idea_cache "../cache_results_claude_may/experiment_plans_claude3-5/uncertainty_prompting" \
+#  --idea_name "adaptive_uncertainty_sampling.json" \
+#  --cache_name "../cache_results_claude_may/lit_review_test/safety_prompting.json" \
+#  --max_paper_bank_size 120 \
+#  --print_all > logs/lit_review_test_safety.log 2>&1
+
+
+
+
