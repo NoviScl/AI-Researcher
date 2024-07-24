@@ -102,7 +102,7 @@ if __name__ == "__main__":
             
             prompt, response, cost = plan_generation_method(args.method, idea, demo_examples, topic_description, client, args.engine, args.seed)
             # print (response)
-            # print ("Total cost: ", cost)
+            print ("cost: ", cost)
 
             all_costs += cost
             experiment_plan = json.loads(response.strip())
