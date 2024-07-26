@@ -62,6 +62,19 @@ def significance_score(experiment_plan, openai_client, model, seed):
     return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
+def relevance_score(experiment_plan, topic, openai_client, model, seed):
+    prompt = "You are a professor specialized in Natural Language Processing and Large Language Models. You are given a project proposal and you need to decide whether the project proposal is directly relevant to the specified topic.\n"
+    prompt += "The project proposal is:\n\n" 
+    prompt += format_plan_json(experiment_plan)
+    prompt += "\n\nThe specified topic is:\n" + topic + "\n\n"
+    prompt += "\nYou should return no if the project proposal is off-topic or is only loosely relevant. For example, if the topic is about novel prompting methods to improve large language models' robustness against adversarial attacks or improve their security or privacy, then projects about ethics or factuality should not be accepted because they are directly relevant."
+    prompt += "Only return yes if the project is directly relevant to the specific topic. Give a short explanation first and then change to a new line to return either yes or no and then end the response.\n"
+
+    prompt_messages = [{"role": "user", "content": prompt}]
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=3000, seed=seed, json_output=False)
+    return prompt, response, cost
+
+@retry.retry(tries=3, delay=2)
 def retrieve_novelty_score(experiment_plan, related_paper, openai_client, model, seed):
     ## use gpt4 to give novelty judgment wrt one individual paper 
     prompt = "You are a professor specialized in Natural Language Processing. You have a project proposal and want to decide whether it is novel or has been done before.\n\n"
@@ -75,12 +88,14 @@ def retrieve_novelty_score(experiment_plan, related_paper, openai_client, model,
     return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
-def all_checks(topic_description, experiment_plan, client, model, seed, consistency_check=True, feasibility_check=True, significance_check=True, self_novelty_check=False, retrieve_novelty_check=True):
+def all_checks(topic_description, experiment_plan, client, model, seed, consistency_check=True, feasibility_check=True, significance_check=True, relevance_check=False, self_novelty_check=False, retrieve_novelty_check=True):
+    all_cost = 0
+    
     ## perform all the checks
-
     if consistency_check:
         print ("\nPerforming Consistency Check")
         consistency_prompt, consistency_response, consistency_cost = consistency_score(experiment_plan, client, model, seed)
+        all_cost += consistency_cost
         # print (consistency_prompt)
         print (consistency_response)
         if consistency_response.lower().split()[-1].strip() != "yes":
@@ -90,6 +105,7 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
     if feasibility_check:
         print ("\nPerforming Feasibility Check")
         feasibility_prompt, feasibility_response, feasibility_cost = feasibility_score(experiment_plan, client, model, seed)
+        all_cost += feasibility_cost
         # print (feasibility_prompt)
         print (feasibility_response)
         if feasibility_response.lower().split()[-1].strip() != "yes":
@@ -99,15 +115,27 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
     if significance_check:
         print ("\nPerforming Significance Check")
         significance_prompt, significance_response, significance_cost = significance_score(experiment_plan, client, model, seed)
+        all_cost += significance_cost
         # print (significance_prompt)
         print (significance_response)
         if significance_response.lower().split()[-1].strip() != "yes":
             print ("Failed Significance Check!")
             return False, None
     
+    if relevance_check:
+        print ("\nPerforming Relevance Check")
+        relevance_prompt, relevance_response, relevance_cost = relevance_score(experiment_plan, topic_description, client, model, seed)
+        all_cost += relevance_cost
+        # print (relevance_prompt)
+        print (relevance_response)
+        if relevance_response.lower().split()[-1].strip() != "yes":
+            print ("Failed Relevance Check!")
+            return False, None
+    
     if self_novelty_check:
         print ("\nPerforming Self-Novelty Check")
         self_novelty_prompt, self_novelty_response, self_novelty_cost = self_novelty_score(experiment_plan, client, model, seed)
+        all_cost += self_novelty_cost
         # print (self_novelty_prompt)
         print (self_novelty_response)
         if self_novelty_response.lower().split()[-1].strip() != "yes":
@@ -118,6 +146,7 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
         print ("\nPerforming Retrieval-Novelty Check")
         try:
             paper_bank, total_cost, all_queries = collect_papers(topic_description, client, model, seed, grounding_k=10, max_papers=100, print_all=False, mode="idea", idea=experiment_plan)
+            all_cost += total_cost
             print ("Top-10 Retrieved Papers:")
             output = format_papers_for_printing(paper_bank[ : 10])
             print (output)
@@ -125,6 +154,7 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
             ## check through the top-10 papers
             for related_paper in paper_bank[ : 10]:
                 retrieve_novelty_prompt, retrieve_novelty_response, retrieve_novelty_cost = retrieve_novelty_score(experiment_plan, related_paper, client, model, seed)
+                all_cost += retrieve_novelty_cost
                 if retrieve_novelty_response.lower().split()[-1].strip() != "no":
                     print ("Failed Related Paper Check!")
                     print (retrieve_novelty_prompt)
@@ -134,6 +164,7 @@ def all_checks(topic_description, experiment_plan, client, model, seed, consiste
             print ("Retrieval Error. Default to failure.")
             return False, None
 
+    print ("cost: ", all_cost)
     return True, paper_bank[ : 10]
 
 if __name__ == "__main__":

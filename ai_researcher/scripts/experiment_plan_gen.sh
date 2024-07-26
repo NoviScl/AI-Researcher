@@ -20,4 +20,4 @@ for cache_name in "${cache_names[@]}"; do
     --method "prompting" > logs/experiment_plan_gen_emnlp/experiment_plan_gen_"$cache_name".log 2>&1
 done
 
-## tmux 1
+## tmux 2
