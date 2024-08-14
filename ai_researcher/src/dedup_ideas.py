@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     final_ideas = {}
     filter_idx = [] ## ideas that should be filtered
-    for i in range(len(all_ideas)):
+    for i in tqdm(range(len(all_ideas))):
         if i not in filter_idx:
             ## add current idea to filtered_ideas
             final_ideas[all_idea_ks[i]] = all_idea_vs[i]
@@ -133,10 +133,10 @@ if __name__ == "__main__":
     
     print ("#final ideas: ", len(final_ideas))
 
-    final_json = {}
-    final_json["topic_description"] = topic 
-    final_json["ideas"] = final_ideas 
-    if not os.path.exists(args.dedup_cache_dir):
-        os.makedirs(args.dedup_cache_dir)
-    with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
-        json.dump(final_json, f, indent=4)
+    # final_json = {}
+    # final_json["topic_description"] = topic 
+    # final_json["ideas"] = final_ideas 
+    # if not os.path.exists(args.dedup_cache_dir):
+    #     os.makedirs(args.dedup_cache_dir)
+    # with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
+    #     json.dump(final_json, f, indent=4)
