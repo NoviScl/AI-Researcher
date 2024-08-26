@@ -64,7 +64,7 @@ cd ai_researcher
 bash scripts/lit_review.sh 
 ```
 
-The `max_paper_bank_size` is a hyperparameter to control when to stop the paper search process (until the specified number of papers has been retrieved). The generated search queries as well as the ranked papers will be stored in the specified cache file. The cache file can be used as part of the input to the idea generation module. 
+The `max_paper_bank_size` is a hyperparameter to control when to stop the paper search process (until the specified number of papers has been retrieved). The generated search queries as well as the ranked papers will be stored in the specified cache file. The cache file can be used as part of the input to the idea generation module. We used `max_paper_bank_size=120` for the experiments in our paper and used `max_paper_bank_size=50` in this demo example. Running this demo example costs $0.51. 
 
 
 ## Grounded Idea Generation
@@ -77,7 +77,7 @@ cd ai_researcher
 bash scripts/grounded_idea_gen.sh
 ```
 
-Due to the max output length constraint, we recommend generating ideas in batches of 5 (`ideas_n=5`) and running the script multiple times with different seeds to collect a larger set of ideas. You can set `RAG` to either `True` or `False` to turn on or off retrieval augmentation where we ground the idea generation on retrieved papers. 
+Due to the max output length constraint, we recommend generating ideas in batches of 5 (`ideas_n=5`) and running the script multiple times with different seeds to collect a larger set of ideas. You can set `RAG` to either `True` or `False` to turn on or off retrieval augmentation where we ground the idea generation on retrieved papers. We generated 4K ideas for each topic in our paper. In the demo example, we only generate 20 seed ideas, which costs $0.85.
 
 ## Idea Deduplication
 
@@ -91,6 +91,15 @@ bash scripts/idea_dedup.sh
 
 ## Project Proposal Generation
 
+Next, we expand each seed idea into a detailed project proposal. 
+
+Example usage:
+```
+cd ai_researcher
+bash scripts/project_proposal_gen.sh
+```
+
+Since the project proposals are long, each generation takes an average of $0.3 and running the whole demo example here takes $2.9.
 
 ## Project Proposal Ranking
 
