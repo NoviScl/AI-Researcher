@@ -1,4 +1,9 @@
-# Research Ideation Agent
+<h1 align="center">
+  <b>Research Ideation Agent</b><br>
+  <b>by Stanford NLP</b><br>
+</h1>
+
+![teaser](title.png)
 
 This repo implements an agent that can generate detailed research project proposals given a topic description. It consists of several modules: (1) Related Work Search; (2) Idea Generation; (3) Idea Deduplication; (4) Project Proposal Generation; (5) Project Proposal Reranking; (6) Project Proposal Filtering. 
 
