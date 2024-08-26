@@ -58,14 +58,15 @@ def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_dem
     return prompt, response, cost
 
 
-def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache_name, max_round=5):
+def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache_name, ranking_score_dir, max_round=5):
     # Initialize scores for each idea using the first 200 characters as keys
     scores = defaultdict(int)
+    all_costs = 0
     # decision_correct = 0
     # decision_all = 0
     
     # Helper function to conduct a single round of the tournament
-    def single_round(ideas, current_round=0, decision_correct=0, decision_all=0):
+    def single_round(ideas, current_round=0, decision_correct=0, decision_all=0, all_costs=0):
         ## shuffle ideas in the first round
         if current_round == 0:
             random.shuffle(ideas)
@@ -93,15 +94,16 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache
                 #     decision_correct += 1
 
             # decision_all += 1
+            all_costs += cost
         
-        return 
+        return all_costs
     
     # Conduct the tournament rounds until only one idea remains
     current_round = 0
     score_predictions = {}
     while current_round < max_round:
         print ("Current round: ", current_round + 1)
-        single_round(idea_lst[:], current_round)
+        all_costs = single_round(idea_lst[:], current_round=current_round, all_costs=all_costs)
         # print ("Currect decision accuracy: {} / {} = {}".format(decision_correct, decision_all, decision_correct / decision_all))
         current_round += 1
 
@@ -111,13 +113,13 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache
         for i in range(len(filename_lst)):
             score_predictions[filename_lst[i]] = final_scores[i]
         
-        cache_file = "logs/ranking_score_predictions/{}/round_{}.json".format(cache_name, current_round)
+        cache_file = os.path.join(ranking_score_dir, "{}/round_{}.json".format(cache_name, current_round))
         if not os.path.exists(os.path.dirname(cache_file)):
             os.makedirs(os.path.dirname(cache_file))
         with open(cache_file, "w") as f:
             json.dump(score_predictions, f, indent=4)
     
-    return final_scores
+    return final_scores, all_costs
 
 
 
@@ -127,6 +129,7 @@ if __name__ == "__main__":
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--experiment_plan_cache_dir', type=str, default="openreview_benchmark", help='cache file name for the experiment plans')
     parser.add_argument('--cache_name', type=str, default="openreview_benchmark", help='name of the specific cache dir')
+    parser.add_argument('--ranking_score_dir', type=str, default="ranking_score_dir", help='dir to store the ranking scores')
     parser.add_argument('--max_round', type=int, default=5, help="seed for GPT-4 generation")
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
@@ -165,7 +168,6 @@ if __name__ == "__main__":
             filename_lst.append(filename)
 
     print ("total #ideas: ", len(idea_lst))
-    final_scores = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.max_round)
-    
+    final_scores, all_costs = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.ranking_score_dir, args.max_round)
+    print ("all costs: ", all_costs)
 
-    

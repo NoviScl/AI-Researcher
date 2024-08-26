@@ -103,9 +103,28 @@ Since the project proposals are long, each generation takes an average of $0.3 a
 
 ## Project Proposal Ranking
 
+We rank all the generated project proposals by using an LLM ranker. 
 
-## Project Proposal Filtering
+Example usage:
+```
+cd ai_researcher
+bash scripts/project_proposal_ranking.sh
+```
 
+The output will be a json file storing the score of each project proposal, which you can use to rank the proposals. The demo example costs $0.74 to rank 10 project proposals for 5 rounds of scoring.
+
+## Project Proposal Filtering (Optional)
+
+If you wish, you can also apply the last filtering step where we check whether each project proposal is novel and feasible. For novelty check, we will retrieve the most similar papers to the generated project proposal and compare them one by one. The project proposal will be filtered as long as it's judged as the same as any of the retrieved papers by the LLM.
+
+Example usage:
+```
+cd ai_researcher
+bash scripts/project_proposal_filter.sh
+```
+
+All the project proposals that passed the filters will be stored in the specified output cache directory, along with the retrieved papers used for the novelty check. Note that this filtering step is rather expensive (it costs $1.9 to check through each project proposal in this demo example). You can lower the costs by reducing the number of retrieved papers for novelty check.
 
 ## End-to-End Pipeline
 
+We also provide a script that runs the entire pipeline from related paper search to project proposal ranking (we skipped the filtering step to save costs but feel free to add it back).
