@@ -1,6 +1,3 @@
-from openai import OpenAI
-import anthropic
-import json
 import random 
 from tqdm import tqdm 
 from utils import call_api, load_model
