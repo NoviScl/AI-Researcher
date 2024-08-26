@@ -10,20 +10,33 @@ This repo implements the research ideation agent used in our paper "Are LLMs Bet
 The input to our agent is a research topic described as a natural language sentence; and the output is a list of project proposals ranked by their estimated quality. The project proposals are designed to be very detailed such that a student can directly follow each step in the proposal to execute the entire project.
 
 Our agent pipeline consists of the following modules:
-1. Related Paper Search
-2. Grounded Idea Generation
-3. Idea Deduplication
-4. Project Proposal Generation
-5. Project Proposal Ranking
-6. Project Proposal Filtering
+(1) Related Paper Search;
+(2) Grounded Idea Generation;
+(3) Idea Deduplication;
+(4) Project Proposal Generation;
+(5) Project Proposal Ranking;
+(6) Project Proposal Filtering.
 
 These modules are designed to be run sequentially as an end-to-end idea generation pipeline. Each module can also be run separately as standalone research assistance tools. We describe how to run each module as well as the entire pipeline below.
 
 ## Table of Contents
 
 1. [Setup](#setup)
+2. [Related Paper Search](#related-paper-search)
+3. [Grounded Idea Generation](#grounded-idea-generation)
+4. [Idea Deduplication](#idea-deduplication)
+5. [Project Proposal Generation](#project-proposal-generation)
+6. [Project Proposal Ranking](#project-proposal-ranking)
+7. [Project Proposal Filtering](#project-proposal-filtering)
+8. [End-to-End Pipeline](#end-to-end-pipeline)
 
+You can set up the environment by running the following commands:
 
+```bash
+conda create -n ai-researcher python=3.10
+conda activate ai-researcher
+pip install -r requirements.txt
+```
 
 ## Setup
 
@@ -68,7 +81,7 @@ python3 src/lit_review.py \
 The `max_paper_bank_size` is a hyperparameter to control when to stop the paper search process (until the specified number of papers has been retrieved). The generated search queries as well as the ranked papers will be stored in the specified cache file. The cache file can be used as part of the input to the idea generation module. Note that we used `claude-3-opus-20240229` for the related paper search step in the paper. 
 
 
-## Idea Generation
+## Grounded Idea Generation
 
 The idea generation module takes a topic description and optionally a list of relevant papers as input, and returns a list of generated ideas as the output. 
 
