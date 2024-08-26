@@ -127,4 +127,23 @@ All the project proposals that passed the filters will be stored in the specifie
 
 ## End-to-End Pipeline
 
-We also provide a script that runs the entire pipeline from related paper search to project proposal ranking (we skipped the filtering step to save costs but feel free to add it back).
+We also provide a script that runs the entire pipeline to generate the project proposals based on the given research topic.
+
+Example usage:
+```
+cd ai_researcher
+bash scripts/end_to_end.sh
+```
+
+## Citation
+
+Please cite the paper and star this repo if you find our work useful, thanks! Feel free to contact clsi@stanford.edu or open an issue if you have any questions.
+
+```bibtex
+@article{si2024llmideas,
+      title={Are LLMs Better than Experts on Generating Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers}, 
+      author={Chenglei Si and Diyi Yang and Tatsunori Hashimoto},
+      year={2024},
+      journal={arXiv}
+}
+```
