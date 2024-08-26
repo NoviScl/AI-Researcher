@@ -1,1 +1,0 @@
-python3 src/overall_ranking.py --engine "claude-3-opus-20240229"

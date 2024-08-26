@@ -1,1 +1,0 @@
-python3 excitement_ranking.py --cache_name "factuality" --idea_name "all"
