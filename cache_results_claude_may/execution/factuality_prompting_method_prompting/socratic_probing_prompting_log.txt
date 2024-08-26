@@ -1,17 +1,0 @@
-simulated 3 test examples for evaluation.
-using model:  claude-3-opus-20240229
-  0%|          | 0/3 [00:00<?, ?it/s]  0%|          | 0/3 [02:21<?, ?it/s]
-Traceback (most recent call last):
-  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/socratic_probing_prompting.py", line 165, in <module>
-    baseline_scores, proposed_scores, style_check = run_experiment(client, model_name, seed, testset)
-                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/socratic_probing_prompting.py", line 146, in run_experiment
-    baseline_scores.append(output_evaluator(client, model_name, seed, question, gold_label, baseline_prediction))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/factuality_prompting_method_prompting/socratic_probing_prompting.py", line 115, in output_evaluator
-    response, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=1, seed=seed, json_output=False)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/juice2/scr2/clsi/AI-Researcher/cache_results_claude_may/execution/factuality_prompting_method_prompting/utils.py", line 31, in call_api
-    response = message.content[0].text
-               ~~~~~~~~~~~~~~~^^^
-IndexError: list index out of range

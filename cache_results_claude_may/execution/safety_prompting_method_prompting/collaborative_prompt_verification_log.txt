@@ -1,31 +1,0 @@
-simulated 3 test examples for evaluation.
-using model:  claude-3-opus-20240229
-  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [10:05<20:11, 605.98s/it] 33%|███▎      | 1/3 [19:17<38:35, 1157.99s/it]
-Traceback (most recent call last):
-  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/collaborative_prompt_verification.py", line 170, in <module>
-    baseline_scores, proposed_scores, style_check = run_experiment(client, model_name, seed, testset)
-                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/collaborative_prompt_verification.py", line 147, in run_experiment
-    proposed_prediction_final, proposed_prediction_intermediate = proposed_method(client, model_name, seed, prompt)
-                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/juice2/scr2/clsi/AI-Researcher/ai_researcher/../cache_results_claude_may/execution/safety_prompting_method_prompting/collaborative_prompt_verification.py", line 84, in proposed_method
-    output, _ = call_api(client, model_name, prompt_messages, temperature=0., max_tokens=2000, seed=seed+i, json_output=False)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/juice2/scr2/clsi/AI-Researcher/cache_results_claude_may/execution/safety_prompting_method_prompting/utils.py", line 24, in call_api
-    message = client.messages.create(
-              ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nlp/scr/clsi/miniconda3/envs/pix2code/lib/python3.11/site-packages/anthropic/_utils/_utils.py", line 275, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/nlp/scr/clsi/miniconda3/envs/pix2code/lib/python3.11/site-packages/anthropic/resources/messages.py", line 678, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "/nlp/scr/clsi/miniconda3/envs/pix2code/lib/python3.11/site-packages/anthropic/_base_client.py", line 1233, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nlp/scr/clsi/miniconda3/envs/pix2code/lib/python3.11/site-packages/anthropic/_base_client.py", line 922, in request
-    return self._request(
-           ^^^^^^^^^^^^^^
-  File "/nlp/scr/clsi/miniconda3/envs/pix2code/lib/python3.11/site-packages/anthropic/_base_client.py", line 1013, in _request
-    raise self._make_status_error_from_response(err.response) from None
-anthropic.InternalServerError: Error code: 500 - {'type': 'error', 'error': {'type': 'api_error', 'message': 'Internal server error'}}
