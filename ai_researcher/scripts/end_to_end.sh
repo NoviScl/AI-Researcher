@@ -3,14 +3,14 @@
 python3 src/lit_review.py \
  --engine "claude-3-5-sonnet-20240620" \
  --mode "topic" \
- --topic_description "novel prompting methods that can improve factuality and reduce hallucination of large language models" \
- --cache_name "../cache_results_test/lit_review/factuality_prompting_method.json" \
+ --topic_description "novel prompting methods to improve large language models’ performance on multilingual tasks or low-resource languages and vernacular languages" \
+ --cache_name "../cache_results_test/lit_review/multilingual_prompting_method.json" \
  --max_paper_bank_size 50 \
  --print_all
 
 
 # grounded idea generation
-topic_names=("factuality_prompting_method")
+topic_names=("multilingual_prompting_method")
 ideas_n=5 ## batch size
 methods=("prompting")
 rag_values=("True" "False")
@@ -41,7 +41,7 @@ done
 
 # idea deduplication
 cache_dir="../cache_results_test/seed_ideas/"
-cache_names=("factuality_prompting_method")
+cache_names=("multilingual_prompting_method")
 
 for cache_name in "${cache_names[@]}"; do
     echo "Running analyze_ideas_semantic_similarity.py with cache_name: $cache_name"
@@ -66,7 +66,7 @@ done
 # project proposal generation
 idea_cache_dir="../cache_results_test/ideas_dedup/"
 project_proposal_cache_dir="../cache_results_test/project_proposals/"
-cache_names=("factuality_prompting_method")
+cache_names=("multilingual_prompting_method")
 seed=2024
 
 for cache_name in "${cache_names[@]}"; do
@@ -84,21 +84,22 @@ done
 
 
 
-# project proposal ranking
-experiment_plan_cache_dir="../cache_results_test/project_proposals/"
-ranking_score_dir="../cache_results_test/ranking/"
-cache_names=("factuality_prompting_method")
-seed=2024
+# # project proposal ranking
+# # skipped here to save costs
+# experiment_plan_cache_dir="../cache_results_test/project_proposals/"
+# ranking_score_dir="../cache_results_test/ranking/"
+# cache_names=("factuality_prompting_method")
+# seed=2024
 
-for cache_name in "${cache_names[@]}"; do
-    echo "Running tournament_ranking.py with cache_name: $cache_name"
-    python3 src/tournament_ranking.py \
-    --engine claude-3-5-sonnet-20240620 \
-    --experiment_plan_cache_dir "$experiment_plan_cache_dir" \
-    --cache_name "$cache_name" \
-    --ranking_score_dir "$ranking_score_dir" \
-    --max_round 5 
-done
+# for cache_name in "${cache_names[@]}"; do
+#     echo "Running tournament_ranking.py with cache_name: $cache_name"
+#     python3 src/tournament_ranking.py \
+#     --engine claude-3-5-sonnet-20240620 \
+#     --experiment_plan_cache_dir "$experiment_plan_cache_dir" \
+#     --cache_name "$cache_name" \
+#     --ranking_score_dir "$ranking_score_dir" \
+#     --max_round 5 
+# done
 
 
 
