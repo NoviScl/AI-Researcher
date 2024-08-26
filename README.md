@@ -29,6 +29,7 @@ These modules are designed to be run sequentially as an end-to-end idea generati
 6. [Project Proposal Ranking](#project-proposal-ranking)
 7. [Project Proposal Filtering](#project-proposal-filtering)
 8. [End-to-End Pipeline](#end-to-end-pipeline)
+9. [Review Scores](#review-scores)
 
 
 ## Setup
@@ -134,6 +135,11 @@ Example usage:
 cd ai_researcher
 bash scripts/end_to_end.sh
 ```
+We are not releasing the full set of AI-generated project proposals since we are using them in the next phase of our study and we want to avoid any potential bias. However, you should be able to reproduce ideas with similar quality by following the steps above with an increased inference budget. 
+
+## Review Scores
+
+We release the full set of review scores collected in the `results` directory, along with all the scripts that we used to do the stistical tests and generate the figures in the paper. 
 
 ## Citation
 
