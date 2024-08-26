@@ -10,14 +10,20 @@ This repo implements the research ideation agent used in our paper "Are LLMs Bet
 The input to our agent is a research topic described as a natural language sentence; and the output is a list of project proposals ranked by their estimated quality. The project proposals are designed to be very detailed such that a student can directly follow each step in the proposal to execute the entire project.
 
 Our agent pipeline consists of the following modules:
-(1) Literature Review;
-(2) Grounded Idea Generation;
-(3) Idea Deduplication;
-(4) Project Proposal Generation;
-(5) Project Proposal Ranking;
-(6) Project Proposal Filtering.
+1. Related Paper Search
+2. Grounded Idea Generation
+3. Idea Deduplication
+4. Project Proposal Generation
+5. Project Proposal Ranking
+6. Project Proposal Filtering
 
 These modules are designed to be run sequentially as an end-to-end idea generation pipeline. Each module can also be run separately as standalone research assistance tools. We describe how to run each module as well as the entire pipeline below.
+
+## Table of Contents
+
+1. [Setup](#setup)
+
+
 
 ## Setup
 
@@ -32,7 +38,7 @@ Create `keys.json` and store it in the project root directory. The file should l
 }
 ```
 
-## Related Work Search
+## Related Paper Search
 
 The related work search module will iteratively propose search queries and search through the Semantic Scholar API. We then use an LLM to score the relevance of retrieved papers for reranking. The module takes a topic description or an idea as input and returns a list of the most relevant papers as output.
 
