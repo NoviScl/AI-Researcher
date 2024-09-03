@@ -11,17 +11,6 @@ import retry
 from collections import defaultdict
 random.seed(2024)
 
-@retry.retry(tries=3, delay=2)
-def overall_score(experiment_plan, criteria, openai_client, model, seed):
-    prompt = "You are a professor specialized in Natural Language Processing and Large Language Models. You are given a project proposal and you need to score it.\n"
-    prompt += "The project proposal is:\n\n" 
-    prompt += format_plan_json(experiment_plan)
-    prompt += "\n\nYour should follow the scoring rubrics:\n" + criteria + "\n"
-    prompt += "Now directly provide me with a final score between 1 and 10, no other explanation needed.\n"
-
-    prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=2, seed=seed, json_output=False)
-    return prompt, response, cost
 
 @retry.retry(tries=3, delay=2)
 def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_demos=None, temperature=0.):
@@ -58,9 +47,10 @@ def better_idea(idea_1, idea_2, method, openai_client, model, seed, few_shot_dem
     return prompt, response, cost
 
 
-def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache_name, ranking_score_dir, max_round=5):
+def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache_name, ranking_score_dir, max_round=5, format="json"):
     # Initialize scores for each idea using the first 200 characters as keys
-    scores = defaultdict(int)
+    # initial score is 1
+    scores = defaultdict(lambda: 1)
     all_costs = 0
     # decision_correct = 0
     # decision_all = 0
@@ -131,6 +121,7 @@ if __name__ == "__main__":
     parser.add_argument('--cache_name', type=str, default="openreview_benchmark", help='name of the specific cache dir')
     parser.add_argument('--ranking_score_dir', type=str, default="ranking_score_dir", help='dir to store the ranking scores')
     parser.add_argument('--max_round', type=int, default=5, help="seed for GPT-4 generation")
+    parser.add_argument('--format', type=str, default="json", help='format of the input file, either json or txt')
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
 
@@ -153,21 +144,30 @@ if __name__ == "__main__":
         )
 
     filenames = os.listdir(os.path.join(args.experiment_plan_cache_dir, args.cache_name))
-    filenames = [f for f in filenames if f.endswith(".json")]
+    if args.format == "json":
+        filenames = [f for f in filenames if f.endswith(".json")]
+    else:
+        filenames = [f for f in filenames if f.endswith(".txt")]
 
     score_predictions = {}
     filename_lst = []
     idea_lst = []
 
     for filename in filenames:
-        with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
-            paper = json.load(f)
-        if "full_experiment_plan" in paper and isinstance(paper["full_experiment_plan"], dict):
-            summary = paper["full_experiment_plan"]
+        if args.format == "json":
+            with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
+                paper = json.load(f)
+            if "full_experiment_plan" in paper and isinstance(paper["full_experiment_plan"], dict):
+                summary = paper["full_experiment_plan"]
+                idea_lst.append(summary)
+                filename_lst.append(filename)
+        else:
+            with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
+                summary = f.read()
             idea_lst.append(summary)
             filename_lst.append(filename)
 
     print ("total #ideas: ", len(idea_lst))
-    final_scores, all_costs = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.ranking_score_dir, args.max_round)
+    final_scores, all_costs = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.ranking_score_dir, args.max_round, format=args.format)
     print ("all costs: ", all_costs)
 

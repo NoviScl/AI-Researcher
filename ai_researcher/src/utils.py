@@ -78,6 +78,10 @@ def print_idea_json(filename):
 
 def format_plan_json(experiment_plan_json, indent_level=0, skip_test_cases=True, skip_fallback=True):
     try:
+        # Check if the input is a string, if so, return it directly
+        if isinstance(experiment_plan_json, str):
+            return experiment_plan_json
+        
         output_str = ""
         indent = "  " * indent_level
         for k, v in experiment_plan_json.items():
