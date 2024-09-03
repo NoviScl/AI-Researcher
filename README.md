@@ -1,5 +1,5 @@
 <h1 align="center">
-  <b>Research Ideation Agent & Human Study Results</b><br>
+  <b>Research Ideation Agent & Human Study</b><br>
   <b>by Stanford NLP</b><br>
 </h1>
 
