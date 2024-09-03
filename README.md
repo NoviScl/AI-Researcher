@@ -1,5 +1,5 @@
 <h1 align="center">
-  <b>Research Ideation Agent</b><br>
+  <b>Research Ideation Agent & Human Study Results</b><br>
   <b>by Stanford NLP</b><br>
 </h1>
 
@@ -140,7 +140,7 @@ We are not releasing the full set of AI-generated project proposals since we are
 ## Review Scores
 
 We release the full set of review scores collected in the `results` directory, along with all the scripts that we used to do the stistical tests in the paper. 
-All reviewer names have been anonumized to protect their information.
+All reviewer names have been anonymized to protect their information.
 We will release the free-text rationales later after phase II of our study is completed.
 
 ## Citation
