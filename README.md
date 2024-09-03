@@ -149,7 +149,7 @@ Please cite the paper and star this repo if you find our work useful, thanks! Fe
 
 ```bibtex
 @article{si2024llmideas,
-      title={Are LLMs Better than Experts on Generating Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers}, 
+      title={Can LLMs Generate Better Research Ideas than Experts? A Large-Scale Human Study with 100+ NLP Researchers}, 
       author={Chenglei Si and Diyi Yang and Tatsunori Hashimoto},
       year={2024},
       journal={arXiv}
