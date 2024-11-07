@@ -13,7 +13,7 @@ def initial_search(topic_description, openai_client, model, seed, mode="topic", 
         prompt = "You are a researcher doing literature review on the topic of " + topic_description.strip() + ".\n"
         prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this topic. "
     elif mode == "idea":
-        prompt = "You are a professor in Natural Language Processing. You need to evaluate the novelty of a proposed research idea.\n"
+        prompt = "You are a professor. You need to evaluate the novelty of a proposed research idea.\n"
         prompt += "The idea is:\n" + format_plan_json(idea) + "\n\n"
         prompt += "You want to do a round of paper search in order to find out whether the proposed project has already been done. "
         prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this proposed idea. "
@@ -28,9 +28,9 @@ def initial_search(topic_description, openai_client, model, seed, mode="topic", 
 def next_query(topic_description, openai_client, model, seed, grounding_papers, past_queries, mode="topic", idea=None):
     grounding_papers_str = format_papers_for_printing(grounding_papers)
     if mode == "topic":
-        prompt = "You are a researcher doing literature review on the topic of " + topic_description.strip() + ".\n" + "You should propose some queries for using the Semantic Scholar API to find the most relevant papers to this topic. "
+        prompt = "You are a researcher. You are doing literature review on the topic of " + topic_description.strip() + ".\n" + "You should propose some queries for using the Semantic Scholar API to find the most relevant papers to this topic. "
     elif mode == "idea":
-        prompt = "You are a professor in Natural Language Processing. You need to evaluate the novelty of a proposed research idea.\n"
+        prompt = "You are a professor. You need to evaluate the novelty of a proposed research idea.\n"
         prompt += "The idea is:\n" + format_plan_json(idea) + "\n\n"
         prompt += "You want to do a round of paper search in order to find out whether the proposed project has already been done. "
         prompt += "You should propose some queries for using the Semantic Scholar API to find the most relevant papers to this proposed idea. "
@@ -63,7 +63,7 @@ def paper_score(paper_lst, topic_description, openai_client, model, seed, mode="
     else:
         prompt += "\n"
 
-    prompt += "(2) The paper is an empirical paper that proposes a novel method and conducts computational experiments to show improvement over baselines (position or opinion papers, review or survey papers, and analysis papers should get low scores for this purpose).\n"
+    prompt += "(2) The paper is an empirical paper that proposes a novel method and conducts empirical experiments to show improvement over baselines (position or opinion papers, review or survey papers, and analysis papers should get low scores for this purpose).\n"
     prompt += "(3) The paper is interesting, exciting, and meaningful, with potential to inspire many new projects.\n"
     prompt += "The papers are:\n" + format_papers_for_printing(paper_lst) + "\n"
     prompt += "Please score each paper from 1 to 10. Write the response in JSON format with \"paperID: score\" as the key and value for each paper.\n"
