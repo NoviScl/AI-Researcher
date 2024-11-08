@@ -88,7 +88,7 @@ if __name__ == "__main__":
         print ("RAG is disabled for idea generation")
     
     try:
-        ## extract existing ideas
+        # extract existing ideas
         existing_ideas = None
         if os.path.exists(ideas_file):
             with open(ideas_file, "r") as f:
@@ -109,7 +109,7 @@ if __name__ == "__main__":
         else:
             with open("prompts/idea_examples_method.json", "r") as f:
                 method_idea_examples = json.load(f)
-                method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
+                method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples, n=4)
         
         print ("topic: ", topic_description)
         print ("existing ideas: ", existing_ideas)
@@ -119,6 +119,9 @@ if __name__ == "__main__":
         prompt, response, cost = idea_generation(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
         
         print ("idea generation cost: ", cost)
+        # print ("prompt: ", prompt)
+        # print ("response: ", response)
+        # print ("---------------------------------------\n")
 
         response = json.loads(response.strip())
         ideas = {"topic_description": topic_description, "ideas": [response]}

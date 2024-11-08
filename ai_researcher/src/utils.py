@@ -3,21 +3,21 @@ import json
 import random 
 
 def calc_price(model, usage):
-    if "claude" in model:
-        return (0.015 * usage.input_tokens + 0.075 * usage.output_tokens) / 1000.0
-    if model == "gpt-4-1106-preview" or model == "gpt-4-0125-preview":
-        return (0.01 * usage.prompt_tokens + 0.03 * usage.completion_tokens) / 1000.0
-    if model == "gpt-4":
-        return (0.03 * usage.prompt_tokens + 0.06 * usage.completion_tokens) / 1000.0
-    if (model == "gpt-3.5-turbo") or (model == "gpt-3.5-turbo-1106"):
-        return (0.0015 * usage.prompt_tokens + 0.002 * usage.completion_tokens) / 1000.0
+    if "claude-3-5-sonnet" in model:
+        return (3.0 * usage.input_tokens + 15.0 * usage.output_tokens) / 1000000.0
     if model == "gpt-4o":
-        return (0.005 * usage.prompt_tokens + 0.015 * usage.completion_tokens) / 1000.0
+        return (2.5 * usage.prompt_tokens + 10.0 * usage.completion_tokens) / 1000000.0
+    if model == "o1-preview":
+        return (15.0 * usage.prompt_tokens + 60.0 * usage.completion_tokens) / 1000000.0
+    if model == "o1-mini":
+        return (3.0 * usage.prompt_tokens + 12.0 * usage.completion_tokens) / 1000000.0
+
+    return None
 
 def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, seed=2024, json_output=False):
     if "claude" in model:
         if json_output:
-            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output later)."
+            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples."
             prompt_messages = [{"role": "user", "content": prompt}]
         message = client.messages.create(
             model=model,
@@ -28,15 +28,26 @@ def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, se
         cost = calc_price(model, message.usage)
         response = message.content[0].text
     else:   
-        response_format = {"type": "json_object"} if json_output else {"type": "text"}
-        completion = client.chat.completions.create(
-            model=model,
-            messages=prompt_messages,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            seed=seed,
-            response_format=response_format
-        )
+        if "o1" in model:
+            if json_output:
+                prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples. Don't include \"```json\" or \"```\" at the beginning and end of the output."
+                prompt_messages = [{"role": "user", "content": prompt}]
+            completion = client.chat.completions.create(
+                model=model,
+                messages=prompt_messages,
+                max_completion_tokens=max_tokens,
+                seed=seed
+            )
+        else:
+            response_format = {"type": "json_object"} if json_output else {"type": "text"}
+            completion = client.chat.completions.create(
+                model=model,
+                messages=prompt_messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                seed=seed,
+                response_format=response_format
+            )
         cost = calc_price(model, completion.usage)
         response = completion.choices[0].message.content.strip()
     
@@ -109,10 +120,11 @@ def format_plan_json(experiment_plan_json, indent_level=0, skip_test_cases=True,
         return ""
 
 
-def shuffle_dict_and_convert_to_string(input_dict):
+def shuffle_dict_and_convert_to_string(input_dict, n=20):
     # Convert dict items to a list and shuffle
     items = list(input_dict.items())
     random.shuffle(items)
+    items = items[ : n]
     
     # Convert back to dict and then to a JSON-formatted string
     shuffled_dict = dict(items)
