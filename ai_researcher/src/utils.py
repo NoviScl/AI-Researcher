@@ -11,13 +11,20 @@ def calc_price(model, usage):
         return (15.0 * usage.prompt_tokens + 60.0 * usage.completion_tokens) / 1000000.0
     if model == "o1-mini":
         return (3.0 * usage.prompt_tokens + 12.0 * usage.completion_tokens) / 1000000.0
+    if "llama-3.1-8b" in model.lower():
+        return (0.18 * usage.prompt_tokens + 0.18 * usage.completion_tokens) / 1000000.0
+    if "llama-3.1-70b" in model.lower():
+        return (0.88 * usage.prompt_tokens + 0.88 * usage.completion_tokens) / 1000000.0
+    if "llama-3.1-405b" in model.lower():
+        return (3.5 * usage.prompt_tokens + 3.5 * usage.completion_tokens) / 1000000.0
 
     return None
 
 def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, seed=2024, json_output=False):
+    ## Anthropic models
     if "claude" in model:
         if json_output:
-            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples."
+            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples. Don't include \"```json\" or \"```\" at the beginning and end of the output."
             prompt_messages = [{"role": "user", "content": prompt}]
         message = client.messages.create(
             model=model,
@@ -27,7 +34,25 @@ def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, se
         )
         cost = calc_price(model, message.usage)
         response = message.content[0].text
+    ## Together models
+    elif "llama" in model.lower():
+        if json_output:
+            prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples. Don't include \"```json\" or \"```\" at the beginning and end of the output. Remember to always close the dict with a closing curly brace (\"}\")."
+            prompt_messages = [{"role": "user", "content": prompt}]
+        # response_format = {"type": "json_object"} if json_output else {"type": "text"}
+        completion = client.chat.completions.create(
+            model=model,
+            messages=prompt_messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            seed=seed,
+            # response_format=response_format
+        )
+        cost = calc_price(model, completion.usage)
+        response = completion.choices[0].message.content.strip()
+    ## OpenAI models
     else:   
+        ## o1 models
         if "o1" in model:
             if json_output:
                 prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples. Don't include \"```json\" or \"```\" at the beginning and end of the output."
@@ -38,6 +63,8 @@ def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, se
                 max_completion_tokens=max_tokens,
                 seed=seed
             )
+            # print ("completion: ", completion)
+        ## 4o and other OpenAI models
         else:
             response_format = {"type": "json_object"} if json_output else {"type": "text"}
             completion = client.chat.completions.create(

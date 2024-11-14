@@ -1,5 +1,6 @@
 from openai import OpenAI
 import anthropic
+from together import Together
 from utils import call_api, shuffle_dict_and_convert_to_string
 import argparse
 import json
@@ -10,7 +11,7 @@ import random
 import retry
 
 @retry.retry(tries=3, delay=2)
-def idea_generation(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed, RAG=True):
+def idea_generation(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed, temperature, max_tokens, RAG=True):
     ## retrieve top papers (with some randomization)
     top_papers = paper_bank[ : int(grounding_k * 2)]
     random.shuffle(top_papers)
@@ -39,7 +40,7 @@ def idea_generation(method, existing_ideas, paper_bank, grounding_k, examples, i
     prompt += "Please write down your {} ideas (each idea should be described as one paragraph. Output the ideas in json format as a dictionary, where you should generate a short idea name (e.g., \"Non-Linear Story Understanding\", or \"Multi-Agent Negotiation\") as the key and the actual idea description as the value (following the above format). Do not repeat idea names or contents.".format(str(ideas_n))
 
     prompt_messages = [{"role": "user", "content": prompt}]
-    response, cost = call_api(openai_client, model, prompt_messages, temperature=0.9, max_tokens=4096, seed=seed, json_output=True)
+    response, cost = call_api(openai_client, model, prompt_messages, temperature=temperature, max_tokens=max_tokens, seed=seed, json_output=True)
     return prompt, response, cost
 
 if __name__ == "__main__":
@@ -50,6 +51,8 @@ if __name__ == "__main__":
     parser.add_argument('--RAG', type=str, default="True", required=True, help='whether to do RAG for idea generation')
     parser.add_argument('--method', type=str, default='prompting', help='either prompting or finetuning')
     parser.add_argument('--grounding_k', type=int, default=10, help='how many papers to use for grounding')
+    parser.add_argument('--max_tokens', type=int, default=30000, help='max tokens in the output')
+    parser.add_argument('--temperature', type=float, default=0.9, help='temperature in sampling')
     parser.add_argument('--ideas_n', type=int, default=5, help="how many ideas to generate")
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
     args = parser.parse_args()
@@ -66,11 +69,14 @@ if __name__ == "__main__":
         client = anthropic.Anthropic(
             api_key=ANTH_KEY,
         )
-    else:
+    elif "o1" in args.engine or "gpt" in args.engine:
         client = OpenAI(
             organization=ORG_ID,
             api_key=OAI_KEY
         )
+    else:
+        ## we will use Together API for all other models
+        client = Together()
     
     with open(args.paper_cache, "r") as f:
         lit_review = json.load(f)
@@ -80,12 +86,10 @@ if __name__ == "__main__":
 
     ## cache dir and file
     if args.RAG == "True":
-        # ideas_file = args.idea_cache.replace(".json", "_RAG.json")
-        ideas_file = args.idea_cache
         print ("RAG is enabled for idea generation")
     else:
-        ideas_file = args.idea_cache
         print ("RAG is disabled for idea generation")
+    ideas_file = args.idea_cache
     
     try:
         # extract existing ideas
@@ -116,7 +120,7 @@ if __name__ == "__main__":
         print ("\n")
         print ("generating {} ideas...".format(str(args.ideas_n)))
         
-        prompt, response, cost = idea_generation(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed)
+        prompt, response, cost = idea_generation(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed, args.temperature, args.max_tokens, args.RAG)
         
         print ("idea generation cost: ", cost)
         # print ("prompt: ", prompt)
