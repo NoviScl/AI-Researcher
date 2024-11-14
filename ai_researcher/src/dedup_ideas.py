@@ -75,11 +75,15 @@ def find_top_n_papers(representative_index, similarity_matrix, n=5):
 def concatenate_idea(idea_k, idea_v):
     output = ""
     output += idea_k + "\n"
-    output += "Problem: " + idea_v["Problem"] + "\n"
-    output += "Existing Methods: " + idea_v["Existing Methods"] + "\n"
-    output += "Motivation: " + idea_v["Motivation"] + "\n"
-    output += "Proposed Method: " + idea_v["Proposed Method"] + "\n"
-    output += "Experiment Plan: " + idea_v["Experiment Plan"] + "\n"
+    
+    if isinstance(idea_v, dict):
+        output += "Problem: " + idea_v["Problem"] + "\n"
+        output += "Existing Methods: " + idea_v["Existing Methods"] + "\n"
+        output += "Motivation: " + idea_v["Motivation"] + "\n"
+        output += "Proposed Method: " + idea_v["Proposed Method"] + "\n"
+        output += "Experiment Plan: " + idea_v["Experiment Plan"] + "\n"
+    else:
+        output += str(idea_v) + "\n"
 
     return output
 
@@ -90,6 +94,7 @@ if __name__ == "__main__":
     parser.add_argument('--cache_name', type=str, default="bias", help='cache file name')
     parser.add_argument('--similarity_threshold', type=float, default=0.8, help='NN Similarity Threshold')
     parser.add_argument('--dedup_cache_dir', type=str, default="bias", help='cache file name')
+    parser.add_argument("--num_ideas", type=int, default=1000, help="top n ideas to consider")
     args = parser.parse_args()
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -113,6 +118,7 @@ if __name__ == "__main__":
     
     # all_ideas = all_ideas[:40]
     print ("#original ideas: ", len(all_ideas))
+    all_ideas = all_ideas[:args.num_ideas]
 
     similarity_matrix = np.load(os.path.join(args.cache_dir, args.cache_name + "_similarity_matrix.npy"))
     if len(similarity_matrix) != len(all_ideas):
@@ -133,10 +139,10 @@ if __name__ == "__main__":
     
     print ("#final ideas: ", len(final_ideas))
 
-    final_json = {}
-    final_json["topic_description"] = topic 
-    final_json["ideas"] = final_ideas 
-    if not os.path.exists(args.dedup_cache_dir):
-        os.makedirs(args.dedup_cache_dir)
-    with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
-        json.dump(final_json, f, indent=4)
+    # final_json = {}
+    # final_json["topic_description"] = topic 
+    # final_json["ideas"] = final_ideas 
+    # if not os.path.exists(args.dedup_cache_dir):
+    #     os.makedirs(args.dedup_cache_dir)
+    # with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
+    #     json.dump(final_json, f, indent=4)

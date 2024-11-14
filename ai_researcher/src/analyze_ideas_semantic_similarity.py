@@ -76,11 +76,15 @@ def find_top_n_papers(representative_index, similarity_matrix, n=5):
 def concatenate_idea(idea_k, idea_v):
     output = ""
     output += idea_k + "\n"
-    output += "Problem: " + idea_v["Problem"] + "\n"
-    output += "Existing Methods: " + idea_v["Existing Methods"] + "\n"
-    output += "Motivation: " + idea_v["Motivation"] + "\n"
-    output += "Proposed Method: " + idea_v["Proposed Method"] + "\n"
-    output += "Experiment Plan: " + idea_v["Experiment Plan"] + "\n"
+    
+    if isinstance(idea_v, dict):
+        output += "Problem: " + idea_v["Problem"] + "\n"
+        output += "Existing Methods: " + idea_v["Existing Methods"] + "\n"
+        output += "Motivation: " + idea_v["Motivation"] + "\n"
+        output += "Proposed Method: " + idea_v["Proposed Method"] + "\n"
+        output += "Experiment Plan: " + idea_v["Experiment Plan"] + "\n"
+    else:
+        output += str(idea_v) + "\n"
 
     return output
 
@@ -91,9 +95,8 @@ if __name__ == "__main__":
     parser.add_argument('--cache_name', type=str, default="bias", help='cache file name')
     parser.add_argument("--save_similarity_matrix", action='store_true', help="whether to save the computed similarity matrix")
     parser.add_argument("--load_similarity_matrix", action='store_true', help="whether to load the computed similarity matrix")
+    parser.add_argument("--num_ideas", type=int, default=1000, help="top n ideas to consider")
     args = parser.parse_args()
-
-    model = SentenceTransformer("all-MiniLM-L6-v2")
 
     all_ideas = []
     with open(os.path.join(args.cache_dir, args.cache_name + ".json"), "r") as f:
@@ -105,8 +108,10 @@ if __name__ == "__main__":
                 except: 
                     continue
     
-    # all_ideas = all_ideas[:40]
     print ("#ideas: ", len(all_ideas))
+
+    all_ideas = all_ideas[:args.num_ideas]
+    model = SentenceTransformer("all-MiniLM-L6-v2")
 
     if args.load_similarity_matrix:
         similarity_matrix = np.load(os.path.join(args.cache_dir, args.cache_name + "_similarity_matrix.npy"))
