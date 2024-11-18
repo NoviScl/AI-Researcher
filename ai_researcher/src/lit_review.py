@@ -222,7 +222,7 @@ if __name__ == "__main__":
         cache_dir = os.path.dirname(args.cache_name)
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
-        output_dict = {"topic_description": args.topic_description, "all_queries": all_queries, "paper_bank": paper_bank}
+        output_dict = {"topic_description": args.topic_description, "all_queries": all_queries, "paper_bank": paper_bank, "total_cost": total_cost}
         cache_output(output_dict, args.cache_name)
 
 
