@@ -97,12 +97,8 @@ def paper_filter(paper_lst):
     ## filter out papers based on some basic heuristics
     filtered_lst = []
     for paper in paper_lst:
-        abstract = paper["abstract"] if paper["abstract"] else paper["title"]
-        # if ("year" in paper.keys()) and (paper["year"] is not None) and (int(paper["year"]) < 2022):
-        #     continue 
-        # if ("citationCount" in paper.keys()) and (paper["citationCount"] is not None) and int(paper["citationCount"]) <= 10:
-        #     continue 
-        if "survey" in abstract.lower() or "review" in abstract.lower() or "position paper" in abstract.lower():
+        title = paper["title"]
+        if "survey" in title.lower() or "review" in title.lower() or "position paper" in title.lower():
             continue
         filtered_lst.append(paper)
     return filtered_lst
@@ -195,7 +191,7 @@ def dedup_paper_bank(sorted_paper_bank):
 
 if __name__ == "__main__":
     ## some unit tests
-    print (KeywordQuery("GPT-3"))
+    print (KeywordQuery("using large language models to generate novel research ideas"))
     # print (PaperDetails("1b6e810ce0afd0dd093f789d2b2742d047e316d5")['tldr'])
     # print (PaperQuery("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))
     # print (GetAbstract("1b6e810ce0afd0dd093f789d2b2742d047e316d5"))

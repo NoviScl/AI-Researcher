@@ -10,15 +10,17 @@ import retry
 
 def initial_search(topic_description, openai_client, model, seed, mode="topic", idea=None):
     if mode == "topic":
-        prompt = "You are a researcher doing literature review on the topic of " + topic_description.strip() + ".\n"
-        prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this topic. "
+        ## use the topic description as the query
+        # prompt = "You are a researcher doing literature review on the topic of " + topic_description.strip() + ".\n"
+        # prompt += "You should propose some keywords for querying the Semantic Scholar API to find the most relevant papers to this topic. You can start by extracting and combining the keywords from the topic description. "
+        return "", "KeywordQuery(\"" + topic_description.lower().strip() + "\")", 0
     elif mode == "idea":
         prompt = "You are a professor. You need to evaluate the novelty of a proposed research idea.\n"
         prompt += "The idea is:\n" + format_plan_json(idea) + "\n\n"
         prompt += "You want to do a round of paper search in order to find out whether the proposed project has already been done. "
-        prompt += "You should propose some keywords for using the Semantic Scholar API to find the most relevant papers to this proposed idea. "
+        prompt += "You should propose some keywords for querying the Semantic Scholar API to find the most relevant papers to this proposed idea. "
     
-    prompt += "Formulate your query as: KeywordQuery(\"keyword\"). Just give me one query, with the most important keyword, the keyword can be a concatenation of multiple keywords (just put a space between every word) but please be concise and try to cover all the main aspects.\n"
+    prompt += "Formulate your query as: KeywordQuery(\"query\"). Just give me one query, and the query can be a concatenation of multiple keywords (just put a space between every word); but please be concise and try to cover the most important aspects.\n"
     prompt += "Your query (just return the query itself with no additional text):"
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=100, seed=seed, json_output=False)
@@ -40,7 +42,7 @@ def next_query(topic_description, openai_client, model, seed, grounding_papers, 
     prompt += "(3) GetReferences(\"paperId\"): get the list of papers referenced in the given paper (as specified by the paperId).\n"
     prompt += "Right now you have already collected the following relevant papers:\n" + grounding_papers_str + "\n"
     prompt += "You can formulate new search queries based on these papers. And you have already asked the following queries:\n" + "\n".join(past_queries) + "\n"
-    prompt += "Please formulate a new query to expand our paper collection with more diverse and relevant papers (you can do so by diversifying the types of queries to generate and minimize the overlap with previous queries). Directly give me your new query without any explanation or additional text, just the query itself:"
+    prompt += "Please formulate a new query to expand our paper collection with more diverse and relevant papers (you can do so by diversifying the types of queries and minimizing the overlap with previous queries; e.g., try to include all three types of queries if possible). Directly give me your new query without any explanation or additional text, just the query itself:"
     
     prompt_messages = [{"role": "user", "content": prompt}]
     response, cost = call_api(openai_client, model, prompt_messages, temperature=0., max_tokens=100, seed=seed, json_output=False)
@@ -84,9 +86,11 @@ def collect_papers(topic_description, openai_client, model, seed, grounding_k = 
     total_cost += cost
     all_queries.append(query)
     paper_lst = parse_and_execute(query)
+    print ("initial query: ", query)
+    print ("paper_lst: ", paper_lst)
     if paper_lst:
         ## filter out those with incomplete abstracts
-        paper_lst = [paper for paper in paper_lst if paper["abstract"] and len(paper["abstract"].split()) > 50]
+        paper_lst = [paper for paper in paper_lst if paper["abstract"] and len(paper["abstract"].split()) > 20]
         paper_bank = {paper["paperId"]: paper for paper in paper_lst}
 
         ## score each paper

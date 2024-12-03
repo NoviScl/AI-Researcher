@@ -20,7 +20,7 @@ def calc_price(model, usage):
 
     return None
 
-def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, seed=2024, json_output=False):
+def call_api(client, model, prompt_messages, temperature=1.0, top_p=1.0, max_tokens=1000, seed=2024, json_output=False):
     ## Anthropic models
     if "claude" in model:
         if json_output:
@@ -30,6 +30,7 @@ def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, se
             model=model,
             max_tokens=max_tokens,
             temperature=temperature,
+            top_p=top_p,
             messages=prompt_messages
         )
         cost = calc_price(model, message.usage)
@@ -39,15 +40,25 @@ def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, se
         if json_output:
             prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples. Don't include \"```json\" or \"```\" at the beginning and end of the output. Remember to always close the dict with a closing curly brace (\"}\")."
             prompt_messages = [{"role": "user", "content": prompt}]
-        # response_format = {"type": "json_object"} if json_output else {"type": "text"}
-        completion = client.chat.completions.create(
-            model=model,
-            messages=prompt_messages,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            seed=seed,
-            # response_format=response_format
-        )
+        ## only 70B supports json output
+        if model == "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo" and json_output:
+            response_format = {"type": "json_object"}
+            completion = client.chat.completions.create(
+                model=model,
+                messages=prompt_messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                seed=seed,
+                response_format=response_format
+            )
+        else:
+            completion = client.chat.completions.create(
+                model=model,
+                messages=prompt_messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                seed=seed,
+            )
         cost = calc_price(model, completion.usage)
         response = completion.choices[0].message.content.strip()
     ## OpenAI models
@@ -71,6 +82,7 @@ def call_api(client, model, prompt_messages, temperature=1.0, max_tokens=100, se
                 model=model,
                 messages=prompt_messages,
                 temperature=temperature,
+                top_p=top_p,
                 max_tokens=max_tokens,
                 seed=seed,
                 response_format=response_format
