@@ -9,6 +9,7 @@ from lit_review_tools import format_papers_for_printing
 from utils import cache_output
 import random 
 import retry
+import sys
 
 @retry.retry(tries=3, delay=2)
 def idea_generation(method, existing_ideas, paper_bank, grounding_k, examples, ideas_n, topic_description, openai_client, model, seed, temperature, top_p, max_tokens, RAG=True):
@@ -57,6 +58,7 @@ if __name__ == "__main__":
     parser.add_argument('--top_p', type=float, default=1.0, help='top p in sampling')
     parser.add_argument('--ideas_n', type=int, default=5, help="how many ideas to generate")
     parser.add_argument('--seed', type=int, default=2024, help="seed for GPT-4 generation")
+    parser.add_argument('--debug', action='store_true', help="enable debug mode")
     args = parser.parse_args()
 
     with open("../keys.json", "r") as f:
@@ -93,62 +95,65 @@ if __name__ == "__main__":
         print ("RAG is disabled for idea generation")
     ideas_file = args.idea_cache
     
-    try:
-        # extract existing ideas
-        existing_ideas = None
-        if os.path.exists(ideas_file) and args.append_existing_ideas == "True":
-            with open(ideas_file, "r") as f:
-                ideas_cache = json.load(f)
-            if "ideas" in ideas_cache:
-                existing_ideas = [key for idea in ideas_cache["ideas"] for key in idea.keys()]
-                existing_ideas = list(set(existing_ideas))
-                existing_ideas = "; ".join(existing_ideas)
-                print ("Appending previous ideas.")
-        else:
-            print ("Not appending previous ideas.")
-        
-        if args.method == "prompting":
-            with open("prompts/idea_examples_prompting_method.json", "r") as f:
-                method_idea_examples = json.load(f)
-                method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
-        elif args.method == "finetuning":
-            with open("prompts/idea_examples_finetuning_method.json", "r") as f:
-                method_idea_examples = json.load(f)
-                method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
-        else:
-            with open("prompts/idea_examples_method.json", "r") as f:
-                method_idea_examples = json.load(f)
-                method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples, n=4)
-        
-        print ("topic: ", topic_description)
-        print ("existing ideas: ", existing_ideas)
-        print ("\n")
-        print ("generating {} ideas...".format(str(args.ideas_n)))
-        
+    # extract existing ideas
+    existing_ideas = None
+    if os.path.exists(ideas_file) and args.append_existing_ideas == "True":
+        with open(ideas_file, "r") as f:
+            ideas_cache = json.load(f)
+        if "ideas" in ideas_cache:
+            existing_ideas = [key for idea in ideas_cache["ideas"] for key in idea.keys()]
+            existing_ideas = list(set(existing_ideas))
+            existing_ideas = "; ".join(existing_ideas)
+            print ("Appending previous ideas.")
+    else:
+        print ("Not appending previous ideas.")
+    
+    if args.method == "prompting":
+        with open("prompts/idea_examples_prompting_method.json", "r") as f:
+            method_idea_examples = json.load(f)
+            method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
+    elif args.method == "finetuning":
+        with open("prompts/idea_examples_finetuning_method.json", "r") as f:
+            method_idea_examples = json.load(f)
+            method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples)
+    else:
+        with open("prompts/idea_examples_method.json", "r") as f:
+            method_idea_examples = json.load(f)
+            method_idea_examples = shuffle_dict_and_convert_to_string(method_idea_examples, n=4)
+    
+    print ("topic: ", topic_description)
+    print ("existing ideas: ", existing_ideas)
+    print ("\n")
+    print ("generating {} ideas...".format(str(args.ideas_n)))
+    
+    if not args.debug:
+        try:
+            prompt, response, cost = idea_generation(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed, args.temperature, args.top_p, args.max_tokens, args.RAG)
+        except:
+            print ("Error in idea generation...")
+            sys.exit(1)
+    else:
         prompt, response, cost = idea_generation(args.method, existing_ideas, paper_bank, args.grounding_k, method_idea_examples, args.ideas_n, topic_description, client, args.engine, args.seed, args.temperature, args.top_p, args.max_tokens, args.RAG)
-        
-        print ("idea generation cost: ", cost)
-        # print ("prompt: ", prompt)
-        # print ("response: ", response)
-        # print ("---------------------------------------\n")
+    
+    print ("idea generation cost: ", cost)
+    # print ("prompt: ", prompt)
+    # print ("response: ", response)
+    # print ("---------------------------------------\n")
 
-        response = json.loads(response.strip())
-        ideas = {"topic_description": topic_description, "ideas": [response]}
-        
-        ## if the idea_cache already exists, directly add to the current list
-        if os.path.exists(ideas_file):
-            with open(ideas_file, "r") as f:
-                ideas_cache = json.load(f)
-            ideas_cache["ideas"].append(response)
-            ideas = ideas_cache
-        
-        print ("#ideas generated so far: ", sum(len(d) for d in ideas["ideas"]))
+    response = json.loads(response.strip())
+    ideas = {"topic_description": topic_description, "ideas": [response]}
+    
+    ## if the idea_cache already exists, directly add to the current list
+    if os.path.exists(ideas_file):
+        with open(ideas_file, "r") as f:
+            ideas_cache = json.load(f)
+        ideas_cache["ideas"].append(response)
+        ideas = ideas_cache
+    
+    print ("#ideas generated so far: ", sum(len(d) for d in ideas["ideas"]))
 
-        ## save the cache
-        cache_dir = os.path.dirname(ideas_file)
-        if not os.path.exists(cache_dir):
-            os.makedirs(cache_dir)
-        cache_output(ideas, ideas_file)
-
-    except: 
-        print ("Error in idea generation...")
+    ## save the cache
+    cache_dir = os.path.dirname(ideas_file)
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
+    cache_output(ideas, ideas_file)

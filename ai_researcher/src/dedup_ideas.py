@@ -139,10 +139,10 @@ if __name__ == "__main__":
     
     print ("#final ideas: ", len(final_ideas))
 
-    # final_json = {}
-    # final_json["topic_description"] = topic 
-    # final_json["ideas"] = final_ideas 
-    # if not os.path.exists(args.dedup_cache_dir):
-    #     os.makedirs(args.dedup_cache_dir)
-    # with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
-    #     json.dump(final_json, f, indent=4)
+    final_json = {}
+    final_json["topic_description"] = topic 
+    final_json["ideas"] = final_ideas 
+    if not os.path.exists(args.dedup_cache_dir):
+        os.makedirs(args.dedup_cache_dir)
+    with open(os.path.join(args.dedup_cache_dir, args.cache_name + ".json"), "w") as f:
+        json.dump(final_json, f, indent=4)

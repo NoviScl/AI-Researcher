@@ -103,11 +103,30 @@ def tournament_ranking(idea_lst, filename_lst, openai_client, model, seed, cache
         for i in range(len(filename_lst)):
             score_predictions[filename_lst[i]] = final_scores[i]
         
+        # Save all scores
         cache_file = os.path.join(ranking_score_dir, "{}/round_{}.json".format(cache_name, current_round))
         if not os.path.exists(os.path.dirname(cache_file)):
             os.makedirs(os.path.dirname(cache_file))
         with open(cache_file, "w") as f:
             json.dump(score_predictions, f, indent=4)
+            
+        # Save top 10 ideas with full content
+        top_ideas = {}
+        sorted_ideas_with_idx = sorted(enumerate(zip(filename_lst, final_scores)), key=lambda x: x[1][1], reverse=True)[:10]
+        for idx, (idea_name, score) in sorted_ideas_with_idx:
+            top_ideas[idea_name] = {
+                "idea": idea_lst[idx],
+                "ai_ranking_score": score,
+                "human_novelty_score": 0,
+                "human_excitement_score": 0,
+                "human_feasibility_score": 0,
+                "human_effectiveness_score": 0,
+                "human_overall_score": 0
+            }
+            
+        top_ideas_file = os.path.join(ranking_score_dir, "{}/top_ideas.json".format(cache_name))
+        with open(top_ideas_file, "w") as f:
+            json.dump(top_ideas, f, indent=4)
     
     return final_scores, all_costs
 
@@ -118,6 +137,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine', type=str, default='gpt-4-1106-preview', help='api engine; https://openai.com/api/')
     parser.add_argument('--experiment_plan_cache_dir', type=str, default="openreview_benchmark", help='cache file name for the experiment plans')
+    parser.add_argument('--rank_seed_ideas', action='store_true', help='whether to rank seed ideas (as opposed to full experiment plans)')
     parser.add_argument('--cache_name', type=str, default="openreview_benchmark", help='name of the specific cache dir')
     parser.add_argument('--ranking_score_dir', type=str, default="ranking_score_dir", help='dir to store the ranking scores')
     parser.add_argument('--max_round', type=int, default=5, help="seed for GPT-4 generation")
@@ -143,29 +163,40 @@ if __name__ == "__main__":
             api_key=OAI_KEY
         )
 
-    filenames = os.listdir(os.path.join(args.experiment_plan_cache_dir, args.cache_name))
-    if args.format == "json":
-        filenames = [f for f in filenames if f.endswith(".json")]
+
+    if args.rank_seed_ideas:
+        idea_lst = []
+        filename_lst = []
+        filename = os.path.join(args.experiment_plan_cache_dir, args.cache_name + ".json")
+        with open(filename, "r") as f:
+            data = json.load(f)
+        for k,v in data["ideas"].items():
+            idea_lst.append(v)
+            filename_lst.append(k)
     else:
-        filenames = [f for f in filenames if f.endswith(".txt")]
-
-    score_predictions = {}
-    filename_lst = []
-    idea_lst = []
-
-    for filename in filenames:
+        filenames = os.listdir(os.path.join(args.experiment_plan_cache_dir, args.cache_name))
         if args.format == "json":
-            with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
-                paper = json.load(f)
-            if "full_experiment_plan" in paper and isinstance(paper["full_experiment_plan"], dict):
-                summary = paper["full_experiment_plan"]
+            filenames = [f for f in filenames if f.endswith(".json")]
+        else:
+            filenames = [f for f in filenames if f.endswith(".txt")]
+
+        score_predictions = {}
+        filename_lst = []
+        idea_lst = []
+
+        for filename in filenames:
+            if args.format == "json":
+                with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
+                    paper = json.load(f)
+                if "full_experiment_plan" in paper and isinstance(paper["full_experiment_plan"], dict):
+                    summary = paper["full_experiment_plan"]
+                    idea_lst.append(summary)
+                    filename_lst.append(filename)
+            else:
+                with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
+                    summary = f.read()
                 idea_lst.append(summary)
                 filename_lst.append(filename)
-        else:
-            with open(os.path.join(args.experiment_plan_cache_dir, args.cache_name, filename), "r") as f:
-                summary = f.read()
-            idea_lst.append(summary)
-            filename_lst.append(filename)
 
     print ("total #ideas: ", len(idea_lst))
     final_scores, all_costs = tournament_ranking(idea_lst, filename_lst, client, args.engine, args.seed, args.cache_name, args.ranking_score_dir, args.max_round, format=args.format)

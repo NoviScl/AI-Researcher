@@ -17,6 +17,8 @@ def calc_price(model, usage):
         return (0.88 * usage.prompt_tokens + 0.88 * usage.completion_tokens) / 1000000.0
     if "llama-3.1-405b" in model.lower():
         return (3.5 * usage.prompt_tokens + 3.5 * usage.completion_tokens) / 1000000.0
+    if "qwen2.5-72b" or "qwq-32b" in model.lower():
+        return (1.2 * usage.prompt_tokens + 1.2 * usage.completion_tokens) / 1000000.0
 
     return None
 
@@ -36,7 +38,7 @@ def call_api(client, model, prompt_messages, temperature=1.0, top_p=1.0, max_tok
         cost = calc_price(model, message.usage)
         response = message.content[0].text
     ## Together models
-    elif "llama" in model.lower():
+    elif "llama" in model.lower() or "qwen" in model.lower() or "qwq" in model.lower():
         if json_output:
             prompt = prompt_messages[0]["content"] + " Directly output the JSON dict with no additional text (avoid the presence of newline characters (\"\n\") and unescaped double quotes within the string so that we can call json.loads() on the output directly). Make sure you follow the exact same JSON format as shown in the examples. Don't include \"```json\" or \"```\" at the beginning and end of the output. Remember to always close the dict with a closing curly brace (\"}\")."
             prompt_messages = [{"role": "user", "content": prompt}]
