@@ -168,6 +168,8 @@ We release the full set of reviews on all the executed projects in the `reviews_
 
 All the edited ideas (with executors' proposed changes), papers, and codebases can be downloaded from [this link](https://drive.google.com/file/d/1PpxeTz_-xHHcMXyUwv1Oed1avTaiD5vv/view?usp=sharing).
 
+We also include the scripts that we used to do the statistical tests in the paper.
+
 ## Citation
 
 Please cite our papers and star this repo if you find our work useful, thanks! Feel free to contact clsi@stanford.edu or open an issue if you have any questions.
